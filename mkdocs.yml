@@ -58,6 +58,7 @@ nav:
       - "16 — Testing frontend": capitulos/16-testing.md
       - "17 — Rendimiento web": capitulos/17-rendimiento.md
       - "18 — Arquitectura frontend": capitulos/18-arquitectura.md
+      - "19 — Full-stack con Node.js": capitulos/19-fullstack-node.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
