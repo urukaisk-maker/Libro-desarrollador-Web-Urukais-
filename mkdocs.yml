@@ -143,7 +143,6 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js
 extra:
