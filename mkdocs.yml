@@ -53,6 +53,7 @@ nav:
       - "12 — JavaScript asíncrono": capitulos/12-javascript-asincrono.md
       - "13 — Módulos y bundlers": capitulos/13-modulos-bundlers.md
       - "14 — Accesibilidad web": capitulos/14-accesibilidad.md
+      - "15 — TypeScript desde cero": capitulos/15-typescript.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
