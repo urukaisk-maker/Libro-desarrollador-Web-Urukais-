@@ -69,6 +69,16 @@ Consulta la carpeta [ejemplos](ejemplos/index.md) para ver el código práctico.
 - [Recursos](recursos.md) — enlaces y herramientas
 - [Contribuir](contribuir.md) — cómo participar
 - [Contacto](contacto.md) — escríbeme
+## 📬 Newsletter
+
+Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+
+<div style="max-width: 500px; margin: 1.5rem 0; padding: 1.5rem; border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc; text-align: center;">
+  <p style="margin-top: 0; font-weight: 600; color: #1e293b;">Suscríbete para no perderte nada</p>
+  <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" style="display: inline-block; background: #6a5acd; color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;">
+    Suscribirme
+  </a>
+</div>
 
 ## 👤 Sobre el autor
 
