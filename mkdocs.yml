@@ -125,12 +125,6 @@ nav:
 plugins:
   - search
 
-extra_css:
-  - assets/css/share.css
-
-extra_javascript:
-  - assets/js/share.js
-
 markdown_extensions:
   - admonition
   - attr_list
