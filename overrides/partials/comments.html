@@ -1,35 +1,140 @@
 {% if page.meta.comments or config.extra.comments %}
-<div class="giscus" style="margin-top: 3rem;"></div>
+<div class="share-buttons">
+  <p class="share-buttons__title">📢 Comparte este capítulo</p>
+  <div class="share-buttons__list">
+    <button class="share-btn share-twitter" type="button">𝕏 Twitter</button>
+    <button class="share-btn share-linkedin" type="button">💼 LinkedIn</button>
+    <button class="share-btn share-whatsapp" type="button">💬 WhatsApp</button>
+    <button class="share-btn share-reddit" type="button">👽 Reddit</button>
+    <button class="share-btn share-email" type="button">📧 Email</button>
+    <button class="share-btn share-copy" type="button">🔗 Copiar enlace</button>
+  </div>
+</div>
+
+<div class="giscus" style="margin-top: 2rem;"></div>
+
 <script>
-  (function() {
-    function loadGiscus() {
-      var container = document.querySelector('.giscus');
-      if (!container || container.dataset.loaded === 'true') return;
-      container.dataset.loaded = 'true';
+(function () {
+  function initShare() {
+    var box = document.querySelector('.share-buttons');
+    if (!box || box.dataset.init === 'true') return;
+    box.dataset.init = 'true';
 
-      var script = document.createElement('script');
-      script.src = 'https://giscus.app/client.js';
-      script.setAttribute('data-repo', 'urukaisk-maker/Libro-desarrollador-Web-Urukais-');
-      script.setAttribute('data-repo-id', 'R_kgDOVF4YjQ');
-      script.setAttribute('data-category', 'Announcements');
-      script.setAttribute('data-category-id', 'DIC_kwDOVF4Yjc4DIHN2');
-      script.setAttribute('data-mapping', 'pathname');
-      script.setAttribute('data-strict', '0');
-      script.setAttribute('data-reactions-enabled', '1');
-      script.setAttribute('data-emit-metadata', '0');
-      script.setAttribute('data-input-position', 'bottom');
-      script.setAttribute('data-theme', 'preferred_color_scheme');
-      script.setAttribute('data-lang', 'es');
-      script.setAttribute('crossorigin', 'anonymous');
-      script.async = true;
-      container.appendChild(script);
-    }
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent(document.title);
+    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
 
-    if (typeof document$ !== 'undefined') {
-      document$.subscribe(loadGiscus);
-    } else {
-      document.addEventListener('DOMContentLoaded', loadGiscus);
-    }
-  })();
+    var links = {
+      '.share-twitter':  'https://twitter.com/intent/tweet?text=' + text + '&url=' + url,
+      '.share-linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url=' + url,
+      '.share-whatsapp': 'https://api.whatsapp.com/send?text=' + text + '%20' + url,
+      '.share-reddit':   'https://www.reddit.com/submit?url=' + url + '&title=' + title,
+      '.share-email':    'mailto:?subject=' + title + '&body=' + text + '%20' + url
+    };
+
+    Object.keys(links).forEach(function (sel) {
+      var btn = box.querySelector(sel);
+      if (btn) btn.addEventListener('click', function () {
+        window.open(links[sel], '_blank', 'noopener,noreferrer,width=600,height=500');
+      });
+    });
+
+    var copy = box.querySelector('.share-copy');
+    if (copy) copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        var orig = copy.textContent;
+        copy.textContent = '✅ Copiado';
+        copy.classList.add('copied');
+        setTimeout(function () { copy.textContent = orig; copy.classList.remove('copied'); }, 2000);
+      });
+    });
+  }
+
+  function initGiscus() {
+    var container = document.querySelector('.giscus');
+    if (!container || container.dataset.loaded === 'true') return;
+    container.dataset.loaded = 'true';
+
+    var script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'urukaisk-maker/Libro-desarrollador-Web-Urukais-');
+    script.setAttribute('data-repo-id', 'R_kgDOVF4YjQ');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOVF4Yjc4DIHN2');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('data-lang', 'es');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
+  }
+
+  function run() { initShare(); initGiscus(); }
+
+  if (typeof document$ !== 'undefined') {
+    document$.subscribe(run);
+  } else {
+    document.addEventListener('DOMContentLoaded', run);
+  }
+})();
 </script>
+
+<style>
+.share-buttons {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.share-buttons__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.share-buttons__list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  font-family: inherit;
+}
+
+.share-btn:hover {
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-color: var(--md-primary-fg-color);
+  transform: translateY(-2px);
+}
+
+.share-btn:focus-visible {
+  outline: 3px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.share-btn.copied {
+  background: #16a34a !important;
+  color: white !important;
+  border-color: #16a34a !important;
+}
+</style>
 {% endif %}
