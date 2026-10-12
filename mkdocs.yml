@@ -75,6 +75,12 @@ nav:
       - "29 — WebXR": capitulos/29-webxr.md
       - "30 — Web3": capitulos/30-web3.md
   - Ejemplos: ejemplos/index.md
+  - Ejercicios resueltos:
+      - Índice: ejercicios/index.md
+      - "01 — Introducción": ejercicios/01-introduccion.md
+      - "02 — HTML básico": ejercicios/02-html-basico.md
+      - "03 — CSS básico": ejercicios/03-css-basico.md
+      - "04 — JavaScript": ejercicios/04-javascript.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
   - Changelog: changelog.md
