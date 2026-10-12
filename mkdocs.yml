@@ -55,6 +55,8 @@ nav:
       - "14 — Accesibilidad web": capitulos/14-accesibilidad.md
       - "15 — TypeScript desde cero": capitulos/15-typescript.md
       - "16 — Testing frontend": capitulos/16-testing.md
+      - "17 — Rendimiento web": capitulos/17-rendimiento.md
+      - "18 — Arquitectura frontend": capitulos/18-arquitectura.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
@@ -69,6 +71,8 @@ nav:
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
