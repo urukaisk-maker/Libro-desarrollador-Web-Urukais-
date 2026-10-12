@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/capitulos/13-modulos-bundlers/">
       
       
+        <link rel="prev" href="../12-javascript-asincrono/">
+      
+      
+        <link rel="next" href="../../ejemplos/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Capítulo 13 — Módulos y bundlers - Libro del Desarrollador Web — Urukais</title>
+        <title>13 — Módulos y bundlers - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Capítulo 13 — Módulos y bundlers
+              13 — Módulos y bundlers
             
           </span>
         </div>
@@ -298,10 +302,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../11-css-moderno/" class="md-tabs__link">
           
   
@@ -950,26 +956,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -987,7 +998,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1049,6 +1060,341 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 — Módulos y bundlers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 — Módulos y bundlers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es un módulo?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es un módulo?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exportar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulos-en-el-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Módulos en el navegador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import dinámico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-problema-demasiados-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El problema: demasiados archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-bundler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es un bundler?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vite-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vite paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vite paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crear un proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-tipica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura típica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson-explicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package.json explicado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm-run-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm run dev
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm-run-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm run build
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-el-gestor-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm: el gestor de paquetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="npm: el gestor de paquetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-esenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos esenciales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-vs-devdependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dependencies vs devDependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-lockjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package-lock.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-para-proyectos-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .gitignore para proyectos Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-de-entorno-con-vite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables de entorno con Vite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1638,6 +1984,44 @@ git add -A ; git commit -m "feat: capítulo 13 módulos y bundlers" ; git push</
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../12-javascript-asincrono/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 12 — JavaScript asíncrono">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                12 — JavaScript asíncrono
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejemplos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejemplos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejemplos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
