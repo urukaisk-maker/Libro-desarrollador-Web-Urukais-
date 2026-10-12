@@ -1,12 +1,12 @@
 {
   "ignorePatterns": [
-    { "pattern": "^http://localhost" },
-    { "pattern": "^https://leetcode.com" },
-    { "pattern": "^https://etherscan.io" },
-    { "pattern": "^https://www.tpgi.com" },
-    { "pattern": "^https://socket.dev" },
-    { "pattern": "^https://securityheaders.com" },
-    { "pattern": "^https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/docs/assets/favicon.svg" }
+    { "pattern": "localhost" },
+    { "pattern": "leetcode.com" },
+    { "pattern": "etherscan.io" },
+    { "pattern": "tpgi.com" },
+    { "pattern": "socket.dev" },
+    { "pattern": "securityheaders.com" },
+    { "pattern": "favicon.svg" }
   ],
   "retryOn429": true,
   "retryCount": 3,

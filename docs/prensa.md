@@ -41,8 +41,7 @@ Recursos para medios, blogs y personas que quieran hablar de este proyecto.
 
 ### Logo
 
-[`docs/assets/favicon.svg`](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/docs/assets/favicon.svg)
-
+[`docs/assets/favicon.svg`](https://raw.githubusercontent.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/master/docs/assets/favicon.svg)
 ### Colores
 
 | Uso | Color | Hex |
