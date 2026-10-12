@@ -68,6 +68,12 @@ nav:
       - "23 — WebSockets y tiempo real": capitulos/23-websockets.md
       - "24 — Animaciones avanzadas": capitulos/24-animaciones.md
       - "25 — Design systems": capitulos/25-design-systems.md
+  - Nivel élite:
+      - "26 — Seguridad web": capitulos/26-seguridad.md
+      - "27 — WebAssembly": capitulos/27-webassembly.md
+      - "28 — IA en el frontend": capitulos/28-ia-frontend.md
+      - "29 — WebXR": capitulos/29-webxr.md
+      - "30 — Web3": capitulos/30-web3.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
