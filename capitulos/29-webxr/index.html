@@ -2126,6 +2126,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-arquitectura-webxr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: arquitectura WebXR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3920,6 +3931,17 @@ Escena 3D (Three.js, Babylon.js, A-Frame)
 <li><strong>Arquitectura</strong>: recorridos de edificios.</li>
 <li><strong>Salud</strong>: terapia de exposición, rehabilitación.</li>
 </ul>
+<h2 id="diagrama-arquitectura-webxr">Diagrama: arquitectura WebXR<a class="headerlink" href="#diagrama-arquitectura-webxr" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    A[Navegador] --&gt; B[navigator.xr]
+    B --&gt; C{Session?}
+    C --&gt;|immersive-vr| D[Gafas VR]
+    C --&gt;|immersive-ar| E[Cámara AR]
+    C --&gt;|inline| F[Modo 3D sin gafas]
+    D --&gt; G[Renderizado 3D&lt;br/&gt;Three.js / A-Frame]
+    E --&gt; G
+    F --&gt; G</code></pre>
+<p>WebXR gestiona el rastreo del dispositivo. La escena 3D se renderiza con Three.js, A-Frame o Babylon.js.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Detecta soporte</strong> antes de arrancar.</li>

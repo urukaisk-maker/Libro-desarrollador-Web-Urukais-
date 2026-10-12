@@ -2260,6 +2260,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-como-interactua-una-dapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: cómo interactúa una dApp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas-para-desarrolladores" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3937,6 +3948,25 @@
 <h2 id="impacto-ambiental">Impacto ambiental<a class="headerlink" href="#impacto-ambiental" title="Permanent link">&para;</a></h2>
 <p>Ethereum migró a <strong>Proof of Stake</strong> en 2022 (The Merge), reduciendo su consumo energético un <strong>99,95%</strong>. Bitcoin sigue con Proof of Work, muy intensivo en energía.</p>
 <p>Si te preocupa el impacto, prefiere redes PoS: Ethereum, Polygon, Solana, Cardano.</p>
+<h2 id="diagrama-como-interactua-una-dapp">Diagrama: cómo interactúa una dApp<a class="headerlink" href="#diagrama-como-interactua-una-dapp" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant W as Wallet&lt;br/&gt;MetaMask
+    participant D as dApp&lt;br/&gt;Frontend
+    participant C as Contrato&lt;br/&gt;Solidity
+    participant B as Blockchain
+
+    U-&gt;&gt;D: Clic en "Conectar wallet"
+    D-&gt;&gt;W: eth_requestAccounts
+    W--&gt;&gt;U: Pide permiso
+    U--&gt;&gt;W: Acepta
+    W--&gt;&gt;D: Dirección 0x...
+    D-&gt;&gt;C: Llama función
+    C-&gt;&gt;B: Transacción firmada
+    B--&gt;&gt;C: Confirmación
+    C--&gt;&gt;D: Evento emitido
+    D--&gt;&gt;U: Actualiza UI</code></pre>
+<p>Una dApp no accede directamente a la blockchain: la wallet actúa como intermediaria y firma cada transacción en nombre del usuario.</p>
 <h2 id="buenas-practicas-para-desarrolladores">Buenas prácticas para desarrolladores<a class="headerlink" href="#buenas-practicas-para-desarrolladores" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Empieza por entender los fundamentos</strong> antes de programar.</li>

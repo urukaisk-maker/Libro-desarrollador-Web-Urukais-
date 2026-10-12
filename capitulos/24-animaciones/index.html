@@ -2134,6 +2134,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-pipeline-de-renderizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: pipeline de renderizado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4234,6 +4245,16 @@
 <li><strong><a href="https://auto-animate.formkit.com/">AutoAnimate</a></strong> — cero config, anima listas automáticamente.</li>
 <li><strong><a href="https://airbnb.io/lottie/">Lottie</a></strong> — animaciones vectoriales desde After Effects.</li>
 </ul>
+<h2 id="diagrama-pipeline-de-renderizado">Diagrama: pipeline de renderizado<a class="headerlink" href="#diagrama-pipeline-de-renderizado" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[JavaScript] --&gt; B[Style]
+    B --&gt; C[Layout]
+    C --&gt; D[Paint]
+    D --&gt; E[Composite]
+
+    style A fill:#dc2626,color:white
+    style E fill:#16a34a,color:white</code></pre>
+<p>Animar <code>transform</code> y <code>opacity</code> salta directo a Composite (barato). Animar <code>width</code> o <code>top</code> obliga a recalcular Layout y Paint (caro).</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Empieza por entender el objetivo</strong> antes de animar.</li>

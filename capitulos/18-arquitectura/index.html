@@ -1880,6 +1880,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-estructura-feature-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: estructura feature-first
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4189,6 +4200,16 @@
     ├── utils/         # helpers
     └── config/        # eslint, tsconfig
 </code></pre></div>
+<h2 id="diagrama-estructura-feature-first">Diagrama: estructura feature-first<a class="headerlink" href="#diagrama-estructura-feature-first" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    A[src/] --&gt; B[features/]
+    A --&gt; C[shared/]
+    A --&gt; D[app/]
+    B --&gt; E[auth/&lt;br/&gt;components&lt;br/&gt;hooks&lt;br/&gt;api.js]
+    B --&gt; F[carrito/&lt;br/&gt;components&lt;br/&gt;hooks&lt;br/&gt;api.js]
+    C --&gt; G[components genéricos]
+    D --&gt; H[rutas, layouts]</code></pre>
+<p>En feature-first cada funcionalidad es autónoma. <code>shared/</code> contiene lo reutilizable y <strong>nunca</strong> importa de <code>features/</code>.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Empieza simple</strong>. No adoptes arquitectura compleja hasta que sea necesaria.</li>

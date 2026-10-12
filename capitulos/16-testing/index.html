@@ -1752,6 +1752,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-la-piramide-de-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: la pirámide de testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4138,6 +4149,15 @@ npx<span class="w"> </span>playwright<span class="w"> </span>install
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright install --with-deps</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright test</span>
 </code></pre></div>
+<h2 id="diagrama-la-piramide-de-testing">Diagrama: la pirámide de testing<a class="headerlink" href="#diagrama-la-piramide-de-testing" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    A[E2E&lt;br/&gt;pocos, lentos] --&gt; B[Integración&lt;br/&gt;algunos]
+    B --&gt; C[Unitarios&lt;br/&gt;muchos, rápidos]
+
+    style A fill:#dc2626,color:white
+    style B fill:#f59e0b,color:white
+    style C fill:#16a34a,color:white</code></pre>
+<p>Distribución recomendada: muchos tests unitarios (rápidos y baratos), algunos de integración y pocos E2E (lentos pero críticos).</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Un test, una aserción conceptual</strong>. Si tiene varias, usa <code>describe</code> para agrupar.</li>

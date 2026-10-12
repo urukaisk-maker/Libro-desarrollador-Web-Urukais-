@@ -2115,6 +2115,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-como-se-ejecuta-un-modulo-wasm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: cómo se ejecuta un módulo Wasm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3827,6 +3838,22 @@ cargo<span class="w"> </span>install<span class="w"> </span>wasm-pack
 <li><strong>Debugging complicado</strong> — aunque mejora cada año.</li>
 <li><strong>No reemplaza a JS</strong> — se complementan.</li>
 </ul>
+<h2 id="diagrama-como-se-ejecuta-un-modulo-wasm">Diagrama: cómo se ejecuta un módulo Wasm<a class="headerlink" href="#diagrama-como-se-ejecuta-un-modulo-wasm" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant JS as JavaScript
+    participant W as WebAssembly
+
+    U-&gt;&gt;N: Carga la página
+    N-&gt;&gt;JS: Descarga app.js
+    JS-&gt;&gt;N: Pide modulo.wasm
+    N--&gt;&gt;JS: Devuelve binario
+    JS-&gt;&gt;W: instantiate()
+    JS-&gt;&gt;W: Llama función exportada
+    W--&gt;&gt;JS: Resultado
+    JS--&gt;&gt;U: Actualiza la UI</code></pre>
+<p>JavaScript orquesta la carga y llama a las funciones de WebAssembly. El código pesado se ejecuta dentro del módulo Wasm a velocidad casi nativa.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Mide antes</strong>. Solo usa Wasm si JS no es suficiente.</li>

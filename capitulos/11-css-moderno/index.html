@@ -1451,6 +1451,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-capas-de-la-cascada-css" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: capas de la cascada CSS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3799,6 +3810,15 @@
 <span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--brand</span><span class="p">,</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="diagrama-capas-de-la-cascada-css">Diagrama: capas de la cascada CSS<a class="headerlink" href="#diagrama-capas-de-la-cascada-css" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    A[Navegador] --&gt; B[Estilos del usuario]
+    B --&gt; C[!important]
+    C --&gt; D[Estilos inline]
+    D --&gt; E[Media queries]
+    E --&gt; F[Especificidad y @layer]
+    F --&gt; G[Estilos del navegador]</code></pre>
+<p>Orden de precedencia en CSS: de mayor a menor prioridad. Las capas (<code>@layer</code>) permiten controlar este orden sin depender de la especificidad.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Usa variables CSS</strong> para todo lo que se repita: colores, espaciados, radios, tipografías.</li>

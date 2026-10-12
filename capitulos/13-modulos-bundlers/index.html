@@ -1585,6 +1585,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-que-hace-un-bundler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: qué hace un bundler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3835,6 +3846,15 @@ dist/
 <p class="admonition-title">No metas secretos</p>
 <p>Todo lo que empiece por <code>VITE_</code> acaba en el bundle. <strong>Nunca</strong> pongas API keys privadas ahí. Los secretos van al backend.</p>
 </div>
+<h2 id="diagrama-que-hace-un-bundler">Diagrama: qué hace un bundler<a class="headerlink" href="#diagrama-que-hace-un-bundler" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[módulo1.js] --&gt; D[Bundler]
+    B[módulo2.js] --&gt; D
+    C[módulo3.js] --&gt; D
+    D --&gt; E[Tree shaking]
+    E --&gt; F[Minificación]
+    F --&gt; G[app.min.js único]</code></pre>
+<p>El bundler combina todos los módulos, elimina el código no usado (tree shaking) y minifica el resultado en uno o varios archivos optimizados.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Un archivo, una responsabilidad</strong>. Si un módulo hace demasiadas cosas, divídelo.</li>
