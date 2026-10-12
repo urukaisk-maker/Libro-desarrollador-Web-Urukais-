@@ -64,6 +64,7 @@ nav:
       - "22 — Progressive Web Apps (PWA)": capitulos/22-pwa.md
       - "23 — WebSockets y tiempo real": capitulos/23-websockets.md
       - "24 — Animaciones avanzadas": capitulos/24-animaciones.md
+      - "25 — Design systems": capitulos/25-design-systems.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
