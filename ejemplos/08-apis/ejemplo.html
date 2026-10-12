@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capítulo 8 — Consumo de APIs</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 3rem auto; padding: 0 1rem; color: #1e293b; }
+    h1 { color: #6a5acd; }
+    button { background: #6a5acd; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-bottom: 1rem; }
+    button:hover { background: #5b4bc4; }
+    ul { list-style: none; padding: 0; }
+    li { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; }
+    .estado { color: #0891b2; font-style: italic; }
+    .error { color: #dc2626; }
+  </style>
+</head>
+<body>
+  <h1>Usuarios desde una API</h1>
+  <button id="cargar">Cargar usuarios</button>
+  <div class="estado" id="estado"></div>
+  <ul id="lista"></ul>
+
+  <script>
+    const btn = document.getElementById('cargar');
+    const estado = document.getElementById('estado');
+    const lista = document.getElementById('lista');
+
+    btn.addEventListener('click', async () => {
+      estado.textContent = 'Cargando…';
+      estado.classList.remove('error');
+      lista.innerHTML = '';
+
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const usuarios = await res.json();
+
+        lista.innerHTML = usuarios
+          .map(u => `<li><strong>${u.name}</strong><br>${u.email}</li>`)
+          .join('');
+
+        estado.textContent = `${usuarios.length} usuarios cargados`;
+      } catch (err) {
+        estado.textContent = `Error: ${err.message}`;
+        estado.classList.add('error');
+      }
+    });
+  </script>
+</body>
+</html>
