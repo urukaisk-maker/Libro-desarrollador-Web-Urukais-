@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/capitulos/16-testing/">
       
       
+        <link rel="prev" href="../15-typescript/">
+      
+      
+        <link rel="next" href="../../ejemplos/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Capítulo 16 — Testing frontend - Libro del Desarrollador Web — Urukais</title>
+        <title>16 — Testing frontend - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Capítulo 16 — Testing frontend
+              16 — Testing frontend
             
           </span>
         </div>
@@ -298,10 +302,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../11-css-moderno/" class="md-tabs__link">
           
   
@@ -950,26 +956,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -987,7 +998,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1133,6 +1144,424 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 — Testing frontend
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 — Testing frontend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos de tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-modernas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramientas modernas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vitest-tu-primer-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vitest: tu primer test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vitest: tu primer test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escribir-un-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escribir un test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomia-de-un-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de un test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aserciones-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aserciones comunes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beforeeach-y-aftereach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        beforeEach y afterEach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-de-codigo-asincrono" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests de código asíncrono
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocks-y-spies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mocks y spies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocks y spies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vifn-funcion-simulada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vi.fn() — función simulada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vispyon-espiar-un-metodo-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vi.spyOn() — espiar un método existente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vimock-mockear-un-modulo-entero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vi.mock() — mockear un módulo entero
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-library-probar-como-un-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Library: probar como un usuario
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Library: probar como un usuario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-viteconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración (vite.config.js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo con DOM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consultas-recomendadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consultas recomendadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mock-service-worker-msw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mock Service Worker (MSW)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-e2e-con-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests E2E con Playwright
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests E2E con Playwright">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-playwrightconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración (playwright.config.js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test E2E
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cobertura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cobertura
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tdd-test-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TDD: Test-Driven Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-ejecutar-tests-en-cada-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI: ejecutar tests en cada push
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1944,6 +2373,44 @@ npx<span class="w"> </span>playwright<span class="w"> </span>install
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../15-typescript/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 15 — TypeScript desde cero">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                15 — TypeScript desde cero
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejemplos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejemplos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejemplos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
