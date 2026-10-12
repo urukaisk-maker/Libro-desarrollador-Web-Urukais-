@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libro del Desarrollador Web — Urukais</title>
+  <meta name="description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #a78bfa;
+      --accent-2: #22d3ee;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, var(--bg), #020617 70%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      line-height: 1.6;
+    }
+    .card {
+      max-width: 780px;
+      width: 100%;
+      background: var(--card);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      border: 1px solid var(--accent-2);
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      margin: 0 0 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p.lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      color: var(--accent);
+    }
+    ul, ol { padding-left: 1.25rem; }
+    li { margin: 0.3rem 0; }
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(34, 211, 238, 0.4);
+    }
+    a:hover { color: var(--accent); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .chip {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .chip span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+    footer {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    code {
+      background: rgba(148, 163, 184, 0.15);
+      padding: 0.1rem 0.35rem;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="badge">Libro · Curso</span>
+    <h1>Libro del Desarrollador Web</h1>
+    <p class="lead">Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.</p>
+
+    <h2>📚 Contenido</h2>
+    <ol>
+      <li><a href="docs/introduccion.md">Introducción</a></li>
+      <li><a href="capitulos/01-introduccion.md">Capítulo 1 — Introducción al desarrollo web</a></li>
+      <li>Capítulo 2 — HTML básico <em>(pendiente)</em></li>
+      <li>Capítulo 3 — CSS básico <em>(pendiente)</em></li>
+    </ol>
+
+    <h2>🧩 Ejemplos</h2>
+    <p>Consulta la carpeta <a href="ejemplos/">ejemplos/</a> para ver el código práctico de cada capítulo.</p>
+
+    <h2>🛠️ Tecnologías</h2>
+    <div class="grid">
+      <div class="chip">HTML5<span>Estructura</span></div>
+      <div class="chip">CSS3 / SCSS<span>Estilos</span></div>
+      <div class="chip">JavaScript<span>Interactividad</span></div>
+      <div class="chip">Markdown<span>Contenido</span></div>
+    </div>
+
+    <h2>🚀 Cómo usar este repositorio</h2>
+    <ol>
+      <li>Clona el repositorio:
+        <br><code>git clone https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git</code>
+      </li>
+      <li>Abre los capítulos en <code>docs/</code> y <code>capitulos/</code>.</li>
+      <li>Prueba los ejemplos en <code>ejemplos/</code>.</li>
+    </ol>
+
+    <h2>📜 Licencia</h2>
+    <p>MIT — ver <a href="LICENSE">LICENSE</a>.</p>
+  </main>
+
+  <footer>
+    <p>© 2026 Urukais · <a href="https://github.com/urukaisk-maker">@urukaisk-maker</a></p>
+  </footer>
+</body>
+</html>
