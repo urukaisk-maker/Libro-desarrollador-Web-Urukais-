@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/capitulos/15-typescript/">
       
       
+        <link rel="prev" href="../14-accesibilidad/">
+      
+      
+        <link rel="next" href="../../ejemplos/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Capítulo 15 — TypeScript desde cero - Libro del Desarrollador Web — Urukais</title>
+        <title>15 — TypeScript desde cero - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Capítulo 15 — TypeScript desde cero
+              15 — TypeScript desde cero
             
           </span>
         </div>
@@ -298,10 +302,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../11-css-moderno/" class="md-tabs__link">
           
   
@@ -950,26 +956,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -987,7 +998,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1105,6 +1116,408 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 — TypeScript desde cero
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 — TypeScript desde cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué TypeScript?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Por qué TypeScript?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sin-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sin TypeScript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#con-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con TypeScript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-concretas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas concretas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tsconfigjson-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tsconfig.json recomendado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compilar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos básicos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencia-entre-any-y-unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferencia entre any y unknown
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inferencia-de-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inferencia de tipos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-e-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetos e interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objetos e interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniones-e-intersecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uniones e intersecciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#narrowing-estrechamiento-de-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narrowing (estrechamiento de tipos)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genericos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Genéricos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Genéricos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#con-restricciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con restricciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utility-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utility types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-literales-y-enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos literales y enums
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-asincronas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funciones asíncronas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typescript-con-librerias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TypeScript con librerías
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-real-funcion-tipada-de-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo real: función tipada de API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1817,6 +2230,44 @@ npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </s
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../14-accesibilidad/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 14 — Accesibilidad web">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                14 — Accesibilidad web
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejemplos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejemplos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejemplos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
