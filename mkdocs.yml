@@ -35,6 +35,7 @@ theme:
 
 nav:
   - Inicio: index.md
+  - Filosofía: filosofia.md
   - Introducción: introduccion.md
   - Nivel principiante:
       - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
@@ -63,6 +64,9 @@ nav:
   - Changelog: changelog.md
   - Contribuir: contribuir.md
   - Sobre el autor: autor.md
+  - Contacto: contacto.md
+  - Agradecimientos: agradecimientos.md
+  - Prensa: prensa.md
   - Apéndices:
       - Índice: apendices/index.md
       - Chuletas rápidas: apendices/chuletas.md
