@@ -63,6 +63,7 @@ nav:
       - "21 — Web Components": capitulos/21-web-components.md
       - "22 — Progressive Web Apps (PWA)": capitulos/22-pwa.md
       - "23 — WebSockets y tiempo real": capitulos/23-websockets.md
+      - "24 — Animaciones avanzadas": capitulos/24-animaciones.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
