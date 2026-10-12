@@ -62,6 +62,7 @@ nav:
       - "20 — DevOps para frontend": capitulos/20-devops.md
       - "21 — Web Components": capitulos/21-web-components.md
       - "22 — Progressive Web Apps (PWA)": capitulos/22-pwa.md
+      - "23 — WebSockets y tiempo real": capitulos/23-websockets.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
