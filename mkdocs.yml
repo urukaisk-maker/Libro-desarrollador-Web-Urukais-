@@ -2,23 +2,24 @@ site_name: Libro del Desarrollador Web — Urukais
 site_description: Material completo para aprender desarrollo web desde cero
 site_author: Manuel Casimiro Carrasco (Urukais)
 site_url: https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/
-
 repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
 repo_url: https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-
 
 theme:
   name: material
   language: es
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.instant
+    - navigation.footer
     - search.suggest
     - search.highlight
     - content.code.copy
     - toc.integrate
-      custom_dir: overrides
   palette:
     - scheme: default
       primary: deep purple
@@ -37,9 +38,9 @@ nav:
   - Inicio: index.md
   - Introducción: introduccion.md
   - Capítulos:
-      - 01 — Introducción al desarrollo web: capitulos/01-introduccion.md
-      - 02 — HTML básico: capitulos/02-html-basico.md
-      - 03 — CSS básico: capitulos/03-css-basico.md
+      - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
+      - "02 — HTML básico": capitulos/02-html-basico.md
+      - "03 — CSS básico": capitulos/03-css-basico.md
   - Ejemplos: ejemplos/index.md
 
 markdown_extensions:
@@ -51,5 +52,5 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-not_in_nav: |
-  /404.md
+
+copyright: © 2026 Urukais — Libro del Desarrollador Web
