@@ -1,16 +1,27 @@
 (function () {
-  function crearBoton(texto, clase) {
+  'use strict';
+
+  function crearBoton(texto, clase, href) {
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'share-btn ' + clase;
     btn.textContent = texto;
+    if (href) {
+      btn.addEventListener('click', function () {
+        window.open(href, '_blank', 'noopener,noreferrer,width=600,height=500');
+      });
+    }
     return btn;
   }
 
-  function crearWidget() {
+  function inyectar() {
     var article = document.querySelector('.md-content__inner');
     if (!article) return false;
     if (article.querySelector('.share-buttons')) return true;
+
+    var url = encodeURIComponent(location.href);
+    var title = encodeURIComponent(document.title);
+    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
 
     var box = document.createElement('div');
     box.className = 'share-buttons';
@@ -23,29 +34,24 @@
     var lista = document.createElement('div');
     lista.className = 'share-buttons__list';
 
-    var url = encodeURIComponent(window.location.href);
-    var title = encodeURIComponent(document.title);
-    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
+    lista.appendChild(crearBoton('𝕏 Twitter', 'share-twitter',
+      'https://twitter.com/intent/tweet?text=' + text + '&url=' + url));
 
-    var redes = [
-      { texto: '𝕏 Twitter',  clase: 'share-twitter',  href: 'https://twitter.com/intent/tweet?text=' + text + '&url=' + url },
-      { texto: '💼 LinkedIn', clase: 'share-linkedin', href: 'https://www.linkedin.com/sharing/share-offsite/?url=' + url },
-      { texto: '💬 WhatsApp', clase: 'share-whatsapp', href: 'https://api.whatsapp.com/send?text=' + text + '%20' + url },
-      { texto: '👽 Reddit',   clase: 'share-reddit',   href: 'https://www.reddit.com/submit?url=' + url + '&title=' + title },
-      { texto: '📧 Email',    clase: 'share-email',    href: 'mailto:?subject=' + title + '&body=' + text + '%20' + url }
-    ];
+    lista.appendChild(crearBoton('💼 LinkedIn', 'share-linkedin',
+      'https://www.linkedin.com/sharing/share-offsite/?url=' + url));
 
-    redes.forEach(function (r) {
-      var b = crearBoton(r.texto, r.clase);
-      b.addEventListener('click', function () {
-        window.open(r.href, '_blank', 'noopener,noreferrer,width=600,height=500');
-      });
-      lista.appendChild(b);
-    });
+    lista.appendChild(crearBoton('💬 WhatsApp', 'share-whatsapp',
+      'https://api.whatsapp.com/send?text=' + text + '%20' + url));
 
-    var copiar = crearBoton('🔗 Copiar enlace', 'share-copy');
+    lista.appendChild(crearBoton('👽 Reddit', 'share-reddit',
+      'https://www.reddit.com/submit?url=' + url + '&title=' + title));
+
+    lista.appendChild(crearBoton('📧 Email', 'share-email',
+      'mailto:?subject=' + title + '&body=' + text + '%20' + url));
+
+    var copiar = crearBoton('🔗 Copiar enlace', 'share-copy', null);
     copiar.addEventListener('click', function () {
-      navigator.clipboard.writeText(window.location.href).then(function () {
+      navigator.clipboard.writeText(location.href).then(function () {
         var orig = copiar.textContent;
         copiar.textContent = '✅ Copiado';
         copiar.classList.add('copied');
@@ -59,25 +65,17 @@
 
     box.appendChild(lista);
     article.appendChild(box);
-    console.log('[share] Widget inyectado');
     return true;
   }
 
-  // Bucle: intenta inyectar cada 200 ms hasta 20 veces (4 segundos)
-  var intentos = 0;
-  var timer = setInterval(function () {
-    if (crearWidget() || intentos > 20) {
-      clearInterval(timer);
+  // Ejecutar cuando el DOM esté listo, y reintentar por si Material tarda
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!inyectar()) {
+      var intentos = 0;
+      var timer = setInterval(function () {
+        if (inyectar() || ++intentos > 25) clearInterval(timer);
+      }, 200);
     }
-    intentos++;
-  }, 200);
+  });
 
-  // Si cambia la URL (navegación SPA de Material), reiniciar
-  var lastUrl = location.href;
-  setInterval(function () {
-    if (location.href !== lastUrl) {
-      lastUrl = location.href;
-      setTimeout(crearWidget, 300);
-    }
-  }, 500);
 })();
