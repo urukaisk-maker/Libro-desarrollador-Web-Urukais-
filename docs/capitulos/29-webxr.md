@@ -330,6 +330,22 @@ VR exige **90 FPS mínimo** (idealmente 120). Reglas estrictas:
 - **Arquitectura**: recorridos de edificios.
 - **Salud**: terapia de exposición, rehabilitación.
 
+## Diagrama: arquitectura WebXR
+
+```mermaid
+flowchart TB
+    A[Navegador] --> B[navigator.xr]
+    B --> C{Session?}
+    C -->|immersive-vr| D[Gafas VR]
+    C -->|immersive-ar| E[Cámara AR]
+    C -->|inline| F[Modo 3D sin gafas]
+    D --> G[Renderizado 3D<br/>Three.js / A-Frame]
+    E --> G
+    F --> G
+```
+
+WebXR gestiona el rastreo del dispositivo. La escena 3D se renderiza con Three.js, A-Frame o Babylon.js.
+
 ## Buenas prácticas
 
 - **Detecta soporte** antes de arrancar.

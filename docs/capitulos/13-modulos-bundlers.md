@@ -203,6 +203,20 @@ const api = import.meta.env.VITE_API_URL;
 !!! warning "No metas secretos"
     Todo lo que empiece por `VITE_` acaba en el bundle. **Nunca** pongas API keys privadas ahí. Los secretos van al backend.
 
+## Diagrama: qué hace un bundler
+
+```mermaid
+flowchart LR
+    A[módulo1.js] --> D[Bundler]
+    B[módulo2.js] --> D
+    C[módulo3.js] --> D
+    D --> E[Tree shaking]
+    E --> F[Minificación]
+    F --> G[app.min.js único]
+```
+
+El bundler combina todos los módulos, elimina el código no usado (tree shaking) y minifica el resultado en uno o varios archivos optimizados.
+
 ## Buenas prácticas
 
 - **Un archivo, una responsabilidad**. Si un módulo hace demasiadas cosas, divídelo.

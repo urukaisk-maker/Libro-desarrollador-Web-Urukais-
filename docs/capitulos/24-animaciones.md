@@ -467,6 +467,21 @@ O selectivo: deja las animaciones sutiles y desactiva las grandes.
 - **[AutoAnimate](https://auto-animate.formkit.com/)** — cero config, anima listas automáticamente.
 - **[Lottie](https://airbnb.io/lottie/)** — animaciones vectoriales desde After Effects.
 
+## Diagrama: pipeline de renderizado
+
+```mermaid
+flowchart LR
+    A[JavaScript] --> B[Style]
+    B --> C[Layout]
+    C --> D[Paint]
+    D --> E[Composite]
+
+    style A fill:#dc2626,color:white
+    style E fill:#16a34a,color:white
+```
+
+Animar `transform` y `opacity` salta directo a Composite (barato). Animar `width` o `top` obliga a recalcular Layout y Paint (caro).
+
 ## Buenas prácticas
 
 - **Empieza por entender el objetivo** antes de animar.

@@ -276,6 +276,20 @@ Antes se usaba el truco del `padding-top: 56.25%`. Ahora:
 }
 ```
 
+## Diagrama: capas de la cascada CSS
+
+```mermaid
+flowchart TB
+    A[Navegador] --> B[Estilos del usuario]
+    B --> C[!important]
+    C --> D[Estilos inline]
+    D --> E[Media queries]
+    E --> F[Especificidad y @layer]
+    F --> G[Estilos del navegador]
+```
+
+Orden de precedencia en CSS: de mayor a menor prioridad. Las capas (`@layer`) permiten controlar este orden sin depender de la especificidad.
+
 ## Buenas prácticas
 
 - **Usa variables CSS** para todo lo que se repita: colores, espaciados, radios, tipografías.

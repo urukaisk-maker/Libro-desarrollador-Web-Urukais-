@@ -413,6 +413,21 @@ mi-monorepo/
     └── config/        # eslint, tsconfig
 ```
 
+## Diagrama: estructura feature-first
+
+```mermaid
+flowchart TB
+    A[src/] --> B[features/]
+    A --> C[shared/]
+    A --> D[app/]
+    B --> E[auth/<br/>components<br/>hooks<br/>api.js]
+    B --> F[carrito/<br/>components<br/>hooks<br/>api.js]
+    C --> G[components genéricos]
+    D --> H[rutas, layouts]
+```
+
+En feature-first cada funcionalidad es autónoma. `shared/` contiene lo reutilizable y **nunca** importa de `features/`.
+
 ## Buenas prácticas
 
 - **Empieza simple**. No adoptes arquitectura compleja hasta que sea necesaria.

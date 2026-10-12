@@ -427,6 +427,20 @@ jobs:
       - run: npx playwright test
 ```
 
+## Diagrama: la pirámide de testing
+
+```mermaid
+flowchart TB
+    A[E2E<br/>pocos, lentos] --> B[Integración<br/>algunos]
+    B --> C[Unitarios<br/>muchos, rápidos]
+
+    style A fill:#dc2626,color:white
+    style B fill:#f59e0b,color:white
+    style C fill:#16a34a,color:white
+```
+
+Distribución recomendada: muchos tests unitarios (rápidos y baratos), algunos de integración y pocos E2E (lentos pero críticos).
+
 ## Buenas prácticas
 
 - **Un test, una aserción conceptual**. Si tiene varias, usa `describe` para agrupar.

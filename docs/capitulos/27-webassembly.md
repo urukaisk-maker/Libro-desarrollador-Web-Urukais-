@@ -218,6 +218,27 @@ Casos de uso:
 - **Debugging complicado** — aunque mejora cada año.
 - **No reemplaza a JS** — se complementan.
 
+## Diagrama: cómo se ejecuta un módulo Wasm
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant JS as JavaScript
+    participant W as WebAssembly
+
+    U->>N: Carga la página
+    N->>JS: Descarga app.js
+    JS->>N: Pide modulo.wasm
+    N-->>JS: Devuelve binario
+    JS->>W: instantiate()
+    JS->>W: Llama función exportada
+    W-->>JS: Resultado
+    JS-->>U: Actualiza la UI
+```
+
+JavaScript orquesta la carga y llama a las funciones de WebAssembly. El código pesado se ejecuta dentro del módulo Wasm a velocidad casi nativa.
+
 ## Buenas prácticas
 
 - **Mide antes**. Solo usa Wasm si JS no es suficiente.
