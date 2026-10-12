@@ -12,6 +12,7 @@ Recursos para medios, blogs y personas que quieran hablar de este proyecto.
 | **Licencia** | MIT |
 | **Idioma** | Español |
 | **Tema** | Desarrollo web (HTML, CSS, JavaScript y más) |
+| **Capítulos** | 20 |
 | **Web** | [urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-](https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/) |
 | **Repositorio** | [GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-) |
 
@@ -23,13 +24,13 @@ Recursos para medios, blogs y personas que quieran hablar de este proyecto.
 
 ### Descripción media (un párrafo)
 
-> **Libro del Desarrollador Web** es un proyecto abierto que reúne 18 capítulos sobre HTML, CSS, JavaScript y desarrollo web moderno. Está estructurado en tres niveles (principiante, intermedio y avanzado) e incluye ejemplos ejecutables y ejercicios al final de cada capítulo. Todo el contenido es gratuito y está disponible en GitHub bajo licencia MIT.
+> **Libro del Desarrollador Web** es un proyecto abierto que reúne 20 capítulos sobre HTML, CSS, JavaScript y desarrollo web moderno. Está estructurado en cuatro niveles (principiante, intermedio, avanzado y profesional) e incluye ejemplos ejecutables y ejercicios al final de cada capítulo. Todo el contenido es gratuito y está disponible en GitHub bajo licencia MIT.
 
 ### Descripción larga (varios párrafos)
 
 > **Libro del Desarrollador Web** nació de las notas personales de **Manuel Casimiro Carrasco (Urukais)** mientras aprendía y enseñaba desarrollo web. Con el tiempo, esas notas se convirtieron en un material estructurado, pensado para acompañar a cualquier persona que quiera aprender desde cero o reforzar lo que ya sabe.
 >
-> El libro cubre 18 capítulos organizados en tres niveles: **principiante** (HTML, CSS, JavaScript, formularios, responsive), **intermedio** (Git, APIs, despliegue, proyecto final) y **avanzado** (CSS moderno, JavaScript asíncrono, TypeScript, testing, rendimiento, accesibilidad y arquitectura frontend).
+> El libro cubre 20 capítulos organizados en cuatro niveles: **principiante** (HTML, CSS, JavaScript, formularios, responsive), **intermedio** (Git, APIs, despliegue, proyecto final), **avanzado** (CSS moderno, JavaScript asíncrono, TypeScript, testing, rendimiento, accesibilidad y arquitectura frontend) y **profesional** (full-stack con Node.js y DevOps para frontend).
 >
 > Cada capítulo incluye teoría, ejemplos ejecutables y ejercicios. El sitio está construido con MkDocs Material y se despliega automáticamente desde GitHub.
 >
@@ -57,10 +58,6 @@ El logo está disponible en el repositorio:
 
 - **UI**: `system-ui` (Inter en navegadores compatibles).
 - **Código**: `monospace` del sistema.
-
-## 📸 Captura de pantalla
-
-Puedes hacer capturas del sitio en [esta URL](https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/). Si necesitas capturas en alta resolución, escríbeme.
 
 ## 📬 Contacto para prensa
 

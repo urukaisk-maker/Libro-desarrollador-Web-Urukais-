@@ -1,75 +1,50 @@
-site_name: Libro del Desarrollador Web — Urukais
-site_description: "Material completo para aprender desarrollo web desde cero"
-site_author: Manuel Casimiro Carrasco (Urukais)
-site_url: https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/
-repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
-repo_url: https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-
+# Changelog
 
-theme:
-  name: material
-  language: es
-  logo: assets/favicon.svg
-  favicon: assets/favicon.svg
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - navigation.footer
-    - search.suggest
-    - search.highlight
-    - content.code.copy
-    - toc.integrate
-  palette:
-    - scheme: default
-      primary: deep purple
-      accent: cyan
-      toggle:
-        icon: material/weather-night
-        name: Cambiar a modo oscuro
-    - scheme: slate
-      primary: deep purple
-      accent: cyan
-      toggle:
-        icon: material/weather-sunny
-        name: Cambiar a modo claro
+Historial de cambios del libro.
 
-nav:
-  - Inicio: index.md
-  - Introducción: introduccion.md
-  - Nivel principiante:
-      - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
-      - "02 — HTML básico": capitulos/02-html-basico.md
-      - "03 — CSS básico": capitulos/03-css-basico.md
-      - "04 — JavaScript esencial": capitulos/04-javascript.md
-      - "05 — Diseño responsive": capitulos/05-responsive.md
-      - "06 — Formularios HTML": capitulos/06-formularios.md
-  - Nivel intermedio:
-      - "07 — Git y control de versiones": capitulos/07-git.md
-      - "08 — Consumo de APIs con fetch": capitulos/08-apis.md
-      - "09 — Despliegue y hosting": capitulos/09-despliegue.md
-      - "10 — Proyecto final: portfolio": capitulos/10-proyecto-final.md
-  - Ejemplos: ejemplos/index.md
-  - Recursos: recursos.md
-  - Roadmap: roadmap.md
-  - Changelog: changelog.md
-  - Contribuir: contribuir.md
-  - Sobre el autor: autor.md
-  - Apéndices:
-      - Índice: apendices/index.md
-      - Chuletas rápidas: apendices/chuletas.md
-      - Glosario: apendices/glosario.md
-      - Recursos por nivel: apendices/recursos-por-nivel.md
+## [2.0.0] — 2026-10-12
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.tabbed:
-      alternate_style: true
-  - tables
-  - toc:
-      permalink: true
+### Añadido
+- **Capítulos 11-18** (nivel avanzado):
+  - CSS moderno
+  - JavaScript asíncrono
+  - Módulos y bundlers
+  - Accesibilidad web
+  - TypeScript desde cero
+  - Testing frontend
+  - Rendimiento web
+  - Arquitectura frontend
+- **Capítulos 19-20** (nivel profesional):
+  - Full-stack con Node.js
+  - DevOps para frontend
+- Página **Filosofía** del proyecto
+- Página **Contacto** con formulario
+- Página **Agradecimientos**
+- Página **Prensa y media**
+- Página **Roadmap**
+- Foto y bio del autor actualizadas
+- Badges del stack tecnológico
+- Sección de **proyectos destacados**
 
-copyright: © 2026 Manuel Casimiro Carrasco — Urukais
+### Cambiado
+- Sidebar reorganizado por niveles (principiante, intermedio, avanzado, profesional)
+- Home actualizada con los 20 capítulos
+- Página del autor con foto real, idiomas y proyectos
+
+### Corregido
+- Enlaces roto en capítulos 1 y 2
+- Bloques de código mal cerrados en capítulo 3
+
+## [1.0.0] — 2026-10-12
+
+### Añadido
+- 10 capítulos completos (niveles principiante e intermedio)
+- Apéndices: chuletas, glosario y recursos por nivel
+- Ejemplos ejecutables para cada capítulo
+- Secciones de Recursos, Contribuir y Sobre el autor
+- Página 404 personalizada
+- Despliegue automático con GitHub Actions y MkDocs Material
+
+---
+
+El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).

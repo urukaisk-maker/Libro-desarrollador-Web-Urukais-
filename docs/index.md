@@ -2,6 +2,13 @@
 
 Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
 
+!!! tip "20 capítulos · 3 niveles · 100% gratis"
+    Este libro es **abierto y gratuito**. Puedes leerlo, copiarlo, modificarlo y contribuir mejoras.
+
+## 🚀 Empezar
+
+Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego sigue los capítulos en orden.
+
 ## 📚 Contenido
 
 ### 🟢 Nivel principiante
@@ -21,6 +28,21 @@ Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript
 ### 🟠 Nivel avanzado
 - [Capítulo 11 — CSS moderno](capitulos/11-css-moderno.md)
 - [Capítulo 12 — JavaScript asíncrono](capitulos/12-javascript-asincrono.md)
+- [Capítulo 13 — Módulos y bundlers](capitulos/13-modulos-bundlers.md)
+- [Capítulo 14 — Accesibilidad web](capitulos/14-accesibilidad.md)
+- [Capítulo 15 — TypeScript desde cero](capitulos/15-typescript.md)
+- [Capítulo 16 — Testing frontend](capitulos/16-testing.md)
+- [Capítulo 17 — Rendimiento web](capitulos/17-rendimiento.md)
+- [Capítulo 18 — Arquitectura frontend](capitulos/18-arquitectura.md)
+
+### 🔴 Nivel profesional
+- [Capítulo 19 — Full-stack con Node.js](capitulos/19-fullstack-node.md)
+- [Capítulo 20 — DevOps para frontend](capitulos/20-devops.md)
+
+### 📎 Apéndices
+- [Chuletas rápidas](apendices/chuletas.md)
+- [Glosario](apendices/glosario.md)
+- [Recursos por nivel](apendices/recursos-por-nivel.md)
 
 ## 🧩 Ejemplos
 
@@ -34,10 +56,12 @@ Consulta la carpeta [ejemplos](ejemplos/index.md) para ver el código práctico.
 
 ## 📌 Más
 
+- [Filosofía del proyecto](filosofia.md) — por qué existe y cómo está hecho
 - [Roadmap](roadmap.md) — qué viene a continuación
 - [Changelog](changelog.md) — historial de cambios
 - [Recursos](recursos.md) — enlaces y herramientas
-- [Contribuir](contribuir.md) — cómo participar en el proyecto
+- [Contribuir](contribuir.md) — cómo participar
+- [Contacto](contacto.md) — escríbeme
 
 ## 👤 Sobre el autor
 
@@ -46,5 +70,4 @@ Más información en [Sobre el autor](autor.md).
 
 ## 📜 Licencia
 
-MIT — ver [LICENSE](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE).git add -A ; git commit -m "docs: actualizar índice con niveles y capítulos 11-12" ; git push
-git pull --rebase ; git push
+MIT — ver [LICENSE](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE).

@@ -2,7 +2,7 @@
 
 Estado del proyecto y qué viene a continuación.
 
-## 🟢 Disponible
+## ✅ Completado
 
 ### Nivel principiante
 - [x] 01 — Introducción al desarrollo web
@@ -18,21 +18,36 @@ Estado del proyecto y qué viene a continuación.
 - [x] 09 — Despliegue y hosting
 - [x] 10 — Proyecto final: portfolio
 
-## 🚧 En desarrollo
+### Nivel avanzado
+- [x] 11 — CSS moderno
+- [x] 12 — JavaScript asíncrono
+- [x] 13 — Módulos y bundlers
+- [x] 14 — Accesibilidad web
+- [x] 15 — TypeScript desde cero
+- [x] 16 — Testing frontend
+- [x] 17 — Rendimiento web
+- [x] 18 — Arquitectura frontend
 
-- [ ] 11 — CSS moderno (variables, has(), container queries)
-- [ ] 12 — JavaScript asíncrono (promesas, async/await)
-- [ ] 13 — Módulos y bundlers (Vite, npm)
-- [ ] 14 — Accesibilidad web (ARIA, WCAG)
+### Nivel profesional
+- [x] 19 — Full-stack con Node.js
+- [x] 20 — DevOps para frontend
 
-## 📅 Planificado
+## 🚧 Próximas mejoras
 
-- [ ] 15 — TypeScript desde cero
-- [ ] 16 — Testing frontend (Vitest, Playwright)
-- [ ] 17 — Rendimiento web (Core Web Vitals)
-- [ ] 18 — Arquitectura frontend
-- [ ] 19 — Full-stack con Node.js
-- [ ] 20 — DevOps para frontend
+- [ ] Traducción al inglés
+- [ ] Versión en PDF descargable
+- [ ] Buscador offline
+- [ ] Ejercicios resueltos publicados
+- [ ] Vídeos explicativos por capítulo
+- [ ] Página de preguntas frecuentes (FAQ)
+
+## 📅 Futuras ampliaciones
+
+- [ ] Capítulo 21 — Web Components
+- [ ] Capítulo 22 — Progressive Web Apps (PWA)
+- [ ] Capítulo 23 — WebSockets y tiempo real
+- [ ] Capítulo 24 — Animaciones avanzadas
+- [ ] Capítulo 25 — Diseño de sistemas y design tokens
 
 ## 🤝 ¿Quieres contribuir?
 
