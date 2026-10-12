@@ -959,17 +959,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicios
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#diagrama-como-funciona-la-web" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -981,10 +970,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrama-como-funciona-la-web_1" class="md-nav__link">
+  <a href="#ejercicios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagrama: cómo funciona la web
+        Ejercicios
       
     </span>
   </a>
@@ -3584,6 +3573,20 @@
 <p>Ábrelo en el navegador y verás tu primera página.</p>
 <h2 id="ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#ejemplo-practico" title="Permanent link">&para;</a></h2>
 <p>Ver <a href="../../ejemplos/hola-mundo.html">ejemplos/hola-mundo.html</a>.</p>
+<h2 id="diagrama-como-funciona-la-web">Diagrama: cómo funciona la web<a class="headerlink" href="#diagrama-como-funciona-la-web" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant S as Servidor
+    participant B as Base de datos
+
+    U-&gt;&gt;N: Introduce URL
+    N-&gt;&gt;S: Petición HTTP
+    S-&gt;&gt;B: Consulta
+    B--&gt;&gt;S: Datos
+    S--&gt;&gt;N: Respuesta HTML
+    N--&gt;&gt;U: Página renderizada</code></pre>
+<p>Este es el flujo básico de una petición web: el navegador pide, el servidor responde y el usuario ve la página.</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Crea tu primer archivo HTML con un título y un párrafo.</li>
@@ -3592,42 +3595,7 @@
 <li>Añade un enlace a tu web favorita.</li>
 </ol>
 <hr />
-<p>⬅️ <a href="../../introduccion/">Introducción</a> | ➡️ <a href="../02-html-basico/">Capítulo 2 — HTML básico</a>cat docs/capitulos/01-introduccion.md | head -20
-git add docs/capitulos/01-introduccion.md
-git commit -m "fix: completar capítulo 1"
-git push</p>
-<h2 id="diagrama-como-funciona-la-web">Diagrama: cómo funciona la web<a class="headerlink" href="#diagrama-como-funciona-la-web" title="Permanent link">&para;</a></h2>
-<p>```mermaid
-sequenceDiagram
-    participant U as Usuario
-    participant N as Navegador
-    participant S as Servidor
-    participant B as Base de datos</p>
-<div class="highlight"><pre><span></span><code>U-&gt;&gt;N: Introduce URL
-N-&gt;&gt;S: Petición HTTP (GET)
-S-&gt;&gt;B: Consulta
-B--&gt;&gt;S: Datos
-S--&gt;&gt;N: Respuesta HTTP (HTML)
-N--&gt;&gt;U: Página renderizada
-</code></pre></div>
-<p>```</p>
-<p>Este es el flujo básico de una petición web: el navegador pide, el servidor responde.</p>
-<h2 id="diagrama-como-funciona-la-web_1">Diagrama: cómo funciona la web<a class="headerlink" href="#diagrama-como-funciona-la-web_1" title="Permanent link">&para;</a></h2>
-<p>```mermaid
-sequenceDiagram
-    participant U as Usuario
-    participant N as Navegador
-    participant S as Servidor
-    participant B as Base de datos</p>
-<div class="highlight"><pre><span></span><code>U-&gt;&gt;N: Introduce URL
-N-&gt;&gt;S: Petición HTTP
-S-&gt;&gt;B: Consulta
-B--&gt;&gt;S: Datos
-S--&gt;&gt;N: Respuesta HTML
-N--&gt;&gt;U: Página renderizada
-</code></pre></div>
-<p>```</p>
-<p>Este es el flujo básico de una petición web.</p>
+<p>⬅️ <a href="../../introduccion/">Introducción</a> | ➡️ <a href="../02-html-basico/">Capítulo 2 — HTML básico</a></p>
 
 
 
