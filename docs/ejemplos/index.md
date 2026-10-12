@@ -4,4 +4,5 @@ Código de ejemplo que acompaña a los capítulos del libro.
 
 ## Índice
 
-- [Hola mundo — ejemplo básico](index.html)
+- [Capítulo 1 — Hola mundo](hola-mundo.html)
+- [Capítulo 2 — HTML básico](02-html-basico/ejemplo.html)

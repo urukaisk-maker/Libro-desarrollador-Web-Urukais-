@@ -18,6 +18,7 @@ theme:
     - search.highlight
     - content.code.copy
     - toc.integrate
+      custom_dir: overrides
   palette:
     - scheme: default
       primary: deep purple
@@ -48,3 +49,5 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+not_in_nav: |
+  /404.md
