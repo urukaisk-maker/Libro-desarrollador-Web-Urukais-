@@ -1,5 +1,4 @@
 (function () {
-  // Función que crea un botón
   function crearBoton(texto, clase) {
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -8,11 +7,10 @@
     return btn;
   }
 
-  // Función principal que inyecta el bloque de compartir
-  function initShare() {
-    // Selector oficial del contenedor de contenido en Material
+  function crearWidget() {
     var article = document.querySelector('.md-content__inner');
-    if (!article || article.querySelector('.share-buttons')) return;
+    if (!article) return false;
+    if (article.querySelector('.share-buttons')) return true;
 
     var box = document.createElement('div');
     box.className = 'share-buttons';
@@ -61,32 +59,25 @@
 
     box.appendChild(lista);
     article.appendChild(box);
+    console.log('[share] Widget inyectado');
+    return true;
   }
 
-  // --- Bucle de espera para document$ ---
-  function waitForDocument$(callback) {
-    if (typeof document$ !== 'undefined') {
-      // Si ya está disponible, suscribirse inmediatamente
-      document$.subscribe(callback);
-      return;
+  // Bucle: intenta inyectar cada 200 ms hasta 20 veces (4 segundos)
+  var intentos = 0;
+  var timer = setInterval(function () {
+    if (crearWidget() || intentos > 20) {
+      clearInterval(timer);
     }
-    // Si no, comprobar cada 100ms hasta que aparezca
-    var checkInterval = setInterval(function () {
-      if (typeof document$ !== 'undefined') {
-        clearInterval(checkInterval);
-        document$.subscribe(callback);
-      }
-    }, 100);
-  }
+    intentos++;
+  }, 200);
 
-  // Iniciar el proceso
-  waitForDocument$(initShare);
-
-  // Fallback por si document$ nunca aparece (poco probable)
-  setTimeout(function () {
-    if (typeof document$ === 'undefined') {
-      document.addEventListener('DOMContentLoaded', initShare);
+  // Si cambia la URL (navegación SPA de Material), reiniciar
+  var lastUrl = location.href;
+  setInterval(function () {
+    if (location.href !== lastUrl) {
+      lastUrl = location.href;
+      setTimeout(crearWidget, 300);
     }
-  }, 2000);
-
+  }, 500);
 })();
