@@ -1258,6 +1258,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-flujo-de-trabajo-con-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: flujo de trabajo con Git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1280,7 +1291,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrama-flujo-de-trabajo-con-git" class="md-nav__link">
+  <a href="#diagrama-flujo-de-trabajo-con-git_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Diagrama: flujo de trabajo con Git
@@ -3655,6 +3666,14 @@ git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </sp
 git<span class="w"> </span>pull<span class="w">    </span><span class="c1"># traer cambios del remoto</span>
 git<span class="w"> </span>fetch<span class="w">   </span><span class="c1"># traer sin fusionar</span>
 </code></pre></div>
+<h2 id="diagrama-flujo-de-trabajo-con-git">Diagrama: flujo de trabajo con Git<a class="headerlink" href="#diagrama-flujo-de-trabajo-con-git" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[main] --&gt; B[feature/nueva]
+    B --&gt; C[commits]
+    C --&gt; D[Pull Request]
+    D --&gt; E[merge a main]
+    E --&gt; F[main actualizado]</code></pre>
+<p>Flujo típico: se crea una rama, se trabaja en ella con varios commits, se abre un PR y se fusiona con la rama principal.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Commits pequeños y atómicos</strong>: un cambio lógico por commit.</li>
@@ -3676,7 +3695,7 @@ git<span class="w"> </span>fetch<span class="w">   </span><span class="c1"># tra
 </ol>
 <hr />
 <p>⬅ <a href="../06-formularios/">Capítulo 6 — Formularios HTML</a> | ➡ <a href="../08-apis/">Capítulo 8 — Consumo de APIs</a></p>
-<h2 id="diagrama-flujo-de-trabajo-con-git">Diagrama: flujo de trabajo con Git<a class="headerlink" href="#diagrama-flujo-de-trabajo-con-git" title="Permanent link">&para;</a></h2>
+<h2 id="diagrama-flujo-de-trabajo-con-git_1">Diagrama: flujo de trabajo con Git<a class="headerlink" href="#diagrama-flujo-de-trabajo-con-git_1" title="Permanent link">&para;</a></h2>
 <p>```mermaid
 gitGraph
     commit id: "init"

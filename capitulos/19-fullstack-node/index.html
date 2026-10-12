@@ -1973,6 +1973,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-arquitectura-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: arquitectura full-stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1995,7 +2006,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrama-arquitectura-full-stack" class="md-nav__link">
+  <a href="#diagrama-arquitectura-full-stack_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Diagrama: arquitectura full-stack
@@ -4188,6 +4199,13 @@ fly<span class="w"> </span>deploy
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"node"</span><span class="p">,</span><span class="w"> </span><span class="s2">"src/server.js"</span><span class="p">]</span>
 </code></pre></div>
+<h2 id="diagrama-arquitectura-full-stack">Diagrama: arquitectura full-stack<a class="headerlink" href="#diagrama-arquitectura-full-stack" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[Cliente&lt;br/&gt;Navegador] --&gt;|HTTPS| B[Servidor&lt;br/&gt;Node.js + Express]
+    B --&gt;|Prisma| C[(PostgreSQL)]
+    B --&gt;|JWT| A
+    B --&gt;|API REST| D[Servicios externos]</code></pre>
+<p>Arquitectura típica: el navegador se comunica con el backend vía APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Nunca guardes contraseñas en texto plano</strong>. Usa <code>bcrypt</code> o <code>argon2</code>.</li>
@@ -4220,7 +4238,7 @@ fly<span class="w"> </span>deploy
 </ol>
 <hr />
 <p>⬅️ <a href="../18-arquitectura/">Capítulo 18 — Arquitectura frontend</a> | ➡️ <a href="../20-devops/">Capítulo 20 — DevOps para frontend</a></p>
-<h2 id="diagrama-arquitectura-full-stack">Diagrama: arquitectura full-stack<a class="headerlink" href="#diagrama-arquitectura-full-stack" title="Permanent link">&para;</a></h2>
+<h2 id="diagrama-arquitectura-full-stack_1">Diagrama: arquitectura full-stack<a class="headerlink" href="#diagrama-arquitectura-full-stack_1" title="Permanent link">&para;</a></h2>
 <p>```mermaid
 flowchart LR
     A[Cliente<br/>Navegador] --&gt;|HTTPS| B[Servidor<br/>Node.js + Express]

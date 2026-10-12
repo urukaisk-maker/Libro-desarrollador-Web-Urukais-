@@ -2011,6 +2011,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-como-funciona-un-service-worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: cómo funciona un Service Worker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4068,6 +4079,28 @@
 <li>[ ] Probar en móvil real.</li>
 <li>[ ] Añadir botón "Instalar".</li>
 </ul>
+<h2 id="diagrama-como-funciona-un-service-worker">Diagrama: cómo funciona un Service Worker<a class="headerlink" href="#diagrama-como-funciona-un-service-worker" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant SW as Service Worker
+    participant C as Caché
+    participant S as Servidor
+
+    U-&gt;&gt;N: Pide una URL
+    N-&gt;&gt;SW: Intercepta la petición
+    SW-&gt;&gt;C: ¿Está en caché?
+    alt En caché
+        C--&gt;&gt;SW: Sí
+        SW--&gt;&gt;N: Sirve desde caché
+    else No está
+        SW-&gt;&gt;S: Pide a la red
+        S--&gt;&gt;SW: Respuesta
+        SW-&gt;&gt;C: Guarda en caché
+        SW--&gt;&gt;N: Sirve respuesta
+    end
+    N--&gt;&gt;U: Muestra la página</code></pre>
+<p>El Service Worker se sitúa entre el navegador y la red. Decide qué sirve desde caché (rápido, offline) y qué va a la red.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>HTTPS siempre</strong>. Sin esto no hay PWA.</li>

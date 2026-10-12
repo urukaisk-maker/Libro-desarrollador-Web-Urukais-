@@ -2105,6 +2105,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-http-vs-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: HTTP vs WebSocket
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4217,6 +4228,25 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">eventos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EventSource</span><span class="p">(</span><span class="s1">'/eventos'</span><span class="p">);</span>
 <span class="nx">eventos</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre></div>
+<h2 id="diagrama-http-vs-websocket">Diagrama: HTTP vs WebSocket<a class="headerlink" href="#diagrama-http-vs-websocket" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Cliente
+    participant S as Servidor
+
+    Note over C,S: HTTP: conexión por cada petición
+    C-&gt;&gt;S: Petición 1
+    S--&gt;&gt;C: Respuesta 1
+    C-&gt;&gt;S: Petición 2
+    S--&gt;&gt;C: Respuesta 2
+
+    Note over C,S: WebSocket: conexión persistente
+    C-&gt;&gt;S: Handshake (Upgrade)
+    S--&gt;&gt;C: 101 Switching Protocols
+    C-&gt;&gt;S: Mensaje
+    S--&gt;&gt;C: Mensaje
+    S--&gt;&gt;C: Mensaje push
+    C-&gt;&gt;S: Mensaje</code></pre>
+<p>Con HTTP cada petición abre y cierra conexión. Con WebSocket la conexión permanece abierta y ambos lados pueden enviar mensajes cuando quieran.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>HTTPS/WSS siempre</strong> en producción.</li>

@@ -2132,6 +2132,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#diagrama-capas-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama: capas de seguridad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buenas-practicas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2165,7 +2176,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrama-capas-de-seguridad" class="md-nav__link">
+  <a href="#diagrama-capas-de-seguridad_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Diagrama: capas de seguridad
@@ -3919,6 +3930,16 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 <span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
+<h2 id="diagrama-capas-de-seguridad">Diagrama: capas de seguridad<a class="headerlink" href="#diagrama-capas-de-seguridad" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    A[Usuario] --&gt;|HTTPS| B[CDN / Firewall]
+    B --&gt; C[Servidor]
+    C --&gt;|Validación Zod| D[Backend]
+    D --&gt;|Sanitización| E[(Base de datos)]
+
+    style A fill:#a78bfa,color:white
+    style E fill:#dc2626,color:white</code></pre>
+<p>Cada capa añade una defensa: HTTPS cifra, el CDN filtra, el servidor valida, el backend sanitiza y la base de datos almacena.</p>
 <h2 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>HTTPS en todo el sitio</strong>, sin excepciones.</li>
@@ -3953,7 +3974,7 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 </ol>
 <hr />
 <p>⬅️ <a href="../25-design-systems/">Capítulo 25 — Design systems</a> | ➡️ <a href="../27-webassembly/">Capítulo 27 — WebAssembly</a></p>
-<h2 id="diagrama-capas-de-seguridad">Diagrama: capas de seguridad<a class="headerlink" href="#diagrama-capas-de-seguridad" title="Permanent link">&para;</a></h2>
+<h2 id="diagrama-capas-de-seguridad_1">Diagrama: capas de seguridad<a class="headerlink" href="#diagrama-capas-de-seguridad_1" title="Permanent link">&para;</a></h2>
 <p>```mermaid
 flowchart TB
     A[Usuario] --&gt;|HTTPS| B[CDN / Firewall]
