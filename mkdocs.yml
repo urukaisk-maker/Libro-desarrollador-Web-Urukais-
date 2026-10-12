@@ -87,6 +87,26 @@ nav:
       - "08 — APIs": ejercicios/08-apis.md
       - "09 — Despliegue": ejercicios/09-despliegue.md
       - "10 — Portfolio": ejercicios/10-proyecto-final.md
+      - "11 — CSS moderno": ejercicios/11-css-moderno.md
+      - "12 — JS asíncrono": ejercicios/12-javascript-asincrono.md
+      - "13 — Módulos y bundlers": ejercicios/13-modulos-bundlers.md
+      - "14 — Accesibilidad": ejercicios/14-accesibilidad.md
+      - "15 — TypeScript": ejercicios/15-typescript.md
+      - "16 — Testing": ejercicios/16-testing.md
+      - "17 — Rendimiento": ejercicios/17-rendimiento.md
+      - "18 — Arquitectura": ejercicios/18-arquitectura.md
+      - "19 — Full-stack": ejercicios/19-fullstack-node.md
+      - "20 — DevOps": ejercicios/20-devops.md
+      - "21 — Web Components": ejercicios/21-web-components.md
+      - "22 — PWA": ejercicios/22-pwa.md
+      - "23 — WebSockets": ejercicios/23-websockets.md
+      - "24 — Animaciones": ejercicios/24-animaciones.md
+      - "25 — Design systems": ejercicios/25-design-systems.md
+      - "26 — Seguridad": ejercicios/26-seguridad.md
+      - "27 — WebAssembly": ejercicios/27-webassembly.md
+      - "28 — IA frontend": ejercicios/28-ia-frontend.md
+      - "29 — WebXR": ejercicios/29-webxr.md
+      - "30 — Web3": ejercicios/30-web3.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
   - Changelog: changelog.md
