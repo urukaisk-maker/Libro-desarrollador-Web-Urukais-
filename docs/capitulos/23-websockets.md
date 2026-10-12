@@ -406,6 +406,30 @@ const eventos = new EventSource('/eventos');
 eventos.onmessage = (e) => console.log(JSON.parse(e.data));
 ```
 
+## Diagrama: HTTP vs WebSocket
+
+```mermaid
+sequenceDiagram
+    participant C as Cliente
+    participant S as Servidor
+
+    Note over C,S: HTTP: conexión por cada petición
+    C->>S: Petición 1
+    S-->>C: Respuesta 1
+    C->>S: Petición 2
+    S-->>C: Respuesta 2
+
+    Note over C,S: WebSocket: conexión persistente
+    C->>S: Handshake (Upgrade)
+    S-->>C: 101 Switching Protocols
+    C->>S: Mensaje
+    S-->>C: Mensaje
+    S-->>C: Mensaje push
+    C->>S: Mensaje
+```
+
+Con HTTP cada petición abre y cierra conexión. Con WebSocket la conexión permanece abierta y ambos lados pueden enviar mensajes cuando quieran.
+
 ## Buenas prácticas
 
 - **HTTPS/WSS siempre** en producción.

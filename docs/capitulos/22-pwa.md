@@ -404,6 +404,33 @@ Checklist:
 - [ ] Probar en móvil real.
 - [ ] Añadir botón "Instalar".
 
+## Diagrama: cómo funciona un Service Worker
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant SW as Service Worker
+    participant C as Caché
+    participant S as Servidor
+
+    U->>N: Pide una URL
+    N->>SW: Intercepta la petición
+    SW->>C: ¿Está en caché?
+    alt En caché
+        C-->>SW: Sí
+        SW-->>N: Sirve desde caché
+    else No está
+        SW->>S: Pide a la red
+        S-->>SW: Respuesta
+        SW->>C: Guarda en caché
+        SW-->>N: Sirve respuesta
+    end
+    N-->>U: Muestra la página
+```
+
+El Service Worker se sitúa entre el navegador y la red. Decide qué sirve desde caché (rápido, offline) y qué va a la red.
+
 ## Buenas prácticas
 
 - **HTTPS siempre**. Sin esto no hay PWA.

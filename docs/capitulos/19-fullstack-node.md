@@ -463,6 +463,18 @@ EXPOSE 3000
 CMD ["node", "src/server.js"]
 ```
 
+## Diagrama: arquitectura full-stack
+
+```mermaid
+flowchart LR
+    A[Cliente<br/>Navegador] -->|HTTPS| B[Servidor<br/>Node.js + Express]
+    B -->|Prisma| C[(PostgreSQL)]
+    B -->|JWT| A
+    B -->|API REST| D[Servicios externos]
+```
+
+Arquitectura típica: el navegador se comunica con el backend vía APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.
+
 ## Buenas prácticas
 
 - **Nunca guardes contraseñas en texto plano**. Usa `bcrypt` o `argon2`.

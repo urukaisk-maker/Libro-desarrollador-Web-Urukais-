@@ -85,6 +85,19 @@ git pull    # traer cambios del remoto
 git fetch   # traer sin fusionar
 ```
 
+## Diagrama: flujo de trabajo con Git
+
+```mermaid
+flowchart LR
+    A[main] --> B[feature/nueva]
+    B --> C[commits]
+    C --> D[Pull Request]
+    D --> E[merge a main]
+    E --> F[main actualizado]
+```
+
+Flujo típico: se crea una rama, se trabaja en ella con varios commits, se abre un PR y se fusiona con la rama principal.
+
 ## Buenas prácticas
 
 - **Commits pequeños y atómicos**: un cambio lógico por commit.
