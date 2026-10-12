@@ -100,3 +100,23 @@ sequenceDiagram
 \`\`\`
 
 Este es el flujo básico de una petición web: el navegador pide, el servidor responde.
+
+
+## Diagrama: cómo funciona la web
+
+\`\`\`mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant S as Servidor
+    participant B as Base de datos
+
+    U->>N: Introduce URL
+    N->>S: Petición HTTP
+    S->>B: Consulta
+    B-->>S: Datos
+    S-->>N: Respuesta HTML
+    N-->>U: Página renderizada
+\`\`\`
+
+Este es el flujo básico de una petición web.
