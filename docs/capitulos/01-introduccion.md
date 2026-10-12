@@ -67,6 +67,7 @@ Crea un archivo llamado `index.html` con este contenido:
 
 Ver [ejemplos/hola-mundo.html](../ejemplos/hola-mundo.html).
 
+
 ## Diagrama: cómo funciona la web
 
 ```mermaid
@@ -84,7 +85,7 @@ sequenceDiagram
     N-->>U: Página renderizada
 ```
 
-Este es el flujo básico de una petición web: el navegador pide, el servidor responde y el usuario ve la página.
+Este es el flujo básico de una petición web.
 
 ## Ejercicios
 
