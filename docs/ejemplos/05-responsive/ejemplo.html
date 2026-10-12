@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capítulo 5 — Diseño responsive</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 2rem 1rem; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+    h1 { text-align: center; color: #6a5acd; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 960px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    .card h2 { margin-top: 0; color: #6a5acd; }
+    .aviso {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Diseño responsive</h1>
+  <p class="aviso">Redimensiona la ventana para ver cómo cambia el layout.</p>
+
+  <div class="grid">
+    <div class="card"><h2>Móvil</h2><p>1 columna por defecto.</p></div>
+    <div class="card"><h2>Tablet</h2><p>2 columnas a partir de 640px.</p></div>
+    <div class="card"><h2>Escritorio</h2><p>3 columnas a partir de 960px.</p></div>
+  </div>
+</body>
+</html>
