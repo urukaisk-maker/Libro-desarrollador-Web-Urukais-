@@ -1,12 +1,23 @@
 ---
-name: Proponer una mejora
+name: ✨ Proponer una mejora
 about: Nueva idea, capítulo o corrección
 title: "[Mejora] "
 labels: enhancement
 ---
 
-## ¿Qué propones?
+## Tipo de mejora
 
-## ¿Por qué sería útil?
+- [ ] Nuevo capítulo
+- [ ] Nuevo ejemplo
+- [ ] Mejora de un capítulo existente
+- [ ] Nueva sección
+- [ ] Otra:
 
-## Alternativas consideradas
+## Descripción
+
+¿Qué propones y por qué?
+
+## ¿Quieres implementarlo tú?
+
+- [ ] Sí, quiero enviar un PR
+- [ ] No, solo propongo la idea

@@ -1,5 +1,5 @@
 ---
-name: Reportar un error
+name: 🐛 Reportar un error
 about: Algo no funciona o está mal escrito
 title: "[Bug] "
 labels: bug
@@ -7,12 +7,13 @@ labels: bug
 
 ## Descripción
 
-Describe el problema.
+Describe el problema de forma clara y concisa.
 
-## Dónde ocurre
+## Capítulo o página
 
-- Capítulo / archivo:
-- Enlace (si aplica):
+- **Capítulo**:
+- **Sección**:
+- **URL**:
 
 ## Comportamiento esperado
 
@@ -22,7 +23,13 @@ Describe el problema.
 
 ¿Qué pasa en realidad?
 
+## Pasos para reproducirlo
+
+1.
+2.
+3.
+
 ## Entorno
 
-- Navegador / SO:
-- Versión del repo (commit):
+- **Navegador**:
+- **Sistema operativo**:
