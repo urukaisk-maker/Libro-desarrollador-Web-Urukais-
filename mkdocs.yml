@@ -38,6 +38,8 @@ nav:
   - Introducción: introduccion.md
   - Capítulos:
       - 01 — Introducción al desarrollo web: capitulos/01-introduccion.md
+      - 02 — HTML básico: capitulos/02-html-basico.md
+      - 03 — CSS básico: capitulos/03-css-basico.md
   - Ejemplos: ejemplos/index.md
 
 markdown_extensions:

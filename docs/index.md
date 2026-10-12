@@ -7,7 +7,8 @@ Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript
 - [Introducción](introduccion.md)
 - [Capítulo 1 — Introducción al desarrollo web](capitulos/01-introduccion.md)
 - [Capítulo 2 — HTML básico](capitulos/02-html-basico.md)
-- Capítulo 3 — CSS básico *(pendiente)*
+- [Capítulo 3 — CSS básico](capitulos/03-css-basico.md)
+- Capítulo 4 — JavaScript esencial *(pendiente)*
 
 ## 🧩 Ejemplos
 
