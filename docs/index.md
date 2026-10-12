@@ -15,7 +15,10 @@ Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript
 - [Capítulo 8 — Consumo de APIs con fetch](capitulos/08-apis.md)
 - [Capítulo 9 — Despliegue y hosting](capitulos/09-despliegue.md)
 - [Capítulo 10 — Proyecto final: portfolio](capitulos/10-proyecto-final.md)
-
+- [Apéndices](apendices/index.md)
+  - [Chuletas rápidas](apendices/chuletas.md)
+  - [Glosario](apendices/glosario.md)
+  - [Recursos por nivel](apendices/recursos-por-nivel.md)
 ## 🧩 Ejemplos
 
 Consulta la carpeta [ejemplos/](ejemplos/) para ver el código práctico.

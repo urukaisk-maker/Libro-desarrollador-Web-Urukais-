@@ -16,3 +16,8 @@ nav:
   - Recursos: recursos.md
   - Contribuir: contribuir.md
   - Sobre el autor: autor.md
+  - Apéndices:
+      - Índice: apendices/index.md
+      - Chuletas rápidas: apendices/chuletas.md
+      - Glosario: apendices/glosario.md
+      - Recursos por nivel: apendices/recursos-por-nivel.md
