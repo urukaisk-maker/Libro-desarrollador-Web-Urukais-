@@ -1,5 +1,5 @@
 site_name: Libro del Desarrollador Web — Urukais
-site_description: "Material completo para aprender desarrollo web desde cero"
+site_description: "Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más."
 site_author: Manuel Casimiro Carrasco (Urukais)
 site_url: https://libro.urukais.com/
 repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
@@ -84,12 +84,12 @@ nav:
 
 plugins:
   - search
-  - offline
 
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - meta
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
@@ -113,4 +113,4 @@ extra:
     provider: google
     property: G-61PDYH5BZN
 
-copyrig
+copyright: © 2026 Manuel Casimiro Carrasco — Urukais
