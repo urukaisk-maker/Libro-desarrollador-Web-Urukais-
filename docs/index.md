@@ -11,6 +11,10 @@ Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript
 - [Capítulo 4 — JavaScript esencial](capitulos/04-javascript.md)
 - [Capítulo 5 — Diseño responsive](capitulos/05-responsive.md)
 - [Capítulo 6 — Formularios HTML](capitulos/06-formularios.md)
+- [Capítulo 7 — Git y control de versiones](capitulos/07-git.md)
+- [Capítulo 8 — Consumo de APIs con fetch](capitulos/08-apis.md)
+- [Capítulo 9 — Despliegue y hosting](capitulos/09-despliegue.md)
+- [Capítulo 10 — Proyecto final: portfolio](capitulos/10-proyecto-final.md)
 
 ## 🧩 Ejemplos
 

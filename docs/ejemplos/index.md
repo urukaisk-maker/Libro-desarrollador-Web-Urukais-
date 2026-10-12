@@ -10,3 +10,4 @@ Código de ejemplo que acompaña a los capítulos del libro.
 - [Capítulo 4 — JavaScript esencial](04-javascript/ejemplo.html)
 - [Capítulo 5 — Diseño responsive](05-responsive/ejemplo.html)
 - [Capítulo 6 — Formularios HTML](06-formularios/ejemplo.html)
+- [Capítulo 8 — Consumo de APIs](08-apis/ejemplo.html)
