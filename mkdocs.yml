@@ -58,8 +58,10 @@ nav:
       - "16 — Testing frontend": capitulos/16-testing.md
       - "17 — Rendimiento web": capitulos/17-rendimiento.md
       - "18 — Arquitectura frontend": capitulos/18-arquitectura.md
+  - Nivel profesional:
       - "19 — Full-stack con Node.js": capitulos/19-fullstack-node.md
       - "20 — DevOps para frontend": capitulos/20-devops.md
+  - Nivel experto:
       - "21 — Web Components": capitulos/21-web-components.md
       - "22 — Progressive Web Apps (PWA)": capitulos/22-pwa.md
       - "23 — WebSockets y tiempo real": capitulos/23-websockets.md
@@ -80,6 +82,10 @@ nav:
       - Glosario: apendices/glosario.md
       - Recursos por nivel: apendices/recursos-por-nivel.md
 
+plugins:
+  - search
+  - offline
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -93,5 +99,18 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/urukaisk-maker
+      name: GitHub de Urukais
+    - icon: fontawesome/solid/globe
+      link: https://silly-boba-dc057e.netlify.app/
+      name: Portfolio de Urukais
+  analytics:
+    provider: google
+    property: G-61PDYH5BZN
 
 copyright: © 2026 Manuel Casimiro Carrasco — Urukais
