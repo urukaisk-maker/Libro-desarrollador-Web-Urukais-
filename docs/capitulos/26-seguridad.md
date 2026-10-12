@@ -291,3 +291,19 @@ if (!resultado.success) return res.status(400).json(resultado.error);
 ---
 
 ⬅️ [Capítulo 25 — Design systems](25-design-systems.md) | ➡️ [Capítulo 27 — WebAssembly](27-webassembly.md)
+
+
+## Diagrama: capas de seguridad
+
+\`\`\`mermaid
+flowchart TB
+    A[Usuario] -->|HTTPS| B[CDN / Firewall]
+    B --> C[Servidor]
+    C -->|Validación| D[Backend]
+    D -->|Sanitización| E[(Base de datos)]
+
+    style A fill:#a78bfa,color:white
+    style E fill:#dc2626,color:white
+\`\`\`
+
+Cada capa añade una defensa: HTTPS cifra, el CDN filtra, el servidor valida, el backend sanitiza y la base de datos almacena.

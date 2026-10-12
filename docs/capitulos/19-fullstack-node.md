@@ -499,3 +499,16 @@ app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, max: 20 }));
 ---
 
 ⬅️ [Capítulo 18 — Arquitectura frontend](18-arquitectura.md) | ➡️ [Capítulo 20 — DevOps para frontend](20-devops.md)
+
+
+## Diagrama: arquitectura full-stack
+
+\`\`\`mermaid
+flowchart LR
+    A[Cliente<br/>Navegador] -->|HTTPS| B[Servidor<br/>Node.js + Express]
+    B -->|Prisma| C[(PostgreSQL)]
+    B -->|JWT| A
+    B -->|API REST| D[Servicios externos]
+\`\`\`
+
+Flujo típico de una aplicación full-stack: el navegador se comunica con el backend mediante APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.

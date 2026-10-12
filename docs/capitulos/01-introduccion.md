@@ -80,3 +80,23 @@ Ver [ejemplos/hola-mundo.html](../ejemplos/hola-mundo.html).
 git add docs/capitulos/01-introduccion.md
 git commit -m "fix: completar capítulo 1"
 git push
+
+
+## Diagrama: cómo funciona la web
+
+\`\`\`mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant S as Servidor
+    participant B as Base de datos
+
+    U->>N: Introduce URL
+    N->>S: Petición HTTP (GET)
+    S->>B: Consulta
+    B-->>S: Datos
+    S-->>N: Respuesta HTTP (HTML)
+    N-->>U: Página renderizada
+\`\`\`
+
+Este es el flujo básico de una petición web: el navegador pide, el servidor responde.

@@ -106,3 +106,21 @@ git fetch   # traer sin fusionar
 ---
 
 ⬅ [Capítulo 6 — Formularios HTML](06-formularios.md) | ➡ [Capítulo 8 — Consumo de APIs](08-apis.md)
+
+
+## Diagrama: flujo de trabajo con Git
+
+\`\`\`mermaid
+gitGraph
+    commit id: "init"
+    commit id: "feat: capítulo 1"
+    branch feature/apis
+    checkout feature/apis
+    commit id: "feat: capítulo 8"
+    commit id: "test: API"
+    checkout main
+    merge feature/apis
+    commit id: "docs: apéndices"
+\`\`\`
+
+Así se ve el flujo de trabajo típico con ramas: se crea una rama para una funcionalidad, se trabaja en ella, y se fusiona con la principal.
