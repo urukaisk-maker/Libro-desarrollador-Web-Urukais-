@@ -2,7 +2,7 @@
 
 Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
 
-!!! tip "20 capítulos · 3 niveles · 100% gratis"
+!!! tip "25 capítulos · 5 niveles · 100% gratis"
     Este libro es **abierto y gratuito**. Puedes leerlo, copiarlo, modificarlo y contribuir mejoras.
 
 ## 🚀 Empezar
@@ -38,6 +38,13 @@ Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego si
 ### 🔴 Nivel profesional
 - [Capítulo 19 — Full-stack con Node.js](capitulos/19-fullstack-node.md)
 - [Capítulo 20 — DevOps para frontend](capitulos/20-devops.md)
+
+### 🟣 Nivel experto
+- [Capítulo 21 — Web Components](capitulos/21-web-components.md)
+- [Capítulo 22 — Progressive Web Apps (PWA)](capitulos/22-pwa.md)
+- [Capítulo 23 — WebSockets y tiempo real](capitulos/23-websockets.md)
+- [Capítulo 24 — Animaciones avanzadas](capitulos/24-animaciones.md)
+- [Capítulo 25 — Design systems](capitulos/25-design-systems.md)
 
 ### 📎 Apéndices
 - [Chuletas rápidas](apendices/chuletas.md)

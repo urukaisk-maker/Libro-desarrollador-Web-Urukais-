@@ -4,7 +4,7 @@ Estado del proyecto y qué viene a continuación.
 
 ## ✅ Completado
 
-### Nivel principiante
+### 🟢 Nivel principiante
 - [x] 01 — Introducción al desarrollo web
 - [x] 02 — HTML básico
 - [x] 03 — CSS básico
@@ -12,13 +12,13 @@ Estado del proyecto y qué viene a continuación.
 - [x] 05 — Diseño responsive
 - [x] 06 — Formularios HTML
 
-### Nivel intermedio
+### 🟡 Nivel intermedio
 - [x] 07 — Git y control de versiones
 - [x] 08 — Consumo de APIs con fetch
 - [x] 09 — Despliegue y hosting
 - [x] 10 — Proyecto final: portfolio
 
-### Nivel avanzado
+### 🟠 Nivel avanzado
 - [x] 11 — CSS moderno
 - [x] 12 — JavaScript asíncrono
 - [x] 13 — Módulos y bundlers
@@ -28,9 +28,16 @@ Estado del proyecto y qué viene a continuación.
 - [x] 17 — Rendimiento web
 - [x] 18 — Arquitectura frontend
 
-### Nivel profesional
+### 🔴 Nivel profesional
 - [x] 19 — Full-stack con Node.js
 - [x] 20 — DevOps para frontend
+
+### 🟣 Nivel experto
+- [x] 21 — Web Components
+- [x] 22 — Progressive Web Apps (PWA)
+- [x] 23 — WebSockets y tiempo real
+- [x] 24 — Animaciones avanzadas
+- [x] 25 — Design systems
 
 ## 🚧 Próximas mejoras
 
@@ -40,14 +47,15 @@ Estado del proyecto y qué viene a continuación.
 - [ ] Ejercicios resueltos publicados
 - [ ] Vídeos explicativos por capítulo
 - [ ] Página de preguntas frecuentes (FAQ)
+- [ ] Modo oscuro/claro guardado por preferencia
 
 ## 📅 Futuras ampliaciones
 
-- [ ] Capítulo 21 — Web Components
-- [ ] Capítulo 22 — Progressive Web Apps (PWA)
-- [ ] Capítulo 23 — WebSockets y tiempo real
-- [ ] Capítulo 24 — Animaciones avanzadas
-- [ ] Capítulo 25 — Diseño de sistemas y design tokens
+- [ ] Capítulo 26 — Web3 y blockchain
+- [ ] Capítulo 27 — WebAssembly
+- [ ] Capítulo 28 — Inteligencia artificial en el frontend
+- [ ] Capítulo 29 — WebXR y realidad aumentada
+- [ ] Capítulo 30 — Seguridad en aplicaciones web
 
 ## 🤝 ¿Quieres contribuir?
 
