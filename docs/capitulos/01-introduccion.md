@@ -67,44 +67,9 @@ Crea un archivo llamado `index.html` con este contenido:
 
 Ver [ejemplos/hola-mundo.html](../ejemplos/hola-mundo.html).
 
-## Ejercicios
-
-1. Crea tu primer archivo HTML con un título y un párrafo.
-2. Ábrelo en el navegador y comprueba que se ve bien.
-3. Modifica el color de fondo con CSS en línea.
-4. Añade un enlace a tu web favorita.
-
----
-
-⬅️ [Introducción](../introduccion.md) | ➡️ [Capítulo 2 — HTML básico](02-html-basico.md)cat docs/capitulos/01-introduccion.md | head -20
-git add docs/capitulos/01-introduccion.md
-git commit -m "fix: completar capítulo 1"
-git push
-
-
 ## Diagrama: cómo funciona la web
 
-\`\`\`mermaid
-sequenceDiagram
-    participant U as Usuario
-    participant N as Navegador
-    participant S as Servidor
-    participant B as Base de datos
-
-    U->>N: Introduce URL
-    N->>S: Petición HTTP (GET)
-    S->>B: Consulta
-    B-->>S: Datos
-    S-->>N: Respuesta HTTP (HTML)
-    N-->>U: Página renderizada
-\`\`\`
-
-Este es el flujo básico de una petición web: el navegador pide, el servidor responde.
-
-
-## Diagrama: cómo funciona la web
-
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
     participant U as Usuario
     participant N as Navegador
@@ -117,6 +82,17 @@ sequenceDiagram
     B-->>S: Datos
     S-->>N: Respuesta HTML
     N-->>U: Página renderizada
-\`\`\`
+```
 
-Este es el flujo básico de una petición web.
+Este es el flujo básico de una petición web: el navegador pide, el servidor responde y el usuario ve la página.
+
+## Ejercicios
+
+1. Crea tu primer archivo HTML con un título y un párrafo.
+2. Ábrelo en el navegador y comprueba que se ve bien.
+3. Modifica el color de fondo con CSS en línea.
+4. Añade un enlace a tu web favorita.
+
+---
+
+⬅️ [Introducción](../introduccion.md) | ➡️ [Capítulo 2 — HTML básico](02-html-basico.md)
