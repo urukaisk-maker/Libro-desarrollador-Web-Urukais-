@@ -2,7 +2,7 @@
 
 <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-top: 1rem;">
 <div style="flex: 0 0 200px;">
-  <img src="../assets/urukais.jpg" alt="Manuel Casimiro Carrasco" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 24px rgba(106, 90, 205, 0.25);">
+  <img src="IMG-20221014-WA0008-removebg-preview.png" alt="Manuel Casimiro Carrasco" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 24px rgba(106, 90, 205, 0.25);">
 </div>
 <div style="flex: 1; min-width: 260px;">
 
