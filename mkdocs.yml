@@ -81,6 +81,12 @@ nav:
       - "02 — HTML básico": ejercicios/02-html-basico.md
       - "03 — CSS básico": ejercicios/03-css-basico.md
       - "04 — JavaScript": ejercicios/04-javascript.md
+      - "05 — Responsive": ejercicios/05-responsive.md
+      - "06 — Formularios": ejercicios/06-formularios.md
+      - "07 — Git": ejercicios/07-git.md
+      - "08 — APIs": ejercicios/08-apis.md
+      - "09 — Despliegue": ejercicios/09-despliegue.md
+      - "10 — Portfolio": ejercicios/10-proyecto-final.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
   - Changelog: changelog.md
