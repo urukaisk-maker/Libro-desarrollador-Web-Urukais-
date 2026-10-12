@@ -1,0 +1,69 @@
+site_name: Libro del Desarrollador Web — Urukais
+site_description: "Material completo para aprender desarrollo web desde cero"
+site_author: Manuel Casimiro Carrasco (Urukais)
+site_url: https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/
+repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
+repo_url: https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-
+
+theme:
+  name: material
+  language: es
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+
+nav:
+  - Inicio: index.md
+  - Introducción: introduccion.md
+  - Capítulos:
+      - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
+      - "02 — HTML básico": capitulos/02-html-basico.md
+      - "03 — CSS básico": capitulos/03-css-basico.md
+      - "04 — JavaScript esencial": capitulos/04-javascript.md
+      - "05 — Diseño responsive": capitulos/05-responsive.md
+      - "06 — Formularios HTML": capitulos/06-formularios.md
+      - "07 — Git y control de versiones": capitulos/07-git.md
+      - "08 — Consumo de APIs con fetch": capitulos/08-apis.md
+      - "09 — Despliegue y hosting": capitulos/09-despliegue.md
+      - "10 — Proyecto final: portfolio": capitulos/10-proyecto-final.md
+  - Ejemplos: ejemplos/index.md
+  - Recursos: recursos.md
+  - Contribuir: contribuir.md
+  - Sobre el autor: autor.md
+  - Apéndices:
+      - Índice: apendices/index.md
+      - Chuletas rápidas: apendices/chuletas.md
+      - Glosario: apendices/glosario.md
+      - Recursos por nivel: apendices/recursos-por-nivel.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - tables
+  - toc:
+      permalink: true
+
+copyright: © 2026 Manuel Casimiro Carrasco — Urukais
