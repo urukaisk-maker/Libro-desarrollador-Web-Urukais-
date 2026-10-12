@@ -1,7 +1,7 @@
 site_name: Libro del Desarrollador Web — Urukais
 site_description: "Material completo para aprender desarrollo web desde cero"
 site_author: Manuel Casimiro Carrasco (Urukais)
-site_url: https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/
+site_url: https://libro.urukais.com/
 repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
 repo_url: https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-
 
@@ -111,6 +111,6 @@ extra:
       name: Portfolio de Urukais
   analytics:
     provider: google
-    property: G-61PDYH5BZN
+    property: G-XXXXXXXXXX
 
-copyright: © 2026 Manuel Casimiro Carrasco — Urukais
+copyrig
