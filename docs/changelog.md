@@ -2,54 +2,47 @@
 
 Historial de cambios del libro.
 
+## [4.0.0] — 2026-10-12
+
+### Añadido
+- **Capítulos 26-30** (nivel élite):
+  - Seguridad web
+  - WebAssembly
+  - IA en el frontend
+  - WebXR
+  - Web3
+- Sistema de comentarios con Giscus en todas las páginas
+- Página de preguntas frecuentes (FAQ)
+- SEO: sitemap, robots.txt e imagen social
+- Newsletter con Substack
+- Dominio propio: `libro.urukais.com`
+
+### Cambiado
+- Sidebar reorganizado con **6 niveles**
+- Home actualizada con los 30 capítulos
+
 ## [3.0.0] — 2026-10-12
 
 ### Añadido
-- **Capítulos 21-25** (nivel experto):
-  - Web Components
-  - Progressive Web Apps (PWA)
-  - WebSockets y tiempo real
-  - Animaciones avanzadas
-  - Design systems
+- Capítulos 21-25 (nivel experto): Web Components, PWA, WebSockets, animaciones y design systems
 
 ### Cambiado
-- Sidebar reorganizado con **5 niveles**: principiante, intermedio, avanzado, profesional y experto
-- Home actualizada con los 25 capítulos
-- Roadmap ampliado con nuevas secciones planificadas
-- Prensa actualizada con la nueva cifra de capítulos
+- Sidebar con 5 niveles
+- Roadmap y prensa actualizados a 25 capítulos
 
 ## [2.0.0] — 2026-10-12
 
 ### Añadido
-- Capítulos 11-18 (nivel avanzado): CSS moderno, JavaScript asíncrono, módulos y bundlers, accesibilidad, TypeScript, testing, rendimiento y arquitectura frontend
-- Capítulos 19-20 (nivel profesional): Full-stack con Node.js y DevOps para frontend
-- Página **Filosofía** del proyecto
-- Página **Contacto**
-- Página **Agradecimientos**
-- Página **Prensa y media**
-- Página **Roadmap**
-- Foto y bio del autor
-- Badges del stack tecnológico
-- Sección de proyectos destacados del autor
-
-### Cambiado
-- Sidebar reorganizado por niveles
-- Home actualizada con los 20 capítulos
-- Página del autor con foto real, idiomas y proyectos
-
-### Corregido
-- Enlaces roto en capítulos 1 y 2
-- Bloques de código mal cerrados en capítulo 3
+- Capítulos 11-18 (avanzado) y 19-20 (profesional)
+- Página Filosofía, Contacto, Agradecimientos y Prensa
+- Foto y bio del autor con badges
 
 ## [1.0.0] — 2026-10-12
 
 ### Añadido
-- 10 capítulos completos (principiante e intermedio)
-- Apéndices: chuletas, glosario y recursos por nivel
-- Ejemplos ejecutables para cada capítulo
-- Secciones de Recursos, Contribuir y Sobre el autor
-- Página 404 personalizada
-- Despliegue automático con GitHub Actions y MkDocs Material
+- 10 capítulos iniciales
+- Apéndices completos
+- Despliegue automático con GitHub Actions
 
 ---
 

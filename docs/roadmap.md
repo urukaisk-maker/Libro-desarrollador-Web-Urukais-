@@ -39,23 +39,29 @@ Estado del proyecto y qué viene a continuación.
 - [x] 24 — Animaciones avanzadas
 - [x] 25 — Design systems
 
+### 🔵 Nivel élite
+- [x] 26 — Seguridad web
+- [x] 27 — WebAssembly
+- [x] 28 — IA en el frontend
+- [x] 29 — WebXR
+- [x] 30 — Web3
+
 ## 🚧 Próximas mejoras
 
 - [ ] Traducción al inglés
 - [ ] Versión en PDF descargable
-- [ ] Buscador offline
 - [ ] Ejercicios resueltos publicados
 - [ ] Vídeos explicativos por capítulo
-- [ ] Página de preguntas frecuentes (FAQ)
-- [ ] Modo oscuro/claro guardado por preferencia
+- [ ] Modo offline con Service Worker
+- [ ] Buscador Algolia
 
 ## 📅 Futuras ampliaciones
 
-- [ ] Capítulo 26 — Web3 y blockchain
-- [ ] Capítulo 27 — WebAssembly
-- [ ] Capítulo 28 — Inteligencia artificial en el frontend
-- [ ] Capítulo 29 — WebXR y realidad aumentada
-- [ ] Capítulo 30 — Seguridad en aplicaciones web
+- [ ] Capítulo 31 — Testing E2E con Playwright
+- [ ] Capítulo 32 — Server Components
+- [ ] Capítulo 33 — Edge Computing
+- [ ] Capítulo 34 — Monorepos y Turborepo
+- [ ] Capítulo 35 — Diseño de sistemas de diseño
 
 ## 🤝 ¿Quieres contribuir?
 

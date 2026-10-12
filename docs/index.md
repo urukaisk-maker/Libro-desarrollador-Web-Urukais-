@@ -2,7 +2,7 @@
 
 Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
 
-!!! tip "25 capítulos · 5 niveles · 100% gratis"
+!!! tip "30 capítulos · 6 niveles · 100% gratis"
     Este libro es **abierto y gratuito**. Puedes leerlo, copiarlo, modificarlo y contribuir mejoras.
 
 ## 🚀 Empezar
@@ -46,6 +46,13 @@ Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego si
 - [Capítulo 24 — Animaciones avanzadas](capitulos/24-animaciones.md)
 - [Capítulo 25 — Design systems](capitulos/25-design-systems.md)
 
+### 🔵 Nivel élite
+- [Capítulo 26 — Seguridad web](capitulos/26-seguridad.md)
+- [Capítulo 27 — WebAssembly](capitulos/27-webassembly.md)
+- [Capítulo 28 — IA en el frontend](capitulos/28-ia-frontend.md)
+- [Capítulo 29 — WebXR](capitulos/29-webxr.md)
+- [Capítulo 30 — Web3](capitulos/30-web3.md)
+
 ### 📎 Apéndices
 - [Chuletas rápidas](apendices/chuletas.md)
 - [Glosario](apendices/glosario.md)
@@ -68,7 +75,9 @@ Consulta la carpeta [ejemplos](ejemplos/index.md) para ver el código práctico.
 - [Changelog](changelog.md) — historial de cambios
 - [Recursos](recursos.md) — enlaces y herramientas
 - [Contribuir](contribuir.md) — cómo participar
+- [FAQ](faq.md) — preguntas frecuentes
 - [Contacto](contacto.md) — escríbeme
+
 ## 📬 Newsletter
 
 Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
