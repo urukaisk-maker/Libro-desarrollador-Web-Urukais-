@@ -61,6 +61,7 @@ nav:
       - "19 — Full-stack con Node.js": capitulos/19-fullstack-node.md
       - "20 — DevOps para frontend": capitulos/20-devops.md
       - "21 — Web Components": capitulos/21-web-components.md
+      - "22 — Progressive Web Apps (PWA)": capitulos/22-pwa.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
