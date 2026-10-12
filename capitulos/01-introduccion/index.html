@@ -622,6 +622,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#que-hace-un-desarrollador-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué hace un desarrollador web?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herramientas-basicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramientas básicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-hola-mundo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tu primer "Hola, mundo"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ejemplo-practico" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1212,8 +1245,15 @@
 
 <h1 id="capitulo-1-introduccion-al-desarrollo-web">Capítulo 1 — Introducción al desarrollo web<a class="headerlink" href="#capitulo-1-introduccion-al-desarrollo-web" title="Permanent link">&para;</a></h1>
 <h2 id="que-es-el-desarrollo-web">¿Qué es el desarrollo web?<a class="headerlink" href="#que-es-el-desarrollo-web" title="Permanent link">&para;</a></h2>
-<p>El desarrollo web es el proceso de crear sitios y aplicaciones que se ejecutan en el navegador. Combina estructura (HTML), estilo (CSS) y comportamiento (JavaScript).</p>
+<p>El desarrollo web es el proceso de crear sitios y aplicaciones que se ejecutan en el navegador. Combina tres pilares fundamentales:</p>
+<ul>
+<li><strong>HTML</strong> — la estructura del contenido.</li>
+<li><strong>CSS</strong> — la presentación visual.</li>
+<li><strong>JavaScript</strong> — el comportamiento y la interactividad.</li>
+</ul>
+<p>Juntas, estas tres tecnologías permiten construir desde una simple página informativa hasta aplicaciones complejas como redes sociales, tiendas online o editores de texto en la nube.</p>
 <h2 id="frontend-vs-backend">Frontend vs Backend<a class="headerlink" href="#frontend-vs-backend" title="Permanent link">&para;</a></h2>
+<p>El desarrollo web se divide tradicionalmente en dos grandes áreas:</p>
 <table>
 <thead>
 <tr>
@@ -1231,25 +1271,69 @@
 <tr>
 <td>Lenguajes</td>
 <td>HTML, CSS, JS</td>
-<td>Node, Python, PHP</td>
+<td>Node, Python, PHP, Go…</td>
 </tr>
 <tr>
 <td>Responsabilidad</td>
 <td>Interfaz de usuario</td>
-<td>Lógica y datos</td>
+<td>Lógica, datos, seguridad</td>
+</tr>
+<tr>
+<td>Frameworks populares</td>
+<td>React, Vue, Svelte</td>
+<td>Express, Django, Laravel</td>
+</tr>
+<tr>
+<td>Se comunica con</td>
+<td>El usuario</td>
+<td>Bases de datos y APIs</td>
 </tr>
 </tbody>
 </table>
+<p>Existe también el rol <strong>full-stack</strong>, que cubre ambas partes.</p>
+<h2 id="que-hace-un-desarrollador-web">¿Qué hace un desarrollador web?<a class="headerlink" href="#que-hace-un-desarrollador-web" title="Permanent link">&para;</a></h2>
+<p>Dependiendo del perfil, un desarrollador web puede:</p>
+<ul>
+<li>Diseñar y maquetar interfaces accesibles y responsive.</li>
+<li>Programar la lógica del cliente (formularios, animaciones, estados).</li>
+<li>Consumir APIs y mostrar datos dinámicos.</li>
+<li>Optimizar el rendimiento y la accesibilidad.</li>
+<li>Desplegar y mantener la aplicación en producción.</li>
+</ul>
+<h2 id="herramientas-basicas">Herramientas básicas<a class="headerlink" href="#herramientas-basicas" title="Permanent link">&para;</a></h2>
+<p>Para empezar necesitas muy poco:</p>
+<ol>
+<li><strong>Un navegador moderno</strong> — Firefox, Chrome, Edge o Safari.</li>
+<li><strong>Un editor de código</strong> — <a href="https://code.visualstudio.com/">Visual Studio Code</a> es el estándar.</li>
+<li><strong>Un servidor local simple</strong> — la extensión <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> es suficiente.</li>
+<li><strong>Git</strong> — para llevar el control de versiones.</li>
+</ol>
+<h2 id="tu-primer-hola-mundo">Tu primer "Hola, mundo"<a class="headerlink" href="#tu-primer-hola-mundo" title="Permanent link">&para;</a></h2>
+<p>Crea un archivo llamado <code>index.html</code> con este contenido:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hola, mundo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola, mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Mi primera página web.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Ábrelo en el navegador y verás tu primera página.</p>
 <h2 id="ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="../ejemplos/index.html"><code>ejemplos/index.html</code></a>.</p>
+<p>Ver <a href="../../ejemplos/hola-mundo.html">ejemplos/hola-mundo.html</a>.</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Crea tu primer archivo HTML con un título y un párrafo.</li>
-<li>Ábrelo en el navegador.</li>
-<li>Modifica el color de fondo con CSS.</li>
+<li>Ábrelo en el navegador y comprueba que se ve bien.</li>
+<li>Modifica el color de fondo con CSS en línea.</li>
+<li>Añade un enlace a tu web favorita.</li>
 </ol>
 <hr />
-<p>⬅⬅️ <a href="../../introduccion/">Introducción</a> | ➡️ Capítulo 2 (pendiente)</p>
+<p>⬅️ <a href="../../introduccion/">Introducción</a> | ➡️ <a href="../02-html-basico/">Capítulo 2 — HTML básico</a></p>
 
 
 
