@@ -39,7 +39,6 @@ Con los años he trabajado en proyectos de distinta naturaleza —desde webs cor
 
 - **Español** — lengua materna
 - **Catalán** — nivel nativo
-- **Inglés** — nivel avanzado (colaboración con equipos internacionales)
 
 ## 🎯 Intereses
 
