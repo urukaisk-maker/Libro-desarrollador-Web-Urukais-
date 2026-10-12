@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/capitulos/21-web-components/">
       
       
+        <link rel="prev" href="../20-devops/">
+      
+      
+        <link rel="next" href="../../ejemplos/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Capítulo 21 — Web Components - Libro del Desarrollador Web — Urukais</title>
+        <title>21 — Web Components - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Capítulo 21 — Web Components
+              21 — Web Components
             
           </span>
         </div>
@@ -317,10 +321,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../11-css-moderno/" class="md-tabs__link">
           
   
@@ -1053,26 +1059,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -1090,7 +1101,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1376,6 +1387,325 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 — Web Components
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 — Web Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-cuatro-pilares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los cuatro pilares
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Elements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ciclo-de-vida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ciclo de vida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shadow-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shadow DOM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shadow DOM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estilos-de-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estilos de slots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTML Templates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-y-propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos y propiedades
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Atributos y propiedades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leer-atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leer atributos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-con-getterssetters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propiedades con getters/setters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventos-personalizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eventos personalizados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-completo-contador-reutilizable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo completo: contador reutilizable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuando-usar-web-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cuándo usar Web Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cuándo usar Web Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usalos-cuando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Úsalos cuando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitalos-cuando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Evítalos cuando
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#librerias-recomendadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Librerías recomendadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Librerías recomendadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-con-lit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo con Lit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2223,6 +2553,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../20-devops/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 20 — DevOps para frontend">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                20 — DevOps para frontend
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejemplos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejemplos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejemplos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
