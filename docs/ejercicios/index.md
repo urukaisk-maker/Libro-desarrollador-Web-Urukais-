@@ -24,11 +24,35 @@ Soluciones comentadas a los ejercicios de cada capítulo del libro.
 - [Capítulo 10 — Proyecto final: portfolio](10-proyecto-final.md)
 
 ### 🟠 Nivel avanzado
-- [Capítulo 11 — CSS moderno](11-css-moderno.md)
-- [Capítulo 12 — JavaScript asíncrono](12-javascript-asincrono.md)
+*(En desarrollo — próximamente)*
+
+### 🔴 Nivel profesional
+*(En desarrollo — próximamente)*
+
+### 🟣 Nivel experto
+*(En desarrollo — próximamente)*
+
+### 🔵 Nivel élite
+*(En desarrollo — próximamente)*
 
 ---
 
 ## 🤝 ¿Quieres contribuir con más soluciones?
 
-Esta sección está en construcción. Si quieres aportar la solución de un capítulo, lee la [guía de contribución](../contribuir.md).
+Esta sección está en construcción. Aceptamos soluciones para cualquier capítulo del libro.
+
+Si quieres aportar:
+
+1. Lee la [guía de contribución](../contribuir.md).
+2. Abre un [issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) indicando el capítulo que quieres resolver.
+3. Envía un Pull Request con tu solución.
+
+---
+
+## 📊 Estado
+
+| Capítulos con solución publicada | 10 de 30 |
+|---|---|
+| **Progreso** | 33% |
+
+*Última actualización: 2026-10-12*
