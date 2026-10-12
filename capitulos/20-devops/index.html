@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/capitulos/20-devops/">
       
       
+        <link rel="prev" href="../19-fullstack-node/">
+      
+      
+        <link rel="next" href="../../ejemplos/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Capítulo 20 — DevOps para frontend - Libro del Desarrollador Web — Urukais</title>
+        <title>20 — DevOps para frontend - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Capítulo 20 — DevOps para frontend
+              20 — DevOps para frontend
             
           </span>
         </div>
@@ -317,10 +321,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../11-css-moderno/" class="md-tabs__link">
           
   
@@ -1053,26 +1059,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -1090,7 +1101,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1348,6 +1359,369 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 — DevOps para frontend
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 — DevOps para frontend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-la-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD: la base
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD: la base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validaciones-automaticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validaciones automáticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validaciones automáticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linting-con-eslint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linting con ESLint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formateo-con-prettier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formateo con Prettier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#husky-lint-staged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Husky + lint-staged
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionado-semantico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versionado semántico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacion-y-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorización y errores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitorización y errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sentry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-vitals-en-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Vitals en producción
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs-estructurados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs estructurados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entornos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entornos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-para-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker para frontend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker para frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile-para-spa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dockerfile para SPA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nginx.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Compose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secretos-y-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secretos y seguridad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollbacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postmortems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postmortems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2165,6 +2539,44 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../19-fullstack-node/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 19 — Full-stack con Node.js">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                19 — Full-stack con Node.js
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ejemplos/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejemplos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Ejemplos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
