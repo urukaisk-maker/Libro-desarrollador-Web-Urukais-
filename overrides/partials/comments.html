@@ -1,0 +1,35 @@
+{% if page.meta.comments or config.extra.comments %}
+<div class="giscus" style="margin-top: 3rem;"></div>
+<script>
+  (function() {
+    function loadGiscus() {
+      var container = document.querySelector('.giscus');
+      if (!container || container.dataset.loaded === 'true') return;
+      container.dataset.loaded = 'true';
+
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.setAttribute('data-repo', 'urukaisk-maker/Libro-desarrollador-Web-Urukais-');
+      script.setAttribute('data-repo-id', 'R_kgDOVF4YjQ');
+      script.setAttribute('data-category', 'Announcements');
+      script.setAttribute('data-category-id', 'DIC_kwDOVF4Yjc4DIHN2');
+      script.setAttribute('data-mapping', 'pathname');
+      script.setAttribute('data-strict', '0');
+      script.setAttribute('data-reactions-enabled', '1');
+      script.setAttribute('data-emit-metadata', '0');
+      script.setAttribute('data-input-position', 'bottom');
+      script.setAttribute('data-theme', 'preferred_color_scheme');
+      script.setAttribute('data-lang', 'es');
+      script.setAttribute('crossorigin', 'anonymous');
+      script.async = true;
+      container.appendChild(script);
+    }
+
+    if (typeof document$ !== 'undefined') {
+      document$.subscribe(loadGiscus);
+    } else {
+      document.addEventListener('DOMContentLoaded', loadGiscus);
+    }
+  })();
+</script>
+{% endif %}
