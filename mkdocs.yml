@@ -51,6 +51,7 @@ nav:
   - Nivel avanzado:
       - "11 — CSS moderno": capitulos/11-css-moderno.md
       - "12 — JavaScript asíncrono": capitulos/12-javascript-asincrono.md
+      - "13 — Módulos y bundlers": capitulos/13-modulos-bundlers.md
   - Ejemplos: ejemplos/index.md
   - Recursos: recursos.md
   - Roadmap: roadmap.md
