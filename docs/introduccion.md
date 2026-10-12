@@ -20,4 +20,4 @@ Bienvenido al **Libro del Desarrollador Web**. Este material te llevará desde c
 
 Sigue los capítulos en orden. Cada uno incluye teoría, ejemplos en la carpeta `ejemplos/` y ejercicios propuestos.
 
-➡️ Siguiente: [Capítulo 1 — Introducción al desarrollo web](../capitulos/01-introduccion.md)
+➡➡ Siguiente: [Capítulo 1 — Introducción al desarrollo web](capitulos/01-introduccion.md)

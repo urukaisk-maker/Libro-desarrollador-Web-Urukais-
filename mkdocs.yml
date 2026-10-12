@@ -1,0 +1,50 @@
+site_name: Libro del Desarrollador Web — Urukais
+site_description: Material completo para aprender desarrollo web desde cero
+site_author: Manuel Casimiro Carrasco (Urukais)
+site_url: https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/
+
+repo_name: urukaisk-maker/Libro-desarrollador-Web-Urukais-
+repo_url: https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-
+
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+
+nav:
+  - Inicio: index.md
+  - Introducción: introduccion.md
+  - Capítulos:
+      - 01 — Introducción al desarrollo web: capitulos/01-introduccion.md
+  - Ejemplos: ejemplos/index.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true

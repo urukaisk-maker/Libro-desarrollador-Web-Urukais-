@@ -24,4 +24,4 @@ Ver [`ejemplos/index.html`](../ejemplos/index.html).
 
 ---
 
-⬅️ [Introducción](../docs/introduccion.md) | ➡️ Capítulo 2 (pendiente)
+⬅⬅️ [Introducción](../introduccion.md) | ➡️ Capítulo 2 (pendiente)
