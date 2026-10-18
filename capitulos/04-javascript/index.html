@@ -4048,6 +4048,64 @@
       });
     }
   </script>
+    <div class="newsletter-modal-overlay" id="newsletterModal">
+    <div class="newsletter-modal">
+      <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
+      <div class="newsletter-modal__icon">📬</div>
+      <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
+      <p class="newsletter-modal__text">
+        Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+      </p>
+      <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
+        Suscribirme gratis
+      </a>
+      <a href="#" class="newsletter-modal__skip" id="skipModal">No, gracias</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const modal = document.getElementById('newsletterModal');
+      if (!modal) return;
+
+      // Si ya se mostró en esta sesión, no mostrar
+      if (sessionStorage.getItem('newsletter_seen') === '1') return;
+
+      // Mostrar tras 30 segundos
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 30000);
+
+      function cerrar() {
+        modal.classList.remove('active');
+        sessionStorage.setItem('newsletter_seen', '1');
+      }
+
+      document.getElementById('closeModal').addEventListener('click', cerrar);
+      document.getElementById('skipModal').addEventListener('click', (e) => {
+        e.preventDefault();
+        cerrar();
+      });
+
+      // Cerrar al hacer clic fuera del modal
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) cerrar();
+      });
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) cerrar();
+      });
+    })();
+  </script>
+
+  <div class="newsletter-modal-overlay" id="newsletterModal">
+    ...
+  </div>
+
+  <script>
+    ...
+  </script>
 
   </body>
 </html>

@@ -4505,7 +4505,35 @@
                 </nav>
             </div>
         </section>
-        <section class="print-page" id="index" heading-number="1"><h1 id="index-libro-del-desarrollador-web">Libro del Desarrollador Web<a class="headerlink" href="#index-libro-del-desarrollador-web" title="Permanent link">&para;</a></h1>
+        <section class="print-page" id="index" heading-number="1"><div class="book-hero">
+  <div class="book-hero__badge">📘 Libro abierto · Edición 2026</div>
+  <h1 class="book-hero__title">Libro del<br>Desarrollador Web</h1>
+  <p class="book-hero__subtitle">
+    Desde "qué es HTML" hasta WebAssembly, IA y Web3.<br>
+    Todo lo que necesitas para ser desarrollador, en un solo lugar.
+  </p>
+  <div class="book-hero__stats">
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">33</span>
+      <span class="book-hero__stat-label">Capítulos</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">7</span>
+      <span class="book-hero__stat-label">Niveles</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">14</span>
+      <span class="book-hero__stat-label">Diagramas</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">100%</span>
+      <span class="book-hero__stat-label">Gratis</span>
+    </div>
+  </div>
+  <a href="#capitulos-01-introduccion" class="book-hero__cta">Empezar a leer →</a>
+</div>
+
+<h1 id="index-libro-del-desarrollador-web">Libro del Desarrollador Web<a class="headerlink" href="#index-libro-del-desarrollador-web" title="Permanent link">&para;</a></h1>
 <p>Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.</p>
 <div class="admonition tip">
 <p class="admonition-title">33 capítulos · 6 niveles · 100% gratis</p>
@@ -19294,6 +19322,64 @@ git<span class="w"> </span>pull
           .catch(err => console.error('SW error:', err));
       });
     }
+  </script>
+    <div class="newsletter-modal-overlay" id="newsletterModal">
+    <div class="newsletter-modal">
+      <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
+      <div class="newsletter-modal__icon">📬</div>
+      <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
+      <p class="newsletter-modal__text">
+        Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+      </p>
+      <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
+        Suscribirme gratis
+      </a>
+      <a href="#" class="newsletter-modal__skip" id="skipModal">No, gracias</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const modal = document.getElementById('newsletterModal');
+      if (!modal) return;
+
+      // Si ya se mostró en esta sesión, no mostrar
+      if (sessionStorage.getItem('newsletter_seen') === '1') return;
+
+      // Mostrar tras 30 segundos
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 30000);
+
+      function cerrar() {
+        modal.classList.remove('active');
+        sessionStorage.setItem('newsletter_seen', '1');
+      }
+
+      document.getElementById('closeModal').addEventListener('click', cerrar);
+      document.getElementById('skipModal').addEventListener('click', (e) => {
+        e.preventDefault();
+        cerrar();
+      });
+
+      // Cerrar al hacer clic fuera del modal
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) cerrar();
+      });
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) cerrar();
+      });
+    })();
+  </script>
+
+  <div class="newsletter-modal-overlay" id="newsletterModal">
+    ...
+  </div>
+
+  <script>
+    ...
   </script>
 
   </body>
