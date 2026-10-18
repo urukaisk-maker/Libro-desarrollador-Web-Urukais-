@@ -59,6 +59,8 @@
     
       <link rel="stylesheet" href="../assets/css/custom.css">
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css">
+    
     <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -5574,44 +5576,7 @@ Más información en <a href="#autor">Sobre el autor</a>.</p>
 </ol></section><section class="print-page" id="agenda" heading-number="3"><h1 id="agenda-agenda-de-eventos">📅 Agenda de Eventos<a class="headerlink" href="#agenda-agenda-de-eventos" title="Permanent link">&para;</a></h1>
 <p>Próximamente habrá talleres, directos y charlas sobre desarrollo web. Todo el contenido será gratuito y en español.</p>
 <h2 id="agenda-calendario">🗓️ Calendario<a class="headerlink" href="#agenda-calendario" title="Permanent link">&para;</a></h2>
-<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css"></p>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
-
-<div id="calendar" style="background: var(--md-default-bg-color); padding: 1rem; border-radius: 12px; border: 1px solid var(--md-default-fg-color--lightest);"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-  if (!calendarEl) return;
-
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    locale: 'es',
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,listWeek'
-    },
-    buttonText: {
-      today: 'Hoy',
-      month: 'Mes',
-      week: 'Semana',
-      list: 'Lista'
-    },
-    events: [
-      { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
-      { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
-      { title: 'Charla: Introducción al desarrollo web', date: '2026-10-01', color: '#16a34a' },
-      { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
-      { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
-      { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
-      { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
-      { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
-    ]
-  });
-  calendar.render();
-});
-</script>
+<div id="calendar" style="background: var(--md-default-bg-color); padding: 1rem; border-radius: 12px; border: 1px solid var(--md-default-fg-color--lightest); margin-bottom: 2rem;"></div>
 
 <h2 id="agenda-tipos-de-eventos">🎓 Tipos de eventos<a class="headerlink" href="#agenda-tipos-de-eventos" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5619,11 +5584,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <li>🔵 <strong>Charlas</strong> — Conversaciones sobre temas específicos.</li>
 <li>🟢 <strong>Directos</strong> — Emisiones en vivo con preguntas y respuestas.</li>
 <li>🟠 <strong>Retos</strong> — Desafíos semanales de código.</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">¿Quieres proponer un tema?</p>
-<p>Si tienes una idea para un taller o quieres que hable de algo en concreto, escríbeme a través de la página de <a href="#contacto">contacto</a>.</p>
-</div></section><section class="print-page" id="diario" heading-number="4"><h1 id="diario-diario-de-desarrollo">📰 Diario de Desarrollo<a class="headerlink" href="#diario-diario-de-desarrollo" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="diario" heading-number="4"><h1 id="diario-diario-de-desarrollo">📰 Diario de Desarrollo<a class="headerlink" href="#diario-diario-de-desarrollo" title="Permanent link">&para;</a></h1>
 <p>Un espacio para compartir notas, ideas y el proceso de creación de este libro.</p>
 <hr />
 <h2 id="diario-18-de-octubre-2026-el-dia-que-el-libro-cobro-vida">🚀 18 de Octubre, 2026 — El día que el libro cobró vida<a class="headerlink" href="#diario-18-de-octubre-2026-el-dia-que-el-libro-cobro-vida" title="Permanent link">&para;</a></h2>
@@ -5651,11 +5612,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <section class='print-page md-section' id='section-5' heading-number='5'>
                         <h1>Retos<a class='headerlink' href='#section-5' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="retos" heading-number="5.1"><h1 id="retos-retos">Índice</h1><h3 id="archivo-7-docsretosmd-el-indice-de-los-retos">📄 Archivo 7: <code>docs/retos.md</code> (El índice de los retos)<a class="headerlink" href="#retos-archivo-7-docsretosmd-el-indice-de-los-retos" title="Permanent link">&para;</a></h3>
-<p>```markdown</p>
-<h1 id="retos-retos-semanales">🔥 Retos Semanales<a class="headerlink" href="#retos-retos-semanales" title="Permanent link">&para;</a></h1>
+                    <section class="print-page" id="retos" heading-number="5.1"><h1 id="retos-retos-semanales">🔥 Retos Semanales<a class="headerlink" href="#retos-retos-semanales" title="Permanent link">&para;</a></h1>
 <p>Cada semana publicaré un nuevo desafío de código. Los retos se <strong>desbloquean automáticamente</strong> en su fecha indicada.</p>
-<div class="grid cards retos-grid">
+<div class="grid cards">
 <ul>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg></span> <strong>Reto #1: El botón camaleón</strong></p>
@@ -5665,35 +5624,32 @@ document.addEventListener('DOMContentLoaded', function() {
 <p><a href="#retos-reto-1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Ver reto</a></p>
 </li>
 <li>
-<p><div class="reto-card" data-release="2026-10-25"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #2: La tarjeta de presentación</strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #2: La tarjeta de presentación</strong> {: .reto-card data-release="2026-10-25" }</p>
 <hr />
 <p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> HTML y CSS</p>
 <p>Crea una tarjeta con hover y sombra.</p>
-<p>🔒 Disponible el 25 de octubre</p>
+<p><span class="fecha-bloqueo">🔒 Disponible el 25 de octubre</span></p>
 </li>
-</ul>
-</div>
-<ul>
 <li>
-<p><div class="reto-card" data-release="2026-11-01"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #3: Contador de clics</strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #3: Contador de clics</strong> {: .reto-card data-release="2026-11-01" }</p>
 <hr />
 <p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> JavaScript</p>
 <p>Aprende a manejar eventos y estado.</p>
-<p>🔒 Disponible el 1 de noviembre</div></p>
+<p><span class="fecha-bloqueo">🔒 Disponible el 1 de noviembre</span></p>
 </li>
 <li>
-<p><div class="reto-card" data-release="2026-11-08"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #4: Galería responsive</strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #4: Galería responsive</strong> {: .reto-card data-release="2026-11-08" }</p>
 <hr />
 <p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> CSS Grid</p>
 <p>Domina CSS Grid con media queries.</p>
-<p>🔒 Disponible el 8 de noviembre</div></p>
+<p><span class="fecha-bloqueo">🔒 Disponible el 8 de noviembre</span></p>
 </li>
 <li>
-<p><div class="reto-card" data-release="2026-11-15"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #5: Validador de formulario</strong></p>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #5: Validador de formulario</strong> {: .reto-card data-release="2026-11-15" }</p>
 <hr />
 <p><strong>Dificultad:</strong> 🔴 Difícil · <strong>Tema:</strong> JavaScript</p>
 <p>Valida formularios como un profesional.</p>
-<p>🔒 Disponible el 15 de noviembre</div></p>
+<p><span class="fecha-bloqueo">🔒 Disponible el 15 de noviembre</span></p>
 </li>
 </ul>
 </div>
@@ -5703,150 +5659,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reto-card[data-release]').forEach(card => {
     const release = new Date(card.dataset.release);
     if (hoy >= release) {
-      // Desbloquear: convertir en tarjeta clickable
+      // Quitar el bloqueo visual
       card.classList.remove('reto-card');
-      const link = document.createElement('a');
+      // Ocultar el texto de bloqueo
+      const bloqueo = card.querySelector('.fecha-bloqueo');
+      if (bloqueo) bloqueo.style.display = 'none';
+
+      // Añadir el enlace al final
       const num = card.querySelector('strong').textContent.match(/\d+/)[0];
-      link.href = `retos/reto-${num}.md`;
-      link.className = 'desbloqueado';
-      link.innerHTML = '[:octicons-arrow-right-24: Ver reto]';
-      // Sustituir el 🔒 por el enlace
-      const ultimo = card.lastElementChild;
-      if (ultimo) ultimo.replaceWith(link);
-    }
-  });
-});
-</script>
-<hr />
-<h3 id="retos-archivo-7-docsretosmd-el-indice-de-los-retos_1">📄 Archivo 7: <code>docs/retos.md</code> (El índice de los retos)<a class="headerlink" href="#retos-archivo-7-docsretosmd-el-indice-de-los-retos_1" title="Permanent link">&para;</a></h3>
-<p>```markdown</p>
-<h1 id="retos-retos-semanales_1">🔥 Retos Semanales<a class="headerlink" href="#retos-retos-semanales_1" title="Permanent link">&para;</a></h1>
-<p>Cada semana publicaré un nuevo desafío de código. Los retos se <strong>desbloquean automáticamente</strong> en su fecha indicada.</p>
-<div class="grid cards retos-grid">
-<ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg></span> <strong>Reto #1: El botón camaleón</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> HTML y CSS</p>
-<p>Crea un botón con hover y transiciones suaves.</p>
-<p><a href="#retos-reto-1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Ver reto</a></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-10-25"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #2: La tarjeta de presentación</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> HTML y CSS</p>
-<p>Crea una tarjeta con hover y sombra.</p>
-<p>🔒 Disponible el 25 de octubre</p>
-</li>
-</ul>
-</div>
-<ul>
-<li>
-<p><div class="reto-card" data-release="2026-11-01"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #3: Contador de clics</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> JavaScript</p>
-<p>Aprende a manejar eventos y estado.</p>
-<p>🔒 Disponible el 1 de noviembre</div></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-11-08"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #4: Galería responsive</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> CSS Grid</p>
-<p>Domina CSS Grid con media queries.</p>
-<p>🔒 Disponible el 8 de noviembre</div></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-11-15"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #5: Validador de formulario</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🔴 Difícil · <strong>Tema:</strong> JavaScript</p>
-<p>Valida formularios como un profesional.</p>
-<p>🔒 Disponible el 15 de noviembre</div></p>
-</li>
-</ul>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const hoy = new Date();
-  document.querySelectorAll('.reto-card[data-release]').forEach(card => {
-    const release = new Date(card.dataset.release);
-    if (hoy >= release) {
-      // Desbloquear: convertir en tarjeta clickable
-      card.classList.remove('reto-card');
       const link = document.createElement('a');
-      const num = card.querySelector('strong').textContent.match(/\d+/)[0];
       link.href = `retos/reto-${num}.md`;
-      link.className = 'desbloqueado';
       link.innerHTML = '[:octicons-arrow-right-24: Ver reto]';
-      // Sustituir el 🔒 por el enlace
-      const ultimo = card.lastElementChild;
-      if (ultimo) ultimo.replaceWith(link);
-    }
-  });
-});
-</script>
-<hr />
-<h3 id="retos-archivo-7-docsretosmd-el-indice-de-los-retos_2">📄 Archivo 7: <code>docs/retos.md</code> (El índice de los retos)<a class="headerlink" href="#retos-archivo-7-docsretosmd-el-indice-de-los-retos_2" title="Permanent link">&para;</a></h3>
-<p>```markdown</p>
-<h1 id="retos-retos-semanales_2">🔥 Retos Semanales<a class="headerlink" href="#retos-retos-semanales_2" title="Permanent link">&para;</a></h1>
-<p>Cada semana publicaré un nuevo desafío de código. Los retos se <strong>desbloquean automáticamente</strong> en su fecha indicada.</p>
-<div class="grid cards retos-grid">
-<ul>
-<li>
-<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-.95.23-1.78.75-2.49 1.32-2.59 2.08-3.61 5.75-2.39 8.9.04.1.08.2.08.33 0 .22-.15.42-.35.5-.23.1-.47.04-.66-.12a.6.6 0 0 1-.14-.17c-1.13-1.43-1.31-3.48-.55-5.12C5.78 10 4.87 12.3 5 14.47c.06.5.12 1 .29 1.5.14.6.41 1.2.71 1.73 1.08 1.73 2.95 2.97 4.96 3.22 2.14.27 4.43-.12 6.07-1.6 1.83-1.66 2.47-4.32 1.53-6.6l-.13-.26c-.21-.46-.77-1.26-.77-1.26m-3.16 6.3c-.28.24-.74.5-1.1.6-1.12.4-2.24-.16-2.9-.82 1.19-.28 1.9-1.16 2.11-2.05.17-.8-.15-1.46-.28-2.23-.12-.74-.1-1.37.17-2.06.19.38.39.76.63 1.06.77 1 1.98 1.44 2.24 2.8.04.14.06.28.06.43.03.82-.33 1.72-.93 2.27"/></svg></span> <strong>Reto #1: El botón camaleón</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> HTML y CSS</p>
-<p>Crea un botón con hover y transiciones suaves.</p>
-<p><a href="#retos-reto-1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Ver reto</a></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-10-25"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #2: La tarjeta de presentación</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> HTML y CSS</p>
-<p>Crea una tarjeta con hover y sombra.</p>
-<p>🔒 Disponible el 25 de octubre</p>
-</li>
-</ul>
-</div>
-<ul>
-<li>
-<p><div class="reto-card" data-release="2026-11-01"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #3: Contador de clics</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> JavaScript</p>
-<p>Aprende a manejar eventos y estado.</p>
-<p>🔒 Disponible el 1 de noviembre</div></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-11-08"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #4: Galería responsive</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🟡 Medio · <strong>Tema:</strong> CSS Grid</p>
-<p>Domina CSS Grid con media queries.</p>
-<p>🔒 Disponible el 8 de noviembre</div></p>
-</li>
-<li>
-<p><div class="reto-card" data-release="2026-11-15"><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #5: Validador de formulario</strong></p>
-<hr />
-<p><strong>Dificultad:</strong> 🔴 Difícil · <strong>Tema:</strong> JavaScript</p>
-<p>Valida formularios como un profesional.</p>
-<p>🔒 Disponible el 15 de noviembre</div></p>
-</li>
-</ul>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const hoy = new Date();
-  document.querySelectorAll('.reto-card[data-release]').forEach(card => {
-    const release = new Date(card.dataset.release);
-    if (hoy >= release) {
-      // Desbloquear: convertir en tarjeta clickable
-      card.classList.remove('reto-card');
-      const link = document.createElement('a');
-      const num = card.querySelector('strong').textContent.match(/\d+/)[0];
-      link.href = `retos/reto-${num}.md`;
-      link.className = 'desbloqueado';
-      link.innerHTML = '[:octicons-arrow-right-24: Ver reto]';
-      // Sustituir el 🔒 por el enlace
-      const ultimo = card.lastElementChild;
-      if (ultimo) ultimo.replaceWith(link);
+      card.appendChild(link);
     }
   });
 });
@@ -21771,6 +21595,8 @@ git<span class="w"> </span>pull
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../js/print-site.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
       
     
   <script src="//assets/js/custom.js" defer></script>

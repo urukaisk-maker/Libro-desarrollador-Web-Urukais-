@@ -1074,3 +1074,16 @@ body {
   border-radius: 16px;
   pointer-events: none;
 }
+
+/* Estilos para retos bloqueados */
+.reto-card {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+.reto-card .fecha-bloqueo {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #f59e0b;
+}
