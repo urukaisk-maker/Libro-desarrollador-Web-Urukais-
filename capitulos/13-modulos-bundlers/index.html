@@ -84,6 +84,9 @@
   <link rel="stylesheet" href="../../assets/css/custom.css">
   <link rel="manifest" href="../../manifest.json">
   <meta name="theme-color" content="#6a5acd">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   </head>
   
@@ -4566,6 +4569,23 @@ git add -A ; git commit -m "feat: capítulo 13 módulos y bundlers" ; git push</
 
   <script>
     ...
+  </script>
+    <div class="reading-progress" id="readingProgress"></div>
+  <script>
+    (function() {
+      const bar = document.getElementById('readingProgress');
+      if (!bar) return;
+      function update() {
+        const doc = document.documentElement;
+        const scrollTop = window.scrollY || doc.scrollTop;
+        const scrollHeight = doc.scrollHeight - window.innerHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
   </script>
 
   </body>

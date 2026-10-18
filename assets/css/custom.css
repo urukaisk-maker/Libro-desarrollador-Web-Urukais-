@@ -316,3 +316,96 @@
 .newsletter-modal__skip:hover {
   color: #94a3b8;
 }
+
+/* ============================================
+   BARRA DE PROGRESO DE LECTURA
+   ============================================ */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  z-index: 9999;
+  transition: width 100ms ease-out;
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  pointer-events: none;
+}
+
+
+/* ============================================
+   BOTONES DE NAVEGACIÓN ANTERIOR / SIGUIENTE
+   ============================================ */
+.md-footer__inner {
+  max-width: 100% !important;
+}
+
+.md-footer__link {
+  padding: 1.25rem 1.5rem !important;
+  border-radius: 14px !important;
+  background: var(--md-default-bg-color) !important;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  transition: all 250ms ease-out !important;
+  max-width: 48% !important;
+}
+
+.md-footer__link:hover {
+  background: var(--md-primary-fg-color) !important;
+  color: white !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+  border-color: var(--md-primary-fg-color);
+}
+
+.md-footer__link:hover .md-footer__direction,
+.md-footer__link:hover .md-footer__title,
+.md-footer__link:hover .md-ellipsis {
+  color: white !important;
+}
+
+.md-footer__direction {
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}
+
+.md-footer__title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================
+   ANIMACIÓN DE ENTRADA EN TARJETAS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid.cards > ul > li {
+  animation: fadeInUp 500ms ease-out backwards;
+}
+
+.grid.cards > ul > li:nth-child(1) { animation-delay: 50ms; }
+.grid.cards > ul > li:nth-child(2) { animation-delay: 100ms; }
+.grid.cards > ul > li:nth-child(3) { animation-delay: 150ms; }
+.grid.cards > ul > li:nth-child(4) { animation-delay: 200ms; }
+.grid.cards > ul > li:nth-child(5) { animation-delay: 250ms; }
+.grid.cards > ul > li:nth-child(6) { animation-delay: 300ms; }
+.grid.cards > ul > li:nth-child(7) { animation-delay: 350ms; }
+
+/* Respetar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .grid.cards > ul > li {
+    animation: none;
+  }
+}
