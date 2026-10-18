@@ -4373,6 +4373,36 @@
       update();
     })();
   </script>
+    <div id="cookieBanner" class="cookie-banner">
+    <p>
+      🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). 
+      Al continuar navegando, aceptas su uso.
+    </p>
+    <div class="cookie-banner__actions">
+      <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const banner = document.getElementById('cookieBanner');
+      if (!banner) return;
+
+      // Si ya aceptó, no mostrar
+      if (localStorage.getItem('cookie_consent') === 'true') return;
+
+      // Mostrar tras 2 segundos
+      setTimeout(() => {
+        banner.style.display = 'flex';
+      }, 2000);
+
+      // Al hacer clic en aceptar, guardar y ocultar
+      document.getElementById('acceptCookies').addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'true');
+        banner.style.display = 'none';
+      });
+    })();
+  </script>
 
   </body>
 </html>
