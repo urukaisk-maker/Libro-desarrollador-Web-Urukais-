@@ -193,4 +193,6 @@ Más información en [Sobre el autor](autor.md).
 
 ## 📜 Licencia
 
-MIT — ver [LICENSE](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE).
+Este proyecto está bajo la **Licencia MIT** (en español). Puedes usar, copiar, modificar y distribuir el contenido libremente siempre que mantengas la atribución.
+
+[Ver texto completo de la licencia](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE)
