@@ -173,6 +173,10 @@ markdown_extensions:
 extra_css:
   - assets/css/share.css
   - assets/css/custom.css
+  - https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js
 
 extra:
   generator: false

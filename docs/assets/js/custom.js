@@ -200,3 +200,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // Observar cada elemento
   elementsToAnimate.forEach(el => observer.observe(el));
 });
+
+// ============================================
+// CALENDARIO (FULLCALENDAR)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const calendarEl = document.getElementById('calendar');
+  
+  // Verificamos que el elemento existe y que la librería se ha cargado
+  if (calendarEl && typeof FullCalendar !== 'undefined') {
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'es',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listWeek'
+      },
+      buttonText: {
+        today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista'
+      },
+      events: [
+        { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
+        { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
+        { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
+        { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
+        { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
+        { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
+        { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
+        { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
+      ]
+    });
+    calendar.render();
+  }
+});
