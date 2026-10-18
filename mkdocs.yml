@@ -39,7 +39,13 @@ nav:
   - Mis Logros: logros.md
   - Agenda: agenda.md
   - Diario: diario.md
-  - Retos: retos.md
+  - Retos:
+      - Índice: retos.md
+      - "Reto #1: El botón camaleón": retos/reto-1.md
+      - "Reto #2: Tarjeta de presentación": retos/reto-2.md
+      - "Reto #3: Contador de clics": retos/reto-3.md
+      - "Reto #4: Galería responsive": retos/reto-4.md
+      - "Reto #5: Validador de formulario": retos/reto-5.md
   - Mis Proyectos: proyectos-lectores.md
   - Proyectos Guiados: proyectos-guiados.md
   - Filosofía: filosofia.md
