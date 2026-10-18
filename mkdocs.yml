@@ -145,6 +145,10 @@ markdown_extensions:
   - toc:
       permalink: true
 
+extra_css:
+  - assets/css/share.css
+  - assets/css/custom.css
+
 extra:
   generator: false
   comments: true
