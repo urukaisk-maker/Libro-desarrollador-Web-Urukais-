@@ -30,6 +30,8 @@ Mi pasión por la tecnología me llevó a formarme específicamente en desarroll
 Con los años he trabajado en proyectos de distinta naturaleza —desde webs corporativas hasta aplicaciones web interactivas— siempre con el mismo objetivo: **código limpio, interfaces usables y productos que funcionan**.
 
 ## 🚀 Proyectos destacados
+- **[Mi nuevo proyecto 1](https://statuesque-khapse-0c2c91.netlify.app/)** — Descripción breve del proyecto.
+- **[Mi nuevo proyecto 2](https://la-colmena-2ijb.vercel.app/)** — Descripción breve del proyecto.
 
 - **[Portfolio personal](https://silly-boba-dc057e.netlify.app/)** — Mi web personal con proyectos y contacto.
 - **[Libro del Desarrollador Web](https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/)** — Este mismo libro, construido con MkDocs Material.
