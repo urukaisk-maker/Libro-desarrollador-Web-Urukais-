@@ -113,3 +113,80 @@ function mostrarToastInsignia(total) {
     setTimeout(() => toast.remove(), 400);
   }, 4000);
 }
+
+// ============================================
+// GAMIFICACIÓN: CAPÍTULOS COMPLETADOS
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Solo ejecutar en páginas de capítulos
+  const path = window.location.pathname;
+  if (!path.includes('/capitulos/')) return;
+
+  const content = document.querySelector('.md-content__inner');
+  if (!content) return;
+
+  // Crear el contenedor del botón
+  const wrapper = document.createElement('div');
+  wrapper.className = 'chapter-complete-wrapper';
+  
+  const btn = document.createElement('button');
+  btn.className = 'chapter-complete-btn';
+  
+  // Comprobar si ya está completado en localStorage
+  const completedChapters = JSON.parse(localStorage.getItem('completed_chapters') || '[]');
+  const isCompleted = completedChapters.includes(path);
+
+  if (isCompleted) {
+    btn.classList.add('completed');
+    btn.innerHTML = '✅ Capítulo completado';
+    btn.disabled = true;
+  } else {
+    btn.innerHTML = '🎯 Marcar como completado';
+  }
+
+  // Insertar antes de los botones de navegación (footer)
+  const footer = document.querySelector('.md-footer__inner');
+  if (footer) {
+    footer.parentNode.insertBefore(wrapper, footer);
+  } else {
+    content.appendChild(wrapper);
+  }
+  wrapper.appendChild(btn);
+
+  // Lógica al hacer clic
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('completed')) return;
+
+    // Guardar en localStorage
+    completedChapters.push(path);
+    localStorage.setItem('completed_chapters', JSON.stringify(completedChapters));
+
+    // Cambiar estado del botón
+    btn.classList.add('completed');
+    btn.innerHTML = '✅ Capítulo completado';
+    btn.disabled = true;
+
+    // Mostrar notificación de insignia
+    mostrarToastInsignia(completedChapters.length);
+  });
+});
+
+function mostrarToastInsignia(total) {
+  const toast = document.createElement('div');
+  toast.className = 'badge-toast';
+  toast.innerHTML = `
+    <div class="badge-toast__icon">🏆</div>
+    <div>
+      <div style="font-weight: 700;">¡Logro desbloqueado!</div>
+      <div style="font-size: 0.85rem; color: #cbd5e1;">Has completado ${total} capítulo${total > 1 ? 's' : ''}</div>
+    </div>
+  `;
+  document.body.appendChild(toast);
+
+  // Mostrar y ocultar después de 4 segundos
+  setTimeout(() => toast.classList.add('show'), 100);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
+}
