@@ -4,8 +4,7 @@
     <span>🚀 <strong>¡Nuevo!</strong> Capítulo 36: Micro-frontends ya está disponible.</span>
     <a href="{{ base_url }}/capitulos/36-micro-frontends/">Leer ahora →</a>
   </div>
-{% endblock %}
-  <!-- Open Graph / Redes Sociales -->
+    <!-- Open Graph / Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page.title }} - {{ config.site_name }}">
   <meta property="og:description" content="{{ config.site_description }}">
@@ -15,6 +14,11 @@
   <meta name="twitter:title" content="{{ page.title }} - {{ config.site_name }}">
   <meta name="twitter:description" content="{{ config.site_description }}">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
+{% endblock %}
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="{{ page.meta.description if page.meta and page.meta.description else config.site_description }}">
+  <meta name="author" content="{{ config.site_author }}">
+  <link rel="canonical" href="{{ page.canonical_url }}">
 
 {% block extrahead %}
   {{ super() }}
