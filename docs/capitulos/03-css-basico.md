@@ -27,3 +27,9 @@
 Puedes ver el ejemplo de este capítulo en vivo haciendo clic aquí:
 
 <a href="../ejemplos/03-css-basico/ejemplo.html" target="_blank" class="md-button md-button--primary">Ver ejemplo interactivo en pantalla completa</a>
+### 🌐 Abrir en un Playground externo
+
+Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
+
+- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
+- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
