@@ -89,3 +89,230 @@
 .md-footer {
   background-color: #0f172a;
 }
+
+
+/* ============================================
+   HERO PORTADA DEL LIBRO
+   ============================================ */
+.book-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 1rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+.book-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.book-hero__badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.book-hero__title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.book-hero__subtitle {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.book-hero__stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.book-hero__stat {
+  text-align: center;
+}
+
+.book-hero__stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #22d3ee;
+  line-height: 1;
+}
+
+.book-hero__stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.book-hero__cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  color: #0f172a;
+  padding: 0.9rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(167, 139, 250, 0.4);
+}
+
+.book-hero__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(34, 211, 238, 0.5);
+  color: #0f172a;
+}
+
+/* ============================================
+   MODAL NEWSLETTER
+   ============================================ */
+.newsletter-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.newsletter-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.newsletter-modal {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 300ms ease;
+}
+
+.newsletter-modal-overlay.active .newsletter-modal {
+  transform: scale(1);
+}
+
+.newsletter-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  transition: color 200ms;
+}
+
+.newsletter-modal__close:hover {
+  color: white;
+}
+
+.newsletter-modal__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter-modal__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.newsletter-modal__text {
+  color: #cbd5e1;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.newsletter-modal__cta {
+  display: block;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  color: #0f172a;
+  padding: 0.9rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 200ms;
+}
+
+.newsletter-modal__cta:hover {
+  transform: translateY(-2px);
+  color: #0f172a;
+}
+
+.newsletter-modal__skip {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #64748b;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.newsletter-modal__skip:hover {
+  color: #94a3b8;
+}

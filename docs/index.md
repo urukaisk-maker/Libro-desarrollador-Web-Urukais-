@@ -1,3 +1,32 @@
+<div class="book-hero">
+  <div class="book-hero__badge">📘 Libro abierto · Edición 2026</div>
+  <h1 class="book-hero__title">Libro del<br>Desarrollador Web</h1>
+  <p class="book-hero__subtitle">
+    Desde "qué es HTML" hasta WebAssembly, IA y Web3.<br>
+    Todo lo que necesitas para ser desarrollador, en un solo lugar.
+  </p>
+  <div class="book-hero__stats">
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">33</span>
+      <span class="book-hero__stat-label">Capítulos</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">7</span>
+      <span class="book-hero__stat-label">Niveles</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">14</span>
+      <span class="book-hero__stat-label">Diagramas</span>
+    </div>
+    <div class="book-hero__stat">
+      <span class="book-hero__stat-number">100%</span>
+      <span class="book-hero__stat-label">Gratis</span>
+    </div>
+  </div>
+  <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
+</div>
+
+
 # Libro del Desarrollador Web
 
 Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
