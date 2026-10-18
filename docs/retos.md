@@ -2,13 +2,34 @@
 
 Cada semana publicaré un pequeño desafío de código. Puedes enviar tu solución y compararla con la de otros lectores.
 
-## Reto #1: La tarjeta de presentación
+---
+
+## Reto #1: El botón camaleón
 
 **Dificultad:** 🟢 Fácil
 **Tema:** HTML y CSS
 
-Crea una tarjeta de presentación que muestre tu nombre, una foto (puede ser un placeholder) y una pequeña biografía. Debe tener un borde redondeado y una sombra suave.
+Crea un botón que cambie de color de fondo y de texto cuando el usuario pase el ratón por encima (`hover`). El botón debe tener bordes redondeados y una transición suave para que el cambio no sea brusco.
 
-**Bonus:** Haz que la tarjeta se levante ligeramente cuando pases el ratón por encima (`hover`).
+**Pistas:**
+- Usa la propiedad `:hover` en CSS.
+- Usa `transition` para suavizar el cambio.
 
-Puedes probar tu código en el [Editor en Vivo](capitulos/02-html-basico.md#editor-en-vivo).
+??? success "Ver solución"
+    ```html
+    <button class="mi-boton">Púlsame</button>
+    .mi-boton {
+  background-color: #6a5acd;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mi-boton:hover {
+  background-color: #22d3ee;
+  color: #0f172a;
+}
