@@ -124,3 +124,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dashboard.innerHTML = html;
 });
+
+// ============================================
+// LÓGICA DE QUIZZES INTERACTIVOS
+// ============================================
+document.addEventListener('click', (e) => {
+  // Verificar si se ha hecho clic en una opción del quiz
+  if (e.target.classList.contains('quiz-option')) {
+    const btn = e.target;
+    const container = btn.closest('.quiz-container');
+    
+    // Evitar doble clic si ya se respondió
+    if (container.dataset.answered === 'true') return;
+    container.dataset.answered = 'true';
+
+    const correcta = container.getAttribute('data-correct');
+    const feedback = container.querySelector('.quiz-feedback');
+    const opciones = container.querySelectorAll('.quiz-option');
+
+    // Deshabilitar todos los botones visualmente
+    opciones.forEach(op => {
+      op.style.pointerEvents = 'none';
+      op.style.opacity = '0.7';
+    });
+
+    // Comprobar respuesta
+    const seleccionada = btn.getAttribute('data-option');
+
+    if (seleccionada === correcta) {
+      btn.classList.add('correct');
+      btn.style.opacity = '1';
+      feedback.innerHTML = '✅ ¡Respuesta correcta! Puedes marcar el capítulo como completado.';
+      feedback.style.color = '#16a34a';
+    } else {
+      btn.classList.add('incorrect');
+      btn.style.opacity = '1';
+      feedback.innerHTML = '❌ Incorrecto. Inténtalo en el siguiente capítulo.';
+      feedback.style.color = '#dc2626';
+      
+      // Mostrar cuál era la correcta
+      const btnCorrecto = container.querySelector(`[data-option="${correcta}"]`);
+      if (btnCorrecto) {
+        btnCorrecto.classList.add('correct');
+        btnCorrecto.style.opacity = '1';
+      }
+    }
+  }
+});
