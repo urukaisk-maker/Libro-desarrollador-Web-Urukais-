@@ -311,3 +311,26 @@ Orden de precedencia en CSS: de mayor a menor prioridad. Las capas (`@layer`) pe
 ---
 
 ⬅️ [Capítulo 10 — Proyecto final](../capitulos/10-proyecto-final.md) | ➡️ Capítulo 12 — JavaScript asíncrono (pendiente)python3 -c "print(open('docs/capitulos/11-css-moderno.md').read()[:200])"
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Para qué sirven las variables CSS (custom properties)?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Para crear funciones matemáticas complejas</button>
+    <button class="quiz-option" data-option="b">B) Para almacenar valores reutilizables (colores, tamaños, etc.)</button>
+    <button class="quiz-option" data-option="c">C) Para conectar con bases de datos</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué selector se utiliza para estilizar un elemento padre basándose en sus hijos?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) :is()</button>
+    <button class="quiz-option" data-option="b">B) :where()</button>
+    <button class="quiz-option" data-option="c">C) :has()</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

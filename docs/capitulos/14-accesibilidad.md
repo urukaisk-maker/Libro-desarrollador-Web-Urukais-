@@ -281,3 +281,26 @@ Ninguna herramienta automática detecta todo. Prueba tú:
 ---
 
 ⬅️ [Capítulo 13 — Módulos y bundlers](13-modulos-bundlers.md) | ➡️ [Capítulo 15 — TypeScript desde cero](15-typescript.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué significa la sigla WCAG?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Web Code Accessibility Group</button>
+    <button class="quiz-option" data-option="b">B) Web Content Accessibility Guidelines</button>
+    <button class="quiz-option" data-option="c">C) World Computer Access Gateway</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué atributo es esencial en las imágenes para que los lectores de pantalla las describan?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) title</button>
+    <button class="quiz-option" data-option="b">B) src</button>
+    <button class="quiz-option" data-option="c">C) alt</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

@@ -240,3 +240,26 @@ El bundler combina todos los módulos, elimina el código no usado (tree shaking
 
 ⬅️ [Capítulo 12 — JavaScript asíncrono](12-javascript-asincrono.md) | ➡️ [Capítulo 14 — Accesibilidad web](14-accesibilidad.md)
 git add -A ; git commit -m "feat: capítulo 13 módulos y bundlers" ; git push
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Cuál es el bundler recomendado por defecto para nuevos proyectos hoy en día?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Webpack</button>
+    <button class="quiz-option" data-option="b">B) Parcel</button>
+    <button class="quiz-option" data-option="c">C) Vite</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué comando se usa para instalar las dependencias de un proyecto en Node.js?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) npm install</button>
+    <button class="quiz-option" data-option="b">B) npm start</button>
+    <button class="quiz-option" data-option="c">C) npm run build</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

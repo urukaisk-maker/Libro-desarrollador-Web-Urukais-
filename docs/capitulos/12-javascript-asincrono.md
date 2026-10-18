@@ -286,3 +286,27 @@ await Promise.all([fetchCache('/api/a'), fetchCache('/api/a')]);
 ---
 
 ⬅️ [Capítulo 11 — CSS moderno](11-css-moderno.md) | ➡️ Capítulo 13 — Módulos y bundlers (pendiente)tail -5 docs/capitulos/12-javascript-asincrono.md
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué palabra clave se usa para esperar a que una Promesa se resuelva?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) await</button>
+    <button class="quiz-option" data-option="b">B) async</button>
+    <button class="quiz-option" data-option="c">C) wait</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué método de Promise ejecuta varias promesas en paralelo y falla si una falla?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Promise.allSettled()</button>
+    <button class="quiz-option" data-option="b">B) Promise.all()</button>
+    <button class="quiz-option" data-option="c">C) Promise.race()</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

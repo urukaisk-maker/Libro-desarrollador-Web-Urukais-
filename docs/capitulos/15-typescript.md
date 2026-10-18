@@ -399,3 +399,26 @@ function titulos(posts: Post[]): string[] {
 ---
 
 ⬅️ [Capítulo 14 — Accesibilidad web](14-accesibilidad.md) | ➡️ [Capítulo 16 — Testing frontend](16-testing.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Cuál es la principal ventaja de TypeScript frente a JavaScript?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) El tipado estático, que detecta errores antes de ejecutar</button>
+    <button class="quiz-option" data-option="b">B) Que es más rápido en el navegador</button>
+    <button class="quiz-option" data-option="c">C) Que no necesita compilación</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué tipo de TypeScript se usa para indicar que una variable puede ser de un tipo u otro?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) type intersection (&amp;)</button>
+    <button class="quiz-option" data-option="b">B) type union (|)</button>
+    <button class="quiz-option" data-option="c">C) any</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
