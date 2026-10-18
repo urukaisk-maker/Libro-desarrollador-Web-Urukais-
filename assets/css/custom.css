@@ -1053,3 +1053,24 @@ body {
     transition: none;
   }
 }
+
+/* Retos bloqueados */
+.reto-card {
+  opacity: 0.6;
+  position: relative;
+  cursor: not-allowed;
+}
+.reto-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(148, 163, 184, 0.1) 10px,
+    rgba(148, 163, 184, 0.1) 20px
+  );
+  border-radius: 16px;
+  pointer-events: none;
+}
