@@ -508,3 +508,26 @@ Animar `transform` y `opacity` salta directo a Composite (barato). Animar `width
 ---
 
 ⬅️ [Capítulo 23 — WebSockets](23-websockets.md) | ➡️ [Capítulo 25 — Design systems](25-design-systems.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué propiedades CSS son las más eficientes de animar (mejor rendimiento)?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) transform y opacity</button>
+    <button class="quiz-option" data-option="b">B) width y height</button>
+    <button class="quiz-option" data-option="c">C) top y left</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué media query respeta la preferencia del usuario de reducir el movimiento?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) (prefers-dark-mode)</button>
+    <button class="quiz-option" data-option="b">B) (prefers-reduced-motion)</button>
+    <button class="quiz-option" data-option="c">C) (prefers-animations)</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

@@ -524,3 +524,17 @@ wss.on('connection', (socket) => {
 ---
 
 ⬅️ [Capítulo 22 — Progressive Web Apps](22-pwa.md) | ➡️ [Capítulo 24 — Animaciones avanzadas](24-animaciones.md)
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Cuál es la principal diferencia entre HTTP y WebSocket?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) WebSocket es más lento</button>
+    <button class="quiz-option" data-option="b">B) HTTP es bidireccional</button>
+    <button class="quiz-option" data-option="c">C) WebSocket mantiene una conexión persistente y bidireccional</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

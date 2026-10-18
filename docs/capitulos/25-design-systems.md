@@ -430,3 +430,26 @@ Estudia los que ya existen:
 ---
 
 ⬅️ [Capítulo 24 — Animaciones avanzadas](24-animaciones.md) | ➡️ [Apéndices](../apendices/index.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué son los "design tokens"?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Componentes de React</button>
+    <button class="quiz-option" data-option="b">B) Animaciones predefinidas</button>
+    <button class="quiz-option" data-option="c">C) Valores reutilizables (colores, espaciados, tipografía) que definen el sistema</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué regla CSS permite controlar el orden de precedencia sin depender de la especificidad?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) @layer</button>
+    <button class="quiz-option" data-option="b">B) @scope</button>
+    <button class="quiz-option" data-option="c">C) @container</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

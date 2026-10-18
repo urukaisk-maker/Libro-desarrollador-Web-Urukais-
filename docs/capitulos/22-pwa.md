@@ -457,3 +457,26 @@ El Service Worker se sitúa entre el navegador y la red. Decide qué sirve desde
 ---
 
 ⬅️ [Capítulo 21 — Web Components](21-web-components.md) | ➡️ [Capítulo 23 — WebSockets](23-websockets.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué archivo JSON describe la aplicación para que el navegador ofrezca instalarla?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) manifest.json</button>
+    <button class="quiz-option" data-option="b">B) package.json</button>
+    <button class="quiz-option" data-option="c">C) config.json</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué script se ejecuta en segundo plano para interceptar peticiones y cachear recursos?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Web Worker</button>
+    <button class="quiz-option" data-option="b">B) Service Worker</button>
+    <button class="quiz-option" data-option="c">C) Shared Worker</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

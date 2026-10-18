@@ -410,3 +410,26 @@ customElements.define('mi-tarjeta', MiTarjeta);
 ---
 
 ⬅️ [Capítulo 20 — DevOps para frontend](20-devops.md) | ➡️ [Capítulo 22 — Progressive Web Apps](22-pwa.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué API del navegador permite encapsular estilos y estructura en un componente?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Web Workers</button>
+    <button class="quiz-option" data-option="b">B) Shadow DOM</button>
+    <button class="quiz-option" data-option="c">C) Service Workers</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué método se usa para definir una nueva etiqueta HTML personalizada?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) document.createElement()</button>
+    <button class="quiz-option" data-option="b">B) HTMLElement.register()</button>
+    <button class="quiz-option" data-option="c">C) customElements.define()</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
