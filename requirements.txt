@@ -1,1 +1,2 @@
 mkdocs-material[imaging]>=9.5.0
+mkdocs-print-site-plugin
