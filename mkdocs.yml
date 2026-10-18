@@ -136,6 +136,10 @@ plugins:
       add_to_navigation: true
       print_page_title: 'Versión imprimible'
   - social
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
 
 markdown_extensions:
   - admonition
