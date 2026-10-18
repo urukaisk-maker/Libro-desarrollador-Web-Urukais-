@@ -88,3 +88,66 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
     [:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
 
 </div>
+
+## 🛠️ Tu Caja de Herramientas
+
+<div class="grid cards" markdown>
+
+-   :material-file-code:{ .lg .middle } __Ejemplos Ejecutables__
+
+    ---
+
+    Código listo para copiar, pegar y probar en cada capítulo. Sin rodeos.
+
+    [:octicons-arrow-right-24: Ver código](ejemplos/index.md)
+
+-   :material-chart-timeline-variant:{ .lg .middle } __Galería Visual__
+
+    ---
+
+    Todos los diagramas de arquitectura, flujos y conceptos recopilados.
+
+    [:octicons-arrow-right-24: Ver diagramas](diagramas.md)
+
+-   :material-pencil-ruler:{ .lg .middle } __Ejercicios Resueltos__
+
+    ---
+
+    Soluciones comentadas para que no te quedes atascado.
+
+    [:octicons-arrow-right-24: Practicar ahora](ejercicios/index.md)
+
+</div>
+
+## 📌 El Proyecto
+
+- [Filosofía](filosofia.md) — por qué existe y cómo está construido.
+- [Roadmap](roadmap.md) — qué viene a continuación.
+- [Changelog](changelog.md) — historial de cambios.
+- [Contribuir](contribuir.md) — cómo participar.
+- [FAQ](faq.md) — preguntas frecuentes.
+- [Contacto](contacto.md) — escríbeme.
+
+---
+
+## 📬 Únete a la Comunidad
+
+Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+
+<div style="max-width: 500px; margin: 1.5rem auto; padding: 1.5rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; background: var(--md-default-bg-color); text-align: center;">
+  <p style="margin-top: 0; font-weight: 600;">Suscríbete para no perderte nada</p>
+  <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(90deg, #a78bfa, #22d3ee); color: #0f172a; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700;">
+    Suscribirme
+  </a>
+</div>
+
+---
+
+## 👤 Sobre el Autor
+
+Este libro es un proyecto de **Manuel Casimiro Carrasco (Urukais)**.
+Más información en [Sobre el autor](autor.md).
+
+## 📜 Licencia
+
+MIT — ver [LICENSE](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE).
