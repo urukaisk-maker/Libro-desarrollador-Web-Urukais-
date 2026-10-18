@@ -157,7 +157,11 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
 </div>
 
+## 📄 Llévate el libro contigo
 
+¿Prefieres leer sin conexión o imprimir el libro? Hemos generado una versión con **todos los capítulos seguidos** para que puedas guardarla como PDF o imprimirla.
+
+[:material-file-pdf-box: Descargar versión imprimible (PDF)](../print_page/){ .md-button .md-button--primary }
 ## 📌 El Proyecto
 
 - [Filosofía](filosofia.md) — por qué existe y cómo está construido.
