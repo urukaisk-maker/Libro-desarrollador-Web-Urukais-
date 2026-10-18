@@ -54,6 +54,12 @@ Prueba tus conocimientos de HTML editando el código de la izquierda y viendo el
       </html>
     '>
   </iframe>
+  ### 🌐 Abrir en un Playground externo
+
+Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
+
+- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
+- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
 </div>
 <div class="quiz-container" data-correct="c">
   <p class="quiz-question">¿Cuál es la etiqueta correcta para crear un enlace?</p>
@@ -64,5 +70,6 @@ Prueba tus conocimientos de HTML editando el código de la izquierda y viendo el
   </div>
   <div class="quiz-feedback"></div>
 </div>
+
 </body>
 </html>
