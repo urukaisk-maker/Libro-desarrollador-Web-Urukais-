@@ -41,7 +41,7 @@ nav:
   - Diario: diario.md
   - Retos: retos.md
   - Mis Proyectos: proyectos-lectores.md
-    - Proyectos Guiados: proyectos-guiados.md
+  - Proyectos Guiados: proyectos-guiados.md
   - Filosofía: filosofia.md
   - Introducción: introduccion.md
   - Nivel principiante:
@@ -182,4 +182,4 @@ extra:
     provider: google
     property: G-61PDYH5BZN
 
-copyright: © 2026 Manuel Casimiro Carrasco — Urukais Klick
+copyright: © 2026 Manuel Casimiro Carrasco — Urukais
