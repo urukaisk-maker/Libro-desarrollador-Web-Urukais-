@@ -75,6 +75,7 @@ nav:
       - "29 — WebXR": capitulos/29-webxr.md
       - "30 — Web3": capitulos/30-web3.md
   - Ejemplos: ejemplos/index.md
+  - Diagramas: diagramas.md
   - Ejercicios resueltos:
       - Índice: ejercicios/index.md
       - "01 — Introducción": ejercicios/01-introduccion.md
