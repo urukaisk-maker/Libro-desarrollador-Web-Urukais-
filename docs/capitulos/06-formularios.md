@@ -60,3 +60,26 @@ Ver [ejemplos/06-formularios/ejemplo.html](../ejemplos/06-formularios/ejemplo.ht
 ---
 
 ⬅️ [Capítulo 5 — Responsive](05-responsive.md) | ➡️ Apéndices (próximamente)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué etiqueta se usa para crear un campo de texto en un formulario?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) &lt;text&gt;</button>
+    <button class="quiz-option" data-option="b">B) &lt;input type="text"&gt;</button>
+    <button class="quiz-option" data-option="c">C) &lt;form&gt;</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Para qué sirve el atributo <code>required</code> en un input?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Para que el navegador no permita enviar el formulario si está vacío</button>
+    <button class="quiz-option" data-option="b">B) Para cambiar el color del campo</button>
+    <button class="quiz-option" data-option="c">C) Para hacer que el campo sea de solo lectura</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

@@ -137,3 +137,26 @@ gitGraph
 \`\`\`
 
 Así se ve el flujo de trabajo típico con ramas: se crea una rama para una funcionalidad, se trabaja en ella, y se fusiona con la principal.
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué comando se usa para guardar los cambios en el historial de Git?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) git save</button>
+    <button class="quiz-option" data-option="b">B) git push</button>
+    <button class="quiz-option" data-option="c">C) git commit</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué hace el comando <code>git push</code>?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Descarga los cambios del servidor</button>
+    <button class="quiz-option" data-option="b">B) Sube tus commits locales al repositorio remoto</button>
+    <button class="quiz-option" data-option="c">C) Borra la rama actual</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

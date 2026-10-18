@@ -156,3 +156,16 @@ En `proyectos.html`, muestra tarjetas con:
 ---
 
 ⬅ [Capítulo 9 — Despliegue](09-despliegue.md) | ➡ [Apéndices](../apendices/chuletas.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué es lo más importante que debe tener tu portfolio para conseguir trabajo?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Muchas animaciones</button>
+    <button class="quiz-option" data-option="b">B) Un diseño muy colorido</button>
+    <button class="quiz-option" data-option="c">C) Proyectos reales funcionales y un enlace a su código</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

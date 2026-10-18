@@ -88,3 +88,16 @@ jobs:
 ---
 
 ⬅ [Capítulo 8 — APIs](08-apis.md) | ➡ [Capítulo 10 — Proyecto final](10-proyecto-final.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Cuál de estos servicios es ideal para desplegar una web estática gratis?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) AWS EC2</button>
+    <button class="quiz-option" data-option="b">B) Netlify o Vercel</button>
+    <button class="quiz-option" data-option="c">C) Un servidor VPS propio</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

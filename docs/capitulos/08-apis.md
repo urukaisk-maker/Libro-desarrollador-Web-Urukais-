@@ -104,3 +104,26 @@ Ver [ejemplos/08-apis/ejemplo.html](../ejemplos/08-apis/ejemplo.html).
 ---
 
 ⬅ [Capítulo 7 — Git](07-git.md) | ➡ [Capítulo 9 — Despliegue y hosting](09-despliegue.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué significa API?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Application Programming Interface</button>
+    <button class="quiz-option" data-option="b">B) Advanced Programming Interaction</button>
+    <button class="quiz-option" data-option="c">C) Automated Process Integration</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué formato de datos es el más común al consumir APIs hoy en día?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) XML</button>
+    <button class="quiz-option" data-option="b">B) CSV</button>
+    <button class="quiz-option" data-option="c">C) JSON</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
