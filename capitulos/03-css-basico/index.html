@@ -107,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capitulo-3-css-basico" class="md-skip">
+        <a href="#pon-a-prueba-tus-conocimientos" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -1013,8 +1013,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1057,8 +1055,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1067,115 +1063,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-css" class="md-nav__link">
+  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es CSS?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formas-de-aplicar-css" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Formas de aplicar CSS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Formas de aplicar CSS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-css-en-linea-inline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. CSS en línea (inline)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-css-en-el-head-interno" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. CSS en el &lt;head&gt; (interno)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-css-en-archivo-externo-recomendado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. CSS en archivo externo (recomendado)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sintaxis-de-una-regla-css" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sintaxis de una regla CSS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selectores-esenciales" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Selectores esenciales
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#el-modelo-de-caja" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        El modelo de caja
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejemplo-practico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejemplo práctico
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicios
+        🧠 Pon a prueba tus conocimientos
       
     </span>
   </a>
@@ -3918,102 +3809,28 @@
   
 
 
-<h1 id="capitulo-3-css-basico">Capítulo 3 — CSS básico<a class="headerlink" href="#capitulo-3-css-basico" title="Permanent link">&para;</a></h1>
-<h2 id="que-es-css">¿Qué es CSS?<a class="headerlink" href="#que-es-css" title="Permanent link">&para;</a></h2>
-<p>CSS (<em>Cascading Style Sheets</em>) es el lenguaje que define <strong>cómo se ve</strong> una página web: colores, tipografías, tamaños, espaciados, disposición de los elementos… Si HTML es el esqueleto, CSS es la piel y la ropa.</p>
-<h2 id="formas-de-aplicar-css">Formas de aplicar CSS<a class="headerlink" href="#formas-de-aplicar-css" title="Permanent link">&para;</a></h2>
-<h3 id="1-css-en-linea-inline">1. CSS en línea (inline)<a class="headerlink" href="#1-css-en-linea-inline" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Texto en rojo<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Rápido pero <strong>no recomendado</strong> para proyectos reales.</p>
-<h3 id="2-css-en-el-head-interno">2. CSS en el <code>&lt;head&gt;</code> (interno)<a class="headerlink" href="#2-css-en-el-head-interno" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Válido para páginas pequeñas.</p>
-<h3 id="3-css-en-archivo-externo-recomendado">3. CSS en archivo externo (recomendado)<a class="headerlink" href="#3-css-en-archivo-externo-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"estilos.css"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Es la práctica profesional: separa contenido de presentación.</p>
-<h2 id="sintaxis-de-una-regla-css">Sintaxis de una regla CSS<a class="headerlink" href="#sintaxis-de-una-regla-css" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">selector</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
-<span class="w">  </span><span class="n">otra-propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">otro-valor</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="selectores-esenciales">Selectores esenciales<a class="headerlink" href="#selectores-esenciales" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Selector</th>
-<th>Ejemplo</th>
-<th>Selecciona</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Etiqueta</td>
-<td><code>p</code></td>
-<td>Todos los <code>&lt;p&gt;</code></td>
-</tr>
-<tr>
-<td>Clase</td>
-<td><code>.destacado</code></td>
-<td>Elementos con <code>class="destacado"</code></td>
-</tr>
-<tr>
-<td>ID</td>
-<td><code>#principal</code></td>
-<td>El elemento con <code>id="principal"</code></td>
-</tr>
-<tr>
-<td>Descendiente</td>
-<td><code>nav a</code></td>
-<td>Los <code>&lt;a&gt;</code> dentro de <code>&lt;nav&gt;</code></td>
-</tr>
-<tr>
-<td>Pseudo-clase</td>
-<td><code>a:hover</code></td>
-<td>Enlaces al pasar el ratón</td>
-</tr>
-</tbody>
-</table>
-<h2 id="el-modelo-de-caja">El modelo de caja<a class="headerlink" href="#el-modelo-de-caja" title="Permanent link">&para;</a></h2>
-<p>Todo elemento HTML es una <strong>caja</strong> compuesta por:</p>
-<ul>
-<li><strong>Contenido</strong> — el texto o imagen.</li>
-<li><strong>Padding</strong> — espacio interior.</li>
-<li><strong>Border</strong> — borde.</li>
-<li><strong>Margin</strong> — espacio exterior.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="../../ejemplos/03-css-basico/ejemplo.html">ejemplos/03-css-basico/ejemplo.html</a>.</p>
-<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Cambia el color de fondo del <code>body</code> a un tono claro.</li>
-<li>Aplica una tipografía distinta a los <code>h1</code>.</li>
-<li>Crea una clase <code>.destacado</code> y úsala en un párrafo.</li>
-<li>Añade <code>padding</code> y <code>border</code> a un <code>&lt;div&gt;</code>.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="../02-html-basico/">Capítulo 2 — HTML básico</a> | ➡️ <a href="../04-javascript/">Capítulo 4 — JavaScript esencial</a></p>
+  <h1>03 — CSS básico</h1>
+
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué significa la sigla CSS?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Computer Style Sheets</button>
+    <button class="quiz-option" data-option="b">B) Creative Style System</button>
+    <button class="quiz-option" data-option="c">C) Cascading Style Sheets</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué propiedad CSS se utiliza para cambiar el color del texto?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) text-color</button>
+    <button class="quiz-option" data-option="b">B) color</button>
+    <button class="quiz-option" data-option="c">C) font-color</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
 
 
 

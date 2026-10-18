@@ -107,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capitulo-5-diseno-responsive" class="md-skip">
+        <a href="#pon-a-prueba-tus-conocimientos" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -1069,8 +1069,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1113,8 +1111,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1123,87 +1119,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-el-diseno-responsive" class="md-nav__link">
+  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es el diseño responsive?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#la-meta-etiqueta-viewport" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        La meta etiqueta viewport
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#media-queries" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Media queries
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unidades-relativas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unidades relativas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flexbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flexbox
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#css-grid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CSS Grid
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejemplo-practico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejemplo práctico
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicios
+        🧠 Pon a prueba tus conocimientos
       
     </span>
   </a>
@@ -3890,94 +3809,28 @@
   
 
 
-<h1 id="capitulo-5-diseno-responsive">Capítulo 5 — Diseño responsive<a class="headerlink" href="#capitulo-5-diseno-responsive" title="Permanent link">&para;</a></h1>
-<h2 id="que-es-el-diseno-responsive">¿Qué es el diseño responsive?<a class="headerlink" href="#que-es-el-diseno-responsive" title="Permanent link">&para;</a></h2>
-<p>El diseño responsive (o adaptativo) consiste en crear páginas que se ven bien en <strong>cualquier tamaño de pantalla</strong>: móvil, tablet, portátil, monitor grande.</p>
-<h2 id="la-meta-etiqueta-viewport">La meta etiqueta viewport<a class="headerlink" href="#la-meta-etiqueta-viewport" title="Permanent link">&para;</a></h2>
-<p>Es la línea más importante para que una web funcione en móvil:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Sin ella, los móviles muestran la web como si fuera un monitor grande, con todo diminuto.</p>
-<h2 id="media-queries">Media queries<a class="headerlink" href="#media-queries" title="Permanent link">&para;</a></h2>
-<p>Las <em>media queries</em> permiten aplicar estilos según el tamaño de la pantalla:</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Estilos base (móvil primero) */</span>
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
+  <h1>05 — Diseño responsive</h1>
 
-<span class="c">/* Tablets en adelante */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c">/* Escritorio */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1024px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Mobile first</p>
-<p>Diseña primero para móvil y luego añade mejoras para pantallas grandes. Es más fácil escalar hacia arriba que hacia abajo.</p>
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué meta etiqueta es esencial para que una web sea responsive?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) &lt;meta charset="UTF-8"&gt;</button>
+    <button class="quiz-option" data-option="b">B) &lt;meta description="..."&gt;</button>
+    <button class="quiz-option" data-option="c">C) &lt;meta name="viewport"&gt;</button>
+  </div>
+  <div class="quiz-feedback"></div>
 </div>
-<h2 id="unidades-relativas">Unidades relativas<a class="headerlink" href="#unidades-relativas" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Unidad</th>
-<th>Significado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>px</code></td>
-<td>Píxeles (absoluto)</td>
-</tr>
-<tr>
-<td><code>%</code></td>
-<td>Porcentaje del contenedor</td>
-</tr>
-<tr>
-<td><code>em</code></td>
-<td>Relativo al tamaño de fuente del elemento</td>
-</tr>
-<tr>
-<td><code>rem</code></td>
-<td>Relativo al tamaño de fuente raíz</td>
-</tr>
-<tr>
-<td><code>vw</code> / <code>vh</code></td>
-<td>Porcentaje del viewport (ancho/alto)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="flexbox">Flexbox<a class="headerlink" href="#flexbox" title="Permanent link">&para;</a></h2>
-<p>Para distribuir elementos en una fila o columna:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span>
-<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="css-grid">CSS Grid<a class="headerlink" href="#css-grid" title="Permanent link">&para;</a></h2>
-<p>Para layouts bidimensionales:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">250</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="../../ejemplos/05-responsive/ejemplo.html">ejemplos/05-responsive/ejemplo.html</a>.</p>
-<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea una tarjeta que cambie de una columna (móvil) a dos (desktop).</li>
-<li>Usa Flexbox para centrar un elemento vertical y horizontalmente.</li>
-<li>Crea una cuadrícula de 3 columnas que se convierta en 1 en móvil.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="../04-javascript/">Capítulo 4 — JavaScript</a> | ➡️ <a href="../06-formularios/">Capítulo 6 — Formularios</a></p>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué hace la propiedad CSS <code>justify-content: center</code> en Flexbox?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Centra los elementos en el eje principal</button>
+    <button class="quiz-option" data-option="b">B) Centra los elementos en el eje secundario</button>
+    <button class="quiz-option" data-option="c">C) Cambia el color de los elementos</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
 
 
 

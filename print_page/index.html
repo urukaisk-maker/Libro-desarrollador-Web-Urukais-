@@ -5087,111 +5087,26 @@ Más información en <a href="#autor">Sobre el autor</a>.</p>
                     <section class='print-page md-section' id='section-5' heading-number='5'>
                         <h1>Nivel principiante<a class='headerlink' href='#section-5' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="capitulos-01-introduccion" heading-number="5.1"><h1 id="capitulos-01-introduccion-capitulo-1-introduccion-al-desarrollo-web">Capítulo 1 — Introducción al desarrollo web<a class="headerlink" href="#capitulos-01-introduccion-capitulo-1-introduccion-al-desarrollo-web" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-01-introduccion-que-es-el-desarrollo-web">¿Qué es el desarrollo web?<a class="headerlink" href="#capitulos-01-introduccion-que-es-el-desarrollo-web" title="Permanent link">&para;</a></h2>
-<p>El desarrollo web es el proceso de crear sitios y aplicaciones que se ejecutan en el navegador. Combina tres pilares fundamentales:</p>
-<ul>
-<li><strong>HTML</strong> — la estructura del contenido.</li>
-<li><strong>CSS</strong> — la presentación visual.</li>
-<li><strong>JavaScript</strong> — el comportamiento y la interactividad.</li>
-</ul>
-<p>Juntas, estas tres tecnologías permiten construir desde una simple página informativa hasta aplicaciones complejas como redes sociales, tiendas online o editores de texto en la nube.</p>
-<h2 id="capitulos-01-introduccion-frontend-vs-backend">Frontend vs Backend<a class="headerlink" href="#capitulos-01-introduccion-frontend-vs-backend" title="Permanent link">&para;</a></h2>
-<p>El desarrollo web se divide tradicionalmente en dos grandes áreas:</p>
-<table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Frontend</th>
-<th>Backend</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Se ejecuta en</td>
-<td>Navegador</td>
-<td>Servidor</td>
-</tr>
-<tr>
-<td>Lenguajes</td>
-<td>HTML, CSS, JS</td>
-<td>Node, Python, PHP, Go…</td>
-</tr>
-<tr>
-<td>Responsabilidad</td>
-<td>Interfaz de usuario</td>
-<td>Lógica, datos, seguridad</td>
-</tr>
-<tr>
-<td>Frameworks populares</td>
-<td>React, Vue, Svelte</td>
-<td>Express, Django, Laravel</td>
-</tr>
-<tr>
-<td>Se comunica con</td>
-<td>El usuario</td>
-<td>Bases de datos y APIs</td>
-</tr>
-</tbody>
-</table>
-<p>Existe también el rol <strong>full-stack</strong>, que cubre ambas partes.</p>
-<h2 id="capitulos-01-introduccion-que-hace-un-desarrollador-web">¿Qué hace un desarrollador web?<a class="headerlink" href="#capitulos-01-introduccion-que-hace-un-desarrollador-web" title="Permanent link">&para;</a></h2>
-<p>Dependiendo del perfil, un desarrollador web puede:</p>
-<ul>
-<li>Diseñar y maquetar interfaces accesibles y responsive.</li>
-<li>Programar la lógica del cliente (formularios, animaciones, estados).</li>
-<li>Consumir APIs y mostrar datos dinámicos.</li>
-<li>Optimizar el rendimiento y la accesibilidad.</li>
-<li>Desplegar y mantener la aplicación en producción.</li>
-</ul>
-<h2 id="capitulos-01-introduccion-herramientas-basicas">Herramientas básicas<a class="headerlink" href="#capitulos-01-introduccion-herramientas-basicas" title="Permanent link">&para;</a></h2>
-<p>Para empezar necesitas muy poco:</p>
-<ol>
-<li><strong>Un navegador moderno</strong> — Firefox, Chrome, Edge o Safari.</li>
-<li><strong>Un editor de código</strong> — <a href="https://code.visualstudio.com/">Visual Studio Code</a> es el estándar.</li>
-<li><strong>Un servidor local simple</strong> — la extensión <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> es suficiente.</li>
-<li><strong>Git</strong> — para llevar el control de versiones.</li>
-</ol>
-<h2 id="capitulos-01-introduccion-tu-primer-hola-mundo">Tu primer "Hola, mundo"<a class="headerlink" href="#capitulos-01-introduccion-tu-primer-hola-mundo" title="Permanent link">&para;</a></h2>
-<p>Crea un archivo llamado <code>index.html</code> con este contenido:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hola, mundo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola, mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Mi primera página web.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Ábrelo en el navegador y verás tu primera página.</p>
-<h2 id="capitulos-01-introduccion-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-01-introduccion-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-hola-mundo">ejemplos/hola-mundo.html</a>.</p>
-<h2 id="capitulos-01-introduccion-diagrama-como-funciona-la-web">Diagrama: cómo funciona la web<a class="headerlink" href="#capitulos-01-introduccion-diagrama-como-funciona-la-web" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant U as Usuario
-    participant N as Navegador
-    participant S as Servidor
-    participant B as Base de datos
+                    <section class="print-page" id="capitulos-01-introduccion" heading-number="5.1"><h1 id="capitulos-01-introduccion-capitulos-01-introduccion">01 — Introducción al desarrollo web</h1><h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-01-introduccion-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Cuáles son los tres pilares fundamentales del desarrollo web?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Python, Java y C++</button>
+    <button class="quiz-option" data-option="b">B) HTML, CSS y JavaScript</button>
+    <button class="quiz-option" data-option="c">C) React, Vue y Angular</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
 
-    U-&gt;&gt;N: Introduce URL
-    N-&gt;&gt;S: Petición HTTP
-    S-&gt;&gt;B: Consulta
-    B--&gt;&gt;S: Datos
-    S--&gt;&gt;N: Respuesta HTML
-    N--&gt;&gt;U: Página renderizada</code></pre>
-<p>Este es el flujo básico de una petición web.</p>
-<h2 id="capitulos-01-introduccion-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-01-introduccion-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea tu primer archivo HTML con un título y un párrafo.</li>
-<li>Ábrelo en el navegador y comprueba que se ve bien.</li>
-<li>Modifica el color de fondo con CSS en línea.</li>
-<li>Añade un enlace a tu web favorita.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="#introduccion">Introducción</a> | ➡️ <a href="#capitulos-02-html-basico">Capítulo 2 — HTML básico</a></p></section><section class="print-page" id="capitulos-02-html-basico" heading-number="5.2"><h1 id="capitulos-02-html-basico-capitulo-2-html-basico">Capítulo 2 — HTML básico<a class="headerlink" href="#capitulos-02-html-basico-capitulo-2-html-basico" title="Permanent link">&para;</a></h1>
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué parte del desarrollo web se ejecuta en el navegador del usuario?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) El Frontend</button>
+    <button class="quiz-option" data-option="b">B) El Backend</button>
+    <button class="quiz-option" data-option="c">C) La base de datos</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div></section><section class="print-page" id="capitulos-02-html-basico" heading-number="5.2"><h1 id="capitulos-02-html-basico-capitulo-2-html-basico">Capítulo 2 — HTML básico<a class="headerlink" href="#capitulos-02-html-basico-capitulo-2-html-basico" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-02-html-basico-que-es-html">¿Qué es HTML?<a class="headerlink" href="#capitulos-02-html-basico-que-es-html" title="Permanent link">&para;</a></h2>
 <p>HTML (<em>HyperText Markup Language</em>) es el lenguaje de marcado que define la <strong>estructura</strong> del contenido de una página web. No es un lenguaje de programación, sino una forma de describir qué es cada cosa: un título, un párrafo, una imagen, un enlace…</p>
 <h2 id="capitulos-02-html-basico-estructura-minima-de-un-documento-html">Estructura mínima de un documento HTML<a class="headerlink" href="#capitulos-02-html-basico-estructura-minima-de-un-documento-html" title="Permanent link">&para;</a></h2>
@@ -5235,282 +5150,64 @@ Más información en <a href="#autor">Sobre el autor</a>.</p>
   <div class="quiz-feedback"></div>
 </div>
 </body>
-</html></section><section class="print-page" id="capitulos-03-css-basico" heading-number="5.3"><h1 id="capitulos-03-css-basico-capitulo-3-css-basico">Capítulo 3 — CSS básico<a class="headerlink" href="#capitulos-03-css-basico-capitulo-3-css-basico" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-03-css-basico-que-es-css">¿Qué es CSS?<a class="headerlink" href="#capitulos-03-css-basico-que-es-css" title="Permanent link">&para;</a></h2>
-<p>CSS (<em>Cascading Style Sheets</em>) es el lenguaje que define <strong>cómo se ve</strong> una página web: colores, tipografías, tamaños, espaciados, disposición de los elementos… Si HTML es el esqueleto, CSS es la piel y la ropa.</p>
-<h2 id="capitulos-03-css-basico-formas-de-aplicar-css">Formas de aplicar CSS<a class="headerlink" href="#capitulos-03-css-basico-formas-de-aplicar-css" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-03-css-basico-1-css-en-linea-inline">1. CSS en línea (inline)<a class="headerlink" href="#capitulos-03-css-basico-1-css-en-linea-inline" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Texto en rojo<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Rápido pero <strong>no recomendado</strong> para proyectos reales.</p>
-<h3 id="capitulos-03-css-basico-2-css-en-el-head-interno">2. CSS en el <code>&lt;head&gt;</code> (interno)<a class="headerlink" href="#capitulos-03-css-basico-2-css-en-el-head-interno" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Válido para páginas pequeñas.</p>
-<h3 id="capitulos-03-css-basico-3-css-en-archivo-externo-recomendado">3. CSS en archivo externo (recomendado)<a class="headerlink" href="#capitulos-03-css-basico-3-css-en-archivo-externo-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"estilos.css"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Es la práctica profesional: separa contenido de presentación.</p>
-<h2 id="capitulos-03-css-basico-sintaxis-de-una-regla-css">Sintaxis de una regla CSS<a class="headerlink" href="#capitulos-03-css-basico-sintaxis-de-una-regla-css" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">selector</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
-<span class="w">  </span><span class="n">otra-propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">otro-valor</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-03-css-basico-selectores-esenciales">Selectores esenciales<a class="headerlink" href="#capitulos-03-css-basico-selectores-esenciales" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Selector</th>
-<th>Ejemplo</th>
-<th>Selecciona</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Etiqueta</td>
-<td><code>p</code></td>
-<td>Todos los <code>&lt;p&gt;</code></td>
-</tr>
-<tr>
-<td>Clase</td>
-<td><code>.destacado</code></td>
-<td>Elementos con <code>class="destacado"</code></td>
-</tr>
-<tr>
-<td>ID</td>
-<td><code>#principal</code></td>
-<td>El elemento con <code>id="principal"</code></td>
-</tr>
-<tr>
-<td>Descendiente</td>
-<td><code>nav a</code></td>
-<td>Los <code>&lt;a&gt;</code> dentro de <code>&lt;nav&gt;</code></td>
-</tr>
-<tr>
-<td>Pseudo-clase</td>
-<td><code>a:hover</code></td>
-<td>Enlaces al pasar el ratón</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-03-css-basico-el-modelo-de-caja">El modelo de caja<a class="headerlink" href="#capitulos-03-css-basico-el-modelo-de-caja" title="Permanent link">&para;</a></h2>
-<p>Todo elemento HTML es una <strong>caja</strong> compuesta por:</p>
-<ul>
-<li><strong>Contenido</strong> — el texto o imagen.</li>
-<li><strong>Padding</strong> — espacio interior.</li>
-<li><strong>Border</strong> — borde.</li>
-<li><strong>Margin</strong> — espacio exterior.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-03-css-basico-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-03-css-basico-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-03-css-basico-ejemplo">ejemplos/03-css-basico/ejemplo.html</a>.</p>
-<h2 id="capitulos-03-css-basico-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-03-css-basico-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Cambia el color de fondo del <code>body</code> a un tono claro.</li>
-<li>Aplica una tipografía distinta a los <code>h1</code>.</li>
-<li>Crea una clase <code>.destacado</code> y úsala en un párrafo.</li>
-<li>Añade <code>padding</code> y <code>border</code> a un <code>&lt;div&gt;</code>.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="#capitulos-02-html-basico">Capítulo 2 — HTML básico</a> | ➡️ <a href="#capitulos-04-javascript">Capítulo 4 — JavaScript esencial</a></p></section><section class="print-page" id="capitulos-04-javascript" heading-number="5.4"><h1 id="capitulos-04-javascript-capitulo-4-javascript-esencial">Capítulo 4 — JavaScript esencial<a class="headerlink" href="#capitulos-04-javascript-capitulo-4-javascript-esencial" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-04-javascript-que-es-javascript">¿Qué es JavaScript?<a class="headerlink" href="#capitulos-04-javascript-que-es-javascript" title="Permanent link">&para;</a></h2>
-<p>JavaScript es el lenguaje de programación que da <strong>vida</strong> a la web. Mientras HTML define la estructura y CSS la presentación, JavaScript se encarga del <strong>comportamiento</strong>: responder a clics, validar formularios, cargar datos, animar elementos…</p>
-<div class="admonition info">
-<p class="admonition-title">JavaScript no es Java</p>
-<p>A pesar del nombre, JavaScript y Java son lenguajes completamente distintos. El nombre fue una jugada de marketing de los años 90.</p>
+</html></section><section class="print-page" id="capitulos-03-css-basico" heading-number="5.3"><h1 id="capitulos-03-css-basico-capitulos-03-css-basico">03 — CSS básico</h1><h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-03-css-basico-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué significa la sigla CSS?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Computer Style Sheets</button>
+    <button class="quiz-option" data-option="b">B) Creative Style System</button>
+    <button class="quiz-option" data-option="c">C) Cascading Style Sheets</button>
+  </div>
+  <div class="quiz-feedback"></div>
 </div>
-<h2 id="capitulos-04-javascript-como-incluir-javascript-en-html">Cómo incluir JavaScript en HTML<a class="headerlink" href="#capitulos-04-javascript-como-incluir-javascript-en-html" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-04-javascript-opcion-1-en-linea-no-recomendado">Opción 1: En línea (no recomendado)<a class="headerlink" href="#capitulos-04-javascript-opcion-1-en-linea-no-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">"alert('¡Hola!')"</span><span class="p">&gt;</span>Pulsa<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="capitulos-04-javascript-opcion-2-en-el-head-o-body">Opción 2: En el <code>&lt;head&gt;</code> o <code>&lt;body&gt;</code><a class="headerlink" href="#capitulos-04-javascript-opcion-2-en-el-head-o-body" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hola desde JS'</span><span class="p">);</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="capitulos-04-javascript-opcion-3-archivo-externo-recomendado">Opción 3: Archivo externo (recomendado)<a class="headerlink" href="#capitulos-04-javascript-opcion-3-archivo-externo-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="capitulos-04-javascript-variables">Variables<a class="headerlink" href="#capitulos-04-javascript-variables" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Urukais"</span><span class="p">;</span><span class="w">     </span><span class="c1">// puede cambiar</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span><span class="w">          </span><span class="c1">// no puede cambiar</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">viejo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"evita var"</span><span class="p">;</span><span class="w">    </span><span class="c1">// forma antigua</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Buena práctica</p>
-<p>Usa <code>const</code> por defecto. Solo usa <code>let</code> cuando sepas que el valor va a cambiar. Evita <code>var</code>.</p>
-</div>
-<h2 id="capitulos-04-javascript-tipos-de-datos">Tipos de datos<a class="headerlink" href="#capitulos-04-javascript-tipos-de-datos" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Tipo</th>
-<th>Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>String</td>
-<td><code>"Hola"</code></td>
-</tr>
-<tr>
-<td>Number</td>
-<td><code>42</code>, <code>3.14</code></td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td><code>true</code>, <code>false</code></td>
-</tr>
-<tr>
-<td>Array</td>
-<td><code>[1, 2, 3]</code></td>
-</tr>
-<tr>
-<td>Object</td>
-<td><code>{ nombre: "Urukais" }</code></td>
-</tr>
-<tr>
-<td>null / undefined</td>
-<td><code>null</code>, <code>undefined</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-04-javascript-funciones">Funciones<a class="headerlink" href="#capitulos-04-javascript-funciones" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-04-javascript-funcion-declarada">Función declarada<a class="headerlink" href="#capitulos-04-javascript-funcion-declarada" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-04-javascript-funcion-flecha-es6">Función flecha (ES6+)<a class="headerlink" href="#capitulos-04-javascript-funcion-flecha-es6" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">saludar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-</code></pre></div>
-<h2 id="capitulos-04-javascript-manipular-el-dom">Manipular el DOM<a class="headerlink" href="#capitulos-04-javascript-manipular-el-dom" title="Permanent link">&para;</a></h2>
-<p>El DOM (<em>Document Object Model</em>) es la representación del HTML en memoria. JavaScript puede leerlo y modificarlo.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">);</span>
-<span class="nx">titulo</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Nuevo título'</span><span class="p">;</span>
-<span class="nx">titulo</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'purple'</span><span class="p">;</span>
-</code></pre></div>
-<h2 id="capitulos-04-javascript-eventos">Eventos<a class="headerlink" href="#capitulos-04-javascript-eventos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'button'</span><span class="p">);</span>
-<span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'¡Has pulsado!'</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="capitulos-04-javascript-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-04-javascript-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-04-javascript-ejemplo">ejemplos/04-javascript/ejemplo.html</a>.</p>
-<h2 id="capitulos-04-javascript-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-04-javascript-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un botón que cambie el color de fondo del <code>body</code>.</li>
-<li>Muestra un mensaje con el nombre del usuario usando <code>prompt()</code>.</li>
-<li>Recorre un array de números y muestra la suma en consola.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="#capitulos-03-css-basico">Capítulo 3 — CSS básico</a> | ➡️ <a href="#capitulos-05-responsive">Capítulo 5 — Diseño responsive</a></p></section><section class="print-page" id="capitulos-05-responsive" heading-number="5.5"><h1 id="capitulos-05-responsive-capitulo-5-diseno-responsive">Capítulo 5 — Diseño responsive<a class="headerlink" href="#capitulos-05-responsive-capitulo-5-diseno-responsive" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-05-responsive-que-es-el-diseno-responsive">¿Qué es el diseño responsive?<a class="headerlink" href="#capitulos-05-responsive-que-es-el-diseno-responsive" title="Permanent link">&para;</a></h2>
-<p>El diseño responsive (o adaptativo) consiste en crear páginas que se ven bien en <strong>cualquier tamaño de pantalla</strong>: móvil, tablet, portátil, monitor grande.</p>
-<h2 id="capitulos-05-responsive-la-meta-etiqueta-viewport">La meta etiqueta viewport<a class="headerlink" href="#capitulos-05-responsive-la-meta-etiqueta-viewport" title="Permanent link">&para;</a></h2>
-<p>Es la línea más importante para que una web funcione en móvil:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Sin ella, los móviles muestran la web como si fuera un monitor grande, con todo diminuto.</p>
-<h2 id="capitulos-05-responsive-media-queries">Media queries<a class="headerlink" href="#capitulos-05-responsive-media-queries" title="Permanent link">&para;</a></h2>
-<p>Las <em>media queries</em> permiten aplicar estilos según el tamaño de la pantalla:</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Estilos base (móvil primero) */</span>
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
 
-<span class="c">/* Tablets en adelante */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c">/* Escritorio */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1024px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Mobile first</p>
-<p>Diseña primero para móvil y luego añade mejoras para pantallas grandes. Es más fácil escalar hacia arriba que hacia abajo.</p>
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué propiedad CSS se utiliza para cambiar el color del texto?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) text-color</button>
+    <button class="quiz-option" data-option="b">B) color</button>
+    <button class="quiz-option" data-option="c">C) font-color</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div></section><section class="print-page" id="capitulos-04-javascript" heading-number="5.4"><h1 id="capitulos-04-javascript-capitulos-04-javascript">04 — JavaScript esencial</h1><h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-04-javascript-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué palabra clave se usa para declarar una constante en JavaScript?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) let</button>
+    <button class="quiz-option" data-option="b">B) const</button>
+    <button class="quiz-option" data-option="c">C) var</button>
+  </div>
+  <div class="quiz-feedback"></div>
 </div>
-<h2 id="capitulos-05-responsive-unidades-relativas">Unidades relativas<a class="headerlink" href="#capitulos-05-responsive-unidades-relativas" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Unidad</th>
-<th>Significado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>px</code></td>
-<td>Píxeles (absoluto)</td>
-</tr>
-<tr>
-<td><code>%</code></td>
-<td>Porcentaje del contenedor</td>
-</tr>
-<tr>
-<td><code>em</code></td>
-<td>Relativo al tamaño de fuente del elemento</td>
-</tr>
-<tr>
-<td><code>rem</code></td>
-<td>Relativo al tamaño de fuente raíz</td>
-</tr>
-<tr>
-<td><code>vw</code> / <code>vh</code></td>
-<td>Porcentaje del viewport (ancho/alto)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-05-responsive-flexbox">Flexbox<a class="headerlink" href="#capitulos-05-responsive-flexbox" title="Permanent link">&para;</a></h2>
-<p>Para distribuir elementos en una fila o columna:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span>
-<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-05-responsive-css-grid">CSS Grid<a class="headerlink" href="#capitulos-05-responsive-css-grid" title="Permanent link">&para;</a></h2>
-<p>Para layouts bidimensionales:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">250</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-05-responsive-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-05-responsive-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-05-responsive-ejemplo">ejemplos/05-responsive/ejemplo.html</a>.</p>
-<h2 id="capitulos-05-responsive-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-05-responsive-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea una tarjeta que cambie de una columna (móvil) a dos (desktop).</li>
-<li>Usa Flexbox para centrar un elemento vertical y horizontalmente.</li>
-<li>Crea una cuadrícula de 3 columnas que se convierta en 1 en móvil.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="#capitulos-04-javascript">Capítulo 4 — JavaScript</a> | ➡️ <a href="#capitulos-06-formularios">Capítulo 6 — Formularios</a></p></section><section class="print-page" id="capitulos-06-formularios" heading-number="5.6"><h1 id="capitulos-06-formularios-capitulo-6-formularios-html">Capítulo 6 — Formularios HTML<a class="headerlink" href="#capitulos-06-formularios-capitulo-6-formularios-html" title="Permanent link">&para;</a></h1>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué método se usa para seleccionar un elemento del DOM por su ID?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) document.getElementById()</button>
+    <button class="quiz-option" data-option="b">B) document.querySelector()</button>
+    <button class="quiz-option" data-option="c">C) document.getElementByClass()</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div></section><section class="print-page" id="capitulos-05-responsive" heading-number="5.5"><h1 id="capitulos-05-responsive-capitulos-05-responsive">05 — Diseño responsive</h1><h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-05-responsive-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué meta etiqueta es esencial para que una web sea responsive?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) &lt;meta charset="UTF-8"&gt;</button>
+    <button class="quiz-option" data-option="b">B) &lt;meta description="..."&gt;</button>
+    <button class="quiz-option" data-option="c">C) &lt;meta name="viewport"&gt;</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué hace la propiedad CSS <code>justify-content: center</code> en Flexbox?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Centra los elementos en el eje principal</button>
+    <button class="quiz-option" data-option="b">B) Centra los elementos en el eje secundario</button>
+    <button class="quiz-option" data-option="c">C) Cambia el color de los elementos</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div></section><section class="print-page" id="capitulos-06-formularios" heading-number="5.6"><h1 id="capitulos-06-formularios-capitulo-6-formularios-html">Capítulo 6 — Formularios HTML<a class="headerlink" href="#capitulos-06-formularios-capitulo-6-formularios-html" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-06-formularios-que-es-un-formulario">¿Qué es un formulario?<a class="headerlink" href="#capitulos-06-formularios-que-es-un-formulario" title="Permanent link">&para;</a></h2>
 <p>Un formulario permite al usuario <strong>introducir datos</strong> y enviarlos a un servidor o procesarlos con JavaScript.</p>
 <h2 id="capitulos-06-formularios-estructura-basica">Estructura básica<a class="headerlink" href="#capitulos-06-formularios-estructura-basica" title="Permanent link">&para;</a></h2>
