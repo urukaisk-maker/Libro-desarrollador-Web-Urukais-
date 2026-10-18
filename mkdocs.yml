@@ -36,6 +36,7 @@ theme:
 
 nav:
   - Inicio: index.md
+  - Mis Logros: logros.md
   - Filosofía: filosofia.md
   - Introducción: introduccion.md
   - Nivel principiante:
