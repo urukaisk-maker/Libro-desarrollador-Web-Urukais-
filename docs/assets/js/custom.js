@@ -171,3 +171,32 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
+// ============================================
+// ANIMACIONES DE SCROLL (FADE-IN)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Elementos a animar
+  const elementsToAnimate = document.querySelectorAll(
+    '.md-typeset h2, .md-typeset h3, .grid.cards > ul > li, .quiz-container, .live-sandbox-wrapper'
+  );
+
+  // Añadir la clase inicial a todos
+  elementsToAnimate.forEach(el => el.classList.add('fade-in-section'));
+
+  // Configurar el observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); // Solo animar una vez
+      }
+    });
+  }, {
+    threshold: 0.1, // Se activa cuando el 10% del elemento es visible
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Observar cada elemento
+  elementsToAnimate.forEach(el => observer.observe(el));
+});
