@@ -37,6 +37,10 @@ theme:
 nav:
   - Inicio: index.md
   - Mis Logros: logros.md
+    - Agenda: agenda.md
+  - Diario: diario.md
+  - Retos: retos.md
+  - Proyectos: proyectos-lectores.md
   - Filosofía: filosofia.md
   - Introducción: introduccion.md
   - Nivel principiante:
