@@ -299,3 +299,26 @@ Esta técnica es la base de la **búsqueda semántica**: puedes encontrar docume
 ---
 
 ⬅️ [Capítulo 27 — WebAssembly](27-webassembly.md) | ➡️ [Capítulo 29 — WebXR](29-webxr.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué API permite ejecutar modelos de IA directamente en el navegador?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Transformers.js / WebLLM</button>
+    <button class="quiz-option" data-option="b">B) TensorFlow Cloud</button>
+    <button class="quiz-option" data-option="c">C) OpenAI API</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué API permite el reconocimiento y síntesis de voz nativa?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Audio API</button>
+    <button class="quiz-option" data-option="b">B) Voice API</button>
+    <button class="quiz-option" data-option="c">C) Web Speech API</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

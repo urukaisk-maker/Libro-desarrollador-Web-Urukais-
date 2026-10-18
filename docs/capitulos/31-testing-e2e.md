@@ -19,3 +19,16 @@ El **Edge Computing** consiste en ejecutar el código **lo más cerca posible de
 ## ¿Qué es el Edge?
 
 Plataformas como **Vercel, Cloudflare, Netlify o Deno Deploy** tienen centros de datos en cientos de ciudades. Cuando alguien visita tu web, el código se ejecuta en el nodo más cercano.
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué herramienta moderna es la más recomendada para pruebas End-to-End?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Playwright</button>
+    <button class="quiz-option" data-option="b">B) Jest</button>
+    <button class="quiz-option" data-option="c">C) Vitest</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

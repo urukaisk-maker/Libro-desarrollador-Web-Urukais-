@@ -371,3 +371,26 @@ WebXR gestiona el rastreo del dispositivo. La escena 3D se renderiza con Three.j
 ---
 
 ⬅️ [Capítulo 28 — IA en el frontend](28-ia-frontend.md) | ➡️ [Capítulo 30 — Web3](30-web3.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué API del navegador permite crear experiencias de Realidad Virtual y Aumentada?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) WebVR</button>
+    <button class="quiz-option" data-option="b">B) WebXR</button>
+    <button class="quiz-option" data-option="c">C) WebVR2</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué librería HTML declarativa es la forma más fácil de crear escenas 3D para VR?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) A-Frame</button>
+    <button class="quiz-option" data-option="b">B) React Native</button>
+    <button class="quiz-option" data-option="c">C) jQuery</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

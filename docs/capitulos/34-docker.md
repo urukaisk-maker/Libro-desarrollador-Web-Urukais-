@@ -232,3 +232,17 @@ CMD ["node", "server.js"]
 ---
 
 ⬅️ [Capítulo 33 — Edge Computing](33-edge-computing.md) | ➡️ [Capítulo 35 — GraphQL](35-graphql.md)
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué es un contenedor Docker?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Un entorno ligero y aislado para ejecutar una aplicación</button>
+    <button class="quiz-option" data-option="b">B) Una máquina virtual completa</button>
+    <button class="quiz-option" data-option="c">C) Un lenguaje de programación</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

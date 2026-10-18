@@ -246,3 +246,17 @@ La tendencia actual es:
 ---
 
 ⬅️ [Capítulo 35 — GraphQL](35-graphql.md) | ➡️ [Apéndices](../apendices/index.md)
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Cuándo tiene sentido usar micro-frontends?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Siempre, es la mejor arquitectura</button>
+    <button class="quiz-option" data-option="b">B) Cuando el proyecto es pequeño</button>
+    <button class="quiz-option" data-option="c">C) Cuando hay múltiples equipos trabajando en una app grande</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

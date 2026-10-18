@@ -322,3 +322,26 @@ flowchart TB
 \`\`\`
 
 Cada capa añade una defensa: HTTPS cifra, el CDN filtra, el servidor valida, el backend sanitiza y la base de datos almacena.
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué tipo de ataque inyecta código JavaScript malicioso en una web?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) CSRF</button>
+    <button class="quiz-option" data-option="b">B) XSS (Cross-Site Scripting)</button>
+    <button class="quiz-option" data-option="c">C) SQL Injection</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué librería se recomienda para hashear contraseñas de forma segura?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) bcrypt</button>
+    <button class="quiz-option" data-option="b">B) md5</button>
+    <button class="quiz-option" data-option="c">C) base64</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

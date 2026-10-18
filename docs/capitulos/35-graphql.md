@@ -273,3 +273,18 @@ Se conecta vía WebSockets y el cliente recibe actualizaciones en vivo. Perfecto
 ---
 
 ⬅️ [Capítulo 34 — Docker para frontend](34-docker.md) | ➡️ [Capítulo 36 — Micro-frontends](36-micro-frontends.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué ventaja principal ofrece GraphQL frente a REST?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Es más rápido</button>
+    <button class="quiz-option" data-option="b">B) El cliente pide exactamente los datos que necesita</button>
+    <button class="quiz-option" data-option="c">C) No necesita servidor</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

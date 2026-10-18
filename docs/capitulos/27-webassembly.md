@@ -294,3 +294,26 @@ input.addEventListener('change', async (e) => {
 ---
 
 ⬅️ [Capítulo 26 — Seguridad web](26-seguridad.md) | ➡️ [Capítulo 28 — IA en el frontend](28-ia-frontend.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué es WebAssembly (Wasm)?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Un framework de JavaScript</button>
+    <button class="quiz-option" data-option="b">B) Un reemplazo total de JavaScript</button>
+    <button class="quiz-option" data-option="c">C) Un formato binario para ejecutar código a alta velocidad en el navegador</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué lenguaje es ideal para compilar a WebAssembly?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Python</button>
+    <button class="quiz-option" data-option="b">B) Rust o C++</button>
+    <button class="quiz-option" data-option="c">C) HTML</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
