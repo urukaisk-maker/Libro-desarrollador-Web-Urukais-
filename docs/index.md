@@ -155,7 +155,43 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
     [:octicons-arrow-right-24: Ver proyectos](proyectos-lectores.md)
 
 </div>
+## 📅 Agenda y Novedades
 
+<div class="grid cards" markdown>
+
+-   :material-calendar-month:{ .lg .middle } __Agenda de Eventos__
+
+    ---
+
+    Talleres, directos y charlas programadas sobre desarrollo web.
+
+    [:octicons-arrow-right-24: Ver agenda](agenda.md)
+
+-   :material-book-open-page-variant:{ .lg .middle } __Diario de Desarrollo__
+
+    ---
+
+    Notas, ideas, avances y el detrás de escena del libro.
+
+    [:octicons-arrow-right-24: Leer diario](diario.md)
+
+-   :material-fire:{ .lg .middle } __Retos Semanales__
+
+    ---
+
+    Pon a prueba tus habilidades con desafíos de código cortos.
+
+    [:octicons-arrow-right-24: Aceptar reto](retos.md)
+
+-   :material-account-group:{ .lg .middle } __Proyectos de Lectores__
+
+    ---
+
+    Descubre lo que otros están construyendo con el libro.
+
+    [:octicons-arrow-right-24: Ver proyectos](proyectos-lectores.md)
+
+</div>
 ## 📌 El Proyecto
 
 - [Filosofía](filosofia.md) — por qué existe y cómo está construido.

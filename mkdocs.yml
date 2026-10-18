@@ -37,12 +37,13 @@ theme:
 nav:
   - Inicio: index.md
   - Mis Logros: logros.md
-    - Agenda: agenda.md
+  - Agenda: agenda.md
   - Diario: diario.md
   - Retos: retos.md
   - Proyectos: proyectos-lectores.md
   - Filosofía: filosofia.md
   - Introducción: introduccion.md
+  ...
   - Nivel principiante:
       - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
       - "02 — HTML básico": capitulos/02-html-basico.md
