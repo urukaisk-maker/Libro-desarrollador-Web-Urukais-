@@ -135,6 +135,7 @@ plugins:
   - print-site:
       add_to_navigation: true
       print_page_title: 'Versión imprimible'
+  - social
 
 markdown_extensions:
   - admonition
