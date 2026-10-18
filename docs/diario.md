@@ -15,6 +15,7 @@ La idea nació de mis propias notas. Me di cuenta de que en internet faltaba un 
 ### 🛠️ El stack detrás del libro
 
 Para los curiosos, este libro está construido con:
+
 - **MkDocs** y **Material for MkDocs** (el mejor tema que existe).
 - **GitHub Pages** para el alojamiento gratuito.
 - **GitHub Actions** para desplegar automáticamente en cada push.
