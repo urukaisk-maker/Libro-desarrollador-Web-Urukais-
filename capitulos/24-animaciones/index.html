@@ -4915,7 +4915,10 @@
       });
     }
   </script>
-    <div class="newsletter-modal-overlay" id="newsletterModal">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <div class="newsletter-modal-overlay" id="newsletterModal">
     <div class="newsletter-modal">
       <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
       <div class="newsletter-modal__icon">📬</div>
@@ -4930,71 +4933,8 @@
     </div>
   </div>
 
-  <script>
-    (function() {
-      const modal = document.getElementById('newsletterModal');
-      if (!modal) return;
-
-      // Si ya se mostró en esta sesión, no mostrar
-      if (sessionStorage.getItem('newsletter_seen') === '1') return;
-
-      // Mostrar tras 30 segundos
-      setTimeout(() => {
-        modal.classList.add('active');
-      }, 30000);
-
-      function cerrar() {
-        modal.classList.remove('active');
-        sessionStorage.setItem('newsletter_seen', '1');
-      }
-
-      document.getElementById('closeModal').addEventListener('click', cerrar);
-      document.getElementById('skipModal').addEventListener('click', (e) => {
-        e.preventDefault();
-        cerrar();
-      });
-
-      // Cerrar al hacer clic fuera del modal
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) cerrar();
-      });
-
-      // Cerrar con Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) cerrar();
-      });
-    })();
-  </script>
-
-  <div class="newsletter-modal-overlay" id="newsletterModal">
-    ...
-  </div>
-
-  <script>
-    ...
-  </script>
-    <div class="reading-progress" id="readingProgress"></div>
-  <script>
-    (function() {
-      const bar = document.getElementById('readingProgress');
-      if (!bar) return;
-      function update() {
-        const doc = document.documentElement;
-        const scrollTop = window.scrollY || doc.scrollTop;
-        const scrollHeight = doc.scrollHeight - window.innerHeight;
-        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-        bar.style.width = progress + '%';
-      }
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      update();
-    })();
-  </script>
-    <div id="cookieBanner" class="cookie-banner">
-    <p>
-      🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). 
-      Al continuar navegando, aceptas su uso.
-    </p>
+  <div id="cookieBanner" class="cookie-banner">
+    <p>🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.</p>
     <div class="cookie-banner__actions">
       <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
     </div>
@@ -5002,22 +4942,46 @@
 
   <script>
     (function() {
+      // --- Barra de progreso ---
+      const bar = document.getElementById('readingProgress');
+      if (bar) {
+        function update() {
+          const doc = document.documentElement;
+          const scrollTop = window.scrollY || doc.scrollTop;
+          const scrollHeight = doc.scrollHeight - window.innerHeight;
+          const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+          bar.style.width = progress + '%';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      }
+
+      // --- Modal de newsletter ---
+      const modal = document.getElementById('newsletterModal');
+      if (modal && sessionStorage.getItem('newsletter_seen') !== '1') {
+        setTimeout(() => modal.classList.add('active'), 30000);
+        function cerrar() {
+          modal.classList.remove('active');
+          sessionStorage.setItem('newsletter_seen', '1');
+        }
+        document.getElementById('closeModal').addEventListener('click', cerrar);
+        document.getElementById('skipModal').addEventListener('click', (e) => { e.preventDefault(); cerrar(); });
+        modal.addEventListener('click', (e) => { if (e.target === modal) cerrar(); });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal.classList.contains('active')) cerrar();
+        });
+      }
+
+      // --- Banner de cookies ---
       const banner = document.getElementById('cookieBanner');
-      if (!banner) return;
-
-      // Si ya aceptó, no mostrar
-      if (localStorage.getItem('cookie_consent') === 'true') return;
-
-      // Mostrar tras 2 segundos
-      setTimeout(() => {
-        banner.style.display = 'flex';
-      }, 2000);
-
-      // Al hacer clic en aceptar, guardar y ocultar
-      document.getElementById('acceptCookies').addEventListener('click', () => {
-        localStorage.setItem('cookie_consent', 'true');
-        banner.style.display = 'none';
-      });
+      if (banner && localStorage.getItem('cookie_consent') !== 'true') {
+        setTimeout(() => { banner.style.display = 'flex'; }, 2000);
+        document.getElementById('acceptCookies').addEventListener('click', () => {
+          localStorage.setItem('cookie_consent', 'true');
+          banner.style.display = 'none';
+        });
+      }
     })();
   </script>
 
