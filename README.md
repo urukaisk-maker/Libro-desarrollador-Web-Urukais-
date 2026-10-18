@@ -1,72 +1,64 @@
+<div align="center">
+
 # 📘 Libro del Desarrollador Web — Urukais
 
-> Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
+**El manual definitivo para aprender desarrollo web en español. Desde los cimientos hasta la vanguardia tecnológica.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![HTML](https://img.shields.io/badge/HTML-67%25-orange)]()
-[![CSS](https://img.shields.io/badge/CSS-21%25-blue)]()
+[![MkDocs Material](https://img.shields.io/badge/Made%20with-MkDocs%20Material-526CFE?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-222222?style=for-the-badge&logo=github)](https://libro.urukais.com/)
 
-## 🎯 Sobre el proyecto
+[🌐 Ver el libro online](https://libro.urukais.com/) · [🐛 Reportar un error](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues) · [🤝 Contribuir](CONTRIBUTING.md)
 
-Este repositorio contiene el material del libro/curso **"Libro del Desarrollador Web"** escrito por [Urukais](https://github.com/urukaisk-maker). Incluye teoría, ejemplos prácticos y ejercicios para aprender desarrollo web desde los fundamentos hasta técnicas avanzadas.
-
-## 📚 Contenido
-
-| Capítulo | Tema | Estado |
-|---|---|---|
-| 01 | Introducción al desarrollo web | 🚧 En progreso |
-| 02 | HTML básico | 📝 Pendiente |
-| 03 | CSS básico | 📝 Pendiente |
-| 04 | JavaScript esencial | 📝 Pendiente |
-
-## 🗂️ Estructura del repositorio
-
-    .
-    ├── docs/              # Documentación general
-    ├── capitulos/         # Contenido teórico en Markdown
-    ├── ejemplos/          # Código de ejemplo ejecutable
-    ├── recursos/          # Imágenes, fuentes, etc.
-    └── .github/           # Configuración de GitHub
-
-## 🚀 Cómo empezar
-
-### Clonar el repositorio
-
-    git clone https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git
-    cd Libro-desarrollador-Web-Urukais-
-
-### Leer el libro
-
-Empieza por [`docs/introduccion.md`](docs/introduccion.md) y sigue el orden de los capítulos.
-
-### Probar los ejemplos
-
-Cada carpeta en `ejemplos/` es autónoma. Abre el `index.html` en tu navegador o usa un servidor local:
-
-    python3 -m http.server 8000
-
-Luego visita `http://localhost:8000`.
-
-## 🛠️ Tecnologías
-
-- **HTML5** — Estructura
-- **CSS3 / SCSS** — Estilos
-- **JavaScript** — Interactividad
-- **Markdown** — Contenido del libro
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Lee [CONTRIBUTING.md](CONTRIBUTING.md) antes de enviar un PR.
-
-## 📜 Licencia
-
-Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
-
-## 👤 Autor
-
-**Manuel Casimiro Carrasco (Urukais)**
-- GitHub: [@urukaisk-maker](https://github.com/urukaisk-maker)
+</div>
 
 ---
 
-⭐ Si este proyecto te resulta útil, considera darle una estrella.
+## 🚀 Sobre el proyecto
+
+**Libro del Desarrollador Web** es un proyecto educativo de código abierto diseñado para llevar a cualquier persona desde sus primeros pasos en HTML hasta las arquitecturas más complejas del desarrollo moderno (Web3, IA, Edge Computing, etc.).
+
+No es solo un libro de texto; es una **plataforma de aprendizaje interactiva**.
+
+## ✨ Características principales
+
+- **36 Capítulos** organizados en 7 niveles (desde Principiante hasta Vanguardia).
+- **Ejercicios Resueltos**: Soluciones comentadas para practicar.
+- **Quizzes Interactivos**: Tests al final de cada capítulo para poner a prueba tus conocimientos.
+- **Editor en Vivo (Sandbox)**: Prueba HTML y CSS directamente en la página.
+- **Gamificación**: Sistema de logros para los lectores constantes.
+- **Diagramas de Arquitectura**: Creados con Mermaid.js.
+- **Comentarios (Giscus)**: Debate en cada capítulo usando GitHub Discussions.
+- **Modo Oscuro/Claro**: Adaptado para largas sesiones de lectura.
+- **Newsletter y Comunidad**: Integración con Substack.
+
+## 📚 Niveles del libro
+
+| Nivel | Descripción |
+|---|---|
+| 🟢 **Principiante** | HTML, CSS, JavaScript, diseño responsive, formularios. |
+| 🟡 **Intermedio** | Git, consumo de APIs, despliegue, portfolio. |
+| 🟠 **Avanzado** | CSS moderno, JS asíncrono, TypeScript, testing, arquitectura. |
+| 🔴 **Profesional** | Full-stack con Node.js y DevOps para frontend. |
+| 🟣 **Experto** | Web Components, PWA, WebSockets, animaciones, design systems. |
+| 🔵 **Élite** | Seguridad, WebAssembly, IA, WebXR y Web3. |
+| 🚀 **Vanguardia** | Testing E2E, Server Components, Edge Computing, Docker, GraphQL y Micro-frontends. |
+
+## 🛠️ Stack Tecnológico
+
+El libro está construido con las mejores herramientas del ecosistema:
+
+- **MkDocs** + **Material for MkDocs**: Generación del sitio estático y diseño.
+- **Python**: Motor de construcción y scripts de automatización.
+- **HTML/CSS/JS**: Personalización de la UI, lógica de quizzes y gamificación.
+- **GitHub Actions**: CI/CD automatizado para despliegues.
+- **GitHub Pages**: Alojamiento con dominio personalizado.
+
+## 🚀 Cómo ejecutar el libro en local
+
+Si quieres clonar el repositorio y ejecutarlo en tu ordenador para hacer pruebas o contribuir:
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git
+   cd Libro-desarrollador-Web-Urukais-
