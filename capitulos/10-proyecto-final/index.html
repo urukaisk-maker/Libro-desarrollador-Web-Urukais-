@@ -77,6 +77,9 @@
     
   
   <link rel="stylesheet" href="../../assets/css/share.css">
+  <link rel="stylesheet" href="../../assets/css/custom.css">
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="theme-color" content="#6a5acd">
 
   </head>
   
@@ -3964,6 +3967,15 @@
       
     
   <script src="../../assets/js/share.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../../sw.js')
+          .then(reg => console.log('Service Worker OK'))
+          .catch(err => console.error('SW error:', err));
+      });
+    }
+  </script>
 
   </body>
 </html>
