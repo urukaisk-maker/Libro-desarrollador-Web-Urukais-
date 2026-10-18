@@ -596,3 +596,10 @@ body {
     border-radius: 16px 16px 0 0;
   }
 }
+
+.book-hero {
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  /* ... resto de estilos ... */
+}
