@@ -7,7 +7,7 @@
   </p>
   <div class="book-hero__stats">
     <div class="book-hero__stat">
-      <span class="book-hero__stat-number">33</span>
+      <span class="book-hero__stat-number">36</span>
       <span class="book-hero__stat-label">Capítulos</span>
     </div>
     <div class="book-hero__stat">
@@ -25,14 +25,6 @@
   </div>
   <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
 </div>
-
-
-# Libro del Desarrollador Web
-
-Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.
-
-!!! tip "33 capítulos · 6 niveles · 100% gratis"
-    Este libro es **abierto y gratuito**. Puedes leerlo, copiarlo, modificarlo y contribuir mejoras.
 
 ## 🚀 Empezar
 
@@ -94,7 +86,7 @@ Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego si
 
     ---
 
-    Testing E2E, Server Components y Edge Computing.
+    Testing E2E, Server Components, Edge Computing, Docker, GraphQL y Micro-frontends.
 
     [:octicons-arrow-right-24: Ir a la vanguardia](capitulos/31-testing-e2e.md)
 
@@ -137,6 +129,17 @@ Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego si
 - [Changelog](changelog.md) — historial de cambios
 - [Contribuir](contribuir.md) — cómo participar
 - [Contacto](contacto.md) — escríbeme
+
+## 📬 Newsletter
+
+Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+
+<div style="max-width: 500px; margin: 1.5rem 0; padding: 1.5rem; border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc; text-align: center;">
+  <p style="margin-top: 0; font-weight: 600; color: #1e293b;">Suscríbete para no perderte nada</p>
+  <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" style="display: inline-block; background: #6a5acd; color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;">
+    Suscribirme
+  </a>
+</div>
 
 ## 👤 Sobre el autor
 
