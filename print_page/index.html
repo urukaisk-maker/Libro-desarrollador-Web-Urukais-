@@ -80,9 +80,106 @@
   <link rel="stylesheet" href="../assets/css/custom.css">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6a5acd">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #a78bfa, #22d3ee);
+      z-index: 99999;
+      transition: width 100ms ease-out;
+      pointer-events: none;
+    }
+
+    .newsletter-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    .newsletter-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .newsletter-modal {
+      background: #1e293b;
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 480px;
+      width: 90%;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 300ms ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .newsletter-modal-overlay.active .newsletter-modal {
+      transform: scale(1);
+    }
+    .newsletter-modal__close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: transparent; border: none; color: #94a3b8;
+      font-size: 1.5rem; cursor: pointer;
+    }
+    .newsletter-modal__close:hover { color: white; }
+    .newsletter-modal__icon { font-size: 3rem; margin-bottom: 1rem; }
+    .newsletter-modal__title { color: #fff; margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 800; }
+    .newsletter-modal__text { color: #cbd5e1; margin: 0 0 1.5rem; line-height: 1.6; }
+    .newsletter-modal__cta {
+      display: block; background: linear-gradient(90deg, #a78bfa, #22d3ee);
+      color: #0f172a; padding: 0.9rem; border-radius: 12px;
+      font-weight: 700; text-decoration: none; text-align: center;
+    }
+    .newsletter-modal__skip { display: block; text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.85rem; text-decoration: none; }
+
+    .cookie-banner {
+      display: none;
+      position: fixed !important;
+      bottom: 1rem !important;
+      left: 1rem !important;
+      right: 1rem !important;
+      max-width: 480px;
+      background: var(--md-default-bg-color);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      padding: 1.25rem;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 99998 !important;
+      font-family: 'Inter', sans-serif;
+    }
+    .cookie-banner p { margin: 0; font-size: 0.85rem; color: var(--md-default-fg-color); line-height: 1.5; }
+    .cookie-banner__actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+    .cookie-banner__btn {
+      background: #6a5acd; color: white; border: none;
+      padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;
+    }
+    
+    @media (max-width: 600px) {
+      .cookie-banner {
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+      }
+    }
+  </style>
 
   
         <script type="text/javascript">
