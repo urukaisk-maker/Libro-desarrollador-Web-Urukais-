@@ -80,6 +80,11 @@
   
   <link rel="stylesheet" href="../../assets/css/share.css">
   <link rel="stylesheet" href="../../assets/css/custom.css">
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="theme-color" content="#6a5acd">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   </head>
   
@@ -4140,8 +4145,32 @@
         <script src="../../js/print-site.js"></script>
       
     
-  <script src="../../assets/js/custom.js" defer></script>
   <script src="../../assets/js/share.js" defer></script>
+  <script src="../../assets/js/custom.js" defer></script>
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <div class="newsletter-modal-overlay" id="newsletterModal">
+    <div class="newsletter-modal">
+      <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
+      <div class="newsletter-modal__icon">📬</div>
+      <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
+      <p class="newsletter-modal__text">
+        Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+      </p>
+      <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
+        Suscribirme gratis
+      </a>
+      <a href="#" class="newsletter-modal__skip" id="skipModal">No, gracias</a>
+    </div>
+  </div>
+
+  <div id="cookieBanner" class="cookie-banner">
+    <p>🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.</p>
+    <div class="cookie-banner__actions">
+      <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
+    </div>
+  </div>
 
   </body>
 </html>

@@ -806,3 +806,21 @@ body {
     left: 1rem;
   }
 }
+
+.book-cover-container {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  perspective: 1000px;
+}
+.book-cover-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.4), inset 4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  border-left: 5px solid rgba(255, 255, 255, 0.2);
+}
+.book-cover-img:hover {
+  transform: translateY(-10px) rotateY(-5deg);
+  box-shadow: -25px 25px 60px rgba(0, 0, 0, 0.5);
+}
