@@ -24,7 +24,9 @@
 <div style="text-align: center; margin-bottom: 4rem;">
   <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
 </div>
-
+---
+template: home.html
+---
 ## 🚀 El Viaje del Desarrollador
 
 Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva desde tus primeros pasos en HTML hasta las arquitecturas más avanzadas que se usan hoy en Silicon Valley.
