@@ -3,9 +3,21 @@
 {% block extrahead %}
   {{ super() }}
   <link rel="stylesheet" href="{{ base_url }}/assets/css/share.css">
+  <link rel="stylesheet" href="{{ base_url }}/assets/css/custom.css">
+  <link rel="manifest" href="{{ base_url }}/manifest.json">
+  <meta name="theme-color" content="#6a5acd">
 {% endblock %}
 
 {% block scripts %}
   {{ super() }}
   <script src="{{ base_url }}/assets/js/share.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('{{ base_url }}/sw.js')
+          .then(reg => console.log('Service Worker OK'))
+          .catch(err => console.error('SW error:', err));
+      });
+    }
+  </script>
 {% endblock %}
