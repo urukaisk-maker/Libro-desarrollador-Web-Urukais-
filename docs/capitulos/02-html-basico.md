@@ -29,7 +29,32 @@ HTML (*HyperText Markup Language*) es el lenguaje de marcado que define la **est
   </div>
   <div class="quiz-feedback"></div>
 </div>
+### 🎮 Editor en Vivo
 
+Prueba tus conocimientos de HTML editando el código de la izquierda y viendo el resultado a la derecha (o abajo).
+
+<div class="live-sandbox-wrapper">
+  <p>💡 Edita el texto y pulsa el botón para ver los cambios.</p>
+  <iframe 
+    class="live-sandbox" 
+    srcdoc='
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: sans-serif; padding: 2rem; text-align: center; background: #f8fafc; }
+          h1 { color: #6a5acd; }
+        </style>
+      </head>
+      <body>
+        <h1>¡Hola, mundo!</h1>
+        <p>Este es mi primer código HTML interactivo.</p>
+        <button onclick="alert('"'"'¡Funciona! 🎉'"'"')">Haz clic aquí</button>
+      </body>
+      </html>
+    '>
+  </iframe>
+</div>
 <div class="quiz-container" data-correct="c">
   <p class="quiz-question">¿Cuál es la etiqueta correcta para crear un enlace?</p>
   <div class="quiz-options">

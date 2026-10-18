@@ -4,8 +4,4 @@
 
 ## Galería
 
-*   **Tu proyecto aquí**: Abre un [issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues) con el enlace a tu web para aparecer en esta sección.
-
----
-
-[Volver al inicio](index.md)
+*   **Tu proyecto aquí**: Abre un [issue en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues) con el enlace a tu web y una captura, y lo añadiré a esta lista.
