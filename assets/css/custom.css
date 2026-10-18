@@ -1029,3 +1029,27 @@ body {
     padding: 0.75rem !important;
   }
 }
+
+/* ============================================
+   ANIMACIONES DE SCROLL (FADE-IN)
+   ============================================ */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
