@@ -407,3 +407,26 @@ Es la mejor forma de aprender de los errores.
 ---
 
 ⬅️ [Capítulo 19 — Full-stack con Node.js](19-fullstack-node.md) | ➡️ [Apéndices](../apendices/index.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué significa CI/CD?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Code Integration / Code Deployment</button>
+    <button class="quiz-option" data-option="b">B) Continuous Internet / Continuous Data</button>
+    <button class="quiz-option" data-option="c">C) Continuous Integration / Continuous Deployment</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué herramienta de GitHub ejecuta los flujos de trabajo automáticos?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) GitHub Pages</button>
+    <button class="quiz-option" data-option="b">B) GitHub Actions</button>
+    <button class="quiz-option" data-option="c">C) GitHub Copilot</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

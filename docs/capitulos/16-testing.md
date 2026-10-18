@@ -466,3 +466,26 @@ Distribución recomendada: muchos tests unitarios (rápidos y baratos), algunos 
 ---
 
 ⬅️ [Capítulo 15 — TypeScript desde cero](15-typescript.md) | ➡️ [Capítulo 17 — Rendimiento web](17-rendimiento.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué tipo de test comprueba una función o módulo de forma aislada?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Test E2E</button>
+    <button class="quiz-option" data-option="b">B) Test Unitario</button>
+    <button class="quiz-option" data-option="c">C) Test de Integración</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué significa TDD?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Test-Driven Development</button>
+    <button class="quiz-option" data-option="b">B) Total Data Debugging</button>
+    <button class="quiz-option" data-option="c">C) Test Data Deployment</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

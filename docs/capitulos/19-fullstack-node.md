@@ -524,3 +524,26 @@ flowchart LR
 \`\`\`
 
 Flujo típico de una aplicación full-stack: el navegador se comunica con el backend mediante APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué framework de Node.js es el más popular para crear APIs?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Django</button>
+    <button class="quiz-option" data-option="b">B) Express</button>
+    <button class="quiz-option" data-option="c">C) Laravel</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué herramienta se usa en el capítulo para hablar con PostgreSQL desde Node.js?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Prisma</button>
+    <button class="quiz-option" data-option="b">B) Mongoose</button>
+    <button class="quiz-option" data-option="c">C) Sequelize</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

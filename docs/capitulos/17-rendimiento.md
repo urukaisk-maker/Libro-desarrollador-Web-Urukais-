@@ -279,3 +279,26 @@ Checklist aplicada a un caso real:
 ---
 
 ⬅️ [Capítulo 16 — Testing frontend](16-testing.md) | ➡️ [Capítulo 18 — Arquitectura frontend](18-arquitectura.md)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué métrica mide el tiempo que tarda en cargar el elemento más grande de la página?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) FCP (First Contentful Paint)</button>
+    <button class="quiz-option" data-option="b">B) CLS (Cumulative Layout Shift)</button>
+    <button class="quiz-option" data-option="c">C) LCP (Largest Contentful Paint)</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="b">
+  <p class="quiz-question">¿Qué atributo HTML carga las imágenes solo cuando están a punto de aparecer en pantalla?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) async</button>
+    <button class="quiz-option" data-option="b">B) loading="lazy"</button>
+    <button class="quiz-option" data-option="c">C) defer</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>

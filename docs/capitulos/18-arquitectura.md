@@ -455,3 +455,26 @@ En feature-first cada funcionalidad es autónoma. `shared/` contiene lo reutiliz
 ---
 
 ⬅️ [Capítulo 17 — Rendimiento web](17-rendimiento.md) | ➡️ Apéndices (chuletas, glosario, recursos por nivel)
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz-container" data-correct="a">
+  <p class="quiz-question">¿Qué estructura de carpetas agrupa los archivos por funcionalidad (ej. /auth, /carrito)?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Feature-first</button>
+    <button class="quiz-option" data-option="b">B) Type-first</button>
+    <button class="quiz-option" data-option="c">C) Monorepo</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-container" data-correct="c">
+  <p class="quiz-question">¿Qué tipo de estado se refiere a los datos que vienen de una API (ej. lista de productos)?</p>
+  <div class="quiz-options">
+    <button class="quiz-option" data-option="a">A) Estado Local</button>
+    <button class="quiz-option" data-option="b">B) Estado Global</button>
+    <button class="quiz-option" data-option="c">C) Estado del Servidor</button>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
