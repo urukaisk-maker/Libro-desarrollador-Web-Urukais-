@@ -20,10 +20,7 @@ Una colección de las aplicaciones web, experimentos y herramientas que he const
 
     **Heavy Metal & Tech:** La intersección perfecta entre la tecnología de vanguardia y el poder del heavy metal. Explora cómo la innovación está moldeando el sonido y la cultura del metal.
     
-    <div style="display: flex; gap: 1rem; margin-top: 1rem; font-weight: bold; color: var(--md-primary-fg-color);">
-        <span>📊 329 Proyectos</span>
-        <span>👥 46.320 Visitas</span>
-    </div>
+    📊 **329** Proyectos · 👥 **46.320** Visitas
 
     [:octicons-arrow-right-24: Visitar sitio](https://unique-biscochitos-31bcea.netlify.app/){ target="_blank" }
 
@@ -33,11 +30,7 @@ Una colección de las aplicaciones web, experimentos y herramientas que he const
 
     **Navidad:** La elegancia de la tradición. El encanto de la Navidad. Clásicos y joyas modernas del cine navideño.
     
-    <div style="display: flex; gap: 0.5rem; margin-top: 1rem; font-weight: bold; color: #22d3ee;">
-        <span>67 Días</span> <span>|</span>
-        <span>04 Horas</span> <span>|</span>
-        <span>29 Min</span>
-    </div>
+    🎄 **67 Días** · ⏰ **04 Horas** · ⏳ **29 Min**
 
     [:octicons-arrow-right-24: Ver portal navideño](https://tranquil-taffy-3dbe57.netlify.app/){ target="_blank" }
 
