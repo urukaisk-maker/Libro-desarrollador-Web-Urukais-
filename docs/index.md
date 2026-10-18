@@ -1,9 +1,9 @@
 <div class="book-hero">
-  <div class="book-hero__badge">📘 Libro abierto · Edición 2026</div>
+  <div class="book-hero__badge">⚡ Edición 2026 · Vanguardia Tecnológica</div>
   <h1 class="book-hero__title">Libro del<br>Desarrollador Web</h1>
   <p class="book-hero__subtitle">
-    Desde "qué es HTML" hasta WebAssembly, IA y Web3.<br>
-    Todo lo que necesitas para ser desarrollador, en un solo lugar.
+    Desde los cimientos de HTML hasta la Inteligencia Artificial, Edge Computing y Web3.<br>
+    La guía definitiva para construir el futuro de la web.
   </p>
   <div class="book-hero__stats">
     <div class="book-hero__stat">
@@ -20,128 +20,131 @@
     </div>
     <div class="book-hero__stat">
       <span class="book-hero__stat-number">100%</span>
-      <span class="book-hero__stat-label">Gratis</span>
+      <span class="book-hero__stat-label">Open Source</span>
     </div>
   </div>
   <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
 </div>
 
-## 🚀 Empezar
+## 🚀 El Viaje del Desarrollador
 
-Si es tu primera vez, lee primero la [Introducción](introduccion.md) y luego sigue los capítulos en orden.
-
-## 📚 Contenido por niveles
+Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva desde tus primeros pasos en HTML hasta las arquitecturas más avanzadas que se usan hoy en Silicon Valley.
 
 <div class="grid cards" markdown>
 
--   :material-numeric-1-circle:{ .lg .middle } __Nivel principiante__
+-   :material-numeric-1-circle:{ .lg .middle } __Nivel 1: Principiante__
 
     ---
 
-    HTML, CSS, JavaScript, diseño responsive y formularios.
+    Aprende las bases: HTML, CSS, JavaScript, diseño responsive y formularios.
 
-    [:octicons-arrow-right-24: Empezar](capitulos/01-introduccion.md)
+    [:octicons-arrow-right-24: Empezar el viaje](capitulos/01-introduccion.md)
 
--   :material-numeric-2-circle:{ .lg .middle } __Nivel intermedio__
-
-    ---
-
-    Git, consumo de APIs, despliegue y tu primer portfolio.
-
-    [:octicons-arrow-right-24: Continuar](capitulos/07-git.md)
-
--   :material-numeric-3-circle:{ .lg .middle } __Nivel avanzado__
+-   :material-numeric-2-circle:{ .lg .middle } __Nivel 2: Intermedio__
 
     ---
 
-    CSS moderno, JavaScript asíncrono, TypeScript, testing y más.
+    Domina Git, el consumo de APIs, despliegue en producción y tu primer portfolio.
 
-    [:octicons-arrow-right-24: Explorar](capitulos/11-css-moderno.md)
+    [:octicons-arrow-right-24: Subir de nivel](capitulos/07-git.md)
 
--   :material-numeric-4-circle:{ .lg .middle } __Nivel profesional__
-
-    ---
-
-    Full-stack con Node.js y DevOps para frontend.
-
-    [:octicons-arrow-right-24: Ver capítulos](capitulos/19-fullstack-node.md)
-
--   :material-numeric-5-circle:{ .lg .middle } __Nivel experto__
+-   :material-numeric-3-circle:{ .lg .middle } __Nivel 3: Avanzado__
 
     ---
 
-    Web Components, PWA, WebSockets, animaciones y design systems.
+    CSS moderno, JavaScript asíncrono, TypeScript, testing y arquitectura frontend.
 
-    [:octicons-arrow-right-24: Descubrir](capitulos/21-web-components.md)
+    [:octicons-arrow-right-24: Explorar la técnica](capitulos/11-css-moderno.md)
 
--   :material-numeric-6-circle:{ .lg .middle } __Nivel élite__
+-   :material-numeric-4-circle:{ .lg .middle } __Nivel 4: Profesional__
 
     ---
 
-    Seguridad, WebAssembly, IA, WebXR y Web3.
+    Conviértete en Full-stack con Node.js y domina el DevOps para frontend.
 
-    [:octicons-arrow-right-24: Sumergirse](capitulos/26-seguridad.md)
+    [:octicons-arrow-right-24: Pensar como pro](capitulos/19-fullstack-node.md)
 
--   :material-rocket-launch:{ .lg .middle } __Nivel vanguardia__
+-   :material-numeric-5-circle:{ .lg .middle } __Nivel 5: Experto__
+
+    ---
+
+    Web Components, PWA, WebSockets, animaciones avanzadas y design systems.
+
+    [:octicons-arrow-right-24: Crear experiencias](capitulos/21-web-components.md)
+
+-   :material-numeric-6-circle:{ .lg .middle } __Nivel 6: Élite__
+
+    ---
+
+    Seguridad, WebAssembly, IA en el frontend, WebXR y Web3.
+
+    [:octicons-arrow-right-24: Romper límites](capitulos/26-seguridad.md)
+
+-   :material-rocket-launch:{ .lg .middle } __Nivel 7: Vanguardia__
 
     ---
 
     Testing E2E, Server Components, Edge Computing, Docker, GraphQL y Micro-frontends.
 
-    [:octicons-arrow-right-24: Ir a la vanguardia](capitulos/31-testing-e2e.md)
+    [:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
 
 </div>
 
-## 🧩 Ejemplos y Diagramas
+## 🛠️ Tu Caja de Herramientas
 
 <div class="grid cards" markdown>
 
--   :material-file-code:{ .lg .middle } __Ejemplos ejecutables__
+-   :material-file-code:{ .lg .middle } __Ejemplos Ejecutables__
 
     ---
 
-    Código listo para copiar, pegar y probar en cada capítulo.
+    Código listo para copiar, pegar y probar en cada capítulo. Sin rodeos.
 
-    [:octicons-arrow-right-24: Ver ejemplos](ejemplos/index.md)
+    [:octicons-arrow-right-24: Ver código](ejemplos/index.md)
 
--   :material-chart-timeline-variant:{ .lg .middle } __Galería de diagramas__
+-   :material-chart-timeline-variant:{ .lg .middle } __Galería Visual__
 
     ---
 
-    Todos los diagramas visuales del libro recopilados en una página.
+    Todos los diagramas de arquitectura, flujos y conceptos recopilados.
 
     [:octicons-arrow-right-24: Ver diagramas](diagramas.md)
 
--   :material-pencil-ruler:{ .lg .middle } __Ejercicios resueltos__
+-   :material-pencil-ruler:{ .lg .middle } __Ejercicios Resueltos__
 
     ---
 
-    Soluciones comentadas para practicar y consolidar lo aprendido.
+    Soluciones comentadas para que no te quedes atascado.
 
-    [:octicons-arrow-right-24: Ver soluciones](ejercicios/index.md)
+    [:octicons-arrow-right-24: Practicar ahora](ejercicios/index.md)
 
 </div>
 
-## 📌 Más sobre el proyecto
+## 📌 El Proyecto
 
-- [Filosofía del proyecto](filosofia.md) — por qué existe y cómo está hecho
-- [Roadmap](roadmap.md) — qué viene a continuación
-- [Changelog](changelog.md) — historial de cambios
-- [Contribuir](contribuir.md) — cómo participar
-- [Contacto](contacto.md) — escríbeme
+- [Filosofía](filosofia.md) — por qué existe y cómo está construido.
+- [Roadmap](roadmap.md) — qué viene a continuación.
+- [Changelog](changelog.md) — historial de cambios.
+- [Contribuir](contribuir.md) — cómo participar.
+- [FAQ](faq.md) — preguntas frecuentes.
+- [Contacto](contacto.md) — escríbeme.
 
-## 📬 Newsletter
+---
+
+## 📬 Únete a la Comunidad
 
 Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
 
-<div style="max-width: 500px; margin: 1.5rem 0; padding: 1.5rem; border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc; text-align: center;">
-  <p style="margin-top: 0; font-weight: 600; color: #1e293b;">Suscríbete para no perderte nada</p>
-  <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" style="display: inline-block; background: #6a5acd; color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;">
+<div style="max-width: 500px; margin: 1.5rem auto; padding: 1.5rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; background: var(--md-default-bg-color); text-align: center;">
+  <p style="margin-top: 0; font-weight: 600;">Suscríbete para no perderte nada</p>
+  <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(90deg, #a78bfa, #22d3ee); color: #0f172a; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700;">
     Suscribirme
   </a>
 </div>
 
-## 👤 Sobre el autor
+---
+
+## 👤 Sobre el Autor
 
 Este libro es un proyecto de **Manuel Casimiro Carrasco (Urukais)**.
 Más información en [Sobre el autor](autor.md).
