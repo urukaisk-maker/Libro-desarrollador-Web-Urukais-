@@ -202,35 +202,249 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// CALENDARIO (FULLCALENDAR)
+// CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   const calendarEl = document.getElementById('calendar');
-  
-  // Verificamos que el elemento existe y que la librería se ha cargado
-  if (calendarEl && typeof FullCalendar !== 'undefined') {
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      locale: 'es',
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listWeek'
-      },
-      buttonText: {
-        today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista'
-      },
-      events: [
-        { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
-        { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
-        { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
-        { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
-        { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
-        { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
-        { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
-        { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
-      ]
+  if (!calendarEl || typeof FullCalendar === 'undefined') return;
+
+  // Eventos oficiales del libro
+  const eventosOficiales = [
+    { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
+    { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
+    { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
+    { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
+    { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
+    { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
+    { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
+    { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
+  ];
+
+  // Cargar eventos guardados por el usuario
+  let eventosUsuario = JSON.parse(localStorage.getItem('mis_eventos_urukais') || '[]');
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'es',
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,listWeek'
+    },
+    buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista' },
+    events: [...eventosOficiales, ...eventosUsuario],
+
+    // Añadir evento al hacer clic en un día
+    dateClick: (info) => {
+      const titulo = prompt(`📌 Añadir evento para el ${info.dateStr}:\n(Escribe el título o deja vacío para cancelar)`);
+      if (!titulo || titulo.trim() === '') return;
+
+      const nuevoEvento = {
+        id: 'user_' + Date.now(),
+        title: '📌 ' + titulo.trim(),
+        start: info.dateStr,
+        color: '#16a34a',
+        allDay: true
+      };
+
+      eventosUsuario.push(nuevoEvento);
+      localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+      calendar.addEvent(nuevoEvento);
+    },
+
+    // Eliminar evento al hacer clic (solo los del usuario)
+    eventClick: (info) => {
+      const id = info.event.id;
+      if (id && id.startsWith('user_')) {
+        if (confirm(`¿Eliminar "${info.event.title}"?`)) {
+          info.event.remove();
+          eventosUsuario = eventosUsuario.filter(e => e.id !== id);
+          localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+        }
+      } else {
+        alert(`${info.event.title}\n📅 ${info.event.startStr}`);
+      }
+    }
+  });
+
+  calendar.render();
+
+  // Botón para limpiar todos los eventos del usuario
+  const btnClear = document.getElementById('clearEvents');
+  if (btnClear) {
+    btnClear.addEventListener('click', () => {
+      if (confirm('¿Seguro que quieres borrar todos tus eventos?')) {
+        localStorage.removeItem('mis_eventos_urukais');
+        eventosUsuario = [];
+        calendar.getEvents().forEach(e => {
+          if (e.id && e.id.startsWith('user_')) e.remove();
+        });
+      }
     });
-    calendar.render();
+  }
+});// ============================================
+// CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const calendarEl = document.getElementById('calendar');
+  if (!calendarEl || typeof FullCalendar === 'undefined') return;
+
+  // Eventos oficiales del libro
+  const eventosOficiales = [
+    { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
+    { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
+    { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
+    { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
+    { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
+    { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
+    { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
+    { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
+  ];
+
+  // Cargar eventos guardados por el usuario
+  let eventosUsuario = JSON.parse(localStorage.getItem('mis_eventos_urukais') || '[]');
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'es',
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,listWeek'
+    },
+    buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista' },
+    events: [...eventosOficiales, ...eventosUsuario],
+
+    // Añadir evento al hacer clic en un día
+    dateClick: (info) => {
+      const titulo = prompt(`📌 Añadir evento para el ${info.dateStr}:\n(Escribe el título o deja vacío para cancelar)`);
+      if (!titulo || titulo.trim() === '') return;
+
+      const nuevoEvento = {
+        id: 'user_' + Date.now(),
+        title: '📌 ' + titulo.trim(),
+        start: info.dateStr,
+        color: '#16a34a',
+        allDay: true
+      };
+
+      eventosUsuario.push(nuevoEvento);
+      localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+      calendar.addEvent(nuevoEvento);
+    },
+
+    // Eliminar evento al hacer clic (solo los del usuario)
+    eventClick: (info) => {
+      const id = info.event.id;
+      if (id && id.startsWith('user_')) {
+        if (confirm(`¿Eliminar "${info.event.title}"?`)) {
+          info.event.remove();
+          eventosUsuario = eventosUsuario.filter(e => e.id !== id);
+          localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+        }
+      } else {
+        alert(`${info.event.title}\n📅 ${info.event.startStr}`);
+      }
+    }
+  });
+
+  calendar.render();
+
+  // Botón para limpiar todos los eventos del usuario
+  const btnClear = document.getElementById('clearEvents');
+  if (btnClear) {
+    btnClear.addEventListener('click', () => {
+      if (confirm('¿Seguro que quieres borrar todos tus eventos?')) {
+        localStorage.removeItem('mis_eventos_urukais');
+        eventosUsuario = [];
+        calendar.getEvents().forEach(e => {
+          if (e.id && e.id.startsWith('user_')) e.remove();
+        });
+      }
+    });
+  }
+});// ============================================
+// CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const calendarEl = document.getElementById('calendar');
+  if (!calendarEl || typeof FullCalendar === 'undefined') return;
+
+  // Eventos oficiales del libro
+  const eventosOficiales = [
+    { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
+    { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
+    { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
+    { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
+    { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
+    { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
+    { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
+    { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
+  ];
+
+  // Cargar eventos guardados por el usuario
+  let eventosUsuario = JSON.parse(localStorage.getItem('mis_eventos_urukais') || '[]');
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'es',
+    selectable: true,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,listWeek'
+    },
+    buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista' },
+    events: [...eventosOficiales, ...eventosUsuario],
+
+    // Añadir evento al hacer clic en un día
+    dateClick: (info) => {
+      const titulo = prompt(`📌 Añadir evento para el ${info.dateStr}:\n(Escribe el título o deja vacío para cancelar)`);
+      if (!titulo || titulo.trim() === '') return;
+
+      const nuevoEvento = {
+        id: 'user_' + Date.now(),
+        title: '📌 ' + titulo.trim(),
+        start: info.dateStr,
+        color: '#16a34a',
+        allDay: true
+      };
+
+      eventosUsuario.push(nuevoEvento);
+      localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+      calendar.addEvent(nuevoEvento);
+    },
+
+    // Eliminar evento al hacer clic (solo los del usuario)
+    eventClick: (info) => {
+      const id = info.event.id;
+      if (id && id.startsWith('user_')) {
+        if (confirm(`¿Eliminar "${info.event.title}"?`)) {
+          info.event.remove();
+          eventosUsuario = eventosUsuario.filter(e => e.id !== id);
+          localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
+        }
+      } else {
+        alert(`${info.event.title}\n📅 ${info.event.startStr}`);
+      }
+    }
+  });
+
+  calendar.render();
+
+  // Botón para limpiar todos los eventos del usuario
+  const btnClear = document.getElementById('clearEvents');
+  if (btnClear) {
+    btnClear.addEventListener('click', () => {
+      if (confirm('¿Seguro que quieres borrar todos tus eventos?')) {
+        localStorage.removeItem('mis_eventos_urukais');
+        eventosUsuario = [];
+        calendar.getEvents().forEach(e => {
+          if (e.id && e.id.startsWith('user_')) e.remove();
+        });
+      }
+    });
   }
 });
