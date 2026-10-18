@@ -88,33 +88,3 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
     [:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
 
 </div>
-
-## 🛠️ Tu Caja de Herramientas
-
-<div class="grid cards" markdown>
-
--   :material-file-code:{ .lg .middle } __Ejemplos Ejecutables__
-
-    ---
-
-    Código listo para copiar, pegar y probar en cada capítulo. Sin rodeos.
-
-    [:octicons-arrow-right-24: Ver código](ejemplos/index.md)
-
--   :material-chart-timeline-variant:{ .lg .middle } __Galería Visual__
-
-    ---
-
-    Todos los diagramas de arquitectura, flujos y conceptos recopilados.
-
-    [:octicons-arrow-right-24: Ver diagramas](diagramas.md)
-
--   :material-pencil-ruler:{ .lg .middle } __Ejercicios Resueltos__
-
-    ---
-
-    Soluciones comentadas para que no te quedes atascado.
-
-    [:octicons-arrow-right-24: Practicar ahora](ejercicios/index.md)
-
-</div>
