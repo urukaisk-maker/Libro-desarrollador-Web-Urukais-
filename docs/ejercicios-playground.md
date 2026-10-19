@@ -19,6 +19,7 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
   <p id="ranking-message" style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--md-default-fg-color--light);">
     ¡Empieza a resolver retos para ver tu progreso!
   </p>
+  <div id="badges-container" style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;"></div>
 </div>
 
 ---
@@ -1079,6 +1080,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
+  // Sistema de insignias
+  const insignias = [
+    { id: 'novato', nombre: 'Novato', icono: '🥉', min: 1, desc: '1 reto completado' },
+    { id: 'aprendiz', nombre: 'Aprendiz', icono: '🥈', min: 3, desc: '3 retos completados' },
+    { id: 'intermedio', nombre: 'Intermedio', icono: '🥇', min: 5, desc: '5 retos completados' },
+    { id: 'experto', nombre: 'Experto', icono: '💎', min: 8, desc: '8 retos completados' },
+    { id: 'leyenda', nombre: 'Leyenda', icono: '🏆', min: 10, desc: '10 retos completados' },
+    { id: 'maestro', nombre: 'Maestro', icono: '👑', min: 15, desc: '15 retos completados' },
+    { id: 'dios', nombre: 'Dios del Código', icono: '⚡', min: 20, desc: '20 retos completados' }
+  ];
+
+  function actualizarBadges() {
+    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
+    const count = completados.length;
+    const container = document.getElementById('badges-container');
+    if (!container) return;
+
+    container.innerHTML = insignias.map(ins => {
+      const desbloqueada = count >= ins.min;
+      return `<div style="
+        background: ${desbloqueada ? 'linear-gradient(135deg, #f59e0b, #fbbf24)' : 'var(--md-default-fg-color--lightest)'};
+        color: ${desbloqueada ? '#0f172a' : 'var(--md-default-fg-color--light)'};
+        padding: 0.6rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        opacity: ${desbloqueada ? '1' : '0.4'};
+        transition: all 0.3s ease;
+        box-shadow: ${desbloqueada ? '0 4px 12px rgba(245, 158, 11, 0.4)' : 'none'};
+        animation: ${desbloqueada ? 'badgeShine 3s infinite linear' : 'none'};
+        background-size: 200% auto;
+      " title="${ins.desc}">
+        <span style="font-size: 1.2rem;">${ins.icono}</span> ${ins.nombre}
+      </div>`;
+    }).join('');
+  }
+
+  // Actualizar al cargar
+  actualizarBadges();
+
+
   // Actualizar panel de ranking
   function actualizarRanking() {
     const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
@@ -1103,6 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     const idx = Math.min(count, mensajes.length - 1);
     document.getElementById('ranking-message').textContent = mensajes[idx];
+    if (typeof actualizarBadges === 'function') actualizarBadges();
   }
 
   // Marcar reto como completado
