@@ -525,7 +525,12 @@ flowchart LR
 
 Flujo típico de una aplicación full-stack: el navegador se comunica con el backend mediante APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.
 ---
+### 🧪 Laboratorio en Vivo: Node.js + Express
 
+Prueba el código de este capítulo en un entorno real de Node.js directamente en tu navegador. StackBlitz lanzará un servidor Express en la nube.
+
+<a href="https://stackblitz.com/fork/node-express" target="_blank" class="md-button md-button--primary">🧪 Abrir laboratorio Node.js</a>
+<a href="https://stackblitz.com/fork/vitest" target="_blank" class="md-button">🧪 Probar Testing con Vitest</a>
 ## 🧠 Pon a prueba tus conocimientos
 
 <div class="quiz-container" data-correct="b">

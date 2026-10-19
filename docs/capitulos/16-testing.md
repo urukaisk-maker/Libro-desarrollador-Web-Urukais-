@@ -467,7 +467,11 @@ Distribución recomendada: muchos tests unitarios (rápidos y baratos), algunos 
 
 ⬅️ [Capítulo 15 — TypeScript desde cero](15-typescript.md) | ➡️ [Capítulo 17 — Rendimiento web](17-rendimiento.md)
 ---
+### 🧪 Laboratorio en Vivo: Testing con Vitest
 
+Ejecuta tests reales en el navegador sin instalar nada.
+
+<a href="https://stackblitz.com/fork/vitest" target="_blank" class="md-button md-button--primary">🧪 Abrir laboratorio Vitest</a>
 ## 🧠 Pon a prueba tus conocimientos
 
 <div class="quiz-container" data-correct="b">

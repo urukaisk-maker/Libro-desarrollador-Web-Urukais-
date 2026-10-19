@@ -408,6 +408,11 @@ Es la mejor forma de aprender de los errores.
 
 ⬅️ [Capítulo 19 — Full-stack con Node.js](19-fullstack-node.md) | ➡️ [Apéndices](../apendices/index.md)
 ---
+### 🧪 Laboratorio en Vivo: Docker y CI/CD
+
+Experimenta con Docker y flujos de trabajo en un entorno real.
+
+<a href="https://stackblitz.com/fork/docker-node" target="_blank" class="md-button md-button--primary">🧪 Abrir laboratorio Docker</a>
 
 ## 🧠 Pon a prueba tus conocimientos
 
