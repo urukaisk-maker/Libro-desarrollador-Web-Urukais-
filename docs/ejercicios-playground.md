@@ -132,6 +132,133 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
 
 ---
 
+
+---
+
+## 🟡 Reto 6: Factorial
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `factorial(n)` que devuelva el factorial de un número (ej. `factorial(5) = 120`).
+
+<div class="playground-container" data-reto="reto6">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🟠 Reto 7: Palíndromo
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `esPalindromo(texto)` que devuelva `true` si el texto se lee igual al derecho y al revés.
+
+<div class="playground-container" data-reto="reto7">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🟠 Reto 8: FizzBuzz
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `fizzbuzz(n)` que devuelva un array del 1 al n, pero con "Fizz" para múltiplos de 3, "Buzz" para múltiplos de 5, y "FizzBuzz" para múltiplos de ambos.
+
+<div class="playground-container" data-reto="reto8">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🔴 Reto 9: Ordenar un array
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `ordenar(numeros)` que devuelva el array ordenado de menor a mayor **sin usar `.sort()`**.
+
+<div class="playground-container" data-reto="reto9">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🔴 Reto 10: Fibonacci
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `fibonacci(n)` que devuelva el n-ésimo número de la secuencia de Fibonacci.
+
+<div class="playground-container" data-reto="reto10">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const tests = {
@@ -244,8 +371,116 @@ document.addEventListener('DOMContentLoaded', () => {
           { args: [[2, 2, 2]], esperado: 2 }
         ]
       }
+    },
+
+    reto6: {
+      js: {
+        template: `function factorial(n) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'factorial',
+        casos: [
+          { args: [5], esperado: 120 },
+          { args: [0], esperado: 1 },
+          { args: [1], esperado: 1 },
+          { args: [3], esperado: 6 }
+        ]
+      },
+      python: {
+        template: `def factorial(n):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'factorial',
+        casos: [
+          { args: [5], esperado: 120 },
+          { args: [0], esperado: 1 },
+          { args: [1], esperado: 1 },
+          { args: [3], esperado: 6 }
+        ]
+      }
+    },
+    reto7: {
+      js: {
+        template: `function esPalindromo(texto) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'esPalindromo',
+        casos: [
+          { args: ["oso"], esperado: true },
+          { args: ["hola"], esperado: false },
+          { args: ["anilina"], esperado: true },
+          { args: ["abc"], esperado: false }
+        ]
+      },
+      python: {
+        template: `def es_palindromo(texto):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'es_palindromo',
+        casos: [
+          { args: ["oso"], esperado: true },
+          { args: ["hola"], esperado: false },
+          { args: ["anilina"], esperado: true },
+          { args: ["abc"], esperado: false }
+        ]
+      }
+    },
+    reto8: {
+      js: {
+        template: `function fizzbuzz(n) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'fizzbuzz',
+        casos: [
+          { args: [5], esperado: [1, 2, "Fizz", 4, "Buzz"] },
+          { args: [15], esperado: [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"] }
+        ]
+      },
+      python: {
+        template: `def fizzbuzz(n):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'fizzbuzz',
+        casos: [
+          { args: [5], esperado: [1, 2, "Fizz", 4, "Buzz"] },
+          { args: [15], esperado: [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"] }
+        ]
+      }
+    },
+    reto9: {
+      js: {
+        template: `function ordenar(numeros) {\n  // Escribe tu solución aquí (sin .sort())\n  \n}`,
+        nombre: 'ordenar',
+        casos: [
+          { args: [[3, 1, 2]], esperado: [1, 2, 3] },
+          { args: [[5, -1, 0]], esperado: [-1, 0, 5] },
+          { args: [[10]], esperado: [10] },
+          { args: [[2, 2, 1]], esperado: [1, 2, 2] }
+        ]
+      },
+      python: {
+        template: `def ordenar(numeros):\n    # Escribe tu solución aquí (sin sort())\n    pass`,
+        nombre: 'ordenar',
+        casos: [
+          { args: [[3, 1, 2]], esperado: [1, 2, 3] },
+          { args: [[5, -1, 0]], esperado: [-1, 0, 5] },
+          { args: [[10]], esperado: [10] },
+          { args: [[2, 2, 1]], esperado: [1, 2, 2] }
+        ]
+      }
+    },
+    reto10: {
+      js: {
+        template: `function fibonacci(n) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'fibonacci',
+        casos: [
+          { args: [0], esperado: 0 },
+          { args: [1], esperado: 1 },
+          { args: [7], esperado: 13 },
+          { args: [10], esperado: 55 }
+        ]
+      },
+      python: {
+        template: `def fibonacci(n):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'fibonacci',
+        casos: [
+          { args: [0], esperado: 0 },
+          { args: [1], esperado: 1 },
+          { args: [7], esperado: 13 },
+          { args: [10], esperado: 55 }
+        ]
+      }
     }
   };
+
 
   // Inicializar cada playground
   document.querySelectorAll('.playground-container').forEach(container => {
