@@ -6185,7 +6185,7 @@ Más información en <a href="#autor">Sobre el autor</a>.</p>
 <hr />
 <p><strong>Dificultad:</strong> 🟢 Fácil · <strong>Tema:</strong> HTML y CSS</p>
 <p>Crea un botón con hover y transiciones suaves.</p>
-<p><a href="#retos-reto-1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Ver reto</a></p>
+<p><a href="#retos-retos-reto-1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Ver reto</a></p>
 </li>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg></span> <strong>Reto #2: La tarjeta de presentación</strong> {: .reto-card data-release="2026-10-25" }</p>
@@ -6223,16 +6223,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reto-card[data-release]').forEach(card => {
     const release = new Date(card.dataset.release);
     if (hoy >= release) {
-      // Quitar el bloqueo visual
       card.classList.remove('reto-card');
-      // Ocultar el texto de bloqueo
       const bloqueo = card.querySelector('.fecha-bloqueo');
       if (bloqueo) bloqueo.style.display = 'none';
 
-      // Añadir el enlace al final
       const num = card.querySelector('strong').textContent.match(/\d+/)[0];
       const link = document.createElement('a');
-      link.href = `retos/reto-${num}.md`;
+      link.href = `retos/reto-${num}/`;
       link.innerHTML = '[:octicons-arrow-right-24: Ver reto]';
       card.appendChild(link);
     }
