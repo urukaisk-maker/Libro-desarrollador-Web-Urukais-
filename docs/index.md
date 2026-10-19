@@ -155,9 +155,9 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
     [:octicons-arrow-right-24: Ver proyectos](proyectos-lectores.md)
 
--   __Retos de la Comunidad__
+-  -   __Retos de la Comunidad__
 
-    <img src="img/106.jpg" alt="Retos de la Comunidad" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+    <img src="img/107.jpg" alt="Retos de la Comunidad" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Participa en los retos del mes y muestra tu solución en el Muro de Soluciones.
 
@@ -204,23 +204,67 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
 <div class="grid cards" markdown>
 
--   :material-lightning-bolt:{ .lg .middle } __100% Interactivo__
+-   __100% Interactivo__
 
-    ---
+    <img src="img/card-interactivo.jpg" alt="Interactivo" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     No es solo texto. Tienes quizzes, editores de código en vivo, retos con validación automática y un sistema de logros para aprender haciendo.
 
--   :material-chart-line:{ .lg .middle } __Progresivo y Estructurado__
+-   __Progresivo y Estructurado__
 
-    ---
+    <img src="img/card-progresivo.jpg" alt="Progresivo" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Desde "qué es una etiqueta HTML" hasta despliegues en la nube con Docker. 7 niveles diseñados para que no te pierdas en el camino.
 
--   :material-heart:{ .lg .middle } __Open Source y Gratuito__
+-   __Open Source y Gratuito__
+
+    <img src="img/card-opensource.jpg" alt="Open Source" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    Sin anuncios, sin suscripciones, sin muros de pago. Todo el contenido está en GitHub bajo licencia MIT. Puedes copiarlo, modificarlo y contribuir.
+
+</div>
+
+## 📰 Últimas del Diario
+
+[Ver todas las entradas](diario.md){ .md-button }
+
+<div class="grid cards" markdown>
+
+-   __El día que el libro cobró vida__
+
+    <img src="img/105.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     ---
 
-    Sin anuncios, sin suscripciones, sin muros de pago. Todo el contenido está en GitHub bajo licencia MIT. Puedes copiarlo, modificarlo y contribuir.
+    *18 de Octubre, 2026*
+
+    Después de semanas de trabajo, el libro ya tiene 38 capítulos y un sistema de logros...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
+
+-   __Cuando decidí añadir quizzes__
+
+    <img src="img/103.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    ---
+
+    *15 de Octubre, 2026*
+
+    Leer sin practicar no sirve de nada. Así que me puse a investigar cómo añadir quizzes interactivos...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
+
+-   __El problema de los playgrounds__
+
+    <img src="img/101.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    ---
+
+    *10 de Octubre, 2026*
+
+    Integrar editores de código en vivo sin que el sitio se volviera lento fue todo un reto...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
 
 </div>
 
