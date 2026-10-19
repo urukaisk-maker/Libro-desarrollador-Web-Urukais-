@@ -305,6 +305,288 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
 </div>
 
 
+
+---
+
+## 🏋️ Reto 11: Suma de un array
+
+**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `sumaArray(numeros)` que devuelva la suma de todos los números de un array.
+
+<div class="playground-container" data-reto="reto11">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 12: Encontrar el mínimo
+
+**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `minimo(numeros)` que devuelva el número más pequeño de un array.
+
+<div class="playground-container" data-reto="reto12">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 13: Contar palabras
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `contarPalabras(texto)` que devuelva el número de palabras en un texto.
+
+<div class="playground-container" data-reto="reto13">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 14: Capitalizar texto
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `capitalizar(texto)` que devuelva el texto con la primera letra de cada palabra en mayúscula.
+
+<div class="playground-container" data-reto="reto14">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 15: Eliminar duplicados
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `eliminarDuplicados(numeros)` que devuelva un array sin elementos duplicados.
+
+<div class="playground-container" data-reto="reto15">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 16: Número primo
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `esPrimo(n)` que devuelva `true` si el número es primo.
+
+<div class="playground-container" data-reto="reto16">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 17: Anagrama
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `esAnagrama(a, b)` que devuelva `true` si dos strings son anagramas.
+
+<div class="playground-container" data-reto="reto17">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 18: Aplanar array
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `aplanar(array)` que aplane un array de arrays en uno solo.
+
+<div class="playground-container" data-reto="reto18">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 19: Contar caracteres
+
+**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `contarCaracteres(texto)` que devuelva un objeto con cada letra y su frecuencia.
+
+<div class="playground-container" data-reto="reto19">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+---
+
+## 🏋️ Reto 20: Validar paréntesis
+
+**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+
+**Objetivo:** Crea una función `validarParentesis(texto)` que devuelva `true` si los paréntesis están balanceados.
+
+<div class="playground-container" data-reto="reto20">
+  <div class="playground-editor-wrapper">
+    <div class="playground-header">
+      <select class="playground-lang-select">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
+      </select>
+      <button class="playground-run-btn validate-btn">✅ Validar</button>
+    </div>
+    <textarea class="code-editor" spellcheck="false"></textarea>
+  </div>
+  <div class="playground-output-wrapper">
+    <div class="playground-output-header">Resultado</div>
+    <pre class="playground-console output-console">Esperando validación...</pre>
+  </div>
+</div>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const tests = {
@@ -525,6 +807,127 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       }
     }
+
+    reto11: {
+      js: {
+        template: `function sumaArray(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'sumaArray',
+        casos: [{ args: [[1, 2, 3]], esperado: 6 }, { args: [[]], esperado: 0 }, { args: [[10]], esperado: 10 }, { args: [[-1, 1]], esperado: 0 }]
+      },
+      python: {
+        template: `def sumaArray(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'sumaArray',
+        casos: [{ args: [[1, 2, 3]], esperado: 6 }, { args: [[]], esperado: 0 }, { args: [[10]], esperado: 10 }, { args: [[-1, 1]], esperado: 0 }]
+      }
+    },
+    reto12: {
+      js: {
+        template: `function minimo(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'minimo',
+        casos: [{ args: [[1, 5, 3]], esperado: 1 }, { args: [[-1, -5, -3]], esperado: -5 }, { args: [[10]], esperado: 10 }, { args: [[2, 2, 2]], esperado: 2 }]
+      },
+      python: {
+        template: `def minimo(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'minimo',
+        casos: [{ args: [[1, 5, 3]], esperado: 1 }, { args: [[-1, -5, -3]], esperado: -5 }, { args: [[10]], esperado: 10 }, { args: [[2, 2, 2]], esperado: 2 }]
+      }
+    },
+    reto13: {
+      js: {
+        template: `function contarPalabras(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'contarPalabras',
+        casos: [{ args: ["hola mundo"], esperado: 2 }, { args: [""], esperado: 0 }, { args: ["una sola"], esperado: 2 }, { args: ["a b c"], esperado: 3 }]
+      },
+      python: {
+        template: `def contarPalabras(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'contarPalabras',
+        casos: [{ args: ["hola mundo"], esperado: 2 }, { args: [""], esperado: 0 }, { args: ["una sola"], esperado: 2 }, { args: ["a b c"], esperado: 3 }]
+      }
+    },
+    reto14: {
+      js: {
+        template: `function capitalizar(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'capitalizar',
+        casos: [{ args: ["hola mundo"], esperado: "Hola Mundo" }, { args: ["javaScript"], esperado: "JavaScript" }, { args: [""], esperado: "" }, { args: ["a b c"], esperado: "A B C" }]
+      },
+      python: {
+        template: `def capitalizar(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'capitalizar',
+        casos: [{ args: ["hola mundo"], esperado: "Hola Mundo" }, { args: ["javaScript"], esperado: "JavaScript" }, { args: [""], esperado: "" }, { args: ["a b c"], esperado: "A B C" }]
+      }
+    },
+    reto15: {
+      js: {
+        template: `function eliminarDuplicados(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'eliminarDuplicados',
+        casos: [{ args: [[1, 2, 2, 3]], esperado: [1, 2, 3] }, { args: [[]], esperado: [] }, { args: [[1, 1, 1]], esperado: [1] }, { args: [[3, 1, 2, 1]], esperado: [3, 1, 2] }]
+      },
+      python: {
+        template: `def eliminarDuplicados(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'eliminarDuplicados',
+        casos: [{ args: [[1, 2, 2, 3]], esperado: [1, 2, 3] }, { args: [[]], esperado: [] }, { args: [[1, 1, 1]], esperado: [1] }, { args: [[3, 1, 2, 1]], esperado: [3, 1, 2] }]
+      }
+    },
+    reto16: {
+      js: {
+        template: `function esPrimo(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'esPrimo',
+        casos: [{ args: [7], esperado: true }, { args: [10], esperado: false }, { args: [2], esperado: true }, { args: [1], esperado: false }]
+      },
+      python: {
+        template: `def esPrimo(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'esPrimo',
+        casos: [{ args: [7], esperado: true }, { args: [10], esperado: false }, { args: [2], esperado: true }, { args: [1], esperado: false }]
+      }
+    },
+    reto17: {
+      js: {
+        template: `function esAnagrama(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'esAnagrama',
+        casos: [{ args: ["roma", "amor"], esperado: true }, { args: ["hola", "adios"], esperado: false }, { args: ["abc", "cba"], esperado: true }, { args: ["", ""], esperado: true }]
+      },
+      python: {
+        template: `def esAnagrama(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'esAnagrama',
+        casos: [{ args: ["roma", "amor"], esperado: true }, { args: ["hola", "adios"], esperado: false }, { args: ["abc", "cba"], esperado: true }, { args: ["", ""], esperado: true }]
+      }
+    },
+    reto18: {
+      js: {
+        template: `function aplanar(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'aplanar',
+        casos: [{ args: [[[1, 2], [3, 4]]], esperado: [1, 2, 3, 4] }, { args: [[[1], [2, [3]]]], esperado: [1, 2, 3] }, { args: [[[]]], esperado: [] }, { args: [[[1, 2, 3]]], esperado: [1, 2, 3] }]
+      },
+      python: {
+        template: `def aplanar(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'aplanar',
+        casos: [{ args: [[[1, 2], [3, 4]]], esperado: [1, 2, 3, 4] }, { args: [[[1], [2, [3]]]], esperado: [1, 2, 3] }, { args: [[[]]], esperado: [] }, { args: [[[1, 2, 3]]], esperado: [1, 2, 3] }]
+      }
+    },
+    reto19: {
+      js: {
+        template: `function contarCaracteres(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'contarCaracteres',
+        casos: [{ args: ["hola"], esperado: {h: 1, o: 1, l: 1, a: 1} }, { args: [""], esperado: {} }, { args: ["aa"], esperado: {a: 2} }, { args: ["abc"], esperado: {a: 1, b: 1, c: 1} }]
+      },
+      python: {
+        template: `def contarCaracteres(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'contarCaracteres',
+        casos: [{ args: ["hola"], esperado: {h: 1, o: 1, l: 1, a: 1} }, { args: [""], esperado: {} }, { args: ["aa"], esperado: {a: 2} }, { args: ["abc"], esperado: {a: 1, b: 1, c: 1} }]
+      }
+    },
+    reto20: {
+      js: {
+        template: `function validarParentesis(input) {\n  // Escribe tu solución aquí\n  \n}`,
+        nombre: 'validarParentesis',
+        casos: [{ args: ["()"], esperado: true }, { args: ["(())"], esperado: true }, { args: ["(()"], esperado: false }, { args: [")("], esperado: false }]
+      },
+      python: {
+        template: `def validarParentesis(input):\n    # Escribe tu solución aquí\n    pass`,
+        nombre: 'validarParentesis',
+        casos: [{ args: ["()"], esperado: true }, { args: ["(())"], esperado: true }, { args: ["(()"], esperado: false }, { args: [")("], esperado: false }]
+      }
+    },
   };
 
 
