@@ -24,6 +24,9 @@
 <div style="text-align: center; margin-bottom: 4rem;">
   <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
 </div>
+<script>
+  console.log('Hola desde JS');
+</script>
 
 ## 🚀 El Viaje del Desarrollador
 
@@ -233,3 +236,4 @@ Más información en [Sobre el autor](autor.md).
 Este proyecto está bajo la **Licencia MIT** (en español). Puedes usar, copiar, modificar y distribuir el contenido libremente siempre que mantengas la atribución.
 
 [Ver texto completo de la licencia](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE)
+<script src="app.js" defer></script>

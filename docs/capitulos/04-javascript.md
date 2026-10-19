@@ -135,4 +135,12 @@ Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
 
 ---
 
+### 🏋️ Practica con retos
+
+Pon a prueba todo lo que has aprendido en este capítulo con ejercicios con validación automática.
+
+[:material-pencil-ruler: Ir a los retos de JavaScript](../ejercicios-playground/#reto-1-suma-de-dos-numeros){ .md-button .md-button--primary }
+
+---
+
 ⬅️ [Capítulo 3 — CSS básico](03-css-basico.md) | ➡️ [Capítulo 5 — Diseño responsive](05-responsive.md)
