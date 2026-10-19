@@ -200,7 +200,82 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 ¿Prefieres leer sin conexión o imprimir el libro? Hemos generado una versión con **todos los capítulos seguidos** para que puedas guardarla como PDF o imprimirla.
 
 [:material-file-pdf-box: Descargar versión imprimible (PDF)](../print_page/){ .md-button .md-button--primary }
+## 💡 ¿Por qué este libro?
 
+<div class="grid cards" markdown>
+
+-   :material-lightning-bolt:{ .lg .middle } __100% Interactivo__
+
+    ---
+
+    No es solo texto. Tienes quizzes, editores de código en vivo, retos con validación automática y un sistema de logros para aprender haciendo.
+
+-   :material-chart-line:{ .lg .middle } __Progresivo y Estructurado__
+
+    ---
+
+    Desde "qué es una etiqueta HTML" hasta despliegues en la nube con Docker. 7 niveles diseñados para que no te pierdas en el camino.
+
+-   :material-heart:{ .lg .middle } __Open Source y Gratuito__
+
+    ---
+
+    Sin anuncios, sin suscripciones, sin muros de pago. Todo el contenido está en GitHub bajo licencia MIT. Puedes copiarlo, modificarlo y contribuir.
+
+</div>
+
+## 🛠️ El Stack que dominarás
+
+Aprende las tecnologías que las empresas están pidiendo hoy.
+
+<div class="stack-icons" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; font-size: 3rem;">
+  <span title="HTML5" style="color: #e34f26;">🌐</span>
+  <span title="CSS3" style="color: #1572b6;">🎨</span>
+  <span title="JavaScript" style="color: #f7df1e;">⚡</span>
+  <span title="TypeScript" style="color: #3178c6;">🔷</span>
+  <span title="React" style="color: #61dafb;">⚛️</span>
+  <span title="Node.js" style="color: #339933;">🟢</span>
+  <span title="Git" style="color: #f05032;">🔀</span>
+  <span title="Docker" style="color: #2496ed;">🐳</span>
+</div>
+
+## 📰 Últimas del Diario
+
+[Ver todas las entradas](diario.md){ .md-button }
+
+<div class="grid cards" markdown>
+
+-   __El día que el libro cobró vida__
+
+    ---
+
+    *18 de Octubre, 2026*
+
+    Después de semanas de trabajo, el libro ya tiene 38 capítulos y un sistema de logros...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
+
+-   __Cuando decidí añadir quizzes__
+
+    ---
+
+    *15 de Octubre, 2026*
+
+    Leer sin practicar no sirve de nada. Así que me puse a investigar cómo añadir quizzes interactivos...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
+
+-   __El problema de los playgrounds__
+
+    ---
+
+    *10 de Octubre, 2026*
+
+    Integrar editores de código en vivo sin que el sitio se volviera lento fue todo un reto...
+
+    [:octicons-arrow-right-24: Leer más](diario.md)
+
+</div>
 ## 📌 El Proyecto
 
 - [Filosofía](filosofia.md) — por qué existe y cómo está construido.
