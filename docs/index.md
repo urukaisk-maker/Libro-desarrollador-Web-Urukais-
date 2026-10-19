@@ -4,7 +4,7 @@
 
 <div class="book-hero__stats" style="margin-bottom: 2rem; justify-content: center; display: flex; gap: 2rem; flex-wrap: wrap;">
   <div class="book-hero__stat">
-    <span class="book-hero__stat-number">36</span>
+    <span class="book-hero__stat-number">38</span>
     <span class="book-hero__stat-label">Capítulos</span>
   </div>
   <div class="book-hero__stat">
