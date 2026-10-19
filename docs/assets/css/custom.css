@@ -1324,3 +1324,16 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Selector de lenguaje */
+.playground-lang-select {
+  background: #0f172a;
+  color: #f59e0b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
