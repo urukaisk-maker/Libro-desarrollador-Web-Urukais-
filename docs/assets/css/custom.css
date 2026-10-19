@@ -1131,3 +1131,108 @@ body {
     gap: 0.75rem;
   }
 }
+
+
+/* ============================================
+   REDISEÑO ULTRA-PREMIUM (ESTILO SAAS)
+   ============================================ */
+
+/* 1. Tipografía de Élite */
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --md-code-font: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* 2. Glassmorphism en la barra lateral y el header */
+/* Usamos variables de Material para no romper el modo claro/oscuro */
+.md-header {
+  background: var(--md-primary-fg-color) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Bloques de Código tipo IDE */
+.md-typeset .highlight {
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto Hover en bloques de código */
+.md-typeset .highlight:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 4. Tarjetas de Niveles (Efecto Tilt / Lift) */
+.md-typeset .grid.cards > ul > li {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -10px rgba(106, 90, 205, 0.4);
+  border-color: #a78bfa;
+}
+
+/* 5. Badges y Logros (Efecto Shine) */
+@keyframes badgeShine {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+
+.chapter-complete-btn.completed {
+  background: linear-gradient(90deg, #16a34a 0%, #4ade80 50%, #16a34a 100%) !important;
+  background-size: 200% auto !important;
+  animation: badgeShine 3s infinite linear;
+  color: white !important;
+  border: none;
+}
+
+/* 6. Scrollbar Neón */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* 7. Títulos con Gradiente (Solo en modo oscuro para no romper contraste) */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* En modo claro, usamos un gradiente más oscuro para que se lea bien */
+[data-md-color-scheme="default"] .md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #6a5acd 0%, #0891b2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 8. Admonitions (Cajas de notas) con Glassmorphism sutil */
+.md-typeset .admonition {
+  border-radius: 12px;
+  border-left-width: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+}
