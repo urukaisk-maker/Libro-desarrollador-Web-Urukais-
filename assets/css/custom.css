@@ -1385,3 +1385,17 @@ body {
   font-weight: 600;
   color: var(--md-primary-fg-color);
 }
+
+
+/* ============================================
+   NUEVAS SECCIONES DE LA PORTADA
+   ============================================ */
+.stack-icons span {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: help;
+}
+
+.stack-icons span:hover {
+  transform: translateY(-5px) scale(1.2);
+  filter: drop-shadow(0 0 10px currentColor);
+}
