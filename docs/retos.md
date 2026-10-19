@@ -12,7 +12,7 @@ Cada semana publicaré un nuevo desafío de código. Los retos se **desbloquean 
 
     Crea un botón con hover y transiciones suaves.
 
-    [:octicons-arrow-right-24: Ver reto](retos/reto-1.md)
+    [:octicons-arrow-right-24: Ver reto](retos/reto-1/)
 
 -   :material-lock:{ .lg .middle } __Reto #2: La tarjeta de presentación__ {: .reto-card data-release="2026-10-25" }
 
@@ -62,16 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reto-card[data-release]').forEach(card => {
     const release = new Date(card.dataset.release);
     if (hoy >= release) {
-      // Quitar el bloqueo visual
       card.classList.remove('reto-card');
-      // Ocultar el texto de bloqueo
       const bloqueo = card.querySelector('.fecha-bloqueo');
       if (bloqueo) bloqueo.style.display = 'none';
       
-      // Añadir el enlace al final
       const num = card.querySelector('strong').textContent.match(/\d+/)[0];
       const link = document.createElement('a');
-      link.href = `retos/reto-${num}.md`;
+      link.href = `retos/reto-${num}/`;
       link.innerHTML = '[:octicons-arrow-right-24: Ver reto]';
       card.appendChild(link);
     }
