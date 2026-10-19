@@ -24,9 +24,7 @@
 <div style="text-align: center; margin-bottom: 4rem;">
   <a href="capitulos/01-introduccion/" class="book-hero__cta">Empezar a leer →</a>
 </div>
-<script>
-  console.log('Hola desde JS');
-</script>
+
 ## 🚀 El Viaje del Desarrollador
 
 Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva desde tus primeros pasos en HTML hasta las arquitecturas más avanzadas que se usan hoy en Silicon Valley.
@@ -95,74 +93,105 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
 <div class="grid cards" markdown>
 
--   :material-file-code:{ .lg .middle } __Ejemplos Ejecutables__
+-   __Ejemplos Ejecutables__
 
-    ---
+    <img src="img/101.jpg" alt="Ejemplos" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Código listo para copiar, pegar y probar en cada capítulo. Sin rodeos.
 
     [:octicons-arrow-right-24: Ver código](ejemplos/index.md)
 
--   :material-chart-timeline-variant:{ .lg .middle } __Galería Visual__
+-   __Galería Visual__
 
-    ---
+    <img src="img/102.jpg" alt="Diagramas" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Todos los diagramas de arquitectura, flujos y conceptos recopilados.
 
     [:octicons-arrow-right-24: Ver diagramas](diagramas.md)
 
--   :material-pencil-ruler:{ .lg .middle } __Ejercicios Resueltos__
+-   __Ejercicios Resueltos__
 
-    ---
+    <img src="img/103.jpg" alt="Ejercicios" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Soluciones comentadas para que no te quedes atascado.
 
     [:octicons-arrow-right-24: Practicar ahora](ejercicios/index.md)
 
 </div>
+
 ## 📅 Agenda y Novedades
 
 <div class="grid cards" markdown>
 
--   :material-calendar-month:{ .lg .middle } __Agenda de Eventos__
+-   __Agenda de Eventos__
 
-    ---
+    <img src="img/104.jpg" alt="Agenda" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Talleres, directos y charlas programadas sobre desarrollo web.
 
     [:octicons-arrow-right-24: Ver agenda](agenda.md)
 
--   :material-book-open-page-variant:{ .lg .middle } __Diario de Desarrollo__
+-   __Diario de Desarrollo__
 
-    ---
+    <img src="img/105.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Notas, ideas, avances y el detrás de escena del libro.
 
     [:octicons-arrow-right-24: Leer diario](diario.md)
 
--   :material-fire:{ .lg .middle } __Retos Semanales__
+-   __Retos Semanales__
 
-    ---
+    <img src="img/106.jpg" alt="Retos" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Pon a prueba tus habilidades con desafíos de código cortos.
 
     [:octicons-arrow-right-24: Aceptar reto](retos.md)
 
--   :material-account-group:{ .lg .middle } __Proyectos de Lectores__
+-   __Proyectos de Lectores__
 
-    ---
+    <img src="img/107.jpg" alt="Proyectos" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Descubre lo que otros están construyendo con el libro.
 
     [:octicons-arrow-right-24: Ver proyectos](proyectos-lectores.md)
 
--   :material-trophy:{ .lg .middle } __Retos de la Comunidad__
+-   __Retos de la Comunidad__
 
-    ---
+    <img src="img/106.jpg" alt="Retos de la Comunidad" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
     Participa en los retos del mes y muestra tu solución en el Muro de Soluciones.
 
     [:octicons-arrow-right-24: Ver retos](retos-comunidad.md)
+
+</div>
+
+## 💖 Comunidad y Apoyo
+
+<div class="grid cards" markdown>
+
+-   __Preguntas de Entrevista__
+
+    <img src="img/108.jpg" alt="Entrevistas" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    Prepárate para tu próxima entrevista técnica con las preguntas más comunes.
+
+    [:octicons-arrow-right-24: Ver preguntas](entrevistas.md)
+
+-   __Apoya el Proyecto__
+
+    <img src="img/109.jpg" alt="Apoya el Proyecto" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    El libro es gratis. Si te ha sido útil, puedes apoyarlo con un café.
+
+    [:octicons-arrow-right-24: Apoyar](apoya.md)
+
+-   __Hall of Fame__
+
+    <img src="img/110.jpg" alt="Hall of Fame" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+
+    Un reconocimiento a los contribuidores y graduados del libro.
+
+    [:octicons-arrow-right-24: Ver Hall of Fame](hall-of-fame.md)
 
 </div>
 
@@ -171,37 +200,6 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 ¿Prefieres leer sin conexión o imprimir el libro? Hemos generado una versión con **todos los capítulos seguidos** para que puedas guardarla como PDF o imprimirla.
 
 [:material-file-pdf-box: Descargar versión imprimible (PDF)](../print_page/){ .md-button .md-button--primary }
-
-
-## 💖 Comunidad y Apoyo
-
-<div class="grid cards" markdown>
-
--   :material-briefcase:{ .lg .middle } __Preguntas de Entrevista__
-
-    ---
-
-    Prepárate para tu próxima entrevista técnica con las preguntas más comunes.
-
-    [:octicons-arrow-right-24: Ver preguntas](entrevistas.md)
-
--   :material-coffee:{ .lg .middle } __Apoya el Proyecto__
-
-    ---
-
-    El libro es gratis. Si te ha sido útil, puedes apoyarlo con un café.
-
-    [:octicons-arrow-right-24: Apoyar](apoya.md)
-
--   :material-trophy:{ .lg .middle } __Hall of Fame__
-
-    ---
-
-    Un reconocimiento a los contribuidores y graduados del libro.
-
-    [:octicons-arrow-right-24: Ver Hall of Fame](hall-of-fame.md)
-
-</div>
 
 ## 📌 El Proyecto
 
@@ -225,6 +223,8 @@ Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam
   </a>
 </div>
 
+---
+
 ## 👤 Sobre el Autor
 
 Este libro es un proyecto de **Manuel Casimiro Carrasco (Urukais)**.
@@ -235,4 +235,3 @@ Más información en [Sobre el autor](autor.md).
 Este proyecto está bajo la **Licencia MIT** (en español). Puedes usar, copiar, modificar y distribuir el contenido libremente siempre que mantengas la atribución.
 
 [Ver texto completo de la licencia](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/blob/master/LICENSE)
-<script src="app.js" defer></script>
