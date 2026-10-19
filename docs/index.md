@@ -169,6 +169,38 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 ¿Prefieres leer sin conexión o imprimir el libro? Hemos generado una versión con **todos los capítulos seguidos** para que puedas guardarla como PDF o imprimirla.
 
 [:material-file-pdf-box: Descargar versión imprimible (PDF)](../print_page/){ .md-button .md-button--primary }
+
+
+## 💖 Comunidad y Apoyo
+
+<div class="grid cards" markdown>
+
+-   :material-briefcase:{ .lg .middle } __Preguntas de Entrevista__
+
+    ---
+
+    Prepárate para tu próxima entrevista técnica con las preguntas más comunes.
+
+    [:octicons-arrow-right-24: Ver preguntas](entrevistas.md)
+
+-   :material-coffee:{ .lg .middle } __Apoya el Proyecto__
+
+    ---
+
+    El libro es gratis. Si te ha sido útil, puedes apoyarlo con un café.
+
+    [:octicons-arrow-right-24: Apoyar](apoya.md)
+
+-   :material-trophy:{ .lg .middle } __Hall of Fame__
+
+    ---
+
+    Un reconocimiento a los contribuidores y graduados del libro.
+
+    [:octicons-arrow-right-24: Ver Hall of Fame](hall-of-fame.md)
+
+</div>
+
 ## 📌 El Proyecto
 
 - [Filosofía](filosofia.md) — por qué existe y cómo está construido.

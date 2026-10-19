@@ -22,13 +22,30 @@ Para los curiosos, este libro está construido con:
 - **Giscus** para los comentarios.
 - **Mermaid** para los diagramas.
 
-### 🔮 ¿Qué viene ahora?
+---
 
-- Seguiré añadiendo **retos semanales** y proyectos guiados.
-- Quiero integrar más **editores de código en vivo** en los capítulos de práctica.
-- Estoy trabajando en una **versión imprimible (PDF)** mejorada.
+## 🧠 15 de Octubre, 2026 — Cuando decidí añadir quizzes
 
-Gracias por estar aquí. Si tienes ideas, escríbeme por [contacto](contacto.md).
+Al principio, el libro era solo texto. Y me di cuenta de que leer sin practicar no sirve de nada. Así que me puse a investigar cómo añadir quizzes interactivos sin romper la web.
+
+Lo conseguí con un poco de JavaScript y CSS. Ahora, cada capítulo termina con una pequeña prueba. Si el lector falla, le digo por qué. Esa retroalimentación instantánea es lo que hace que el aprendizaje se quede.
+
+---
+
+## 💡 10 de Octubre, 2026 — El problema de los playgrounds
+
+Uno de los mayores retos fue integrar editores de código en vivo sin que el sitio se volviera lento. Al final, opté por una solución híbrida: un iframe ligero para los primeros capítulos y enlaces a CodePen/StackBlitz para el resto.
+
+Es un equilibrio entre la comodidad del lector y el rendimiento del sitio.
+
+---
+
+## 🔮 ¿Qué viene ahora?
+
+- **Traducción al inglés** (i18n). Ya estoy investigando `mkdocs-static-i18n`.
+- **Más laboratorios en vivo** para los capítulos de backend y DevOps.
+- **Certificados verificables** con código QR.
+- **Un sistema de "Hall of Fame"** para los lectores que completen todo el libro.
 
 ---
 
