@@ -1,0 +1,148 @@
+/* ==========================================================================
+   ESTILOS ULTRA-PREMIUM - LIBRO DEL DESARROLLADOR WEB (URUKAIS)
+   ========================================================================== */
+
+/* 1. Tipografía y Jerarquía Visual */
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --md-code-font: "JetBrains Mono", monospace;
+}
+
+/* H1: Gradiente según el modo */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-md-color-scheme="default"] .md-typeset h1 {
+  background: linear-gradient(135deg, #6a5acd 0%, #0891b2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* H2: Línea decorativa */
+.md-typeset h2 {
+  position: relative;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  letter-spacing: -0.02em;
+}
+.md-typeset h2::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+}
+
+/* 2. Glassmorphism en Header y Sidebar (adaptado a ambos modos) */
+.md-header {
+  background: var(--md-primary-fg-color) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Tarjetas de Niveles y Capítulos con Neón (adaptado) */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color) !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+  box-shadow: 0 12px 24px -10px rgba(0, 242, 254, 0.3),
+              0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+/* 4. Bloques de Código Estilo IDE */
+.highlight {
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.highlight:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+/* 5. Botones Principales con Degradado Brillante */
+.md-typeset .md-button--primary {
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+  transition: all 0.25s ease;
+}
+.md-typeset .md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+  filter: brightness(1.1);
+}
+
+/* 6. Admonitions (Notas y avisos) */
+.md-typeset .admonition, 
+.md-typeset details {
+  border-radius: 10px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background-color: var(--md-default-bg-color) !important;
+}
+.md-typeset .admonition.tip { border-left: 4px solid #10b981; }
+.md-typeset .admonition.warning { border-left: 4px solid #f59e0b; }
+.md-typeset .admonition.danger { border-left: 4px solid #ef4444; }
+
+/* 7. Selección de Texto de Marca */
+::selection { background: #38bdf8; color: #0f172a; }
+::-moz-selection { background: #38bdf8; color: #0f172a; }
+
+/* 8. Scrollbar Neón Personalizado */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+/* 9. Animación para Badges Desbloqueados */
+@keyframes badgeShine {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+.chapter-complete-btn.completed {
+  background: linear-gradient(90deg, #16a34a 0%, #4ade80 50%, #16a34a 100%) !important;
+  background-size: 200% auto !important;
+  animation: badgeShine 3s infinite linear;
+  color: white !important;
+}
+
+/* 10. Estilos de los Modales y Cookies (ya los teníamos, los mantenemos) */
+.newsletter-modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(6px); align-items: center; justify-content: center; z-index: 99999; opacity: 0; transition: opacity 300ms ease; }
+.newsletter-modal-overlay.active { display: flex; opacity: 1; }
+.newsletter-modal { background: #1e293b; border-radius: 20px; padding: 2.5rem; max-width: 480px; width: 90%; border: 1px solid rgba(167, 139, 250, 0.3); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); position: relative; transform: scale(0.9); transition: transform 300ms ease; font-family: 'Inter', sans-serif; }
+.newsletter-modal-overlay.active .newsletter-modal { transform: scale(1); }
+.newsletter-modal__close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
+.newsletter-modal__icon { font-size: 3rem; margin-bottom: 1rem; }
+.newsletter-modal__title { color: #fff; margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 800; }
+.newsletter-modal__text { color: #cbd5e1; margin: 0 0 1.5rem; line-height: 1.6; }
+.newsletter-modal__cta { display: block; background: linear-gradient(90deg, #a78bfa, #22d3ee); color: #0f172a; padding: 0.9rem; border-radius: 12px; font-weight: 700; text-decoration: none; text-align: center; }
+.newsletter-modal__skip { display: block; text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.85rem; text-decoration: none; }
+
+.cookie-banner { display: none; position: fixed !important; bottom: 1rem !important; left: 1rem !important; right: 1rem !important; max-width: 480px; background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25); padding: 1.25rem; flex-direction: column; gap: 1rem; z-index: 99998 !important; font-family: 'Inter', sans-serif; }
+.cookie-banner p { margin: 0; font-size: 0.85rem; color: var(--md-default-fg-color); line-height: 1.5; }
+.cookie-banner__actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+.cookie-banner__btn { background: #6a5acd; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+@media (max-width: 600px) {
+  .cookie-banner { bottom: 0 !important; left: 0 !important; right: 0 !important; max-width: 100%; border-radius: 16px 16px 0 0; }
+}
