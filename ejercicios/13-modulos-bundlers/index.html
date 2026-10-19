@@ -5109,9 +5109,16 @@ npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </s
     
   <script src="../../assets/js/share.js" defer></script>
   <script src="../../assets/js/custom.js" defer></script>
-
+    <!-- Botón de Text-to-Speech -->
+  <button id="ttsButton" class="tts-button" aria-label="Escuchar capítulo">🔊 Escuchar capítulo</button>
   <div class="reading-progress" id="readingProgress"></div>
-
+    <!-- Command Palette (Ctrl+K) -->
+  <div id="commandPalette" class="command-palette-overlay">
+    <div class="command-palette">
+      <input type="text" id="commandInput" class="command-input" placeholder="Escribe un comando o busca..." autocomplete="off">
+      <ul id="commandList" class="command-list"></ul>
+    </div>
+  </div>
   <div class="newsletter-modal-overlay" id="newsletterModal">
     <div class="newsletter-modal">
       <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>

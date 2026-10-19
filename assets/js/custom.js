@@ -448,3 +448,245 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// ============================================
+// COMMAND PALETTE (Ctrl+K)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const palette = document.getElementById('commandPalette');
+  const input = document.getElementById('commandInput');
+  const list = document.getElementById('commandList');
+  if (!palette || !input || !list) return;
+
+  const comandos = [
+    { nombre: 'Ir al Inicio', icono: '🏠', accion: () => window.location.href = '/' },
+    { nombre: 'Empezar a leer (Capítulo 1)', icono: '📖', accion: () => window.location.href = '/capitulos/01-introduccion/' },
+    { nombre: 'Ir al Playground', icono: '🧪', accion: () => window.location.href = '/playground/' },
+    { nombre: 'Ir a los Retos', icono: '🔥', accion: () => window.location.href = '/ejercicios-playground/' },
+    { nombre: 'Ir a Mis Logros', icono: '🏆', accion: () => window.location.href = '/logros/' },
+    { nombre: 'Ir al Certificado', icono: '🎓', accion: () => window.location.href = '/certificado/' },
+    { nombre: 'Ir a Mis Proyectos', icono: '🚀', accion: () => window.location.href = '/proyectos-lectores/' },
+    { nombre: 'Ir a Preguntas de Entrevista', icono: '💼', accion: () => window.location.href = '/entrevistas/' },
+    { nombre: 'Cambiar Tema (Claro/Oscuro)', icono: '🌓', accion: () => {
+      const current = document.body.getAttribute('data-md-color-scheme') || 'default';
+      const newTheme = current === 'slate' ? 'default' : 'slate';
+      document.body.setAttribute('data-md-color-scheme', newTheme);
+      localStorage.setItem('__palette', newTheme);
+    }},
+    { nombre: 'Ver el GitHub del Proyecto', icono: '💻', accion: () => window.open('https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-', '_blank') },
+    { nombre: 'Apoyar el Proyecto', icono: '☕', accion: () => window.location.href = '/apoya/' },
+  ];
+
+  let filtered = [...comandos];
+  let selectedIndex = 0;
+
+  function render() {
+    list.innerHTML = filtered.map((cmd, i) => `
+      <li class="command-item ${i === selectedIndex ? 'selected' : ''}" data-index="${i}">
+        <span class="icon">${cmd.icono}</span>
+        <span>${cmd.nombre}</span>
+      </li>
+    `).join('');
+  }
+
+  function openPalette() {
+    palette.classList.add('active');
+    input.value = '';
+    filtered = [...comandos];
+    selectedIndex = 0;
+    render();
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function closePalette() {
+    palette.classList.remove('active');
+  }
+
+  function ejecutarComando(index) {
+    if (filtered[index]) {
+      closePalette();
+      filtered[index].accion();
+    }
+  }
+
+  // Atajo Ctrl+K / Cmd+K
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (palette.classList.contains('active')) {
+        closePalette();
+      } else {
+        openPalette();
+      }
+    }
+    if (e.key === 'Escape' && palette.classList.contains('active')) {
+      closePalette();
+    }
+    if (e.key === 'ArrowDown' && palette.classList.contains('active')) {
+      e.preventDefault();
+      selectedIndex = Math.min(selectedIndex + 1, filtered.length - 1);
+      render();
+    }
+    if (e.key === 'ArrowUp' && palette.classList.contains('active')) {
+      e.preventDefault();
+      selectedIndex = Math.max(selectedIndex - 1, 0);
+      render();
+    }
+    if (e.key === 'Enter' && palette.classList.contains('active')) {
+      e.preventDefault();
+      ejecutarComando(selectedIndex);
+    }
+  });
+
+  // Filtrar al escribir
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    filtered = comandos.filter(c => c.nombre.toLowerCase().includes(q));
+    selectedIndex = 0;
+    render();
+  });
+
+  // Clic en un comando
+  list.addEventListener('click', (e) => {
+    const item = e.target.closest('.command-item');
+    if (item) {
+      ejecutarComando(parseInt(item.dataset.index));
+    }
+  });
+
+  // Cerrar al hacer clic fuera
+  palette.addEventListener('click', (e) => {
+    if (e.target === palette) closePalette();
+  });
+});
+
+// ============================================
+// TEXT-TO-SPEECH (TTS)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('ttsButton');
+  if (!btn) return;
+
+  // Solo mostrar el botón en páginas de capítulos
+  if (!window.location.pathname.includes('/capitulos/')) {
+    btn.style.display = 'none';
+    return;
+  }
+
+  let utterance = null;
+  let isPlaying = false;
+
+  btn.addEventListener('click', () => {
+    if (isPlaying) {
+      window.speechSynthesis.cancel();
+      isPlaying = false;
+      btn.textContent = '🔊 Escuchar capítulo';
+      btn.classList.remove('playing');
+      return;
+    }
+
+    const contenido = document.querySelector('.md-content__inner');
+    if (!contenido) return;
+
+    // Extraer solo el texto (sin código, sin botones)
+    const clone = contenido.cloneNode(true);
+    clone.querySelectorAll('script, style, pre, code, button, nav, .quiz-container, .share-buttons, .tts-button').forEach(el => el.remove());
+    const texto = clone.textContent.replace(/\s+/g, ' ').trim();
+
+    if (!texto) return;
+
+    utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = 'es-ES';
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    utterance.onend = () => {
+      isPlaying = false;
+      btn.textContent = '🔊 Escuchar capítulo';
+      btn.classList.remove('playing');
+    };
+
+    utterance.onerror = () => {
+      isPlaying = false;
+      btn.textContent = '🔊 Escuchar capítulo';
+      btn.classList.remove('playing');
+    };
+
+    window.speechSynthesis.speak(utterance);
+    isPlaying = true;
+    btn.textContent = '⏹️ Detener lectura';
+    btn.classList.add('playing');
+  });
+});
+
+// ============================================
+// EXPLICACIÓN DE CÓDIGO CON IA
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Solo en páginas de capítulos
+  if (!window.location.pathname.includes('/capitulos/')) return;
+
+  // Añadir botón a cada bloque de código
+  document.querySelectorAll('.highlight').forEach((block) => {
+    if (block.querySelector('.ai-explain-btn')) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'ai-explain-btn';
+    btn.textContent = '✨ Explícame';
+    btn.title = 'Explicar este código con IA';
+    btn.style.cssText = 'position: absolute; top: 0.5rem; right: 0.5rem; background: linear-gradient(135deg, #a78bfa, #22d3ee); color: #0f172a; border: none; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; z-index: 10; opacity: 0.9;';
+    block.style.position = 'relative';
+    block.appendChild(btn);
+
+    btn.addEventListener('click', async () => {
+      // Pedir API Key si no está guardada
+      let apiKey = localStorage.getItem('openai_api_key');
+      if (!apiKey) {
+        apiKey = prompt('Para usar la IA, pega tu API Key de OpenAI (sk-...). Se guardará solo en tu navegador:');
+        if (!apiKey) return;
+        localStorage.setItem('openai_api_key', apiKey);
+      }
+
+      const codigo = block.querySelector('code')?.textContent || '';
+      if (!codigo.trim()) return;
+
+      btn.textContent = '⏳ Pensando...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [
+              { role: 'system', content: 'Eres un profesor de desarrollo web. Explica el código de forma clara, breve y en español. Usa analogías si ayuda.' },
+              { role: 'user', content: `Explica este código:\n\n${codigo}` }
+            ],
+            max_tokens: 400
+          })
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error?.message || 'Error en la API');
+        }
+
+        const data = await res.json();
+        const explicacion = data.choices[0].message.content;
+
+        alert('✨ Explicación:\n\n' + explicacion);
+        btn.textContent = '✨ Explícame';
+        btn.disabled = false;
+
+      } catch (error) {
+        alert('❌ Error: ' + error.message);
+        btn.textContent = '✨ Explícame';
+        btn.disabled = false;
+      }
+    });
+  });
+});
