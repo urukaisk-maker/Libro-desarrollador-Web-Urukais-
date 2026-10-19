@@ -1476,36 +1476,6 @@ body {
 }
 
 /* ============================================
-   BOTÓN DE TEXT-TO-SPEECH
-   ============================================ */
-.tts-button {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: linear-gradient(135deg, #6a5acd, #22d3ee);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 50px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(106, 90, 205, 0.4);
-  z-index: 9998;
-  font-family: inherit;
-  font-size: 0.9rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.tts-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.5);
-}
-
-.tts-button.playing {
-  background: linear-gradient(135deg, #ef4444, #f59e0b);
-}
-
-/* ============================================
    MENÚ Y FOOTER PREMIUM (RESPONSIVE)
    ============================================ */
 
