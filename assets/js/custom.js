@@ -561,20 +561,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// TEXT-TO-SPEECH (TTS)
+// TEXT-TO-SPEECH (TTS) - VERSIÓN MEJORADA
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('ttsButton');
   if (!btn) return;
 
-  // Mostrar el botón en TODAS las páginas (no solo capítulos)
-  // if (!window.location.pathname.includes('/capitulos/')) {
-  //   btn.style.display = 'none';
-  //   return;
-  // }
-
   let utterance = null;
   let isPlaying = false;
+  let vocesCargadas = false;
+
+  // Cargar voces (algunos navegadores las cargan de forma asíncrona)
+  function cargarVoces() {
+    if (vocesCargadas) return;
+    const voces = window.speechSynthesis.getVoices();
+    if (voces.length > 0) {
+      vocesCargadas = true;
+      console.log('✅ Voces cargadas:', voces.length);
+    } else {
+      console.log('⏳ Esperando voces...');
+    }
+  }
+
+  // Intentar cargar voces inmediatamente y al cambiar
+  cargarVoces();
+  window.speechSynthesis.onvoiceschanged = cargarVoces;
 
   btn.addEventListener('click', () => {
     if (isPlaying) {
@@ -585,9 +596,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Verificar que el navegador soporta TTS
+    // Verificar soporte
     if (!('speechSynthesis' in window)) {
-      alert('❌ Tu navegador no soporta la síntesis de voz.');
+      alert('❌ Tu navegador no soporta la síntesis de voz (TTS). Prueba con Chrome, Edge o Safari.');
+      return;
+    }
+
+    // Verificar voces
+    const voces = window.speechSynthesis.getVoices();
+    if (voces.length === 0) {
+      alert('❌ No hay voces instaladas en tu navegador o sistema operativo.\n\n' +
+            'En Linux, instala una voz con:\n' +
+            'sudo apt install espeak-ng\n' +
+            'o\n' +
+            'sudo pacman -S espeak-ng\n\n' +
+            'Luego reinicia el navegador.');
       return;
     }
 
@@ -597,9 +620,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Extraer solo el texto (sin código, sin botones)
+    // Extraer solo el texto
     const clone = contenido.cloneNode(true);
-    clone.querySelectorAll('script, style, pre, code, button, nav, .quiz-container, .share-buttons, .tts-button, .ai-explain-btn, .command-palette-overlay').forEach(el => el.remove());
+    clone.querySelectorAll('script, style, pre, code, button, nav, .quiz-container, .share-buttons, .tts-button, .ai-explain-btn, .command-palette-overlay, .md-sidebar, .md-header, .md-footer').forEach(el => el.remove());
     const texto = clone.textContent.replace(/\s+/g, ' ').trim();
 
     if (!texto || texto.length < 10) {
@@ -616,22 +639,35 @@ document.addEventListener('DOMContentLoaded', () => {
     utterance.pitch = 1;
     utterance.volume = 1;
 
-    // Seleccionar una voz en español si está disponible
-    const voces = window.speechSynthesis.getVoices();
-    const vozEspanol = voces.find(v => v.lang.startsWith('es'));
-    if (vozEspanol) utterance.voice = vozEspanol;
+    // Seleccionar la mejor voz en español
+    const vozEspanol = voces.find(v => v.lang === 'es-ES') ||
+                       voces.find(v => v.lang.startsWith('es')) ||
+                       voces[0];
+    utterance.voice = vozEspanol;
+    console.log('🗣️ Usando voz:', vozEspanol.name, `(${vozEspanol.lang})`);
+
+    utterance.onstart = () => {
+      console.log('▶️ Reproduciendo...');
+    };
 
     utterance.onend = () => {
       isPlaying = false;
       btn.textContent = '🔊 Escuchar página';
       btn.classList.remove('playing');
+      console.log('⏹️ Lectura terminada');
     };
 
     utterance.onerror = (e) => {
-      console.error('Error TTS:', e);
+      console.error('❌ Error TTS:', e);
       isPlaying = false;
       btn.textContent = '🔊 Escuchar página';
       btn.classList.remove('playing');
+      
+      if (e.error === 'not-allowed') {
+        alert('❌ El navegador bloqueó la reproducción. Haz clic en la página primero y vuelve a intentarlo.');
+      } else if (e.error === 'voice-unavailable') {
+        alert('❌ La voz seleccionada no está disponible. Prueba con otro navegador.');
+      }
     };
 
     window.speechSynthesis.speak(utterance);
