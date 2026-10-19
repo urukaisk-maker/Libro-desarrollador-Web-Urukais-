@@ -118,7 +118,6 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
     [:octicons-arrow-right-24: Practicar ahora](ejercicios/index.md)
 
 </div>
-
 ## 📅 Agenda y Novedades
 
 <div class="grid cards" markdown>
@@ -155,6 +154,14 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
     [:octicons-arrow-right-24: Ver proyectos](proyectos-lectores.md)
 
+-   :material-trophy:{ .lg .middle } __Retos de la Comunidad__
+
+    ---
+
+    Participa en los retos del mes y muestra tu solución en el Muro de Soluciones.
+
+    [:octicons-arrow-right-24: Ver retos](retos-comunidad.md)
+
 </div>
 
 ## 📄 Llévate el libro contigo
@@ -183,8 +190,6 @@ Recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam
     Suscribirme
   </a>
 </div>
-
----
 
 ## 👤 Sobre el Autor
 
