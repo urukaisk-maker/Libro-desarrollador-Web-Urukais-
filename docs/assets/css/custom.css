@@ -1337,3 +1337,47 @@ body {
   cursor: pointer;
   font-size: 0.85rem;
 }
+
+/* ============================================
+   TARJETAS DE NIVEL CON IMAGEN
+   ============================================ */
+.md-typeset .grid.cards > ul > li {
+  padding: 0 !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-default-bg-color) !important;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.md-typeset .grid.cards > ul > li > p:nth-child(2) {
+  padding: 1rem 1rem 0.25rem 1rem !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--md-primary-fg-color);
+}
+
+.md-typeset .grid.cards > ul > li > p:nth-child(3) {
+  padding: 0 1rem !important;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.9rem;
+}
+
+.md-typeset .grid.cards > ul > li > p:last-child {
+  padding: 0.5rem 1rem 1rem 1rem !important;
+  margin-top: auto;
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  display: none;
+}
+
+/* Animación de hover en la imagen */
+.md-typeset .grid.cards > ul > li:hover img {
+  filter: brightness(1.1);
+  transition: filter 0.3s ease;
+}
