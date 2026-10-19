@@ -1236,3 +1236,91 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(4px);
 }
+
+/* ============================================
+   PLAYGROUND DE CÓDIGO
+   ============================================ */
+.playground-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.playground-editor-wrapper, .playground-output-wrapper {
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.playground-header, .playground-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.playground-lang {
+  color: #f59e0b;
+}
+
+.playground-run-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.playground-run-btn:hover {
+  transform: scale(1.05);
+}
+
+.playground-run-btn:active {
+  transform: scale(0.95);
+}
+
+#codeEditor {
+  flex: 1;
+  min-height: 300px;
+  background: #0f172a;
+  color: #e2e8f0;
+  border: none;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+.playground-console {
+  flex: 1;
+  min-height: 300px;
+  background: #0f172a;
+  color: #4ade80;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .playground-container {
+    grid-template-columns: 1fr;
+  }
+}

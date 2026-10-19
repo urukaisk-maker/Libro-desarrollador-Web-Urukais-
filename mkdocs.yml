@@ -50,6 +50,7 @@ nav:
       - Retos de la Comunidad: retos-comunidad.md
   - Mis Proyectos: proyectos-lectores.md
   - Proyectos Guiados: proyectos-guiados.md
+  - Playground: playground.md
   - Certificado: certificado.md
   - Preguntas de Entrevista: entrevistas.md
   - Apoya el Proyecto: apoya.md
@@ -101,7 +102,6 @@ nav:
       - "36 — Micro-frontends": capitulos/36-micro-frontends.md
       - "37 — Introducción a la IA Generativa": capitulos/37-ia-generativa.md
       - "38 — Seguridad Web Avanzada": capitulos/38-seguridad-avanzada.md
-  - Ejemplos: ejemplos/index.md
   - Diagramas: diagramas.md
   - Ejercicios resueltos:
       - Índice: ejercicios/index.md
