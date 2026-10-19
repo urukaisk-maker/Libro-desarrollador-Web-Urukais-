@@ -7,8 +7,7 @@
 [![MkDocs Material](https://img.shields.io/badge/Made%20with-MkDocs%20Material-526CFE?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-222222?style=for-the-badge&logo=github)](https://libro.urukais.com/)
-
-[🌐 Ver el libro online](https://libro.urukais.com/) · [🐛 Reportar un error](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues) · [🤝 Contribuir](CONTRIBUTING.md)
+[![Dev.to](https://img.shields.io/badge/Read%20on-Dev.to-0A0A0A?style=for-the-badge&logo=devdotto)](https://dev.to/urukaisklick)
 
 </div>
 
