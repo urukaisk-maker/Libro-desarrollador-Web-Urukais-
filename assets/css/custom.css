@@ -1131,3 +1131,257 @@ body {
     gap: 0.75rem;
   }
 }
+
+
+/* ============================================
+   REDISEÑO ULTRA-PREMIUM (ESTILO SAAS)
+   ============================================ */
+
+/* 1. Tipografía de Élite */
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --md-code-font: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* 2. Glassmorphism en la barra lateral y el header */
+/* Usamos variables de Material para no romper el modo claro/oscuro */
+.md-header {
+  background: var(--md-primary-fg-color) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Bloques de Código tipo IDE */
+.md-typeset .highlight {
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto Hover en bloques de código */
+.md-typeset .highlight:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 4. Tarjetas de Niveles (Efecto Tilt / Lift) */
+.md-typeset .grid.cards > ul > li {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -10px rgba(106, 90, 205, 0.4);
+  border-color: #a78bfa;
+}
+
+/* 5. Badges y Logros (Efecto Shine) */
+@keyframes badgeShine {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
+}
+
+.chapter-complete-btn.completed {
+  background: linear-gradient(90deg, #16a34a 0%, #4ade80 50%, #16a34a 100%) !important;
+  background-size: 200% auto !important;
+  animation: badgeShine 3s infinite linear;
+  color: white !important;
+  border: none;
+}
+
+/* 6. Scrollbar Neón */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* 7. Títulos con Gradiente (Solo en modo oscuro para no romper contraste) */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* En modo claro, usamos un gradiente más oscuro para que se lea bien */
+[data-md-color-scheme="default"] .md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #6a5acd 0%, #0891b2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 8. Admonitions (Cajas de notas) con Glassmorphism sutil */
+.md-typeset .admonition {
+  border-radius: 12px;
+  border-left-width: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   PLAYGROUND DE CÓDIGO
+   ============================================ */
+.playground-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.playground-editor-wrapper, .playground-output-wrapper {
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.playground-header, .playground-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.playground-lang {
+  color: #f59e0b;
+}
+
+.playground-run-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.playground-run-btn:hover {
+  transform: scale(1.05);
+}
+
+.playground-run-btn:active {
+  transform: scale(0.95);
+}
+
+#codeEditor {
+  flex: 1;
+  min-height: 300px;
+  background: #0f172a;
+  color: #e2e8f0;
+  border: none;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+.playground-console {
+  flex: 1;
+  min-height: 300px;
+  background: #0f172a;
+  color: #4ade80;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .playground-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Selector de lenguaje */
+.playground-lang-select {
+  background: #0f172a;
+  color: #f59e0b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   TARJETAS DE NIVEL CON IMAGEN
+   ============================================ */
+.md-typeset .grid.cards > ul > li {
+  padding: 0 !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-default-bg-color) !important;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.md-typeset .grid.cards > ul > li > p:nth-child(2) {
+  padding: 1rem 1rem 0.25rem 1rem !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--md-primary-fg-color);
+}
+
+.md-typeset .grid.cards > ul > li > p:nth-child(3) {
+  padding: 0 1rem !important;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.9rem;
+}
+
+.md-typeset .grid.cards > ul > li > p:last-child {
+  padding: 0.5rem 1rem 1rem 1rem !important;
+  margin-top: auto;
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  display: none;
+}
+
+/* Animación de hover en la imagen */
+.md-typeset .grid.cards > ul > li:hover img {
+  filter: brightness(1.1);
+  transition: filter 0.3s ease;
+}
+.md-copyright__links a[href*="plataforma-el-ni-o"] {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}
