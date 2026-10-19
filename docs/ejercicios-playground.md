@@ -5,6 +5,22 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
 !!! tip "💾 Tu progreso se guarda"
     El código que escribas se guarda automáticamente en tu navegador. Si recargas la página, seguirá ahí.
 
+
+## 🏆 Tu Progreso
+
+<div id="ranking-panel" style="background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <strong>Retos completados</strong>
+    <span id="ranking-count" style="font-weight: 700; color: var(--md-primary-fg-color);">0 / 10</span>
+  </div>
+  <div style="background: var(--md-default-fg-color--lightest); height: 12px; border-radius: 6px; overflow: hidden;">
+    <div id="ranking-bar" style="background: linear-gradient(90deg, #a78bfa, #22d3ee); height: 100%; width: 0%; transition: width 0.5s ease;"></div>
+  </div>
+  <p id="ranking-message" style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--md-default-fg-color--light);">
+    ¡Empieza a resolver retos para ver tu progreso!
+  </p>
+</div>
+
 ---
 
 ## 🟢 Reto 1: Suma de dos números
@@ -562,6 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (fallos.length === 0) {
           output.textContent = `🎉 ¡Correcto! Todos los tests han pasado (${test.casos.length}/${test.casos.length}).`;
+          marcarCompletado(retoId);
           output.style.color = '#4ade80';
         } else {
           let msg = `❌ ${fallos.length} de ${test.casos.length} tests fallaron:\n\n`;
@@ -581,5 +598,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Actualizar panel de ranking
+  function actualizarRanking() {
+    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
+    const total = 10;
+    const count = completados.length;
+    const porcentaje = (count / total) * 100;
+
+    document.getElementById('ranking-count').textContent = `${count} / ${total}`;
+    document.getElementById('ranking-bar').style.width = porcentaje + '%';
+
+    const mensajes = [
+      '¡Empieza a resolver retos para ver tu progreso!',
+      '¡Buen comienzo! Sigue así.',
+      '¡Vas por buen camino!',
+      '¡Ya llevas la mitad!',
+      '¡Casi lo tienes!',
+      '¡Eres un crack!',
+      '¡Imparable!',
+      '¡Nivel experto desbloqueado!',
+      '¡Solo queda uno!',
+      '¡Eres una leyenda! 🏆'
+    ];
+    const idx = Math.min(count, mensajes.length - 1);
+    document.getElementById('ranking-message').textContent = mensajes[idx];
+  }
+
+  // Marcar reto como completado
+  function marcarCompletado(retoId) {
+    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
+    if (!completados.includes(retoId)) {
+      completados.push(retoId);
+      localStorage.setItem('retos_completados', JSON.stringify(completados));
+      actualizarRanking();
+    }
+  }
+
+  // Llamar al cargar la página
+  actualizarRanking();
 });
 </script>
