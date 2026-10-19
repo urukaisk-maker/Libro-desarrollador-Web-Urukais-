@@ -567,11 +567,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('ttsButton');
   if (!btn) return;
 
-  // Solo mostrar el botón en páginas de capítulos
-  if (!window.location.pathname.includes('/capitulos/')) {
-    btn.style.display = 'none';
-    return;
-  }
+  // Mostrar el botón en TODAS las páginas (no solo capítulos)
+  // if (!window.location.pathname.includes('/capitulos/')) {
+  //   btn.style.display = 'none';
+  //   return;
+  // }
 
   let utterance = null;
   let isPlaying = false;
@@ -580,35 +580,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) {
       window.speechSynthesis.cancel();
       isPlaying = false;
-      btn.textContent = '🔊 Escuchar capítulo';
+      btn.textContent = '🔊 Escuchar página';
       btn.classList.remove('playing');
       return;
     }
 
+    // Verificar que el navegador soporta TTS
+    if (!('speechSynthesis' in window)) {
+      alert('❌ Tu navegador no soporta la síntesis de voz.');
+      return;
+    }
+
     const contenido = document.querySelector('.md-content__inner');
-    if (!contenido) return;
+    if (!contenido) {
+      alert('❌ No se encontró contenido para leer.');
+      return;
+    }
 
     // Extraer solo el texto (sin código, sin botones)
     const clone = contenido.cloneNode(true);
-    clone.querySelectorAll('script, style, pre, code, button, nav, .quiz-container, .share-buttons, .tts-button').forEach(el => el.remove());
+    clone.querySelectorAll('script, style, pre, code, button, nav, .quiz-container, .share-buttons, .tts-button, .ai-explain-btn, .command-palette-overlay').forEach(el => el.remove());
     const texto = clone.textContent.replace(/\s+/g, ' ').trim();
 
-    if (!texto) return;
+    if (!texto || texto.length < 10) {
+      alert('❌ No hay suficiente texto para leer.');
+      return;
+    }
+
+    // Cancelar cualquier lectura anterior
+    window.speechSynthesis.cancel();
 
     utterance = new SpeechSynthesisUtterance(texto);
     utterance.lang = 'es-ES';
     utterance.rate = 1;
     utterance.pitch = 1;
+    utterance.volume = 1;
+
+    // Seleccionar una voz en español si está disponible
+    const voces = window.speechSynthesis.getVoices();
+    const vozEspanol = voces.find(v => v.lang.startsWith('es'));
+    if (vozEspanol) utterance.voice = vozEspanol;
 
     utterance.onend = () => {
       isPlaying = false;
-      btn.textContent = '🔊 Escuchar capítulo';
+      btn.textContent = '🔊 Escuchar página';
       btn.classList.remove('playing');
     };
 
-    utterance.onerror = () => {
+    utterance.onerror = (e) => {
+      console.error('Error TTS:', e);
       isPlaying = false;
-      btn.textContent = '🔊 Escuchar capítulo';
+      btn.textContent = '🔊 Escuchar página';
       btn.classList.remove('playing');
     };
 
