@@ -1,32 +1,6 @@
+{% extends "base.html" %}
+
 {% block extrahead %}
-  {{ super() }}
-  <link rel="stylesheet" href="{{ base_url }}/assets/css/share.css">
-  <link rel="stylesheet" href="{{ base_url }}/assets/css/custom.css">
-  <link rel="manifest" href="{{ base_url }}/manifest.json">
-  <meta name="theme-color" content="#6a5acd">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page.title }} - {{ config.site_name }}">
-  <meta property="og:description" content="{{ config.site_description }}">
-  <meta property="og:url" content="{{ page.canonical_url }}">
-  <meta property="og:image" content="https://libro.urukais.com/assets/portada.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title }} - {{ config.site_name }}">
-  <meta name="twitter:description" content="{{ config.site_description }}">
-  <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="{{ page.meta.description if page.meta and page.meta.description else config.site_description }}">
-  <meta name="author" content="{{ config.site_author }}">
-  <link rel="canonical" href="{{ page.canonical_url }}">
-
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
-{% endblock %}{% block extrahead %}
   {{ super() }}
   <link rel="stylesheet" href="{{ base_url }}/assets/css/share.css">
   <link rel="stylesheet" href="{{ base_url }}/assets/css/custom.css">
@@ -58,8 +32,8 @@
 
 {% block scripts %}
   {{ super() }}
-  <script src="{{ base_url }}/assets/js/custom.js" defer></script>
   <script src="{{ base_url }}/assets/js/share.js" defer></script>
+  <script src="{{ base_url }}/assets/js/custom.js" defer></script>
 
   <div class="reading-progress" id="readingProgress"></div>
 
