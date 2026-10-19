@@ -99,6 +99,8 @@ nav:
       - "34 — Docker para frontend": capitulos/34-docker.md
       - "35 — GraphQL": capitulos/35-graphql.md
       - "36 — Micro-frontends": capitulos/36-micro-frontends.md
+      - "37 — Introducción a la IA Generativa": capitulos/37-ia-generativa.md
+      - "38 — Seguridad Web Avanzada": capitulos/38-seguridad-avanzada.md
   - Ejemplos: ejemplos/index.md
   - Diagramas: diagramas.md
   - Ejercicios resueltos:
