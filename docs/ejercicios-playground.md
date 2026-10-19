@@ -35,6 +35,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -60,6 +63,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -85,6 +91,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -110,6 +119,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -135,6 +147,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -163,6 +178,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -188,6 +206,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -213,6 +234,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -238,6 +262,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -263,6 +290,9 @@ Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona
       <select class="playground-lang-select">
         <option value="javascript">JavaScript</option>
         <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="c++">C++</option>
+        <option value="rust">Rust</option>
       </select>
       <button class="playground-run-btn validate-btn">✅ Validar</button>
     </div>
@@ -498,6 +528,47 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
+
+    // Plantillas para nuevos lenguajes
+    const templatesExtra = {
+      php: {
+        reto1: `<?php\nfunction sumar($a, $b) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto2: `<?php\nfunction revertir($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto3: `<?php\nfunction contarVocales($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto4: `<?php\nfunction esPar($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto5: `<?php\nfunction maximo($numeros) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto6: `<?php\nfunction factorial($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto7: `<?php\nfunction esPalindromo($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto8: `<?php\nfunction fizzbuzz($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto9: `<?php\nfunction ordenar($numeros) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
+        reto10: `<?php\nfunction fibonacci($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`
+      },
+      'c++': {
+        reto1: `#include <iostream>\nusing namespace std;\n\nint sumar(int a, int b) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << sumar(2, 3) << endl;\n    return 0;\n}`,
+        reto2: `#include <iostream>\n#include <string>\nusing namespace std;\n\nstring revertir(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << revertir(\"hola\") << endl;\n    return 0;\n}`,
+        reto3: `#include <iostream>\n#include <string>\nusing namespace std;\n\nint contarVocales(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << contarVocales(\"hola\") << endl;\n    return 0;\n}`,
+        reto4: `#include <iostream>\nusing namespace std;\n\nbool esPar(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << esPar(4) << endl;\n    return 0;\n}`,
+        reto5: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nint maximo(vector<int> numeros) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << maximo({1, 5, 3}) << endl;\n    return 0;\n}`,
+        reto6: `#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << factorial(5) << endl;\n    return 0;\n}`,
+        reto7: `#include <iostream>\n#include <string>\nusing namespace std;\n\nbool esPalindromo(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << esPalindromo(\"oso\") << endl;\n    return 0;\n}`,
+        reto8: `#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> fizzbuzz(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    auto r = fizzbuzz(5);\n    for (auto& s : r) cout << s << \" \";\n    return 0;\n}`,
+        reto9: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nvector<int> ordenar(vector<int> numeros) {\n    // Escribe tu solución aquí (sin std::sort)\n    \n}\n\nint main() {\n    auto r = ordenar({3, 1, 2});\n    for (int n : r) cout << n << \" \";\n    return 0;\n}`,
+        reto10: `#include <iostream>\nusing namespace std;\n\nint fibonacci(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << fibonacci(7) << endl;\n    return 0;\n}`
+      },
+      rust: {
+        reto1: `fn sumar(a: i32, b: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", sumar(2, 3));\n}`,
+        reto2: `fn revertir(texto: &str) -> String {\n    // Escribe tu solución aquí\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", revertir(\"hola\"));\n}`,
+        reto3: `fn contar_vocales(texto: &str) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", contar_vocales(\"hola\"));\n}`,
+        reto4: `fn es_par(n: i32) -> bool {\n    // Escribe tu solución aquí\n    false\n}\n\nfn main() {\n    println!(\"{}\", es_par(4));\n}`,
+        reto5: `fn maximo(numeros: Vec<i32>) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", maximo(vec![1, 5, 3]));\n}`,
+        reto6: `fn factorial(n: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", factorial(5));\n}`,
+        reto7: `fn es_palindromo(texto: &str) -> bool {\n    // Escribe tu solución aquí\n    false\n}\n\nfn main() {\n    println!(\"{}\", es_palindromo(\"oso\"));\n}`,
+        reto8: `fn fizzbuzz(n: i32) -> Vec<String> {\n    // Escribe tu solución aquí\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", fizzbuzz(5));\n}`,
+        reto9: `fn ordenar(mut numeros: Vec<i32>) -> Vec<i32> {\n    // Escribe tu solución aquí (sin sort)\n    numeros\n}\n\nfn main() {\n    println!(\"{:?}\", ordenar(vec![3, 1, 2]));\n}`,
+        reto10: `fn fibonacci(n: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", fibonacci(7));\n}`
+      }
+    };
+
   // Inicializar cada playground
   document.querySelectorAll('.playground-container').forEach(container => {
     const retoId = container.dataset.reto;
@@ -510,7 +581,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function cargarCodigo() {
       const lang = select.value;
       const guardado = localStorage.getItem(`playground_${retoId}_${lang}`);
-      editor.value = guardado || tests[retoId][lang].template;
+      let template = '';
+      if (tests[retoId] && tests[retoId][lang]) {
+        template = tests[retoId][lang].template;
+      } else if (templatesExtra[lang] && templatesExtra[lang][retoId]) {
+        template = templatesExtra[lang][retoId];
+      }
+      editor.value = guardado || template;
     }
 
     cargarCodigo();
