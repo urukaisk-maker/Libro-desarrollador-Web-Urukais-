@@ -268,4 +268,13 @@
   } else {
     loop();
   }
+    // Si se redimensiona a móvil, eliminar todo
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function () {
+    var w = window.innerWidth;
+    if ((lastW >= 1220) !== (w >= 1220)) {
+      location.reload();
+    }
+    lastW = w;
+  });
 })();
