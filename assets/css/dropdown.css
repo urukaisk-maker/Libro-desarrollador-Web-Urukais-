@@ -245,3 +245,12 @@
     .dd-mega-section:nth-child(3n) { border-right: none; }
   }
 }
+@media screen and (max-width: 1219px) {
+  .dd-menu-button,
+  .dd-mega-panel {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
