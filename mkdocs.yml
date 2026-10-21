@@ -182,11 +182,12 @@ markdown_extensions:
 extra_css:
   - assets/css/share.css
   - assets/css/custom.css
+  # - assets/css/dropdown.css
   - https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js
-
+  # - assets/js/dropdown.js
 extra:
   generator: false
   comments: true

@@ -1,0 +1,197 @@
+/* ============================================================
+   Footer premium v3 — Colores explícitos y selectores ampliados
+   ============================================================ */
+
+/* ========= Variables por defecto (modo claro) ========= */
+.uru-footer {
+  --uru-footer-fg:         #1f1c2e;
+  --uru-footer-fg-muted:   #5c5870;
+  --uru-footer-bg-1:       #f8f7fb;
+  --uru-footer-bg-2:       #f0eef8;
+  --uru-footer-bg-bottom:  #ebe8f4;
+  --uru-footer-border:     rgba(0, 0, 0, .08);
+  --uru-footer-hover:      #6a5acd;
+  --uru-footer-social-bg:  rgba(0, 0, 0, .05);
+  --uru-footer-social-fg:  #1f1c2e;
+}
+
+/* ========= Override modo oscuro — selectores ampliados =========
+   Cubrimos todas las variantes que usa Material según versión
+   y cómo se aplique el esquema (body, html, media query). */
+body[data-md-color-scheme="slate"] .uru-footer,
+html[data-md-color-scheme="slate"] .uru-footer,
+[data-md-color-scheme="slate"] .uru-footer,
+body[data-md-color-media*="dark"] .uru-footer,
+html[data-md-color-media*="dark"] .uru-footer {
+  --uru-footer-fg:         #e8e5f5;
+  --uru-footer-fg-muted:   #b8b5c8;
+  --uru-footer-bg-1:       #1a1726;
+  --uru-footer-bg-2:       #14111e;
+  --uru-footer-bg-bottom:  #100d1a;
+  --uru-footer-border:     rgba(255, 255, 255, .12);
+  --uru-footer-hover:      #7dd3fc;
+  --uru-footer-social-bg:  rgba(255, 255, 255, .08);
+  --uru-footer-social-fg:  #e8e5f5;
+}
+
+/* Fallback por si el toggle no se refleja en atributos */
+@media (prefers-color-scheme: dark) {
+  .uru-footer {
+    --uru-footer-fg:         #e8e5f5;
+    --uru-footer-fg-muted:   #b8b5c8;
+    --uru-footer-bg-1:       #1a1726;
+    --uru-footer-bg-2:       #14111e;
+    --uru-footer-bg-bottom:  #100d1a;
+    --uru-footer-border:     rgba(255, 255, 255, .12);
+    --uru-footer-hover:      #7dd3fc;
+    --uru-footer-social-bg:  rgba(255, 255, 255, .08);
+    --uru-footer-social-fg:  #e8e5f5;
+  }
+}
+
+/* ========= Aplicación de variables ========= */
+.uru-footer {
+  background: linear-gradient(180deg, var(--uru-footer-bg-1) 0%, var(--uru-footer-bg-2) 100%) !important;
+  color: var(--uru-footer-fg) !important;
+  border-top: 1px solid var(--uru-footer-border) !important;
+  position: relative;
+}
+
+.uru-footer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--md-primary-fg-color, #6a5acd), var(--md-accent-fg-color, #00bcd4));
+  pointer-events: none;
+}
+
+.uru-footer__main { padding: 3rem 1.5rem 2rem; }
+
+.uru-footer__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 2.5rem 2rem;
+}
+
+/* Marca */
+.uru-footer__brand {
+  display: flex; flex-direction: column; gap: 1rem; max-width: 320px;
+}
+.uru-footer__logo {
+  display: inline-flex; align-items: center; gap: .6rem;
+  color: var(--uru-footer-fg) !important;
+  text-decoration: none; font-weight: 700; font-size: .95rem;
+  transition: color .15s;
+}
+.uru-footer__logo:hover { color: var(--uru-footer-hover) !important; }
+.uru-footer__logo img { filter: drop-shadow(0 2px 6px rgba(0,0,0,.18)); }
+.uru-footer__tagline {
+  font-size: .78rem; line-height: 1.55;
+  color: var(--uru-footer-fg-muted) !important; margin: 0;
+}
+.uru-footer__cta {
+  display: inline-flex; align-items: center; gap: .4rem;
+  align-self: flex-start;
+  padding: .5rem .9rem;
+  background: var(--md-primary-fg-color, #6a5acd) !important;
+  color: #fff !important;
+  text-decoration: none; border-radius: 6px;
+  font-size: .78rem; font-weight: 600;
+  transition: all .15s ease;
+  box-shadow: 0 2px 8px rgba(106, 90, 205, .35);
+}
+.uru-footer__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(106, 90, 205, .5);
+  color: #fff !important;
+}
+
+.uru-footer__social {
+  display: flex; gap: .5rem; margin-top: .35rem;
+}
+.uru-footer__social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; border-radius: 6px;
+  background: var(--uru-footer-social-bg) !important;
+  color: var(--uru-footer-social-fg) !important;
+  transition: all .15s ease;
+}
+.uru-footer__social a:hover {
+  background: var(--md-primary-fg-color, #6a5acd) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Columnas */
+.uru-footer__col { min-width: 0; }
+.uru-footer__heading {
+  font-size: .82rem; font-weight: 700;
+  color: var(--uru-footer-fg) !important;
+  margin: 0 0 .85rem;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+.uru-footer__list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .35rem;
+}
+.uru-footer__list a {
+  font-size: .78rem;
+  color: var(--uru-footer-fg-muted) !important;
+  text-decoration: none;
+  transition: color .12s, transform .12s;
+  display: inline-block;
+}
+.uru-footer__list a:hover {
+  color: var(--uru-footer-hover) !important;
+  transform: translateX(2px);
+}
+
+/* Barra inferior */
+.uru-footer__bottom {
+  border-top: 1px solid var(--uru-footer-border) !important;
+  background: var(--uru-footer-bg-bottom) !important;
+  padding: 1rem 1.5rem;
+}
+.uru-footer__bottom-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.uru-footer__copyright {
+  font-size: .76rem;
+  color: var(--uru-footer-fg-muted) !important;
+  margin: 0;
+}
+.uru-footer__copyright strong {
+  color: var(--uru-footer-fg) !important;
+  font-weight: 600;
+}
+.uru-footer__legal {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 1.25rem; flex-wrap: wrap;
+}
+.uru-footer__legal a {
+  font-size: .76rem;
+  color: var(--uru-footer-fg-muted) !important;
+  text-decoration: none;
+  transition: color .12s;
+}
+.uru-footer__legal a:hover {
+  color: var(--uru-footer-hover) !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .uru-footer__grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .uru-footer__brand { grid-column: 1 / -1; max-width: none; }
+}
+@media screen and (max-width: 640px) {
+  .uru-footer__main { padding: 2rem 1rem 1.5rem; }
+  .uru-footer__grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .uru-footer__bottom-inner { flex-direction: column; text-align: center; }
+  .uru-footer__legal { justify-content: center; }
+}
