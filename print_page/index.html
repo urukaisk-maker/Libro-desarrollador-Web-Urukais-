@@ -12901,269 +12901,242 @@ const temaGuardado = localStorage.getItem('tema');</p>
                     <section class='print-page md-section' id='section-18' heading-number='18'>
                         <h1>Nivel avanzado<a class='headerlink' href='#section-18' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="capitulos-11-css-moderno" heading-number="18.1"><h1 id="capitulos-11-css-moderno-capitulo-11-css-moderno">Capítulo 11 — CSS moderno<a class="headerlink" href="#capitulos-11-css-moderno-capitulo-11-css-moderno" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-11-css-moderno-introduccion">Introducción<a class="headerlink" href="#capitulos-11-css-moderno-introduccion" title="Permanent link">&para;</a></h2>
-<p>El CSS que se escribe hoy en producción ya no se parece al de hace cinco años. Nuevas características del lenguaje permiten escribir estilos <strong>más expresivos, mantenibles y potentes</strong> sin necesidad de preprocesadores ni frameworks.</p>
-<p>Este capítulo repasa las técnicas que todo desarrollador profesional debería dominar en 2026.</p>
-<h2 id="capitulos-11-css-moderno-variables-css-custom-properties">Variables CSS (custom properties)<a class="headerlink" href="#capitulos-11-css-moderno-variables-css-custom-properties" title="Permanent link">&para;</a></h2>
-<p>A diferencia de las variables de SCSS, las <strong>custom properties</strong> existen en tiempo de ejecución y se pueden modificar con JavaScript o con media queries.</p>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--color-primary</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--color-text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--space-sm</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--space-md</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">button</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--space-sm</span><span class="p">)</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--space-md</span><span class="p">);</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-11-css-moderno-cambiar-tema-con-variables">Cambiar tema con variables<a class="headerlink" href="#capitulos-11-css-moderno-cambiar-tema-con-variables" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#0f172a</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Con JavaScript, cambiar el tema es solo:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'dark'</span><span class="p">;</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Fallback de variables</p>
-<p>Puedes dar un valor por defecto: <code>var(--color, #333)</code>. Útil cuando la variable puede no estar definida.</p>
-</div>
-<h2 id="capitulos-11-css-moderno-funciones-modernas-clamp-min-y-max">Funciones modernas: <code>clamp()</code>, <code>min()</code> y <code>max()</code><a class="headerlink" href="#capitulos-11-css-moderno-funciones-modernas-clamp-min-y-max" title="Permanent link">&para;</a></h2>
-<p>Permiten escribir <strong>tipografía y espaciados fluidos</strong> sin media queries.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Título que escala entre 1.5rem y 3rem según el viewport */</span>
-<span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c">/* Ancho que nunca supera los 800px */</span>
-<span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="kt">px</span><span class="p">);</span>
-<span class="w">  </span><span class="k">margin-inline</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Padding mínimo garantizado */</span>
-<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">vw</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-11-css-moderno-selectores-is-y-where">Selectores <code>:is()</code> y <code>:where()</code><a class="headerlink" href="#capitulos-11-css-moderno-selectores-is-y-where" title="Permanent link">&para;</a></h2>
-<p>Simplifican listas largas de selectores y mejoran la legibilidad.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Antes */</span>
-<span class="nt">article</span><span class="w"> </span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">article</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">article</span><span class="w"> </span><span class="nt">h3</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="c">/* Ahora */</span>
-<span class="nt">article</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<p><code>:where()</code> hace lo mismo, pero con <strong>especificidad cero</strong>. Perfecto para resets:</p>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">ul</span><span class="o">,</span><span class="w"> </span><span class="nt">ol</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">list-style</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-11-css-moderno-el-selector-has-el-selector-padre">El selector <code>:has()</code> — el "selector padre"<a class="headerlink" href="#capitulos-11-css-moderno-el-selector-has-el-selector-padre" title="Permanent link">&para;</a></h2>
-<p><code>:has()</code> permite estilizar un elemento <strong>en función de sus hijos</strong>. Es una de las novedades más potentes de los últimos años.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Tarjeta con imagen */</span>
-<span class="p">.</span><span class="nc">card</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">img</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Formulario con error */</span>
-<span class="p">.</span><span class="nc">form</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">crimson</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Menú con submenú abierto */</span>
-<span class="p">.</span><span class="nc">nav-item</span><span class="p">:</span><span class="nd">has</span><span class="o">(&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">submenu</span><span class="p">:</span><span class="nd">hover</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f1f5f9</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Soporte</p>
-<p><code>:has()</code> está soportado en todos los navegadores modernos desde 2023. Puedes usarlo en producción sin problema.</p>
-</div>
-<h2 id="capitulos-11-css-moderno-container-queries">Container queries<a class="headerlink" href="#capitulos-11-css-moderno-container-queries" title="Permanent link">&para;</a></h2>
-<p>Antes, el diseño responsive dependía del tamaño del <strong>viewport</strong>. Con <code>@container</code>, un componente responde al tamaño de <strong>su contenedor</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card-wrapper</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
-<span class="w">  </span><span class="k">container-name</span><span class="p">:</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Cuando el contenedor supera los 400px */</span>
-<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="nt">card</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Esto permite <strong>componentes verdaderamente reutilizables</strong> en cualquier contexto.</p>
-<h2 id="capitulos-11-css-moderno-cascade-layers-layer">Cascade layers (<code>@layer</code>)<a class="headerlink" href="#capitulos-11-css-moderno-cascade-layers-layer" title="Permanent link">&para;</a></h2>
-<p>Controlan el orden de precedencia de los estilos sin depender de la especificidad.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="o">,</span><span class="w"> </span><span class="nt">base</span><span class="o">,</span><span class="w"> </span><span class="nt">components</span><span class="o">,</span><span class="w"> </span><span class="nt">utilities</span><span class="p">;</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">base</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">utilities</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">text-center</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>El orden de las capas importa más que la especificidad dentro de ellas. Ideal para trabajar con librerías externas sin pelearse con sus estilos.</p>
-<h2 id="capitulos-11-css-moderno-scope"><code>@scope</code><a class="headerlink" href="#capitulos-11-css-moderno-scope" title="Permanent link">&para;</a></h2>
-<p>Limita el alcance de los estilos a un subárbol del DOM.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">scope</span><span class="w"> </span><span class="o">(</span><span class="p">.</span><span class="nc">card</span><span class="o">)</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="o">(</span><span class="p">.</span><span class="nc">card-footer</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#475569</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Los estilos solo se aplican dentro de <code>.card</code> y <strong>no</strong> dentro de <code>.card-footer</code>.</p>
-<h2 id="capitulos-11-css-moderno-subgrid">Subgrid<a class="headerlink" href="#capitulos-11-css-moderno-subgrid" title="Permanent link">&para;</a></h2>
-<p>Hereda la cuadrícula del elemento padre, algo imposible con grid normal.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">parent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">child</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="n">subgrid</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Perfecto para alinear contenido entre tarjetas.</p>
-<h2 id="capitulos-11-css-moderno-colores-modernos-oklch-y-color-mix">Colores modernos: <code>oklch()</code> y <code>color-mix()</code><a class="headerlink" href="#capitulos-11-css-moderno-colores-modernos-oklch-y-color-mix" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--brand</span><span class="p">:</span><span class="w"> </span><span class="nf">oklch</span><span class="p">(</span><span class="mi">60</span><span class="kt">%</span><span class="w"> </span><span class="mf">0.18</span><span class="w"> </span><span class="mi">280</span><span class="p">);</span>
-<span class="w">  </span><span class="nv">--brand-light</span><span class="p">:</span><span class="w"> </span><span class="nf">color-mix</span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="n">oklch</span><span class="p">,</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--brand</span><span class="p">)</span><span class="w"> </span><span class="mi">30</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="kc">white</span><span class="p">);</span>
-<span class="w">  </span><span class="nv">--brand-dark</span><span class="p">:</span><span class="w"> </span><span class="nf">color-mix</span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="n">oklch</span><span class="p">,</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--brand</span><span class="p">)</span><span class="w"> </span><span class="mi">70</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="kc">black</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>oklch()</code> ofrece <strong>percepción uniforme del color</strong>, ideal para generar paletas consistentes.</p>
-<h2 id="capitulos-11-css-moderno-propiedades-logicas">Propiedades lógicas<a class="headerlink" href="#capitulos-11-css-moderno-propiedades-logicas" title="Permanent link">&para;</a></h2>
-<p>Sustituyen <code>left/right/top/bottom</code> por <code>inline-start</code>, <code>inline-end</code>, <code>block-start</code>, <code>block-end</code>. Esencial para internacionalización (RTL, árabe, hebreo).</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">margin-inline</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding-block</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-inline-start</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--brand</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-11-css-moderno-aspect-ratio"><code>aspect-ratio</code><a class="headerlink" href="#capitulos-11-css-moderno-aspect-ratio" title="Permanent link">&para;</a></h2>
-<p>Antes se usaba el truco del <code>padding-top: 56.25%</code>. Ahora:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">video</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
-<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-11-css-moderno-caso-real-tarjeta-de-producto-responsive">Caso real: tarjeta de producto responsive<a class="headerlink" href="#capitulos-11-css-moderno-caso-real-tarjeta-de-producto-responsive" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"product"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"camiseta.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Camiseta"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"product-info"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Camiseta<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"price"</span><span class="p">&gt;</span>29 €<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Añadir al carrito<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">product</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg</span><span class="p">,</span><span class="w"> </span><span class="kc">white</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">product</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="p">.</span><span class="nc">price</span><span class="p">:</span><span class="nd">empty</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">product</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">price</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">;</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--brand</span><span class="p">,</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-11-css-moderno-diagrama-capas-de-la-cascada-css">Diagrama: capas de la cascada CSS<a class="headerlink" href="#capitulos-11-css-moderno-diagrama-capas-de-la-cascada-css" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TB
-    A[Navegador] --&gt; B[Estilos del usuario]
-    B --&gt; C[!important]
-    C --&gt; D[Estilos inline]
-    D --&gt; E[Media queries]
-    E --&gt; F[Especificidad y @layer]
-    F --&gt; G[Estilos del navegador]</code></pre>
-<p>Orden de precedencia en CSS: de mayor a menor prioridad. Las capas (<code>@layer</code>) permiten controlar este orden sin depender de la especificidad.</p>
-<h2 id="capitulos-11-css-moderno-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-11-css-moderno-buenas-practicas" title="Permanent link">&para;</a></h2>
+                    <section class="print-page" id="capitulos-11-css-moderno" heading-number="18.1"><h1 id="capitulos-11-css-moderno-11-css-moderno">11 — CSS moderno<a class="headerlink" href="#capitulos-11-css-moderno-11-css-moderno" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li><strong>Usa variables CSS</strong> para todo lo que se repita: colores, espaciados, radios, tipografías.</li>
-<li><strong>Combina <code>:is()</code> y <code>:where()</code></strong> para reducir ruido en los selectores.</li>
-<li><strong>Prefiere <code>container queries</code></strong> a media queries cuando diseñes componentes.</li>
-<li><strong>Organiza con <code>@layer</code></strong> para separar resets, base, componentes y utilidades.</li>
-<li><strong>Usa <code>clamp()</code></strong> para tipografía fluida y <code>min()</code>/<code>max()</code> para tamaños con límites.</li>
-<li><strong>Adopta propiedades lógicas</strong> desde el principio; evita refactorizar después.</li>
-<li><strong>Comprueba compatibilidad</strong> en <a href="https://caniuse.com/">caniuse.com</a> antes de usar features muy nuevas.</li>
+<li>Variables CSS y funciones modernas.</li>
+<li>Selectores avanzados: :has(), :is(), :where().</li>
+<li>Container queries.</li>
+<li>Grid avanzado y subgrid.</li>
+<li>Animaciones y transiciones.</li>
 </ul>
-<h2 id="capitulos-11-css-moderno-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-11-css-moderno-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un sistema de temas (claro/oscuro) usando solo custom properties.</li>
-<li>Diseña una tarjeta que cambie de layout según el ancho de su contenedor con <code>@container</code>.</li>
-<li>Usa <code>:has()</code> para resaltar un formulario cuando tiene un campo inválido.</li>
-<li>Implementa un título con tipografía fluida usando <code>clamp()</code>.</li>
-<li>Organiza tus estilos con <code>@layer</code> en cuatro capas: reset, base, components y utilities.</li>
-</ol>
+</div>
 <hr />
-<h2 id="capitulos-11-css-moderno-capitulo-10-proyecto-final-capitulo-12-javascript-asincrono-pendientepython3-c-printopendocscapitulos11-css-modernomdread200">⬅️ <a href="#capitulos-10-proyecto-final">Capítulo 10 — Proyecto final</a> | ➡️ Capítulo 12 — JavaScript asíncrono (pendiente)python3 -c "print(open('docs/capitulos/11-css-moderno.md').read()[:200])"<a class="headerlink" href="#capitulos-11-css-moderno-capitulo-10-proyecto-final-capitulo-12-javascript-asincrono-pendientepython3-c-printopendocscapitulos11-css-modernomdread200" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-11-css-moderno-css-ya-no-es-lo-que-era">🎨 CSS ya no es lo que era<a class="headerlink" href="#capitulos-11-css-moderno-css-ya-no-es-lo-que-era" title="Permanent link">&para;</a></h2>
+<p>CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería JavaScript o preprocesadores ahora es nativo: variables, anidamiento, funciones matemáticas, container queries…</p>
+<div class="admonition quote">
+<p class="admonition-title">CSS es un lenguaje de programación (casi)</p>
+<p>Aunque no tiene bucles ni funciones como JavaScript, CSS moderno tiene variables, condicionales (con @supports y media queries) y funciones. Es mucho más potente de lo que parece.</p>
+</div>
+<hr />
+<h2 id="capitulos-11-css-moderno-variables-css">🔤 Variables CSS<a class="headerlink" href="#capitulos-11-css-moderno-variables-css" title="Permanent link">&para;</a></h2>
+<p>```css
+:root {
+  --primario: #6a5acd;
+  --acento: #00bcd4;
+  --espaciado: 1rem;
+  --radio: 8px;
+}</p>
+<p>.boton {
+  background: var(--primario);
+  padding: var(--espaciado);
+  border-radius: var(--radio);
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-ventajas">Ventajas<a class="headerlink" href="#capitulos-11-css-moderno-ventajas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tematización</strong>: cambia una variable y se actualiza todo.</li>
+<li><strong>Modo oscuro</strong>: redefine las variables en `[data-theme="dark"]`.</li>
+<li><strong>Legibilidad</strong>: nombres descriptivos en lugar de valores mágicos.</li>
+</ul>
+<p>```css
+[data-theme="dark"] {
+  --primario: #a78bfa;
+  --acento: #22d3ee;
+}
+```</p>
+<hr />
+<h2 id="capitulos-11-css-moderno-funciones-modernas">🧮 Funciones modernas<a class="headerlink" href="#capitulos-11-css-moderno-funciones-modernas" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-11-css-moderno-calc">calc()<a class="headerlink" href="#capitulos-11-css-moderno-calc" title="Permanent link">&para;</a></h3>
+<p>```css
+.elemento {
+  width: calc(100% - 2rem);
+  padding: calc(var(--espaciado) * 2);
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-clamp">clamp()<a class="headerlink" href="#capitulos-11-css-moderno-clamp" title="Permanent link">&para;</a></h3>
+<p>```css
+h1 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+```</p>
+<p>`clamp(min, ideal, max)` es perfecto para tipografía fluida.</p>
+<h3 id="capitulos-11-css-moderno-min-y-max">min() y max()<a class="headerlink" href="#capitulos-11-css-moderno-min-y-max" title="Permanent link">&para;</a></h3>
+<p>```css
+.contenedor {
+  width: min(90%, 1200px);
+  padding: max(1rem, 2vw);
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-color-mix">color-mix()<a class="headerlink" href="#capitulos-11-css-moderno-color-mix" title="Permanent link">&para;</a></h3>
+<p>```css
+.boton {
+  background: color-mix(in srgb, var(--primario) 80%, white);
+}
+```</p>
+<hr />
+<h2 id="capitulos-11-css-moderno-selectores-avanzados">🎯 Selectores avanzados<a class="headerlink" href="#capitulos-11-css-moderno-selectores-avanzados" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-11-css-moderno-is">:is()<a class="headerlink" href="#capitulos-11-css-moderno-is" title="Permanent link">&para;</a></h3>
+<p>```css
+:is(h1, h2, h3) {
+  line-height: 1.2;
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-where">:where()<a class="headerlink" href="#capitulos-11-css-moderno-where" title="Permanent link">&para;</a></h3>
+<p>Igual que `:is()`, pero con <strong>especificidad 0</strong>:</p>
+<p>```css
+:where(h1, h2, h3) {
+  margin: 0;
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-has">:has()<a class="headerlink" href="#capitulos-11-css-moderno-has" title="Permanent link">&para;</a></h3>
+<p>Selecciona un elemento que <strong>contiene</strong> otro:</p>
+<p>```css
+.card:has(img) {
+  grid-template-columns: 200px 1fr;
+}</p>
+<p>.form:has(input:invalid) {
+  border-color: red;
+}
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">:has() es un cambio de juego</p>
+<p>Antes necesitabas JavaScript para aplicar estilos a un padre según sus hijos. Con `:has()` es CSS puro. Ya está soportado en todos los navegadores modernos.</p>
+</div>
+<h3 id="capitulos-11-css-moderno-not">:not()<a class="headerlink" href="#capitulos-11-css-moderno-not" title="Permanent link">&para;</a></h3>
+<p>```css
+.boton:not(.boton--disabled) {
+  cursor: pointer;
+}
+```</p>
+<hr />
+<h2 id="capitulos-11-css-moderno-container-queries">📐 Container queries<a class="headerlink" href="#capitulos-11-css-moderno-container-queries" title="Permanent link">&para;</a></h2>
+<p>Las <strong>container queries</strong> permiten aplicar estilos según el tamaño del <strong>contenedor</strong>, no del viewport.</p>
+<p>```css
+.card-container {
+  container-type: inline-size;
+  container-name: card;
+}</p>
+<p>@container card (min-width: 400px) {
+  .card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+}
+```</p>
+<div class="admonition quote">
+<p class="admonition-title">El fin de los media queries para componentes</p>
+<p>Los media queries siguen siendo útiles para layouts de página. Pero para componentes reutilizables, las container queries son mucho más potentes: un mismo componente puede verse distinto según el espacio que tenga.</p>
+</div>
+<hr />
+<h2 id="capitulos-11-css-moderno-grid-avanzado">🔲 Grid avanzado<a class="headerlink" href="#capitulos-11-css-moderno-grid-avanzado" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-11-css-moderno-grid-template-areas">Grid template areas<a class="headerlink" href="#capitulos-11-css-moderno-grid-template-areas" title="Permanent link">&para;</a></h3>
+<p>```css
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+}</p>
+<p>.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+```</p>
+<h3 id="capitulos-11-css-moderno-subgrid">Subgrid<a class="headerlink" href="#capitulos-11-css-moderno-subgrid" title="Permanent link">&para;</a></h3>
+<p>```css
+.padre {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}</p>
+<p>.hijo {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-auto-fit-vs-auto-fill">auto-fit vs auto-fill<a class="headerlink" href="#capitulos-11-css-moderno-auto-fit-vs-auto-fill" title="Permanent link">&para;</a></h3>
+<p>```css
+/* auto-fit: las columnas vacías colapsan */
+.grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }</p>
+<p>/* auto-fill: las columnas vacías se mantienen */
+.grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+```</p>
+<hr />
+<h2 id="capitulos-11-css-moderno-animaciones-y-transiciones">✨ Animaciones y transiciones<a class="headerlink" href="#capitulos-11-css-moderno-animaciones-y-transiciones" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-11-css-moderno-transiciones">Transiciones<a class="headerlink" href="#capitulos-11-css-moderno-transiciones" title="Permanent link">&para;</a></h3>
+<p>```css
+.boton {
+  transition: background-color .2s ease, transform .15s ease;
+}</p>
+<p>.boton:hover {
+  background-color: var(--acento);
+  transform: translateY(-2px);
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-animaciones-con-keyframes">Animaciones con keyframes<a class="headerlink" href="#capitulos-11-css-moderno-animaciones-con-keyframes" title="Permanent link">&para;</a></h3>
+<p>```css
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}</p>
+<p>.animado {
+  animation: fadeIn .4s ease forwards;
+}
+```</p>
+<h3 id="capitulos-11-css-moderno-respetar-prefers-reduced-motion">Respetar prefers-reduced-motion<a class="headerlink" href="#capitulos-11-css-moderno-respetar-prefers-reduced-motion" title="Permanent link">&para;</a></h3>
+<p>```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+```</p>
+<div class="admonition warning">
+<p class="admonition-title">Accesibilidad en animaciones</p>
+<p>Algunas personas sufren mareos con animaciones. Respeta `prefers-reduced-motion` siempre que puedas.</p>
+</div>
+<hr />
 <h2 id="capitulos-11-css-moderno-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-11-css-moderno-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Para qué sirven las variables CSS (custom properties)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Para crear funciones matemáticas complejas</button>
-    <button class="quiz-option" data-option="b">B) Para almacenar valores reutilizables (colores, tamaños, etc.)</button>
-    <button class="quiz-option" data-option="c">C) Para conectar con bases de datos</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-11">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Cómo se declara una variable CSS?</p>
+<button class="quiz-option" data-opt="a">A) : valor;</button>
+<button class="quiz-option" data-opt="b">B) --variable: valor;</button>
+<button class="quiz-option" data-opt="c">C) var variable = valor;</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué selector aplica estilos a un padre que contiene un hijo concreto?</p>
+<button class="quiz-option" data-opt="a">A) :is()</button>
+<button class="quiz-option" data-opt="b">B) :where()</button>
+<button class="quiz-option" data-opt="c">C) :has()</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué función limita un valor entre un mínimo y un máximo?</p>
+<button class="quiz-option" data-opt="a">A) clamp()</button>
+<button class="quiz-option" data-opt="b">B) calc()</button>
+<button class="quiz-option" data-opt="c">C) minmax()</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué selector se utiliza para estilizar un elemento padre basándose en sus hijos?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) :is()</button>
-    <button class="quiz-option" data-option="b">B) :where()</button>
-    <button class="quiz-option" data-option="c">C) :has()</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-12-javascript-asincrono" heading-number="18.2"><h1 id="capitulos-12-javascript-asincrono-capitulo-12-javascript-asincrono">Capítulo 12 — JavaScript asíncrono<a class="headerlink" href="#capitulos-12-javascript-asincrono-capitulo-12-javascript-asincrono" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-11-css-moderno-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-11-css-moderno-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/11-css-moderno/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-11-css-moderno-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-11-css-moderno-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-12-javascript-asincrono">Ir al Capítulo 12 — JavaScript asíncrono</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-12-javascript-asincrono" heading-number="18.2"><h1 id="capitulos-12-javascript-asincrono-capitulo-12-javascript-asincrono">Capítulo 12 — JavaScript asíncrono<a class="headerlink" href="#capitulos-12-javascript-asincrono-capitulo-12-javascript-asincrono" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-12-javascript-asincrono-introduccion">Introducción<a class="headerlink" href="#capitulos-12-javascript-asincrono-introduccion" title="Permanent link">&para;</a></h2>
 <p>JavaScript es <strong>monohilo</strong>: solo puede ejecutar una cosa a la vez. Pero la web es inherentemente asíncrona: descargas, temporizadores, eventos, peticiones a APIs… Todas esas cosas tardan y no pueden bloquear la interfaz.</p>
 <p>Este capítulo explica cómo JavaScript maneja la asincronía y cómo escribir código legible, seguro y moderno.</p>
