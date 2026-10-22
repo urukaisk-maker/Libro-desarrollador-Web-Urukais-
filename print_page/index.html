@@ -21400,1145 +21400,238 @@ const ASSETS = ['/', '/index.html', '/styles.css'];</p>
 </ul>
 <hr />
 <p><a class="md-button" href="#ejercicios-24-animaciones">← Ejercicio 24</a>
-<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-26-seguridad" heading-number="24.27"><h1 id="ejercicios-26-seguridad-ejercicios-resueltos-capitulo-27">Ejercicios resueltos — Capítulo 27<a class="headerlink" href="#ejercicios-26-seguridad-ejercicios-resueltos-capitulo-27" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-27-webassembly">Capítulo original</a></p>
-<h2 id="ejercicios-26-seguridad-ejercicio-1-fibonacci-en-wasm">Ejercicio 1: Fibonacci en Wasm<a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-1-fibonacci-en-wasm" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Compila una función de Fibonacci a Wasm con Rust.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion" title="Permanent link">&para;</a></h3>
-<p><strong>Instalar herramientas:</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">'=https'</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-sSf<span class="w"> </span>https://sh.rustup.rs<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-cargo<span class="w"> </span>install<span class="w"> </span>wasm-pack
-</code></pre></div>
-<p><strong>Crear proyecto:</strong></p>
-<div class="highlight"><pre><span></span><code>cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </span>fib-wasm
-<span class="nb">cd</span><span class="w"> </span>fib-wasm
-</code></pre></div>
-<p><strong><code>Cargo.toml</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">[package]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fib-wasm"</span>
-<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
-<span class="n">edition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021"</span>
-
-<span class="k">[lib]</span>
-<span class="n">crate-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"cdylib"</span><span class="p">]</span>
-
-<span class="k">[dependencies]</span>
-<span class="n">wasm-bindgen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.2"</span>
-</code></pre></div>
-<p><strong><code>src/lib.rs</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
-
-<span class="cp">#[wasm_bindgen]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">..</span><span class="n">n</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">a</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Compilar:</strong></p>
-<div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>web
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-26-seguridad-ejercicio-2-paquete-npm-con-wasm-pack">Ejercicio 2: Paquete npm con <code>wasm-pack</code><a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-2-paquete-npm-con-wasm-pack" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un paquete npm con tu módulo.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion_1">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>bundler
-<span class="nb">cd</span><span class="w"> </span>pkg
-npm<span class="w"> </span>publish<span class="w"> </span>--access<span class="w"> </span>public
-</code></pre></div>
-<p>Desde otro proyecto:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>fib-wasm
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fibonacci</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fib-wasm'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">(</span><span class="mf">40</span><span class="p">));</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-26-seguridad-ejercicio-3-porta-una-funcion-intensiva">Ejercicio 3: Porta una función intensiva<a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-3-porta-una-funcion-intensiva" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Porta una función intensiva a Wasm y mide.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion_2">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion_2" title="Permanent link">&para;</a></h3>
-<p><strong>JavaScript puro:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">contarPrimos</span><span class="p">(</span><span class="nx">limite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">limite</span><span class="p">;</span><span class="w"> </span><span class="nx">n</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">esPrimo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">esPrimo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">esPrimo</span><span class="p">)</span><span class="w"> </span><span class="nx">contador</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">contador</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="nx">contarPrimos</span><span class="p">(</span><span class="mf">100000</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'JS:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">inicio</span><span class="p">,</span><span class="w"> </span><span class="s1">'ms'</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>En Rust/Wasm:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">#[wasm_bindgen]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">contar_primos</span><span class="p">(</span><span class="n">limite</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u32</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="o">..=</span><span class="n">limite</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">contador</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Comparativa típica:</strong> Wasm es 5-10× más rápido.</p>
-<hr />
-<h2 id="ejercicios-26-seguridad-ejercicio-4-cloudflare-workers">Ejercicio 4: Cloudflare Workers<a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-4-cloudflare-workers" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Prueba un módulo Wasm desde Cloudflare Workers.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion_3">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>cloudflare@latest<span class="w"> </span>mi-worker
-<span class="nb">cd</span><span class="w"> </span>mi-worker
-</code></pre></div>
-<p><code>wrangler.toml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-worker"</span>
-<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"src/index.js"</span>
-<span class="n">compatibility_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2024-01-01"</span>
-</code></pre></div>
-<p><code>src/index.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">wasm</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./modulo.wasm'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">wasm</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">instancia</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="sb">`Resultado: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Despliega:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>wrangler<span class="w"> </span>deploy
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-26-seguridad-ejercicio-5-comparar-rendimiento">Ejercicio 5: Comparar rendimiento<a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-5-comparar-rendimiento" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe el mismo algoritmo en JS y Rust.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion_4">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion_4" title="Permanent link">&para;</a></h3>
-<p><strong>Medir con <code>performance.now()</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">calcular</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./pkg/mi_wasm.js'</span><span class="p">;</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
-
-<span class="c1">// JS</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calcularJS</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'JS:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">t1</span><span class="p">);</span>
-
-<span class="c1">// Wasm</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calcular</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Wasm:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">t2</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Recomendación:</strong>
-- Tareas &lt;10 ms → JS.
-- Tareas intensivas (&gt;100 ms) → Wasm.
-- Cargas iniciales: el <code>.wasm</code> tarda en descargar.</p>
-<hr />
-<h2 id="ejercicios-26-seguridad-ejercicio-6-web-worker">Ejercicio 6: Web Worker<a class="headerlink" href="#ejercicios-26-seguridad-ejercicio-6-web-worker" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un Web Worker que ejecute el Wasm en segundo plano.</p>
-</blockquote>
-<h3 id="ejercicios-26-seguridad-solucion_5">Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion_5" title="Permanent link">&para;</a></h3>
-<p><code>worker.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fibonacci</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./pkg/fib_wasm.js'</span><span class="p">;</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="nx">listo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="nx">self</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">listo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">listo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><code>main.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Worker</span><span class="p">(</span><span class="s1">'./worker.js'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">'module'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Resultado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">resultado</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Ventaja:</strong> la UI no se bloquea mientras se calcula.</p>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-27-webassembly">Capítulo original</a></p></section><section class="print-page" id="ejercicios-27-webassembly" heading-number="24.28"><h1 id="ejercicios-27-webassembly-ejercicios-resueltos-capitulo-27">Ejercicios resueltos — Capítulo 27<a class="headerlink" href="#ejercicios-27-webassembly-ejercicios-resueltos-capitulo-27" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-27-webassembly">Capítulo original</a></p>
-<h2 id="ejercicios-27-webassembly-ejercicio-1-fibonacci-en-wasm">Ejercicio 1: Fibonacci en Wasm<a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-1-fibonacci-en-wasm" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Compila una función de Fibonacci a Wasm con Rust.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion" title="Permanent link">&para;</a></h3>
-<p><strong>Instalar herramientas:</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">'=https'</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-sSf<span class="w"> </span>https://sh.rustup.rs<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-cargo<span class="w"> </span>install<span class="w"> </span>wasm-pack
-</code></pre></div>
-<p><strong>Crear proyecto:</strong></p>
-<div class="highlight"><pre><span></span><code>cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </span>fib-wasm
-<span class="nb">cd</span><span class="w"> </span>fib-wasm
-</code></pre></div>
-<p><strong><code>Cargo.toml</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">[package]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fib-wasm"</span>
-<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
-<span class="n">edition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021"</span>
-
-<span class="k">[lib]</span>
-<span class="n">crate-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"cdylib"</span><span class="p">]</span>
-
-<span class="k">[dependencies]</span>
-<span class="n">wasm-bindgen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.2"</span>
-</code></pre></div>
-<p><strong><code>src/lib.rs</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
-
-<span class="cp">#[wasm_bindgen]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">..</span><span class="n">n</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">a</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Compilar:</strong></p>
-<div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>web
-</code></pre></div>
-<p>Genera <code>pkg/</code> con el <code>.wasm</code> y el JS de pegamento.</p>
-<hr />
-<h2 id="ejercicios-27-webassembly-ejercicio-2-paquete-npm-con-wasm-pack">Ejercicio 2: Paquete npm con <code>wasm-pack</code><a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-2-paquete-npm-con-wasm-pack" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un paquete npm con tu módulo.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion_1">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>bundler
-<span class="nb">cd</span><span class="w"> </span>pkg
-npm<span class="w"> </span>publish<span class="w"> </span>--access<span class="w"> </span>public
-</code></pre></div>
-<p>Desde otro proyecto:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>fib-wasm
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fibonacci</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fib-wasm'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">(</span><span class="mf">40</span><span class="p">));</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-27-webassembly-ejercicio-3-porta-una-funcion-intensiva">Ejercicio 3: Porta una función intensiva<a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-3-porta-una-funcion-intensiva" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Porta una función intensiva a Wasm y mide.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion_2">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion_2" title="Permanent link">&para;</a></h3>
-<p><strong>JavaScript puro:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">contarPrimos</span><span class="p">(</span><span class="nx">limite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">limite</span><span class="p">;</span><span class="w"> </span><span class="nx">n</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">esPrimo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">esPrimo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">esPrimo</span><span class="p">)</span><span class="w"> </span><span class="nx">contador</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">contador</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="nx">contarPrimos</span><span class="p">(</span><span class="mf">100000</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'JS:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">inicio</span><span class="p">,</span><span class="w"> </span><span class="s1">'ms'</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>En Rust/Wasm:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">#[wasm_bindgen]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">contar_primos</span><span class="p">(</span><span class="n">limite</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u32</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="o">..=</span><span class="n">limite</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">es_primo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">contador</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Comparativa típica:</strong> Wasm es 5-10× más rápido.</p>
-<hr />
-<h2 id="ejercicios-27-webassembly-ejercicio-4-cloudflare-workers">Ejercicio 4: Cloudflare Workers<a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-4-cloudflare-workers" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Prueba un módulo Wasm desde Cloudflare Workers.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion_3">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>cloudflare@latest<span class="w"> </span>mi-worker
-<span class="nb">cd</span><span class="w"> </span>mi-worker
-</code></pre></div>
-<p><code>wrangler.toml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-worker"</span>
-<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"src/index.js"</span>
-<span class="n">compatibility_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2024-01-01"</span>
-</code></pre></div>
-<p><code>src/index.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">wasm</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./modulo.wasm'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">wasm</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">instancia</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="sb">`Resultado: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Despliega:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>wrangler<span class="w"> </span>deploy
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-27-webassembly-ejercicio-5-comparar-rendimiento">Ejercicio 5: Comparar rendimiento<a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-5-comparar-rendimiento" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe el mismo algoritmo en JS y Rust.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion_4">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion_4" title="Permanent link">&para;</a></h3>
-<p><strong>Medir con <code>performance.now()</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">calcular</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./pkg/mi_wasm.js'</span><span class="p">;</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
-
-<span class="c1">// JS</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calcularJS</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'JS:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">t1</span><span class="p">);</span>
-
-<span class="c1">// Wasm</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calcular</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Wasm:'</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">t2</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Recomendación:</strong>
-- Tareas &lt;10 ms → JS.
-- Tareas intensivas (&gt;100 ms) → Wasm.
-- Recuerda: el <code>.wasm</code> tarda en descargar la primera vez.</p>
-<hr />
-<h2 id="ejercicios-27-webassembly-ejercicio-6-web-worker">Ejercicio 6: Web Worker<a class="headerlink" href="#ejercicios-27-webassembly-ejercicio-6-web-worker" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un Web Worker que ejecute el Wasm en segundo plano.</p>
-</blockquote>
-<h3 id="ejercicios-27-webassembly-solucion_5">Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion_5" title="Permanent link">&para;</a></h3>
-<p><code>worker.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fibonacci</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./pkg/fib_wasm.js'</span><span class="p">;</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="nx">listo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="nx">self</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">listo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">listo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><code>main.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Worker</span><span class="p">(</span><span class="s1">'./worker.js'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">'module'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Resultado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">resultado</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Ventaja:</strong> la UI no se bloquea mientras se calcula.</p>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-27-webassembly">Capítulo original</a></p></section><section class="print-page" id="ejercicios-28-ia-frontend" heading-number="24.29"><h1 id="ejercicios-28-ia-frontend-ejercicios-resueltos-capitulo-28">Ejercicios resueltos — Capítulo 28<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicios-resueltos-capitulo-28" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-28-ia-frontend">Capítulo original</a></p>
-<h2 id="ejercicios-28-ia-frontend-ejercicio-1-analisis-de-sentimiento">Ejercicio 1: Análisis de sentimiento<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-1-analisis-de-sentimiento" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade análisis de sentimiento a los comentarios.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@xenova/transformers
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@xenova/transformers'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">clasificador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">(</span>
-<span class="w">  </span><span class="s1">'sentiment-analysis'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'Xenova/distilbert-base-uncased-finetuned-sst-2-english'</span>
-<span class="p">);</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">analizar</span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">resultado</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">clasificador</span><span class="p">(</span><span class="nx">texto</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">resultado</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">analizar</span><span class="p">(</span><span class="s1">'Me encanta este libro'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
-<span class="c1">// { label: 'POSITIVE', score: 0.9998 }</span>
-</code></pre></div>
-<p><strong>Mostrar en UI:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"texto"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Escribe algo..."</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"resultado"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@xenova/transformers'</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">clasificador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">(</span><span class="s1">'sentiment-analysis'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'texto'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">clasificador</span><span class="p">(</span><span class="nx">texto</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'resultado'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
-<span class="w">      </span><span class="nx">r</span><span class="p">.</span><span class="nx">label</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'POSITIVE'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'😊 Positivo'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'😞 Negativo'</span><span class="p">;</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-2-buscador-semantico">Ejercicio 2: Buscador semántico<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-2-buscador-semantico" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un buscador semántico con embeddings.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_1">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@xenova/transformers'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">extractor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">(</span>
-<span class="w">  </span><span class="s1">'feature-extraction'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'Xenova/all-MiniLM-L6-v2'</span>
-<span class="p">);</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">embedding</span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">salida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">extractor</span><span class="p">(</span><span class="nx">texto</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">pooling</span><span class="o">:</span><span class="w"> </span><span class="s1">'mean'</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">normalize</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">salida</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">similitud</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">buscar</span><span class="p">(</span><span class="nx">consulta</span><span class="p">,</span><span class="w"> </span><span class="nx">documentos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">vecConsulta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">embedding</span><span class="p">(</span><span class="nx">consulta</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">vecDocs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">documentos</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">embedding</span><span class="p">));</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">puntuados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">documentos</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">doc</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">    </span><span class="nx">doc</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">score</span><span class="o">:</span><span class="w"> </span><span class="nx">similitud</span><span class="p">(</span><span class="nx">vecConsulta</span><span class="p">,</span><span class="w"> </span><span class="nx">vecDocs</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span>
-<span class="w">  </span><span class="p">}));</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">puntuados</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">score</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s1">'Cómo usar HTML'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'Introducción a CSS'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'JavaScript moderno'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'Guía de TypeScript'</span><span class="p">,</span>
-<span class="p">];</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">buscar</span><span class="p">(</span><span class="s1">'estilos web'</span><span class="p">,</span><span class="w"> </span><span class="nx">docs</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resultados</span><span class="p">);</span>
-<span class="c1">// [ 'Introducción a CSS', 'Cómo usar HTML', ... ]</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-3-dictado-por-voz">Ejercicio 3: Dictado por voz<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-3-dictado-por-voz" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa dictado por voz en un formulario.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_2">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"texto"</span><span class="p">&gt;</span>Dictado<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"texto"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>🎤 Hablar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'texto'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">SR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">SpeechRecognition</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitSpeechRecognition</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">SR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'No soportado'</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">recognition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SR</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">recognition</span><span class="p">.</span><span class="nx">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'es-ES'</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">recognition</span><span class="p">.</span><span class="nx">continuous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-
-<span class="w">    </span><span class="nx">recognition</span><span class="p">.</span><span class="nx">onresult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">resultIndex</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">results</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">texto</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">transcript</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="nx">area</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">texto</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">'Hablar'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">recognition</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'🔴 Parar'</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">recognition</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'🎤 Hablar'</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-4-webllm">Ejercicio 4: WebLLM<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-4-webllm" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Prueba WebLLM con un modelo pequeño.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_3">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@mlc-ai/web-llm
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"progreso"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"respuesta"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">webllm</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@mlc-ai/web-llm'</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">webllm</span><span class="p">.</span><span class="nx">CreateMLCEngine</span><span class="p">(</span>
-<span class="w">    </span><span class="s1">'Llama-3.2-1B-Instruct-q4f32_1-MLC'</span><span class="p">,</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">initProgressCallback</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">info</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'progreso'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
-<span class="w">          </span><span class="sb">`Cargando: </span><span class="si">${</span><span class="p">(</span><span class="nx">info</span><span class="p">.</span><span class="nx">progress</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">respuesta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">motor</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">completions</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">'system'</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">'Resume en 20 palabras.'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">'user'</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">'HTML es un lenguaje de marcado...'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'respuesta'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="nx">respuesta</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Requiere WebGPU</p>
-<p>Chrome/Edge 113+ o Safari 17+. Firefox va llegando.</p>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-26-seguridad" heading-number="24.27"><h1 id="ejercicios-26-seguridad-26-seguridad">26 — Seguridad<a class="headerlink" href="#ejercicios-26-seguridad-26-seguridad" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Identifica y corrige vulnerabilidades XSS.</p>
 </div>
 <hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-5-mediapipe-para-gestos">Ejercicio 5: MediaPipe para gestos<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-5-mediapipe-para-gestos" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa MediaPipe para detectar gestos.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_4">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@mediapipe/tasks-vision
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">video</span> <span class="na">autoplay</span> <span class="na">playsinline</span><span class="p">&gt;&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">HandLandmarker</span><span class="p">,</span><span class="w"> </span><span class="nx">FilesetResolver</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@mediapipe/tasks-vision'</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">vision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">FilesetResolver</span><span class="p">.</span><span class="nx">forVisionTasks</span><span class="p">(</span>
-<span class="w">    </span><span class="s1">'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm'</span>
-<span class="w">  </span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">detector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">HandLandmarker</span><span class="p">.</span><span class="nx">createFromOptions</span><span class="p">(</span><span class="nx">vision</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">baseOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">modelAssetPath</span><span class="o">:</span><span class="w"> </span><span class="s1">'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task'</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">numHands</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">video</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'video'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span><span class="w"> </span><span class="nx">video</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">video</span><span class="p">.</span><span class="nx">srcObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">stream</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">detectar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">detector</span><span class="p">.</span><span class="nx">detectForVideo</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">resultados</span><span class="p">.</span><span class="nx">landmarks</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mano</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resultados</span><span class="p">.</span><span class="nx">landmarks</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-<span class="w">      </span><span class="c1">// Verificar si el índice está "levantado" (posición y &lt; posición y del nudillo)</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">dedoLevantado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mano</span><span class="p">[</span><span class="mf">8</span><span class="p">].</span><span class="nx">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">mano</span><span class="p">[</span><span class="mf">6</span><span class="p">].</span><span class="nx">y</span><span class="p">;</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dedoLevantado</span><span class="p">)</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'👍 Dedo levantado'</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">detectar</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">detectar</span><span class="p">();</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+<h2 id="ejercicios-26-seguridad-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-26-seguridad-objetivo" title="Permanent link">&para;</a></h2>
+<p>Dado este código vulnerable, corrígelo:</p>
+<p>```javascript
+const input = document.getElementById('comentario').value;
+document.getElementById('resultado').innerHTML = input;
+```</p>
 <hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-6-tensorflowjs">Ejercicio 6: TensorFlow.js<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-6-tensorflowjs" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Entrena un modelo simple en el navegador.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_5">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@tensorflow/tfjs
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">tf</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@tensorflow/tfjs'</span><span class="p">;</span>
-
-<span class="c1">// Datos: y = 2x + 1</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">]);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">]);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tf</span><span class="p">.</span><span class="nx">sequential</span><span class="p">();</span>
-<span class="nx">modelo</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">tf</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">dense</span><span class="p">({</span><span class="w"> </span><span class="nx">units</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">inputShape</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="p">}));</span>
-<span class="nx">modelo</span><span class="p">.</span><span class="nx">compile</span><span class="p">({</span><span class="w"> </span><span class="nx">loss</span><span class="o">:</span><span class="w"> </span><span class="s1">'meanSquaredError'</span><span class="p">,</span><span class="w"> </span><span class="nx">optimizer</span><span class="o">:</span><span class="w"> </span><span class="s1">'sgd'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="k">await</span><span class="w"> </span><span class="nx">modelo</span><span class="p">.</span><span class="nx">fit</span><span class="p">(</span><span class="nx">xs</span><span class="p">,</span><span class="w"> </span><span class="nx">ys</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">epochs</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">callbacks</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">onEpochEnd</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">epoch</span><span class="p">,</span><span class="w"> </span><span class="nx">logs</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Epoch </span><span class="si">${</span><span class="nx">epoch</span><span class="si">}</span><span class="sb">: loss=</span><span class="si">${</span><span class="nx">logs</span><span class="p">.</span><span class="nx">loss</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">),</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">});</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">prediccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">modelo</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">tf</span><span class="p">.</span><span class="nx">tensor1d</span><span class="p">([</span><span class="mf">6</span><span class="p">]));</span>
-<span class="nx">prediccion</span><span class="p">.</span><span class="nx">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// ~13</span>
-</code></pre></div>
+<h2 id="ejercicios-26-seguridad-solucion">💡 Solución<a class="headerlink" href="#ejercicios-26-seguridad-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+const input = document.getElementById('comentario').value;</p>
+<p>// Opción 1: textContent (escapa HTML)
+document.getElementById('resultado').textContent = input;</p>
+<p>// Opción 2: si necesitas HTML, sanitiza con DOMPurify
+// import DOMPurify from 'dompurify';
+// document.getElementById('resultado').innerHTML = DOMPurify.sanitize(input);
+```</p>
 <hr />
-<h2 id="ejercicios-28-ia-frontend-ejercicio-7-cachear-el-modelo">Ejercicio 7: Cachear el modelo<a class="headerlink" href="#ejercicios-28-ia-frontend-ejercicio-7-cachear-el-modelo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Cachea el modelo para que no se descargue cada vez.</p>
-</blockquote>
-<h3 id="ejercicios-28-ia-frontend-solucion_6">Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion_6" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">env</span><span class="p">,</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@xenova/transformers'</span><span class="p">;</span>
-
-<span class="nx">env</span><span class="p">.</span><span class="nx">useBrowserCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="nx">env</span><span class="p">.</span><span class="nx">allowLocalModels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="c1">// El modelo se descarga la primera vez y se guarda en Cache Storage</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">clasificador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">(</span><span class="s1">'sentiment-analysis'</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Verificar:</strong> DevTools → Application → Cache Storage → <code>transformers-cache</code>.</p>
-<p><strong>Servir desde tu dominio:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nx">env</span><span class="p">.</span><span class="nx">remoteHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'https://libro.urukais.com/models/'</span><span class="p">;</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-28-ia-frontend">Capítulo original</a></p></section><section class="print-page" id="ejercicios-29-webxr" heading-number="24.30"><h1 id="ejercicios-29-webxr-ejercicios-resueltos-capitulo-29">Ejercicios resueltos — Capítulo 29<a class="headerlink" href="#ejercicios-29-webxr-ejercicios-resueltos-capitulo-29" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-29-webxr">Capítulo original</a></p>
-<h2 id="ejercicios-29-webxr-ejercicio-1-escena-vr-con-a-frame">Ejercicio 1: Escena VR con A-Frame<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-1-escena-vr-con-a-frame" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una escena VR con 5 objetos de colores.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi escena VR<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://aframe.io/releases/1.5.0/aframe.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-box</span> <span class="na">position</span><span class="o">=</span><span class="s">"-1 0.5 -3"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#6a5acd"</span><span class="p">&gt;&lt;/</span><span class="nt">a-box</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-sphere</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 1.25 -5"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"1.25"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#22d3ee"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sphere</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-cylinder</span> <span class="na">position</span><span class="o">=</span><span class="s">"1 0.75 -3"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"0.5"</span> <span class="na">height</span><span class="o">=</span><span class="s">"1.5"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#ef4444"</span><span class="p">&gt;&lt;/</span><span class="nt">a-cylinder</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-cone</span> <span class="na">position</span><span class="o">=</span><span class="s">"-2 0.75 -4"</span> <span class="na">radius-bottom</span><span class="o">=</span><span class="s">"1"</span> <span class="na">height</span><span class="o">=</span><span class="s">"1.5"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#f59e0b"</span><span class="p">&gt;&lt;/</span><span class="nt">a-cone</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-torus</span> <span class="na">position</span><span class="o">=</span><span class="s">"2 1 -5"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#10b981"</span><span class="p">&gt;&lt;/</span><span class="nt">a-torus</span><span class="p">&gt;</span>
-
-    <span class="p">&lt;</span><span class="nt">a-plane</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 0 -4"</span> <span class="na">rotation</span><span class="o">=</span><span class="s">"-90 0 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"10"</span> <span class="na">height</span><span class="o">=</span><span class="s">"10"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#f8fafc"</span><span class="p">&gt;&lt;/</span><span class="nt">a-plane</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-sky</span> <span class="na">color</span><span class="o">=</span><span class="s">"#0f172a"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sky</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-2-boton-enter-vr">Ejercicio 2: Botón "Enter VR"<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-2-boton-enter-vr" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un botón para entrar en VR.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_1">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_1" title="Permanent link">&para;</a></h3>
-<p><strong>Con A-Frame:</strong> aparece automáticamente si el dispositivo lo soporta. No hay que hacer nada.</p>
-<p><strong>Con Three.js:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VRButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'https://unpkg.com/three@0.160.0/examples/jsm/webxr/VRButton.js'</span><span class="p">;</span>
-
-<span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">VRButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">));</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-3-threejs-a-webxr">Ejercicio 3: Three.js a WebXR<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-3-threejs-a-webxr" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Convierte una escena Three.js a WebXR.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_2">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>WebXR<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"importmap"</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">"imports"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"three"</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://unpkg.com/three@0.160.0/build/three.module.js"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'three'</span><span class="p">;</span>
-<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VRButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'https://unpkg.com/three@0.160.0/examples/jsm/webxr/VRButton.js'</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">background</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Color</span><span class="p">(</span><span class="mh">0x0f172a</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">VRButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">));</span>
-
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">HemisphereLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mh">0x444444</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
-<span class="w">      </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
-<span class="w">      </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">})</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
-
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tiempo</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'resize'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">camara</span><span class="p">.</span><span class="nx">aspect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">camara</span><span class="p">.</span><span class="nx">updateProjectionMatrix</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-4-ar-con-arcore">Ejercicio 4: AR con ARCore<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-4-ar-con-arcore" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Prueba AR en un móvil Android.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_3">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'three'</span><span class="p">;</span>
-<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ARButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'https://unpkg.com/three@0.160.0/examples/jsm/webxr/ARButton.js'</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">ARButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">requiredFeatures</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'hit-test'</span><span class="p">]</span><span class="w"> </span><span class="p">})</span>
-<span class="w">  </span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">();</span>
-
-<span class="w">  </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">HemisphereLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mh">0xbbbbff</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">),</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">})</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="w">  </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reticle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">RingGeometry</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">).</span><span class="nx">rotateX</span><span class="p">(</span><span class="o">-</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x22d3ee</span><span class="w"> </span><span class="p">})</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="w">  </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">matrixAutoUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">reticle</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">hitTestSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'sessionstart'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getSession</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewerSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">requestReferenceSpace</span><span class="p">(</span><span class="s1">'viewer'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">hitTestSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">requestHitTestSource</span><span class="p">({</span><span class="w"> </span><span class="nx">space</span><span class="o">:</span><span class="w"> </span><span class="nx">viewerSpace</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">session</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'select'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">clon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">clon</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">setFromMatrixPosition</span><span class="p">(</span><span class="nx">reticle</span><span class="p">.</span><span class="nx">matrix</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">clon</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">clon</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frame</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hitTestSource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">refSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getReferenceSpace</span><span class="p">();</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frame</span><span class="p">.</span><span class="nx">getHitTestResults</span><span class="p">(</span><span class="nx">hitTestSource</span><span class="p">);</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hits</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">matrix</span><span class="p">.</span><span class="nx">fromArray</span><span class="p">(</span><span class="nx">hits</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">getPose</span><span class="p">(</span><span class="nx">refSpace</span><span class="p">).</span><span class="nx">transform</span><span class="p">.</span><span class="nx">matrix</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-5-audio-espacial">Ejercicio 5: Audio espacial<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-5-audio-espacial" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade audio espacial a un objeto.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_4">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">listener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AudioListener</span><span class="p">();</span>
-<span class="nx">camara</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">sonido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PositionalAudio</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AudioLoader</span><span class="p">();</span>
-
-<span class="nx">loader</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'ambiente.mp3'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setBuffer</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setRefDistance</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setLoop</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-<span class="p">});</span>
-
-<span class="nx">cubo</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">sonido</span><span class="p">);</span><span class="w"> </span><span class="c1">// el sonido viene del cubo</span>
-</code></pre></div>
-<p>Al moverte por la escena VR, el sonido cambia de volumen e intensidad según la distancia.</p>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-6-hand-tracking-en-quest">Ejercicio 6: Hand tracking en Quest<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-6-hand-tracking-en-quest" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa hand tracking básico.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_5">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getSession</span><span class="p">();</span>
-
-<span class="nx">session</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'inputsourceschange'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">event</span><span class="p">.</span><span class="nx">added</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">input</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Mano detectada:'</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">handedness</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">frame</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">inputSources</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">joint</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// joint.transform es una matriz 4x4</span>
-<span class="w">        </span><span class="c1">// joint.jointName: 'wrist', 'thumb-tip', 'index-finger-tip', ...</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-29-webxr-ejercicio-7-optimizar-para-90-fps">Ejercicio 7: Optimizar para 90 FPS<a class="headerlink" href="#ejercicios-29-webxr-ejercicio-7-optimizar-para-90-fps" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Optimiza una escena VR para alcanzar 90 FPS.</p>
-</blockquote>
-<h3 id="ejercicios-29-webxr-solucion_6">Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion_6" title="Permanent link">&para;</a></h3>
-<p><strong>Checklist:</strong></p>
+<h2 id="ejercicios-26-seguridad-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-26-seguridad-conceptos-clave" title="Permanent link">&para;</a></h2>
 <ul>
-<li>[ ] <strong>Bajo poligonaje</strong>: cada triángulo cuenta.</li>
-<li>[ ] <strong>Texturas comprimidas</strong>: KTX2 o Basis.</li>
-<li>[ ] <strong>Instancing</strong> para objetos repetidos.</li>
-<li>[ ] <strong>LOD</strong> (Level of Detail) según distancia.</li>
-<li>[ ] <strong>Evita transparencias</strong> (caras de renderizar).</li>
-<li>[ ] <strong>Sin sombras dinámicas</strong> complejas.</li>
-<li>[ ] <strong>Sin post-processing</strong> pesado.</li>
-<li>[ ] <strong><code>frustumCulled = true</code></strong> por defecto.</li>
+<li>`innerHTML` con datos del usuario → XSS.</li>
+<li>`textContent` escapa el HTML.</li>
+<li>DOMPurify para HTML seguro.</li>
+<li>Valida y sanitiza <strong>siempre</strong> la entrada del usuario.</li>
 </ul>
-<p><strong>Medir FPS:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">frames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-
-<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">frames</span><span class="o">++</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ahora</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ahora</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">inicio</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'FPS:'</span><span class="p">,</span><span class="w"> </span><span class="nx">frames</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">frames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ahora</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<p><strong>Objetivo</strong>: 90 FPS estables (11 ms por frame).</p>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-29-webxr">Capítulo original</a></p></section><section class="print-page" id="ejercicios-30-web3" heading-number="24.31"><h1 id="ejercicios-30-web3-ejercicios-resueltos-capitulo-30">Ejercicios resueltos — Capítulo 30<a class="headerlink" href="#ejercicios-30-web3-ejercicios-resueltos-capitulo-30" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-30-web3">Capítulo original</a></p>
-<h2 id="ejercicios-30-web3-ejercicio-1-instalar-metamask-en-testnet">Ejercicio 1: Instalar MetaMask en testnet<a class="headerlink" href="#ejercicios-30-web3-ejercicio-1-instalar-metamask-en-testnet" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Instala MetaMask y crea una wallet en testnet.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Instala la extensión <a href="https://metamask.io/">MetaMask</a> en Chrome/Firefox/Brave.</li>
-<li>Crea una wallet nueva (guarda la frase semilla en un sitio seguro).</li>
-<li>Cambia la red a <strong>Sepolia</strong> (testnet):</li>
-<li>Red: Sepolia</li>
-<li>RPC URL: <code>https://rpc.sepolia.org</code></li>
-<li>Chain ID: <code>11155111</code></li>
-<li>Símbolo: <code>SepoliaETH</code></li>
-<li>Pide ETH de prueba gratis en <a href="https://sepoliafaucet.com/">Sepolia Faucet</a>.</li>
-</ol>
+<h2 id="ejercicios-26-seguridad-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-26-seguridad-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade una Content Security Policy.</li>
+<li>[ ] Valida el input en el servidor también.</li>
+<li>[ ] Audita con OWASP ZAP.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-30-web3-ejercicio-2-conectar-la-web-a-metamask">Ejercicio 2: Conectar la web a MetaMask<a class="headerlink" href="#ejercicios-30-web3-ejercicio-2-conectar-la-web-a-metamask" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Conecta tu web a MetaMask con <code>eth_requestAccounts</code>.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion_1">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"conectar"</span><span class="p">&gt;</span>Conectar wallet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"estado"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'conectar'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'estado'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Instala MetaMask'</span><span class="p">;</span>
-<span class="w">      </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'eth_requestAccounts'</span><span class="p">,</span>
-<span class="w">      </span><span class="p">});</span>
-<span class="w">      </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Conectado: </span><span class="si">${</span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">)</span><span class="si">}</span><span class="sb">...</span><span class="si">${</span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">4</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Rechazado por el usuario'</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-30-web3-ejercicio-3-leer-balance-con-ethers">Ejercicio 3: Leer balance con ethers<a class="headerlink" href="#ejercicios-30-web3-ejercicio-3-leer-balance-con-ethers" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Lee el balance de una dirección.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion_2">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>ethers
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">formatEther</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ethers'</span><span class="p">;</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">leerBalance</span><span class="p">(</span><span class="nx">direccion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">(</span><span class="nx">direccion</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">formatEther</span><span class="p">(</span><span class="nx">balance</span><span class="p">);</span><span class="w"> </span><span class="c1">// convierte de wei a ETH</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">leerBalance</span><span class="p">(</span><span class="s1">'0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Balance:'</span><span class="p">,</span><span class="w"> </span><span class="nx">saldo</span><span class="p">,</span><span class="w"> </span><span class="s1">'ETH'</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Desde una wallet conectada:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'eth_requestAccounts'</span><span class="p">,</span><span class="w"> </span><span class="p">[]);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">(</span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Tu balance:'</span><span class="p">,</span><span class="w"> </span><span class="nx">formatEther</span><span class="p">(</span><span class="nx">saldo</span><span class="p">),</span><span class="w"> </span><span class="s1">'ETH'</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-30-web3-ejercicio-4-contrato-contador-en-sepolia">Ejercicio 4: Contrato <code>Contador</code> en Sepolia<a class="headerlink" href="#ejercicios-30-web3-ejercicio-4-contrato-contador-en-sepolia" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Despliega un contrato Contador en Sepolia y úsalo desde el frontend.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion_3">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion_3" title="Permanent link">&para;</a></h3>
-<p><strong>Contrato <code>Contador.sol</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// SPDX-License-Identifier: MIT</span>
-<span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.20</span><span class="p">;</span>
-
-<span class="k">contract</span><span class="w"> </span><span class="ni">Contador</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">cuenta</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">incrementar</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span>cuenta<span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">reiniciar</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span>cuenta<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Compilar y desplegar:</strong></p>
-<ol>
-<li>Usa <a href="https://remix.ethereum.org/">Remix IDE</a> o Hardhat.</li>
-<li>Conecta MetaMask a Sepolia.</li>
-<li>Deploy → copia la dirección.</li>
-</ol>
-<p><strong>Frontend:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">Contract</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ethers'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">ABI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s1">'function cuenta() view returns (uint256)'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'function incrementar()'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'function reiniciar()'</span><span class="p">,</span>
-<span class="p">];</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">DIRECCION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'0x...'</span><span class="p">;</span><span class="w"> </span><span class="c1">// dirección del contrato</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">incrementar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">signer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">getSigner</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">contrato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Contract</span><span class="p">(</span><span class="nx">DIRECCION</span><span class="p">,</span><span class="w"> </span><span class="nx">ABI</span><span class="p">,</span><span class="w"> </span><span class="nx">signer</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">contrato</span><span class="p">.</span><span class="nx">incrementar</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Transacción enviada:'</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">wait</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Confirmada'</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">leer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">contrato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Contract</span><span class="p">(</span><span class="nx">DIRECCION</span><span class="p">,</span><span class="w"> </span><span class="nx">ABI</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">contrato</span><span class="p">.</span><span class="nx">cuenta</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Cuenta:'</span><span class="p">,</span><span class="w"> </span><span class="nx">cuenta</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-30-web3-ejercicio-5-informacion-de-un-nft">Ejercicio 5: Información de un NFT<a class="headerlink" href="#ejercicios-30-web3-ejercicio-5-informacion-de-un-nft" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra información de un NFT desde OpenSea API.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion_4">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">API_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'tu-api-key-opensea'</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">CONTRATO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'</span><span class="p">;</span><span class="w"> </span><span class="c1">// BAYC</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">TOKEN_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'1'</span><span class="p">;</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerNFT</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span>
-<span class="w">    </span><span class="sb">`https://api.opensea.io/api/v2/chain/ethereum/contract/</span><span class="si">${</span><span class="nx">CONTRATO</span><span class="si">}</span><span class="sb">/nfts/</span><span class="si">${</span><span class="nx">TOKEN_ID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s1">'X-API-KEY'</span><span class="o">:</span><span class="w"> </span><span class="nx">API_KEY</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">nft</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">nft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">obtenerNFT</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Nombre:'</span><span class="p">,</span><span class="w"> </span><span class="nx">nft</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Imagen:'</span><span class="p">,</span><span class="w"> </span><span class="nx">nft</span><span class="p">.</span><span class="nx">image_url</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-30-web3-ejercicio-6-subir-a-ipfs">Ejercicio 6: Subir a IPFS<a class="headerlink" href="#ejercicios-30-web3-ejercicio-6-subir-a-ipfs" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Sube un archivo a IPFS y accede vía gateway.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-solucion_5">Solución<a class="headerlink" href="#ejercicios-30-web3-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>ipfs-http-client
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">create</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ipfs-http-client'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">ipfs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">'https://ipfs.infura.io:5001/api/v0'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">subir</span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ipfs</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">texto</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`https://ipfs.io/ipfs/</span><span class="si">${</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">subir</span><span class="p">(</span><span class="s1">'Hola desde IPFS'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disponible en:'</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Consideraciones:</strong>
-- IPFS público → el archivo se replica entre nodos.
-- Si nadie lo pide, puede desaparecer (no es almacenamiento permanente).
-- Para persistencia, usa <strong>Pinata</strong>, <strong>NFT.storage</strong> o <strong>web3.storage</strong>.</p>
-<hr />
-<h2 id="ejercicios-30-web3-ejercicio-7-comparar-web2-vs-web3">Ejercicio 7: Comparar Web2 vs Web3<a class="headerlink" href="#ejercicios-30-web3-ejercicio-7-comparar-web2-vs-web3" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe el mismo formulario con Web2 y con Web3.</p>
-</blockquote>
-<h3 id="ejercicios-30-web3-web2-login-tradicional">Web2: Login tradicional<a class="headerlink" href="#ejercicios-30-web3-web2-login-tradicional" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"login"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Email"</span> <span class="na">required</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Contraseña"</span> <span class="na">required</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Entrar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'login'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FormData</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/login'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">form</span><span class="p">)),</span>
-<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'token'</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Ventajas:</strong>
-- UX familiar.
-- Recuperación de contraseña posible.
-- Sin gas fees.</p>
-<p><strong>Desventajas:</strong>
-- Servidor central puede caer.
-- Datos en el servidor.</p>
-<h3 id="ejercicios-30-web3-web3-conectar-wallet">Web3: Conectar wallet<a class="headerlink" href="#ejercicios-30-web3-web3-conectar-wallet" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"conectar"</span><span class="p">&gt;</span>Conectar wallet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'conectar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Instala MetaMask'</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'eth_requestAccounts'</span><span class="p">,</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conectado como:'</span><span class="p">,</span><span class="w"> </span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Ventajas:</strong>
-- Sin contraseñas ni emails.
-- Identidad soberana.
-- Login con una sola acción.</p>
-<p><strong>Desventajas:</strong>
-- Si pierdes la clave, pierdes la cuenta.
-- Curva de aprendizaje alta.
-- Requiere instalar una extensión.</p>
-<div class="admonition warning">
-<p class="admonition-title">Conclusión</p>
-<p>No todo debe ser Web3. <strong>Web2 sigue siendo la mejor opción para el 99% de casos</strong>. Usa Web3 solo cuando la descentralización sea un requisito real.</p>
+<p><a class="md-button" href="#ejercicios-25-design-systems">← Ejercicio 25</a>
+<a class="md-button md-button--primary" href="#ejercicios-27-webassembly">Ir al ejercicio 27 →</a></p></section><section class="print-page" id="ejercicios-27-webassembly" heading-number="24.28"><h1 id="ejercicios-27-webassembly-27-webassembly">27 — WebAssembly<a class="headerlink" href="#ejercicios-27-webassembly-27-webassembly" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Carga un módulo Wasm y llama a una función.</p>
 </div>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-30-web3">Capítulo original</a></p></section></section><section class="print-page" id="recursos" heading-number="25"><h1 id="recursos-recursos">📚 Recursos<a class="headerlink" href="#recursos-recursos" title="Permanent link">&para;</a></h1>
+<h2 id="ejercicios-27-webassembly-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-27-webassembly-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Carga un módulo `.wasm` con `WebAssembly.instantiateStreaming`.</li>
+<li>Llama a una función exportada.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-27-webassembly-solucion">💡 Solución<a class="headerlink" href="#ejercicios-27-webassembly-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+async function cargarWasm() {
+  const { instance } = await WebAssembly.instantiateStreaming(
+    fetch('modulo.wasm')
+  );</p>
+<p>console.log('Suma:', instance.exports.sumar(2, 3));
+  console.log('Fibonacci:', instance.exports.fibonacci(10));
+}</p>
+<p>cargarWasm().catch(console.error);
+```</p>
+<hr />
+<h2 id="ejercicios-27-webassembly-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-27-webassembly-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`instantiateStreaming`: carga y compila en un paso.</li>
+<li>`instance.exports`: funciones exportadas por el módulo.</li>
+<li>Los tipos en Wasm son números (i32, i64, f32, f64).</li>
+</ul>
+<hr />
+<h2 id="ejercicios-27-webassembly-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-27-webassembly-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Compila Rust a Wasm con `wasm-pack`.</li>
+<li>[ ] Mide el rendimiento vs JS.</li>
+<li>[ ] Integra Wasm con un Service Worker.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-26-seguridad">← Ejercicio 26</a>
+<a class="md-button md-button--primary" href="#ejercicios-28-ia-frontend">Ir al ejercicio 28 →</a></p></section><section class="print-page" id="ejercicios-28-ia-frontend" heading-number="24.29"><h1 id="ejercicios-28-ia-frontend-28-ia-en-el-frontend">28 — IA en el frontend<a class="headerlink" href="#ejercicios-28-ia-frontend-28-ia-en-el-frontend" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Usa un modelo preentrenado de clasificación de imágenes.</p>
+</div>
+<hr />
+<h2 id="ejercicios-28-ia-frontend-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-28-ia-frontend-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Carga el modelo MobileNet con TensorFlow.js.</li>
+<li>Clasifica una imagen del usuario.</li>
+<li>Muestra el resultado.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-28-ia-frontend-solucion">💡 Solución<a class="headerlink" href="#ejercicios-28-ia-frontend-solucion" title="Permanent link">&para;</a></h2>
+<p>```html
+<input type="file" id="ejercicios-28-ia-frontend-imagen" accept="image/*">
+<img id="preview" alt="Preview" style="max-width: 300px"></p>
+<p id="resultado"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+<script>
+  const input = document.getElementById('imagen');
+  const preview = document.getElementById('preview');
+  const resultado = document.getElementById('resultado');
+
+  input.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    preview.src = URL.createObjectURL(file);
+
+    const modelo = await mobilenet.load();
+    const predicciones = await modelo.classify(preview);
+
+    resultado.textContent = predicciones
+      .map(p => \`${p.className}: ${(p.probability * 100).toFixed(1)}%\`)
+      .join(' | ');
+  });
+</script>
+<p>```</p>
+<hr />
+<h2 id="ejercicios-28-ia-frontend-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-28-ia-frontend-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>TensorFlow.js: ML en el navegador.</li>
+<li>MobileNet: clasificación de imágenes.</li>
+<li>`URL.createObjectURL`: muestra el archivo seleccionado.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-28-ia-frontend-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-28-ia-frontend-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Muestra las 3 predicciones más probables.</li>
+<li>[ ] Usa la cámara con `getUserMedia`.</li>
+<li>[ ] Prueba Transformers.js para clasificar texto.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-27-webassembly">← Ejercicio 27</a>
+<a class="md-button md-button--primary" href="#ejercicios-29-webxr">Ir al ejercicio 29 →</a></p></section><section class="print-page" id="ejercicios-29-webxr" heading-number="24.30"><h1 id="ejercicios-29-webxr-29-webxr">29 — WebXR<a class="headerlink" href="#ejercicios-29-webxr-29-webxr" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Detecta soporte WebXR en el navegador.</p>
+</div>
+<hr />
+<h2 id="ejercicios-29-webxr-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-29-webxr-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Comprueba si el navegador soporta WebXR.</li>
+<li>Comprueba si soporta VR inmersiva.</li>
+<li>Muestra el resultado al usuario.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-29-webxr-solucion">💡 Solución<a class="headerlink" href="#ejercicios-29-webxr-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+async function comprobarXR() {
+  if (!navigator.xr) {
+    console.log('WebXR no soportado');
+    return;
+  }</p>
+<p>const vrSoportado = await navigator.xr.isSessionSupported('immersive-vr');
+  const arSoportado = await navigator.xr.isSessionSupported('immersive-ar');</p>
+<p>console.log('VR:', vrSoportado);
+  console.log('AR:', arSoportado);
+}</p>
+<p>comprobarXR();
+```</p>
+<hr />
+<h2 id="ejercicios-29-webxr-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-29-webxr-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`navigator.xr`: API de WebXR.</li>
+<li>`isSessionSupported`: comprueba soporte.</li>
+<li>`immersive-vr` / `immersive-ar`: modos.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-29-webxr-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-29-webxr-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Crea una escena 3D con Three.js.</li>
+<li>[ ] Añade un botón "Entrar en VR".</li>
+<li>[ ] Prueba en un Meta Quest real.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-28-ia-frontend">← Ejercicio 28</a>
+<a class="md-button md-button--primary" href="#ejercicios-30-web3">Ir al ejercicio 30 →</a></p></section><section class="print-page" id="ejercicios-30-web3" heading-number="24.31"><h1 id="ejercicios-30-web3-30-web3">30 — Web3<a class="headerlink" href="#ejercicios-30-web3-30-web3" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Conecta con MetaMask y lee la cuenta del usuario.</p>
+</div>
+<hr />
+<h2 id="ejercicios-30-web3-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-30-web3-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Detecta si MetaMask está instalado.</li>
+<li>Pide permiso para conectar.</li>
+<li>Muestra la dirección de la wallet.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-30-web3-solucion">💡 Solución<a class="headerlink" href="#ejercicios-30-web3-solucion" title="Permanent link">&para;</a></h2>
+<p>```html
+<button id="conectar">Conectar wallet</button></p>
+<p id="cuenta"></p>
+
+<script>
+  document.getElementById('conectar').addEventListener('click', async () => {
+    if (!window.ethereum) {
+      alert('Instala MetaMask');
+      return;
+    }
+
+    try {
+      const cuentas = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      });
+      document.getElementById('cuenta').textContent =
+        'Conectado: ' + cuentas[0];
+    } catch (err) {
+      console.error('Error:', err);
+    }
+  });
+</script>
+<p>```</p>
+<hr />
+<h2 id="ejercicios-30-web3-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-30-web3-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`window.ethereum`: inyectado por MetaMask.</li>
+<li>`eth_requestAccounts`: pide permiso.</li>
+<li>Direcciones Ethereum: 0x + 40 caracteres hexadecimales.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-30-web3-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-30-web3-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Muestra el balance con `eth_getBalance`.</li>
+<li>[ ] Firma un mensaje con `personal_sign`.</li>
+<li>[ ] Conecta con WalletConnect en móvil.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-29-webxr">← Ejercicio 29</a>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section></section><section class="print-page" id="recursos" heading-number="25"><h1 id="recursos-recursos">📚 Recursos<a class="headerlink" href="#recursos-recursos" title="Permanent link">&para;</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Todo lo que necesitas para seguir aprendiendo</p>
 <p>Una biblioteca de recursos organizada por tipo y nivel: documentación, libros, canales de YouTube, herramientas, comunidades y más. Todo en español cuando es posible, y con enlaces a la mejor documentación en inglés cuando no hay alternativa.</p>
