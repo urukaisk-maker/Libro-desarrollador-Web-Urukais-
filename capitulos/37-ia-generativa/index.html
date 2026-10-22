@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capitulo-37-introduccion-a-la-ia-generativa" class="md-skip">
+        <a href="#37-introduccion-a-la-ia-generativa" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3116,7 +3116,7 @@
   <a href="#que-es-la-ia-generativa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es la IA generativa?
+        🤖 ¿Qué es la IA generativa?
       
     </span>
   </a>
@@ -3124,38 +3124,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modelos-de-lenguaje-llms" class="md-nav__link">
+  <a href="#llms-mas-populares" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modelos de Lenguaje (LLMs)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modelos de Lenguaje (LLMs)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#como-funcionan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ¿Cómo funcionan?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integrar-ia-en-el-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integrar IA en el frontend
+        🧠 LLMs más populares
       
     </span>
   </a>
@@ -3163,10 +3135,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
+  <a href="#integrar-ia-en-una-app-web" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicios
+        🔌 Integrar IA en una app web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Prompt engineering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 RAG (Retrieval-Augmented Generation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#riesgos-y-limitaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Riesgos y limitaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Pon a prueba tus conocimientos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparte-este-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📢 Comparte este capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente paso
       
     </span>
   </a>
@@ -4632,47 +4681,279 @@
   
 
 
-<h1 id="capitulo-37-introduccion-a-la-ia-generativa">Capítulo 37 — Introducción a la IA Generativa<a class="headerlink" href="#capitulo-37-introduccion-a-la-ia-generativa" title="Permanent link">&para;</a></h1>
-<h2 id="que-es-la-ia-generativa">¿Qué es la IA generativa?<a class="headerlink" href="#que-es-la-ia-generativa" title="Permanent link">&para;</a></h2>
-<p>La IA generativa es una rama de la inteligencia artificial que se centra en crear contenido nuevo (texto, imágenes, código, audio) a partir de patrones aprendidos de grandes cantidades de datos. A diferencia de la IA tradicional, que clasifica o predice, la IA generativa <strong>produce</strong>.</p>
-<h2 id="modelos-de-lenguaje-llms">Modelos de Lenguaje (LLMs)<a class="headerlink" href="#modelos-de-lenguaje-llms" title="Permanent link">&para;</a></h2>
-<p>Los LLMs (Large Language Models) son modelos entrenados con miles de millones de parámetros para entender y generar texto. Ejemplos: GPT-4, Claude, Llama, Gemini.</p>
-<h3 id="como-funcionan">¿Cómo funcionan?<a class="headerlink" href="#como-funcionan" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Tokenización</strong>: El texto se divide en unidades llamadas tokens.</li>
-<li><strong>Embeddings</strong>: Cada token se convierte en un vector numérico.</li>
-<li><strong>Atención</strong>: El modelo calcula la relación entre tokens.</li>
-<li><strong>Generación</strong>: Predice el siguiente token, uno a uno.</li>
-</ol>
-<h2 id="integrar-ia-en-el-frontend">Integrar IA en el frontend<a class="headerlink" href="#integrar-ia-en-el-frontend" title="Permanent link">&para;</a></h2>
-<p>Puedes integrar IA en tus aplicaciones web usando APIs de proveedores como OpenAI, Anthropic o Hugging Face.</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">preguntarAlModelo</span><span class="p">(</span><span class="nx">pregunta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.openai.com/v1/chat/completions'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<h1 id="37-introduccion-a-la-ia-generativa">37 — Introducción a la IA Generativa<a class="headerlink" href="#37-introduccion-a-la-ia-generativa" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es la IA generativa y cómo funciona.</li>
+<li>LLMs: GPT, Claude, Gemini, Llama.</li>
+<li>Integrar IA en una app web.</li>
+<li>Prompt engineering.</li>
+<li>Riesgos y buenas prácticas.</li>
+</ul>
+</div>
+<hr />
+<h2 id="que-es-la-ia-generativa">🤖 ¿Qué es la IA generativa?<a class="headerlink" href="#que-es-la-ia-generativa" title="Permanent link">&para;</a></h2>
+<p>La <strong>IA generativa</strong> es un tipo de inteligencia artificial que <strong>crea contenido nuevo</strong>: texto, imágenes, código, audio o vídeo. Los <strong>LLMs</strong> (<em>Large Language Models</em>) son los modelos que generan texto.</p>
+<div class="highlight"><pre><span></span><code>Prompt  →  Modelo  →  Respuesta generada
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">La IA no es magia, es estadística</p>
+<p>Un LLM predice la siguiente palabra más probable. Lo hace tan bien que parece que "entiende", pero no razona como un humano.</p>
+</div>
+<hr />
+<h2 id="llms-mas-populares">🧠 LLMs más populares<a class="headerlink" href="#llms-mas-populares" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Modelo</th>
+<th style="text-align: left;">Empresa</th>
+<th style="text-align: left;">Ventaja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>GPT-4</strong></td>
+<td style="text-align: left;">OpenAI</td>
+<td style="text-align: left;">El más usado, ecosistema enorme</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Claude</strong></td>
+<td style="text-align: left;">Anthropic</td>
+<td style="text-align: left;">Contexto largo, bueno con documentos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gemini</strong></td>
+<td style="text-align: left;">Google</td>
+<td style="text-align: left;">Multimodal (texto, imagen, audio)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Llama</strong></td>
+<td style="text-align: left;">Meta</td>
+<td style="text-align: left;">Open source, ejecutable en local</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mistral</strong></td>
+<td style="text-align: left;">Mistral AI</td>
+<td style="text-align: left;">Open source, eficiente</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DeepSeek</strong></td>
+<td style="text-align: left;">DeepSeek</td>
+<td style="text-align: left;">Muy competitivo en código</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="integrar-ia-en-una-app-web">🔌 Integrar IA en una app web<a class="headerlink" href="#integrar-ia-en-una-app-web" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Llamada a la API de OpenAI</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">preguntar</span><span class="p">(</span><span class="nx">prompt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://api.openai.com/v1/chat/completions"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="p">,</span>
-<span class="w">      </span><span class="s1">'Authorization'</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">API_KEY</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">      </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"Authorization"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPENAI_API_KEY</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s1">'gpt-4'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">'user'</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">pregunta</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"gpt-4"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">"Eres un experto en desarrollo web."</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">prompt</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">temperature</span><span class="o">:</span><span class="w"> </span><span class="mf">0.7</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="w">  </span><span class="p">});</span>
+
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">No expongas tu API Key</p>
-<p>Nunca pongas la clave de API en el frontend. Usa un backend (Node.js, Serverless) como intermediario.</p>
+<p class="admonition-title">Nunca expongas la API key en el frontend</p>
+<p>El código anterior va en el <strong>backend</strong>. En el frontend, haz una petición a tu propio backend, que añade la key y controla el rate limiting.</p>
 </div>
-<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un chat básico con la API de OpenAI.</li>
-<li>Investiga cómo funciona la generación de imágenes con DALL-E o Stable Diffusion.</li>
-</ol>
 <hr />
-<p>⬅️ <a href="../36-micro-frontends/">Capítulo 36 — Micro-frontends</a> | ➡️ <a href="../38-seguridad-avanzada/">Capítulo 38 — Seguridad Avanzada</a></p>
+<h2 id="prompt-engineering">🎯 Prompt engineering<a class="headerlink" href="#prompt-engineering" title="Permanent link">&para;</a></h2>
+<p>La diferencia entre una buena y una mala respuesta está en el prompt.</p>
+<div class="highlight"><pre><span></span><code>❌ Malo: "Hazme una web"
+✅ Bueno: "Crea una landing page para una app de finanzas personales,
+   con hero, features y CTA. Usa React, Tailwind y un diseño
+   minimalista con colores azules. Incluye código completo."
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Técnica</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Rol</strong></td>
+<td style="text-align: left;">"Eres un desarrollador senior..."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contexto</strong></td>
+<td style="text-align: left;">"Estoy usando React 18 y TypeScript..."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ejemplos</strong></td>
+<td style="text-align: left;">"Aquí tienes un ejemplo de lo que quiero..."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Formato</strong></td>
+<td style="text-align: left;">"Responde en JSON con los campos..."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Paso a paso</strong></td>
+<td style="text-align: left;">"Piensa paso a paso antes de responder"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Restricciones</strong></td>
+<td style="text-align: left;">"No uses librerías externas"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rag-retrieval-augmented-generation">📚 RAG (Retrieval-Augmented Generation)<a class="headerlink" href="#rag-retrieval-augmented-generation" title="Permanent link">&para;</a></h2>
+<p><strong>RAG</strong> combina un LLM con una base de conocimiento propia. El modelo busca información relevante y la usa para responder.</p>
+<div class="highlight"><pre><span></span><code>Pregunta → Buscar en tu base de datos → LLM con contexto → Respuesta precisa
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Paso</th>
+<th style="text-align: left;">Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Embeddings</strong></td>
+<td style="text-align: left;">OpenAI, Cohere, Hugging Face</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Base vectorial</strong></td>
+<td style="text-align: left;">Pinecone, Weaviate, Qdrant, pgvector</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LLM</strong></td>
+<td style="text-align: left;">GPT-4, Claude, Llama</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Convertir la pregunta en embedding</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">embedding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">openai</span><span class="p">.</span><span class="nx">embeddings</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"text-embedding-3-small"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">pregunta</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Buscar documentos similares</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">"SELECT * FROM documentos ORDER BY embedding &lt;=&gt; $1 LIMIT 5"</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="nx">embedding</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">embedding</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// 3. Pasar los docs al LLM como contexto</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">respuesta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">openai</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">completions</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"gpt-4"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">"Responde usando solo este contexto: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">docs</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">pregunta</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="riesgos-y-limitaciones">⚠️ Riesgos y limitaciones<a class="headerlink" href="#riesgos-y-limitaciones" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Riesgo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Alucinaciones</strong></td>
+<td style="text-align: left;">El modelo inventa datos que suenan plausibles</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sesgos</strong></td>
+<td style="text-align: left;">Refleja los sesgos de los datos de entrenamiento</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Privacidad</strong></td>
+<td style="text-align: left;">No envíes datos sensibles a APIs externas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coste</strong></td>
+<td style="text-align: left;">Las APIs cobran por token</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Latencia</strong></td>
+<td style="text-align: left;">Las respuestas pueden tardar segundos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dependencia</strong></td>
+<td style="text-align: left;">Si la API cae, tu app deja de funcionar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Seguridad</strong></td>
+<td style="text-align: left;">Prompt injection, jailbreaks</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Nunca confíes ciegamente</p>
+<p>Un LLM puede inventarse una función que no existe, un paquete que no existe o una cita falsa. <strong>Verifica siempre</strong> lo que genera antes de usarlo.</p>
+</div>
+<hr />
+<h2 id="buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Valida y verifica</strong> las respuestas del modelo.</li>
+<li>✅ <strong>No envíes datos sensibles</strong> a APIs externas.</li>
+<li>✅ <strong>Usa RAG</strong> para dar contexto específico de tu dominio.</li>
+<li>✅ <strong>Limita el rate</strong> y los costes.</li>
+<li>✅ <strong>Proporciona un fallback</strong> si la IA falla.</li>
+<li>✅ <strong>Indica al usuario</strong> que está hablando con una IA.</li>
+<li>✅ <strong>Registra las interacciones</strong> para mejorar el sistema.</li>
+<li>❌ <strong>No uses la IA para decisiones críticas</strong> sin supervisión humana.</li>
+</ul>
+<hr />
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-37">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es un LLM?</p>
+<button class="quiz-option" data-opt="a">A) Un tipo de base de datos</button>
+<button class="quiz-option" data-opt="b">B) Un modelo de lenguaje grande</button>
+<button class="quiz-option" data-opt="c">C) Un framework de UI</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Dónde debes poner la API key?</p>
+<button class="quiz-option" data-opt="a">A) En el backend</button>
+<button class="quiz-option" data-opt="b">B) En el frontend</button>
+<button class="quiz-option" data-opt="c">C) En el HTML</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué es una alucinación de IA?</p>
+<button class="quiz-option" data-opt="a">A) Un error de red</button>
+<button class="quiz-option" data-opt="b">B) Un fallo de CSS</button>
+<button class="quiz-option" data-opt="c">C">Información inventada que suena plausible</button>
+</div>
+</div>
+
+<hr />
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2037%3A%20IA%20Generativa&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2037%3A%20IA%20Generativa%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/37-ia-generativa/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../38-seguridad-avanzada/">Ir al Capítulo 38 — Seguridad Web Avanzada</a>
+<a class="md-button" href="../../">Volver al índice</a></p>
 
 
 
