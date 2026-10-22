@@ -10899,133 +10899,250 @@ graph LR
 <hr />
 <h2 id="capitulos-02-html-basico-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-02-html-basico-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-03-css-basico">Ir al Capítulo 3 — CSS básico</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-03-css-basico" heading-number="16.3"><h1 id="capitulos-03-css-basico-capitulo-3-css-basico">Capítulo 3 — CSS básico<a class="headerlink" href="#capitulos-03-css-basico-capitulo-3-css-basico" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-03-css-basico-que-es-css">¿Qué es CSS?<a class="headerlink" href="#capitulos-03-css-basico-que-es-css" title="Permanent link">&para;</a></h2>
-<p>CSS (<em>Cascading Style Sheets</em>) es el lenguaje que define <strong>cómo se ve</strong> una página web: colores, tipografías, tamaños, espaciados, disposición de los elementos… Si HTML es el esqueleto, CSS es la piel y la ropa.</p>
-<h2 id="capitulos-03-css-basico-formas-de-aplicar-css">Formas de aplicar CSS<a class="headerlink" href="#capitulos-03-css-basico-formas-de-aplicar-css" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-03-css-basico-1-css-en-linea-inline">1. CSS en línea (inline)<a class="headerlink" href="#capitulos-03-css-basico-1-css-en-linea-inline" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Texto en rojo<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Rápido pero <strong>no recomendado</strong> para proyectos reales.</p>
-<h3 id="capitulos-03-css-basico-2-css-en-el-head-interno">2. CSS en el <code>&lt;head&gt;</code> (interno)<a class="headerlink" href="#capitulos-03-css-basico-2-css-en-el-head-interno" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Válido para páginas pequeñas.</p>
-<h3 id="capitulos-03-css-basico-3-css-en-archivo-externo-recomendado">3. CSS en archivo externo (recomendado)<a class="headerlink" href="#capitulos-03-css-basico-3-css-en-archivo-externo-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"estilos.css"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Es la práctica profesional: separa contenido de presentación.</p>
-<h2 id="capitulos-03-css-basico-sintaxis-de-una-regla-css">Sintaxis de una regla CSS<a class="headerlink" href="#capitulos-03-css-basico-sintaxis-de-una-regla-css" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">selector</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
-<span class="w">  </span><span class="n">otra-propiedad</span><span class="p">:</span><span class="w"> </span><span class="n">otro-valor</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-03-css-basico-selectores-esenciales">Selectores esenciales<a class="headerlink" href="#capitulos-03-css-basico-selectores-esenciales" title="Permanent link">&para;</a></h2>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-03-css-basico" heading-number="16.3"><h1 id="capitulos-03-css-basico-03-css-basico">03 — CSS básico<a class="headerlink" href="#capitulos-03-css-basico-03-css-basico" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es CSS y cómo se aplica.</li>
+<li>Los selectores más importantes.</li>
+<li>El modelo de caja (box model).</li>
+<li>Flexbox y Grid para maquetar.</li>
+<li>Variables CSS y media queries.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-03-css-basico-que-es-css">🎨 ¿Qué es CSS?<a class="headerlink" href="#capitulos-03-css-basico-que-es-css" title="Permanent link">&para;</a></h2>
+<p><strong>CSS</strong> (<em>Cascading Style Sheets</em>) es el lenguaje que define la <strong>presentación</strong> de una página web: colores, tipografía, layout, animaciones.</p>
+<p>```css
+h1 {
+  color: #6a5acd;
+  font-size: 2rem;
+}
+```</p>
+<hr />
+<h2 id="capitulos-03-css-basico-como-aplicar-css">🔗 Cómo aplicar CSS<a class="headerlink" href="#capitulos-03-css-basico-como-aplicar-css" title="Permanent link">&para;</a></h2>
+<p>Hay tres formas:</p>
+<h3 id="capitulos-03-css-basico-1-css-externo-recomendado">1. CSS externo (recomendado)<a class="headerlink" href="#capitulos-03-css-basico-1-css-externo-recomendado" title="Permanent link">&para;</a></h3>
+<p>```html
+<link rel="stylesheet" href="styles.css">
+```</p>
+<h3 id="capitulos-03-css-basico-2-css-interno">2. CSS interno<a class="headerlink" href="#capitulos-03-css-basico-2-css-interno" title="Permanent link">&para;</a></h3>
+<p>```html</p>
+<style>
+  h1 { color: red; }
+</style>
+<p>```</p>
+<h3 id="capitulos-03-css-basico-3-css-inline">3. CSS inline<a class="headerlink" href="#capitulos-03-css-basico-3-css-inline" title="Permanent link">&para;</a></h3>
+<p>```html</p>
+<h1 style="color: red;">Título</h1>
+<p>```</p>
+<div class="admonition tip">
+<p class="admonition-title">Siempre CSS externo</p>
+<p>El CSS externo separa estructura y presentación, se cachea mejor y se reutiliza.</p>
+</div>
+<hr />
+<h2 id="capitulos-03-css-basico-selectores">🎯 Selectores<a class="headerlink" href="#capitulos-03-css-basico-selectores" title="Permanent link">&para;</a></h2>
+<p>```css
+p { color: #333; }
+.boton { background: #6a5acd; }</p>
+<h1 1rem_="1rem;" id="capitulos-03-css-basico-header" padding:="padding:">header<a class="headerlink" href="#capitulos-03-css-basico-header" title="Permanent link">&para;</a></h1>
+<p>nav a { text-decoration: none; }
+ul &gt; li { margin: 0.5rem 0; }
+a:hover { color: #00bcd4; }
+input[type="text"] { border: 1px solid #ccc; }
+```</p>
 <table>
 <thead>
 <tr>
-<th>Selector</th>
-<th>Ejemplo</th>
-<th>Selecciona</th>
+<th style="text-align: left;">Selector</th>
+<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Etiqueta</td>
-<td><code>p</code></td>
-<td>Todos los <code>&lt;p&gt;</code></td>
+<td style="text-align: left;">Etiqueta</td>
+<td style="text-align: left;">p</td>
+<td style="text-align: left;">Todos los párrafos</td>
 </tr>
 <tr>
-<td>Clase</td>
-<td><code>.destacado</code></td>
-<td>Elementos con <code>class="destacado"</code></td>
+<td style="text-align: left;">Clase</td>
+<td style="text-align: left;">.boton</td>
+<td style="text-align: left;">Elementos con class="boton"</td>
 </tr>
 <tr>
-<td>ID</td>
-<td><code>#principal</code></td>
-<td>El elemento con <code>id="principal"</code></td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">#header</td>
+<td style="text-align: left;">Elemento con id="header"</td>
 </tr>
 <tr>
-<td>Descendiente</td>
-<td><code>nav a</code></td>
-<td>Los <code>&lt;a&gt;</code> dentro de <code>&lt;nav&gt;</code></td>
+<td style="text-align: left;">Descendiente</td>
+<td style="text-align: left;">nav a</td>
+<td style="text-align: left;">Enlaces dentro de nav</td>
 </tr>
 <tr>
-<td>Pseudo-clase</td>
-<td><code>a:hover</code></td>
-<td>Enlaces al pasar el ratón</td>
+<td style="text-align: left;">Hijo directo</td>
+<td style="text-align: left;">ul &gt; li</td>
+<td style="text-align: left;">li hijos directos de ul</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pseudo-clase</td>
+<td style="text-align: left;">a:hover</td>
+<td style="text-align: left;">Enlace al pasar el ratón</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capitulos-03-css-basico-el-modelo-de-caja">El modelo de caja<a class="headerlink" href="#capitulos-03-css-basico-el-modelo-de-caja" title="Permanent link">&para;</a></h2>
-<p>Todo elemento HTML es una <strong>caja</strong> compuesta por:</p>
+<hr />
+<h2 id="capitulos-03-css-basico-el-modelo-de-caja">📦 El modelo de caja<a class="headerlink" href="#capitulos-03-css-basico-el-modelo-de-caja" title="Permanent link">&para;</a></h2>
+<p>```css
+.caja {
+  width: 200px;
+  height: 100px;
+  padding: 16px;
+  border: 2px solid #333;
+  margin: 8px;
+  box-sizing: border-box;
+}
+```</p>
+<div class="admonition warning">
+<p class="admonition-title">box-sizing: border-box</p>
+<p>Por defecto, width no incluye padding ni border. Con box-sizing: border-box, sí. Casi todo el mundo lo pone globalmente:</p>
+<p>```css
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+```</p>
+</div>
+<hr />
+<h2 id="capitulos-03-css-basico-flexbox">🧩 Flexbox<a class="headerlink" href="#capitulos-03-css-basico-flexbox" title="Permanent link">&para;</a></h2>
+<p><strong>Flexbox</strong> es un modelo de layout unidimensional.</p>
+<p>```css
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}</p>
+<p>.hijo {
+  flex: 1 1 auto;
+}
+```</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">display: flex</td>
+<td style="text-align: left;">Activa Flexbox</td>
+</tr>
+<tr>
+<td style="text-align: left;">flex-direction</td>
+<td style="text-align: left;">Dirección (row, column)</td>
+</tr>
+<tr>
+<td style="text-align: left;">justify-content</td>
+<td style="text-align: left;">Alineación en el eje principal</td>
+</tr>
+<tr>
+<td style="text-align: left;">align-items</td>
+<td style="text-align: left;">Alineación en el eje transversal</td>
+</tr>
+<tr>
+<td style="text-align: left;">gap</td>
+<td style="text-align: left;">Espacio entre hijos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-03-css-basico-grid">🔲 Grid<a class="headerlink" href="#capitulos-03-css-basico-grid" title="Permanent link">&para;</a></h2>
+<p><strong>Grid</strong> es un modelo de layout bidimensional.</p>
+<p>```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}</p>
+<p>.grid__item {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">¿Flexbox o Grid?</p>
 <ul>
-<li><strong>Contenido</strong> — el texto o imagen.</li>
-<li><strong>Padding</strong> — espacio interior.</li>
-<li><strong>Border</strong> — borde.</li>
-<li><strong>Margin</strong> — espacio exterior.</li>
+<li><strong>Flexbox</strong>: una dimensión (fila o columna). Menús, barras.</li>
+<li><strong>Grid</strong>: dos dimensiones (filas y columnas). Layouts de página, galerías.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-03-css-basico-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-03-css-basico-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-03-css-basico-ejemplo">ejemplos/03-css-basico/ejemplo.html</a>.</p>
-<h3 id="capitulos-03-css-basico-prueba-tu-mismo">🎮 Prueba tú mismo<a class="headerlink" href="#capitulos-03-css-basico-prueba-tu-mismo" title="Permanent link">&para;</a></h3>
-<p>Puedes ver el ejemplo de este capítulo en vivo haciendo clic aquí:</p>
-<p><a href="#capitulos-ejemplos-03-css-basico-ejemplo" target="_blank" class="md-button md-button--primary">Ver ejemplo interactivo en pantalla completa</a></p>
-<h3 id="capitulos-03-css-basico-abrir-en-un-playground-externo">🌐 Abrir en un Playground externo<a class="headerlink" href="#capitulos-03-css-basico-abrir-en-un-playground-externo" title="Permanent link">&para;</a></h3>
-<p>Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:</p>
-<ul>
-<li><a class="md-button" href="https://codepen.io/pen/?template=html-basico" target="_blank">CodePen</a></li>
-<li><a class="md-button" href="https://stackblitz.com/edit/html-basico" target="_blank">StackBlitz</a></li>
-</ul>
-<h2 id="capitulos-03-css-basico-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-03-css-basico-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Cambia el color de fondo del <code>body</code> a un tono claro.</li>
-<li>Aplica una tipografía distinta a los <code>h1</code>.</li>
-<li>Crea una clase <code>.destacado</code> y úsala en un párrafo.</li>
-<li>Añade <code>padding</code> y <code>border</code> a un <code>&lt;div&gt;</code>.</li>
-</ol>
+</div>
+<hr />
+<h2 id="capitulos-03-css-basico-variables-css">🎨 Variables CSS<a class="headerlink" href="#capitulos-03-css-basico-variables-css" title="Permanent link">&para;</a></h2>
+<p>```css
+:root {
+  --primario: #6a5acd;
+  --acento: #00bcd4;
+  --radio: 8px;
+}</p>
+<p>.boton {
+  background: var(--primario);
+  border-radius: var(--radio);
+}
+```</p>
+<hr />
+<h2 id="capitulos-03-css-basico-media-queries">📱 Media queries<a class="headerlink" href="#capitulos-03-css-basico-media-queries" title="Permanent link">&para;</a></h2>
+<p>```css
+.elemento { padding: 1rem; }</p>
+<p>@media screen and (min-width: 640px) {
+  .elemento { padding: 2rem; }
+}</p>
+<p>@media (prefers-color-scheme: dark) {
+  body { background: #1a1726; color: #fff; }
+}
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">Mobile first</p>
+<p>Diseña primero para móvil y luego amplía con min-width.</p>
+</div>
 <hr />
 <h2 id="capitulos-03-css-basico-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-03-css-basico-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué significa la sigla CSS?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Computer Style Sheets</button>
-    <button class="quiz-option" data-option="b">B) Creative Style System</button>
-    <button class="quiz-option" data-option="c">C) Cascading Style Sheets</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-3">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué propiedad activa Flexbox en un contenedor?</p>
+<button class="quiz-option" data-opt="a">A) display: grid</button>
+<button class="quiz-option" data-opt="b">B) display: flex</button>
+<button class="quiz-option" data-opt="c">C) flex: 1</button>
 </div>
-
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué propiedad CSS se utiliza para cambiar el color del texto?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) text-color</button>
-    <button class="quiz-option" data-option="b">B) color</button>
-    <button class="quiz-option" data-option="c">C) font-color</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué hace box-sizing: border-box?</p>
+<button class="quiz-option" data-opt="a">A) Añade un borde</button>
+<button class="quiz-option" data-opt="b">B) Elimina el padding</button>
+<button class="quiz-option" data-opt="c">C) El width incluye padding y border</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué modelo de layout es bidimensional?</p>
+<button class="quiz-option" data-opt="a">A) Grid</button>
+<button class="quiz-option" data-opt="b">B) Flexbox</button>
+<button class="quiz-option" data-opt="c">C) Float</button>
+</div>
 </div>
 
 <hr />
-<p>⬅️ <a href="#capitulos-02-html-basico">Capítulo 2 — HTML básico</a> | ➡️ <a href="#capitulos-04-javascript">Capítulo 4 — JavaScript esencial</a></p></section><section class="print-page" id="capitulos-04-javascript" heading-number="16.4"><h1 id="capitulos-04-javascript-capitulo-4-javascript-esencial">Capítulo 4 — JavaScript esencial<a class="headerlink" href="#capitulos-04-javascript-capitulo-4-javascript-esencial" title="Permanent link">&para;</a></h1>
+<h2 id="capitulos-03-css-basico-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-03-css-basico-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/03-css-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-03-css-basico-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-03-css-basico-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-04-javascript">Ir al Capítulo 4 — JavaScript esencial</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-04-javascript" heading-number="16.4"><h1 id="capitulos-04-javascript-capitulo-4-javascript-esencial">Capítulo 4 — JavaScript esencial<a class="headerlink" href="#capitulos-04-javascript-capitulo-4-javascript-esencial" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-04-javascript-que-es-javascript">¿Qué es JavaScript?<a class="headerlink" href="#capitulos-04-javascript-que-es-javascript" title="Permanent link">&para;</a></h2>
 <p>JavaScript es el lenguaje de programación que da <strong>vida</strong> a la web. Mientras HTML define la estructura y CSS la presentación, JavaScript se encarga del <strong>comportamiento</strong>: responder a clics, validar formularios, cargar datos, animar elementos…</p>
 <div class="admonition info">
