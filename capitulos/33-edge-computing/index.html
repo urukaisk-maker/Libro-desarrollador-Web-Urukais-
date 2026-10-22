@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capitulo-33-edge-computing" class="md-skip">
+        <a href="#33-edge-computing" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3001,10 +3001,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
+  <a href="#que-es-edge-computing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introducción
+        🌍 ¿Qué es Edge Computing?
       
     </span>
   </a>
@@ -3012,10 +3012,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#que-es-el-edge" class="md-nav__link">
+  <a href="#cloudflare-workers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es el Edge?
+        ⚡ Cloudflare Workers
       
     </span>
   </a>
@@ -3023,10 +3023,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano" class="md-nav__link">
+  <a href="#otras-plataformas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plataformas como Vercel, Cloudflare, Netlify o Deno Deploy tienen centros de datos en cientos de ciudades. Cuando alguien visita tu web, el código se ejecuta en el nodo más cercano.
+        🚀 Otras plataformas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Casos de uso reales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Limitaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#almacenamiento-en-el-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗄️ Almacenamiento en el edge
       
     </span>
   </a>
@@ -3038,6 +3082,28 @@
     <span class="md-ellipsis">
       
         🧠 Pon a prueba tus conocimientos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparte-este-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📢 Comparte este capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente paso
       
     </span>
   </a>
@@ -4615,22 +4681,225 @@
   
 
 
-<h1 id="capitulo-33-edge-computing">Capítulo 33 — Edge Computing<a class="headerlink" href="#capitulo-33-edge-computing" title="Permanent link">&para;</a></h1>
-<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
-<p>Tradicionalmente, todo tu código vivía en un servidor central (por ejemplo, en Virginia, EE. UU.). Si un usuario accedía desde España, su petición viajaba hasta Virginia, se procesaba y volvía.</p>
-<p>El <strong>Edge Computing</strong> consiste en ejecutar el código <strong>lo más cerca posible del usuario</strong>, en nodos distribuidos por todo el mundo. La latencia se reduce drásticamente (de 200ms a 20ms).</p>
-<h2 id="que-es-el-edge">¿Qué es el Edge?<a class="headerlink" href="#que-es-el-edge" title="Permanent link">&para;</a></h2>
-<h2 id="plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano">Plataformas como <strong>Vercel, Cloudflare, Netlify o Deno Deploy</strong> tienen centros de datos en cientos de ciudades. Cuando alguien visita tu web, el código se ejecuta en el nodo más cercano.<a class="headerlink" href="#plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano" title="Permanent link">&para;</a></h2>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuál es la principal ventaja del Edge Computing?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Tiene más almacenamiento</button>
-    <button class="quiz-option" data-option="b">B) Es más barato</button>
-    <button class="quiz-option" data-option="c">C) Ejecuta el código cerca del usuario, reduciendo la latencia</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<h1 id="33-edge-computing">33 — Edge Computing<a class="headerlink" href="#33-edge-computing" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es el Edge Computing y por qué importa.</li>
+<li>Cloudflare Workers, Vercel Edge y Deno Deploy.</li>
+<li>Casos de uso reales.</li>
+<li>Limitaciones y buenas prácticas.</li>
+</ul>
 </div>
+<hr />
+<h2 id="que-es-edge-computing">🌍 ¿Qué es Edge Computing?<a class="headerlink" href="#que-es-edge-computing" title="Permanent link">&para;</a></h2>
+<p>El <strong>Edge Computing</strong> consiste en ejecutar código en <strong>servidores distribuidos geográficamente</strong>, cerca del usuario. En lugar de un servidor central, hay cientos de nodos repartidos por el mundo.</p>
+<div class="highlight"><pre><span></span><code>Servidor central:  usuario en Madrid → servidor en Virginia (150 ms)
+Edge Computing:    usuario en Madrid → servidor en Madrid (10 ms)
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">La latencia es la nueva velocidad</p>
+<p>Cada milisegundo cuenta. Si tu usuario está en Tokio y tu servidor en Frankfurt, pierdes 250 ms solo en el viaje de ida y vuelta. El edge elimina ese viaje.</p>
+</div>
+<hr />
+<h2 id="cloudflare-workers">⚡ Cloudflare Workers<a class="headerlink" href="#cloudflare-workers" title="Permanent link">&para;</a></h2>
+<p><strong>Cloudflare Workers</strong> es la plataforma de edge computing más popular. Ejecuta JavaScript/TypeScript en más de 300 ciudades del mundo.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// worker.js</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"/api/saludo"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">Response</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">"Hola desde el edge"</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="s2">"Hola, mundo"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"text/plain"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>wrangler
+wrangler<span class="w"> </span>login
+wrangler<span class="w"> </span>deploy
+</code></pre></div>
+<hr />
+<h2 id="otras-plataformas">🚀 Otras plataformas<a class="headerlink" href="#otras-plataformas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Plataforma</th>
+<th style="text-align: left;">Runtime</th>
+<th style="text-align: left;">Lenguajes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cloudflare Workers</strong></td>
+<td style="text-align: left;">V8 isolates</td>
+<td style="text-align: left;">JS/TS, Rust, C</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vercel Edge Functions</strong></td>
+<td style="text-align: left;">V8 isolates</td>
+<td style="text-align: left;">JS/TS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Deno Deploy</strong></td>
+<td style="text-align: left;">Deno</td>
+<td style="text-align: left;">JS/TS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Netlify Edge Functions</strong></td>
+<td style="text-align: left;">Deno</td>
+<td style="text-align: left;">JS/TS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AWS Lambda@Edge</strong></td>
+<td style="text-align: left;">Node.js</td>
+<td style="text-align: left;">JS/TS, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fastly Compute</strong></td>
+<td style="text-align: left;">Wasm</td>
+<td style="text-align: left;">Rust, Go, JS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="casos-de-uso-reales">🎯 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">Por qué edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Personalización A/B</strong></td>
+<td style="text-align: left;">Decidir variante en el edge sin llamar al backend</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Redirecciones geográficas</strong></td>
+<td style="text-align: left;">Redirigir según país sin latencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Autenticación</strong></td>
+<td style="text-align: left;">Validar JWT en el edge antes de llegar al origen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caché inteligente</strong></td>
+<td style="text-align: left;">Cachear respuestas según reglas personalizadas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Modificar HTML</strong></td>
+<td style="text-align: left;">Inyectar headers o contenido en la respuesta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rate limiting</strong></td>
+<td style="text-align: left;">Bloquear abuso antes de llegar al servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bots y seguridad</strong></td>
+<td style="text-align: left;">Filtrar tráfico malicioso en el borde</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="limitaciones">⚠️ Limitaciones<a class="headerlink" href="#limitaciones" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Runtime limitado</strong>: no es Node.js completo (sin <code>fs</code>, sin sockets TCP).</li>
+<li><strong>Memoria limitada</strong>: 128 MB por defecto en Cloudflare.</li>
+<li><strong>Tiempo de ejecución</strong>: pocos milisegundos por petición.</li>
+<li><strong>Cold starts</strong>: aunque son mucho más rápidos que Lambda, existen.</li>
+<li><strong>Debugging</strong>: más complejo que en un servidor local.</li>
+<li><strong>Coste</strong>: las peticiones al edge tienen coste (aunque hay tier gratis).</li>
+</ul>
+<hr />
+<h2 id="buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Usa el edge para lo que aporta valor</strong>: latencia, personalización, seguridad.</li>
+<li>✅ <strong>Mantén el código pequeño</strong>: cada KB cuenta en el edge.</li>
+<li>✅ <strong>Cachea en el edge</strong> todo lo que puedas.</li>
+<li>✅ <strong>Valida en el edge</strong> antes de llegar al origen.</li>
+<li>✅ <strong>Monitoriza el rendimiento</strong> por región.</li>
+<li>✅ <strong>Prueba con latencias reales</strong> (no solo en localhost).</li>
+<li>❌ <strong>No ejecutes operaciones pesadas</strong> en el edge (procesamiento de imágenes, IA).</li>
+<li>❌ <strong>No uses bases de datos relacionales</strong> en el edge (usa KV, D1, Redis).</li>
+</ul>
+<hr />
+<h2 id="almacenamiento-en-el-edge">🗄️ Almacenamiento en el edge<a class="headerlink" href="#almacenamiento-en-el-edge" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Producto</th>
+<th style="text-align: left;">Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cloudflare KV</strong></td>
+<td style="text-align: left;">Key-value distribuido</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloudflare D1</strong></td>
+<td style="text-align: left;">SQLite distribuido</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloudflare R2</strong></td>
+<td style="text-align: left;">Object storage (S3 compatible)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vercel KV</strong></td>
+<td style="text-align: left;">Redis (Upstash)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vercel Postgres</strong></td>
+<td style="text-align: left;">PostgreSQL serverless</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Upstash Redis</strong></td>
+<td style="text-align: left;">Redis serverless</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-33">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es Edge Computing?</p>
+<button class="quiz-option" data-opt="a">A) Ejecutar código en un servidor central</button>
+<button class="quiz-option" data-opt="b">B) Ejecutar código cerca del usuario, distribuido geográficamente</button>
+<button class="quiz-option" data-opt="c">C) Un tipo de base de datos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué plataforma es la más popular de edge computing?</p>
+<button class="quiz-option" data-opt="a">A) Cloudflare Workers</button>
+<button class="quiz-option" data-opt="b">B) Heroku</button>
+<button class="quiz-option" data-opt="c">C) DigitalOcean</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué ventaja principal ofrece el edge?</p>
+<button class="quiz-option" data-opt="a">A) Más memoria</button>
+<button class="quiz-option" data-opt="b">B) Más CPU</button>
+<button class="quiz-option" data-opt="c">C">Menos latencia</button>
+</div>
+</div>
+
+<hr />
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2033%3A%20Edge%20Computing&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2033%3A%20Edge%20Computing%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/33-edge-computing/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../34-docker/">Ir al Capítulo 34 — Docker para frontend</a>
+<a class="md-button" href="../../">Volver al índice</a></p>
 
 
 
