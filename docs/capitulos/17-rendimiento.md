@@ -1,304 +1,205 @@
-# Capítulo 17 — Rendimiento web
-
-## Introducción
-
-El **rendimiento web** determina cuánto tarda tu página en cargar, en responder y en volverse interactiva. No es un detalle técnico: es **experiencia de usuario, conversión y SEO**.
-
-Los estudios de Google y Amazon muestran que:
-
-- Un segundo extra de carga puede reducir las conversiones un 7%.
-- El 53% de los usuarios abandona si una página tarda más de 3 segundos.
-- El rendimiento es un **factor de ranking** en Google.
-
-## Core Web Vitals
-
-Google define tres métricas principales (y una cuarta opcional) para medir la experiencia real del usuario.
-
-| Métrica | Qué mide | Objetivo |
-|---|---|---|
-| **LCP** | Largest Contentful Paint — tiempo hasta que carga el elemento más grande | < 2.5 s |
-| **INP** | Interaction to Next Paint — respuesta a la interacción | < 200 ms |
-| **CLS** | Cumulative Layout Shift — saltos visuales | < 0.1 |
-| **TTFB** | Time to First Byte — tiempo hasta el primer byte | < 800 ms |
-
-### Cómo medirlas
-
-- **Lighthouse** (DevTools → pestaña Lighthouse).
-- **[PageSpeed Insights](https://pagespeed.web.dev/)**.
-- **[Web Vitals Extension](https://chrome.google.com/webstore/detail/web-vitals/)**.
-- **[CrUX](https://developers.google.com/web/tools/chrome-user-experience-report)** — datos reales de usuarios.
-
-## Optimización de imágenes
-
-Las imágenes suelen ser el **mayor peso** de una página.
-
-### Formatos modernos
-
-| Formato | Uso |
-|---|---|
-| **WebP** | Estándar moderno, buena compresión |
-| **AVIF** | Mejor compresión aún, soporte creciente |
-| **SVG** | Iconos, logos, ilustraciones vectoriales |
-| **PNG** | Transparencias |
-| **JPG** | Fotografías (legacy) |
-
-```html
-<picture>
-  <source srcset="foto.avif" type="image/avif">
-  <source srcset="foto.webp" type="image/webp">
-  <img src="foto.jpg" alt="Descripción" width="800" height="600" loading="lazy">
-</picture>
-```
-
-### Atributos clave
-
-- **`loading="lazy"`** — carga diferida para imágenes fuera de pantalla.
-- **`width` y `height`** — evitan CLS reservando el espacio.
-- **`srcset`** — sirve distintas resoluciones según el dispositivo.
-- **`decoding="async"`** — no bloquea el renderizado.
-
-```html
-<img
-  src="foto-800.jpg"
-  srcset="foto-400.jpg 400w, foto-800.jpg 800w, foto-1200.jpg 1200w"
-  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
-  alt="..."
-  width="800"
-  height="600"
-  loading="lazy"
->
-```
-
-## Optimización de CSS
-
-### CSS crítico inline
-
-El CSS bloquea el renderizado. Para el **above-the-fold**, incrusta el CSS crítico en el `<head>`:
-
-```html
-<style>
-  /* CSS mínimo para la primera pantalla */
-  header { ... }
-  .hero { ... }
-</style>
-<link rel="preload" href="/estilos.css" as="style" onload="this.rel='stylesheet'">
-```
-
-### Evita `@import` en CSS
-
-`@import` bloquea en cascada. Usa múltiples `<link>` o un bundler.
-
-### Minifica y comprime
-
-- **Vite**, **PostCSS** o **cssnano** minifican automáticamente.
-- Activa **gzip** o **Brotli** en el servidor.
-
-## Optimización de JavaScript
-
-### Reducir el bundle
-
-- **Tree shaking** — elimina código no usado (Vite, Rollup).
-- **Code splitting** — divide en chunks que se cargan bajo demanda.
-- **Import dinámico**:
-
-```javascript
-button.addEventListener('click', async () => {
-  const { abrirModal } = await import('./modal.js');
-  abrirModal();
-});
-```
-
-### `defer` y `async`
-
-```html
-<!-- Bloquea el HTML -->
-<script src="app.js"></script>
-
-<!-- Descarga en paralelo, ejecuta tras parsear el HTML -->
-<script src="app.js" defer></script>
-
-<!-- Descarga en paralelo, ejecuta al terminar la descarga -->
-<script src="app.js" async></script>
-
-<!-- Módulos: defer por defecto -->
-<script type="module" src="app.js"></script>
-```
-
-**Regla**: usa `defer` casi siempre. `async` solo para scripts independientes (analytics, widgets).
-
-### Cuidado con las librerías
-
-Antes de instalar una dependencia:
-
-- ¿Cuánto pesa? Consulta [Bundlephobia](https://bundlephobia.com/).
-- ¿Puedo implementarlo yo en 20 líneas?
-- ¿Tiene equivalente más ligero? (ej. `dayjs` en lugar de `moment`).
-
-## Fuentes web
-
-Las fuentes personalizadas son lentas. Estrategias:
-
-```html
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="/fuentes/inter.woff2" as="font" type="font/woff2" crossorigin>
-```
-
-```css
-@font-face {
-  font-family: 'Inter';
-  src: url('/fuentes/inter.woff2') format('woff2');
-  font-display: swap; /* muestra texto con fuente fallback mientras carga */
-  font-weight: 400;
-  font-style: normal;
-}
-```
-
-- **`font-display: swap`** — evita texto invisible (FOIT).
-- **Subset** — carga solo los caracteres que usas.
-- **Prefiere fuentes del sistema** cuando sea posible (`system-ui`).
-
-## Caché y CDN
-
-### Cache-Control
-
-```http
-Cache-Control: public, max-age=31536000, immutable
-```
-
-Para assets con hash (`app-a1b2c3.js`), caché de un año.
-
-### CDN
-
-Sirve assets desde la ubicación más cercana al usuario. **Cloudflare**, **Vercel**, **Netlify** lo hacen automáticamente.
-
-## Compresión
-
-- **Brotli** — mejor ratio que gzip.
-- **gzip** — soporte universal.
-- Configura el servidor para comprimir HTML, CSS, JS, SVG.
-
-## HTTP/2 y HTTP/3
-
-- **HTTP/2**: multiplexación, server push (obsoleto).
-- **HTTP/3 (QUIC)**: menor latencia, mejores conexiones móviles.
-
-La mayoría de CDN lo soportan sin configuración extra.
-
-## Preload, prefetch y preconnect
-
-```html
-<!-- Recurso crítico: carga ya -->
-<link rel="preload" href="/fuentes/inter.woff2" as="font" crossorigin>
-
-<!-- Recurso para la siguiente navegación -->
-<link rel="prefetch" href="/pagina-siguiente.html">
-
-<!-- Conexión anticipada a un origen -->
-<link rel="preconnect" href="https://api.ejemplo.com">
-
-<!-- DNS anticipado (más ligero) -->
-<link rel="dns-prefetch" href="https://analytics.ejemplo.com">
-```
-
-!!! warning "No abuses"
-    Cada `preload` compite por ancho de banda. Úsalo solo para recursos **críticos** que descubrirías tarde.
-
-## Evitar CLS (saltos visuales)
-
-- **Siempre `width` y `height`** en `<img>` e `<iframe>`.
-- Reserva espacio para anuncios y embeds.
-- **`font-display: swap`** con fuentes similares.
-- Evita insertar contenido sobre el que ya está visible.
-
-```css
-/* Reserva espacio antes de que cargue */
-.video-wrapper {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-```
-
-## Optimización de la primera carga
-
-1. **Mide** con Lighthouse y PageSpeed Insights.
-2. **Reduce el bundle inicial**. Carga solo lo necesario.
-3. **Sirve CSS crítico** inline y el resto con `preload`.
-4. **Carga JS con `defer`** o `type="module"`.
-5. **Optimiza imágenes**: WebP/AVIF, `lazy`, `srcset`.
-6. **Comprime con Brotli**.
-7. **Activa caché** con `Cache-Control` largo para assets con hash.
-8. **Usa CDN**.
-9. **Mide en móvil**. Muchos usuarios lo hacen desde ahí.
-
-## Herramientas
-
-- **Lighthouse** (DevTools).
-- **PageSpeed Insights**.
-- **WebPageTest** — análisis detallado.
-- **Bundlephobia** — tamaño de dependencias.
-- **Bundle Analyzer** — Vite, Webpack.
-- **Chrome Performance tab** — análisis fino del renderizado.
-- **Chrome Coverage tab** — CSS/JS no usado.
-
-## Ejemplo: de 4 s a 1.2 s
-
-Checklist aplicada a un caso real:
-
-- ❌ 3 imágenes de 2 MB → ✅ WebP + lazy + srcset → **300 KB totales**.
-- ❌ jQuery + Bootstrap + Moment → ✅ Vanilla + 3 utilidades → **-180 KB**.
-- ❌ CSS bloqueando el render → ✅ CSS crítico inline → **FCP -800 ms**.
-- ❌ Fuentes Google sin `preconnect` → ✅ autoalojadas + `preload` → **-300 ms**.
-- ❌ Sin compresión → ✅ Brotli en servidor → **-70% transferencia**.
-- ❌ Sin caché → ✅ `Cache-Control` 1 año en assets → **0 ms en visitas repetidas**.
-
-**Resultado**: LCP de 4.1 s → 1.2 s. Score Lighthouse de 42 → 98.
-
-## Buenas prácticas
-
-- **Mide antes de optimizar**. Sin datos, optimizas a ciegas.
-- **Prioriza el móvil**. Es donde más duele.
-- **Optimiza imágenes primero**. Es lo que más impacto tiene.
-- **Menos JavaScript es más rápido**. Cada KB cuenta.
-- **Carga bajo demanda** lo que no sea crítico.
-- **Cachea todo lo posible**.
-- **Automatiza la medición** en CI (Lighthouse CI).
-- **Presupuesto de rendimiento**: fija límites (ej. < 200 KB de JS inicial).
-- **Prueba en red lenta** (DevTools → Network → Slow 3G).
-
-## Ejercicios
-
-1. Mide tu portfolio con Lighthouse. Anota los tres Core Web Vitals.
-2. Convierte tus imágenes JPG a WebP y añade `loading="lazy"`.
-3. Añade `width` y `height` a todas las imágenes. Verifica CLS en Lighthouse.
-4. Configura `font-display: swap` en tus fuentes.
-5. Analiza el bundle con `vite-bundle-visualizer` y elimina una dependencia pesada.
-6. Añade `preconnect` y `preload` para recursos críticos.
-7. Configura compresión Brotli en tu hosting.
-8. Ejecuta PageSpeed Insights en móvil y anota la mejora antes/después.
+# 17 — Rendimiento web
+
+!!! abstract "Qué vas a aprender"
+    - Por qué el rendimiento importa (negocio, UX, SEO).
+    - Core Web Vitals: LCP, INP, CLS.
+    - Cómo medir el rendimiento.
+    - Optimización de imágenes, fuentes, CSS y JS.
+    - Técnicas avanzadas: lazy loading, code splitting, critical CSS.
 
 ---
 
-⬅️ [Capítulo 16 — Testing frontend](16-testing.md) | ➡️ [Capítulo 18 — Arquitectura frontend](18-arquitectura.md)
+## ⚡ ¿Por qué importa el rendimiento?
+
+El rendimiento web no es un lujo técnico: es **dinero**. Un segundo de retraso puede reducir las conversiones un 7%. Google penaliza los sitios lentos en el ranking.
+
+!!! quote "Cada milisegundo cuenta"
+    Amazon calculó que 100 ms de latencia le costaban un 1% en ventas. El rendimiento no es opcional.
+
+---
+
+## 📊 Core Web Vitals
+
+Google mide tres métricas clave para el SEO:
+
+| Métrica | Qué mide | Objetivo |
+| :--- | :--- | :--- |
+| **LCP** (Largest Contentful Paint) | Cuándo se carga el elemento más grande visible | < 2.5 s |
+| **INP** (Interaction to Next Paint) | Latencia de las interacciones | < 200 ms |
+| **CLS** (Cumulative Layout Shift) | Cambios de layout inesperados | < 0.1 |
+
+### Cómo medirlos
+
+```bash
+# Lighthouse (Chrome DevTools)
+F12 -> Lighthouse -> Analyze page load
+
+# PageSpeed Insights
+https://pagespeed.web.dev/
+```
+
+---
+
+## 🖼️ Optimización de imágenes
+
+Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que más impacto tiene.
+
+```html
+<img
+  src="foto-800.webp"
+  srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
+  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+  alt="Descripción"
+  loading="lazy"
+  decoding="async"
+  width="800"
+  height="600"
+>
+```
+
+### Formatos modernos
+
+| Formato | Ventaja |
+| :--- | :--- |
+| **WebP** | 25-35% más ligero que JPG/PNG |
+| **AVIF** | 50% más ligero que JPG, mejor calidad |
+| **SVG** | Vectorial, ideal para iconos y logos |
+
+!!! tip "Herramientas de compresión"
+    - [Squoosh](https://squoosh.app/) — comprime imágenes en el navegador.
+    - [TinyPNG](https://tinypng.com/) — compresión PNG/JPG.
+    - [SVGOMG](https://jakearchibald.github.io/svgomg/) — optimiza SVG.
+
+---
+
+## 🔤 Optimización de fuentes
+
+```css
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+}
+```
+
+- **font-display: swap**: muestra el texto con la fuente de respaldo mientras carga la custom.
+- **WOFF2**: formato más ligero, soportado por todos los navegadores modernos.
+- **Precarga** la fuente crítica con link rel=preload.
+
+!!! warning "Cada fuente pesa"
+    Cada tipografía custom pesa entre 20 y 200 KB. Limita el número de familias y pesos a los estrictamente necesarios.
+
+---
+
+## 🎨 Optimización de CSS
+
+- **Minifica** el CSS en producción.
+- **Critical CSS**: inlinea el CSS crítico (el que se ve en el primer renderizado) y carga el resto con `loadCSS`.
+- **Elimina CSS no usado**: herramientas como PurgeCSS.
+- **Evita `@import`** en CSS: bloquea la carga en cascada.
+
+```html
+<link rel="stylesheet" href="/styles.css" media="print" onload="this.media=\x27all\x27">
+<noscript><link rel="stylesheet" href="/styles.css"></noscript>
+```
+
+---
+
+## ⚡ Optimización de JavaScript
+
+- **Minifica y comprime** (gzip/brotli).
+- **Code splitting**: carga solo el JS necesario para cada página.
+- **Tree shaking**: elimina código no usado.
+- **Diferir scripts**: `<script defer>` o `<script async>`.
+- **Evita librerías enormes** para cosas pequeñas (moment.js → date-fns, lodash → lodash-es).
+
+```html
+<script src="/app.js" defer></script>
+```
+
+- **`defer`**: descarga en paralelo y ejecuta después de parsear el HTML (en orden).
+- **`async`**: descarga en paralelo y ejecuta en cuanto esté listo (sin orden).
+
+---
+
+## 🚀 Lazy loading
+
+Carga recursos **solo cuando se necesitan**, no antes.
+
+```html
+<!-- Imágenes -->
+<img src="foto.jpg" alt="Descripción" loading="lazy">
+
+<!-- Iframes (vídeos, mapas) -->
+<iframe src="https://youtube.com/embed/..." loading="lazy"></iframe>
+
+<!-- Componentes JS -->
+<script>
+  document.getElementById("btn").addEventListener("click", async () => {
+    const { abrirModal } = await import("./modal.js");
+    abrirModal();
+  });
+</script>
+```
+
+---
+
+## 🏎️ Técnicas avanzadas
+
+| Técnica | Qué hace |
+| :--- | :--- |
+| **Preload** | Descarga un recurso prioritario antes de que se necesite |
+| **Prefetch** | Descarga un recurso probable para la próxima navegación |
+| **Preconnect** | Abre conexión con un dominio externo antes de necesitarlo |
+| **Service Worker** | Cachea recursos para carga offline e instantánea |
+| **CDN** | Sirve assets desde el servidor más cercano al usuario |
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="prefetch" href="/proxima-pagina.html">
+```
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué métrica mide el tiempo que tarda en cargar el elemento más grande de la página?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) FCP (First Contentful Paint)</button>
-    <button class="quiz-option" data-option="b">B) CLS (Cumulative Layout Shift)</button>
-    <button class="quiz-option" data-option="c">C) LCP (Largest Contentful Paint)</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-17">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué mide LCP?</p>
+<button class="quiz-option" data-opt="a">A) El cambio de layout</button>
+<button class="quiz-option" data-opt="b">B) El tiempo de carga del elemento más grande visible</button>
+<button class="quiz-option" data-opt="c">C) La latencia de las interacciones</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué formato de imagen es más ligero?</p>
+<button class="quiz-option" data-opt="a">A) AVIF</button>
+<button class="quiz-option" data-opt="b">B) PNG</button>
+<button class="quiz-option" data-opt="c">C) BMP</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué atributo carga una imagen solo cuando se acerca al viewport?</p>
+<button class="quiz-option" data-opt="a">A) async</button>
+<button class="quiz-option" data-opt="b">B) defer</button>
+<button class="quiz-option" data-opt="c">C) loading="lazy"</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué atributo HTML carga las imágenes solo cuando están a punto de aparecer en pantalla?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) async</button>
-    <button class="quiz-option" data-option="b">B) loading="lazy"</button>
-    <button class="quiz-option" data-option="c">C) defer</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2017%3A%20Rendimiento%20web&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2017%3A%20Rendimiento%20web%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/17-rendimiento/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 18 — Arquitectura frontend](18-arquitectura.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
