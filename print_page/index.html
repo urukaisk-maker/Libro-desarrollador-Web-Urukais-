@@ -13755,343 +13755,228 @@ npx<span class="w"> </span>esbuild<span class="w"> </span>app.js<span class="w">
 <hr />
 <h2 id="capitulos-14-accesibilidad-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-14-accesibilidad-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-15-typescript">Ir al Capítulo 15 — TypeScript desde cero</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-15-typescript" heading-number="18.5"><h1 id="capitulos-15-typescript-capitulo-15-typescript-desde-cero">Capítulo 15 — TypeScript desde cero<a class="headerlink" href="#capitulos-15-typescript-capitulo-15-typescript-desde-cero" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-15-typescript-introduccion">Introducción<a class="headerlink" href="#capitulos-15-typescript-introduccion" title="Permanent link">&para;</a></h2>
-<p><strong>TypeScript</strong> es un superset de JavaScript que añade <strong>tipado estático</strong> al lenguaje. Todo código JavaScript válido es también TypeScript válido, pero TypeScript te avisa de errores <strong>antes de ejecutar</strong> el código.</p>
-<p>Lo usan Angular, NestJS, Deno, VS Code, Slack y prácticamente cualquier proyecto frontend serio hoy.</p>
-<h2 id="capitulos-15-typescript-por-que-typescript">¿Por qué TypeScript?<a class="headerlink" href="#capitulos-15-typescript-por-que-typescript" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-15-typescript-sin-typescript">Sin TypeScript<a class="headerlink" href="#capitulos-15-typescript-sin-typescript" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w">        </span><span class="c1">// 5</span>
-<span class="nx">sumar</span><span class="p">(</span><span class="s1">'2'</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w">      </span><span class="c1">// '23' 😱</span>
-<span class="nx">sumar</span><span class="p">([],</span><span class="w"> </span><span class="p">{});</span><span class="w">      </span><span class="c1">// ??? 💥</span>
-</code></pre></div>
-<p>Los errores aparecen en <strong>runtime</strong>, en producción, delante del usuario.</p>
-<h3 id="capitulos-15-typescript-con-typescript">Con TypeScript<a class="headerlink" href="#capitulos-15-typescript-con-typescript" title="Permanent link">&para;</a></h3>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-15-typescript" heading-number="18.5"><h1 id="capitulos-15-typescript-15-typescript-desde-cero">15 — TypeScript desde cero<a class="headerlink" href="#capitulos-15-typescript-15-typescript-desde-cero" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es TypeScript y por qué usarlo.</li>
+<li>Tipos básicos y anotaciones.</li>
+<li>Interfaces y tipos personalizados.</li>
+<li>Genéricos.</li>
+<li>Configuración de tsconfig.json.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-15-typescript-que-es-typescript">🔷 ¿Qué es TypeScript?<a class="headerlink" href="#capitulos-15-typescript-que-es-typescript" title="Permanent link">&para;</a></h2>
+<p><strong>TypeScript</strong> es un superconjunto de JavaScript que añade <strong>tipos estáticos</strong>. El código se compila a JavaScript puro antes de ejecutarse en el navegador o en Node.js.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w">        </span><span class="c1">// 5</span>
-<span class="nx">sumar</span><span class="p">(</span><span class="s1">'2'</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w">      </span><span class="c1">// ❌ Error antes de ejecutar</span>
+<span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span><span class="w">      </span><span class="c1">// OK</span>
+<span class="nx">sumar</span><span class="p">(</span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"3"</span><span class="p">);</span><span class="w">  </span><span class="c1">// Error de tipo</span>
 </code></pre></div>
-<p>Los errores aparecen en <strong>tiempo de compilación</strong>, en el editor, mientras escribes.</p>
-<h3 id="capitulos-15-typescript-ventajas-concretas">Ventajas concretas<a class="headerlink" href="#capitulos-15-typescript-ventajas-concretas" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Autocompletado real</strong> en el editor.</li>
-<li><strong>Detección temprana de errores</strong>.</li>
-<li><strong>Refactorización segura</strong>.</li>
-<li><strong>Documentación viva</strong> de tu código.</li>
-<li><strong>Mejor experiencia</strong> en equipos grandes.</li>
-</ul>
-<h2 id="capitulos-15-typescript-instalacion">Instalación<a class="headerlink" href="#capitulos-15-typescript-instalacion" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript
-npx<span class="w"> </span>tsc<span class="w"> </span>--init
-</code></pre></div>
-<p>Se crea <code>tsconfig.json</code>, la configuración del compilador.</p>
-<h3 id="capitulos-15-typescript-tsconfigjson-recomendado"><code>tsconfig.json</code> recomendado<a class="headerlink" href="#capitulos-15-typescript-tsconfigjson-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2022"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESNext"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"moduleResolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bundler"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"esModuleInterop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"skipLibCheck"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"forceConsistentCasingInFileNames"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"noEmit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"jsx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-jsx"</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src"</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Modo <code>strict</code></p>
-<p>Activa siempre <code>"strict": true</code>. Es más molesto al principio, pero evita miles de bugs. Puedes desactivar reglas concretas si lo necesitas.</p>
+<div class="admonition quote">
+<p class="admonition-title">Los tipos son documentación que no miente</p>
+<p>Un tipo mal escrito no llega a producción: el compilador te avisa antes. Eso ahorra horas de debugging.</p>
 </div>
-<h3 id="capitulos-15-typescript-compilar">Compilar<a class="headerlink" href="#capitulos-15-typescript-compilar" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>tsc<span class="w"> </span>archivo.ts<span class="w">           </span><span class="c1"># genera archivo.js</span>
-npx<span class="w"> </span>tsc<span class="w"> </span>--watch<span class="w">              </span><span class="c1"># recompila al guardar</span>
-npx<span class="w"> </span>tsc<span class="w"> </span>--noEmit<span class="w">             </span><span class="c1"># solo comprueba tipos (ideal para CI)</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-tipos-basicos">Tipos básicos<a class="headerlink" href="#capitulos-15-typescript-tipos-basicos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">;</span>
+<hr />
+<h2 id="capitulos-15-typescript-por-que-usar-typescript">🎯 ¿Por qué usar TypeScript?<a class="headerlink" href="#capitulos-15-typescript-por-que-usar-typescript" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ventaja</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Detección temprana de errores</strong></td>
+<td style="text-align: left;">El compilador avisa antes de ejecutar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Autocompletado</strong></td>
+<td style="text-align: left;">El editor sabe qué propiedades tiene cada objeto.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Refactorización segura</strong></td>
+<td style="text-align: left;">Cambiar un tipo avisa de todos los sitios afectados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Documentación viva</strong></td>
+<td style="text-align: left;">Los tipos documentan la intención del código.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mejor trabajo en equipo</strong></td>
+<td style="text-align: left;">Los contratos entre módulos son explícitos.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-15-typescript-tipos-basicos">📦 Tipos básicos<a class="headerlink" href="#capitulos-15-typescript-tipos-basicos" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Primitivos</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">activo</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">nada</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">indefinido</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
 
+<span class="c1">// Arrays</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">numeros</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">tupla</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'edad'</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">];</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">nombres</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Luis"</span><span class="p">];</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">cualquiera</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'cuidado con esto'</span><span class="p">;</span>
+<span class="c1">// Tuplas</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">coordenadas</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">40.4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">3.7</span><span class="p">];</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">desconocido</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'algo'</span><span class="p">;</span><span class="w"> </span><span class="c1">// más seguro que any</span>
-</code></pre></div>
-<h3 id="capitulos-15-typescript-diferencia-entre-any-y-unknown">Diferencia entre <code>any</code> y <code>unknown</code><a class="headerlink" href="#capitulos-15-typescript-diferencia-entre-any-y-unknown" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>any</code> desactiva el chequeo. <strong>Evítalo</strong>.</li>
-<li><code>unknown</code> obliga a verificar el tipo antes de usarlo.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">procesar</span><span class="p">(</span><span class="nx">valor</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">valor</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">valor</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span><span class="w"> </span><span class="c1">// ✅</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-inferencia-de-tipos">Inferencia de tipos<a class="headerlink" href="#capitulos-15-typescript-inferencia-de-tipos" title="Permanent link">&para;</a></h2>
-<p>TypeScript casi siempre <strong>deduce</strong> el tipo por ti:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">;</span><span class="w">        </span><span class="c1">// infiere: string</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span><span class="w">                 </span><span class="c1">// infiere: number</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">activo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">           </span><span class="c1">// infiere: true (literal)</span>
-</code></pre></div>
-<p>No hace falta anotar todo. Solo cuando el tipo no es evidente.</p>
-<h2 id="capitulos-15-typescript-funciones">Funciones<a class="headerlink" href="#capitulos-15-typescript-funciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="c1">// Any (evitar)</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">cualquiera</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"puede ser cualquier cosa"</span><span class="p">;</span>
+
+<span class="c1">// Unknown (más seguro que any)</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">desconocido</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obtenerAlgo</span><span class="p">();</span>
+
+<span class="c1">// Void (funciones sin retorno)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// Parámetros opcionales</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">crearUsuario</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// email es string | undefined</span>
-<span class="p">}</span>
-
-<span class="c1">// Parámetros por defecto</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">crear</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">rol</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'usuario'</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="c1">// Arrow functions</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="c1">// Null y undefined</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">nulo</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">indefinido</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="capitulos-15-typescript-objetos-e-interfaces">Objetos e interfaces<a class="headerlink" href="#capitulos-15-typescript-objetos-e-interfaces" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-15-typescript-interface">Interface<a class="headerlink" href="#capitulos-15-typescript-interface" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="capitulos-15-typescript-interfaces-y-tipos">🏗️ Interfaces y tipos<a class="headerlink" href="#capitulos-15-typescript-interfaces-y-tipos" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Usuario</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">edad?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w">       </span><span class="c1">// opcional</span>
-<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span><span class="w"> </span><span class="c1">// no se puede modificar</span>
+<span class="w">  </span><span class="nx">edad?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// opcional</span>
 <span class="p">}</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="o">:</span><span class="w"> </span><span class="kt">Usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'hola@ejemplo.com'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"ana@ejemplo.com"</span>
 <span class="p">};</span>
 </code></pre></div>
-<h3 id="capitulos-15-typescript-type">Type<a class="headerlink" href="#capitulos-15-typescript-type" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pendiente'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'activo'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'cancelado'</span><span class="p">;</span>
-
+<h3 id="capitulos-15-typescript-type-vs-interface">Type vs interface<a class="headerlink" href="#capitulos-15-typescript-type-vs-interface" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Con type</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="p">};</span>
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Interface vs Type</p>
-<ul>
-<li><strong>Interface</strong>: extensible, ideal para objetos y clases.</li>
-<li><strong>Type</strong>: más flexible, permite uniones, intersecciones y tuplas.</li>
-</ul>
-<p>Regla práctica: usa <code>interface</code> para objetos, <code>type</code> para lo demás.</p>
-</div>
-<h2 id="capitulos-15-typescript-uniones-e-intersecciones">Uniones e intersecciones<a class="headerlink" href="#capitulos-15-typescript-uniones-e-intersecciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// Unión: uno u otro</span>
-<span class="kr">type</span><span class="w"> </span><span class="nx">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">buscar</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">ID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// id puede ser string o number</span>
+<span class="c1">// Con interface (extensible)</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">PuntoConZ</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Punto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">type o interface</p>
+<p>Usa interface para objetos que pueden extenderse. Usa type para uniones, intersecciones y alias de tipos primitivos.</p>
+</div>
+<hr />
+<h2 id="capitulos-15-typescript-uniones-e-intersecciones">🔀 Uniones e intersecciones<a class="headerlink" href="#capitulos-15-typescript-uniones-e-intersecciones" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Unión: puede ser uno u otro</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pendiente"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"en-progreso"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"completado"</span><span class="p">;</span>
 
-<span class="c1">// Intersección: todo a la vez</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">tarea</span><span class="o">:</span><span class="w"> </span><span class="kt">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pendiente"</span><span class="p">;</span>
+<span class="nx">tarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"completado"</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="nx">tarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cancelado"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error</span>
+
+<span class="c1">// Intersección: debe tener ambos</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">Persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">Trabajador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">empresa</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">Empleado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Persona</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">Trabajador</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="capitulos-15-typescript-narrowing-estrechamiento-de-tipos">Narrowing (estrechamiento de tipos)<a class="headerlink" href="#capitulos-15-typescript-narrowing-estrechamiento-de-tipos" title="Permanent link">&para;</a></h2>
-<p>TypeScript reduce el tipo según el contexto:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">longitud</span><span class="p">(</span><span class="nx">valor</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">valor</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">valor</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w">      </span><span class="c1">// aquí valor es string</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">valor</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w">        </span><span class="c1">// aquí valor es string[]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Otras formas de narrowing:</p>
-<ul>
-<li><code>typeof x === 'number'</code></li>
-<li><code>x instanceof Fecha</code></li>
-<li><code>'propiedad' in objeto</code></li>
-<li><code>Array.isArray(x)</code></li>
-</ul>
-<h2 id="capitulos-15-typescript-genericos">Genéricos<a class="headerlink" href="#capitulos-15-typescript-genericos" title="Permanent link">&para;</a></h2>
-<p>Permiten escribir código que funciona con <strong>cualquier tipo</strong> sin perder información.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">primero</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">array</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">array</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="nx">primero</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]);</span><span class="w">              </span><span class="c1">// number</span>
-<span class="nx">primero</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span><span class="w"> </span><span class="s1">'b'</span><span class="p">]);</span><span class="w">             </span><span class="c1">// string</span>
-<span class="nx">primero</span><span class="p">([{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">}]);</span><span class="w">            </span><span class="c1">// { id: number }</span>
-</code></pre></div>
-<h3 id="capitulos-15-typescript-con-restricciones">Con restricciones<a class="headerlink" href="#capitulos-15-typescript-con-restricciones" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">claveDe</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">K</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">keyof</span><span class="w"> </span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">obj</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="nx">clave</span><span class="o">:</span><span class="w"> </span><span class="kt">K</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="nx">clave</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">};</span>
-<span class="nx">claveDe</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s1">'nombre'</span><span class="p">);</span><span class="w">   </span><span class="c1">// string</span>
-<span class="nx">claveDe</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s1">'edad'</span><span class="p">);</span><span class="w">     </span><span class="c1">// number</span>
-<span class="c1">// claveDe(user, 'xxx');   // ❌ error</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-utility-types">Utility types<a class="headerlink" href="#capitulos-15-typescript-utility-types" title="Permanent link">&para;</a></h2>
-<p>TypeScript incluye tipos auxiliares muy útiles:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Usuario</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">Partial</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="w">      </span><span class="c1">// todas las props opcionales</span>
-<span class="nx">Required</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="w">     </span><span class="c1">// todas obligatorias</span>
-<span class="nx">Readonly</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="w">     </span><span class="c1">// todas readonly</span>
-<span class="nx">Pick</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="p">,</span><span class="w"> </span><span class="s1">'id'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'nombre'</span><span class="o">&gt;</span><span class="w">  </span><span class="c1">// solo esas props</span>
-<span class="nx">Omit</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="p">,</span><span class="w"> </span><span class="s1">'id'</span><span class="o">&gt;</span><span class="w">             </span><span class="c1">// todas menos esas</span>
-<span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="w">          </span><span class="c1">// objeto con claves string y valores number</span>
-<span class="nx">ReturnType</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">fn</span><span class="o">&gt;</span><span class="w">           </span><span class="c1">// el tipo que devuelve fn</span>
-<span class="nx">Parameters</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">fn</span><span class="o">&gt;</span><span class="w">           </span><span class="c1">// los tipos de sus parámetros</span>
-</code></pre></div>
-<p>Ejemplo real:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">actualizarUsuario</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">cambios</span><span class="o">:</span><span class="w"> </span><span class="kt">Partial</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// cambios puede tener solo algunos campos</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-clases">Clases<a class="headerlink" href="#capitulos-15-typescript-clases" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Cuenta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">saldo</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">titular</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="nx">depositar</span><span class="p">(</span><span class="nx">cantidad</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cantidad</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Cantidad inválida'</span><span class="p">);</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">saldo</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">cantidad</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">balance</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">saldo</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Modificadores:</p>
-<ul>
-<li><code>public</code>: accesible desde cualquier lugar (por defecto).</li>
-<li><code>private</code>: solo desde la propia clase.</li>
-<li><code>protected</code>: desde la clase y sus subclases.</li>
-<li><code>readonly</code>: no modificable tras el constructor.</li>
-</ul>
-<h2 id="capitulos-15-typescript-tipos-literales-y-enums">Tipos literales y enums<a class="headerlink" href="#capitulos-15-typescript-tipos-literales-y-enums" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">Talla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'S'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'M'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'L'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">'XL'</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">vestir</span><span class="p">(</span><span class="nx">talla</span><span class="o">:</span><span class="w"> </span><span class="kt">Talla</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="nx">vestir</span><span class="p">(</span><span class="s1">'M'</span><span class="p">);</span><span class="w">   </span><span class="c1">// ✅</span>
-<span class="nx">vestir</span><span class="p">(</span><span class="s1">'XXL'</span><span class="p">);</span><span class="w"> </span><span class="c1">// ❌</span>
-</code></pre></div>
-<p>Enums (usa con moderación):</p>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="nx">Estado</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">Pendiente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pendiente'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">Activo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'activo'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">Cancelado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'cancelado'</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">estado</span><span class="o">:</span><span class="w"> </span><span class="kt">Estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Estado</span><span class="p">.</span><span class="nx">Activo</span><span class="p">;</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-funciones-asincronas">Funciones asíncronas<a class="headerlink" href="#capitulos-15-typescript-funciones-asincronas" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerUsuario</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`/api/usuarios/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No encontrado'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-typescript-con-librerias">TypeScript con librerías<a class="headerlink" href="#capitulos-15-typescript-typescript-con-librerias" title="Permanent link">&para;</a></h2>
-<p>La mayoría de librerías traen tipos incluidos. Otras necesitan <code>@types/nombre</code>:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@types/node
-npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@types/lodash
-</code></pre></div>
-<p>Si una librería no tiene tipos, puedes declararlos:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// src/types/libreria-rara.d.ts</span>
-<span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">'libreria-rara'</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">hacerAlgo</span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-ejemplo-real-funcion-tipada-de-api">Ejemplo real: función tipada de API<a class="headerlink" href="#capitulos-15-typescript-ejemplo-real-funcion-tipada-de-api" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Post</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerPosts</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Post</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/posts'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">titulos</span><span class="p">(</span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="kt">Post</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-15-typescript-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-15-typescript-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Activa <code>strict: true</code></strong> siempre.</li>
-<li><strong>Evita <code>any</code></strong>. Usa <code>unknown</code> cuando no sepas el tipo.</li>
-<li><strong>Prefiere interfaces para objetos públicos</strong> y types para uniones.</li>
-<li><strong>Usa <code>readonly</code></strong> en propiedades que no deben cambiar.</li>
-<li><strong>Aprovecha la inferencia</strong>. No anotes lo evidente.</li>
-<li><strong>Tipa las funciones públicas</strong>. Los parámetros y el retorno.</li>
-<li><strong>Documenta los tipos complejos</strong> con comentarios.</li>
-<li><strong>Ejecuta <code>tsc --noEmit</code> en CI</strong> para detectar errores.</li>
-<li><strong>Migra JavaScript a TypeScript por módulos</strong>, no todo de golpe.</li>
-</ul>
-<h2 id="capitulos-15-typescript-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-15-typescript-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Convierte una función JavaScript sin tipos a TypeScript con parámetros y retorno tipados.</li>
-<li>Crea una interface <code>Producto</code> con <code>id</code>, <code>nombre</code>, <code>precio</code> y <code>categorias</code> (array).</li>
-<li>Escribe una función genérica <code>ultimo&lt;T&gt;(array: T[]): T | undefined</code>.</li>
-<li>Define un type unión <code>Resultado</code> con <code>{ ok: true; datos: string }</code> y <code>{ ok: false; error: string }</code>.</li>
-<li>Usa <code>Partial&lt;Producto&gt;</code> para escribir una función <code>actualizarProducto</code>.</li>
-<li>Escribe una clase <code>Carrito</code> con métodos <code>añadir</code>, <code>total</code> y <code>vaciar</code>, todo tipado.</li>
-<li>Refactoriza un archivo JavaScript de tus ejercicios anteriores a TypeScript con <code>strict</code>.</li>
-</ol>
 <hr />
-<h2 id="capitulos-15-typescript-capitulo-14-accesibilidad-web-capitulo-16-testing-frontend">⬅️ <a href="#capitulos-14-accesibilidad">Capítulo 14 — Accesibilidad web</a> | ➡️ <a href="#capitulos-16-testing">Capítulo 16 — Testing frontend</a><a class="headerlink" href="#capitulos-15-typescript-capitulo-14-accesibilidad-web-capitulo-16-testing-frontend" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-15-typescript-genericos">🧬 Genéricos<a class="headerlink" href="#capitulos-15-typescript-genericos" title="Permanent link">&para;</a></h2>
+<p>Los <strong>genéricos</strong> permiten escribir funciones y tipos que funcionan con cualquier tipo, manteniendo la seguridad.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">identidad</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">valor</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">identidad</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">"hola"</span><span class="p">);</span><span class="w">  </span><span class="c1">// string</span>
+<span class="nx">identidad</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w">      </span><span class="c1">// number</span>
+<span class="nx">identidad</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">            </span><span class="c1">// boolean (inferido)</span>
+</code></pre></div>
+<h3 id="capitulos-15-typescript-genericos-en-interfaces">Genéricos en interfaces<a class="headerlink" href="#capitulos-15-typescript-genericos-en-interfaces" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Respuesta</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">respuesta</span><span class="o">:</span><span class="w"> </span><span class="kt">Respuesta</span><span class="o">&lt;</span><span class="nx">Usuario</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"ana@ejemplo.com"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-15-typescript-tsconfigjson">⚙️ tsconfig.json<a class="headerlink" href="#capitulos-15-typescript-tsconfigjson" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2022"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESNext"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"esModuleInterop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"skipLibCheck"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"forceConsistentCasingInFileNames"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src/**/*"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">strict: true</p>
+<p>Activa <code>strict: true</code> desde el primer día. Es más estricto, pero te ahorra bugs. Puedes relajarlo después si es necesario.</p>
+</div>
+<hr />
+<h2 id="capitulos-15-typescript-typescript-en-la-practica">🔄 TypeScript en la práctica<a class="headerlink" href="#capitulos-15-typescript-typescript-en-la-practica" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-15-typescript-con-vite">Con Vite<a class="headerlink" href="#capitulos-15-typescript-con-vite" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>vanilla-ts
+<span class="nb">cd</span><span class="w"> </span>mi-app
+npm<span class="w"> </span>install
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<h3 id="capitulos-15-typescript-con-nodejs">Con Node.js<a class="headerlink" href="#capitulos-15-typescript-con-nodejs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript<span class="w"> </span>@types/node<span class="w"> </span>tsx
+npx<span class="w"> </span>tsc<span class="w"> </span>--init
+npx<span class="w"> </span>tsx<span class="w"> </span>src/index.ts
+</code></pre></div>
+<hr />
 <h2 id="capitulos-15-typescript-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-15-typescript-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Cuál es la principal ventaja de TypeScript frente a JavaScript?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) El tipado estático, que detecta errores antes de ejecutar</button>
-    <button class="quiz-option" data-option="b">B) Que es más rápido en el navegador</button>
-    <button class="quiz-option" data-option="c">C) Que no necesita compilación</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-15">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué añade TypeScript a JavaScript?</p>
+<button class="quiz-option" data-opt="a">A) Nuevas funciones de runtime</button>
+<button class="quiz-option" data-opt="b">B) Tipos estáticos</button>
+<button class="quiz-option" data-opt="c">C) Un nuevo motor de JavaScript</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué palabra clave permite crear tipos genéricos?</p>
+<button class="quiz-option" data-opt="a">A) &lt;T&gt;</button>
+<button class="quiz-option" data-opt="b">B) generic</button>
+<button class="quiz-option" data-opt="c">C) template</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué opción de tsconfig activa el modo estricto?</p>
+<button class="quiz-option" data-opt="a">A) "mode": "strict"</button>
+<button class="quiz-option" data-opt="b">B) "types": "strict"</button>
+<button class="quiz-option" data-opt="c">C) "strict": true</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué tipo de TypeScript se usa para indicar que una variable puede ser de un tipo u otro?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) type intersection (&amp;)</button>
-    <button class="quiz-option" data-option="b">B) type union (|)</button>
-    <button class="quiz-option" data-option="c">C) any</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-16-testing" heading-number="18.6"><h1 id="capitulos-16-testing-capitulo-16-testing-frontend">Capítulo 16 — Testing frontend<a class="headerlink" href="#capitulos-16-testing-capitulo-16-testing-frontend" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-15-typescript-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-15-typescript-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2015%3A%20TypeScript%20desde%20cero&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F15-typescript%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F15-typescript%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2015%3A%20TypeScript%20desde%20cero%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F15-typescript%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/15-typescript/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-15-typescript-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-15-typescript-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-16-testing">Ir al Capítulo 16 — Testing frontend</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-16-testing" heading-number="18.6"><h1 id="capitulos-16-testing-capitulo-16-testing-frontend">Capítulo 16 — Testing frontend<a class="headerlink" href="#capitulos-16-testing-capitulo-16-testing-frontend" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-16-testing-introduccion">Introducción<a class="headerlink" href="#capitulos-16-testing-introduccion" title="Permanent link">&para;</a></h2>
 <p>El <strong>testing</strong> es el proceso de verificar que tu código hace lo que se supone que debe hacer. Sin tests, cada cambio es una ruleta rusa: tocas una función y rompes otra sin darte cuenta.</p>
 <p>Los tests no son un lujo. Son la diferencia entre un proyecto que escala y uno que se vuelve inmantenible a los seis meses.</p>
