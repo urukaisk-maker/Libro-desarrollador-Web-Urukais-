@@ -1,324 +1,227 @@
-# Capítulo 28 — IA en el frontend
+# 28 — IA en el frontend
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Cómo usar IA en el navegador con TensorFlow.js.
+    - Modelos preentrenados.
+    - APIs de IA del navegador.
+    - Integración con APIs de IA (OpenAI, etc.).
+    - Casos de uso reales.
 
-La inteligencia artificial ha pasado de ser un tema de investigación a estar integrada en el navegador. Hoy puedes ejecutar modelos de lenguaje, visión por computador y reconocimiento de voz **directamente en el cliente**, sin servidores ni APIs de pago.
+---
 
-Este capítulo repasa las herramientas y casos de uso reales de la IA en el frontend.
+## 🤖 ¿IA en el frontend?
 
-## ¿Por qué IA en el cliente?
+La **IA en el frontend** permite ejecutar modelos de machine learning **directamente en el navegador**, sin enviar datos a un servidor. Esto mejora la privacidad, reduce la latencia y funciona offline.
 
-### Ventajas
-
-- **Privacidad**: los datos no salen del dispositivo.
-- **Latencia cero**: sin peticiones a servidores.
-- **Sin costes de API**: no pagas por inferencia.
-- **Funciona offline**.
-- **Escalable**: cada usuario usa su propio hardware.
-
-### Desventajas
-
-- **Limitado al hardware del usuario**.
-- **Modelos más pequeños** que los de servidor.
-- **Consumo de batería** en móvil.
-- **Descarga inicial** del modelo.
-
-## Transformers.js
-
-**Transformers.js** es la versión JavaScript de la librería de Hugging Face. Ejecuta modelos en el navegador con WebGPU o WASM.
-
-### Instalación
-
-```bash
-npm install @xenova/transformers
+```
+Antes:  navegador → servidor → modelo → respuesta
+Ahora:  navegador → modelo → respuesta (todo local)
 ```
 
-### Ejemplo: análisis de sentimiento
+!!! quote "La IA ya no es solo del backend"
+    Modelos como TensorFlow.js, ONNX Runtime Web y Transformers.js permiten ejecutar IA en el navegador con buen rendimiento.
 
-```javascript
-import { pipeline } from '@xenova/transformers';
+---
 
-const clasificador = await pipeline(
-  'sentiment-analysis',
-  'Xenova/distilbert-base-uncased-finetuned-sst-2-english'
-);
+## 🧠 TensorFlow.js
 
-const resultado = await clasificador('Me encanta este libro');
-console.log(resultado);
-// [{ label: 'POSITIVE', score: 0.9998 }]
-```
-
-### Ejemplo: traducción
-
-```javascript
-const traductor = await pipeline(
-  'translation',
-  'Xenova/nllb-200-distilled-600M'
-);
-
-const salida = await traductor('Hello, world', {
-  src_lang: 'eng_Latn',
-  tgt_lang: 'spa_Latn',
-});
-console.log(salida[0].translation_text); // "Hola, mundo"
-```
-
-### Ejemplo: resumen de texto
-
-```javascript
-const resumidor = await pipeline('summarization');
-
-const texto = `Un texto largo sobre desarrollo web...`;
-const resumen = await resumidor(texto, {
-  max_length: 100,
-  min_length: 30,
-});
-console.log(resumen[0].summary_text);
-```
-
-!!! info "Primera vez tarda"
-    Los modelos se descargan la primera vez. Pueden pesar entre 10 MB y varios GB. **Cachea el modelo** con Cache Storage.
-
-## WebLLM: LLMs en el navegador
-
-**WebLLM** ejecuta modelos como Llama, Mistral o Phi **en el navegador** usando WebGPU.
-
-### Instalación
-
-```bash
-npm install @mlc-ai/web-llm
-```
-
-### Uso
-
-```javascript
-import * as webllm from '@mlc-ai/web-llm';
-
-const motor = await webllm.CreateMLCEngine(
-  'Llama-3.2-1B-Instruct-q4f32_1-MLC'
-);
-
-const respuesta = await motor.chat.completions.create({
-  messages: [{ role: 'user', content: '¿Qué es HTML?' }],
-});
-
-console.log(respuesta.choices[0].message.content);
-```
-
-!!! warning "Requiere WebGPU"
-    WebLLM necesita WebGPU, disponible en Chrome/Edge 113+ y Safari 17+. Firefox va llegando.
-
-## Web Speech API: voz
-
-### Reconocimiento de voz
-
-```javascript
-const recognition = new (window.SpeechRecognition ||
-                        window.webkitSpeechRecognition)();
-
-recognition.lang = 'es-ES';
-recognition.continuous = false;
-
-recognition.onresult = (event) => {
-  const texto = event.results[0][0].transcript;
-  console.log('Has dicho:', texto);
-};
-
-recognition.start();
-```
-
-### Síntesis de voz
-
-```javascript
-const utterance = new SpeechSynthesisUtterance('Hola, bienvenido al libro');
-utterance.lang = 'es-ES';
-utterance.rate = 1;
-utterance.pitch = 1;
-
-speechSynthesis.speak(utterance);
-```
-
-## MediaPipe: visión por computador
-
-**MediaPipe** de Google ofrece modelos ligeros para detección de manos, pose, cara y objetos.
-
-### Instalación
-
-```bash
-npm install @mediapipe/tasks-vision
-```
-
-### Detección de manos
-
-```javascript
-import { HandLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
-
-const vision = await FilesetResolver.forVisionTasks(
-  'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm'
-);
-
-const detector = await HandLandmarker.createFromOptions(vision, {
-  baseOptions: {
-    modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
-  },
-  numHands: 2,
-});
-
-const video = document.querySelector('video');
-const resultados = detector.detectForVideo(video, performance.now());
-
-resultados.landmarks.forEach(mano => {
-  console.log('Puntos de la mano:', mano);
-});
-```
-
-## TensorFlow.js
-
-**TensorFlow.js** permite entrenar y ejecutar modelos en el navegador.
-
-### Instalación
+**TensorFlow.js** es la librería de Google para ejecutar modelos de ML en el navegador y en Node.js.
 
 ```bash
 npm install @tensorflow/tfjs
 ```
 
-### Ejemplo: regresión lineal
-
 ```javascript
-import * as tf from '@tensorflow/tfjs';
+import * as tf from "@tensorflow/tfjs";
 
-const xs = tf.tensor1d([1, 2, 3, 4, 5]);
-const ys = tf.tensor1d([2, 4, 6, 8, 10]);
+// Crear un tensor
+const tensor = tf.tensor([1, 2, 3, 4]);
+tensor.print();
 
-const modelo = tf.sequential();
-modelo.add(tf.layers.dense({ units: 1, inputShape: [1] }));
-modelo.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
-
-await modelo.fit(xs, ys, { epochs: 100 });
-
-const prediccion = modelo.predict(tf.tensor1d([6]));
-prediccion.print(); // ~12
+// Operaciones
+const doble = tensor.mul(2);
+doble.print();
 ```
 
-### Modelos preentrenados
+---
+
+## 📦 Modelos preentrenados
 
 ```javascript
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import * as cocoSsd from "@tensorflow-models/coco-ssd";
 
 const modelo = await cocoSsd.load();
 const predicciones = await modelo.detect(imagen);
 
-predicciones.forEach(p => {
-  console.log(`${p.class} (${p.score.toFixed(2)})`);
+predicciones.forEach((p) => {
+  console.log(p.class, p.score, p.bbox);
 });
 ```
 
-## Casos de uso reales
-
-- **Búsqueda semántica** en documentación.
-- **Subtítulos automáticos** en vídeo.
-- **Detección de spam** en formularios.
-- **Recomendaciones personalizadas**.
-- **Chat con documentación** (RAG con Transformers.js).
-- **Edición de imagen con IA** (quitar fondo, mejorar calidad).
-- **Traducción en tiempo real**.
-
-## Cachear modelos
-
-Los modelos se pueden cachear para evitar descargas repetidas.
-
-```javascript
-import { env } from '@xenova/transformers';
-
-env.useBrowserCache = true;
-env.allowLocalModels = false;
-```
-
-También puedes servirlos desde tu dominio con `env.remoteHost`.
-
-## Ejemplo práctico: chat con embeddings
-
-```javascript
-import { pipeline } from '@xenova/transformers';
-
-const extractor = await pipeline(
-  'feature-extraction',
-  'Xenova/all-MiniLM-L6-v2'
-);
-
-async function embedding(texto) {
-  const salida = await extractor(texto, {
-    pooling: 'mean',
-    normalize: true,
-  });
-  return salida.data;
-}
-
-// Calcular similitud entre dos textos
-async function similitud(a, b) {
-  const [ea, eb] = await Promise.all([embedding(a), embedding(b)]);
-  return ea.reduce((sum, v, i) => sum + v * eb[i], 0);
-}
-
-console.log(await similitud('gato', 'felino')); // ~0.8
-console.log(await similitud('gato', 'coche')); // ~0.2
-```
-
-Esta técnica es la base de la **búsqueda semántica**: puedes encontrar documentos similares aunque no compartan palabras exactas.
-
-## Consideraciones éticas
-
-- **Sé transparente**: avisa cuando el usuario interactúa con IA.
-- **No recojas datos sin permiso**.
-- **Revisa sesgos** en los modelos.
-- **Ofrece alternativas** si la IA falla.
-- **Respeta el copyright** de los modelos.
-- **No finjas ser humano** si eres un bot.
-
-## Buenas prácticas
-
-- **Carga los modelos con lazy loading**.
-- **Muestra un indicador de progreso** mientras descargan.
-- **Cachea el modelo** tras la primera descarga.
-- **Usa Web Workers** para no bloquear la UI.
-- **Prueba en móvil** — el rendimiento varía mucho.
-- **Ofrece modo fallback** si WebGPU no está disponible.
-- **No envíes datos sensibles** a APIs externas sin cifrado.
-- **Prefiere modelos pequeños** para el cliente.
-
-## Ejercicios
-
-1. Añade análisis de sentimiento a los comentarios de tu blog con Transformers.js.
-2. Crea un buscador semántico de tus capítulos usando embeddings.
-3. Implementa dictado por voz con Web Speech API en un formulario.
-4. Prueba WebLLM con un modelo pequeño y pide que resuma un texto.
-5. Usa MediaPipe para detectar gestos y controlar un reproductor de vídeo.
-6. Entrena un modelo simple con TensorFlow.js en el navegador.
-7. Cachea el modelo con Cache Storage para que no se descargue cada vez.
+| Modelo | Qué hace |
+| :--- | :--- |
+| **COCO-SSD** | Detección de objetos |
+| **MobileNet** | Clasificación de imágenes |
+| **PoseNet** | Detección de poses |
+| **FaceMesh** | Malla facial |
+| **HandPose** | Detección de manos |
+| **Speech Commands** | Reconocimiento de voz |
+| **Toxicity** | Detección de toxicidad en texto |
 
 ---
 
-⬅️ [Capítulo 27 — WebAssembly](27-webassembly.md) | ➡️ [Capítulo 29 — WebXR](29-webxr.md)
+## 🌐 APIs de IA del navegador
+
+### Web Speech API
+
+```javascript
+const recognition = new webkitSpeechRecognition();
+recognition.lang = "es-ES";
+recognition.onresult = (event) => {
+  console.log(event.results[0][0].transcript);
+};
+recognition.start();
+```
+
+### WebGPU
+
+```javascript
+const adapter = await navigator.gpu.requestAdapter();
+const device = await adapter.requestDevice();
+// Usar device para cómputo en GPU
+```
+
+---
+
+## 🔌 APIs externas de IA
+
+Si el modelo es muy grande para el navegador, usa una API:
+
+```javascript
+const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer " + apiKey
+  },
+  body: JSON.stringify({
+    model: "gpt-4",
+    messages: [{ role: "user", content: "Hola" }]
+  })
+});
+
+const data = await res.json();
+console.log(data.choices[0].message.content);
+```
+
+!!! warning "Nunca expongas tu API key"
+    Las API keys nunca deben estar en el frontend. Usa un backend proxy que añada la key y controle el rate limiting.
+
+---
+
+## 🤗 Transformers.js
+
+**Transformers.js** permite usar modelos de Hugging Face directamente en el navegador, sin servidor.
+
+```bash
+npm install @xenova/transformers
+```
+
+```javascript
+import { pipeline } from "@xenova/transformers";
+
+// Análisis de sentimiento
+const clasificador = await pipeline("sentiment-analysis");
+const resultado = await clasificador("Me encanta este libro");
+console.log(resultado);
+// [{ label: "POSITIVE", score: 0.9998 }]
+```
+
+```javascript
+// Traducción
+const traductor = await pipeline("translation", "Xenova/opus-mt-es-en");
+const salida = await traductor("Hola, mundo");
+console.log(salida[0].translation_text);
+// "Hello, world"
+```
+
+| Tarea | Modelo |
+| :--- | :--- |
+| Clasificación de texto | `sentiment-analysis` |
+| Traducción | `translation` |
+| Resumen | `summarization` |
+| Generación de texto | `text-generation` |
+| Reconocimiento de voz | `automatic-speech-recognition` |
+| Generación de imágenes | `text-to-image` (experimental) |
+
+!!! tip "Modelos en el navegador"
+    Transformers.js descarga los modelos la primera vez y los cachea. La primera carga puede tardar; las siguientes son instantáneas.
+
+---
+
+## 🎯 Casos de uso reales
+
+| Caso | Tecnología |
+| :--- | :--- |
+| Detección de objetos en fotos | TensorFlow.js (COCO-SSD) |
+| Filtros de cámara en tiempo real | MediaPipe (FaceMesh) |
+| Subtítulos automáticos | Web Speech API |
+| Traducción de texto | Transformers.js |
+| Chatbot sin servidor | Transformers.js + IndexedDB |
+| Búsqueda semántica | Embeddings + similitud coseno |
+| Moderación de contenido | Modelos de toxicidad |
+
+---
+
+## ✅ Buenas prácticas
+
+- ✅ **Carga los modelos bajo demanda**: no los descargues en la primera visita.
+- ✅ **Cachea los modelos** con Service Worker o IndexedDB.
+- ✅ **Usa modelos pequeños** (MobileNet, DistilBERT) si el rendimiento importa.
+- ✅ **Muestra feedback** mientras el modelo carga ("Cargando IA...").
+- ✅ **Nunca expongas API keys** en el frontend.
+- ✅ **Respeta la privacidad**: si el modelo es local, los datos no salen del navegador.
+- ❌ **No ejecutes modelos gigantes** en móviles de gama baja.
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué API permite ejecutar modelos de IA directamente en el navegador?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Transformers.js / WebLLM</button>
-    <button class="quiz-option" data-option="b">B) TensorFlow Cloud</button>
-    <button class="quiz-option" data-option="c">C) OpenAI API</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-28">
+<div class="quiz-question" data-answer="a">
+<p><strong>1.</strong> ¿Qué librería de Google permite ejecutar ML en el navegador?</p>
+<button class="quiz-option" data-opt="a">A) TensorFlow.js</button>
+<button class="quiz-option" data-opt="b">B) PyTorch</button>
+<button class="quiz-option" data-opt="c">C) Scikit-learn</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Qué modelo detecta objetos en imágenes?</p>
+<button class="quiz-option" data-opt="a">A) BERT</button>
+<button class="quiz-option" data-opt="b">B) COCO-SSD</button>
+<button class="quiz-option" data-opt="c">C) GPT-4</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Dónde NO debes poner una API key?</p>
+<button class="quiz-option" data-opt="a">A) En el backend</button>
+<button class="quiz-option" data-opt="b">B) En variables de entorno</button>
+<button class="quiz-option" data-opt="c">C">En el código del frontend</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué API permite el reconocimiento y síntesis de voz nativa?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Audio API</button>
-    <button class="quiz-option" data-option="b">B) Voice API</button>
-    <button class="quiz-option" data-option="c">C) Web Speech API</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2028%3A%20IA%20en%20el%20frontend&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F28-ia-frontend%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F28-ia-frontend%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2028%3A%20IA%20en%20el%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F28-ia-frontend%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/28-ia-frontend/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 29 — WebXR](29-webxr.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
