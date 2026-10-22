@@ -1,347 +1,215 @@
-# Capítulo 26 — Seguridad web
+# 26 — Seguridad web
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Los ataques más comunes: XSS, CSRF, SQL Injection.
+    - Cómo prevenirlos.
+    - HTTPS, CORS y CSP.
+    - Buenas prácticas de autenticación.
+    - Auditoría de seguridad.
 
-La seguridad no es un extra que se añade al final. Es parte del desarrollo desde la primera línea de código. Una web insegura expone a los usuarios, daña la reputación y puede tener consecuencias legales.
+---
 
-Este capítulo repasa las **vulnerabilidades más comunes** y cómo protegerte de ellas.
+## 🔒 ¿Por qué importa la seguridad?
 
-## Los tres pilares
+Una vulnerabilidad puede costar **millones de euros**, destruir la reputación de una empresa y exponer datos personales de usuarios. La seguridad no es opcional: es parte del trabajo.
 
-- **Confidencialidad**: solo quien debe ver los datos, los ve.
-- **Integridad**: los datos no se modifican sin permiso.
-- **Disponibilidad**: la web funciona cuando se necesita.
+!!! quote "La seguridad es un proceso, no un producto"
+    No se trata de instalar un plugin y olvidarse. Se trata de pensar en seguridad en cada decisión de diseño, código y despliegue.
 
-## HTTPS siempre
+---
 
-Todo el tráfico debe ir cifrado con **TLS**. Sin HTTPS:
+## 🚨 Los ataques más comunes
 
-- Los datos viajan en texto plano.
-- Los navegadores marcan tu web como "no segura".
-- Google penaliza tu SEO.
+| Ataque | Qué hace | Impacto |
+| :--- | :--- | :--- |
+| **XSS** (Cross-Site Scripting) | Inyecta código malicioso en la web | Robo de sesión, redirecciones |
+| **CSRF** (Cross-Site Request Forgery) | Fuerza al usuario a ejecutar acciones | Cambios de contraseña, transferencias |
+| **SQL Injection** | Inyecta SQL en inputs | Robo de base de datos |
+| **Clickjacking** | Engaña al usuario para que haga clic | Acciones no deseadas |
+| **MITM** (Man-in-the-Middle) | Intercepta la comunicación | Robo de credenciales |
 
-GitHub Pages, Netlify, Vercel y Cloudflare activan HTTPS automáticamente. Activa **HSTS** (Strict-Transport-Security) para forzar siempre HTTPS.
+---
 
-```http
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-```
+## 💉 XSS: Cross-Site Scripting
 
-## OWASP Top 10
-
-La [OWASP](https://owasp.org/) publica cada año la lista de las vulnerabilidades más críticas. Estas son las principales para desarrollo web:
-
-| # | Vulnerabilidad | Ejemplo |
-|---|---|---|
-| 1 | Control de acceso roto | Acceder a `/admin` sin permisos |
-| 2 | Fallos criptográficos | Guardar contraseñas sin hash |
-| 3 | Inyección | SQL, comandos del sistema |
-| 4 | Diseño inseguro | Lógica de negocio mal planteada |
-| 5 | Configuración incorrecta | Servidor con defaults expuestos |
-| 6 | Componentes vulnerables | Dependencias desactualizadas |
-| 7 | Fallos de autenticación | Fuerza bruta, sesiones mal gestionadas |
-| 8 | Fallos de integridad | Actualizaciones sin firma |
-| 9 | Fallos de logging | No detectar ataques |
-| 10 | SSRF | Forzar el servidor a hacer peticiones |
-
-## XSS (Cross-Site Scripting)
-
-Ocurre cuando un atacante **inyecta JavaScript** en tu página.
-
-### Ejemplo vulnerable
-
-```javascript
-// NUNCA hagas esto
-const nombre = new URLSearchParams(location.search).get('nombre');
-document.getElementById('saludo').innerHTML = `Hola, ${nombre}`;
-```
-
-Si alguien visita:
-```
-https://tuweb.com/?nombre=<script>robarCookies()</script>
-```
-
-El script se ejecuta en el navegador de la víctima.
-
-### Cómo protegerte
-
-**1. Usa `textContent` en lugar de `innerHTML`:**
-
-```javascript
-// Seguro
-document.getElementById('saludo').textContent = `Hola, ${nombre}`;
-```
-
-**2. Escapa el HTML:**
-
-```javascript
-function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
-  })[c]);
-}
-```
-
-**3. Usa Content Security Policy (CSP):**
+Ocurre cuando un atacante inyecta **JavaScript** en tu web, que se ejecuta en el navegador de otros usuarios.
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted.cdn.com">
+<!-- Vulnerable: el input se renderiza sin escapar -->
+<div>Hola, <?php echo $_GET["nombre"]; ?></div>
+
+<!-- Ataque: ?nombre=<script>alert("XSS")</script> -->
 ```
 
-CSP es una cabecera que le dice al navegador **qué fuentes** puede cargar. Bloquea scripts inyectados.
+### Cómo prevenirlo
 
-## CSRF (Cross-Site Request Forgery)
+```javascript
+// ❌ Malo: innerHTML con datos del usuario
+elemento.innerHTML = input;
 
-El atacante hace que el navegador de la víctima envíe una petición a tu servidor **sin que se dé cuenta**.
+// ✅ Bueno: textContent escapa el HTML
+elemento.textContent = input;
+```
 
-Ejemplo: un `<img>` en una web maliciosa hace una petición a `tubanco.com/transferir?cantidad=1000&destino=atacante`.
+```javascript
+// ✅ Si necesitas renderizar HTML, sanitízalo con DOMPurify
+import DOMPurify from "dompurify";
+elemento.innerHTML = DOMPurify.sanitize(input);
+```
 
-### Cómo protegerte
+!!! warning "Sanitiza siempre"
+    Cualquier dato que venga del usuario (input, URL, cookies) debe ser tratado como potencialmente malicioso. Sanitiza antes de renderizar.
 
-**1. Tokens CSRF:**
+---
+
+## 🎭 CSRF: Cross-Site Request Forgery
+
+Ocurre cuando un atacante hace que el navegador de un usuario autenticado ejecute una acción no deseada en tu web.
+
+### Cómo prevenirlo
 
 ```html
-<form method="POST" action="/transferir">
-  <input type="hidden" name="csrf_token" value="{{ token }}">
+<form method="POST" action="/cambiar-password">
+  <input type="hidden" name="csrf_token" value="token-único">
   <!-- ... -->
 </form>
 ```
 
-El servidor verifica que el token coincide con la sesión.
-
-**2. Cookies `SameSite`:**
-
-```http
-Set-Cookie: session=abc; SameSite=Strict; Secure; HttpOnly
+```javascript
+// En el servidor: validar que el token coincide
+if (req.body.csrf_token !== req.session.csrf_token) {
+  return res.status(403).json({ error: "CSRF token inválido" });
+}
 ```
 
-- `SameSite=Strict`: no se envía desde otros sitios.
-- `HttpOnly`: no accesible desde JavaScript.
-- `Secure`: solo por HTTPS.
+- ✅ Usa **SameSite=Strict** en cookies.
+- ✅ Valida el header **Origin** y **Referer**.
+- ✅ Usa **CSRF tokens** en formularios.
+- ✅ Verifica el método HTTP (POST, PUT, DELETE para mutaciones).
 
-## Inyección SQL
+---
 
-Ocurre cuando concatenas input del usuario en una query SQL.
+## 🔐 HTTPS
 
-### Vulnerable
+HTTPS cifra la comunicación entre el navegador y el servidor. Sin HTTPS, cualquier atacante en la misma red puede leer las credenciales.
+
+```
+HTTP:  navegador → texto plano → servidor  (❌ inseguro)
+HTTPS: navegador → cifrado TLS → servidor   (✅ seguro)
+```
+
+- ✅ Usa **Let\x27s Encrypt** (gratis).
+- ✅ Redirige todo el tráfico HTTP a HTTPS.
+- ✅ Activa **HSTS** (Strict-Transport-Security).
+
+---
+
+## 🌐 CORS
+
+**CORS** (*Cross-Origin Resource Sharing*) es un mecanismo de seguridad que permite o bloquea peticiones entre dominios distintos.
 
 ```javascript
-// NUNCA
-const query = `SELECT * FROM usuarios WHERE email = '${email}'`;
+// Servidor
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://miapp.com");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 ```
 
-Si `email` es `' OR '1'='1`, devuelve todos los usuarios.
+!!! warning "No uses `*` en producción"
+    `Access-Control-Allow-Origin: *` permite que cualquier web haga peticiones a tu API. En producción, usa dominios específicos.
 
-### Seguro (con consultas parametrizadas)
+---
+
+## 🛡️ Content Security Policy (CSP)
+
+**CSP** es una cabecera HTTP que restringe qué recursos puede cargar una página: scripts, estilos, imágenes, fuentes… Es una defensa potente contra XSS.
 
 ```javascript
-const query = 'SELECT * FROM usuarios WHERE email = $1';
-const resultado = await db.query(query, [email]);
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", [
+    "default-src \x27self\x27",
+    "script-src \x27self\x27 https://trusted.cdn.com",
+    "style-src \x27self\x27 \x27unsafe-inline\x27",
+    "img-src \x27self\x27 data: https:"
+  ].join("; "));
+  next();
+});
 ```
 
-Con **Prisma** o **Sequelize** ya estás protegido si usas su API normal.
+!!! tip "Empieza en modo report"
+    Usa `Content-Security-Policy-Report-Only` al principio para ver qué se rompe sin bloquear nada. Cuando esté limpio, cambia a `Content-Security-Policy`.
 
-## Autenticación segura
+---
 
-### Contraseñas
+## 🔑 Autenticación segura
 
-- **Mínimo 8 caracteres** (mejor 12+).
-- **Hash con bcrypt, argon2 o scrypt**. Nunca SHA-256 directo.
-- **Salt único** por usuario (bcrypt lo hace solo).
+- ✅ **Hashea contraseñas** con bcrypt, argon2 o scrypt. Nunca en texto plano.
+- ✅ **Usa JWT con expiración corta** (15 min) + refresh token.
+- ✅ **Rota los tokens** al cambiar de contraseña.
+- ✅ **Rate limiting** en login (5 intentos/min).
+- ✅ **2FA** (autenticación de dos factores) para cuentas sensibles.
+- ✅ **Cookies HttpOnly + Secure + SameSite**.
+- ❌ **No guardes tokens en localStorage** si puedes usar cookies HttpOnly.
 
-```javascript
-import bcrypt from 'bcrypt';
+---
 
-const hash = await bcrypt.hash(password, 12);
-const ok = await bcrypt.compare(password, hash);
-```
+## 🔍 Auditoría de seguridad
 
-### Rate limiting
-
-Evita ataques de fuerza bruta.
-
-```javascript
-import rateLimit from 'express-rate-limit';
-
-app.use('/api/login', rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
-  message: 'Demasiados intentos. Prueba en 15 minutos.',
-}));
-```
-
-### 2FA (autenticación en dos pasos)
-
-Siempre que puedas, ofrécelo. Con TOTP (Google Authenticator, Authy) o WebAuthn.
-
-## Gestión de secretos
-
-- **Nunca** metas claves en el código.
-- **Nunca** subas `.env` a Git.
-- Usa variables de entorno en el hosting.
-- Rota claves periódicamente.
-- Usa gestores como **Vault**, **AWS Secrets Manager** o **Doppler**.
-
-`.gitignore`:
-```
-.env
-.env.local
-*.pem
-```
-
-## Cabeceras de seguridad
-
-Configura estas cabeceras en tu servidor:
-
-```http
-Content-Security-Policy: default-src 'self'
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: camera=(), microphone=(), geolocation=()
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-```
-
-En Nginx:
-
-```nginx
-add_header X-Frame-Options "DENY" always;
-add_header X-Content-Type-Options "nosniff" always;
-add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-add_header Permissions-Policy "camera=(), microphone=()" always;
-```
-
-## Dependencias
-
-La mayoría de vulnerabilidades vienen de **dependencias desactualizadas**.
+| Herramienta | Qué hace |
+| :--- | :--- |
+| **OWASP ZAP** | Escáner de vulnerabilidades web |
+| **Lighthouse** | Auditoría de seguridad básica |
+| **Snyk** | Vulnerabilidades en dependencias |
+| **npm audit** | Vulnerabilidades en npm |
+| **Security Headers** | Analiza cabeceras de seguridad |
 
 ```bash
 npm audit
 npm audit fix
 ```
 
-Activa **Dependabot** en GitHub para PRs automáticos:
-
-```yaml
-version: 2
-updates:
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-```
-
-Herramientas: [Snyk](https://snyk.io/), [Socket.dev](https://socket.dev/).
-
-## Validación en cliente y servidor
-
-**Todo input del usuario es malicioso por defecto**.
-
-- Valida siempre **en el servidor**.
-- La validación en cliente (HTML5, JS) es solo UX.
-- Usa **Zod** o **Joi** para validar schemas.
-
-```javascript
-import { z } from 'zod';
-
-const schema = z.object({
-  email: z.string().email(),
-  edad: z.number().int().min(0).max(120),
-});
-
-const resultado = schema.safeParse(req.body);
-if (!resultado.success) return res.status(400).json(resultado.error);
-```
-
-## Diagrama: capas de seguridad
-
-```mermaid
-flowchart TB
-    A[Usuario] -->|HTTPS| B[CDN / Firewall]
-    B --> C[Servidor]
-    C -->|Validación Zod| D[Backend]
-    D -->|Sanitización| E[(Base de datos)]
-
-    style A fill:#a78bfa,color:white
-    style E fill:#dc2626,color:white
-```
-
-Cada capa añade una defensa: HTTPS cifra, el CDN filtra, el servidor valida, el backend sanitiza y la base de datos almacena.
-
-## Buenas prácticas
-
-- **HTTPS en todo el sitio**, sin excepciones.
-- **Nunca confíes en el cliente**. Valida siempre en servidor.
-- **Hashes con bcrypt/argon2** para contraseñas.
-- **Consultas parametrizadas** para SQL.
-- **CSP + cabeceras de seguridad**.
-- **Rate limiting** en endpoints sensibles.
-- **Actualiza dependencias** semanalmente.
-- **Rota secretos** periódicamente.
-- **Logs de seguridad**: registra intentos fallidos de login.
-- **Backups regulares** de bases de datos.
-- **Principio de mínimo privilegio**: cada usuario solo lo necesario.
-
-## Herramientas de auditoría
-
-- **[OWASP ZAP](https://www.zaproxy.org/)** — escáner de vulnerabilidades.
-- **[Lighthouse](https://developer.chrome.com/docs/lighthouse/)** — incluye auditoría de seguridad.
-- **[Security Headers](https://securityheaders.com/)** — analiza tus cabeceras.
-- **[SSL Labs](https://www.ssllabs.com/ssltest/)** — evalúa tu TLS.
-- **[Have I Been Pwned](https://haveibeenpwned.com/)** — verifica filtraciones.
-
-## Ejercicios
-
-1. Audita tu web con [securityheaders.com](https://securityheaders.com/) y corrige lo que falte.
-2. Reemplaza todos los `innerHTML` de tu código por `textContent` o escapado.
-3. Añade rate limiting a un endpoint de login.
-4. Configura CSP en tu servidor.
-5. Ejecuta `npm audit` en un proyecto y actualiza dependencias.
-6. Añade autenticación con bcrypt a una API.
-7. Activa Dependabot en un repo de GitHub.
-
----
-
-⬅️ [Capítulo 25 — Design systems](25-design-systems.md) | ➡️ [Capítulo 27 — WebAssembly](27-webassembly.md)
-
-
-## Diagrama: capas de seguridad
-
-\`\`\`mermaid
-flowchart TB
-    A[Usuario] -->|HTTPS| B[CDN / Firewall]
-    B --> C[Servidor]
-    C -->|Validación| D[Backend]
-    D -->|Sanitización| E[(Base de datos)]
-
-    style A fill:#a78bfa,color:white
-    style E fill:#dc2626,color:white
-\`\`\`
-
-Cada capa añade una defensa: HTTPS cifra, el CDN filtra, el servidor valida, el backend sanitiza y la base de datos almacena.
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué tipo de ataque inyecta código JavaScript malicioso en una web?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) CSRF</button>
-    <button class="quiz-option" data-option="b">B) XSS (Cross-Site Scripting)</button>
-    <button class="quiz-option" data-option="c">C) SQL Injection</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-26">
+<div class="quiz-question" data-answer="a">
+<p><strong>1.</strong> ¿Qué ataque inyecta JavaScript en la web?</p>
+<button class="quiz-option" data-opt="a">A) XSS</button>
+<button class="quiz-option" data-opt="b">B) CSRF</button>
+<button class="quiz-option" data-opt="c">C) MITM</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Qué propiedad de cookie evita CSRF?</p>
+<button class="quiz-option" data-opt="a">A">HttpOnly</button>
+<button class="quiz-option" data-opt="b">B) SameSite=Strict</button>
+<button class="quiz-option" data-opt="c">C) Secure</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué cabecera restringe qué recursos puede cargar una página?</p>
+<button class="quiz-option" data-opt="a">A) CORS</button>
+<button class="quiz-option" data-opt="b">B) HSTS</button>
+<button class="quiz-option" data-opt="c">C) CSP</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué librería se recomienda para hashear contraseñas de forma segura?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) bcrypt</button>
-    <button class="quiz-option" data-option="b">B) md5</button>
-    <button class="quiz-option" data-option="c">C) base64</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2026%3A%20Seguridad%20web&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2026%3A%20Seguridad%20web%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/26-seguridad/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 27 — WebAssembly](27-webassembly.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
