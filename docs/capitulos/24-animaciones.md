@@ -1,276 +1,144 @@
-# Capítulo 24 — Animaciones avanzadas
+# 24 — Animaciones avanzadas
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Transiciones y animaciones CSS.
+    - La Web Animations API.
+    - Animaciones con scroll.
+    - GSAP y Framer Motion.
+    - Rendimiento en animaciones.
 
-Una animación bien hecha mejora la experiencia. Una mal hecha la arruina. Este capítulo cubre las técnicas que usan los equipos profesionales para animar interfaces fluidas, accesibles y con buen rendimiento.
+---
 
-## Principios de animación
+## 🎬 ¿Por qué importan las animaciones?
 
-Antes de tocar código, entiende **qué** comunicar:
+Las animaciones bien hechas **mejoran la UX**: guían la atención, dan feedback y hacen que la web se sienta viva. Las mal hechas distraen, marean y ralentizan.
 
-- **Feedback**: confirmar que algo ha pasado (un botón pulsado).
-- **Continuidad**: mostrar de dónde viene y a dónde va un elemento.
-- **Jerarquía**: dirigir la atención a lo importante.
-- **Personalidad**: dar carácter al producto.
+!!! quote "La animación es comunicación"
+    Una animación no es decoración: es una forma de decirle al usuario qué está pasando y qué puede hacer.
 
-### Los 12 principios (adaptados a UI)
+---
 
-Los 12 principios de la animación clásica (Disney) se aplican también a la web:
-
-| Principio | En UI significa… |
-|---|---|
-| **Squash & stretch** | Botones que "rebotan" ligeramente al pulsar |
-| **Anticipación** | Un modal que aparece desde abajo antes de mostrarse |
-| **Staging** | Oscurecer el fondo al abrir un diálogo |
-| **Follow through** | Un menú que se cierra con inercia |
-| **Ease in/out** | Casi toda transición en UI |
-| **Arcs** | Movimientos naturales, no lineales |
-| **Timing** | 200-300 ms para transiciones típicas |
-| **Exaggeration** | Ligeramente más dramático para que se note |
-| **Solid drawing** | Formas coherentes y predecibles |
-| **Appeal** | Que se sienta bien |
-
-## Reglas de oro
-
-- **150-300 ms** para transiciones de UI. Más rápido = brusco, más lento = pesado.
-- **Ease-out** para entradas (rápido al principio, lento al final).
-- **Ease-in** para salidas.
-- **Ease-in-out** para cambios continuos.
-- **Nunca animes `width`, `height`, `top`, `left`**. Usa `transform` y `opacity`.
-- **Respeta `prefers-reduced-motion`**.
-- **No animes todo**. Menos es más.
-
-## Transiciones CSS
-
-La forma más simple de animar cambios de estado.
+## ✨ Transiciones CSS
 
 ```css
 .boton {
   background: #6a5acd;
-  transition: background 200ms ease-out, transform 150ms ease-out;
+  transition: background-color .2s ease, transform .15s ease;
 }
 
 .boton:hover {
-  background: #5b4bc4;
+  background: #7d6ce0;
   transform: translateY(-2px);
 }
 ```
 
-### Timing functions
+| Timing function | Comportamiento |
+| :--- | :--- |
+| `ease` | Suave al principio y al final (por defecto) |
+| `linear` | Velocidad constante |
+| `ease-in` | Lento al principio |
+| `ease-out` | Lento al final |
+| `ease-in-out` | Lento en ambos extremos |
+| `cubic-bezier()` | Personalizado |
+
+---
+
+## 🎞️ Keyframes
 
 ```css
-transition-timing-function: ease;         /* por defecto */
-transition-timing-function: ease-in;
-transition-timing-function: ease-out;
-transition-timing-function: ease-in-out;
-transition-timing-function: linear;
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-transition-timing-function: steps(4, end);
-```
-
-### Cubic-bezier a medida
-
-```css
-/* "Back out": rebote al final */
-transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-/* "Expo out": muy suave al final */
-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-```
-
-Puedes diseñarlas en [cubic-bezier.com](https://cubic-bezier.com/).
-
-## `@keyframes`
-
-Para animaciones más complejas.
-
-```css
-@keyframes girar {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.spinner {
-  animation: girar 1s linear infinite;
-}
-```
-
-### Sintaxis completa
-
-```css
-.elemento {
-  animation-name: entrar;
-  animation-duration: 400ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  animation-delay: 100ms;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-fill-mode: both;
-  animation-play-state: running;
-}
-
-/* Forma corta */
-.elemento {
-  animation: entrar 400ms cubic-bezier(0.16, 1, 0.3, 1) 100ms 1 normal both running;
-}
-```
-
-### `animation-fill-mode`
-
-- `none`: por defecto, vuelve al estado original.
-- `forwards`: mantiene el estado final.
-- `backwards`: aplica el estado inicial durante el delay.
-- `both`: ambos.
-
-## Transform: el rey del rendimiento
-
-`transform` se ejecuta en la **GPU**, no en la CPU. Es la forma más rápida de mover cosas.
-
-### Transformaciones básicas
-
-```css
-transform: translateX(100px);
-transform: translateY(-50%);
-transform: scale(1.2);
-transform: rotate(45deg);
-transform: skew(10deg);
-
-/* Combinadas */
-transform: translate(50px, 20px) rotate(15deg) scale(1.1);
-```
-
-!!! warning "El orden importa"
-    `translate(...) rotate(...)` y `rotate(...) translate(...)` dan resultados distintos. Prueba ambos.
-
-### `transform-origin`
-
-Cambia el punto de referencia:
-
-```css
-transform-origin: center;   /* por defecto */
-transform-origin: top left;
-transform-origin: 50% 100%;
-```
-
-## `will-change`
-
-Avisa al navegador de que un elemento **va a cambiar**, para que lo prepare con antelación.
-
-```css
-.menu {
-  will-change: transform;
-}
-```
-
-!!! warning "Úsalo con cabeza"
-    Abusar de `will-change` **empeora** el rendimiento porque consume memoria. Úsalo solo en elementos que **realmente** van a animarse, y quítalo cuando termine.
-
-## Web Animations API (WAAPI)
-
-Alternativa a CSS con más control desde JavaScript.
-
-```javascript
-const elemento = document.querySelector('.caja');
-
-elemento.animate(
-  [
-    { transform: 'translateX(0)', opacity: 1 },
-    { transform: 'translateX(200px)', opacity: 0 },
-  ],
-  {
-    duration: 400,
-    easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-    fill: 'forwards',
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-);
-```
-
-### Control total
-
-```javascript
-const animacion = elemento.animate(keyframes, opciones);
-
-animacion.pause();
-animacion.play();
-animacion.reverse();
-animacion.cancel();
-
-animacion.onfinish = () => console.log('Terminada');
-```
-
-### Ventajas
-
-- No requiere tocar CSS.
-- Control en tiempo real.
-- Se ejecuta en el compositor (rendimiento como CSS).
-- Componible con `Promise` (`animacion.finished`).
-
-## Transiciones entre estados con Vue/React
-
-En **Vue**, el componente `<Transition>` gestiona clases automáticamente.
-
-```vue
-<template>
-  <Transition name="fade">
-    <div v-if="visible" class="modal">Contenido</div>
-  </Transition>
-</template>
-
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 300ms ease;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.fade-enter-from,
-.fade-leave-to {
+
+.animado {
+  animation: fadeInUp .5s ease forwards;
+}
+```
+
+### Stagger (escalonado)
+
+```css
+.lista > * {
+  animation: fadeInUp .4s ease forwards;
   opacity: 0;
 }
-</style>
+
+.lista > *:nth-child(1) { animation-delay: .05s; }
+.lista > *:nth-child(2) { animation-delay: .1s; }
+.lista > *:nth-child(3) { animation-delay: .15s; }
 ```
 
-En **React**, usa `Framer Motion` o `react-transition-group`.
+---
 
-```jsx
-import { motion, AnimatePresence } from 'framer-motion';
+## ⚡ Web Animations API
 
-<AnimatePresence>
-  {visible && (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-    >
-      Contenido
-    </motion.div>
-  )}
-</AnimatePresence>
+La **Web Animations API** permite animar con JavaScript de forma más potente y controlable.
+
+```javascript
+const elemento = document.querySelector(".caja");
+
+elemento.animate([
+  { transform: "translateX(0)", opacity: 1 },
+  { transform: "translateX(200px)", opacity: 0.5 }
+], {
+  duration: 500,
+  easing: "ease-in-out",
+  iterations: 1,
+  fill: "forwards"
+});
 ```
 
-## Animaciones basadas en scroll
+!!! tip "Ventajas de la WAAPI"
+    - Control total desde JavaScript (play, pause, reverse, cancel).
+    - Mejor rendimiento que animar propiedades con JS.
+    - Se puede combinar con CSS.
 
-### `IntersectionObserver`
+---
 
-Detecta cuándo un elemento entra en el viewport.
+## 📜 Animaciones con scroll
+
+### Scroll-driven animations (nativo)
+
+```css
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.elemento {
+  animation: aparecer linear;
+  animation-timeline: view();
+  animation-range: entry 0% entry 50%;
+}
+```
+
+### Intersection Observer (más compatible)
 
 ```javascript
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target); // una sola vez
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+});
 
-document.querySelectorAll('.animar').forEach((el) => observer.observe(el));
+document.querySelectorAll(".animar").forEach((el) => observer.observe(el));
 ```
 
 ```css
 .animar {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transform: translateY(20px);
+  transition: opacity .5s, transform .5s;
 }
 
 .animar.visible {
@@ -279,255 +147,154 @@ document.querySelectorAll('.animar').forEach((el) => observer.observe(el));
 }
 ```
 
-### `scroll-timeline` (CSS)
+---
 
-Nueva API que permite ligar animaciones al scroll **sin JavaScript**.
+## 🎬 GSAP
 
-```css
-@keyframes entrar {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+**GSAP** (*GreenSock Animation Platform*) es la librería de animaciones más potente del mercado. Usada por Google, Apple, Netflix…
 
-.animar {
-  animation: entrar linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 60%;
-}
+```bash
+npm install gsap
 ```
 
-!!! info "Soporte"
-    `scroll-timeline` está disponible en Chrome/Edge desde 2023. Firefox y Safari van llegando. Úsalo con `@supports` como mejora progresiva.
-
-## View Transitions API
-
-Permite transiciones fluidas **entre páginas** o entre estados sin JavaScript complejo.
-
 ```javascript
-document.startViewTransition(() => {
-  // Actualiza el DOM
-  document.body.innerHTML = nuevoHTML;
+import gsap from "gsap";
+
+gsap.to(".caja", {
+  x: 200,
+  rotation: 360,
+  duration: 1,
+  ease: "power2.out"
 });
 ```
 
-```css
-::view-transition-old(root) {
-  animation: fade-out 300ms ease-out;
-}
-
-::view-transition-new(root) {
-  animation: fade-in 300ms ease-in;
-}
-```
-
-Ideal para SPAs, listas que se reordenan o modales que se expanden desde un botón.
-
-## Animaciones de listas (FLIP)
-
-**FLIP** = *First, Last, Invert, Play*. Técnica para animar cambios de posición de elementos.
-
-1. **First**: guarda la posición inicial.
-2. **Last**: cambia el DOM y guarda la posición final.
-3. **Invert**: aplica un `transform` para simular que sigue en la posición inicial.
-4. **Play**: quita el transform con una transición.
+### Timeline
 
 ```javascript
-function animarReordenado(contenedor) {
-  const items = [...contenedor.children];
+const tl = gsap.timeline({ repeat: -1, yoyo: true });
 
-  const antes = new Map();
-  items.forEach((el) => antes.set(el, el.getBoundingClientRect()));
+tl.to(".caja", { x: 100, duration: .5 })
+  .to(".caja", { y: 100, duration: .5 })
+  .to(".caja", { x: 0, duration: .5 })
+  .to(".caja", { y: 0, duration: .5 });
+```
 
-  // ... reordena los items en el DOM ...
+---
 
-  items.forEach((el) => {
-    const antesRect = antes.get(el);
-    const despuesRect = el.getBoundingClientRect();
+## ⚛️ Framer Motion (React)
 
-    const deltaX = antesRect.left - despuesRect.left;
-    const deltaY = antesRect.top - despuesRect.top;
+**Framer Motion** es la librería de animaciones para React más popular.
 
-    if (deltaX || deltaY) {
-      el.animate(
-        [
-          { transform: `translate(${deltaX}px, ${deltaY}px)` },
-          { transform: 'translate(0, 0)' },
-        ],
-        { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
-      );
-    }
-  });
+```bash
+npm install framer-motion
+```
+
+```jsx
+import { motion } from "framer-motion";
+
+function MiComponente() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: .3 }}
+    >
+      Hola
+    </motion.div>
+  );
 }
 ```
 
-Framer Motion y Vue lo implementan por debajo.
+---
 
-## Microinteracciones
+## ⚡ Rendimiento en animaciones
 
-Pequeñas animaciones que dan vida a la interfaz:
+No todas las propiedades CSS se animan igual de rápido:
 
-- Un botón que se **hunde** al pulsarlo (`scale(0.96)`).
-- Un icono que **gira** al pasar el ratón.
-- Un check que **se dibuja** con `stroke-dasharray`.
-- Un campo que **cambia de color** al enfocarlo.
-- Un "me gusta" que **late** al pulsarlo.
+| Propiedad | Rendimiento |
+| :--- | :--- |
+| `transform` | ⚡ Excelente (GPU) |
+| `opacity` | ⚡ Excelente (GPU) |
+| `filter` | 🚀 Bueno (GPU) |
+| `width`, `height` | 🐢 Malo (repaint + layout) |
+| `top`, `left` | 🐢 Malo (repaint + layout) |
+| `background` | 🐢 Malo (repaint) |
+
+!!! tip "Anima solo transform y opacity"
+    Para animaciones fluidas a 60fps, anima **solo** `transform` y `opacity`. El resto provoca repaint y layout, que son mucho más costosos.
 
 ```css
-.boton:active {
-  transform: scale(0.96);
-  transition: transform 80ms;
-}
+/* Malo */
+.caja:hover { left: 10px; }
+
+/* Bueno */
+.caja:hover { transform: translateX(10px); }
 ```
 
-```css
-@keyframes latir {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.corazon.pulsado {
-  animation: latir 300ms ease-out;
-  color: #dc2626;
-}
-```
-
-## Accesibilidad y `prefers-reduced-motion`
-
-Nunca olvides respetar la preferencia del usuario.
+### Respetar prefers-reduced-motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 ```
 
-O selectivo: deja las animaciones sutiles y desactiva las grandes.
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  .animacion-grande { animation: none; }
-}
-```
-
-## Rendimiento
-
-### Qué es barato de animar
-
-| Propiedad | Coste |
-|---|---|
-| `transform` | ⚡⚡⚡ GPU, muy rápido |
-| `opacity` | ⚡⚡⚡ GPU, muy rápido |
-| `filter` | ⚡⚡ GPU |
-| `background-color` | ⚡ CPU |
-| `width/height` | 🐌 Refow, lento |
-| `top/left` | 🐌 Refow, lento |
-| `box-shadow` | 🐌 Repaint, lento |
-
-### Evita el "jank"
-
-- **Anima solo `transform` y `opacity`**.
-- **No animes `box-shadow`**. Usa un pseudo-elemento con `opacity`.
-- **Usa `will-change` con moderación**.
-- **Comprueba con DevTools** → Performance.
-
-```css
-/* ❌ Mal: repinta en cada frame */
-.boton:hover {
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-/* ✅ Bien: sombra pre-renderizada, solo cambia opacidad */
-.boton::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  opacity: 0;
-  transition: opacity 200ms;
-  border-radius: inherit;
-  pointer-events: none;
-}
-.boton:hover::after {
-  opacity: 1;
-}
-```
-
-## Librerías recomendadas
-
-- **[Motion One](https://motion.dev/)** — WAAPI con esteroides, ~3 KB.
-- **[Framer Motion](https://www.framer.com/motion/)** — estándar en React.
-- **[GSAP](https://gsap.com/)** — el más potente, ideal para animaciones complejas.
-- **[AutoAnimate](https://auto-animate.formkit.com/)** — cero config, anima listas automáticamente.
-- **[Lottie](https://airbnb.io/lottie/)** — animaciones vectoriales desde After Effects.
-
-## Diagrama: pipeline de renderizado
-
-```mermaid
-flowchart LR
-    A[JavaScript] --> B[Style]
-    B --> C[Layout]
-    C --> D[Paint]
-    D --> E[Composite]
-
-    style A fill:#dc2626,color:white
-    style E fill:#16a34a,color:white
-```
-
-Animar `transform` y `opacity` salta directo a Composite (barato). Animar `width` o `top` obliga a recalcular Layout y Paint (caro).
-
-## Buenas prácticas
-
-- **Empieza por entender el objetivo** antes de animar.
-- **150-300 ms** para la mayoría de transiciones.
-- **`ease-out` para entradas**, `ease-in` para salidas.
-- **Anima `transform` y `opacity`**. Casi nunca otros.
-- **Respeta `prefers-reduced-motion`**.
-- **No animes en cascada 50 elementos**. Es mareante.
-- **Prueba en móvil de gama baja**.
-- **Un `<details>` no necesita 3 animaciones**.
-- **Usa `will-change` solo cuando sea necesario**.
-
-## Ejercicios
-
-1. Crea un botón con hover y active usando solo `transform`.
-2. Implementa un spinner de carga con `@keyframes`.
-3. Anima la entrada de elementos al hacer scroll con `IntersectionObserver`.
-4. Reproduce la animación "me gusta" con `scale` y `@keyframes`.
-5. Usa la Web Animations API para reproducir una animación programáticamente.
-6. Implementa un modal con transición de apertura y cierre.
-7. Añade `prefers-reduced-motion` y comprueba que las animaciones se desactivan.
-8. Mide el rendimiento en DevTools → Performance y anota el FPS.
-
 ---
 
-⬅️ [Capítulo 23 — WebSockets](23-websockets.md) | ➡️ [Capítulo 25 — Design systems](25-design-systems.md)
+## ✅ Buenas prácticas
+
+- ✅ **Anima con propósito**: guiar la atención, dar feedback.
+- ✅ **Duración corta**: 200-500ms para la mayoría de interacciones.
+- ✅ **Easing natural**: evita `linear` para movimientos.
+- ✅ **Respeta `prefers-reduced-motion`**.
+- ✅ **Usa GPU**: `transform` y `opacity`.
+- ✅ **No abuses**: menos es más.
+- ❌ **No animes `width`/`height`** si puedes evitarlo.
+- ❌ **No hagas animaciones de más de 1s** en interacciones.
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué propiedades CSS son las más eficientes de animar (mejor rendimiento)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) transform y opacity</button>
-    <button class="quiz-option" data-option="b">B) width y height</button>
-    <button class="quiz-option" data-option="c">C) top y left</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-24">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué propiedades CSS son más eficientes de animar?</p>
+<button class="quiz-option" data-opt="a">A) width y height</button>
+<button class="quiz-option" data-opt="b">B) transform y opacity</button>
+<button class="quiz-option" data-opt="c">C) top y left</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué librería es la más potente para animaciones?</p>
+<button class="quiz-option" data-opt="a">A) GSAP</button>
+<button class="quiz-option" data-opt="b">B) jQuery</button>
+<button class="quiz-option" data-opt="c">C) Bootstrap</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué API nativa permite animar con JavaScript?</p>
+<button class="quiz-option" data-opt="a">A) Canvas</button>
+<button class="quiz-option" data-opt="b">B) SVG</button>
+<button class="quiz-option" data-opt="c">C) Web Animations API</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué media query respeta la preferencia del usuario de reducir el movimiento?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) (prefers-dark-mode)</button>
-    <button class="quiz-option" data-option="b">B) (prefers-reduced-motion)</button>
-    <button class="quiz-option" data-option="c">C) (prefers-animations)</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2024%3A%20Animaciones%20avanzadas&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2024%3A%20Animaciones%20avanzadas%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/24-animaciones/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 25 — Design systems](25-design-systems.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
