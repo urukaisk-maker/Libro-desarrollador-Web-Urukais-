@@ -17212,402 +17212,260 @@ Ahora:  navegador → modelo → respuesta (todo local)
 <hr />
 <h2 id="capitulos-28-ia-frontend-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-28-ia-frontend-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-29-webxr">Ir al Capítulo 29 — WebXR</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-29-webxr" heading-number="21.4"><h1 id="capitulos-29-webxr-capitulo-29-webxr">Capítulo 29 — WebXR<a class="headerlink" href="#capitulos-29-webxr-capitulo-29-webxr" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-29-webxr-introduccion">Introducción<a class="headerlink" href="#capitulos-29-webxr-introduccion" title="Permanent link">&para;</a></h2>
-<p><strong>WebXR</strong> permite crear experiencias de <strong>Realidad Virtual (VR)</strong> y <strong>Realidad Aumentada (AR)</strong> que se ejecutan directamente en el navegador, sin instalar aplicaciones.</p>
-<p>Funciona en gafas (Meta Quest, Apple Vision Pro, HTC Vive), móviles (ARCore/ARKit) y gafas de realidad mixta. Todo con el mismo código.</p>
-<h2 id="capitulos-29-webxr-que-es-webxr">¿Qué es WebXR?<a class="headerlink" href="#capitulos-29-webxr-que-es-webxr" title="Permanent link">&para;</a></h2>
-<p>Es una API del navegador que da acceso a:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-29-webxr" heading-number="21.4"><h1 id="capitulos-29-webxr-29-webxr">29 — WebXR<a class="headerlink" href="#capitulos-29-webxr-29-webxr" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li><strong>Posición y orientación</strong> del dispositivo en el espacio 3D.</li>
-<li><strong>Cámaras</strong> para AR.</li>
-<li><strong>Mandos</strong> y seguimiento de manos.</li>
-<li><strong>Audio espacial</strong>.</li>
+<li>Qué es WebXR y para qué sirve.</li>
+<li>Realidad Virtual (VR) en el navegador.</li>
+<li>Realidad Aumentada (AR) en el navegador.</li>
+<li>Three.js y A-Frame.</li>
+<li>Casos de uso y limitaciones.</li>
 </ul>
-<p>Es la evolución de <strong>WebVR</strong> (obsoleta). WebXR combina VR + AR en una sola API.</p>
-<h2 id="capitulos-29-webxr-como-funciona">Cómo funciona<a class="headerlink" href="#capitulos-29-webxr-como-funciona" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>Navegador
-   ↓
-navigator.xr (WebXR API)
-   ↓
-Dispositivo (gafas, móvil, PC)
-   ↓
-Escena 3D (Three.js, Babylon.js, A-Frame)
+</div>
+<hr />
+<h2 id="capitulos-29-webxr-que-es-webxr">🥽 ¿Qué es WebXR?<a class="headerlink" href="#capitulos-29-webxr-que-es-webxr" title="Permanent link">&para;</a></h2>
+<p><strong>WebXR</strong> es una API del navegador que permite crear experiencias de <strong>Realidad Virtual (VR)</strong> y <strong>Realidad Aumentada (AR)</strong> directamente en la web, sin instalar apps.</p>
+<div class="highlight"><pre><span></span><code>WebXR = VR + AR + Mixed Reality (MR) en el navegador
 </code></pre></div>
-<p>WebXR solo gestiona el <strong>rastreo</strong> y la <strong>sesión</strong>. Necesitas una librería 3D para renderizar.</p>
-<h2 id="capitulos-29-webxr-compatibilidad">Compatibilidad<a class="headerlink" href="#capitulos-29-webxr-compatibilidad" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Navegador</th>
-<th>VR</th>
-<th>AR</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chrome Android</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Chrome Desktop</td>
-<td>✅ (con gafas)</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Edge</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Meta Quest Browser</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Safari (Vision Pro)</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>✅</td>
-<td>🟡 parcial</td>
-</tr>
-</tbody>
-</table>
-<p>Comprueba siempre antes de arrancar la sesión.</p>
-<h2 id="capitulos-29-webxr-detectar-soporte">Detectar soporte<a class="headerlink" href="#capitulos-29-webxr-detectar-soporte" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s1">'xr'</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">navigator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">soportaVR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">isSessionSupported</span><span class="p">(</span><span class="s1">'immersive-vr'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">soportaAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">isSessionSupported</span><span class="p">(</span><span class="s1">'immersive-ar'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'VR:'</span><span class="p">,</span><span class="w"> </span><span class="nx">soportaVR</span><span class="p">,</span><span class="w"> </span><span class="s1">'AR:'</span><span class="p">,</span><span class="w"> </span><span class="nx">soportaAR</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'WebXR no disponible'</span><span class="p">);</span>
+<div class="admonition quote">
+<p class="admonition-title">La web inmersiva ya está aquí</p>
+<p>Meta Quest, Apple Vision Pro y otros dispositivos ya soportan WebXR. Puedes crear experiencias inmersivas con HTML, CSS y JavaScript.</p>
+</div>
+<hr />
+<h2 id="capitulos-29-webxr-realidad-virtual-vr">🎮 Realidad Virtual (VR)<a class="headerlink" href="#capitulos-29-webxr-realidad-virtual-vr" title="Permanent link">&para;</a></h2>
+<p>La <strong>Realidad Virtual</strong> sumerge al usuario en un entorno completamente digital. Necesita un visor (Meta Quest, HTC Vive, PSVR…) o un Cardboard.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Comprobar soporte VR</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">soportado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">isSessionSupported</span><span class="p">(</span><span class="s2">"immersive-vr"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">soportado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">requestSession</span><span class="p">(</span><span class="s2">"immersive-vr"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="capitulos-29-webxr-librerias-recomendadas">Librerías recomendadas<a class="headerlink" href="#capitulos-29-webxr-librerias-recomendadas" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Librería</th>
-<th>Uso</th>
+<th style="text-align: left;">Dispositivo</th>
+<th style="text-align: left;">Soporte WebXR</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Three.js</strong></td>
-<td>3D general con WebGL</td>
+<td style="text-align: left;">Meta Quest 2/3/Pro</td>
+<td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td><strong>Babylon.js</strong></td>
-<td>3D + WebXR integrado, más completo</td>
+<td style="text-align: left;">Apple Vision Pro</td>
+<td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td><strong>A-Frame</strong></td>
-<td>HTML declarativo, el más fácil</td>
+<td style="text-align: left;">HTC Vive</td>
+<td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td><strong>React Three Fiber</strong></td>
-<td>Three.js para React</td>
+<td style="text-align: left;">PSVR2</td>
+<td style="text-align: left;">⚠️ Limitado</td>
 </tr>
 <tr>
-<td><strong>Wonderland Engine</strong></td>
-<td>Especializada en WebXR</td>
+<td style="text-align: left;">Cardboard</td>
+<td style="text-align: left;">✅</td>
 </tr>
 </tbody>
 </table>
-<p>Vamos con <strong>A-Frame</strong> primero (lo más simple) y luego <strong>Three.js</strong>.</p>
-<h2 id="capitulos-29-webxr-ejemplo-basico-con-a-frame">Ejemplo básico con A-Frame<a class="headerlink" href="#capitulos-29-webxr-ejemplo-basico-con-a-frame" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi primera escena VR<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://aframe.io/releases/1.5.0/aframe.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-box</span> <span class="na">position</span><span class="o">=</span><span class="s">"-1 0.5 -3"</span> <span class="na">rotation</span><span class="o">=</span><span class="s">"0 45 0"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#6a5acd"</span><span class="p">&gt;&lt;/</span><span class="nt">a-box</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-sphere</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 1.25 -5"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"1.25"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#22d3ee"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sphere</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-cylinder</span> <span class="na">position</span><span class="o">=</span><span class="s">"1 0.75 -3"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"0.5"</span> <span class="na">height</span><span class="o">=</span><span class="s">"1.5"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#ef4444"</span><span class="p">&gt;&lt;/</span><span class="nt">a-cylinder</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-plane</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 0 -4"</span> <span class="na">rotation</span><span class="o">=</span><span class="s">"-90 0 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"4"</span> <span class="na">height</span><span class="o">=</span><span class="s">"4"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#f8fafc"</span><span class="p">&gt;&lt;/</span><span class="nt">a-plane</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-sky</span> <span class="na">color</span><span class="o">=</span><span class="s">"#0f172a"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sky</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Con eso ya tienes una escena VR. Añade un botón para entrar en modo VR:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">a-entity</span> <span class="na">id</span><span class="o">=</span><span class="s">"rig"</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 1.6 0"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">a-entity</span> <span class="na">camera</span> <span class="na">look-controls</span><span class="p">&gt;&lt;/</span><span class="nt">a-entity</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">a-entity</span><span class="p">&gt;</span>
-  <span class="cm">&lt;!-- ... resto de la escena ... --&gt;</span>
-<span class="p">&lt;/</span><span class="nt">a-scene</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>A-Frame muestra automáticamente el botón "Enter VR" si el dispositivo lo soporta.</p>
-<h2 id="capitulos-29-webxr-ejemplo-con-threejs">Ejemplo con Three.js<a class="headerlink" href="#capitulos-29-webxr-ejemplo-con-threejs" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>WebXR con Three.js<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"entrar"</span><span class="p">&gt;</span>Entrar en VR<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"importmap"</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">"imports"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"three"</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://unpkg.com/three@0.160.0/build/three.module.js"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'three'</span><span class="p">;</span>
-<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VRButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'https://unpkg.com/three@0.160.0/examples/jsm/webxr/VRButton.js'</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">background</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Color</span><span class="p">(</span><span class="mh">0x0f172a</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Botón VR</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">VRButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">));</span>
-
-<span class="w">    </span><span class="c1">// Luces</span>
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">HemisphereLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mh">0x444444</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
-
-<span class="w">    </span><span class="c1">// Objeto</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">geometria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometria</span><span class="p">,</span><span class="w"> </span><span class="nx">material</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Bucle</span>
-<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tiempo</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tiempo</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2000</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
+<hr />
+<h2 id="capitulos-29-webxr-realidad-aumentada-ar">📱 Realidad Aumentada (AR)<a class="headerlink" href="#capitulos-29-webxr-realidad-aumentada-ar" title="Permanent link">&para;</a></h2>
+<p>La <strong>Realidad Aumentada</strong> superpone elementos digitales al mundo real, usando la cámara del dispositivo.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Comprobar soporte AR</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">soportado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">isSessionSupported</span><span class="p">(</span><span class="s2">"immersive-ar"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">soportado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">requestSession</span><span class="p">(</span><span class="s2">"immersive-ar"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">requiredFeatures</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"hit-test"</span><span class="p">]</span>
 <span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="c1">// Responsive</span>
-<span class="w">    </span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'resize'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">camara</span><span class="p">.</span><span class="nx">aspect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">camara</span><span class="p">.</span><span class="nx">updateProjectionMatrix</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>Al abrirlo en un dispositivo compatible (Meta Quest, móvil con ARCore, etc.) aparece el botón <strong>"Enter VR"</strong>.</p>
-<h2 id="capitulos-29-webxr-ar-con-webxr">AR con WebXR<a class="headerlink" href="#capitulos-29-webxr-ar-con-webxr" title="Permanent link">&para;</a></h2>
-<p>AR necesita la cámara trasera. Ejemplo básico con Three.js:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ARButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'https://unpkg.com/three@0.160.0/examples/jsm/webxr/ARButton.js'</span><span class="p">;</span>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dispositivo</th>
+<th style="text-align: left;">Soporte AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Android (Chrome)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">iPhone (Safari)</td>
+<td style="text-align: left;">✅ (iOS 17+)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Meta Quest</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Apple Vision Pro</td>
+<td style="text-align: left;">✅</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-29-webxr-threejs">🎨 Three.js<a class="headerlink" href="#capitulos-29-webxr-threejs" title="Permanent link">&para;</a></h2>
+<p><strong>Three.js</strong> es la librería 3D más popular para JavaScript. Funciona con WebXR.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>three
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three"</span><span class="p">;</span>
 
+<span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
 <span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
 
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
-<span class="w">  </span><span class="nx">ARButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">requiredFeatures</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'hit-test'</span><span class="p">]</span><span class="w"> </span><span class="p">})</span>
-<span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">();</span>
-
-<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">HemisphereLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mh">0xbbbbff</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
-
-<span class="c1">// Cubo que se coloca donde toques</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">),</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">})</span>
-<span class="p">);</span>
-<span class="nx">cubo</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="c1">// Un cubo</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">geometria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometria</span><span class="p">,</span><span class="w"> </span><span class="nx">material</span><span class="p">);</span>
 <span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">reticle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">RingGeometry</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">).</span><span class="nx">rotateX</span><span class="p">(</span><span class="o">-</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x22d3ee</span><span class="w"> </span><span class="p">})</span>
-<span class="p">);</span>
-<span class="nx">reticle</span><span class="p">.</span><span class="nx">matrixAutoUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">reticle</span><span class="p">);</span>
+<span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
 
-<span class="c1">// Hit testing</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">hitTestSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">hitTestSourceRequested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'sessionstart'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getSession</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewerSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">requestReferenceSpace</span><span class="p">(</span><span class="s1">'viewer'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">hitTestSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">requestHitTestSource</span><span class="p">({</span><span class="w"> </span><span class="nx">space</span><span class="o">:</span><span class="w"> </span><span class="nx">viewerSpace</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">session</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'select'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">clone</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">setFromMatrixPosition</span><span class="p">(</span><span class="nx">reticle</span><span class="p">.</span><span class="nx">matrix</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">clone</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">clone</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frame</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hitTestSource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">referenceSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getReferenceSpace</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frame</span><span class="p">.</span><span class="nx">getHitTestResults</span><span class="p">(</span><span class="nx">hitTestSource</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hits</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hits</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">getPose</span><span class="p">(</span><span class="nx">referenceSpace</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">reticle</span><span class="p">.</span><span class="nx">matrix</span><span class="p">.</span><span class="nx">fromArray</span><span class="p">(</span><span class="nx">pose</span><span class="p">.</span><span class="nx">transform</span><span class="p">.</span><span class="nx">matrix</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">animar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">(</span><span class="nx">animar</span><span class="p">);</span>
 </code></pre></div>
-<p>Esto coloca cubos donde el usuario toca una superficie detectada. Es la base de cualquier app AR.</p>
-<h2 id="capitulos-29-webxr-controles-y-mandos">Controles y mandos<a class="headerlink" href="#capitulos-29-webxr-controles-y-mandos" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">controlador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getController</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-<span class="nx">controlador</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'selectstart'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Gatillo pulsado'</span><span class="p">);</span>
-<span class="p">});</span>
-<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">controlador</span><span class="p">);</span>
-
-<span class="c1">// Añadir un rayo visible</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">rayo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Line</span><span class="p">(</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BufferGeometry</span><span class="p">().</span><span class="nx">setFromPoints</span><span class="p">([</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">),</span>
-<span class="w">  </span><span class="p">]),</span>
-<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">LineBasicMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x22d3ee</span><span class="w"> </span><span class="p">})</span>
-<span class="p">);</span>
-<span class="nx">rayo</span><span class="p">.</span><span class="nx">scale</span><span class="p">.</span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
-<span class="nx">controlador</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">rayo</span><span class="p">);</span>
-</code></pre></div>
-<h2 id="capitulos-29-webxr-seguimiento-de-manos">Seguimiento de manos<a class="headerlink" href="#capitulos-29-webxr-seguimiento-de-manos" title="Permanent link">&para;</a></h2>
-<p>WebXR soporta <strong>hand tracking</strong> en Quest y Vision Pro:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">getSession</span><span class="p">();</span>
-<span class="nx">session</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'inputsourceschange'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">event</span><span class="p">.</span><span class="nx">added</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">input</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Mano detectada:'</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">handedness</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">session</span><span class="p">.</span><span class="nx">requestAnimationFrame</span><span class="p">((</span><span class="nx">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nx">frame</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">inputSources</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">joint</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">hand</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// joint.transform: matriz 4x4 con la posición</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="capitulos-29-webxr-audio-espacial">Audio espacial<a class="headerlink" href="#capitulos-29-webxr-audio-espacial" title="Permanent link">&para;</a></h2>
-<p>El sonido cambia según la posición del usuario:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">listener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AudioListener</span><span class="p">();</span>
-<span class="nx">camara</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">sonido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PositionalAudio</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">audioLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AudioLoader</span><span class="p">();</span>
-
-<span class="nx">audioLoader</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'ambiente.mp3'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setBuffer</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setRefDistance</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">setLoop</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sonido</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-<span class="p">});</span>
-
-<span class="nx">cubo</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">sonido</span><span class="p">);</span><span class="w"> </span><span class="c1">// el sonido viene del cubo</span>
-</code></pre></div>
-<h2 id="capitulos-29-webxr-rendimiento-en-vr">Rendimiento en VR<a class="headerlink" href="#capitulos-29-webxr-rendimiento-en-vr" title="Permanent link">&para;</a></h2>
-<p>VR exige <strong>90 FPS mínimo</strong> (idealmente 120). Reglas estrictas:</p>
-<ul>
-<li><strong>Bajo poligonaje</strong>. Cada triángulo cuenta.</li>
-<li><strong>Texturas comprimidas</strong> (KTX2, Basis).</li>
-<li><strong>Instancing</strong> para objetos repetidos.</li>
-<li><strong>LOD</strong> (Level of Detail) según distancia.</li>
-<li><strong>Evita transparencias</strong> (son caras).</li>
-<li><strong>Evita sombras dinámicas</strong> complejas.</li>
-<li><strong>Prueba en el dispositivo real</strong>.</li>
-</ul>
-<h2 id="capitulos-29-webxr-casos-de-uso">Casos de uso<a class="headerlink" href="#capitulos-29-webxr-casos-de-uso" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Educación</strong>: visitas virtuales, simulaciones.</li>
-<li><strong>Comercio</strong>: probar productos en AR.</li>
-<li><strong>Formación</strong>: entrenamiento en entornos seguros.</li>
-<li><strong>Arte</strong>: museos virtuales.</li>
-<li><strong>Arquitectura</strong>: recorridos de edificios.</li>
-<li><strong>Salud</strong>: terapia de exposición, rehabilitación.</li>
-</ul>
-<h2 id="capitulos-29-webxr-diagrama-arquitectura-webxr">Diagrama: arquitectura WebXR<a class="headerlink" href="#capitulos-29-webxr-diagrama-arquitectura-webxr" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TB
-    A[Navegador] --&gt; B[navigator.xr]
-    B --&gt; C{Session?}
-    C --&gt;|immersive-vr| D[Gafas VR]
-    C --&gt;|immersive-ar| E[Cámara AR]
-    C --&gt;|inline| F[Modo 3D sin gafas]
-    D --&gt; G[Renderizado 3D&lt;br/&gt;Three.js / A-Frame]
-    E --&gt; G
-    F --&gt; G</code></pre>
-<p>WebXR gestiona el rastreo del dispositivo. La escena 3D se renderiza con Three.js, A-Frame o Babylon.js.</p>
-<h2 id="capitulos-29-webxr-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-29-webxr-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Detecta soporte</strong> antes de arrancar.</li>
-<li><strong>Ofrece fallback 2D</strong> si no hay XR.</li>
-<li><strong>Empieza con A-Frame</strong> si eres nuevo.</li>
-<li><strong>Optimiza desde el día 1</strong>. En VR no puedes improvisar.</li>
-<li><strong>Prueba en el dispositivo real</strong>. El emulador no basta.</li>
-<li><strong>Cuida la accesibilidad</strong>. No todo el mundo puede usar gafas.</li>
-<li><strong>Evita movimientos bruscos</strong> (marean).</li>
-<li><strong>Considera el espacio físico</strong> del usuario.</li>
-<li><strong>Ofrece pausa y salida</strong> siempre visibles.</li>
-</ul>
-<h2 id="capitulos-29-webxr-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-29-webxr-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea una escena VR con A-Frame con 5 objetos de colores.</li>
-<li>Añade un botón para entrar en VR desde un dispositivo compatible.</li>
-<li>Convierte una escena Three.js a WebXR con <code>VRButton</code>.</li>
-<li>Prueba AR en un móvil Android con ARCore.</li>
-<li>Añade audio espacial a un objeto de tu escena.</li>
-<li>Implementa hand tracking básico en Meta Quest.</li>
-<li>Optimiza una escena VR para alcanzar 90 FPS estables.</li>
-</ol>
 <hr />
-<h2 id="capitulos-29-webxr-capitulo-28-ia-en-el-frontend-capitulo-30-web3">⬅️ <a href="#capitulos-28-ia-frontend">Capítulo 28 — IA en el frontend</a> | ➡️ <a href="#capitulos-30-web3">Capítulo 30 — Web3</a><a class="headerlink" href="#capitulos-29-webxr-capitulo-28-ia-en-el-frontend-capitulo-30-web3" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-29-webxr-a-frame">🖼️ A-Frame<a class="headerlink" href="#capitulos-29-webxr-a-frame" title="Permanent link">&para;</a></h2>
+<p><strong>A-Frame</strong> es un framework de Mozilla para crear experiencias VR/AR con HTML declarativo. Ideal para prototipos rápidos.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://aframe.io/releases/1.5.0/aframe.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">a-scene</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a-box</span> <span class="na">position</span><span class="o">=</span><span class="s">"-1 0.5 -3"</span> <span class="na">rotation</span><span class="o">=</span><span class="s">"0 45 0"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#6a5acd"</span><span class="p">&gt;&lt;/</span><span class="nt">a-box</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a-sphere</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 1.25 -5"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"1.25"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#00bcd4"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sphere</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a-cylinder</span> <span class="na">position</span><span class="o">=</span><span class="s">"1 0.75 -3"</span> <span class="na">radius</span><span class="o">=</span><span class="s">"0.5"</span> <span class="na">height</span><span class="o">=</span><span class="s">"1.5"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#ffc65d"</span><span class="p">&gt;&lt;/</span><span class="nt">a-cylinder</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a-plane</span> <span class="na">position</span><span class="o">=</span><span class="s">"0 0 -4"</span> <span class="na">rotation</span><span class="o">=</span><span class="s">"-90 0 0"</span> <span class="na">width</span><span class="o">=</span><span class="s">"4"</span> <span class="na">height</span><span class="o">=</span><span class="s">"4"</span> <span class="na">color</span><span class="o">=</span><span class="s">"#7bc8a4"</span><span class="p">&gt;&lt;/</span><span class="nt">a-plane</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a-sky</span> <span class="na">color</span><span class="o">=</span><span class="s">"#1a1726"</span><span class="p">&gt;&lt;/</span><span class="nt">a-sky</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">a-scene</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">A-Frame vs Three.js</p>
+<p>A-Frame es más fácil para empezar (HTML declarativo). Three.js es más potente y flexible para proyectos grandes. Ambos funcionan con WebXR.</p>
+</div>
+<hr />
+<h2 id="capitulos-29-webxr-casos-de-uso-reales">🎯 Casos de uso reales<a class="headerlink" href="#capitulos-29-webxr-casos-de-uso-reales" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">Tecnología</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Visitas virtuales a pisos</td>
+<td style="text-align: left;">WebXR + Three.js</td>
+</tr>
+<tr>
+<td style="text-align: left;">Prueba de muebles en AR</td>
+<td style="text-align: left;">WebXR + ARCore</td>
+</tr>
+<tr>
+<td style="text-align: left;">Museos virtuales</td>
+<td style="text-align: left;">A-Frame</td>
+</tr>
+<tr>
+<td style="text-align: left;">Educación inmersiva</td>
+<td style="text-align: left;">WebXR + Three.js</td>
+</tr>
+<tr>
+<td style="text-align: left;">Formación industrial en VR</td>
+<td style="text-align: left;">WebXR</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tiendas con prueba virtual</td>
+<td style="text-align: left;">WebXR + AR</td>
+</tr>
+<tr>
+<td style="text-align: left;">Juegos en el navegador</td>
+<td style="text-align: left;">Three.js + WebXR</td>
+</tr>
+<tr>
+<td style="text-align: left;">Visualización de datos 3D</td>
+<td style="text-align: left;">Three.js</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-29-webxr-limitaciones">⚠️ Limitaciones<a class="headerlink" href="#capitulos-29-webxr-limitaciones" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Rendimiento</strong>: los móviles y visores tienen GPUs limitadas.</li>
+<li><strong>Compatibilidad</strong>: no todos los dispositivos soportan WebXR.</li>
+<li><strong>Permisos</strong>: el usuario debe aceptar entrar en VR/AR.</li>
+<li><strong>Batería</strong>: la VR/AR consume mucha batería.</li>
+<li><strong>Curva de aprendizaje</strong>: 3D es complejo (geometría, materiales, luces, cámara).</li>
+<li><strong>Motion sickness</strong>: algunas experiencias marean a los usuarios.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Prueba en dispositivos reales</p>
+<p>El simulador de WebXR de Chrome es útil para desarrollar, pero <strong>nada sustituye</strong> a probar en un visor real o en un móvil compatible.</p>
+</div>
+<hr />
+<h2 id="capitulos-29-webxr-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#capitulos-29-webxr-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Empieza simple</strong>: un cubo girando ya es un logro.</li>
+<li>✅ <strong>Usa A-Frame</strong> para prototipos rápidos.</li>
+<li>✅ <strong>Usa Three.js</strong> para proyectos grandes.</li>
+<li>✅ <strong>Optimiza los modelos 3D</strong> (glTF, Draco compression).</li>
+<li>✅ <strong>Limita el número de polígonos</strong> y texturas.</li>
+<li>✅ <strong>Prueba en dispositivos de gama baja</strong>.</li>
+<li>✅ <strong>Proporciona un fallback</strong> para dispositivos sin WebXR.</li>
+<li>❌ <strong>No asumas que todo el mundo tiene un visor</strong>.</li>
+</ul>
+<hr />
 <h2 id="capitulos-29-webxr-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-29-webxr-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué API del navegador permite crear experiencias de Realidad Virtual y Aumentada?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) WebVR</button>
-    <button class="quiz-option" data-option="b">B) WebXR</button>
-    <button class="quiz-option" data-option="c">C) WebVR2</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-29">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué permite WebXR?</p>
+<button class="quiz-option" data-opt="a">A) Crear apps nativas de VR</button>
+<button class="quiz-option" data-opt="b">B">Crear experiencias VR/AR en el navegador</button>
+<button class="quiz-option" data-opt="c">C) Editar vídeos 360</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué librería 3D es la más popular para WebXR?</p>
+<button class="quiz-option" data-opt="a">A) Three.js</button>
+<button class="quiz-option" data-opt="b">B) jQuery</button>
+<button class="quiz-option" data-opt="c">C) Bootstrap</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué framework permite crear VR con HTML declarativo?</p>
+<button class="quiz-option" data-opt="a">A) React</button>
+<button class="quiz-option" data-opt="b">B) Vue</button>
+<button class="quiz-option" data-opt="c">C) A-Frame</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué librería HTML declarativa es la forma más fácil de crear escenas 3D para VR?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) A-Frame</button>
-    <button class="quiz-option" data-option="b">B) React Native</button>
-    <button class="quiz-option" data-option="c">C) jQuery</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-30-web3" heading-number="21.5"><h1 id="capitulos-30-web3-capitulo-30-web3">Capítulo 30 — Web3<a class="headerlink" href="#capitulos-30-web3-capitulo-30-web3" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-29-webxr-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-29-webxr-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2029%3A%20WebXR&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F29-webxr%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F29-webxr%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2029%3A%20WebXR%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F29-webxr%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/29-webxr/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-29-webxr-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-29-webxr-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-30-web3">Ir al Capítulo 30 — Web3</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-30-web3" heading-number="21.5"><h1 id="capitulos-30-web3-capitulo-30-web3">Capítulo 30 — Web3<a class="headerlink" href="#capitulos-30-web3-capitulo-30-web3" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-30-web3-introduccion">Introducción<a class="headerlink" href="#capitulos-30-web3-introduccion" title="Permanent link">&para;</a></h2>
 <p><strong>Web3</strong> es la visión de una internet descentralizada, donde los usuarios son dueños de sus datos y las aplicaciones no dependen de un servidor central.</p>
 <p>Se apoya en <strong>blockchain</strong>, <strong>contratos inteligentes</strong> y <strong>billeteras criptográficas</strong>. Ha generado tanto entusiasmo como escepticismo, y hay mucho ruido alrededor.</p>
