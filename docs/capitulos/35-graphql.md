@@ -1,290 +1,262 @@
-# Capítulo 35 — GraphQL
+# 35 — GraphQL
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué es GraphQL y en qué se diferencia de REST.
+    - Schema y tipos.
+    - Queries, mutations y subscriptions.
+    - Cliente Apollo.
+    - Cuándo usar GraphQL y cuándo no.
 
-**GraphQL** es un lenguaje de consulta para APIs creado por Facebook en 2015. A diferencia de REST, donde el servidor define qué devuelve cada endpoint, en GraphQL **el cliente pide exactamente los datos que necesita**.
+---
 
-Esto resuelve dos problemas clásicos de REST:
+## 🔷 ¿Qué es GraphQL?
 
-- **Over-fetching**: recibir más datos de los necesarios.
-- **Under-fetching**: necesitar varias peticiones para completar una vista.
+**GraphQL** es un lenguaje de consulta para APIs creado por Facebook. A diferencia de REST, el cliente pide **exactamente los datos que necesita**, ni más ni menos.
 
-## REST vs GraphQL
-
-### REST: múltiples peticiones
-
-```http
-GET /api/usuario/1
-GET /api/usuario/1/posts
-GET /api/usuario/1/seguidores
+```
+REST:     GET /usuarios/1 → devuelve TODO el usuario
+GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 ```
 
-Tres peticiones, datos de más en cada una.
+!!! quote "Pide lo que necesitas, ni más ni menos"
+    Con REST, a veces recibes 50 campos cuando solo necesitas 2. Con GraphQL, pides exactamente esos 2. Eso ahorra ancho de banda, especialmente en móvil.
 
-### GraphQL: una sola petición
+---
+
+## 📜 Schema
+
+El **schema** define los tipos y operaciones disponibles. Es el contrato entre cliente y servidor.
 
 ```graphql
+type Usuario {
+  id: ID!
+  nombre: String!
+  email: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  titulo: String!
+  contenido: String!
+  autor: Usuario!
+}
+
+type Query {
+  usuarios: [Usuario!]!
+  usuario(id: ID!): Usuario
+  posts: [Post!]!
+}
+
+type Mutation {
+  crearUsuario(nombre: String!, email: String!): Usuario!
+  crearPost(titulo: String!, contenido: String!, autorId: ID!): Post!
+}
+```
+
+---
+
+## 🔍 Queries
+
+```graphql
+# Obtener todos los usuarios con su nombre
 query {
-  usuario(id: 1) {
+  usuarios {
+    id
     nombre
-    email
-    posts { titulo }
-    seguidores { nombre }
   }
 }
-```
 
-Una sola petición, exactamente los datos que necesitas.
-
-## Conceptos clave
-
-| Concepto | Qué es |
-|---|---|
-| **Query** | Consulta de lectura (como GET) |
-| **Mutation** | Modificación de datos (POST/PUT/DELETE) |
-| **Subscription** | Actualizaciones en tiempo real (WebSockets) |
-| **Schema** | Contrato que define qué se puede pedir |
-| **Resolver** | Función que devuelve los datos |
-| **Type** | Tipo de dato (Usuario, Post, etc.) |
-
-## Tu primer servidor GraphQL
-
-Con **Apollo Server** (Node.js):
-
-```bash
-npm install @apollo/server graphql
-```
-
-```javascript
-// server.js
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
-
-const typeDefs = `
-  type Query {
-    saludo: String
-    usuario(id: ID!): Usuario
-  }
-
-  type Usuario {
-    id: ID!
-    nombre: String!
-    email: String!
-  }
-`;
-
-const usuarios = [
-  { id: '1', nombre: 'Urukais', email: 'urukaisk@gmail.com' },
-  { id: '2', nombre: 'Ana', email: 'ana@ejemplo.com' },
-];
-
-const resolvers = {
-  Query: {
-    saludo: () => 'Hola desde GraphQL',
-    usuario: (_, { id }) => usuarios.find(u => u.id === id),
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
-console.log('Servidor en', url);
-```
-
-## Probar consultas
-
-En `http://localhost:4000` tienes **Apollo Studio**, un playground donde probar queries:
-
-```graphql
-query {
-  saludo
-}
-
+# Obtener un usuario con sus posts
 query {
   usuario(id: "1") {
     nombre
+    posts {
+      titulo
+    }
+  }
+}
+
+# Con variables
+query GetUsuario($id: ID!) {
+  usuario(id: $id) {
+    nombre
     email
   }
 }
 ```
 
-## Mutations: modificar datos
+---
 
-```graphql
-type Mutation {
-  crearUsuario(nombre: String!, email: String!): Usuario
-}
-```
-
-Resolver:
-
-```javascript
-const resolvers = {
-  Mutation: {
-    crearUsuario: (_, { nombre, email }) => {
-      const nuevo = { id: String(usuarios.length + 1), nombre, email };
-      usuarios.push(nuevo);
-      return nuevo;
-    },
-  },
-};
-```
-
-Cliente:
+## ✏️ Mutations
 
 ```graphql
 mutation {
-  crearUsuario(nombre: "Pedro", email: "pedro@ejemplo.com") {
+  crearUsuario(nombre: "Ana", email: "ana@ejemplo.com") {
     id
     nombre
   }
 }
 ```
 
-## Cliente: Apollo Client en React
+---
+
+## 📡 Subscriptions
+
+Las **subscriptions** permiten recibir datos en tiempo real (como WebSockets, pero con GraphQL).
+
+```graphql
+subscription {
+  nuevoPost {
+    id
+    titulo
+    autor {
+      nombre
+    }
+  }
+}
+```
+
+---
+
+## ⚛️ Cliente Apollo
+
+**Apollo Client** es la librería más popular para consumir GraphQL desde React, Vue, Svelte o vanilla.
 
 ```bash
 npm install @apollo/client graphql
 ```
 
 ```jsx
-import { ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
-  cache: new InMemoryCache(),
+  uri: "https://api.ejemplo.com/graphql",
+  cache: new InMemoryCache()
 });
 
-const USUARIO_QUERY = gql`
-  query GetUsuario($id: ID!) {
-    usuario(id: $id) {
+const GET_USUARIOS = gql`
+  query {
+    usuarios {
+      id
       nombre
-      email
     }
   }
 `;
 
-function Perfil() {
-  const { loading, error, data } = useQuery(USUARIO_QUERY, {
-    variables: { id: '1' },
-  });
-
+function Usuarios() {
+  const { data, loading, error } = useQuery(GET_USUARIOS);
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h2>{data.usuario.nombre}</h2>
-      <p>{data.usuario.email}</p>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Perfil />
-    </ApolloProvider>
+    <ul>
+      {data.usuarios.map((u) => <li key={u.id}>{u.nombre}</li>)}
+    </ul>
   );
 }
 ```
-
-!!! tip "Caché automática"
-    Apollo Client cachea por defecto. La misma query a `usuario(id: "1")` en varios componentes solo hace **una** petición. Los datos se comparten automáticamente.
-
-## Fragmentos: reutilizar campos
-
-```graphql
-fragment DatosUsuario on Usuario {
-  id
-  nombre
-  email
-}
-
-query {
-  usuario(id: "1") {
-    ...DatosUsuario
-    posts { titulo }
-  }
-}
-```
-
-## Subscriptions: tiempo real
-
-```graphql
-type Subscription {
-  nuevoMensaje(sala: String!): Mensaje
-}
-```
-
-Se conecta vía WebSockets y el cliente recibe actualizaciones en vivo. Perfecto para chats, notificaciones o dashboards.
-
-## Ventajas y desventajas
-
-### ✅ Ventajas
-
-- **Una sola petición** para datos relacionados.
-- **Sin over/under-fetching**: el cliente pide lo que necesita.
-- **Schema tipado**: autocompletado en el editor.
-- **Versionado innecesario**: añades campos sin romper clientes.
-- **Herramientas potentes**: playground, Apollo Studio, GraphiQL.
-
-### ❌ Desventajas
-
-- **Complejidad inicial** mayor que REST.
-- **Caché HTTP compleja**: todo va por POST.
-- **N+1 problem** con resolvers mal hechos (se soluciona con DataLoader).
-- **Over-engineering** en proyectos pequeños.
-
-## ¿Cuándo usar GraphQL?
-
-### ✅ Úsalo si...
-
-- Tienes **múltiples clientes** (web, móvil, TV) con necesidades distintas.
-- Tu API es **grande y compleja** con muchas relaciones.
-- Necesitas **tiempo real**.
-- Estás construyendo una **plataforma pública**.
-
-### ❌ Evítalo si...
-
-- Es una API **pequeña y simple** (REST es suficiente).
-- Solo tienes un cliente.
-- El equipo no conoce GraphQL.
-- Necesitas caché HTTP simple con CDN.
-
-## Buenas prácticas
-
-- **Diseña el schema pensando en el cliente**, no en la base de datos.
-- **Usa DataLoader** para evitar el problema N+1.
-- **Persiste las queries** en producción (Apollo Persisted Queries).
-- **Limita la profundidad** de las queries para evitar abusos.
-- **Documenta el schema** con descripciones.
-- **Versiona el schema** con un historial de cambios.
-- **Autentica en el contexto** del resolver.
-
-## Ejercicios
-
-1. Crea un servidor GraphQL básico con Apollo Server y un query `saludo`.
-2. Añade una mutation `crearPost` que reciba título y contenido.
-3. Consume tu API desde un componente de React con Apollo Client.
-4. Añade un fragmento para reutilizar campos de usuario.
-5. Implementa DataLoader para resolver el problema N+1 en una lista de posts con autor.
 
 ---
 
-⬅️ [Capítulo 34 — Docker para frontend](34-docker.md) | ➡️ [Capítulo 36 — Micro-frontends](36-micro-frontends.md)
+## 🖥️ Servidor GraphQL con Node.js
 
+```bash
+npm install @apollo/server graphql
+```
+
+```javascript
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
+
+const typeDefs = `
+  type Usuario {
+    id: ID!
+    nombre: String!
+  }
+
+  type Query {
+    usuarios: [Usuario!]!
+  }
+`;
+
+const resolvers = {
+  Query: {
+    usuarios: () => [
+      { id: "1", nombre: "Ana" },
+      { id: "2", nombre: "Luis" }
+    ]
+  }
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
+console.log("Servidor en " + url);
+```
+
+---
+
+## ✅ GraphQL vs REST
+
+| Aspecto | REST | GraphQL |
+| :--- | :--- |
+| Peticiones | Múltiples endpoints | Un solo endpoint |
+| Datos | Overfetching / underfetching | Solo lo que pides |
+| Versionado | v1, v2... | Evolución del schema |
+| Curva | Baja | Media |
+| Caching | HTTP caching | Más complejo |
+| Subidas de archivos | Nativo | Requiere multipart |
+
+!!! tip "Cuándo usar GraphQL"
+    - Muchas entidades relacionadas.
+    - Móvil con ancho de banda limitado.
+    - Múltiples clientes (web, iOS, Android).
+    - Evitar overfetching en APIs grandes.
+
+!!! warning "Cuándo NO usar GraphQL"
+    - APIs simples con pocos recursos.
+    - Equipos pequeños sin experiencia.
+    - Cuando HTTP caching es crítico.
 
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué ventaja principal ofrece GraphQL frente a REST?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Es más rápido</button>
-    <button class="quiz-option" data-option="b">B) El cliente pide exactamente los datos que necesita</button>
-    <button class="quiz-option" data-option="c">C) No necesita servidor</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-35">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué ventaja principal tiene GraphQL sobre REST?</p>
+<button class="quiz-option" data-opt="a">A) Es más rápido</button>
+<button class="quiz-option" data-opt="b">B) El cliente pide solo los datos que necesita</button>
+<button class="quiz-option" data-opt="c">C">Usa menos servidores</button>
 </div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué operación se usa para modificar datos?</p>
+<button class="quiz-option" data-opt="a">A) Mutation</button>
+<button class="quiz-option" data-opt="b">B) Query</button>
+<button class="quiz-option" data-opt="c">C) Subscription</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué librería es la más popular para GraphQL?</p>
+<button class="quiz-option" data-opt="a">A) Axios</button>
+<button class="quiz-option" data-opt="b">B) Fetch</button>
+<button class="quiz-option" data-opt="c">C) Apollo</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2035%3A%20GraphQL&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2035%3A%20GraphQL%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/35-graphql/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 36 — Micro-frontends](36-micro-frontends.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
