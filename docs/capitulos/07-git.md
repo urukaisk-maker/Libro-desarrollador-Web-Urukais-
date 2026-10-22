@@ -1,162 +1,232 @@
-# Capítulo 7 — Git y control de versiones
+# 07 — Git y control de versiones
 
-## ¿Qué es Git?
-
-Git es un **sistema de control de versiones distribuido**. Guarda un historial de todos los cambios de un proyecto y permite volver atrás, trabajar en paralelo con otras personas y fusionar contribuciones sin pisarse.
-
-!!! info "Git vs GitHub"
-    **Git** es la herramienta que corre en tu ordenador. **GitHub** (o GitLab, Bitbucket…) es un servicio en la nube donde alojas tus repositorios Git. Puedes usar Git sin GitHub, pero no al revés.
-
-## Conceptos clave
-
-| Concepto | Qué es |
-|---|---|
-| **Repositorio** | Carpeta con historial de cambios (`.git/`) |
-| **Commit** | Una "foto" del proyecto en un momento dado |
-| **Rama (branch)** | Línea de desarrollo independiente |
-| **Remote** | Repositorio remoto (ej. GitHub) |
-| **Merge** | Fusionar una rama con otra |
-| **Pull request** | Propuesta de fusionar cambios en GitHub |
-
-## Configuración inicial
-
-```bash
-git config --global user.name "Tu Nombre"
-git config --global user.email "tu@email.com"
-git config --global init.defaultBranch main
-```
-
-## Flujo básico
-
-### Crear un repositorio
-
-```bash
-git init
-```
-
-### Ver el estado
-
-```bash
-git status
-```
-
-### Añadir cambios al "stage"
-
-```bash
-git add archivo.txt
-git add .              # todo
-```
-
-### Confirmar los cambios
-
-```bash
-git commit -m "Mensaje descriptivo"
-```
-
-### Ver el historial
-
-```bash
-git log --oneline
-git log --graph --oneline --all
-```
-
-### Subir a GitHub
-
-```bash
-git remote add origin https://github.com/usuario/repo.git
-git push -u origin main
-```
-
-## Ramas
-
-```bash
-git branch                    # listar ramas
-git checkout -b nueva-rama    # crear y cambiar
-git switch nueva-rama         # cambiar (moderno)
-git merge nueva-rama          # fusionar en la actual
-git branch -d nueva-rama      # borrar
-```
-
-## Trabajar con repos existentes
-
-```bash
-git clone https://github.com/usuario/repo.git
-git pull    # traer cambios del remoto
-git fetch   # traer sin fusionar
-```
-
-## Diagrama: flujo de trabajo con Git
-
-```mermaid
-flowchart LR
-    A[main] --> B[feature/nueva]
-    B --> C[commits]
-    C --> D[Pull Request]
-    D --> E[merge a main]
-    E --> F[main actualizado]
-```
-
-Flujo típico: se crea una rama, se trabaja en ella con varios commits, se abre un PR y se fusiona con la rama principal.
-
-## Buenas prácticas
-
-- **Commits pequeños y atómicos**: un cambio lógico por commit.
-- **Mensajes claros**: `feat: añadir login`, `fix: corregir typo en header`.
-- **Conventional Commits**: usa prefijos (`feat`, `fix`, `docs`, `chore`, `refactor`, `test`).
-- **Ramas con nombres descriptivos**: `feature/login`, `fix/menu-movil`.
-- **Nunca subas secretos**: `.env`, claves API, contraseñas.
-
-!!! warning "Cuidado con `git push --force`"
-    Reescribe el historial remoto. Si otras personas están trabajando en la misma rama, puedes causarles conflictos graves. Úsalo solo en tus ramas personales.
-
-## Ejercicios
-
-1. Crea un repositorio nuevo en GitHub y súbelo desde tu ordenador.
-2. Crea una rama, haz un cambio, fusiónala con `main`.
-3. Practica `git log --graph --oneline --all` para visualizar el historial.
-4. Añade un `.gitignore` que excluya `node_modules/` y `.env`.
+!!! abstract "Qué vas a aprender"
+    - Qué es el control de versiones y por qué es imprescindible.
+    - Los comandos básicos de Git.
+    - Cómo trabajar con ramas.
+    - Cómo conectar con GitHub.
+    - Resolver conflictos.
 
 ---
 
-⬅ [Capítulo 6 — Formularios HTML](06-formularios.md) | ➡ [Capítulo 8 — Consumo de APIs](08-apis.md)
+## 🌳 ¿Qué es Git?
 
+**Git** es un sistema de control de versiones distribuido. Guarda un historial de todos los cambios de un proyecto, permite volver atrás, trabajar en paralelo con otras personas y fusionar cambios sin perder nada.
 
-## Diagrama: flujo de trabajo con Git
+!!! quote "Sin Git, estás perdido"
+    Si alguna vez has tenido archivos como \`proyecto-final-v2-ahora-si-que-si.docx\`, Git es la solución. Un solo historial, todos los cambios, sin duplicados.
 
-\`\`\`mermaid
-gitGraph
-    commit id: "init"
-    commit id: "feat: capítulo 1"
-    branch feature/apis
-    checkout feature/apis
-    commit id: "feat: capítulo 8"
-    commit id: "test: API"
-    checkout main
-    merge feature/apis
-    commit id: "docs: apéndices"
+---
+
+## ⚙️ Configuración inicial
+
+\`\`\`bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"
 \`\`\`
 
-Así se ve el flujo de trabajo típico con ramas: se crea una rama para una funcionalidad, se trabaja en ella, y se fusiona con la principal.
+Esto se hace **una sola vez** en cada equipo.
+
+---
+
+## 📦 Comandos básicos
+
+| Comando | Uso |
+| :--- | :--- |
+| \`git init\` | Inicializar un repositorio |
+| \`git clone <url>\` | Clonar un repositorio remoto |
+| \`git status\` | Ver el estado de los archivos |
+| \`git add <file>\` | Añadir al staging |
+| \`git add .\` | Añadir todo |
+| \`git commit -m "mensaje"\` | Crear un commit |
+| \`git log --oneline\` | Ver el historial compacto |
+| \`git diff\` | Ver cambios sin stage |
+| \`git diff --staged\` | Ver cambios en stage |
+
+---
+
+## 🔄 El flujo básico
+
+\`\`\`bash
+# 1. Ver qué ha cambiado
+git status
+
+# 2. Añadir cambios al staging
+git add archivo.txt
+
+# 3. Crear un commit con un mensaje descriptivo
+git commit -m "feat: añadir página de contacto"
+
+# 4. Subir al repositorio remoto
+git push origin main
+\`\`\`
+
+!!! tip "Buenos mensajes de commit"
+    - \`feat:\` nueva funcionalidad
+    - \`fix:\` corrección de bug
+    - \`docs:\` cambios en documentación
+    - \`style:\` cambios de formato (no afectan al comportamiento)
+    - \`refactor:\` reestructuración sin cambiar comportamiento
+    - \`test:\` añadir o modificar tests
+
+---
+
+## 🌿 Ramas
+
+Las **ramas** permiten trabajar en paralelo sin afectar a \`main\`.
+
+\`\`\`bash
+# Crear y cambiar a una rama nueva
+git checkout -b feature/nueva-funcionalidad
+
+# Ver todas las ramas
+git branch
+
+# Cambiar de rama
+git checkout main
+
+# Fusionar una rama en la actual
+git merge feature/nueva-funcionalidad
+
+# Eliminar una rama (ya fusionada)
+git branch -d feature/nueva-funcionalidad
+\`\`\`
+
+| Comando | Uso |
+| :--- | :--- |
+| \`git branch\` | Listar ramas |
+| \`git branch nombre\` | Crear rama |
+| \`git checkout nombre\` | Cambiar de rama |
+| \`git checkout -b nombre\` | Crear y cambiar |
+| \`git merge rama\` | Fusionar rama en la actual |
+| \`git branch -d rama\` | Eliminar rama |
+
+---
+
+## ☁️ GitHub
+
+**GitHub** es una plataforma para alojar repositorios Git y colaborar.
+
+\`\`\`bash
+# Conectar un repo local con GitHub
+git remote add origin https://github.com/usuario/repo.git
+
+# Subir la rama main por primera vez
+git push -u origin main
+
+# Descargar cambios
+git pull origin main
+
+# Ver remotos configurados
+git remote -v
+\`\`\`
+
+!!! tip "Pull Requests"
+    En GitHub, un **Pull Request (PR)** es una propuesta de fusionar los cambios de una rama en otra. Permite revisar el código, comentar y aprobar antes de fusionar.
+
+---
+
+## ⚔️ Resolver conflictos
+
+Un **conflicto** ocurre cuando dos ramas modifican la misma línea de un archivo. Git no sabe cuál elegir y te pide que decidas tú.
+
+\`\`\`
+<<<<<<< HEAD
+tu versión
+=======
+versión de la otra rama
+>>>>>>> feature/otra-rama
+\`\`\`
+
+Para resolverlo:
+
+1. Abre el archivo y elige la versión correcta (o combina ambas).
+2. Elimina las marcas \`<<<<<<<\`, \`=======\`, \`>>>>>>>\`.
+3. \`git add archivo\`
+4. \`git commit\`
+
+!!! warning "No entres en pánico"
+    Los conflictos son normales. Léelos con calma, entiende qué cambió cada rama y decide. Git nunca pierde información: si algo sale mal, puedes volver atrás con \`git merge --abort\`.
+
+---
+
+## ↩️ Deshacer cambios
+
+\`\`\`bash
+# Descartar cambios sin stage
+git restore archivo.txt
+
+# Quitar del stage
+git restore --staged archivo.txt
+
+# Deshacer el último commit (mantiene los cambios)
+git reset HEAD~1
+
+# Deshacer el último commit (elimina los cambios)
+git reset --hard HEAD~1
+
+# Revertir un commit concreto (crea otro commit)
+git revert <hash>
+\`\`\`
+
+!!! warning "Cuidado con --hard"
+    \`git reset --hard\` **borra** los cambios sin posibilidad de recuperarlos. Úsalo solo cuando estés seguro.
+
+---
+
+## 🧰 Stash
+
+El **stash** guarda cambios temporalmente para que puedas cambiar de rama sin commitear.
+
+\`\`\`bash
+git stash              # guardar cambios
+git stash list         # listar stashes
+git stash pop          # recuperar y eliminar
+git stash apply        # recuperar sin eliminar
+git stash drop         # eliminar un stash
+\`\`\`
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué comando se usa para guardar los cambios en el historial de Git?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) git save</button>
-    <button class="quiz-option" data-option="b">B) git push</button>
-    <button class="quiz-option" data-option="c">C) git commit</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-7">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué comando crea un commit?</p>
+<button class="quiz-option" data-opt="a">A) git add</button>
+<button class="quiz-option" data-opt="b">B) git commit -m "mensaje"</button>
+<button class="quiz-option" data-opt="c">C) git push</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué comando crea y cambia a una rama nueva?</p>
+<button class="quiz-option" data-opt="a">A) git checkout -b nombre</button>
+<button class="quiz-option" data-opt="b">B) git branch nombre</button>
+<button class="quiz-option" data-opt="c">C) git merge nombre</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué comando sube los cambios al repositorio remoto?</p>
+<button class="quiz-option" data-opt="a">A) git pull</button>
+<button class="quiz-option" data-opt="b">B) git commit</button>
+<button class="quiz-option" data-opt="c">C) git push</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué hace el comando <code>git push</code>?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Descarga los cambios del servidor</button>
-    <button class="quiz-option" data-option="b">B) Sube tus commits locales al repositorio remoto</button>
-    <button class="quiz-option" data-option="c">C) Borra la rama actual</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/07-git/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 8 — Consumo de APIs con fetch](08-apis.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
