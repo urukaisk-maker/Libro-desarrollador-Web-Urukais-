@@ -1993,3 +1993,84 @@ body {
 
 @media screen and (max-width: 640px) {
   .logros-progreso__stats { grid-template-columns:
+
+
+/* ===== Playground ===== */
+.playground {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  min-height: 500px;
+}
+@media screen and (max-width: 900px) {
+  .playground { grid-template-columns: 1fr; min-height: auto; }
+}
+
+.playground__editor,
+.playground__output {
+  display: flex;
+  flex-direction: column;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.playground__tabs {
+  display: flex;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  background: color-mix(in srgb, var(--md-default-fg-color--lightest) 30%, transparent);
+}
+
+.playground__tab {
+  padding: .5rem 1rem;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  transition: all .15s;
+}
+.playground__tab:hover { color: var(--md-default-fg-color); }
+.playground__tab.is-active {
+  color: var(--md-primary-fg-color);
+  border-bottom: 2px solid var(--md-primary-fg-color);
+}
+
+.playground__textarea {
+  flex: 1;
+  min-height: 320px;
+  padding: 1rem;
+  border: none;
+  font-family: var(--md-code-font-family);
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  resize: vertical;
+  outline: none;
+}
+.playground__textarea.is-hidden { display: none; }
+
+.playground__actions {
+  display: flex;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  background: color-mix(in srgb, var(--md-default-fg-color--lightest) 20%, transparent);
+}
+
+.playground__output iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 400px;
+  border: none;
+  background: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  .playground__output iframe { min-height: 300px; }
+}
