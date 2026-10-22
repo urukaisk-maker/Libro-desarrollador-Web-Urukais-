@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#paso-4-crea-el-capitulo-33" class="md-skip">
+        <a href="#31-testing-e2e-con-playwright" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -2891,6 +2891,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -2933,6 +2935,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2941,10 +2945,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#paso-4-crea-el-capitulo-33" class="md-nav__link">
+  <a href="#que-es-el-testing-e2e" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Paso 4: Crea el Capítulo 33
+        🎭 ¿Qué es el testing E2E?
       
     </span>
   </a>
@@ -2952,51 +2956,83 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#capitulo-33-edge-computing" class="md-nav__link">
+  <a href="#instalar-playwright" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capítulo 33 — Edge Computing
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Capítulo 33 — Edge Computing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducción
+        📦 Instalar Playwright
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#que-es-el-edge" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué es el Edge?
+        ✍️ Tu primer test
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#selectores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plataformas como Vercel, Cloudflare, Netlify o Deno Deploy tienen centros de datos en cientos de ciudades. Cuando alguien visita tu web, el código se ejecuta en el nodo más cercano.
+        🎯 Selectores
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#acciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 Acciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aserciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Aserciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 Debugging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-con-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 CI con GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3006,9 +3042,26 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#comparte-este-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📢 Comparte este capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente paso
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4639,28 +4692,182 @@
   
 
 
-<p><em>(Guarda con <code>Ctrl+S</code>)</em></p>
-<hr />
-<h3 id="paso-4-crea-el-capitulo-33">Paso 4: Crea el Capítulo 33<a class="headerlink" href="#paso-4-crea-el-capitulo-33" title="Permanent link">&para;</a></h3>
-<p>Clic derecho en <code>capitulos</code> → <strong>"New File"</strong> → <code>33-edge-computing.md</code>
-Pega esto:</p>
-<p>```markdown</p>
-<h1 id="capitulo-33-edge-computing">Capítulo 33 — Edge Computing<a class="headerlink" href="#capitulo-33-edge-computing" title="Permanent link">&para;</a></h1>
-<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
-<p>Tradicionalmente, todo tu código vivía en un servidor central (por ejemplo, en Virginia, EE. UU.). Si un usuario accedía desde España, su petición viajaba hasta Virginia, se procesaba y volvía.</p>
-<p>El <strong>Edge Computing</strong> consiste en ejecutar el código <strong>lo más cerca posible del usuario</strong>, en nodos distribuidos por todo el mundo. La latencia se reduce drásticamente (de 200ms a 20ms).</p>
-<h2 id="que-es-el-edge">¿Qué es el Edge?<a class="headerlink" href="#que-es-el-edge" title="Permanent link">&para;</a></h2>
-<h2 id="plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano">Plataformas como <strong>Vercel, Cloudflare, Netlify o Deno Deploy</strong> tienen centros de datos en cientos de ciudades. Cuando alguien visita tu web, el código se ejecuta en el nodo más cercano.<a class="headerlink" href="#plataformas-como-vercel-cloudflare-netlify-o-deno-deploy-tienen-centros-de-datos-en-cientos-de-ciudades-cuando-alguien-visita-tu-web-el-codigo-se-ejecuta-en-el-nodo-mas-cercano" title="Permanent link">&para;</a></h2>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué herramienta moderna es la más recomendada para pruebas End-to-End?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Playwright</button>
-    <button class="quiz-option" data-option="b">B) Jest</button>
-    <button class="quiz-option" data-option="c">C) Vitest</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<h1 id="31-testing-e2e-con-playwright">31 — Testing E2E con Playwright<a class="headerlink" href="#31-testing-e2e-con-playwright" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es el testing E2E y por qué es importante.</li>
+<li>Instalar y configurar Playwright.</li>
+<li>Escribir tu primer test E2E.</li>
+<li>Selectores, acciones y aserciones.</li>
+<li>Debugging y CI.</li>
+</ul>
 </div>
+<hr />
+<h2 id="que-es-el-testing-e2e">🎭 ¿Qué es el testing E2E?<a class="headerlink" href="#que-es-el-testing-e2e" title="Permanent link">&para;</a></h2>
+<p>El <strong>testing End-to-End (E2E)</strong> simula a un usuario real interactuando con tu aplicación en un <strong>navegador de verdad</strong>. Abre la página, hace clic, rellena formularios y comprueba que todo funciona.</p>
+<div class="highlight"><pre><span></span><code>Unitario     → prueba una función
+Integración  → prueba varios módulos
+E2E          → prueba la app completa en el navegador
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">El test más realista</p>
+<p>Los tests E2E son los más lentos pero los más cercanos a la experiencia real del usuario. Si un E2E pasa, es muy probable que el flujo funcione.</p>
+</div>
+<hr />
+<h2 id="instalar-playwright">📦 Instalar Playwright<a class="headerlink" href="#instalar-playwright" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
+</code></pre></div>
+<p>Esto crea:</p>
+<ul>
+<li><code>playwright.config.js</code> — configuración</li>
+<li><code>tests/</code> — carpeta de tests</li>
+<li><code>tests-examples/</code> — ejemplos</li>
+</ul>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span>install
+</code></pre></div>
+<hr />
+<h2 id="tu-primer-test">✍️ Tu primer test<a class="headerlink" href="#tu-primer-test" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// tests/ejemplo.spec.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"la home carga correctamente"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"https://libro.urukais.com"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveTitle</span><span class="p">(</span><span class="sr">/Libro del Desarrollador/</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui
+npx<span class="w"> </span>playwright<span class="w"> </span>show-report
+</code></pre></div>
+<hr />
+<h2 id="selectores">🎯 Selectores<a class="headerlink" href="#selectores" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Selector</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Por rol (recomendado)</td>
+<td style="text-align: left;"><code>page.getByRole("button", { name: "Enviar" })</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Por texto</td>
+<td style="text-align: left;"><code>page.getByText("Hola")</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Por label</td>
+<td style="text-align: left;"><code>page.getByLabel("Email")</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Por placeholder</td>
+<td style="text-align: left;"><code>page.getByPlaceholder("Tu nombre")</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Por test id</td>
+<td style="text-align: left;"><code>page.getByTestId("mi-boton")</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">CSS</td>
+<td style="text-align: left;"><code>page.locator(".boton")</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">XPath</td>
+<td style="text-align: left;"><code>page.locator("//button")</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Usa selectores accesibles</p>
+<p>Prioriza <code>getByRole</code>, <code>getByLabel</code> y <code>getByText</code>. Son más resistentes a cambios de implementación y comprueban accesibilidad de paso.</p>
+</div>
+<hr />
+<h2 id="acciones">🎬 Acciones<a class="headerlink" href="#acciones" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#email"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ana@ejemplo.com"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#password"</span><span class="p">,</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s2">"button[type=submit]"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s2">"#acepto"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">selectOption</span><span class="p">(</span><span class="s2">"#pais"</span><span class="p">,</span><span class="w"> </span><span class="s2">"es"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">hover</span><span class="p">(</span><span class="s2">".menu"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nx">press</span><span class="p">(</span><span class="s2">"Enter"</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="aserciones">✅ Aserciones<a class="headerlink" href="#aserciones" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s2">"Bienvenida"</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">".error"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">".modal"</span><span class="p">)).</span><span class="nx">toBeHidden</span><span class="p">();</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)).</span><span class="nx">toBeEnabled</span><span class="p">();</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveScreenshot</span><span class="p">(</span><span class="s2">"home.png"</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="debugging">🐛 Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--debug
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui
+npx<span class="w"> </span>playwright<span class="w"> </span>codegen<span class="w"> </span>https://libro.urukais.com
+</code></pre></div>
+<p><code>codegen</code> abre un navegador y graba tus acciones en un test. Ideal para empezar.</p>
+<hr />
+<h2 id="ci-con-github-actions">🔄 CI con GitHub Actions<a class="headerlink" href="#ci-con-github-actions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E2E</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> node-version</span><span class="p">:</span><span class="w"> </span><span class="nv">20</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright install --with-deps</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright test</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report/</span>
+</code></pre></div>
+<hr />
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-31">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué prueba el testing E2E?</p>
+<button class="quiz-option" data-opt="a">A) Una función aislada</button>
+<button class="quiz-option" data-opt="b">B) La app completa en un navegador real</button>
+<button class="quiz-option" data-opt="c">C) La base de datos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué herramienta es el estándar para E2E?</p>
+<button class="quiz-option" data-opt="a">A) Playwright</button>
+<button class="quiz-option" data-opt="b">B) Vitest</button>
+<button class="quiz-option" data-opt="c">C) Jest</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué comando graba tus acciones en un test?</p>
+<button class="quiz-option" data-opt="a">A) npx playwright test</button>
+<button class="quiz-option" data-opt="b">B) npx playwright install</button>
+<button class="quiz-option" data-opt="c">C) npx playwright codegen</button>
+</div>
+</div>
+
+<hr />
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E%20con%20Playwright&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/31-testing-e2e/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../32-server-components/">Ir al Capítulo 32 — Server Components</a>
+<a class="md-button" href="../../">Volver al índice</a></p>
 
 
 
