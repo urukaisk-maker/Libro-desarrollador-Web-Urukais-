@@ -1,1168 +1,673 @@
-# 🏋️ Ejercicios con Validación Automática
+cd ~/Libro-desarrollador-Web-Urukais-
+python3 -c "
+contenido = '''# 🏋️ Ejercicios Playground
 
-Pon a prueba tus conocimientos con estos retos. Escribe tu solución, selecciona el lenguaje y pulsa **"Validar"**. El sistema ejecutará tu código en un servidor seguro y comprobará los resultados.
-
-!!! tip "💾 Tu progreso se guarda"
-    El código que escribas se guarda automáticamente en tu navegador. Si recargas la página, seguirá ahí.
-
-
-## 🏆 Tu Progreso
-
-<div id="ranking-panel" style="background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-    <strong>Retos completados</strong>
-    <span id="ranking-count" style="font-weight: 700; color: var(--md-primary-fg-color);">0 / 10</span>
-  </div>
-  <div style="background: var(--md-default-fg-color--lightest); height: 12px; border-radius: 6px; overflow: hidden;">
-    <div id="ranking-bar" style="background: linear-gradient(90deg, #a78bfa, #22d3ee); height: 100%; width: 0%; transition: width 0.5s ease;"></div>
-  </div>
-  <p id="ranking-message" style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--md-default-fg-color--light);">
-    ¡Empieza a resolver retos para ver tu progreso!
-  </p>
-  <div id="badges-container" style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;"></div>
-</div>
+!!! quote \"Aprende practicando\"
+    Una colección de ejercicios interactivos para practicar HTML, CSS y JavaScript directamente en el navegador. Cada ejercicio tiene un objetivo, un editor en vivo y una solución comentada.
 
 ---
 
-## 🟢 Reto 1: Suma de dos números
+## 🎯 Cómo funciona
 
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+1. **Lee el objetivo** del ejercicio.
+2. **Escribe tu solución** en el editor.
+3. **Pulsa Ejecutar** para ver el resultado.
+4. **Compara** con la solución propuesta (si te atascas).
+5. **Marca el ejercicio como completado** para desbloquear el logro.
 
-**Objetivo:** Crea una función `sumar(a, b)` que devuelva la suma de dos números.
-
-<div class="playground-container" data-reto="reto1">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
+!!! tip \"Consejo\"
+    No copies y pegues la solución directamente. Intenta resolverlo tú primero. El aprendizaje viene del proceso, no del resultado.
 
 ---
 
-## 🟢 Reto 2: Revertir un string
+## 🧪 Ejercicio 1: Saludo personalizado
 
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+**Nivel**: 🟢 Principiante
+**Conceptos**: Inputs, eventos, manipulación del DOM
 
-**Objetivo:** Crea una función `revertir(texto)` que devuelva el texto al revés.
+### 🎯 Objetivo
 
-<div class="playground-container" data-reto="reto2">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
+Crea un input donde el usuario escriba su nombre y un botón que, al pulsarlo, muestre un saludo personalizado.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"saludo\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
 </div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"text\" id=\"nombre\" placeholder=\"Tu nombre\">
+<button id=\"saludar\">Saludar</button>
+<p id=\"resultado\"></p></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+button { padding: .5rem 1rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+#resultado { margin-top: 1rem; font-size: 1.2rem; color: #6a5acd; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('saludar').addEventListener('click', () => {
+      const nombre = document.getElementById('nombre').value || 'mundo';
+      document.getElementById('resultado').textContent = '¡Hola, ' + nombre + '! 👋';
+    });
+    \`\`\`
 
 ---
 
-## 🟢 Reto 3: Contar vocales
+## 🧪 Ejercicio 2: Contador de clics
 
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+**Nivel**: 🟢 Principiante
+**Conceptos**: Variables, eventos, estado
 
-**Objetivo:** Crea una función `contarVocales(texto)` que devuelva el número de vocales.
+### 🎯 Objetivo
 
-<div class="playground-container" data-reto="reto3">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
+Un botón que incrementa un contador cada vez que se pulsa, mostrando el número en pantalla.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"contador\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
 </div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><button id=\"btn\">Clics: 0</button></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; text-align: center; }
+button { padding: 1rem 2rem; font-size: 1.2rem; background: #6a5acd; color: #fff; border: none; border-radius: 8px; cursor: pointer; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    let clicks = 0;
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', () => {
+      clicks++;
+      btn.textContent = 'Clics: ' + clicks;
+    });
+    \`\`\`
 
 ---
 
-## 🟡 Reto 4: Número par o impar
+## 🧪 Ejercicio 3: Cambiar color de fondo
 
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+**Nivel**: 🟡 Intermedio
+**Conceptos**: Math.random, estilos inline
 
-**Objetivo:** Crea una función `esPar(n)` que devuelva `true` si el número es par, `false` si es impar.
+### 🎯 Objetivo
 
-<div class="playground-container" data-reto="reto4">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
+Un botón que cambia el color de fondo de la página a un color aleatorio.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"color\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
 </div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><button id=\"btn\">Cambiar color</button></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; transition: background .3s; }
+button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('btn').addEventListener('click', () => {
+      const color = 'hsl(' + (Math.random() * 360) + ', 70%, 80%)';
+      document.body.style.background = color;
+    });
+    \`\`\`
 
 ---
 
-## 🟡 Reto 5: Máximo de un array
+## 🧪 Ejercicio 4: Lista de tareas
 
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
+**Nivel**: 🟡 Intermedio
+**Conceptos**: DOM, eventos, delegación
 
-**Objetivo:** Crea una función `maximo(numeros)` que devuelva el número más grande de un array.
+### 🎯 Objetivo
 
-<div class="playground-container" data-reto="reto5">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
+Un input y un botón que añadan tareas a una lista. Cada tarea debe poder eliminarse.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"tareas\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"text\" id=\"tarea\" placeholder=\"Nueva tarea\">
+<button id=\"add\">Añadir</button>
+<ul id=\"lista\"></ul></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+input { padding: .5rem; border: 1px solid #ddd; border-radius: 6px; }
+button { padding: .5rem 1rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+li { padding: .5rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+.del { background: #dc3545; padding: .25rem .5rem; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
 </div>
 
----
-
-
----
-
-## 🟡 Reto 6: Factorial
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `factorial(n)` que devuelva el factorial de un número (ej. `factorial(5) = 120`).
-
-<div class="playground-container" data-reto="reto6">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🟠 Reto 7: Palíndromo
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `esPalindromo(texto)` que devuelva `true` si el texto se lee igual al derecho y al revés.
-
-<div class="playground-container" data-reto="reto7">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🟠 Reto 8: FizzBuzz
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `fizzbuzz(n)` que devuelva un array del 1 al n, pero con "Fizz" para múltiplos de 3, "Buzz" para múltiplos de 5, y "FizzBuzz" para múltiplos de ambos.
-
-<div class="playground-container" data-reto="reto8">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🔴 Reto 9: Ordenar un array
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `ordenar(numeros)` que devuelva el array ordenado de menor a mayor **sin usar `.sort()`**.
-
-<div class="playground-container" data-reto="reto9">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🔴 Reto 10: Fibonacci
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `fibonacci(n)` que devuelva el n-ésimo número de la secuencia de Fibonacci.
-
-<div class="playground-container" data-reto="reto10">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
-
-
----
-
-## 🏋️ Reto 11: Suma de un array
-
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `sumaArray(numeros)` que devuelva la suma de todos los números de un array.
-
-<div class="playground-container" data-reto="reto11">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 12: Encontrar el mínimo
-
-**Nivel:** Fácil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `minimo(numeros)` que devuelva el número más pequeño de un array.
-
-<div class="playground-container" data-reto="reto12">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 13: Contar palabras
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `contarPalabras(texto)` que devuelva el número de palabras en un texto.
-
-<div class="playground-container" data-reto="reto13">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 14: Capitalizar texto
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `capitalizar(texto)` que devuelva el texto con la primera letra de cada palabra en mayúscula.
-
-<div class="playground-container" data-reto="reto14">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 15: Eliminar duplicados
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `eliminarDuplicados(numeros)` que devuelva un array sin elementos duplicados.
-
-<div class="playground-container" data-reto="reto15">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 16: Número primo
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `esPrimo(n)` que devuelva `true` si el número es primo.
-
-<div class="playground-container" data-reto="reto16">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 17: Anagrama
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `esAnagrama(a, b)` que devuelva `true` si dos strings son anagramas.
-
-<div class="playground-container" data-reto="reto17">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 18: Aplanar array
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `aplanar(array)` que aplane un array de arrays en uno solo.
-
-<div class="playground-container" data-reto="reto18">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 19: Contar caracteres
-
-**Nivel:** Medio · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `contarCaracteres(texto)` que devuelva un objeto con cada letra y su frecuencia.
-
-<div class="playground-container" data-reto="reto19">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
----
-
-## 🏋️ Reto 20: Validar paréntesis
-
-**Nivel:** Difícil · **Tema:** [JavaScript básico](../capitulos/04-javascript.md)
-
-**Objetivo:** Crea una función `validarParentesis(texto)` que devuelva `true` si los paréntesis están balanceados.
-
-<div class="playground-container" data-reto="reto20">
-  <div class="playground-editor-wrapper">
-    <div class="playground-header">
-      <select class="playground-lang-select">
-        <option value="javascript">JavaScript</option>
-        <option value="python">Python</option>
-        <option value="php">PHP</option>
-        <option value="c++">C++</option>
-        <option value="rust">Rust</option>
-      </select>
-      <button class="playground-run-btn validate-btn">✅ Validar</button>
-    </div>
-    <textarea class="code-editor" spellcheck="false"></textarea>
-  </div>
-  <div class="playground-output-wrapper">
-    <div class="playground-output-header">Resultado</div>
-    <pre class="playground-console output-console">Esperando validación...</pre>
-  </div>
-</div>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const tests = {
-    reto1: {
-      js: {
-        template: `function sumar(a, b) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'sumar',
-        casos: [
-          { args: [2, 3], esperado: 5 },
-          { args: [-1, 1], esperado: 0 },
-          { args: [10, 0], esperado: 10 },
-          { args: [1.5, 2.5], esperado: 4 }
-        ]
-      },
-      python: {
-        template: `def sumar(a, b):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'sumar',
-        casos: [
-          { args: [2, 3], esperado: 5 },
-          { args: [-1, 1], esperado: 0 },
-          { args: [10, 0], esperado: 10 },
-          { args: [1.5, 2.5], esperado: 4 }
-        ]
-      }
-    },
-    reto2: {
-      js: {
-        template: `function revertir(texto) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'revertir',
-        casos: [
-          { args: ["hola"], esperado: "aloh" },
-          { args: ["abc"], esperado: "cba" },
-          { args: [""], esperado: "" },
-          { args: ["12345"], esperado: "54321" }
-        ]
-      },
-      python: {
-        template: `def revertir(texto):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'revertir',
-        casos: [
-          { args: ["hola"], esperado: "aloh" },
-          { args: ["abc"], esperado: "cba" },
-          { args: [""], esperado: "" },
-          { args: ["12345"], esperado: "54321" }
-        ]
-      }
-    },
-    reto3: {
-      js: {
-        template: `function contarVocales(texto) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'contarVocales',
-        casos: [
-          { args: ["hola"], esperado: 2 },
-          { args: ["programacion"], esperado: 5 },
-          { args: ["xyz"], esperado: 0 },
-          { args: ["AEIOU"], esperado: 5 }
-        ]
-      },
-      python: {
-        template: `def contar_vocales(texto):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'contar_vocales',
-        casos: [
-          { args: ["hola"], esperado: 2 },
-          { args: ["programacion"], esperado: 5 },
-          { args: ["xyz"], esperado: 0 },
-          { args: ["AEIOU"], esperado: 5 }
-        ]
-      }
-    },
-    reto4: {
-      js: {
-        template: `function esPar(n) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'esPar',
-        casos: [
-          { args: [2], esperado: true },
-          { args: [3], esperado: false },
-          { args: [0], esperado: true },
-          { args: [-4], esperado: true }
-        ]
-      },
-      python: {
-        template: `def es_par(n):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'es_par',
-        casos: [
-          { args: [2], esperado: true },
-          { args: [3], esperado: false },
-          { args: [0], esperado: true },
-          { args: [-4], esperado: true }
-        ]
-      }
-    },
-    reto5: {
-      js: {
-        template: `function maximo(numeros) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'maximo',
-        casos: [
-          { args: [[1, 5, 3]], esperado: 5 },
-          { args: [[-1, -5, -3]], esperado: -1 },
-          { args: [[10]], esperado: 10 },
-          { args: [[2, 2, 2]], esperado: 2 }
-        ]
-      },
-      python: {
-        template: `def maximo(numeros):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'maximo',
-        casos: [
-          { args: [[1, 5, 3]], esperado: 5 },
-          { args: [[-1, -5, -3]], esperado: -1 },
-          { args: [[10]], esperado: 10 },
-          { args: [[2, 2, 2]], esperado: 2 }
-        ]
-      }
-    },
-
-    reto6: {
-      js: {
-        template: `function factorial(n) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'factorial',
-        casos: [
-          { args: [5], esperado: 120 },
-          { args: [0], esperado: 1 },
-          { args: [1], esperado: 1 },
-          { args: [3], esperado: 6 }
-        ]
-      },
-      python: {
-        template: `def factorial(n):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'factorial',
-        casos: [
-          { args: [5], esperado: 120 },
-          { args: [0], esperado: 1 },
-          { args: [1], esperado: 1 },
-          { args: [3], esperado: 6 }
-        ]
-      }
-    },
-    reto7: {
-      js: {
-        template: `function esPalindromo(texto) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'esPalindromo',
-        casos: [
-          { args: ["oso"], esperado: true },
-          { args: ["hola"], esperado: false },
-          { args: ["anilina"], esperado: true },
-          { args: ["abc"], esperado: false }
-        ]
-      },
-      python: {
-        template: `def es_palindromo(texto):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'es_palindromo',
-        casos: [
-          { args: ["oso"], esperado: true },
-          { args: ["hola"], esperado: false },
-          { args: ["anilina"], esperado: true },
-          { args: ["abc"], esperado: false }
-        ]
-      }
-    },
-    reto8: {
-      js: {
-        template: `function fizzbuzz(n) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'fizzbuzz',
-        casos: [
-          { args: [5], esperado: [1, 2, "Fizz", 4, "Buzz"] },
-          { args: [15], esperado: [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"] }
-        ]
-      },
-      python: {
-        template: `def fizzbuzz(n):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'fizzbuzz',
-        casos: [
-          { args: [5], esperado: [1, 2, "Fizz", 4, "Buzz"] },
-          { args: [15], esperado: [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"] }
-        ]
-      }
-    },
-    reto9: {
-      js: {
-        template: `function ordenar(numeros) {\n  // Escribe tu solución aquí (sin .sort())\n  \n}`,
-        nombre: 'ordenar',
-        casos: [
-          { args: [[3, 1, 2]], esperado: [1, 2, 3] },
-          { args: [[5, -1, 0]], esperado: [-1, 0, 5] },
-          { args: [[10]], esperado: [10] },
-          { args: [[2, 2, 1]], esperado: [1, 2, 2] }
-        ]
-      },
-      python: {
-        template: `def ordenar(numeros):\n    # Escribe tu solución aquí (sin sort())\n    pass`,
-        nombre: 'ordenar',
-        casos: [
-          { args: [[3, 1, 2]], esperado: [1, 2, 3] },
-          { args: [[5, -1, 0]], esperado: [-1, 0, 5] },
-          { args: [[10]], esperado: [10] },
-          { args: [[2, 2, 1]], esperado: [1, 2, 2] }
-        ]
-      }
-    },
-    reto10: {
-      js: {
-        template: `function fibonacci(n) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'fibonacci',
-        casos: [
-          { args: [0], esperado: 0 },
-          { args: [1], esperado: 1 },
-          { args: [7], esperado: 13 },
-          { args: [10], esperado: 55 }
-        ]
-      },
-      python: {
-        template: `def fibonacci(n):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'fibonacci',
-        casos: [
-          { args: [0], esperado: 0 },
-          { args: [1], esperado: 1 },
-          { args: [7], esperado: 13 },
-          { args: [10], esperado: 55 }
-        ]
-      }
-    }
-
-    reto11: {
-      js: {
-        template: `function sumaArray(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'sumaArray',
-        casos: [{ args: [[1, 2, 3]], esperado: 6 }, { args: [[]], esperado: 0 }, { args: [[10]], esperado: 10 }, { args: [[-1, 1]], esperado: 0 }]
-      },
-      python: {
-        template: `def sumaArray(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'sumaArray',
-        casos: [{ args: [[1, 2, 3]], esperado: 6 }, { args: [[]], esperado: 0 }, { args: [[10]], esperado: 10 }, { args: [[-1, 1]], esperado: 0 }]
-      }
-    },
-    reto12: {
-      js: {
-        template: `function minimo(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'minimo',
-        casos: [{ args: [[1, 5, 3]], esperado: 1 }, { args: [[-1, -5, -3]], esperado: -5 }, { args: [[10]], esperado: 10 }, { args: [[2, 2, 2]], esperado: 2 }]
-      },
-      python: {
-        template: `def minimo(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'minimo',
-        casos: [{ args: [[1, 5, 3]], esperado: 1 }, { args: [[-1, -5, -3]], esperado: -5 }, { args: [[10]], esperado: 10 }, { args: [[2, 2, 2]], esperado: 2 }]
-      }
-    },
-    reto13: {
-      js: {
-        template: `function contarPalabras(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'contarPalabras',
-        casos: [{ args: ["hola mundo"], esperado: 2 }, { args: [""], esperado: 0 }, { args: ["una sola"], esperado: 2 }, { args: ["a b c"], esperado: 3 }]
-      },
-      python: {
-        template: `def contarPalabras(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'contarPalabras',
-        casos: [{ args: ["hola mundo"], esperado: 2 }, { args: [""], esperado: 0 }, { args: ["una sola"], esperado: 2 }, { args: ["a b c"], esperado: 3 }]
-      }
-    },
-    reto14: {
-      js: {
-        template: `function capitalizar(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'capitalizar',
-        casos: [{ args: ["hola mundo"], esperado: "Hola Mundo" }, { args: ["javaScript"], esperado: "JavaScript" }, { args: [""], esperado: "" }, { args: ["a b c"], esperado: "A B C" }]
-      },
-      python: {
-        template: `def capitalizar(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'capitalizar',
-        casos: [{ args: ["hola mundo"], esperado: "Hola Mundo" }, { args: ["javaScript"], esperado: "JavaScript" }, { args: [""], esperado: "" }, { args: ["a b c"], esperado: "A B C" }]
-      }
-    },
-    reto15: {
-      js: {
-        template: `function eliminarDuplicados(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'eliminarDuplicados',
-        casos: [{ args: [[1, 2, 2, 3]], esperado: [1, 2, 3] }, { args: [[]], esperado: [] }, { args: [[1, 1, 1]], esperado: [1] }, { args: [[3, 1, 2, 1]], esperado: [3, 1, 2] }]
-      },
-      python: {
-        template: `def eliminarDuplicados(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'eliminarDuplicados',
-        casos: [{ args: [[1, 2, 2, 3]], esperado: [1, 2, 3] }, { args: [[]], esperado: [] }, { args: [[1, 1, 1]], esperado: [1] }, { args: [[3, 1, 2, 1]], esperado: [3, 1, 2] }]
-      }
-    },
-    reto16: {
-      js: {
-        template: `function esPrimo(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'esPrimo',
-        casos: [{ args: [7], esperado: true }, { args: [10], esperado: false }, { args: [2], esperado: true }, { args: [1], esperado: false }]
-      },
-      python: {
-        template: `def esPrimo(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'esPrimo',
-        casos: [{ args: [7], esperado: true }, { args: [10], esperado: false }, { args: [2], esperado: true }, { args: [1], esperado: false }]
-      }
-    },
-    reto17: {
-      js: {
-        template: `function esAnagrama(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'esAnagrama',
-        casos: [{ args: ["roma", "amor"], esperado: true }, { args: ["hola", "adios"], esperado: false }, { args: ["abc", "cba"], esperado: true }, { args: ["", ""], esperado: true }]
-      },
-      python: {
-        template: `def esAnagrama(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'esAnagrama',
-        casos: [{ args: ["roma", "amor"], esperado: true }, { args: ["hola", "adios"], esperado: false }, { args: ["abc", "cba"], esperado: true }, { args: ["", ""], esperado: true }]
-      }
-    },
-    reto18: {
-      js: {
-        template: `function aplanar(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'aplanar',
-        casos: [{ args: [[[1, 2], [3, 4]]], esperado: [1, 2, 3, 4] }, { args: [[[1], [2, [3]]]], esperado: [1, 2, 3] }, { args: [[[]]], esperado: [] }, { args: [[[1, 2, 3]]], esperado: [1, 2, 3] }]
-      },
-      python: {
-        template: `def aplanar(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'aplanar',
-        casos: [{ args: [[[1, 2], [3, 4]]], esperado: [1, 2, 3, 4] }, { args: [[[1], [2, [3]]]], esperado: [1, 2, 3] }, { args: [[[]]], esperado: [] }, { args: [[[1, 2, 3]]], esperado: [1, 2, 3] }]
-      }
-    },
-    reto19: {
-      js: {
-        template: `function contarCaracteres(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'contarCaracteres',
-        casos: [{ args: ["hola"], esperado: {h: 1, o: 1, l: 1, a: 1} }, { args: [""], esperado: {} }, { args: ["aa"], esperado: {a: 2} }, { args: ["abc"], esperado: {a: 1, b: 1, c: 1} }]
-      },
-      python: {
-        template: `def contarCaracteres(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'contarCaracteres',
-        casos: [{ args: ["hola"], esperado: {h: 1, o: 1, l: 1, a: 1} }, { args: [""], esperado: {} }, { args: ["aa"], esperado: {a: 2} }, { args: ["abc"], esperado: {a: 1, b: 1, c: 1} }]
-      }
-    },
-    reto20: {
-      js: {
-        template: `function validarParentesis(input) {\n  // Escribe tu solución aquí\n  \n}`,
-        nombre: 'validarParentesis',
-        casos: [{ args: ["()"], esperado: true }, { args: ["(())"], esperado: true }, { args: ["(()"], esperado: false }, { args: [")("], esperado: false }]
-      },
-      python: {
-        template: `def validarParentesis(input):\n    # Escribe tu solución aquí\n    pass`,
-        nombre: 'validarParentesis',
-        casos: [{ args: ["()"], esperado: true }, { args: ["(())"], esperado: true }, { args: ["(()"], esperado: false }, { args: [")("], esperado: false }]
-      }
-    },
-  };
-
-
-
-    // Plantillas para nuevos lenguajes
-    const templatesExtra = {
-      php: {
-        reto1: `<?php\nfunction sumar($a, $b) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto2: `<?php\nfunction revertir($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto3: `<?php\nfunction contarVocales($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto4: `<?php\nfunction esPar($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto5: `<?php\nfunction maximo($numeros) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto6: `<?php\nfunction factorial($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto7: `<?php\nfunction esPalindromo($texto) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto8: `<?php\nfunction fizzbuzz($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto9: `<?php\nfunction ordenar($numeros) {\n    // Escribe tu solución aquí\n    \n}\n?>`,
-        reto10: `<?php\nfunction fibonacci($n) {\n    // Escribe tu solución aquí\n    \n}\n?>`
-      },
-      'c++': {
-        reto1: `#include <iostream>\nusing namespace std;\n\nint sumar(int a, int b) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << sumar(2, 3) << endl;\n    return 0;\n}`,
-        reto2: `#include <iostream>\n#include <string>\nusing namespace std;\n\nstring revertir(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << revertir(\"hola\") << endl;\n    return 0;\n}`,
-        reto3: `#include <iostream>\n#include <string>\nusing namespace std;\n\nint contarVocales(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << contarVocales(\"hola\") << endl;\n    return 0;\n}`,
-        reto4: `#include <iostream>\nusing namespace std;\n\nbool esPar(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << esPar(4) << endl;\n    return 0;\n}`,
-        reto5: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nint maximo(vector<int> numeros) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << maximo({1, 5, 3}) << endl;\n    return 0;\n}`,
-        reto6: `#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << factorial(5) << endl;\n    return 0;\n}`,
-        reto7: `#include <iostream>\n#include <string>\nusing namespace std;\n\nbool esPalindromo(string texto) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << esPalindromo(\"oso\") << endl;\n    return 0;\n}`,
-        reto8: `#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> fizzbuzz(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    auto r = fizzbuzz(5);\n    for (auto& s : r) cout << s << \" \";\n    return 0;\n}`,
-        reto9: `#include <iostream>\n#include <vector>\nusing namespace std;\n\nvector<int> ordenar(vector<int> numeros) {\n    // Escribe tu solución aquí (sin std::sort)\n    \n}\n\nint main() {\n    auto r = ordenar({3, 1, 2});\n    for (int n : r) cout << n << \" \";\n    return 0;\n}`,
-        reto10: `#include <iostream>\nusing namespace std;\n\nint fibonacci(int n) {\n    // Escribe tu solución aquí\n    \n}\n\nint main() {\n    cout << fibonacci(7) << endl;\n    return 0;\n}`
-      },
-      rust: {
-        reto1: `fn sumar(a: i32, b: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", sumar(2, 3));\n}`,
-        reto2: `fn revertir(texto: &str) -> String {\n    // Escribe tu solución aquí\n    String::new()\n}\n\nfn main() {\n    println!(\"{}\", revertir(\"hola\"));\n}`,
-        reto3: `fn contar_vocales(texto: &str) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", contar_vocales(\"hola\"));\n}`,
-        reto4: `fn es_par(n: i32) -> bool {\n    // Escribe tu solución aquí\n    false\n}\n\nfn main() {\n    println!(\"{}\", es_par(4));\n}`,
-        reto5: `fn maximo(numeros: Vec<i32>) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", maximo(vec![1, 5, 3]));\n}`,
-        reto6: `fn factorial(n: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", factorial(5));\n}`,
-        reto7: `fn es_palindromo(texto: &str) -> bool {\n    // Escribe tu solución aquí\n    false\n}\n\nfn main() {\n    println!(\"{}\", es_palindromo(\"oso\"));\n}`,
-        reto8: `fn fizzbuzz(n: i32) -> Vec<String> {\n    // Escribe tu solución aquí\n    vec![]\n}\n\nfn main() {\n    println!(\"{:?}\", fizzbuzz(5));\n}`,
-        reto9: `fn ordenar(mut numeros: Vec<i32>) -> Vec<i32> {\n    // Escribe tu solución aquí (sin sort)\n    numeros\n}\n\nfn main() {\n    println!(\"{:?}\", ordenar(vec![3, 1, 2]));\n}`,
-        reto10: `fn fibonacci(n: i32) -> i32 {\n    // Escribe tu solución aquí\n    0\n}\n\nfn main() {\n    println!(\"{}\", fibonacci(7));\n}`
-      }
-    };
-
-  // Inicializar cada playground
-  document.querySelectorAll('.playground-container').forEach(container => {
-    const retoId = container.dataset.reto;
-    const editor = container.querySelector('.code-editor');
-    const select = container.querySelector('.playground-lang-select');
-    const btn = container.querySelector('.validate-btn');
-    const output = container.querySelector('.output-console');
-
-    // Cargar código guardado o template
-    function cargarCodigo() {
-      const lang = select.value;
-      const guardado = localStorage.getItem(`playground_${retoId}_${lang}`);
-      let template = '';
-      if (tests[retoId] && tests[retoId][lang]) {
-        template = tests[retoId][lang].template;
-      } else if (templatesExtra[lang] && templatesExtra[lang][retoId]) {
-        template = templatesExtra[lang][retoId];
-      }
-      editor.value = guardado || template;
-    }
-
-    cargarCodigo();
-
-    // Guardar al escribir
-    editor.addEventListener('input', () => {
-      const lang = select.value;
-      localStorage.setItem(`playground_${retoId}_${lang}`, editor.value);
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('add').addEventListener('click', () => {
+      const texto = document.getElementById('tarea').value.trim();
+      if (!texto) return;
+      const li = document.createElement('li');
+      li.innerHTML = texto + ' <button class=\"del\">❌</button>';
+      document.getElementById('lista').appendChild(li);
+      document.getElementById('tarea').value = '';
     });
 
-    // Cambiar lenguaje
-    select.addEventListener('change', cargarCodigo);
-
-    // Validar
-    btn.addEventListener('click', async () => {
-      const lang = select.value;
-      const test = tests[retoId][lang];
-      const codigoUsuario = editor.value;
-
-      output.textContent = '⏳ Validando...';
-      output.style.color = '#94a3b8';
-
-      let codigoCompleto = '';
-      if (lang === 'javascript') {
-        codigoCompleto = codigoUsuario + '\n\n';
-        codigoCompleto += 'const __resultados = [];\n';
-        test.casos.forEach((caso, i) => {
-          const argsStr = JSON.stringify(caso.args);
-          const esperadoStr = JSON.stringify(caso.esperado);
-          codigoCompleto += `try { const __r = JSON.stringify(${test.nombre}(...${argsStr})); __resultados.push({ i: ${i}, ok: __r === ${JSON.stringify(esperadoStr)}, obtenido: __r }); } catch(e) { __resultados.push({ i: ${i}, ok: false, error: e.message }); }\n`;
-        });
-        codigoCompleto += 'console.log(JSON.stringify(__resultados));\n';
-      } else if (lang === 'python') {
-        codigoCompleto = codigoUsuario + '\n\n';
-        codigoCompleto += 'import json\n__resultados = []\n';
-        test.casos.forEach((caso, i) => {
-          const argsStr = JSON.stringify(caso.args).replace(/true/g, 'True').replace(/false/g, 'False').replace(/null/g, 'None');
-          const esperadoStr = JSON.stringify(caso.esperado).replace(/true/g, 'True').replace(/false/g, 'False').replace(/null/g, 'None');
-          codigoCompleto += `try:\n    __r = json.dumps(${test.nombre}(*${argsStr}))\n    __resultados.append({"i": ${i}, "ok": __r == json.dumps(${esperadoStr}), "obtenido": __r})\nexcept Exception as e:\n    __resultados.append({"i": ${i}, "ok": False, "error": str(e)})\n`;
-        });
-        codigoCompleto += 'print(json.dumps(__resultados))\n';
-      }
-
-      try {
-        const response = await fetch('https://emkc.org/api/v2/piston/execute', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            language: lang,
-            version: lang === 'javascript' ? '18.15.0' : '3.10.0',
-            files: [{ content: codigoCompleto }]
-          })
-        });
-
-        const data = await response.json();
-        
-        if (data.run.stderr && !data.run.stdout) {
-          output.textContent = '❌ Error en tu código:\n' + data.run.stderr;
-          output.style.color = '#ef4444';
-          return;
-        }
-
-        const resultados = JSON.parse(data.run.stdout.trim());
-        const fallos = resultados.filter(r => !r.ok);
-
-        if (fallos.length === 0) {
-          output.textContent = `🎉 ¡Correcto! Todos los tests han pasado (${test.casos.length}/${test.casos.length}).`;
-          marcarCompletado(retoId);
-          output.style.color = '#4ade80';
-        } else {
-          let msg = `❌ ${fallos.length} de ${test.casos.length} tests fallaron:\n\n`;
-          fallos.forEach(f => {
-            const caso = test.casos[f.i];
-            msg += `❌ Test ${f.i+1}: ${test.nombre}(${JSON.stringify(caso.args)})\n`;
-            msg += `   Esperado: ${JSON.stringify(caso.esperado)}\n`;
-            msg += `   Obtenido: ${f.error ? 'Error: ' + f.error : f.obtenido}\n\n`;
-          });
-          output.textContent = msg;
-          output.style.color = '#ef4444';
-        }
-
-      } catch (error) {
-        output.textContent = '❌ Error de conexión: ' + error.message;
-        output.style.color = '#ef4444';
+    document.getElementById('lista').addEventListener('click', (e) => {
+      if (e.target.classList.contains('del')) {
+        e.target.parentElement.remove();
       }
     });
-  });
+    \`\`\`
 
+---
 
-  // Sistema de insignias
-  const insignias = [
-    { id: 'novato', nombre: 'Novato', icono: '🥉', min: 1, desc: '1 reto completado' },
-    { id: 'aprendiz', nombre: 'Aprendiz', icono: '🥈', min: 3, desc: '3 retos completados' },
-    { id: 'intermedio', nombre: 'Intermedio', icono: '🥇', min: 5, desc: '5 retos completados' },
-    { id: 'experto', nombre: 'Experto', icono: '💎', min: 8, desc: '8 retos completados' },
-    { id: 'leyenda', nombre: 'Leyenda', icono: '🏆', min: 10, desc: '10 retos completados' },
-    { id: 'maestro', nombre: 'Maestro', icono: '👑', min: 15, desc: '15 retos completados' },
-    { id: 'dios', nombre: 'Dios del Código', icono: '⚡', min: 20, desc: '20 retos completados' }
-  ];
+## 🧪 Ejercicio 5: Reloj en tiempo real
 
-  function actualizarBadges() {
-    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
-    const count = completados.length;
-    const container = document.getElementById('badges-container');
-    if (!container) return;
+**Nivel**: 🟠 Avanzado
+**Conceptos**: setInterval, Date, toLocaleTimeString
 
-    container.innerHTML = insignias.map(ins => {
-      const desbloqueada = count >= ins.min;
-      return `<div style="
-        background: ${desbloqueada ? 'linear-gradient(135deg, #f59e0b, #fbbf24)' : 'var(--md-default-fg-color--lightest)'};
-        color: ${desbloqueada ? '#0f172a' : 'var(--md-default-fg-color--light)'};
-        padding: 0.6rem 1rem;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        opacity: ${desbloqueada ? '1' : '0.4'};
-        transition: all 0.3s ease;
-        box-shadow: ${desbloqueada ? '0 4px 12px rgba(245, 158, 11, 0.4)' : 'none'};
-        animation: ${desbloqueada ? 'badgeShine 3s infinite linear' : 'none'};
-        background-size: 200% auto;
-      " title="${ins.desc}">
-        <span style="font-size: 1.2rem;">${ins.icono}</span> ${ins.nombre}
-      </div>`;
-    }).join('');
-  }
+### 🎯 Objetivo
 
-  // Actualizar al cargar
-  actualizarBadges();
+Mostrar la hora actual en pantalla, actualizándose cada segundo.
 
+### 🖥️ Editor
 
-  // Actualizar panel de ranking
-  function actualizarRanking() {
-    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
-    const total = 10;
-    const count = completados.length;
-    const porcentaje = (count / total) * 100;
+<div class=\"playground-ejercicio\" data-ejercicio=\"reloj\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><h2 id=\"reloj\">--:--:--</h2></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; text-align: center; }
+h2 { font-size: 3rem; color: #6a5acd; font-variant-numeric: tabular-nums; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
 
-    document.getElementById('ranking-count').textContent = `${count} / ${total}`;
-    document.getElementById('ranking-bar').style.width = porcentaje + '%';
-
-    const mensajes = [
-      '¡Empieza a resolver retos para ver tu progreso!',
-      '¡Buen comienzo! Sigue así.',
-      '¡Vas por buen camino!',
-      '¡Ya llevas la mitad!',
-      '¡Casi lo tienes!',
-      '¡Eres un crack!',
-      '¡Imparable!',
-      '¡Nivel experto desbloqueado!',
-      '¡Solo queda uno!',
-      '¡Eres una leyenda! 🏆'
-    ];
-    const idx = Math.min(count, mensajes.length - 1);
-    document.getElementById('ranking-message').textContent = mensajes[idx];
-    if (typeof actualizarBadges === 'function') actualizarBadges();
-  }
-
-  // Marcar reto como completado
-  function marcarCompletado(retoId) {
-    const completados = JSON.parse(localStorage.getItem('retos_completados') || '[]');
-    if (!completados.includes(retoId)) {
-      completados.push(retoId);
-      localStorage.setItem('retos_completados', JSON.stringify(completados));
-      actualizarRanking();
+??? success \"Solución\"
+    \`\`\`javascript
+    function actualizar() {
+      document.getElementById('reloj').textContent =
+        new Date().toLocaleTimeString('es-ES');
     }
-  }
+    setInterval(actualizar, 1000);
+    actualizar();
+    \`\`\`
 
-  // Llamar al cargar la página
-  actualizarRanking();
-});
-</script>
+---
+
+## 🧪 Ejercicio 6: Calculadora básica
+
+**Nivel**: 🟠 Avanzado
+**Conceptos**: parseFloat, switch, formularios
+
+### 🎯 Objetivo
+
+Una calculadora que sume, reste, multiplique y divida dos números.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"calculadora\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"number\" id=\"a\" placeholder=\"A\">
+<select id=\"op\">
+<option value=\"+\">+</option>
+<option value=\"-\">−</option>
+<option value=\"*\">×</option>
+<option value=\"/\">÷</option>
+</select>
+<input type=\"number\" id=\"b\" placeholder=\"B\">
+<button id=\"calcular\">=</button>
+<span id=\"resultado\"></span></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+input, select, button { padding: .5rem; font-size: 1rem; margin: .25rem; }
+button { background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+#resultado { font-size: 1.5rem; font-weight: 700; color: #6a5acd; margin-left: .5rem; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('calcular').addEventListener('click', () => {
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+      const op = document.getElementById('op').value;
+      let r;
+      switch (op) {
+        case '+': r = a + b; break;
+        case '-': r = a - b; break;
+        case '*': r = a * b; break;
+        case '/': r = b !== 0 ? a / b : 'Error'; break;
+      }
+      document.getElementById('resultado').textContent = r;
+    });
+    \`\`\`
+
+---
+
+## 📊 Progreso de ejercicios
+
+<div class=\"ejercicios-progreso\">
+<p>Ejercicios completados: <strong id=\"ej-progreso\">0 / 6</strong></p>
+<div class=\"ejercicios-progreso__bar\">
+<div class=\"ejercicios-progreso__fill\" id=\"ej-progreso-fill\" style=\"width:0%\"></div>
+</div>
+</div>
+
+---
+
+## ➡️ Siguientes pasos
+
+[🎮 Volver al Playground](playground.md){ .md-button .md-button--primary }
+[🎯 Ver los retos semanales](retos.md){ .md-button }
+[🏆 Ver mis logros](logros.md){ .md-button }
+'''
+open('docs/ejercicios-playground.md', 'w', encoding='utf-8').write(contenido)
+print('OK:', len(contenido.splitlines()), 'líneas escritas')
+"cd ~/Libro-desarrollador-Web-Urukais-
+python3 -c "
+contenido = '''# 🏋️ Ejercicios Playground
+
+!!! quote \"Aprende practicando\"
+    Una colección de ejercicios interactivos para practicar HTML, CSS y JavaScript directamente en el navegador. Cada ejercicio tiene un objetivo, un editor en vivo y una solución comentada.
+
+---
+
+## 🎯 Cómo funciona
+
+1. **Lee el objetivo** del ejercicio.
+2. **Escribe tu solución** en el editor.
+3. **Pulsa Ejecutar** para ver el resultado.
+4. **Compara** con la solución propuesta (si te atascas).
+5. **Marca el ejercicio como completado** para desbloquear el logro.
+
+!!! tip \"Consejo\"
+    No copies y pegues la solución directamente. Intenta resolverlo tú primero. El aprendizaje viene del proceso, no del resultado.
+
+---
+
+## 🧪 Ejercicio 1: Saludo personalizado
+
+**Nivel**: 🟢 Principiante
+**Conceptos**: Inputs, eventos, manipulación del DOM
+
+### 🎯 Objetivo
+
+Crea un input donde el usuario escriba su nombre y un botón que, al pulsarlo, muestre un saludo personalizado.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"saludo\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"text\" id=\"nombre\" placeholder=\"Tu nombre\">
+<button id=\"saludar\">Saludar</button>
+<p id=\"resultado\"></p></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+button { padding: .5rem 1rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+#resultado { margin-top: 1rem; font-size: 1.2rem; color: #6a5acd; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('saludar').addEventListener('click', () => {
+      const nombre = document.getElementById('nombre').value || 'mundo';
+      document.getElementById('resultado').textContent = '¡Hola, ' + nombre + '! 👋';
+    });
+    \`\`\`
+
+---
+
+## 🧪 Ejercicio 2: Contador de clics
+
+**Nivel**: 🟢 Principiante
+**Conceptos**: Variables, eventos, estado
+
+### 🎯 Objetivo
+
+Un botón que incrementa un contador cada vez que se pulsa, mostrando el número en pantalla.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"contador\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><button id=\"btn\">Clics: 0</button></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; text-align: center; }
+button { padding: 1rem 2rem; font-size: 1.2rem; background: #6a5acd; color: #fff; border: none; border-radius: 8px; cursor: pointer; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    let clicks = 0;
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', () => {
+      clicks++;
+      btn.textContent = 'Clics: ' + clicks;
+    });
+    \`\`\`
+
+---
+
+## 🧪 Ejercicio 3: Cambiar color de fondo
+
+**Nivel**: 🟡 Intermedio
+**Conceptos**: Math.random, estilos inline
+
+### 🎯 Objetivo
+
+Un botón que cambia el color de fondo de la página a un color aleatorio.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"color\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><button id=\"btn\">Cambiar color</button></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; transition: background .3s; }
+button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('btn').addEventListener('click', () => {
+      const color = 'hsl(' + (Math.random() * 360) + ', 70%, 80%)';
+      document.body.style.background = color;
+    });
+    \`\`\`
+
+---
+
+## 🧪 Ejercicio 4: Lista de tareas
+
+**Nivel**: 🟡 Intermedio
+**Conceptos**: DOM, eventos, delegación
+
+### 🎯 Objetivo
+
+Un input y un botón que añadan tareas a una lista. Cada tarea debe poder eliminarse.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"tareas\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"text\" id=\"tarea\" placeholder=\"Nueva tarea\">
+<button id=\"add\">Añadir</button>
+<ul id=\"lista\"></ul></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+input { padding: .5rem; border: 1px solid #ddd; border-radius: 6px; }
+button { padding: .5rem 1rem; background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+li { padding: .5rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+.del { background: #dc3545; padding: .25rem .5rem; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('add').addEventListener('click', () => {
+      const texto = document.getElementById('tarea').value.trim();
+      if (!texto) return;
+      const li = document.createElement('li');
+      li.innerHTML = texto + ' <button class=\"del\">❌</button>';
+      document.getElementById('lista').appendChild(li);
+      document.getElementById('tarea').value = '';
+    });
+
+    document.getElementById('lista').addEventListener('click', (e) => {
+      if (e.target.classList.contains('del')) {
+        e.target.parentElement.remove();
+      }
+    });
+    \`\`\`
+
+---
+
+## 🧪 Ejercicio 5: Reloj en tiempo real
+
+**Nivel**: 🟠 Avanzado
+**Conceptos**: setInterval, Date, toLocaleTimeString
+
+### 🎯 Objetivo
+
+Mostrar la hora actual en pantalla, actualizándose cada segundo.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"reloj\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><h2 id=\"reloj\">--:--:--</h2></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; text-align: center; }
+h2 { font-size: 3rem; color: #6a5acd; font-variant-numeric: tabular-nums; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    function actualizar() {
+      document.getElementById('reloj').textContent =
+        new Date().toLocaleTimeString('es-ES');
+    }
+    setInterval(actualizar, 1000);
+    actualizar();
+    \`\`\`
+
+---
+
+## 🧪 Ejercicio 6: Calculadora básica
+
+**Nivel**: 🟠 Avanzado
+**Conceptos**: parseFloat, switch, formularios
+
+### 🎯 Objetivo
+
+Una calculadora que sume, reste, multiplique y divida dos números.
+
+### 🖥️ Editor
+
+<div class=\"playground-ejercicio\" data-ejercicio=\"calculadora\">
+<div class=\"playground__editor\">
+<div class=\"playground__tabs\">
+<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
+<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
+<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+</div>
+<textarea class=\"playground__textarea\" data-lang=\"html\" spellcheck=\"false\"><input type=\"number\" id=\"a\" placeholder=\"A\">
+<select id=\"op\">
+<option value=\"+\">+</option>
+<option value=\"-\">−</option>
+<option value=\"*\">×</option>
+<option value=\"/\">÷</option>
+</select>
+<input type=\"number\" id=\"b\" placeholder=\"B\">
+<button id=\"calcular\">=</button>
+<span id=\"resultado\"></span></textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"css\" spellcheck=\"false\">body { font-family: system-ui; padding: 1.5rem; }
+input, select, button { padding: .5rem; font-size: 1rem; margin: .25rem; }
+button { background: #6a5acd; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+#resultado { font-size: 1.5rem; font-weight: 700; color: #6a5acd; margin-left: .5rem; }</textarea>
+<textarea class=\"playground__textarea is-hidden\" data-lang=\"js\" spellcheck=\"false\">// Tu código aquí
+</textarea>
+<div class=\"playground__actions\">
+<button class=\"md-button md-button--primary\" data-run>▶ Ejecutar</button>
+</div>
+</div>
+<div class=\"playground__output\">
+<iframe data-output sandbox=\"allow-scripts allow-modals\"></iframe>
+</div>
+</div>
+
+??? success \"Solución\"
+    \`\`\`javascript
+    document.getElementById('calcular').addEventListener('click', () => {
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+      const op = document.getElementById('op').value;
+      let r;
+      switch (op) {
+        case '+': r = a + b; break;
+        case '-': r = a - b; break;
+        case '*': r = a * b; break;
+        case '/': r = b !== 0 ? a / b : 'Error'; break;
+      }
+      document.getElementById('resultado').textContent = r;
+    });
+    \`\`\`
+
+---
+
+## 📊 Progreso de ejercicios
+
+<div class=\"ejercicios-progreso\">
+<p>Ejercicios completados: <strong id=\"ej-progreso\">0 / 6</strong></p>
+<div class=\"ejercicios-progreso__bar\">
+<div class=\"ejercicios-progreso__fill\" id=\"ej-progreso-fill\" style=\"width:0%\"></div>
+</div>
+</div>
+
+---
+
+## ➡️ Siguientes pasos
+
+[🎮 Volver al Playground](playground.md){ .md-button .md-button--primary }
+[🎯 Ver los retos semanales](retos.md){ .md-button }
+[🏆 Ver mis logros](logros.md){ .md-button }
+'''
+open('docs/ejercicios-playground.md', 'w', encoding='utf-8').write(contenido)
+print('OK:', len(contenido.splitlines()), 'líneas escritas')
+"
