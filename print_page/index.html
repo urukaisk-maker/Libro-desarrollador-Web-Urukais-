@@ -15898,261 +15898,150 @@ WebSocket: conexión persistente ↔ mensajes en ambos sentidos
 <hr />
 <h2 id="capitulos-23-websockets-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-23-websockets-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-24-animaciones">Ir al Capítulo 24 — Animaciones avanzadas</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-24-animaciones" heading-number="20.4"><h1 id="capitulos-24-animaciones-capitulo-24-animaciones-avanzadas">Capítulo 24 — Animaciones avanzadas<a class="headerlink" href="#capitulos-24-animaciones-capitulo-24-animaciones-avanzadas" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-24-animaciones-introduccion">Introducción<a class="headerlink" href="#capitulos-24-animaciones-introduccion" title="Permanent link">&para;</a></h2>
-<p>Una animación bien hecha mejora la experiencia. Una mal hecha la arruina. Este capítulo cubre las técnicas que usan los equipos profesionales para animar interfaces fluidas, accesibles y con buen rendimiento.</p>
-<h2 id="capitulos-24-animaciones-principios-de-animacion">Principios de animación<a class="headerlink" href="#capitulos-24-animaciones-principios-de-animacion" title="Permanent link">&para;</a></h2>
-<p>Antes de tocar código, entiende <strong>qué</strong> comunicar:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-24-animaciones" heading-number="20.4"><h1 id="capitulos-24-animaciones-24-animaciones-avanzadas">24 — Animaciones avanzadas<a class="headerlink" href="#capitulos-24-animaciones-24-animaciones-avanzadas" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li><strong>Feedback</strong>: confirmar que algo ha pasado (un botón pulsado).</li>
-<li><strong>Continuidad</strong>: mostrar de dónde viene y a dónde va un elemento.</li>
-<li><strong>Jerarquía</strong>: dirigir la atención a lo importante.</li>
-<li><strong>Personalidad</strong>: dar carácter al producto.</li>
+<li>Transiciones y animaciones CSS.</li>
+<li>La Web Animations API.</li>
+<li>Animaciones con scroll.</li>
+<li>GSAP y Framer Motion.</li>
+<li>Rendimiento en animaciones.</li>
 </ul>
-<h3 id="capitulos-24-animaciones-los-12-principios-adaptados-a-ui">Los 12 principios (adaptados a UI)<a class="headerlink" href="#capitulos-24-animaciones-los-12-principios-adaptados-a-ui" title="Permanent link">&para;</a></h3>
-<p>Los 12 principios de la animación clásica (Disney) se aplican también a la web:</p>
+</div>
+<hr />
+<h2 id="capitulos-24-animaciones-por-que-importan-las-animaciones">🎬 ¿Por qué importan las animaciones?<a class="headerlink" href="#capitulos-24-animaciones-por-que-importan-las-animaciones" title="Permanent link">&para;</a></h2>
+<p>Las animaciones bien hechas <strong>mejoran la UX</strong>: guían la atención, dan feedback y hacen que la web se sienta viva. Las mal hechas distraen, marean y ralentizan.</p>
+<div class="admonition quote">
+<p class="admonition-title">La animación es comunicación</p>
+<p>Una animación no es decoración: es una forma de decirle al usuario qué está pasando y qué puede hacer.</p>
+</div>
+<hr />
+<h2 id="capitulos-24-animaciones-transiciones-css">✨ Transiciones CSS<a class="headerlink" href="#capitulos-24-animaciones-transiciones-css" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background-color</span><span class="w"> </span><span class="mf">.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">.15</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#7d6ce0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Principio</th>
-<th>En UI significa…</th>
+<th style="text-align: left;">Timing function</th>
+<th style="text-align: left;">Comportamiento</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Squash &amp; stretch</strong></td>
-<td>Botones que "rebotan" ligeramente al pulsar</td>
+<td style="text-align: left;"><code>ease</code></td>
+<td style="text-align: left;">Suave al principio y al final (por defecto)</td>
 </tr>
 <tr>
-<td><strong>Anticipación</strong></td>
-<td>Un modal que aparece desde abajo antes de mostrarse</td>
+<td style="text-align: left;"><code>linear</code></td>
+<td style="text-align: left;">Velocidad constante</td>
 </tr>
 <tr>
-<td><strong>Staging</strong></td>
-<td>Oscurecer el fondo al abrir un diálogo</td>
+<td style="text-align: left;"><code>ease-in</code></td>
+<td style="text-align: left;">Lento al principio</td>
 </tr>
 <tr>
-<td><strong>Follow through</strong></td>
-<td>Un menú que se cierra con inercia</td>
+<td style="text-align: left;"><code>ease-out</code></td>
+<td style="text-align: left;">Lento al final</td>
 </tr>
 <tr>
-<td><strong>Ease in/out</strong></td>
-<td>Casi toda transición en UI</td>
+<td style="text-align: left;"><code>ease-in-out</code></td>
+<td style="text-align: left;">Lento en ambos extremos</td>
 </tr>
 <tr>
-<td><strong>Arcs</strong></td>
-<td>Movimientos naturales, no lineales</td>
-</tr>
-<tr>
-<td><strong>Timing</strong></td>
-<td>200-300 ms para transiciones típicas</td>
-</tr>
-<tr>
-<td><strong>Exaggeration</strong></td>
-<td>Ligeramente más dramático para que se note</td>
-</tr>
-<tr>
-<td><strong>Solid drawing</strong></td>
-<td>Formas coherentes y predecibles</td>
-</tr>
-<tr>
-<td><strong>Appeal</strong></td>
-<td>Que se sienta bien</td>
+<td style="text-align: left;"><code>cubic-bezier()</code></td>
+<td style="text-align: left;">Personalizado</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capitulos-24-animaciones-reglas-de-oro">Reglas de oro<a class="headerlink" href="#capitulos-24-animaciones-reglas-de-oro" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>150-300 ms</strong> para transiciones de UI. Más rápido = brusco, más lento = pesado.</li>
-<li><strong>Ease-out</strong> para entradas (rápido al principio, lento al final).</li>
-<li><strong>Ease-in</strong> para salidas.</li>
-<li><strong>Ease-in-out</strong> para cambios continuos.</li>
-<li><strong>Nunca animes <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code></strong>. Usa <code>transform</code> y <code>opacity</code>.</li>
-<li><strong>Respeta <code>prefers-reduced-motion</code></strong>.</li>
-<li><strong>No animes todo</strong>. Menos es más.</li>
-</ul>
-<h2 id="capitulos-24-animaciones-transiciones-css">Transiciones CSS<a class="headerlink" href="#capitulos-24-animaciones-transiciones-css" title="Permanent link">&para;</a></h2>
-<p>La forma más simple de animar cambios de estado.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mi">150</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#5b4bc4</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-timing-functions">Timing functions<a class="headerlink" href="#capitulos-24-animaciones-timing-functions" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">ease</span><span class="o">;</span><span class="w">         </span><span class="c">/* por defecto */</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">ease-in</span><span class="o">;</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">ease-out</span><span class="o">;</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">ease-in-out</span><span class="o">;</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">linear</span><span class="o">;</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">cubic-bezier</span><span class="o">(</span><span class="nt">0</span><span class="p">.</span><span class="nc">4</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="p">.</span><span class="nc">2</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">);</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">steps</span><span class="o">(</span><span class="nt">4</span><span class="o">,</span><span class="w"> </span><span class="nt">end</span><span class="o">);</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-cubic-bezier-a-medida">Cubic-bezier a medida<a class="headerlink" href="#capitulos-24-animaciones-cubic-bezier-a-medida" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c">/* "Back out": rebote al final */</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">cubic-bezier</span><span class="o">(</span><span class="nt">0</span><span class="p">.</span><span class="nc">34</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="p">.</span><span class="nc">56</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="p">.</span><span class="nc">64</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">);</span>
-
-<span class="c">/* "Expo out": muy suave al final */</span>
-<span class="nt">transition-timing-function</span><span class="o">:</span><span class="w"> </span><span class="nt">cubic-bezier</span><span class="o">(</span><span class="nt">0</span><span class="p">.</span><span class="nc">16</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="p">.</span><span class="nc">3</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">);</span>
-</code></pre></div>
-<p>Puedes diseñarlas en <a href="https://cubic-bezier.com/">cubic-bezier.com</a>.</p>
-<h2 id="capitulos-24-animaciones-keyframes"><code>@keyframes</code><a class="headerlink" href="#capitulos-24-animaciones-keyframes" title="Permanent link">&para;</a></h2>
-<p>Para animaciones más complejas.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">girar</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mi">0</span><span class="kt">deg</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">spinner</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">girar</span><span class="w"> </span><span class="mi">1</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">infinite</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-sintaxis-completa">Sintaxis completa<a class="headerlink" href="#capitulos-24-animaciones-sintaxis-completa" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation-name</span><span class="p">:</span><span class="w"> </span><span class="n">entrar</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">ms</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-timing-function</span><span class="p">:</span><span class="w"> </span><span class="nb">cubic-bezier</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="k">animation-delay</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">ms</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-iteration-count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">normal</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-fill-mode</span><span class="p">:</span><span class="w"> </span><span class="kc">both</span><span class="p">;</span>
-<span class="w">  </span><span class="k">animation-play-state</span><span class="p">:</span><span class="w"> </span><span class="kc">running</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* Forma corta */</span>
-<span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">entrar</span><span class="w"> </span><span class="mi">400</span><span class="kt">ms</span><span class="w"> </span><span class="nb">cubic-bezier</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">100</span><span class="kt">ms</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kc">normal</span><span class="w"> </span><span class="kc">both</span><span class="w"> </span><span class="kc">running</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-animation-fill-mode"><code>animation-fill-mode</code><a class="headerlink" href="#capitulos-24-animaciones-animation-fill-mode" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>none</code>: por defecto, vuelve al estado original.</li>
-<li><code>forwards</code>: mantiene el estado final.</li>
-<li><code>backwards</code>: aplica el estado inicial durante el delay.</li>
-<li><code>both</code>: ambos.</li>
-</ul>
-<h2 id="capitulos-24-animaciones-transform-el-rey-del-rendimiento">Transform: el rey del rendimiento<a class="headerlink" href="#capitulos-24-animaciones-transform-el-rey-del-rendimiento" title="Permanent link">&para;</a></h2>
-<p><code>transform</code> se ejecuta en la <strong>GPU</strong>, no en la CPU. Es la forma más rápida de mover cosas.</p>
-<h3 id="capitulos-24-animaciones-transformaciones-basicas">Transformaciones básicas<a class="headerlink" href="#capitulos-24-animaciones-transformaciones-basicas" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">translateX</span><span class="o">(</span><span class="nt">100px</span><span class="o">);</span>
-<span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">translateY</span><span class="o">(</span><span class="nt">-50</span><span class="o">%);</span>
-<span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">scale</span><span class="o">(</span><span class="nt">1</span><span class="p">.</span><span class="nc">2</span><span class="o">);</span>
-<span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">rotate</span><span class="o">(</span><span class="nt">45deg</span><span class="o">);</span>
-<span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">skew</span><span class="o">(</span><span class="nt">10deg</span><span class="o">);</span>
-
-<span class="c">/* Combinadas */</span>
-<span class="nt">transform</span><span class="o">:</span><span class="w"> </span><span class="nt">translate</span><span class="o">(</span><span class="nt">50px</span><span class="o">,</span><span class="w"> </span><span class="nt">20px</span><span class="o">)</span><span class="w"> </span><span class="nt">rotate</span><span class="o">(</span><span class="nt">15deg</span><span class="o">)</span><span class="w"> </span><span class="nt">scale</span><span class="o">(</span><span class="nt">1</span><span class="p">.</span><span class="nc">1</span><span class="o">);</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">El orden importa</p>
-<p><code>translate(...) rotate(...)</code> y <code>rotate(...) translate(...)</code> dan resultados distintos. Prueba ambos.</p>
-</div>
-<h3 id="capitulos-24-animaciones-transform-origin"><code>transform-origin</code><a class="headerlink" href="#capitulos-24-animaciones-transform-origin" title="Permanent link">&para;</a></h3>
-<p>Cambia el punto de referencia:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">transform-origin</span><span class="o">:</span><span class="w"> </span><span class="nt">center</span><span class="o">;</span><span class="w">   </span><span class="c">/* por defecto */</span>
-<span class="nt">transform-origin</span><span class="o">:</span><span class="w"> </span><span class="nt">top</span><span class="w"> </span><span class="nt">left</span><span class="o">;</span>
-<span class="nt">transform-origin</span><span class="o">:</span><span class="w"> </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="nt">100</span><span class="o">%;</span>
-</code></pre></div>
-<h2 id="capitulos-24-animaciones-will-change"><code>will-change</code><a class="headerlink" href="#capitulos-24-animaciones-will-change" title="Permanent link">&para;</a></h2>
-<p>Avisa al navegador de que un elemento <strong>va a cambiar</strong>, para que lo prepare con antelación.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">menu</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">will-change</span><span class="p">:</span><span class="w"> </span><span class="k">transform</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Úsalo con cabeza</p>
-<p>Abusar de <code>will-change</code> <strong>empeora</strong> el rendimiento porque consume memoria. Úsalo solo en elementos que <strong>realmente</strong> van a animarse, y quítalo cuando termine.</p>
-</div>
-<h2 id="capitulos-24-animaciones-web-animations-api-waapi">Web Animations API (WAAPI)<a class="headerlink" href="#capitulos-24-animaciones-web-animations-api-waapi" title="Permanent link">&para;</a></h2>
-<p>Alternativa a CSS con más control desde JavaScript.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">elemento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.caja'</span><span class="p">);</span>
-
-<span class="nx">elemento</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span>
-<span class="w">  </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="s1">'translateX(0)'</span><span class="p">,</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="s1">'translateX(200px)'</span><span class="p">,</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">easing</span><span class="o">:</span><span class="w"> </span><span class="s1">'cubic-bezier(0.16, 1, 0.3, 1)'</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s1">'forwards'</span><span class="p">,</span>
+<hr />
+<h2 id="capitulos-24-animaciones-keyframes">🎞️ Keyframes<a class="headerlink" href="#capitulos-24-animaciones-keyframes" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">fadeInUp</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">20</span><span class="kt">px</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="p">);</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-control-total">Control total<a class="headerlink" href="#capitulos-24-animaciones-control-total" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">animacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elemento</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="nx">keyframes</span><span class="p">,</span><span class="w"> </span><span class="nx">opciones</span><span class="p">);</span>
-
-<span class="nx">animacion</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
-<span class="nx">animacion</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-<span class="nx">animacion</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
-<span class="nx">animacion</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
-
-<span class="nx">animacion</span><span class="p">.</span><span class="nx">onfinish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Terminada'</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="capitulos-24-animaciones-ventajas">Ventajas<a class="headerlink" href="#capitulos-24-animaciones-ventajas" title="Permanent link">&para;</a></h3>
-<ul>
-<li>No requiere tocar CSS.</li>
-<li>Control en tiempo real.</li>
-<li>Se ejecuta en el compositor (rendimiento como CSS).</li>
-<li>Componible con <code>Promise</code> (<code>animacion.finished</code>).</li>
-</ul>
-<h2 id="capitulos-24-animaciones-transiciones-entre-estados-con-vuereact">Transiciones entre estados con Vue/React<a class="headerlink" href="#capitulos-24-animaciones-transiciones-entre-estados-con-vuereact" title="Permanent link">&para;</a></h2>
-<p>En <strong>Vue</strong>, el componente <code>&lt;Transition&gt;</code> gestiona clases automáticamente.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">Transition</span> <span class="na">name</span><span class="o">=</span><span class="s">"fade"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"</span><span class="nx">visible</span><span class="s">"</span> <span class="na">class</span><span class="o">=</span><span class="s">"modal"</span><span class="p">&gt;</span>Contenido<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">Transition</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">.</span><span class="nc">fade-enter-active</span><span class="o">,</span>
-<span class="p">.</span><span class="nc">fade-leave-active</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="p">.</span><span class="nc">fade-enter-from</span><span class="o">,</span>
-<span class="p">.</span><span class="nc">fade-leave-to</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">.</span><span class="nc">animado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fadeInUp</span><span class="w"> </span><span class="mf">.5</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="capitulos-24-animaciones-stagger-escalonado">Stagger (escalonado)<a class="headerlink" href="#capitulos-24-animaciones-stagger-escalonado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">lista</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fadeInUp</span><span class="w"> </span><span class="mf">.4</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
 <span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>En <strong>React</strong>, usa <code>Framer Motion</code> o <code>react-transition-group</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">motion</span><span class="p">,</span><span class="w"> </span><span class="nx">AnimatePresence</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'framer-motion'</span><span class="p">;</span>
 
-<span class="p">&lt;</span><span class="nt">AnimatePresence</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">visible</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">motion</span><span class="p">.</span><span class="na">div</span>
-<span class="w">      </span><span class="na">initial</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}}</span>
-<span class="w">      </span><span class="na">animate</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">}}</span>
-<span class="w">      </span><span class="na">exit</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">20</span><span class="w"> </span><span class="p">}}</span>
-<span class="w">      </span><span class="na">transition</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="nx">ease</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>
-<span class="w">    </span><span class="p">&gt;</span>
-<span class="w">      </span><span class="nx">Contenido</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">motion</span><span class="p">.</span><span class="na">div</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">)}</span>
-<span class="p">&lt;/</span><span class="nt">AnimatePresence</span><span class="p">&gt;</span>
+<span class="p">.</span><span class="nc">lista</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">1</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation-delay</span><span class="p">:</span><span class="w"> </span><span class="mf">.05</span><span class="kt">s</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">lista</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation-delay</span><span class="p">:</span><span class="w"> </span><span class="mf">.1</span><span class="kt">s</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">lista</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation-delay</span><span class="p">:</span><span class="w"> </span><span class="mf">.15</span><span class="kt">s</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<h2 id="capitulos-24-animaciones-animaciones-basadas-en-scroll">Animaciones basadas en scroll<a class="headerlink" href="#capitulos-24-animaciones-animaciones-basadas-en-scroll" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-24-animaciones-intersectionobserver"><code>IntersectionObserver</code><a class="headerlink" href="#capitulos-24-animaciones-intersectionobserver" title="Permanent link">&para;</a></h3>
-<p>Detecta cuándo un elemento entra en el viewport.</p>
+<hr />
+<h2 id="capitulos-24-animaciones-web-animations-api">⚡ Web Animations API<a class="headerlink" href="#capitulos-24-animaciones-web-animations-api" title="Permanent link">&para;</a></h2>
+<p>La <strong>Web Animations API</strong> permite animar con JavaScript de forma más potente y controlable.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">elemento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">);</span>
+
+<span class="nx">elemento</span><span class="p">.</span><span class="nx">animate</span><span class="p">([</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="s2">"translateX(0)"</span><span class="p">,</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="s2">"translateX(200px)"</span><span class="p">,</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">}</span>
+<span class="p">],</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">easing</span><span class="o">:</span><span class="w"> </span><span class="s2">"ease-in-out"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">iterations</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s2">"forwards"</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Ventajas de la WAAPI</p>
+<ul>
+<li>Control total desde JavaScript (play, pause, reverse, cancel).</li>
+<li>Mejor rendimiento que animar propiedades con JS.</li>
+<li>Se puede combinar con CSS.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-24-animaciones-animaciones-con-scroll">📜 Animaciones con scroll<a class="headerlink" href="#capitulos-24-animaciones-animaciones-con-scroll" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-24-animaciones-scroll-driven-animations-nativo">Scroll-driven animations (nativo)<a class="headerlink" href="#capitulos-24-animaciones-scroll-driven-animations-nativo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">aparecer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mf">.9</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">aparecer</span><span class="w"> </span><span class="kc">linear</span><span class="p">;</span>
+<span class="w">  </span><span class="n">animation-timeline</span><span class="p">:</span><span class="w"> </span><span class="nf">view</span><span class="p">();</span>
+<span class="w">  </span><span class="n">animation-range</span><span class="p">:</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="capitulos-24-animaciones-intersection-observer-mas-compatible">Intersection Observer (más compatible)<a class="headerlink" href="#capitulos-24-animaciones-intersection-observer-mas-compatible" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">observer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">IntersectionObserver</span><span class="p">((</span><span class="nx">entries</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">isIntersecting</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'visible'</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span><span class="w"> </span><span class="c1">// una sola vez</span>
+<span class="w">      </span><span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"visible"</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">});</span>
-<span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">threshold</span><span class="o">:</span><span class="w"> </span><span class="mf">0.15</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
 
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'.animar'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">".animar"</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">animar</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">30</span><span class="kt">px</span><span class="p">);</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">600</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mi">600</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">20</span><span class="kt">px</span><span class="p">);</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.5</span><span class="kt">s</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">.5</span><span class="kt">s</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="p">.</span><span class="nc">animar</span><span class="p">.</span><span class="nc">visible</span><span class="w"> </span><span class="p">{</span>
@@ -16160,247 +16049,151 @@ WebSocket: conexión persistente ↔ mensajes en ambos sentidos
 <span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="capitulos-24-animaciones-scroll-timeline-css"><code>scroll-timeline</code> (CSS)<a class="headerlink" href="#capitulos-24-animaciones-scroll-timeline-css" title="Permanent link">&para;</a></h3>
-<p>Nueva API que permite ligar animaciones al scroll <strong>sin JavaScript</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">entrar</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">50</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">animar</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">entrar</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">both</span><span class="p">;</span>
-<span class="w">  </span><span class="n">animation-timeline</span><span class="p">:</span><span class="w"> </span><span class="nf">view</span><span class="p">();</span>
-<span class="w">  </span><span class="n">animation-range</span><span class="p">:</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">0</span><span class="kt">%</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">60</span><span class="kt">%</span><span class="p">;</span>
-<span class="p">}</span>
+<hr />
+<h2 id="capitulos-24-animaciones-gsap">🎬 GSAP<a class="headerlink" href="#capitulos-24-animaciones-gsap" title="Permanent link">&para;</a></h2>
+<p><strong>GSAP</strong> (<em>GreenSock Animation Platform</em>) es la librería de animaciones más potente del mercado. Usada por Google, Apple, Netflix…</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>gsap
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Soporte</p>
-<p><code>scroll-timeline</code> está disponible en Chrome/Edge desde 2023. Firefox y Safari van llegando. Úsalo con <code>@supports</code> como mejora progresiva.</p>
-</div>
-<h2 id="capitulos-24-animaciones-view-transitions-api">View Transitions API<a class="headerlink" href="#capitulos-24-animaciones-view-transitions-api" title="Permanent link">&para;</a></h2>
-<p>Permite transiciones fluidas <strong>entre páginas</strong> o entre estados sin JavaScript complejo.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">startViewTransition</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Actualiza el DOM</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nuevoHTML</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">gsap</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"gsap"</span><span class="p">;</span>
+
+<span class="nx">gsap</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">rotation</span><span class="o">:</span><span class="w"> </span><span class="mf">360</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ease</span><span class="o">:</span><span class="w"> </span><span class="s2">"power2.out"</span>
 <span class="p">});</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">::</span><span class="nd">view-transition-old</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fade-out</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">;</span>
-<span class="p">}</span>
+<h3 id="capitulos-24-animaciones-timeline">Timeline<a class="headerlink" href="#capitulos-24-animaciones-timeline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gsap</span><span class="p">.</span><span class="nx">timeline</span><span class="p">({</span><span class="w"> </span><span class="nx">repeat</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">yoyo</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
 
-<span class="p">::</span><span class="nd">view-transition-new</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fade-in</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-in</span><span class="p">;</span>
+<span class="nx">tl</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s2">".caja"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-24-animaciones-framer-motion-react">⚛️ Framer Motion (React)<a class="headerlink" href="#capitulos-24-animaciones-framer-motion-react" title="Permanent link">&para;</a></h2>
+<p><strong>Framer Motion</strong> es la librería de animaciones para React más popular.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>framer-motion
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">motion</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"framer-motion"</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">MiComponente</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">motion</span><span class="p">.</span><span class="na">div</span>
+<span class="w">      </span><span class="na">initial</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">      </span><span class="na">animate</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">      </span><span class="na">exit</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">      </span><span class="na">transition</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">.3</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">    </span><span class="p">&gt;</span>
+<span class="w">      </span><span class="nx">Hola</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">motion</span><span class="p">.</span><span class="na">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ideal para SPAs, listas que se reordenan o modales que se expanden desde un botón.</p>
-<h2 id="capitulos-24-animaciones-animaciones-de-listas-flip">Animaciones de listas (FLIP)<a class="headerlink" href="#capitulos-24-animaciones-animaciones-de-listas-flip" title="Permanent link">&para;</a></h2>
-<p><strong>FLIP</strong> = <em>First, Last, Invert, Play</em>. Técnica para animar cambios de posición de elementos.</p>
-<ol>
-<li><strong>First</strong>: guarda la posición inicial.</li>
-<li><strong>Last</strong>: cambia el DOM y guarda la posición final.</li>
-<li><strong>Invert</strong>: aplica un <code>transform</code> para simular que sigue en la posición inicial.</li>
-<li><strong>Play</strong>: quita el transform con una transición.</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">animarReordenado</span><span class="p">(</span><span class="nx">contenedor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">contenedor</span><span class="p">.</span><span class="nx">children</span><span class="p">];</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">antes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">items</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">antes</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">()));</span>
-
-<span class="w">  </span><span class="c1">// ... reordena los items en el DOM ...</span>
-
-<span class="w">  </span><span class="nx">items</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">antesRect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">antes</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">despuesRect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">();</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">deltaX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">antesRect</span><span class="p">.</span><span class="nx">left</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">despuesRect</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">deltaY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">antesRect</span><span class="p">.</span><span class="nx">top</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">despuesRect</span><span class="p">.</span><span class="nx">top</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">deltaX</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">deltaY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">el</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span>
-<span class="w">        </span><span class="p">[</span>
-<span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="sb">`translate(</span><span class="si">${</span><span class="nx">deltaX</span><span class="si">}</span><span class="sb">px, </span><span class="si">${</span><span class="nx">deltaY</span><span class="si">}</span><span class="sb">px)`</span><span class="w"> </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">transform</span><span class="o">:</span><span class="w"> </span><span class="s1">'translate(0, 0)'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">easing</span><span class="o">:</span><span class="w"> </span><span class="s1">'cubic-bezier(0.16, 1, 0.3, 1)'</span><span class="w"> </span><span class="p">}</span>
-<span class="w">      </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Framer Motion y Vue lo implementan por debajo.</p>
-<h2 id="capitulos-24-animaciones-microinteracciones">Microinteracciones<a class="headerlink" href="#capitulos-24-animaciones-microinteracciones" title="Permanent link">&para;</a></h2>
-<p>Pequeñas animaciones que dan vida a la interfaz:</p>
-<ul>
-<li>Un botón que se <strong>hunde</strong> al pulsarlo (<code>scale(0.96)</code>).</li>
-<li>Un icono que <strong>gira</strong> al pasar el ratón.</li>
-<li>Un check que <strong>se dibuja</strong> con <code>stroke-dasharray</code>.</li>
-<li>Un campo que <strong>cambia de color</strong> al enfocarlo.</li>
-<li>Un "me gusta" que <strong>late</strong> al pulsarlo.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">active</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mf">0.96</span><span class="p">);</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mi">80</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">latir</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">0</span><span class="o">%,</span><span class="w"> </span><span class="nt">100</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mf">1.2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">corazon</span><span class="p">.</span><span class="nc">pulsado</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">latir</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease-out</span><span class="p">;</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#dc2626</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-24-animaciones-accesibilidad-y-prefers-reduced-motion">Accesibilidad y <code>prefers-reduced-motion</code><a class="headerlink" href="#capitulos-24-animaciones-accesibilidad-y-prefers-reduced-motion" title="Permanent link">&para;</a></h2>
-<p>Nunca olvides respetar la preferencia del usuario.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="o">*,</span>
-<span class="w">  </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span>
-<span class="w">  </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">animation-iteration-count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">transition-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">scroll-behavior</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>O selectivo: deja las animaciones sutiles y desactiva las grandes.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">animacion-grande</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-24-animaciones-rendimiento">Rendimiento<a class="headerlink" href="#capitulos-24-animaciones-rendimiento" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-24-animaciones-que-es-barato-de-animar">Qué es barato de animar<a class="headerlink" href="#capitulos-24-animaciones-que-es-barato-de-animar" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="capitulos-24-animaciones-rendimiento-en-animaciones">⚡ Rendimiento en animaciones<a class="headerlink" href="#capitulos-24-animaciones-rendimiento-en-animaciones" title="Permanent link">&para;</a></h2>
+<p>No todas las propiedades CSS se animan igual de rápido:</p>
 <table>
 <thead>
 <tr>
-<th>Propiedad</th>
-<th>Coste</th>
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Rendimiento</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>transform</code></td>
-<td>⚡⚡⚡ GPU, muy rápido</td>
+<td style="text-align: left;"><code>transform</code></td>
+<td style="text-align: left;">⚡ Excelente (GPU)</td>
 </tr>
 <tr>
-<td><code>opacity</code></td>
-<td>⚡⚡⚡ GPU, muy rápido</td>
+<td style="text-align: left;"><code>opacity</code></td>
+<td style="text-align: left;">⚡ Excelente (GPU)</td>
 </tr>
 <tr>
-<td><code>filter</code></td>
-<td>⚡⚡ GPU</td>
+<td style="text-align: left;"><code>filter</code></td>
+<td style="text-align: left;">🚀 Bueno (GPU)</td>
 </tr>
 <tr>
-<td><code>background-color</code></td>
-<td>⚡ CPU</td>
+<td style="text-align: left;"><code>width</code>, <code>height</code></td>
+<td style="text-align: left;">🐢 Malo (repaint + layout)</td>
 </tr>
 <tr>
-<td><code>width/height</code></td>
-<td>🐌 Refow, lento</td>
+<td style="text-align: left;"><code>top</code>, <code>left</code></td>
+<td style="text-align: left;">🐢 Malo (repaint + layout)</td>
 </tr>
 <tr>
-<td><code>top/left</code></td>
-<td>🐌 Refow, lento</td>
-</tr>
-<tr>
-<td><code>box-shadow</code></td>
-<td>🐌 Repaint, lento</td>
+<td style="text-align: left;"><code>background</code></td>
+<td style="text-align: left;">🐢 Malo (repaint)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="capitulos-24-animaciones-evita-el-jank">Evita el "jank"<a class="headerlink" href="#capitulos-24-animaciones-evita-el-jank" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Anima solo <code>transform</code> y <code>opacity</code></strong>.</li>
-<li><strong>No animes <code>box-shadow</code></strong>. Usa un pseudo-elemento con <code>opacity</code>.</li>
-<li><strong>Usa <code>will-change</code> con moderación</strong>.</li>
-<li><strong>Comprueba con DevTools</strong> → Performance.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c">/* ❌ Mal: repinta en cada frame */</span>
-<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="admonition tip">
+<p class="admonition-title">Anima solo transform y opacity</p>
+<p>Para animaciones fluidas a 60fps, anima <strong>solo</strong> <code>transform</code> y <code>opacity</code>. El resto provoca repaint y layout, que son mucho más costosos.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c">/* Malo */</span>
+<span class="p">.</span><span class="nc">caja</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="c">/* ✅ Bien: sombra pre-renderizada, solo cambia opacidad */</span>
-<span class="p">.</span><span class="nc">boton</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
-<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
-<span class="w">  </span><span class="k">inset</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="kc">inherit</span><span class="p">;</span>
-<span class="w">  </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="c">/* Bueno */</span>
+<span class="p">.</span><span class="nc">caja</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateX</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="capitulos-24-animaciones-respetar-prefers-reduced-motion">Respetar prefers-reduced-motion<a class="headerlink" href="#capitulos-24-animaciones-respetar-prefers-reduced-motion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">    </span><span class="k">transition-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="capitulos-24-animaciones-librerias-recomendadas">Librerías recomendadas<a class="headerlink" href="#capitulos-24-animaciones-librerias-recomendadas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="https://motion.dev/">Motion One</a></strong> — WAAPI con esteroides, ~3 KB.</li>
-<li><strong><a href="https://www.framer.com/motion/">Framer Motion</a></strong> — estándar en React.</li>
-<li><strong><a href="https://gsap.com/">GSAP</a></strong> — el más potente, ideal para animaciones complejas.</li>
-<li><strong><a href="https://auto-animate.formkit.com/">AutoAnimate</a></strong> — cero config, anima listas automáticamente.</li>
-<li><strong><a href="https://airbnb.io/lottie/">Lottie</a></strong> — animaciones vectoriales desde After Effects.</li>
-</ul>
-<h2 id="capitulos-24-animaciones-diagrama-pipeline-de-renderizado">Diagrama: pipeline de renderizado<a class="headerlink" href="#capitulos-24-animaciones-diagrama-pipeline-de-renderizado" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[JavaScript] --&gt; B[Style]
-    B --&gt; C[Layout]
-    C --&gt; D[Paint]
-    D --&gt; E[Composite]
-
-    style A fill:#dc2626,color:white
-    style E fill:#16a34a,color:white</code></pre>
-<p>Animar <code>transform</code> y <code>opacity</code> salta directo a Composite (barato). Animar <code>width</code> o <code>top</code> obliga a recalcular Layout y Paint (caro).</p>
-<h2 id="capitulos-24-animaciones-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-24-animaciones-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Empieza por entender el objetivo</strong> antes de animar.</li>
-<li><strong>150-300 ms</strong> para la mayoría de transiciones.</li>
-<li><strong><code>ease-out</code> para entradas</strong>, <code>ease-in</code> para salidas.</li>
-<li><strong>Anima <code>transform</code> y <code>opacity</code></strong>. Casi nunca otros.</li>
-<li><strong>Respeta <code>prefers-reduced-motion</code></strong>.</li>
-<li><strong>No animes en cascada 50 elementos</strong>. Es mareante.</li>
-<li><strong>Prueba en móvil de gama baja</strong>.</li>
-<li><strong>Un <code>&lt;details&gt;</code> no necesita 3 animaciones</strong>.</li>
-<li><strong>Usa <code>will-change</code> solo cuando sea necesario</strong>.</li>
-</ul>
-<h2 id="capitulos-24-animaciones-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-24-animaciones-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un botón con hover y active usando solo <code>transform</code>.</li>
-<li>Implementa un spinner de carga con <code>@keyframes</code>.</li>
-<li>Anima la entrada de elementos al hacer scroll con <code>IntersectionObserver</code>.</li>
-<li>Reproduce la animación "me gusta" con <code>scale</code> y <code>@keyframes</code>.</li>
-<li>Usa la Web Animations API para reproducir una animación programáticamente.</li>
-<li>Implementa un modal con transición de apertura y cierre.</li>
-<li>Añade <code>prefers-reduced-motion</code> y comprueba que las animaciones se desactivan.</li>
-<li>Mide el rendimiento en DevTools → Performance y anota el FPS.</li>
-</ol>
 <hr />
-<h2 id="capitulos-24-animaciones-capitulo-23-websockets-capitulo-25-design-systems">⬅️ <a href="#capitulos-23-websockets">Capítulo 23 — WebSockets</a> | ➡️ <a href="#capitulos-25-design-systems">Capítulo 25 — Design systems</a><a class="headerlink" href="#capitulos-24-animaciones-capitulo-23-websockets-capitulo-25-design-systems" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-24-animaciones-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#capitulos-24-animaciones-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Anima con propósito</strong>: guiar la atención, dar feedback.</li>
+<li>✅ <strong>Duración corta</strong>: 200-500ms para la mayoría de interacciones.</li>
+<li>✅ <strong>Easing natural</strong>: evita <code>linear</code> para movimientos.</li>
+<li>✅ <strong>Respeta <code>prefers-reduced-motion</code></strong>.</li>
+<li>✅ <strong>Usa GPU</strong>: <code>transform</code> y <code>opacity</code>.</li>
+<li>✅ <strong>No abuses</strong>: menos es más.</li>
+<li>❌ <strong>No animes <code>width</code>/<code>height</code></strong> si puedes evitarlo.</li>
+<li>❌ <strong>No hagas animaciones de más de 1s</strong> en interacciones.</li>
+</ul>
+<hr />
 <h2 id="capitulos-24-animaciones-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-24-animaciones-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué propiedades CSS son las más eficientes de animar (mejor rendimiento)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) transform y opacity</button>
-    <button class="quiz-option" data-option="b">B) width y height</button>
-    <button class="quiz-option" data-option="c">C) top y left</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-24">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué propiedades CSS son más eficientes de animar?</p>
+<button class="quiz-option" data-opt="a">A) width y height</button>
+<button class="quiz-option" data-opt="b">B) transform y opacity</button>
+<button class="quiz-option" data-opt="c">C) top y left</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué librería es la más potente para animaciones?</p>
+<button class="quiz-option" data-opt="a">A) GSAP</button>
+<button class="quiz-option" data-opt="b">B) jQuery</button>
+<button class="quiz-option" data-opt="c">C) Bootstrap</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué API nativa permite animar con JavaScript?</p>
+<button class="quiz-option" data-opt="a">A) Canvas</button>
+<button class="quiz-option" data-opt="b">B) SVG</button>
+<button class="quiz-option" data-opt="c">C) Web Animations API</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué media query respeta la preferencia del usuario de reducir el movimiento?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) (prefers-dark-mode)</button>
-    <button class="quiz-option" data-option="b">B) (prefers-reduced-motion)</button>
-    <button class="quiz-option" data-option="c">C) (prefers-animations)</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-25-design-systems" heading-number="20.5"><h1 id="capitulos-25-design-systems-capitulo-25-design-systems">Capítulo 25 — Design systems<a class="headerlink" href="#capitulos-25-design-systems-capitulo-25-design-systems" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-24-animaciones-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-24-animaciones-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2024%3A%20Animaciones%20avanzadas&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2024%3A%20Animaciones%20avanzadas%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F24-animaciones%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/24-animaciones/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-24-animaciones-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-24-animaciones-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-25-design-systems">Ir al Capítulo 25 — Design systems</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-25-design-systems" heading-number="20.5"><h1 id="capitulos-25-design-systems-capitulo-25-design-systems">Capítulo 25 — Design systems<a class="headerlink" href="#capitulos-25-design-systems-capitulo-25-design-systems" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-25-design-systems-introduccion">Introducción<a class="headerlink" href="#capitulos-25-design-systems-introduccion" title="Permanent link">&para;</a></h2>
 <p>Un <strong>design system</strong> es un conjunto de decisiones compartidas sobre diseño y código: colores, tipografía, espaciado, componentes reutilizables, patrones de interacción y reglas de uso.</p>
 <p>No es una librería de componentes. No es una guía de estilo. Es <strong>todo junto</strong> y, sobre todo, es un <strong>producto vivo</strong> que evoluciona con el equipo.</p>
