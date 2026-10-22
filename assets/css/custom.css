@@ -1814,3 +1814,36 @@ body {
     white-space: nowrap !important;
   }
 }
+
+/* ===== Navegación alfabética del glosario ===== */
+.md-typeset p:has(> a[href^="#"]) {
+  /* no aplicable de forma fiable, mejor envolverlo manualmente */
+}
+
+/* Si quieres envolver los enlaces en un div con clase, añade esto: */
+.glosario-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin: 1rem 0 2rem;
+}
+.glosario-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 .5rem;
+  border-radius: 6px;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .8rem;
+  transition: all .15s;
+}
+.glosario-nav a:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  transform: translateY(-1px);
+}

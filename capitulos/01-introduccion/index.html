@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pon-a-prueba-tus-conocimientos" class="md-skip">
+        <a href="#01-introduccion-al-desarrollo-web" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -1697,6 +1697,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1739,6 +1741,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1747,10 +1751,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#que-es-el-desarrollo-web" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🌐 ¿Qué es el desarrollo web?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-tres-pilares-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Los tres pilares fundamentales
       
     </span>
   </a>
@@ -4578,28 +4593,77 @@
   
 
 
-  <h1>01 — Introducción al desarrollo web</h1>
-
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Cuáles son los tres pilares fundamentales del desarrollo web?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Python, Java y C++</button>
-    <button class="quiz-option" data-option="b">B) HTML, CSS y JavaScript</button>
-    <button class="quiz-option" data-option="c">C) React, Vue y Angular</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<h1 id="01-introduccion-al-desarrollo-web">01 — Introducción al desarrollo web<a class="headerlink" href="#01-introduccion-al-desarrollo-web" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es el desarrollo web y por qué importa.</li>
+<li>Los tres pilares: <strong>HTML</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>.</li>
+<li>La diferencia entre <strong>frontend</strong> y <strong>backend</strong>.</li>
+<li>Cómo funciona una página web desde que la pides hasta que la ves.</li>
+</ul>
 </div>
-
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué parte del desarrollo web se ejecuta en el navegador del usuario?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) El Frontend</button>
-    <button class="quiz-option" data-option="b">B) El Backend</button>
-    <button class="quiz-option" data-option="c">C) La base de datos</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<hr />
+<h2 id="que-es-el-desarrollo-web">🌐 ¿Qué es el desarrollo web?<a class="headerlink" href="#que-es-el-desarrollo-web" title="Permanent link">&para;</a></h2>
+<p>El <strong>desarrollo web</strong> es el proceso de crear sitios y aplicaciones que se ejecutan en un navegador. Es una de las disciplinas más demandadas del sector tecnológico y una de las más accesibles: solo necesitas un ordenador, un editor de código y conexión a internet.</p>
+<div class="admonition quote">
+<p class="admonition-title">La web es el mayor escaparate del mundo</p>
+<p>Cada vez que abres una página, un equipo de desarrolladores ha diseñado su estructura, su estilo y su comportamiento. Aprender desarrollo web es aprender a <strong>construir ese escaparate</strong>.</p>
 </div>
+<hr />
+<h2 id="los-tres-pilares-fundamentales">🏛️ Los tres pilares fundamentales<a class="headerlink" href="#los-tres-pilares-fundamentales" title="Permanent link">&para;</a></h2>
+<p>Toda página web moderna se apoya en tres tecnologías:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pilar</th>
+<th style="text-align: left;">Qué hace</th>
+<th style="text-align: left;">Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>HTML</strong></td>
+<td style="text-align: left;">Define la <strong>estructura</strong> y el contenido</td>
+<td style="text-align: left;">Los huesos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CSS</strong></td>
+<td style="text-align: left;">Define la <strong>presentación</strong> y el estilo</td>
+<td style="text-align: left;">La piel y la ropa</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>JavaScript</strong></td>
+<td style="text-align: left;">Define el <strong>comportamiento</strong> y la interactividad</td>
+<td style="text-align: left;">Los músculos y el cerebro</td>
+</tr>
+</tbody>
+</table>
+<p>```html</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primera página</title>
+  <style>
+    /* CSS: estilos */
+    body { font-family: sans-serif; background: #f5f5f5; }
+    h1   { color: #6a5acd; }
+  </style>
+</head>
+<body>
+  <!-- HTML: estructura -->
+  <h1>Hola, mundo 🌍</h1>
+  <button id="saludo">Haz clic</button>
+
+  <script>
+    // JavaScript: comportamiento
+    document.getElementById('saludo').addEventListener('click', () => {
+      alert('¡Bienvenido al desarrollo web!');
+    });
+  </script>
+</body>
+</html>
 
 
 
