@@ -1,23 +1,54 @@
+# 01 — Introducción al desarrollo web
+
+!!! abstract "Qué vas a aprender"
+    - Qué es el desarrollo web y por qué importa.
+    - Los tres pilares: **HTML**, **CSS** y **JavaScript**.
+    - La diferencia entre **frontend** y **backend**.
+    - Cómo funciona una página web desde que la pides hasta que la ves.
+
 ---
 
-## 🧠 Pon a prueba tus conocimientos
+## 🌐 ¿Qué es el desarrollo web?
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Cuáles son los tres pilares fundamentales del desarrollo web?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Python, Java y C++</button>
-    <button class="quiz-option" data-option="b">B) HTML, CSS y JavaScript</button>
-    <button class="quiz-option" data-option="c">C) React, Vue y Angular</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div>
+El **desarrollo web** es el proceso de crear sitios y aplicaciones que se ejecutan en un navegador. Es una de las disciplinas más demandadas del sector tecnológico y una de las más accesibles: solo necesitas un ordenador, un editor de código y conexión a internet.
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué parte del desarrollo web se ejecuta en el navegador del usuario?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) El Frontend</button>
-    <button class="quiz-option" data-option="b">B) El Backend</button>
-    <button class="quiz-option" data-option="c">C) La base de datos</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div>
+!!! quote "La web es el mayor escaparate del mundo"
+    Cada vez que abres una página, un equipo de desarrolladores ha diseñado su estructura, su estilo y su comportamiento. Aprender desarrollo web es aprender a **construir ese escaparate**.
+
+---
+
+## 🏛️ Los tres pilares fundamentales
+
+Toda página web moderna se apoya en tres tecnologías:
+
+| Pilar | Qué hace | Analogía |
+| :--- | :--- | :--- |
+| **HTML** | Define la **estructura** y el contenido | Los huesos |
+| **CSS** | Define la **presentación** y el estilo | La piel y la ropa |
+| **JavaScript** | Define el **comportamiento** y la interactividad | Los músculos y el cerebro |
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primera página</title>
+  <style>
+    /* CSS: estilos */
+    body { font-family: sans-serif; background: #f5f5f5; }
+    h1   { color: #6a5acd; }
+  </style>
+</head>
+<body>
+  <!-- HTML: estructura -->
+  <h1>Hola, mundo 🌍</h1>
+  <button id="saludo">Haz clic</button>
+
+  <script>
+    // JavaScript: comportamiento
+    document.getElementById('saludo').addEventListener('click', () => {
+      alert('¡Bienvenido al desarrollo web!');
+    });
+  </script>
+</body>
+</html>

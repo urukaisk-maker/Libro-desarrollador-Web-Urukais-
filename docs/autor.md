@@ -1,90 +1,203 @@
-# Sobre el autor
+# 👤 Sobre el autor
 
-![Manuel Casimiro Carrasco](IMG-20221014-WA0008-removebg-preview.png){ align=left width=180 style="border-radius: 50%; margin: 0 2rem 1rem 0;" }
-
-## Manuel Casimiro Carrasco — *Urukais*
-
-**Desarrollador web** · Reus, Tarragona (España)
-
-Desarrollador web con experiencia en el sector tecnológico, apasionado por construir productos digitales que combinan diseño limpio, buen rendimiento y accesibilidad.
-
-Mi enfoque es simple: **tu visión es mi visión**. Me especializo en imaginar lo que imaginas y convertirlo en realidad. Y hacerlo bien.
-
-<br clear="all">
-
-## 🛠️ Stack tecnológico
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-
-## 🎓 Trayectoria
-
-Mi pasión por la tecnología me llevó a formarme específicamente en desarrollo web. Durante esos años destaqué por mi dedicación y mi capacidad para resolver problemas de forma creativa. Aproveché cada oportunidad para ampliar conocimientos: proyectos propios, colaboraciones y certificaciones que complementaron mi formación.
-
-Con los años he trabajado en proyectos de distinta naturaleza —desde webs corporativas hasta aplicaciones web interactivas— siempre con el mismo objetivo: **código limpio, interfaces usables y productos que funcionan**.
-
-## 🚀 Proyectos destacados
-- **[Mi nuevo proyecto 1](https://statuesque-khapse-0c2c91.netlify.app/)** — Descripción breve del proyecto.
-- **[Mi nuevo proyecto 2](https://la-colmena-2ijb.vercel.app/)** — Descripción breve del proyecto.
-
-- **[Portfolio personal](https://silly-boba-dc057e.netlify.app/)** — Mi web personal con proyectos y contacto.
-- **[Libro del Desarrollador Web](https://urukaisk-maker.github.io/Libro-desarrollador-Web-Urukais-/)** — Este mismo libro, construido con MkDocs Material.
-- **[Urukais-musiword](https://github.com/urukaisk-maker)** — Proyecto de web musical.
-
-## 🌍 Idiomas
-
-- **Español** — lengua materna
-- **Catalán** — nivel nativo
-
-## 🎯 Intereses
-
-Fuera del código, disfruto de la lectura, la música y el deporte. Y siempre estoy al día con las últimas tendencias en tecnología: nuevas herramientas, frameworks, patrones de diseño y todo lo que ayude a construir mejor software.
-
-## 📬 Contacto
-
-- 🌐 **Portfolio**: [silly-boba-dc057e.netlify.app](https://silly-boba-dc057e.netlify.app/)
-- 💻 **GitHub**: [@urukaisk-maker](https://github.com/urukaisk-maker)
-- 📧 **Email**: [urukaisk@gmail.com](mailto:urukaisk@gmail.com)
-
-## 📖 Sobre este libro
-
-Este libro nació de mis propias notas mientras aprendía y enseñaba desarrollo web. Con el tiempo esas notas se convirtieron en un material estructurado, pensado para acompañar a cualquier persona que quiera aprender desde cero o reforzar lo que ya sabe.
-
-Está pensado para ser:
-
-- **Práctico** — cada capítulo tiene ejemplos que puedes copiar, ejecutar y modificar.
-- **Progresivo** — de lo más básico a lo más avanzado, sin saltos bruscos.
-- **Abierto** — puedes contribuir, corregir y proponer mejoras desde GitHub.
-- **En español** — con ejemplos claros y sin traducciones forzadas.
-- **Actualizado** — cubre tecnologías y prácticas usadas hoy en producción.
-- **Independiente** — sin frameworks de moda que caduquen en seis meses.
-
-### 🎯 ¿Para quién es este libro?
-
-- Personas que empiezan desde cero y no saben por dónde arrancar.
-- Estudiantes que buscan material complementario a sus clases.
-- Autodidactas que prefieren aprender construyendo.
-- Profesionales que quieren repasar fundamentos o cubrir huecos.
-
-### 🗺️ Qué vas a encontrar
-
-- **18 capítulos** organizados en tres niveles: principiante, intermedio y avanzado.
-- **Ejemplos ejecutables** para cada concepto importante.
-- **Ejercicios** al final de cada capítulo para practicar.
-- **Apéndices** con chuletas rápidas, glosario y recursos por nivel.
-
-### 🤝 Contribuir
-
-Este libro es un proyecto vivo. Si encuentras un error, quieres proponer un capítulo nuevo o mejorar un ejemplo, tienes toda la información en la página de [Contribuir](contribuir.md).
+!!! quote "Hola, soy Urukais"
+    Me llamo **Manuel Casimiro Carrasco**, aunque en internet me conocerás como **Urukais**. Soy desarrollador web, divulgador técnico y el creador del *Libro del Desarrollador Web*.
 
 ---
 
-*"La mejor forma de aprender es enseñar."*
+## 🖼️ Un poco sobre mí
 
-**— Urukais**
+<div class="autor-hero" markdown>
+
+<div class="autor-hero__avatar" markdown>
+![Manuel Casimiro Carrasco (Urukais)](/assets/autor-avatar.png)
+</div>
+
+<div class="autor-hero__bio" markdown>
+
+Empecé en esto de la programación por **curiosidad**, como casi todo el mundo. Un día quise hacer una página web para un proyecto personal, me puse a buscar tutoriales y me di cuenta de que la mayoría estaban en inglés, eran de pago o prometían cosas irreales ("aprende a programar en 24 horas").
+
+Con los años, esas notas que iba tomando se convirtieron en un archivo de texto gigante. Y ese archivo de texto se convirtió en **este libro**.
+
+Hoy compagino mi trabajo como desarrollador con la escritura y el mantenimiento del proyecto. Intento explicar las cosas como me hubiera gustado que me las explicaran a mí: **sin humo, sin promesas vacías y con ejemplos que funcionan**.
+
+</div>
+
+</div>
+
+---
+
+## 🛤️ Mi trayectoria
+
+### Los inicios (2015–2017)
+
+Mi primer contacto con la programación fue a través de **HTML y CSS**, haciendo una web para un proyecto de clase. Recuerdo la sensación de escribir una etiqueta y ver el resultado en el navegador. Fue adictivo.
+
+Después vino **JavaScript**, que al principio me pareció un lenguaje raro y lleno de trampas. Tardé meses en entender conceptos como `this`, el event loop o las closures. Pero cuando por fin los entendí, todo lo demás empezó a tener sentido.
+
+### La etapa de los frameworks (2018–2020)
+
+Como casi todos, pasé por la fase de "aprender todos los frameworks". Probé React, Vue, Angular, Svelte, Ember… Y aprendí una lección importante:
+
+> **Los frameworks van y vienen. Los fundamentos se quedan.**
+
+Desde entonces, mi enfoque ha sido dominar **JavaScript** bien antes de elegir una herramienta concreta. Esa filosofía es la que impregna este libro.
+
+### La etapa de la divulgación (2021–actualidad)
+
+Empecé a escribir artículos en un blog personal, luego en Substack, y finalmente me animé con este libro. La idea era simple: **crear el recurso que me hubiera gustado encontrar cuando empecé**, pero en español y gratis.
+
+El proyecto creció más de lo que esperaba. Hoy lo leen personas de todo el mundo hispanohablante, y eso es, con diferencia, lo más gratificante de todo este camino.
+
+---
+
+## 🛠️ Mi stack favorito
+
+Estas son las herramientas con las que trabajo a diario. No son las únicas, ni las mejores para todos los casos, pero son las que mejor se adaptan a mi forma de trabajar.
+
+=== "Frontend"
+
+    - **HTML5 semántico** — la base de todo
+    - **CSS moderno** — Flexbox, Grid, variables, container queries
+    - **JavaScript (ES2024)** — sin frameworks para proyectos pequeños
+    - **TypeScript** — cuando el proyecto crece
+    - **Astro** — para sitios estáticos rápidos
+    - **Svelte** — cuando necesito reactividad sin complejidad
+
+=== "Backend"
+
+    - **Node.js** — mi entorno principal
+    - **Express** — para APIs sencillas
+    - **Fastify** — cuando el rendimiento importa
+    - **SQLite** — para proyectos pequeños
+    - **PostgreSQL** — para proyectos serios
+
+=== "Herramientas"
+
+    - **VS Code** — mi editor principal
+    - **Zed** — cuando quiero algo más rápido
+    - **Vite** — bundler por defecto
+    - **Git + GitHub** — control de versiones
+    - **Docker** — cuando necesito reproducibilidad
+    - **Fish shell** — mi terminal del día a día
+
+=== "Diseño"
+
+    - **Figma** — para prototipos y diseños
+    - **Excalidraw** — para diagramas rápidos
+    - **Mermaid** — para diagramas en Markdown
+    - **Inter** — mi tipografía favorita
+    - **JetBrains Mono** — para código
+
+---
+
+## 📚 Lo que estoy leyendo
+
+*(Actualizado periódicamente)*
+
+| Libro | Autor | Estado |
+| :--- | :--- | :--- |
+| *Designing Data-Intensive Applications* | Martin Kleppmann | 📖 Leyendo |
+| *Refactoring UI* | Adam Wathan & Steve Schoger | ✅ Terminado |
+| *The Pragmatic Programmer* | Hunt & Thomas | 📖 Releyendo |
+| *You Don't Know JS Yet* | Kyle Simpson | ✅ Terminado |
+| *Eloquent JavaScript* | Marijn Haverbeke | ✅ Terminado |
+
+!!! tip "Recomendación"
+    Si solo pudiera recomendar un libro de programación, sería ***The Pragmatic Programmer***. No enseña un lenguaje concreto, enseña a **pensar como programador**. Es el libro que más veces he regalado.
+
+---
+
+## 🎯 Proyectos en los que he trabajado
+
+### 🌟 Libro del Desarrollador Web *(2026–actualidad)*
+
+El proyecto que tienes delante. Un libro open source, gratuito y en español que enseña desarrollo web desde cero.
+
+- **Stack**: MkDocs, Material for MkDocs, Python, GitHub Pages
+- **Rol**: autor, desarrollador, diseñador
+- **Estado**: activo, en constante evolución
+
+### 🎮 El Niño *(2024–2025)*
+
+Un pequeño juego web experimental hecho con Canvas y Web Audio API.
+
+- **Stack**: HTML5 Canvas, JavaScript vanilla, Web Audio
+- **Rol**: desarrollador
+- **Estado**: terminado (disponible en [mi portfolio](https://silly-boba-dc057e.netlify.app/))
+
+### 📝 Blog personal *(2021–actualidad)*
+
+Artículos sobre desarrollo web, accesibilidad y buenas prácticas.
+
+- **Stack**: Astro, Markdown, Netlify
+- **Rol**: autor y editor
+- **Estado**: activo
+
+---
+
+## 🎤 Charlas y talleres
+
+He dado charlas y talleres sobre desarrollo web en:
+
+- **Comunidades locales** de desarrolladores
+- **Meetups** de JavaScript y frontend
+- **Talleres online** para principiantes
+- **Mentorías** uno a uno
+
+Si te interesa que dé una charla o un taller, escríbeme a [contacto@urukais.com](mailto:contacto@urukais.com) con los detalles.
+
+---
+
+## 🧠 Mi filosofía de enseñanza
+
+Después de años enseñando, he llegado a estas conclusiones:
+
+1. **Aprender haciendo > leer pasivamente.** Nadie aprende a programar leyendo. Hay que teclear, equivocarse y volver a intentarlo.
+
+2. **Los fundamentos son lo único que no caduca.** Los frameworks cambian cada año, pero HTML, CSS y JavaScript llevan décadas siendo los mismos.
+
+3. **La accesibilidad no es un extra.** Es parte del trabajo, desde el primer `<div>`.
+
+4. **El inglés no es opcional.** No necesitas hablarlo, pero sí leerlo. La mejor documentación está en inglés.
+
+5. **La constancia gana a la intensidad.** 30 minutos al día durante un año es mejor que 12 horas un fin de semana.
+
+---
+
+## 📊 Algunos datos curiosos
+
+- 💻 Llevo programando desde **2015**, pero empecé a enseñar en **2021**.
+- ☕ Bebo **3–4 cafés** al día (aunque intento reducirlo).
+- 🎧 Programo con **lo-fi hip hop** o **synthwave** de fondo. Tienes una [sección de música](musica.md) en este libro con mis playlists favoritas.
+- 🌙 Trabajo mejor **de noche**, cuando no hay notificaciones.
+- 📚 Prefiero leer en **papel** cuando es posible. Los libros técnicos, en digital.
+- 🎮 Me encanta la **programación creativa**: visualizaciones, arte generativo, juegos experimentales.
+
+---
+
+## 📬 Contacto
+
+| Canal | Enlace |
+| :--- | :--- |
+| **Email** | [contacto@urukais.com](mailto:contacto@urukais.com) |
+| **GitHub** | [@urukaisk-maker](https://github.com/urukaisk-maker) |
+| **Twitter / X** | [@urukaisk](https://twitter.com/urukaisk) |
+| **LinkedIn** | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |
+| **Substack** | [urukaisklick.substack.com](https://urukaisklick.substack.com) |
+| **Portfolio** | [silly-boba-dc057e.netlify.app](https://silly-boba-dc057e.netlify.app/) |
+
+Más detalles en la página de [Contacto](contacto.md).
+
+---
+
+## 💬 Una última cosa
+
+Si has llegado hasta aquí, probablemente compartas conmigo algo importante: **las ganas de aprender**. No importa en qué punto estés, ni cuánto sepas. Lo único que importa es que sigas adelante.
+
+Si este libro te sirve, ya ha valido la pena. Y si algún día escribes el tuyo, avísame: me encantará leerlo.
+
+> *"La mejor forma de aprender es enseñar."*
+
+**Manuel Casimiro Carrasco (Urukais)**  
+*Octubre 2026*
