@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#galeria-de-diagramas" class="md-skip">
+        <a href="#indice" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3117,8 +3117,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -3161,14 +3159,23 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Tabla de contenidos
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 Índice
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#1-como-funciona-la-web" class="md-nav__link">
@@ -3329,6 +3336,17 @@
     <span class="md-ellipsis">
       
         🛠️ Cómo se hacen estos diagramas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguientes-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguientes pasos
       
     </span>
   </a>
@@ -4731,158 +4749,229 @@
   
 
 
-<h1 id="galeria-de-diagramas">Galería de diagramas<a class="headerlink" href="#galeria-de-diagramas" title="Permanent link">&para;</a></h1>
-<p>Todos los diagramas visuales del libro, recopilados en una sola página.</p>
-<div class="admonition tip">
-<p class="admonition-title">Cómo están hechos</p>
-<p>Todos los diagramas están hechos con <a href="https://mermaid.js.org/">Mermaid</a>, un lenguaje de diagramas basado en texto. Se renderizan automáticamente en el navegador.</p>
-</div>
+  <h1>Diagramas</h1>
+
+<p>cd ~/Libro-desarrollador-Web-Urukais-
+python3 -c "
+contenido = '''# 📊 Galería de diagramas</p>
+<p>!!! quote \"Visualiza lo que aprendes\"
+    Todos los diagramas visuales del libro, recopilados en una sola página. Cada uno acompaña a un capítulo y te ayuda a entender conceptos complejos de un vistazo.</p>
+<p>!!! tip \"Cómo están hechos\"
+    Todos los diagramas están hechos con <a href="https://mermaid.js.org/">Mermaid</a>, un lenguaje de diagramas basado en texto. Se renderizan automáticamente en el navegador, se adaptan al modo claro/oscuro y son versionables en Git.</p>
+<hr />
+<h2 id="indice">🧭 Índice<a class="headerlink" href="#indice" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#1-como-funciona-la-web">Cómo funciona la web</a></li>
+<li><a href="#2-flujo-de-trabajo-con-git">Flujo de trabajo con Git</a></li>
+<li><a href="#3-capas-de-la-cascada-css">Capas de la cascada CSS</a></li>
+<li><a href="#4-que-hace-un-bundler">Qué hace un bundler</a></li>
+<li><a href="#5-piramide-de-testing">Pirámide de testing</a></li>
+<li><a href="#6-estructura-feature-first">Estructura feature-first</a></li>
+<li><a href="#7-arquitectura-full-stack">Arquitectura full-stack</a></li>
+<li><a href="#8-como-funciona-un-service-worker">Cómo funciona un Service Worker</a></li>
+<li><a href="#9-http-vs-websocket">HTTP vs WebSocket</a></li>
+<li><a href="#10-pipeline-de-renderizado">Pipeline de renderizado</a></li>
+<li><a href="#11-capas-de-seguridad">Capas de seguridad</a></li>
+<li><a href="#12-como-se-ejecuta-webassembly">Cómo se ejecuta WebAssembly</a></li>
+<li><a href="#13-arquitectura-webxr">Arquitectura WebXR</a></li>
+<li><a href="#14-como-interactua-una-dapp">Cómo interactúa una dApp</a></li>
+</ul>
+<hr />
 <h2 id="1-como-funciona-la-web">1. Cómo funciona la web<a class="headerlink" href="#1-como-funciona-la-web" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/01-introduccion/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>sequenceDiagram
+<p>```mermaid
+sequenceDiagram
     participant U as Usuario
     participant N as Navegador
     participant S as Servidor
-    participant B as Base de datos
-
-    U-&gt;&gt;N: Introduce URL
-    N-&gt;&gt;S: Petición HTTP
-    S-&gt;&gt;B: Consulta
-    B--&gt;&gt;S: Datos
-    S--&gt;&gt;N: Respuesta HTML
-    N--&gt;&gt;U: Página renderizada</code></pre>
+    participant B as Base de datos</p>
+<div class="highlight"><pre><span></span><code>U-&gt;&gt;N: Introduce URL
+N-&gt;&gt;S: Petición HTTP
+S-&gt;&gt;B: Consulta
+B--&gt;&gt;S: Datos
+S--&gt;&gt;N: Respuesta HTML
+N--&gt;&gt;U: Página renderizada
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: el flujo básico de cualquier aplicación web. El usuario hace una petición, el servidor consulta la base de datos y devuelve el HTML renderizado.</p>
+<hr />
 <h2 id="2-flujo-de-trabajo-con-git">2. Flujo de trabajo con Git<a class="headerlink" href="#2-flujo-de-trabajo-con-git" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/07-git/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart LR
+<p>```mermaid
+flowchart LR
     A[main] --&gt; B[feature/nueva]
     B --&gt; C[commits]
     C --&gt; D[Pull Request]
     D --&gt; E[merge a main]
-    E --&gt; F[main actualizado]</code></pre>
+    E --&gt; F[main actualizado]
+```</p>
+<p><strong>Explicación</strong>: el flujo típico de trabajo con Git en equipo. Se crea una rama, se hacen commits, se abre un Pull Request y se fusiona a main tras la revisión.</p>
+<hr />
 <h2 id="3-capas-de-la-cascada-css">3. Capas de la cascada CSS<a class="headerlink" href="#3-capas-de-la-cascada-css" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/11-css-moderno/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart TB
+<p>```mermaid
+flowchart TB
     A[Navegador] --&gt; B[Estilos del usuario]
     B --&gt; C[!important]
     C --&gt; D[Estilos inline]
     D --&gt; E[Media queries]
     E --&gt; F[Especificidad y @layer]
-    F --&gt; G[Estilos del navegador]</code></pre>
+    F --&gt; G[Estilos del navegador]
+```</p>
+<p><strong>Explicación</strong>: el orden de prioridad de la cascada CSS, de menor a mayor. Los estilos del navegador son los más débiles; !important es el más fuerte.</p>
+<hr />
 <h2 id="4-que-hace-un-bundler">4. Qué hace un bundler<a class="headerlink" href="#4-que-hace-un-bundler" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/13-modulos-bundlers/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart LR
+<p>```mermaid
+flowchart LR
     A[módulo1.js] --&gt; D[Bundler]
     B[módulo2.js] --&gt; D
     C[módulo3.js] --&gt; D
     D --&gt; E[Tree shaking]
     E --&gt; F[Minificación]
-    F --&gt; G[app.min.js único]</code></pre>
+    F --&gt; G[app.min.js único]
+```</p>
+<p><strong>Explicación</strong>: un bundler (Vite, Webpack, esbuild) coge todos los módulos, elimina el código no usado (tree shaking), minifica y genera un único archivo optimizado.</p>
+<hr />
 <h2 id="5-piramide-de-testing">5. Pirámide de testing<a class="headerlink" href="#5-piramide-de-testing" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/16-testing/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart TB
-    A[E2E&lt;br/&gt;pocos, lentos] --&gt; B[Integración&lt;br/&gt;algunos]
-    B --&gt; C[Unitarios&lt;br/&gt;muchos, rápidos]
-
-    style A fill:#dc2626,color:white
-    style B fill:#f59e0b,color:white
-    style C fill:#16a34a,color:white</code></pre>
+<p>```mermaid
+flowchart TB
+    A[E2E<br/>pocos, lentos] --&gt; B[Integración<br/>algunos]
+    B --&gt; C[Unitarios<br/>muchos, rápidos]</p>
+<div class="highlight"><pre><span></span><code>style A fill:#dc2626,color:white
+style B fill:#f59e0b,color:white
+style C fill:#16a34a,color:white
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: la pirámide de testing clásica. Muchos tests unitarios (rápidos), algunos de integración, pocos E2E (lentos).</p>
+<hr />
 <h2 id="6-estructura-feature-first">6. Estructura feature-first<a class="headerlink" href="#6-estructura-feature-first" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/18-arquitectura/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart TB
+<p>```mermaid
+flowchart TB
     A[src/] --&gt; B[features/]
     A --&gt; C[shared/]
     A --&gt; D[app/]
     B --&gt; E[auth/]
     B --&gt; F[carrito/]
     C --&gt; G[components genéricos]
-    D --&gt; H[rutas, layouts]</code></pre>
+    D --&gt; H[rutas, layouts]
+```</p>
+<p><strong>Explicación</strong>: en arquitecturas feature-first, cada funcionalidad vive en su propia carpeta con todo lo que necesita.</p>
+<hr />
 <h2 id="7-arquitectura-full-stack">7. Arquitectura full-stack<a class="headerlink" href="#7-arquitectura-full-stack" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/19-fullstack-node/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart LR
-    A[Cliente&lt;br/&gt;Navegador] --&gt;|HTTPS| B[Servidor&lt;br/&gt;Node.js + Express]
+<p>```mermaid
+flowchart LR
+    A[Cliente<br/>Navegador] --&gt;|HTTPS| B[Servidor<br/>Node.js + Express]
     B --&gt;|Prisma| C[(PostgreSQL)]
     B --&gt;|JWT| A
-    B --&gt;|API REST| D[Servicios externos]</code></pre>
+    B --&gt;|API REST| D[Servicios externos]
+```</p>
+<p><strong>Explicación</strong>: una arquitectura full-stack típica con Node.js + Express, base de datos PostgreSQL, autenticación con JWT y conexión a servicios externos.</p>
+<hr />
 <h2 id="8-como-funciona-un-service-worker">8. Cómo funciona un Service Worker<a class="headerlink" href="#8-como-funciona-un-service-worker" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/22-pwa/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>sequenceDiagram
+<p>```mermaid
+sequenceDiagram
     participant U as Usuario
     participant N as Navegador
     participant SW as Service Worker
     participant C as Caché
-    participant S as Servidor
-
-    U-&gt;&gt;N: Pide una URL
-    N-&gt;&gt;SW: Intercepta la petición
-    SW-&gt;&gt;C: ¿Está en caché?
-    alt En caché
-        C--&gt;&gt;SW: Sí
-        SW--&gt;&gt;N: Sirve desde caché
-    else No está
-        SW-&gt;&gt;S: Pide a la red
-        S--&gt;&gt;SW: Respuesta
-        SW-&gt;&gt;C: Guarda en caché
-        SW--&gt;&gt;N: Sirve respuesta
-    end
-    N--&gt;&gt;U: Muestra la página</code></pre>
+    participant S as Servidor</p>
+<div class="highlight"><pre><span></span><code>U-&gt;&gt;N: Pide una URL
+N-&gt;&gt;SW: Intercepta la petición
+SW-&gt;&gt;C: ¿Está en caché?
+alt En caché
+    C--&gt;&gt;SW: Sí
+    SW--&gt;&gt;N: Sirve desde caché
+else No está
+    SW-&gt;&gt;S: Pide a la red
+    S--&gt;&gt;SW: Respuesta
+    SW-&gt;&gt;C: Guarda en caché
+    SW--&gt;&gt;N: Sirve respuesta
+end
+N--&gt;&gt;U: Muestra la página
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: el Service Worker intercepta las peticiones y decide si sirve desde caché (rápido, offline) o desde la red.</p>
+<hr />
 <h2 id="9-http-vs-websocket">9. HTTP vs WebSocket<a class="headerlink" href="#9-http-vs-websocket" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/23-websockets/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>sequenceDiagram
+<p>```mermaid
+sequenceDiagram
     participant C as Cliente
-    participant S as Servidor
+    participant S as Servidor</p>
+<div class="highlight"><pre><span></span><code>Note over C,S: HTTP: conexión por cada petición
+C-&gt;&gt;S: Petición 1
+S--&gt;&gt;C: Respuesta 1
+C-&gt;&gt;S: Petición 2
+S--&gt;&gt;C: Respuesta 2
 
-    Note over C,S: HTTP: conexión por cada petición
-    C-&gt;&gt;S: Petición 1
-    S--&gt;&gt;C: Respuesta 1
-    C-&gt;&gt;S: Petición 2
-    S--&gt;&gt;C: Respuesta 2
-
-    Note over C,S: WebSocket: conexión persistente
-    C-&gt;&gt;S: Handshake (Upgrade)
-    S--&gt;&gt;C: 101 Switching Protocols
-    C-&gt;&gt;S: Mensaje
-    S--&gt;&gt;C: Mensaje
-    S--&gt;&gt;C: Mensaje push
-    C-&gt;&gt;S: Mensaje</code></pre>
+Note over C,S: WebSocket: conexión persistente
+C-&gt;&gt;S: Handshake (Upgrade)
+S--&gt;&gt;C: 101 Switching Protocols
+C-&gt;&gt;S: Mensaje
+S--&gt;&gt;C: Mensaje
+S--&gt;&gt;C: Mensaje push
+C-&gt;&gt;S: Mensaje
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: HTTP abre una conexión nueva por cada petición. WebSocket abre una conexión persistente y bidireccional.</p>
+<hr />
 <h2 id="10-pipeline-de-renderizado">10. Pipeline de renderizado<a class="headerlink" href="#10-pipeline-de-renderizado" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/24-animaciones/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart LR
+<p>```mermaid
+flowchart LR
     A[JavaScript] --&gt; B[Style]
     B --&gt; C[Layout]
     C --&gt; D[Paint]
-    D --&gt; E[Composite]
-
-    style A fill:#dc2626,color:white
-    style E fill:#16a34a,color:white</code></pre>
+    D --&gt; E[Composite]</p>
+<div class="highlight"><pre><span></span><code>style A fill:#dc2626,color:white
+style E fill:#16a34a,color:white
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: cuando JavaScript cambia algo, el navegador recalcula estilos, layout, paint y composite. Las animaciones con transform y opacity se saltan layout y paint.</p>
+<hr />
 <h2 id="11-capas-de-seguridad">11. Capas de seguridad<a class="headerlink" href="#11-capas-de-seguridad" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/26-seguridad/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart TB
+<p>```mermaid
+flowchart TB
     A[Usuario] --&gt;|HTTPS| B[CDN / Firewall]
     B --&gt; C[Servidor]
     C --&gt;|Validación Zod| D[Backend]
-    D --&gt;|Sanitización| E[(Base de datos)]
-
-    style A fill:#a78bfa,color:white
-    style E fill:#dc2626,color:white</code></pre>
+    D --&gt;|Sanitización| E[(Base de datos)]</p>
+<div class="highlight"><pre><span></span><code>style A fill:#a78bfa,color:white
+style E fill:#dc2626,color:white
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: la seguridad es defensa en profundidad. HTTPS en tránsito, firewall/CDN en el borde, validación de entrada en el backend, sanitización antes de guardar.</p>
+<hr />
 <h2 id="12-como-se-ejecuta-webassembly">12. Cómo se ejecuta WebAssembly<a class="headerlink" href="#12-como-se-ejecuta-webassembly" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/27-webassembly/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>sequenceDiagram
+<p>```mermaid
+sequenceDiagram
     participant U as Usuario
     participant N as Navegador
     participant JS as JavaScript
-    participant W as WebAssembly
-
-    U-&gt;&gt;N: Carga la página
-    N-&gt;&gt;JS: Descarga app.js
-    JS-&gt;&gt;N: Pide modulo.wasm
-    N--&gt;&gt;JS: Devuelve binario
-    JS-&gt;&gt;W: instantiate()
-    JS-&gt;&gt;W: Llama función exportada
-    W--&gt;&gt;JS: Resultado
-    JS--&gt;&gt;U: Actualiza la UI</code></pre>
+    participant W as WebAssembly</p>
+<div class="highlight"><pre><span></span><code>U-&gt;&gt;N: Carga la página
+N-&gt;&gt;JS: Descarga app.js
+JS-&gt;&gt;N: Pide modulo.wasm
+N--&gt;&gt;JS: Devuelve binario
+JS-&gt;&gt;W: instantiate()
+JS-&gt;&gt;W: Llama función exportada
+W--&gt;&gt;JS: Resultado
+JS--&gt;&gt;U: Actualiza la UI
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: JavaScript pide el binario .wasm, lo instancia y llama a las funciones exportadas.</p>
+<hr />
 <h2 id="13-arquitectura-webxr">13. Arquitectura WebXR<a class="headerlink" href="#13-arquitectura-webxr" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/29-webxr/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>flowchart TB
+<p>```mermaid
+flowchart TB
     A[Navegador] --&gt; B[navigator.xr]
     B --&gt; C{Session?}
     C --&gt;|immersive-vr| D[Gafas VR]
@@ -4890,26 +4979,32 @@
     C --&gt;|inline| F[Modo 3D sin gafas]
     D --&gt; G[Renderizado 3D]
     E --&gt; G
-    F --&gt; G</code></pre>
+    F --&gt; G
+```</p>
+<p><strong>Explicación</strong>: WebXR expone navigator.xr, que permite pedir sesiones de VR, AR o 3D inline.</p>
+<hr />
 <h2 id="14-como-interactua-una-dapp">14. Cómo interactúa una dApp<a class="headerlink" href="#14-como-interactua-una-dapp" title="Permanent link">&para;</a></h2>
 <p><a href="../capitulos/30-web3/">Ver en el capítulo original</a></p>
-<pre class="mermaid"><code>sequenceDiagram
+<p>```mermaid
+sequenceDiagram
     participant U as Usuario
     participant W as Wallet
     participant D as dApp
     participant C as Contrato
-    participant B as Blockchain
-
-    U-&gt;&gt;D: Clic en "Conectar wallet"
-    D-&gt;&gt;W: eth_requestAccounts
-    W--&gt;&gt;U: Pide permiso
-    U--&gt;&gt;W: Acepta
-    W--&gt;&gt;D: Dirección 0x...
-    D-&gt;&gt;C: Llama función
-    C-&gt;&gt;B: Transacción firmada
-    B--&gt;&gt;C: Confirmación
-    C--&gt;&gt;D: Evento emitido
-    D--&gt;&gt;U: Actualiza UI</code></pre>
+    participant B as Blockchain</p>
+<div class="highlight"><pre><span></span><code>U-&gt;&gt;D: Clic en Conectar wallet
+D-&gt;&gt;W: eth_requestAccounts
+W--&gt;&gt;U: Pide permiso
+U--&gt;&gt;W: Acepta
+W--&gt;&gt;D: Dirección 0x...
+D-&gt;&gt;C: Llama función
+C-&gt;&gt;B: Transacción firmada
+B--&gt;&gt;C: Confirmación
+C--&gt;&gt;D: Evento emitido
+D--&gt;&gt;U: Actualiza UI
+</code></pre></div>
+<p>```</p>
+<p><strong>Explicación</strong>: una dApp se conecta a la wallet del usuario, que firma las transacciones. La transacción viaja a la blockchain y la dApp actualiza la interfaz.</p>
 <hr />
 <h2 id="como-se-hacen-estos-diagramas">🛠️ Cómo se hacen estos diagramas<a class="headerlink" href="#como-se-hacen-estos-diagramas" title="Permanent link">&para;</a></h2>
 <p>Todos están escritos en <strong>Mermaid</strong>, un lenguaje que permite describir diagramas con texto plano. MkDocs Material los renderiza automáticamente al construir el sitio.</p>
@@ -4921,6 +5016,15 @@
 <li><strong>Se adaptan</strong> al modo claro y oscuro del sitio.</li>
 </ul>
 <p>Más información: <a href="https://mermaid.js.org/">mermaid.js.org</a></p>
+<hr />
+<h2 id="siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../">📖 Volver al índice</a>
+<a class="md-button" href="../retos/">🎯 Ver los retos semanales</a>
+<a class="md-button" href="../ejercicios/">✅ Ver los ejercicios resueltos</a>
+'''
+open('docs/diagramas.md', 'w', encoding='utf-8').write(contenido)
+print('OK:', len(contenido.splitlines()), 'líneas escritas')
+"</p>
 
 
 
