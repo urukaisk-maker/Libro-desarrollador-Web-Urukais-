@@ -1,69 +1,40 @@
-# Capítulo 18 — Arquitectura frontend
+# 18 — Arquitectura frontend
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué es la arquitectura frontend y por qué importa.
+    - Estructura de carpetas: feature-first vs layer-first.
+    - Patrones de componentes.
+    - Gestión de estado.
+    - Buenas prácticas para proyectos escalables.
 
-Escribir componentes funciona. Pero cuando el proyecto crece a decenas de miles de líneas, necesitas **arquitectura**: decisiones conscientes sobre cómo se organiza el código, cómo fluye el estado y cómo se comunican las partes.
+---
 
-Este capítulo repasa los patrones y principios que separan un proyecto amateur de uno profesional.
+## 🏗️ ¿Qué es la arquitectura frontend?
 
-## ¿Qué es la arquitectura frontend?
+La **arquitectura frontend** es la forma de organizar el código de una aplicación para que sea **mantenible, escalable y comprensible**. No se trata de usar más librerías, sino de tomar decisiones que permitan crecer sin que todo se derrumbe.
 
-Es el conjunto de decisiones sobre:
+!!! quote "El código se lee muchas más veces de las que se escribe"
+    Una buena arquitectura hace que el código sea fácil de leer, cambiar y testear. Una mala arquitectura hace que cada cambio sea un infierno.
 
-- **Estructura de carpetas** y módulos.
-- **Gestión del estado** (local, global, servidor).
-- **Comunicación entre componentes**.
-- **Separación de responsabilidades**.
-- **Escalabilidad** del código y del equipo.
+---
 
-Una buena arquitectura hace que añadir una feature sea trivial. Una mala hace que cada cambio rompa tres cosas.
+## 📁 Estructura de carpetas
 
-## Principios fundamentales
-
-### 1. Separación de responsabilidades
-
-Cada módulo debe tener **una única razón para cambiar**.
-
-- **UI**: cómo se ve.
-- **Lógica de negocio**: qué hace.
-- **Datos**: de dónde vienen.
-
-### 2. Bajo acoplamiento, alta cohesión
-
-- **Bajo acoplamiento**: los módulos dependen lo mínimo posible entre sí.
-- **Alta cohesión**: todo lo relacionado vive junto.
-
-### 3. Composición sobre herencia
-
-Prefiere componer piezas pequeñas que heredar de clases gigantes.
-
-### 4. DRY, pero no demasiado
-
-*Don't Repeat Yourself*. Pero **duplicar dos veces es mejor que abstraer mal**. La regla de tres: abstrae cuando se repita tres veces.
-
-### 5. KISS y YAGNI
-
-- **KISS**: *Keep It Simple*.
-- **YAGNI**: *You Aren't Gonna Need It*. No construyas para necesidades hipotéticas.
-
-## Estructura de carpetas
-
-### Por tipo (feature-first vs type-first)
-
-**Type-first** (agrupa por tipo de archivo):
+### Layer-first (por capas)
 
 ```
 src/
 ├── components/
 ├── hooks/
-├── utils/
 ├── services/
-└── types/
+├── utils/
+├── pages/
+└── styles/
 ```
 
-Ventaja: simple al principio. Problema: en proyectos grandes, `components/` acaba con 200 archivos.
+**Ventaja**: fácil de encontrar cosas por tipo. **Desventaja**: cada feature está repartida por 5 carpetas.
 
-**Feature-first** (agrupa por funcionalidad):
+### Feature-first (por funcionalidad)
 
 ```
 src/
@@ -72,409 +43,186 @@ src/
 │   │   ├── components/
 │   │   ├── hooks/
 │   │   ├── api.js
-│   │   └── index.js
+│   │   └── auth.test.js
 │   ├── carrito/
 │   └── productos/
 ├── shared/
 │   ├── components/
-│   ├── hooks/
 │   └── utils/
 └── app/
+    ├── routes.js
+    └── layout.js
 ```
 
-Ventaja: cada feature es autónoma. Problema: hay que decidir qué es "compartido".
+**Ventaja**: cada feature vive junta. **Desventaja**: más carpetas al principio.
 
-!!! tip "Recomendación"
-    Empieza simple. Cuando el proyecto crezca, migra a **feature-first**. No lo hagas antes.
-
-### Estructura recomendada para empezar
-
-```
-src/
-├── app/            # configuración global, rutas, providers
-├── components/     # componentes reutilizables
-├── features/       # funcionalidades de negocio
-├── hooks/          # hooks compartidos
-├── lib/            # utilidades, helpers
-├── services/       # llamadas a APIs
-├── styles/         # estilos globales
-└── types/          # tipos compartidos
-```
-
-## Estado: el gran problema
-
-El estado es lo más complicado en frontend. Hay que distinguir **tres tipos**:
-
-| Tipo | Ejemplo | Dónde vive |
-|---|---|---|
-| **Local** | input abierto/cerrado | Componente |
-| **Global** | usuario logueado, tema | Store global o contexto |
-| **Servidor** | lista de productos, posts | Caché de datos del servidor |
-
-!!! warning "Error común"
-    Meter **estado del servidor** en un store global es un antipatrón. Usa herramientas especializadas (React Query, SWR, Apollo) que gestionan caché, invalidación y sincronización.
-
-## Estado local
-
-Empieza siempre por aquí. Un estado es local si:
-
-- Solo lo usa un componente o su descendencia directa.
-- No necesita persistir.
-- No lo comparte con otras partes de la app.
-
-```javascript
-function Modal() {
-  const [abierto, setAbierto] = useState(false);
-  // ...
-}
-```
-
-## Elevación del estado
-
-Si dos componentes hermanos lo necesitan, súbelo al padre común.
-
-```javascript
-function Padre() {
-  const [valor, setValor] = useState('');
-  return (
-    <>
-      <Input valor={valor} onChange={setValor} />
-      <Preview valor={valor} />
-    </>
-  );
-}
-```
-
-## Contexto (React) / Provide-Inject (Vue)
-
-Para estado global ligero (tema, idioma, usuario).
-
-```jsx
-const TemaContext = createContext();
-
-function App() {
-  const [tema, setTema] = useState('claro');
-  return (
-    <TemaContext.Provider value={{ tema, setTema }}>
-      <Layout />
-    </TemaContext.Provider>
-  );
-}
-
-function Boton() {
-  const { tema, setTema } = useContext(TemaContext);
-  // ...
-}
-```
-
-!!! warning "Cuándo NO usar contexto"
-    El contexto no es un store. Cada cambio en el provider re-renderiza a **todos** los consumidores. Para estado complejo, usa una librería dedicada.
-
-## Stores modernos
-
-| Librería | Filosofía |
-|---|---|
-| **Zustand** | Minimalista, hooks, sin boilerplate |
-| **Redux Toolkit** | Estructurado, DevTools, muy testeable |
-| **Pinia** | El estándar para Vue 3 |
-| **Jotai** | Atómico, granular |
-| **Valtio** | Proxy-based, mutable |
-
-### Zustand en 30 líneas
-
-```javascript
-import { create } from 'zustand';
-
-export const useCarrito = create((set) => ({
-  items: [],
-  añadir: (producto) => set((state) => ({
-    items: [...state.items, producto],
-  })),
-  vaciar: () => set({ items: [] }),
-  total: () => useCarrito.getState().items.reduce(
-    (sum, item) => sum + item.precio, 0
-  ),
-}));
-
-// En un componente
-function Carrito() {
-  const { items, añadir } = useCarrito();
-  // ...
-}
-```
-
-## Estado del servidor
-
-Para datos que vienen de APIs, usa una librería que gestione:
-
-- **Caché** automática.
-- **Revalidación** en segundo plano.
-- **Invalidación** tras mutaciones.
-- **Reintentos** con backoff.
-
-```javascript
-// React Query / TanStack Query
-function Productos() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['productos'],
-    queryFn: () => fetch('/api/productos').then(r => r.json()),
-    staleTime: 5 * 60 * 1000,
-  });
-
-  if (isLoading) return <Spinner />;
-  if (error) return <Error mensaje={error.message} />;
-  return <Lista items={data} />;
-}
-```
-
-## Patrones de componentes
-
-### Container / Presentational
-
-- **Presentational**: solo UI. Recibe props, emite eventos. Sin lógica.
-- **Container**: maneja datos, efectos, estado. Delega el render.
-
-En React moderno esto se hace con **hooks** en lugar de clases.
-
-### Compound components
-
-Componentes que trabajan juntos y comparten estado implícito.
-
-```jsx
-<Tabs defaultValue="perfil">
-  <Tabs.List>
-    <Tabs.Trigger value="perfil">Perfil</Tabs.Trigger>
-    <Tabs.Trigger value="cuenta">Cuenta</Tabs.Trigger>
-  </Tabs.List>
-  <Tabs.Panel value="perfil">...</Tabs.Panel>
-  <Tabs.Panel value="cuenta">...</Tabs.Panel>
-</Tabs>
-```
-
-Los hijos se comunican a través del contexto del padre.
-
-### Render props / Slots
-
-Delegan el render de parte del componente al consumidor.
-
-```jsx
-<Modal
-  trigger={<button>Abrir</button>}
-  content={({ cerrar }) => <p>Contenido <button onClick={cerrar}>Cerrar</button></p>}
-/>
-```
-
-### HOC (Higher-Order Component)
-
-Función que envuelve un componente y le añade funcionalidad.
-
-```jsx
-const ConAutenticacion = (Componente) => (props) => {
-  const { usuario } = useAuth();
-  if (!usuario) return <Login />;
-  return <Componente {...props} usuario={usuario} />;
-};
-
-export const Perfil = ConAutenticacion(({ usuario }) => (
-  <h1>Hola, {usuario.nombre}</h1>
-));
-```
-
-En React moderno se prefieren hooks, pero siguen siendo útiles en algunas librerías.
-
-## Comunicación entre módulos
-
-### Props / eventos
-
-El mecanismo más simple. Ideal para relaciones padre-hijo.
-
-### Estado compartido
-
-Para componentes distantes en el árbol.
-
-### Bus de eventos
-
-Útil para comunicación **desacoplada** entre features que no deberían conocerse.
-
-```javascript
-const bus = new EventTarget();
-
-// Emisor
-bus.dispatchEvent(new CustomEvent('carrito:add', { detail: producto }));
-
-// Receptor
-bus.addEventListener('carrito:add', (e) => {
-  actualizarContador(e.detail);
-});
-```
-
-## Código compartido: el problema del "shared"
-
-Cuando algo se usa en dos features, la tentación es moverlo a `shared/`. Pero cuidado:
-
-- **Duplicar dos veces es aceptable**. Abstraer mal es peor.
-- **Solo sube a `shared/` cuando sea genérico y estable**.
-- **`shared/` no debe importar nada de `features/`**.
-
-```javascript
-// ❌ Mal: shared/ importa de features/
-// src/shared/utils.js
-import { formatearCarrito } from '../features/carrito/formato.js';
-
-// ✅ Bien: shared/ es independiente
-// src/shared/utils.js
-export function formatearPrecio(n) {
-  return new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR',
-  }).format(n);
-}
-```
-
-## Rutas y layouts
-
-Separar **layout** (estructura) de **página** (contenido).
-
-```
-src/app/
-├── rutas.js
-├── layouts/
-│   ├── Principal.jsx
-│   └── Autenticado.jsx
-└── paginas/
-    ├── Inicio.jsx
-    ├── Perfil.jsx
-    └── Login.jsx
-```
-
-## Lazy loading de rutas
-
-Divide el bundle por ruta para cargar solo lo necesario.
-
-```jsx
-const Productos = lazy(() => import('./paginas/Productos'));
-const Perfil = lazy(() => import('./paginas/Perfil'));
-
-<Routes>
-  <Route path="/productos" element={
-    <Suspense fallback={<Cargando />}>
-      <Productos />
-    </Suspense>
-  } />
-  <Route path="/perfil" element={
-    <Suspense fallback={<Cargando />}>
-      <Perfil />
-    </Suspense>
-  } />
-</Routes>
-```
-
-## Convenciones y estilo
-
-- **Nombres consistentes**: `PascalCase` para componentes, `camelCase` para funciones/variables.
-- **Un componente por archivo**. Nombres descriptivos.
-- **Imports ordenados**: externos → internos → estilos.
-- **Barrel files (`index.js`) con moderación**. Pueden crear ciclos.
-- **ESLint + Prettier** configurados desde el día 1.
-- **TypeScript en proyectos grandes** (ayuda muchísimo a la arquitectura).
-
-## Testing de arquitectura
-
-- **Tests unitarios**: funciones puras, hooks, utilidades.
-- **Tests de integración**: feature completa (componente + store + API mockeada).
-- **Tests E2E**: flujos del usuario.
-
-Los tests siguen la estructura **feature-first**:
-
-```
-src/features/carrito/
-├── components/
-├── hooks/
-├── api.js
-├── carrito.test.js       ← test de la feature
-└── __fixtures__/
-```
-
-## Monorepos
-
-Cuando tienes varias apps (web, admin, mobile) que comparten código, un monorepo ayuda.
-
-Herramientas: **Turborepo**, **Nx**, **pnpm workspaces**.
-
-```
-mi-monorepo/
-├── apps/
-│   ├── web/
-│   ├── admin/
-│   └── mobile/
-└── packages/
-    ├── ui/            # componentes compartidos
-    ├── utils/         # helpers
-    └── config/        # eslint, tsconfig
-```
-
-## Diagrama: estructura feature-first
-
-```mermaid
-flowchart TB
-    A[src/] --> B[features/]
-    A --> C[shared/]
-    A --> D[app/]
-    B --> E[auth/<br/>components<br/>hooks<br/>api.js]
-    B --> F[carrito/<br/>components<br/>hooks<br/>api.js]
-    C --> G[components genéricos]
-    D --> H[rutas, layouts]
-```
-
-En feature-first cada funcionalidad es autónoma. `shared/` contiene lo reutilizable y **nunca** importa de `features/`.
-
-## Buenas prácticas
-
-- **Empieza simple**. No adoptes arquitectura compleja hasta que sea necesaria.
-- **Separa estado local, global y del servidor**. No los mezcles.
-- **Feature-first** cuando el proyecto crece.
-- **`shared/` no importa de `features/`**. Nunca.
-- **Bajo acoplamiento**. Dos features no deberían conocerse.
-- **Composición sobre herencia**.
-- **TypeScript** en proyectos medianos o grandes.
-- **Convenciones claras** y respetadas por todo el equipo.
-- **Refactoriza sin miedo**. Los tests te cubren.
-- **Documenta las decisiones** importantes (ADR — Architecture Decision Records).
-
-## Ejercicios
-
-1. Reorganiza un proyecto tuyo de `type-first` a `feature-first`.
-2. Identifica tres estados en tu app y clasifícalos (local, global, servidor).
-3. Sustituye un store global con estado del servidor por React Query (o similar).
-4. Escribe un componente `Tabs` con el patrón compound components.
-5. Configura lazy loading por rutas.
-6. Añade TypeScript a un proyecto JavaScript pequeño.
-7. Escribe un ADR para una decisión arquitectónica reciente.
-8. Audita tus imports: ¿`shared/` importa de `features/`?
+!!! tip "Feature-first para proyectos grandes"
+    Si el proyecto va a crecer, usa feature-first. Si es pequeño, layer-first es suficiente. Puedes empezar con layer-first y migrar cuando el proyecto crezca.
 
 ---
 
-⬅️ [Capítulo 17 — Rendimiento web](17-rendimiento.md) | ➡️ Apéndices (chuletas, glosario, recursos por nivel)
+## 🧩 Patrones de componentes
+
+### Componentes de presentación
+
+Solo reciben props y renderizan UI. No tienen lógica de negocio.
+
+```jsx
+function Boton({ texto, onClick }) {
+  return <button onClick={onClick}>{texto}</button>;
+}
+```
+
+### Componentes contenedor
+
+Manejan el estado y la lógica, y pasan props a los de presentación.
+
+```jsx
+function ListaTareas() {
+  const [tareas, setTareas] = useState([]);
+
+  const añadir = (texto) => {
+    setTareas([...tareas, { id: Date.now(), texto }]);
+  };
+
+  return <ListaTareasUI tareas={tareas} onAñadir={añadir} />;
+}
+```
+
+!!! quote "Separar lógica y presentación"
+    Separar presentación y lógica hace que los componentes sean más fáciles de testear, reutilizar y entender.
+
+---
+
+## 🗃️ Gestión de estado
+
+### Estado local
+
+Para cosas que solo afectan a un componente (un input, un toggle).
+
+```jsx
+const [abierto, setAbierto] = useState(false);
+```
+
+### Estado compartido
+
+Para cosas que afectan a varios componentes cercanos: se sube al padre común.
+
+### Estado global
+
+Para cosas que afectan a toda la app: tema, usuario autenticado, carrito.
+
+| Herramienta | Cuándo usarla |
+| :--- | :--- |
+| **Context API** | Estado simple, poca frecuencia de cambio |
+| **Zustand** | Estado global sencillo sin boilerplate |
+| **Redux Toolkit** | Estado complejo con muchas acciones |
+| **TanStack Query** | Estado del servidor (fetch, caché, refetch) |
+
+---
+
+## ✅ Buenas prácticas de arquitectura
+
+- ✅ **Componentes pequeños**: si un componente supera las 200 líneas, divídelo.
+- ✅ **Una responsabilidad por archivo**: un componente, un hook, una función.
+- ✅ **Nombres descriptivos**: `BotonPrimario` mejor que `Btn1`.
+- ✅ **Evita la lógica en el JSX**: extrae funciones auxiliares.
+- ✅ **Usa TypeScript**: los tipos documentan la arquitectura.
+- ✅ **Tests cerca del código**: `Boton.test.jsx` junto a `Boton.jsx`.
+- ✅ **Barrel files con moderación**: los `index.js` que reexportan pueden ralentizar el build.
+- ❌ **No abuses del estado global**: si solo lo usa un componente, es local.
+- ❌ **No mezcles lógica de negocio con UI**: usa hooks o servicios.
+
+---
+
+## 🧱 Ejemplo de arquitectura completa
+
+```
+src/
+├── app/
+│   ├── App.jsx
+│   ├── routes.jsx
+│   └── providers.jsx
+├── features/
+│   ├── auth/
+│   │   ├── components/
+│   │   │   ├── LoginForm.jsx
+│   │   │   └── LoginForm.test.jsx
+│   │   ├── hooks/
+│   │   │   └── useAuth.js
+│   │   ├── api.js
+│   │   └── index.js
+│   └── carrito/
+│       ├── components/
+│       ├── hooks/
+│       └── api.js
+├── shared/
+│   ├── components/
+│   │   ├── Button.jsx
+│   │   └── Modal.jsx
+│   ├── hooks/
+│   └── utils/
+└── styles/
+    └── global.css
+```
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué estructura de carpetas agrupa los archivos por funcionalidad (ej. /auth, /carrito)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Feature-first</button>
-    <button class="quiz-option" data-option="b">B) Type-first</button>
-    <button class="quiz-option" data-option="c">C) Monorepo</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-18">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué estructura de carpetas agrupa por funcionalidad?</p>
+<button class="quiz-option" data-opt="a">A) Layer-first</button>
+<button class="quiz-option" data-opt="b">B) Feature-first</button>
+<button class="quiz-option" data-opt="c">C) Flat</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué componente solo recibe props y renderiza UI?</p>
+<button class="quiz-option" data-opt="a">A) Componente de presentación</button>
+<button class="quiz-option" data-opt="b">B) Componente contenedor</button>
+<button class="quiz-option" data-opt="c">C) Componente de orden superior</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué herramienta es ideal para estado del servidor?</p>
+<button class="quiz-option" data-opt="a">A) Redux</button>
+<button class="quiz-option" data-opt="b">B) Context API</button>
+<button class="quiz-option" data-opt="c">C) TanStack Query</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué tipo de estado se refiere a los datos que vienen de una API (ej. lista de productos)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Estado Local</button>
-    <button class="quiz-option" data-option="b">B) Estado Global</button>
-    <button class="quiz-option" data-option="c">C) Estado del Servidor</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2018%3A%20Arquitectura%20frontend&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2018%3A%20Arquitectura%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/18-arquitectura/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## 🏆 ¡Has terminado el Nivel Avanzado!
+
+Si has llegado hasta aquí, ya sabes:
+
+- CSS moderno: variables, container queries, :has()
+- JavaScript asíncrono: promesas, async/await, event loop
+- Módulos y bundlers: Vite, Webpack, esbuild
+- Accesibilidad web: WCAG, ARIA, teclado
+- TypeScript: tipos, interfaces, genéricos
+- Testing: Vitest, Testing Library, Playwright
+- Rendimiento web: Core Web Vitals, lazy loading, optimización
+- Arquitectura frontend: estructura, patrones, estado
+
+!!! quote "Enhorabuena"
+    Has pasado de saber HTML, CSS y JS a dominar el ecosistema frontend moderno. Ahora toca el **Nivel Profesional**: Full-stack con Node.js y DevOps.
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 19 — Full-stack con Node.js](19-fullstack-node.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
