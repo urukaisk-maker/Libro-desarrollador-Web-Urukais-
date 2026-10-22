@@ -1,182 +1,61 @@
-# Ejercicios resueltos — Capítulo 17
+# 17 — Rendimiento
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/17-rendimiento.md)
-
-## Ejercicio 1: Medir con Lighthouse
-
-> Mide tu portfolio con Lighthouse.
-
-### Solución
-
-1. Abre DevTools (`F12`).
-2. Pestaña **Lighthouse**.
-3. Marca **Performance**, **Accessibility**, **Best Practices**, **SEO**.
-4. Elige **Mobile** (más realista).
-5. **Analyze page load**.
-
-Anota:
-- **FCP** (First Contentful Paint)
-- **LCP** (Largest Contentful Paint)
-- **CLS** (Cumulative Layout Shift)
-- **TBT** (Total Blocking Time)
+!!! quote "Ejercicio resuelto"
+    Practica lazy loading y optimización de imágenes.
 
 ---
 
-## Ejercicio 2: Imágenes en WebP
+## 🎯 Objetivo
 
-> Convierte tus imágenes a WebP y añade `loading="lazy"`.
+Optimiza una página con 10 imágenes para que:
 
-### Solución
+1. Solo carguen cuando se acerquen al viewport.
+2. Usen formatos modernos.
+3. Tengan \`width\` y \`height\` para evitar CLS.
 
-**Conversión (con `cwebp`):**
+---
 
-```bash
-cwebp foto.jpg -q 80 -o foto.webp
-```
+## 💡 Solución
 
-**HTML con fallback:**
+\`\`\`html
+<div class="galeria">
+  <img src="img1.webp" alt="Imagen 1" loading="lazy" width="400" height="300">
+  <img src="img2.webp" alt="Imagen 2" loading="lazy" width="400" height="300">
+  <!-- ... -->
+</div>
+\`\`\`
 
-```html
-<picture>
-  <source srcset="foto.webp" type="image/webp">
-  <img src="foto.jpg" alt="Descripción" width="800" height="600" loading="lazy">
-</picture>
-```
-
-**Sin convertir, con `srcset` responsive:**
-
-```html
+\`\`\`html
+<!-- Con srcset para responsive -->
 <img
-  src="foto-800.jpg"
-  srcset="foto-400.jpg 400w, foto-800.jpg 800w, foto-1200.jpg 1200w"
-  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
-  alt="Descripción"
+  src="foto-800.webp"
+  srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
+  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+  alt="Foto"
+  loading="lazy"
   width="800"
   height="600"
-  loading="lazy"
-  decoding="async"
 >
-```
+\`\`\`
 
 ---
 
-## Ejercicio 3: `width` y `height` en imágenes
+## 🧠 Conceptos clave
 
-> Añade dimensiones a todas las imágenes para evitar CLS.
-
-### Solución
-
-```html
-<!-- ❌ Mal: el navegador no reserva espacio -->
-<img src="foto.jpg" alt="...">
-
-<!-- ✅ Bien: el navegador reserva espacio y evita el salto -->
-<img src="foto.jpg" alt="..." width="800" height="600">
-
-<!-- Alternativa con CSS aspect-ratio -->
-<style>
-  .video {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-  }
-</style>
-<iframe class="video" src="..."></iframe>
-```
+- \`loading="lazy"\`: carga diferida.
+- \`width\` y \`height\`: reservan espacio, evitan CLS.
+- \`srcset\` y \`sizes\`: imágenes responsive.
+- WebP/AVIF: formatos modernos más ligeros.
 
 ---
 
-## Ejercicio 4: `font-display: swap`
+## 🚀 Retos extra
 
-> Configura `font-display: swap` en tus fuentes.
-
-### Solución
-
-```css
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-```
-
-O con Google Fonts:
-
-```html
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-  rel="stylesheet"
->
-```
-
-**`display=swap`** → muestra texto con fuente fallback mientras carga la real.
+- [ ] Convierte las imágenes a WebP con [Squoosh](https://squoosh.app/).
+- [ ] Añade \`<picture>\` con fallback JPG.
+- [ ] Mide el LCP antes y después con Lighthouse.
 
 ---
 
-## Ejercicio 5: Analizar el bundle
-
-> Analiza el bundle con `vite-bundle-visualizer`.
-
-### Solución
-
-```bash
-npm install -D vite-bundle-visualizer
-```
-
-Añade a `package.json`:
-
-```json
-{
-  "scripts": {
-    "analyze": "vite-bundle-visualizer"
-  }
-}
-```
-
-Ejecuta:
-
-```bash
-npm run analyze
-```
-
-Se abre un gráfico con el tamaño de cada dependencia. Identifica las más pesadas y busca alternativas más ligeras:
-
-| Paquete pesado | Alternativa ligera |
-|---|---|
-| `moment` (~70 KB) | `dayjs` (~2 KB) |
-| `lodash` (~70 KB) | `lodash-es` con tree shaking |
-| `axios` (~50 KB) | `fetch` nativo |
-| `jQuery` (~90 KB) | DOM nativo |
-
----
-
-## Ejercicio 6: `preconnect` y `preload`
-
-> Añade `preconnect` y `preload` para recursos críticos.
-
-### Solución
-
-```html
-<head>
-  <!-- Anticipa la conexión con la CDN de fuentes -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Precarga la fuente principal (usa las que aparecen en el primer render) -->
-  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Precarga el CSS crítico -->
-  <link rel="preload" href="/estilos.css" as="style">
-
-  <!-- DNS prefetch para servicios externos -->
-  <link rel="dns-prefetch" href="https://analytics.ejemplo.com">
-</head>
-```
-
-!!! warning "No abuses del preload"
-    Cada `preload` compite por ancho de banda. Úsalo solo para recursos **críticos** que descubrirías tarde.
-
----
-
-[Volver al índice](index.md) · [Capítulo original](../capitulos/17-rendimiento.md)
+[← Ejercicio 16](16-testing.md){ .md-button }
+[Ir al ejercicio 18 →](18-arquitectura.md){ .md-button .md-button--primary }
