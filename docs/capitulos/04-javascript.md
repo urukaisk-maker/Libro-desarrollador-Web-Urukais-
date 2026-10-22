@@ -1,146 +1,259 @@
-# Capítulo 4 — JavaScript esencial
+# 04 — JavaScript esencial
 
-## ¿Qué es JavaScript?
+!!! abstract "Qué vas a aprender"
+    - Qué es JavaScript y cómo se ejecuta.
+    - Variables, tipos y operadores.
+    - Funciones y estructuras de control.
+    - Manipulación del DOM.
+    - Eventos.
 
-JavaScript es el lenguaje de programación que da **vida** a la web. Mientras HTML define la estructura y CSS la presentación, JavaScript se encarga del **comportamiento**: responder a clics, validar formularios, cargar datos, animar elementos…
+---
 
-!!! info "JavaScript no es Java"
-    A pesar del nombre, JavaScript y Java son lenguajes completamente distintos. El nombre fue una jugada de marketing de los años 90.
+## ⚡ ¿Qué es JavaScript?
 
-## Cómo incluir JavaScript en HTML
+**JavaScript** es el lenguaje de programación que da **comportamiento** a la web. Es el único lenguaje que entienden todos los navegadores, y hoy también se usa en el servidor (Node.js), en apps móviles (React Native) y en el escritorio (Electron).
 
-### Opción 1: En línea (no recomendado)
+\`\`\`javascript
+console.log('Hola, mundo');
+\`\`\`
 
-```html
-<button onclick="alert('¡Hola!')">Pulsa</button>
-```
+!!! tip "JavaScript no es Java"
+    Aunque se llamen parecido, **JavaScript y Java son lenguajes completamente distintos**. Es una confusión histórica que se arrastra desde los años 90.
 
-### Opción 2: En el `<head>` o `<body>`
+---
 
-```html
-<script>
-  console.log('Hola desde JS');
-</script>
-```
+## 📦 Variables y tipos
 
-### Opción 3: Archivo externo (recomendado)
+\`\`\`javascript
+// Variables
+const nombre = 'Ana';   // no se puede reasignar
+let edad = 30;          // se puede reasignar
 
-```html
-<script src="app.js" defer></script>
-```
-
-## Variables
-
-```javascript
-let nombre = "Urukais";     // puede cambiar
-const PI = 3.1416;          // no puede cambiar
-var viejo = "evita var";    // forma antigua
-```
-
-!!! tip "Buena práctica"
-    Usa `const` por defecto. Solo usa `let` cuando sepas que el valor va a cambiar. Evita `var`.
-
-## Tipos de datos
+// Tipos primitivos
+const texto = 'hola';        // string
+const numero = 42;           // number
+const booleano = true;       // boolean
+const nulo = null;           // null
+const indefinido = undefined; // undefined
+\`\`\`
 
 | Tipo | Ejemplo |
-|---|---|
-| String | `"Hola"` |
-| Number | `42`, `3.14` |
-| Boolean | `true`, `false` |
-| Array | `[1, 2, 3]` |
-| Object | `{ nombre: "Urukais" }` |
-| null / undefined | `null`, `undefined` |
+| :--- | :--- |
+| string | 'hola', "mundo" |
+| number | 42, 3.14 |
+| boolean | true, false |
+| null | null |
+| undefined | undefined |
+| object | {}, [], new Date() |
+| function | function() {} |
 
-## Funciones
+---
 
-### Función declarada
+## 🧮 Operadores
 
-```javascript
-function saludar(nombre) {
-  return `Hola, ${nombre}`;
+\`\`\`javascript
+// Aritméticos
+5 + 3;   // 8
+5 - 3;   // 2
+5 * 3;   // 15
+5 / 3;   // 1.666…
+5 % 3;   // 2 (módulo)
+5 ** 3;  // 125 (potencia)
+
+// Comparación
+5 == '5';    // true (coerción)
+5 === '5';   // false (estricta)
+
+// Lógicos
+true && false;   // false (AND)
+true || false;   // true (OR)
+!true;           // false (NOT)
+
+// Ternario
+const edad = 20;
+const tipo = edad >= 18 ? 'adulto' : 'menor';
+\`\`\`
+
+!!! warning "Usa === siempre"
+    == hace coerción de tipos, lo que puede dar resultados inesperados. === compara valor y tipo.
+
+---
+
+## 🔧 Funciones
+
+\`\`\`javascript
+// Declaración
+function sumar(a, b) {
+  return a + b;
 }
-```
 
-### Función flecha (ES6+)
+// Expresión
+const restar = function(a, b) {
+  return a - b;
+};
 
-```javascript
-const saludar = (nombre) => `Hola, ${nombre}`;
-```
+// Arrow function
+const multiplicar = (a, b) => a * b;
 
-## Manipular el DOM
+// Parámetros por defecto
+function saludar(nombre = 'mundo') {
+  return 'Hola, ' + nombre;
+}
+\`\`\`
 
-El DOM (*Document Object Model*) es la representación del HTML en memoria. JavaScript puede leerlo y modificarlo.
+---
 
-```javascript
+## 🔁 Estructuras de control
+
+\`\`\`javascript
+// if / else
+const edad = 20;
+if (edad >= 18) {
+  console.log('Eres mayor de edad');
+} else {
+  console.log('Eres menor');
+}
+
+// for
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// forEach
+[1, 2, 3].forEach(n => console.log(n));
+
+// while
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+\`\`\`
+
+---
+
+## 🧰 Arrays
+
+\`\`\`javascript
+const arr = [1, 2, 3, 4, 5];
+
+// Métodos básicos
+arr.push(6);        // añade al final
+arr.pop();          // quita el último
+arr.length;         // longitud
+
+// Iteración
+arr.forEach(n => console.log(n));
+
+// Transformación
+const dobles = arr.map(n => n * 2);
+const pares = arr.filter(n => n % 2 === 0);
+const suma = arr.reduce((acc, n) => acc + n, 0);
+
+// Búsqueda
+arr.find(n => n > 3);
+arr.includes(3);
+\`\`\`
+
+---
+
+## 🏠 El DOM
+
+El **DOM** (*Document Object Model*) es la representación en memoria del HTML. JavaScript puede leerlo y modificarlo.
+
+\`\`\`javascript
+// Seleccionar elementos
 const titulo = document.querySelector('h1');
+const botones = document.querySelectorAll('.boton');
+
+// Modificar
 titulo.textContent = 'Nuevo título';
-titulo.style.color = 'purple';
-```
+titulo.innerHTML = '<strong>Nuevo</strong> título';
+titulo.classList.add('activo');
+titulo.style.color = 'red';
 
-## Eventos
+// Crear elementos
+const parrafo = document.createElement('p');
+parrafo.textContent = 'Hola';
+document.body.appendChild(parrafo);
 
-```javascript
+// Eliminar
+parrafo.remove();
+\`\`\`
+
+!!! tip "textContent vs innerHTML"
+    - textContent escribe **texto plano** (seguro).
+    - innerHTML interpreta **HTML** (peligroso si viene del usuario).
+    Siempre que puedas, usa textContent.
+
+---
+
+## 🎯 Eventos
+
+\`\`\`javascript
 const boton = document.querySelector('button');
-boton.addEventListener('click', () => {
-  alert('¡Has pulsado!');
+
+boton.addEventListener('click', (event) => {
+  console.log('Se hizo clic', event.target);
 });
-```
 
-## Ejemplo práctico
+// Formulario
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // evita el envío
+  console.log('Formulario enviado');
+});
+\`\`\`
 
-Ver [ejemplos/04-javascript/ejemplo.html](../ejemplos/04-javascript/ejemplo.html).
-
-### 🎮 Editor en Vivo: Prueba JavaScript
-
-Este es el ejemplo del contador interactivo. Pulsa el botón para ver cómo JavaScript modifica el HTML en tiempo real.
-
-<iframe src="../ejemplos/04-javascript/ejemplo.html" class="live-sandbox" style="width: 100%; height: 350px; border-radius: 12px; border: 1px solid var(--md-default-fg-color--lightest); background: white;"></iframe>
-
-### 🌐 Abrir en un Playground externo
-
-Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
-
-- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
-- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
-
-## Ejercicios
-
-1. Crea un botón que cambie el color de fondo del `body`.
-2. Muestra un mensaje con el nombre del usuario usando `prompt()`.
-3. Recorre un array de números y muestra la suma en consola.
+| Evento | Cuándo se dispara |
+| :--- | :--- |
+| click | Al hacer clic |
+| submit | Al enviar un formulario |
+| input | Al escribir en un input |
+| change | Al cambiar el valor |
+| keydown | Al pulsar una tecla |
+| scroll | Al hacer scroll |
+| DOMContentLoaded | Cuando el DOM está listo |
 
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué palabra clave se usa para declarar una constante en JavaScript?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) let</button>
-    <button class="quiz-option" data-option="b">B) const</button>
-    <button class="quiz-option" data-option="c">C) var</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-4">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué diferencia hay entre let y const?</p>
+<button class="quiz-option" data-opt="a">A) let es para números, const para texto</button>
+<button class="quiz-option" data-opt="b">B) const no se puede reasignar, let sí</button>
+<button class="quiz-option" data-opt="c">C) No hay diferencia</button>
 </div>
-
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué método se usa para seleccionar un elemento del DOM por su ID?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) document.getElementById()</button>
-    <button class="quiz-option" data-option="b">B) document.querySelector()</button>
-    <button class="quiz-option" data-option="c">C) document.getElementByClass()</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué método añade un elemento al final de un array?</p>
+<button class="quiz-option" data-opt="a">A) append</button>
+<button class="quiz-option" data-opt="b">B) add</button>
+<button class="quiz-option" data-opt="c">C) push</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué método selecciona el primer elemento que coincida con un selector CSS?</p>
+<button class="quiz-option" data-opt="a">A) querySelector</button>
+<button class="quiz-option" data-opt="b">B) getElementById</button>
+<button class="quiz-option" data-opt="c">C) querySelectorAll</button>
+</div>
 </div>
 
 ---
 
-### 🏋️ Practica con retos
+## 📢 Comparte este capítulo
 
-Pon a prueba todo lo que has aprendido en este capítulo con ejercicios con validación automática.
-
-[:material-pencil-ruler: Ir a los retos de JavaScript](../ejercicios-playground/#reto-1-suma-de-dos-numeros){ .md-button .md-button--primary }
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%204%3A%20JavaScript%20esencial&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%204%3A%20JavaScript%20esencial%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/04-javascript/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
 
 ---
 
-⬅️ [Capítulo 3 — CSS básico](03-css-basico.md) | ➡️ [Capítulo 5 — Diseño responsive](05-responsive.md)
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 5 — Diseño responsive](05-responsive.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
