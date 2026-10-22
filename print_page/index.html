@@ -14248,306 +14248,238 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report
 <hr />
 <h2 id="capitulos-16-testing-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-16-testing-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-17-rendimiento">Ir al Capítulo 17 — Rendimiento web</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-17-rendimiento" heading-number="18.7"><h1 id="capitulos-17-rendimiento-capitulo-17-rendimiento-web">Capítulo 17 — Rendimiento web<a class="headerlink" href="#capitulos-17-rendimiento-capitulo-17-rendimiento-web" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-17-rendimiento-introduccion">Introducción<a class="headerlink" href="#capitulos-17-rendimiento-introduccion" title="Permanent link">&para;</a></h2>
-<p>El <strong>rendimiento web</strong> determina cuánto tarda tu página en cargar, en responder y en volverse interactiva. No es un detalle técnico: es <strong>experiencia de usuario, conversión y SEO</strong>.</p>
-<p>Los estudios de Google y Amazon muestran que:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-17-rendimiento" heading-number="18.7"><h1 id="capitulos-17-rendimiento-17-rendimiento-web">17 — Rendimiento web<a class="headerlink" href="#capitulos-17-rendimiento-17-rendimiento-web" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Un segundo extra de carga puede reducir las conversiones un 7%.</li>
-<li>El 53% de los usuarios abandona si una página tarda más de 3 segundos.</li>
-<li>El rendimiento es un <strong>factor de ranking</strong> en Google.</li>
+<li>Por qué el rendimiento importa (negocio, UX, SEO).</li>
+<li>Core Web Vitals: LCP, INP, CLS.</li>
+<li>Cómo medir el rendimiento.</li>
+<li>Optimización de imágenes, fuentes, CSS y JS.</li>
+<li>Técnicas avanzadas: lazy loading, code splitting, critical CSS.</li>
 </ul>
-<h2 id="capitulos-17-rendimiento-core-web-vitals">Core Web Vitals<a class="headerlink" href="#capitulos-17-rendimiento-core-web-vitals" title="Permanent link">&para;</a></h2>
-<p>Google define tres métricas principales (y una cuarta opcional) para medir la experiencia real del usuario.</p>
+</div>
+<hr />
+<h2 id="capitulos-17-rendimiento-por-que-importa-el-rendimiento">⚡ ¿Por qué importa el rendimiento?<a class="headerlink" href="#capitulos-17-rendimiento-por-que-importa-el-rendimiento" title="Permanent link">&para;</a></h2>
+<p>El rendimiento web no es un lujo técnico: es <strong>dinero</strong>. Un segundo de retraso puede reducir las conversiones un 7%. Google penaliza los sitios lentos en el ranking.</p>
+<div class="admonition quote">
+<p class="admonition-title">Cada milisegundo cuenta</p>
+<p>Amazon calculó que 100 ms de latencia le costaban un 1% en ventas. El rendimiento no es opcional.</p>
+</div>
+<hr />
+<h2 id="capitulos-17-rendimiento-core-web-vitals">📊 Core Web Vitals<a class="headerlink" href="#capitulos-17-rendimiento-core-web-vitals" title="Permanent link">&para;</a></h2>
+<p>Google mide tres métricas clave para el SEO:</p>
 <table>
 <thead>
 <tr>
-<th>Métrica</th>
-<th>Qué mide</th>
-<th>Objetivo</th>
+<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Qué mide</th>
+<th style="text-align: left;">Objetivo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>LCP</strong></td>
-<td>Largest Contentful Paint — tiempo hasta que carga el elemento más grande</td>
-<td>&lt; 2.5 s</td>
+<td style="text-align: left;"><strong>LCP</strong> (Largest Contentful Paint)</td>
+<td style="text-align: left;">Cuándo se carga el elemento más grande visible</td>
+<td style="text-align: left;">&lt; 2.5 s</td>
 </tr>
 <tr>
-<td><strong>INP</strong></td>
-<td>Interaction to Next Paint — respuesta a la interacción</td>
-<td>&lt; 200 ms</td>
+<td style="text-align: left;"><strong>INP</strong> (Interaction to Next Paint)</td>
+<td style="text-align: left;">Latencia de las interacciones</td>
+<td style="text-align: left;">&lt; 200 ms</td>
 </tr>
 <tr>
-<td><strong>CLS</strong></td>
-<td>Cumulative Layout Shift — saltos visuales</td>
-<td>&lt; 0.1</td>
-</tr>
-<tr>
-<td><strong>TTFB</strong></td>
-<td>Time to First Byte — tiempo hasta el primer byte</td>
-<td>&lt; 800 ms</td>
+<td style="text-align: left;"><strong>CLS</strong> (Cumulative Layout Shift)</td>
+<td style="text-align: left;">Cambios de layout inesperados</td>
+<td style="text-align: left;">&lt; 0.1</td>
 </tr>
 </tbody>
 </table>
-<h3 id="capitulos-17-rendimiento-como-medirlas">Cómo medirlas<a class="headerlink" href="#capitulos-17-rendimiento-como-medirlas" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Lighthouse</strong> (DevTools → pestaña Lighthouse).</li>
-<li><strong><a href="https://pagespeed.web.dev/">PageSpeed Insights</a></strong>.</li>
-<li><strong><a href="https://chrome.google.com/webstore/detail/web-vitals/">Web Vitals Extension</a></strong>.</li>
-<li><strong><a href="https://developers.google.com/web/tools/chrome-user-experience-report">CrUX</a></strong> — datos reales de usuarios.</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-optimizacion-de-imagenes">Optimización de imágenes<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-imagenes" title="Permanent link">&para;</a></h2>
-<p>Las imágenes suelen ser el <strong>mayor peso</strong> de una página.</p>
+<h3 id="capitulos-17-rendimiento-como-medirlos">Cómo medirlos<a class="headerlink" href="#capitulos-17-rendimiento-como-medirlos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Lighthouse (Chrome DevTools)</span>
+F12<span class="w"> </span>-&gt;<span class="w"> </span>Lighthouse<span class="w"> </span>-&gt;<span class="w"> </span>Analyze<span class="w"> </span>page<span class="w"> </span>load
+
+<span class="c1"># PageSpeed Insights</span>
+https://pagespeed.web.dev/
+</code></pre></div>
+<hr />
+<h2 id="capitulos-17-rendimiento-optimizacion-de-imagenes">🖼️ Optimización de imágenes<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-imagenes" title="Permanent link">&para;</a></h2>
+<p>Las imágenes son el <strong>60% del peso</strong> de una web típica. Optimizarlas es lo que más impacto tiene.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.webp"</span>
+  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"</span>
+  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"</span>
+  <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span>
+  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
+  <span class="na">decoding</span><span class="o">=</span><span class="s">"async"</span>
+  <span class="na">width</span><span class="o">=</span><span class="s">"800"</span>
+  <span class="na">height</span><span class="o">=</span><span class="s">"600"</span>
+<span class="p">&gt;</span>
+</code></pre></div>
 <h3 id="capitulos-17-rendimiento-formatos-modernos">Formatos modernos<a class="headerlink" href="#capitulos-17-rendimiento-formatos-modernos" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Formato</th>
-<th>Uso</th>
+<th style="text-align: left;">Formato</th>
+<th style="text-align: left;">Ventaja</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>WebP</strong></td>
-<td>Estándar moderno, buena compresión</td>
+<td style="text-align: left;"><strong>WebP</strong></td>
+<td style="text-align: left;">25-35% más ligero que JPG/PNG</td>
 </tr>
 <tr>
-<td><strong>AVIF</strong></td>
-<td>Mejor compresión aún, soporte creciente</td>
+<td style="text-align: left;"><strong>AVIF</strong></td>
+<td style="text-align: left;">50% más ligero que JPG, mejor calidad</td>
 </tr>
 <tr>
-<td><strong>SVG</strong></td>
-<td>Iconos, logos, ilustraciones vectoriales</td>
-</tr>
-<tr>
-<td><strong>PNG</strong></td>
-<td>Transparencias</td>
-</tr>
-<tr>
-<td><strong>JPG</strong></td>
-<td>Fotografías (legacy)</td>
+<td style="text-align: left;"><strong>SVG</strong></td>
+<td style="text-align: left;">Vectorial, ideal para iconos y logos</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"foto.avif"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/avif"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"foto.webp"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/webp"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span> <span class="na">width</span><span class="o">=</span><span class="s">"800"</span> <span class="na">height</span><span class="o">=</span><span class="s">"600"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="capitulos-17-rendimiento-atributos-clave">Atributos clave<a class="headerlink" href="#capitulos-17-rendimiento-atributos-clave" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Herramientas de compresión</p>
 <ul>
-<li><strong><code>loading="lazy"</code></strong> — carga diferida para imágenes fuera de pantalla.</li>
-<li><strong><code>width</code> y <code>height</code></strong> — evitan CLS reservando el espacio.</li>
-<li><strong><code>srcset</code></strong> — sirve distintas resoluciones según el dispositivo.</li>
-<li><strong><code>decoding="async"</code></strong> — no bloquea el renderizado.</li>
+<li><a href="https://squoosh.app/">Squoosh</a> — comprime imágenes en el navegador.</li>
+<li><a href="https://tinypng.com/">TinyPNG</a> — compresión PNG/JPG.</li>
+<li><a href="https://jakearchibald.github.io/svgomg/">SVGOMG</a> — optimiza SVG.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span>
-  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.jpg"</span>
-  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.jpg 400w, foto-800.jpg 800w, foto-1200.jpg 1200w"</span>
-  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"</span>
-  <span class="na">alt</span><span class="o">=</span><span class="s">"..."</span>
-  <span class="na">width</span><span class="o">=</span><span class="s">"800"</span>
-  <span class="na">height</span><span class="o">=</span><span class="s">"600"</span>
-  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
-<span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="capitulos-17-rendimiento-optimizacion-de-css">Optimización de CSS<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-css" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-17-rendimiento-css-critico-inline">CSS crítico inline<a class="headerlink" href="#capitulos-17-rendimiento-css-critico-inline" title="Permanent link">&para;</a></h3>
-<p>El CSS bloquea el renderizado. Para el <strong>above-the-fold</strong>, incrusta el CSS crítico en el <code>&lt;head&gt;</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="c">/* CSS mínimo para la primera pantalla */</span>
-<span class="w">  </span><span class="nt">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/estilos.css"</span> <span class="na">as</span><span class="o">=</span><span class="s">"style"</span> <span class="na">onload</span><span class="o">=</span><span class="s">"this.rel='stylesheet'"</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="capitulos-17-rendimiento-evita-import-en-css">Evita <code>@import</code> en CSS<a class="headerlink" href="#capitulos-17-rendimiento-evita-import-en-css" title="Permanent link">&para;</a></h3>
-<p><code>@import</code> bloquea en cascada. Usa múltiples <code>&lt;link&gt;</code> o un bundler.</p>
-<h3 id="capitulos-17-rendimiento-minifica-y-comprime">Minifica y comprime<a class="headerlink" href="#capitulos-17-rendimiento-minifica-y-comprime" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Vite</strong>, <strong>PostCSS</strong> o <strong>cssnano</strong> minifican automáticamente.</li>
-<li>Activa <strong>gzip</strong> o <strong>Brotli</strong> en el servidor.</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-optimizacion-de-javascript">Optimización de JavaScript<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-javascript" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-17-rendimiento-reducir-el-bundle">Reducir el bundle<a class="headerlink" href="#capitulos-17-rendimiento-reducir-el-bundle" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Tree shaking</strong> — elimina código no usado (Vite, Rollup).</li>
-<li><strong>Code splitting</strong> — divide en chunks que se cargan bajo demanda.</li>
-<li><strong>Import dinámico</strong>:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./modal.js'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">abrirModal</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="capitulos-17-rendimiento-defer-y-async"><code>defer</code> y <code>async</code><a class="headerlink" href="#capitulos-17-rendimiento-defer-y-async" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Bloquea el HTML --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Descarga en paralelo, ejecuta tras parsear el HTML --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Descarga en paralelo, ejecuta al terminar la descarga --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span> <span class="na">async</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Módulos: defer por defecto --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Regla</strong>: usa <code>defer</code> casi siempre. <code>async</code> solo para scripts independientes (analytics, widgets).</p>
-<h3 id="capitulos-17-rendimiento-cuidado-con-las-librerias">Cuidado con las librerías<a class="headerlink" href="#capitulos-17-rendimiento-cuidado-con-las-librerias" title="Permanent link">&para;</a></h3>
-<p>Antes de instalar una dependencia:</p>
-<ul>
-<li>¿Cuánto pesa? Consulta <a href="https://bundlephobia.com/">Bundlephobia</a>.</li>
-<li>¿Puedo implementarlo yo en 20 líneas?</li>
-<li>¿Tiene equivalente más ligero? (ej. <code>dayjs</code> en lugar de <code>moment</code>).</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-fuentes-web">Fuentes web<a class="headerlink" href="#capitulos-17-rendimiento-fuentes-web" title="Permanent link">&para;</a></h2>
-<p>Las fuentes personalizadas son lentas. Estrategias:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preconnect"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://fonts.gstatic.com"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/fuentes/inter.woff2"</span> <span class="na">as</span><span class="o">=</span><span class="s">"font"</span> <span class="na">type</span><span class="o">=</span><span class="s">"font/woff2"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">font-face</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s1">'Inter'</span><span class="o">;</span>
-<span class="w">  </span><span class="nt">src</span><span class="o">:</span><span class="w"> </span><span class="nt">url</span><span class="o">(</span><span class="s1">'/fuentes/inter.woff2'</span><span class="o">)</span><span class="w"> </span><span class="nt">format</span><span class="o">(</span><span class="s1">'woff2'</span><span class="o">);</span>
-<span class="w">  </span><span class="nt">font-display</span><span class="o">:</span><span class="w"> </span><span class="nt">swap</span><span class="o">;</span><span class="w"> </span><span class="c">/* muestra texto con fuente fallback mientras carga */</span>
-<span class="w">  </span><span class="nt">font-weight</span><span class="o">:</span><span class="w"> </span><span class="nt">400</span><span class="o">;</span>
-<span class="w">  </span><span class="nt">font-style</span><span class="o">:</span><span class="w"> </span><span class="nt">normal</span><span class="o">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><strong><code>font-display: swap</code></strong> — evita texto invisible (FOIT).</li>
-<li><strong>Subset</strong> — carga solo los caracteres que usas.</li>
-<li><strong>Prefiere fuentes del sistema</strong> cuando sea posible (<code>system-ui</code>).</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-cache-y-cdn">Caché y CDN<a class="headerlink" href="#capitulos-17-rendimiento-cache-y-cdn" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-17-rendimiento-cache-control">Cache-Control<a class="headerlink" href="#capitulos-17-rendimiento-cache-control" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="err">Cache-Control: public, max-age=31536000, immutable</span>
-</code></pre></div>
-<p>Para assets con hash (<code>app-a1b2c3.js</code>), caché de un año.</p>
-<h3 id="capitulos-17-rendimiento-cdn">CDN<a class="headerlink" href="#capitulos-17-rendimiento-cdn" title="Permanent link">&para;</a></h3>
-<p>Sirve assets desde la ubicación más cercana al usuario. <strong>Cloudflare</strong>, <strong>Vercel</strong>, <strong>Netlify</strong> lo hacen automáticamente.</p>
-<h2 id="capitulos-17-rendimiento-compresion">Compresión<a class="headerlink" href="#capitulos-17-rendimiento-compresion" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Brotli</strong> — mejor ratio que gzip.</li>
-<li><strong>gzip</strong> — soporte universal.</li>
-<li>Configura el servidor para comprimir HTML, CSS, JS, SVG.</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-http2-y-http3">HTTP/2 y HTTP/3<a class="headerlink" href="#capitulos-17-rendimiento-http2-y-http3" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>HTTP/2</strong>: multiplexación, server push (obsoleto).</li>
-<li><strong>HTTP/3 (QUIC)</strong>: menor latencia, mejores conexiones móviles.</li>
-</ul>
-<p>La mayoría de CDN lo soportan sin configuración extra.</p>
-<h2 id="capitulos-17-rendimiento-preload-prefetch-y-preconnect">Preload, prefetch y preconnect<a class="headerlink" href="#capitulos-17-rendimiento-preload-prefetch-y-preconnect" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Recurso crítico: carga ya --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/fuentes/inter.woff2"</span> <span class="na">as</span><span class="o">=</span><span class="s">"font"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Recurso para la siguiente navegación --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/pagina-siguiente.html"</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Conexión anticipada a un origen --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preconnect"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://api.ejemplo.com"</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- DNS anticipado (más ligero) --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"dns-prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://analytics.ejemplo.com"</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">No abuses</p>
-<p>Cada <code>preload</code> compite por ancho de banda. Úsalo solo para recursos <strong>críticos</strong> que descubrirías tarde.</p>
 </div>
-<h2 id="capitulos-17-rendimiento-evitar-cls-saltos-visuales">Evitar CLS (saltos visuales)<a class="headerlink" href="#capitulos-17-rendimiento-evitar-cls-saltos-visuales" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Siempre <code>width</code> y <code>height</code></strong> en <code>&lt;img&gt;</code> e <code>&lt;iframe&gt;</code>.</li>
-<li>Reserva espacio para anuncios y embeds.</li>
-<li><strong><code>font-display: swap</code></strong> con fuentes similares.</li>
-<li>Evita insertar contenido sobre el que ya está visible.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c">/* Reserva espacio antes de que cargue */</span>
-<span class="p">.</span><span class="nc">video-wrapper</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
-<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-17-rendimiento-optimizacion-de-la-primera-carga">Optimización de la primera carga<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-la-primera-carga" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Mide</strong> con Lighthouse y PageSpeed Insights.</li>
-<li><strong>Reduce el bundle inicial</strong>. Carga solo lo necesario.</li>
-<li><strong>Sirve CSS crítico</strong> inline y el resto con <code>preload</code>.</li>
-<li><strong>Carga JS con <code>defer</code></strong> o <code>type="module"</code>.</li>
-<li><strong>Optimiza imágenes</strong>: WebP/AVIF, <code>lazy</code>, <code>srcset</code>.</li>
-<li><strong>Comprime con Brotli</strong>.</li>
-<li><strong>Activa caché</strong> con <code>Cache-Control</code> largo para assets con hash.</li>
-<li><strong>Usa CDN</strong>.</li>
-<li><strong>Mide en móvil</strong>. Muchos usuarios lo hacen desde ahí.</li>
-</ol>
-<h2 id="capitulos-17-rendimiento-herramientas">Herramientas<a class="headerlink" href="#capitulos-17-rendimiento-herramientas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Lighthouse</strong> (DevTools).</li>
-<li><strong>PageSpeed Insights</strong>.</li>
-<li><strong>WebPageTest</strong> — análisis detallado.</li>
-<li><strong>Bundlephobia</strong> — tamaño de dependencias.</li>
-<li><strong>Bundle Analyzer</strong> — Vite, Webpack.</li>
-<li><strong>Chrome Performance tab</strong> — análisis fino del renderizado.</li>
-<li><strong>Chrome Coverage tab</strong> — CSS/JS no usado.</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-ejemplo-de-4-s-a-12-s">Ejemplo: de 4 s a 1.2 s<a class="headerlink" href="#capitulos-17-rendimiento-ejemplo-de-4-s-a-12-s" title="Permanent link">&para;</a></h2>
-<p>Checklist aplicada a un caso real:</p>
-<ul>
-<li>❌ 3 imágenes de 2 MB → ✅ WebP + lazy + srcset → <strong>300 KB totales</strong>.</li>
-<li>❌ jQuery + Bootstrap + Moment → ✅ Vanilla + 3 utilidades → <strong>-180 KB</strong>.</li>
-<li>❌ CSS bloqueando el render → ✅ CSS crítico inline → <strong>FCP -800 ms</strong>.</li>
-<li>❌ Fuentes Google sin <code>preconnect</code> → ✅ autoalojadas + <code>preload</code> → <strong>-300 ms</strong>.</li>
-<li>❌ Sin compresión → ✅ Brotli en servidor → <strong>-70% transferencia</strong>.</li>
-<li>❌ Sin caché → ✅ <code>Cache-Control</code> 1 año en assets → <strong>0 ms en visitas repetidas</strong>.</li>
-</ul>
-<p><strong>Resultado</strong>: LCP de 4.1 s → 1.2 s. Score Lighthouse de 42 → 98.</p>
-<h2 id="capitulos-17-rendimiento-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-17-rendimiento-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Mide antes de optimizar</strong>. Sin datos, optimizas a ciegas.</li>
-<li><strong>Prioriza el móvil</strong>. Es donde más duele.</li>
-<li><strong>Optimiza imágenes primero</strong>. Es lo que más impacto tiene.</li>
-<li><strong>Menos JavaScript es más rápido</strong>. Cada KB cuenta.</li>
-<li><strong>Carga bajo demanda</strong> lo que no sea crítico.</li>
-<li><strong>Cachea todo lo posible</strong>.</li>
-<li><strong>Automatiza la medición</strong> en CI (Lighthouse CI).</li>
-<li><strong>Presupuesto de rendimiento</strong>: fija límites (ej. &lt; 200 KB de JS inicial).</li>
-<li><strong>Prueba en red lenta</strong> (DevTools → Network → Slow 3G).</li>
-</ul>
-<h2 id="capitulos-17-rendimiento-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-17-rendimiento-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Mide tu portfolio con Lighthouse. Anota los tres Core Web Vitals.</li>
-<li>Convierte tus imágenes JPG a WebP y añade <code>loading="lazy"</code>.</li>
-<li>Añade <code>width</code> y <code>height</code> a todas las imágenes. Verifica CLS en Lighthouse.</li>
-<li>Configura <code>font-display: swap</code> en tus fuentes.</li>
-<li>Analiza el bundle con <code>vite-bundle-visualizer</code> y elimina una dependencia pesada.</li>
-<li>Añade <code>preconnect</code> y <code>preload</code> para recursos críticos.</li>
-<li>Configura compresión Brotli en tu hosting.</li>
-<li>Ejecuta PageSpeed Insights en móvil y anota la mejora antes/después.</li>
-</ol>
 <hr />
-<h2 id="capitulos-17-rendimiento-capitulo-16-testing-frontend-capitulo-18-arquitectura-frontend">⬅️ <a href="#capitulos-16-testing">Capítulo 16 — Testing frontend</a> | ➡️ <a href="#capitulos-18-arquitectura">Capítulo 18 — Arquitectura frontend</a><a class="headerlink" href="#capitulos-17-rendimiento-capitulo-16-testing-frontend-capitulo-18-arquitectura-frontend" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-17-rendimiento-optimizacion-de-fuentes">🔤 Optimización de fuentes<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-fuentes" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">font-face</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s2">"Inter"</span><span class="o">;</span>
+<span class="w">  </span><span class="nt">src</span><span class="o">:</span><span class="w"> </span><span class="nt">url</span><span class="o">(</span><span class="s2">"/fonts/inter.woff2"</span><span class="o">)</span><span class="w"> </span><span class="nt">format</span><span class="o">(</span><span class="s2">"woff2"</span><span class="o">);</span>
+<span class="w">  </span><span class="nt">font-display</span><span class="o">:</span><span class="w"> </span><span class="nt">swap</span><span class="o">;</span>
+<span class="w">  </span><span class="nt">font-weight</span><span class="o">:</span><span class="w"> </span><span class="nt">100</span><span class="w"> </span><span class="nt">900</span><span class="o">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>font-display: swap</strong>: muestra el texto con la fuente de respaldo mientras carga la custom.</li>
+<li><strong>WOFF2</strong>: formato más ligero, soportado por todos los navegadores modernos.</li>
+<li><strong>Precarga</strong> la fuente crítica con link rel=preload.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Cada fuente pesa</p>
+<p>Cada tipografía custom pesa entre 20 y 200 KB. Limita el número de familias y pesos a los estrictamente necesarios.</p>
+</div>
+<hr />
+<h2 id="capitulos-17-rendimiento-optimizacion-de-css">🎨 Optimización de CSS<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-css" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Minifica</strong> el CSS en producción.</li>
+<li><strong>Critical CSS</strong>: inlinea el CSS crítico (el que se ve en el primer renderizado) y carga el resto con <code>loadCSS</code>.</li>
+<li><strong>Elimina CSS no usado</strong>: herramientas como PurgeCSS.</li>
+<li><strong>Evita <code>@import</code></strong> en CSS: bloquea la carga en cascada.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/styles.css"</span> <span class="na">media</span><span class="o">=</span><span class="s">"print"</span> <span class="na">onload</span><span class="o">=</span><span class="s">"this.media=\x27all\x27"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">noscript</span><span class="p">&gt;&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/styles.css"</span><span class="p">&gt;&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-17-rendimiento-optimizacion-de-javascript">⚡ Optimización de JavaScript<a class="headerlink" href="#capitulos-17-rendimiento-optimizacion-de-javascript" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Minifica y comprime</strong> (gzip/brotli).</li>
+<li><strong>Code splitting</strong>: carga solo el JS necesario para cada página.</li>
+<li><strong>Tree shaking</strong>: elimina código no usado.</li>
+<li><strong>Diferir scripts</strong>: <code>&lt;script defer&gt;</code> o <code>&lt;script async&gt;</code>.</li>
+<li><strong>Evita librerías enormes</strong> para cosas pequeñas (moment.js → date-fns, lodash → lodash-es).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"/app.js"</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong><code>defer</code></strong>: descarga en paralelo y ejecuta después de parsear el HTML (en orden).</li>
+<li><strong><code>async</code></strong>: descarga en paralelo y ejecuta en cuanto esté listo (sin orden).</li>
+</ul>
+<hr />
+<h2 id="capitulos-17-rendimiento-lazy-loading">🚀 Lazy loading<a class="headerlink" href="#capitulos-17-rendimiento-lazy-loading" title="Permanent link">&para;</a></h2>
+<p>Carga recursos <strong>solo cuando se necesitan</strong>, no antes.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Imágenes --&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Iframes (vídeos, mapas) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://youtube.com/embed/..."</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Componentes JS --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s2">"./modal.js"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">abrirModal</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-17-rendimiento-tecnicas-avanzadas">🏎️ Técnicas avanzadas<a class="headerlink" href="#capitulos-17-rendimiento-tecnicas-avanzadas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Técnica</th>
+<th style="text-align: left;">Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Preload</strong></td>
+<td style="text-align: left;">Descarga un recurso prioritario antes de que se necesite</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Prefetch</strong></td>
+<td style="text-align: left;">Descarga un recurso probable para la próxima navegación</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Preconnect</strong></td>
+<td style="text-align: left;">Abre conexión con un dominio externo antes de necesitarlo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Service Worker</strong></td>
+<td style="text-align: left;">Cachea recursos para carga offline e instantánea</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CDN</strong></td>
+<td style="text-align: left;">Sirve assets desde el servidor más cercano al usuario</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preconnect"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://fonts.googleapis.com"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/fonts/inter.woff2"</span> <span class="na">as</span><span class="o">=</span><span class="s">"font"</span> <span class="na">type</span><span class="o">=</span><span class="s">"font/woff2"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/proxima-pagina.html"</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
 <h2 id="capitulos-17-rendimiento-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-17-rendimiento-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué métrica mide el tiempo que tarda en cargar el elemento más grande de la página?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) FCP (First Contentful Paint)</button>
-    <button class="quiz-option" data-option="b">B) CLS (Cumulative Layout Shift)</button>
-    <button class="quiz-option" data-option="c">C) LCP (Largest Contentful Paint)</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-17">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué mide LCP?</p>
+<button class="quiz-option" data-opt="a">A) El cambio de layout</button>
+<button class="quiz-option" data-opt="b">B) El tiempo de carga del elemento más grande visible</button>
+<button class="quiz-option" data-opt="c">C) La latencia de las interacciones</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué formato de imagen es más ligero?</p>
+<button class="quiz-option" data-opt="a">A) AVIF</button>
+<button class="quiz-option" data-opt="b">B) PNG</button>
+<button class="quiz-option" data-opt="c">C) BMP</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué atributo carga una imagen solo cuando se acerca al viewport?</p>
+<button class="quiz-option" data-opt="a">A) async</button>
+<button class="quiz-option" data-opt="b">B) defer</button>
+<button class="quiz-option" data-opt="c">C) loading="lazy"</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué atributo HTML carga las imágenes solo cuando están a punto de aparecer en pantalla?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) async</button>
-    <button class="quiz-option" data-option="b">B) loading="lazy"</button>
-    <button class="quiz-option" data-option="c">C) defer</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-18-arquitectura" heading-number="18.8"><h1 id="capitulos-18-arquitectura-capitulo-18-arquitectura-frontend">Capítulo 18 — Arquitectura frontend<a class="headerlink" href="#capitulos-18-arquitectura-capitulo-18-arquitectura-frontend" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-17-rendimiento-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-17-rendimiento-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2017%3A%20Rendimiento%20web&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2017%3A%20Rendimiento%20web%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F17-rendimiento%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/17-rendimiento/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-17-rendimiento-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-17-rendimiento-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-18-arquitectura">Ir al Capítulo 18 — Arquitectura frontend</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-18-arquitectura" heading-number="18.8"><h1 id="capitulos-18-arquitectura-capitulo-18-arquitectura-frontend">Capítulo 18 — Arquitectura frontend<a class="headerlink" href="#capitulos-18-arquitectura-capitulo-18-arquitectura-frontend" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-18-arquitectura-introduccion">Introducción<a class="headerlink" href="#capitulos-18-arquitectura-introduccion" title="Permanent link">&para;</a></h2>
 <p>Escribir componentes funciona. Pero cuando el proyecto crece a decenas de miles de líneas, necesitas <strong>arquitectura</strong>: decisiones conscientes sobre cómo se organiza el código, cómo fluye el estado y cómo se comunican las partes.</p>
 <p>Este capítulo repasa los patrones y principios que separan un proyecto amateur de uno profesional.</p>
