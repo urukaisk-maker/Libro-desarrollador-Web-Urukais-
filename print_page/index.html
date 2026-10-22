@@ -12106,122 +12106,229 @@ git stash drop         # eliminar un stash
 <hr />
 <h2 id="capitulos-07-git-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-07-git-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-08-apis">Ir al Capítulo 8 — Consumo de APIs con fetch</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-08-apis" heading-number="17.2"><h1 id="capitulos-08-apis-capitulo-8-consumo-de-apis-con-fetch">Capítulo 8 — Consumo de APIs con fetch<a class="headerlink" href="#capitulos-08-apis-capitulo-8-consumo-de-apis-con-fetch" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-08-apis-que-es-una-api">¿Qué es una API?<a class="headerlink" href="#capitulos-08-apis-que-es-una-api" title="Permanent link">&para;</a></h2>
-<p>Una <strong>API</strong> (<em>Application Programming Interface</em>) es un conjunto de reglas que permite a dos programas comunicarse. En la web, casi siempre hablamos de <strong>APIs REST</strong>: servicios que exponen datos en formato JSON a través de URLs.</p>
-<p>Ejemplo: <code>https://api.github.com/users/urukaisk-maker</code> devuelve información de un usuario de GitHub en JSON.</p>
-<h2 id="capitulos-08-apis-metodos-http">Métodos HTTP<a class="headerlink" href="#capitulos-08-apis-metodos-http" title="Permanent link">&para;</a></h2>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-08-apis" heading-number="17.2"><h1 id="capitulos-08-apis-08-consumo-de-apis-con-fetch">08 — Consumo de APIs con fetch<a class="headerlink" href="#capitulos-08-apis-08-consumo-de-apis-con-fetch" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué es una API y para qué sirve.</li>
+<li>Cómo hacer peticiones HTTP con fetch.</li>
+<li>Manejar respuestas JSON.</li>
+<li>async/await y manejo de errores.</li>
+<li>Buenas prácticas al consumir APIs.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-08-apis-que-es-una-api">🔌 ¿Qué es una API?<a class="headerlink" href="#capitulos-08-apis-que-es-una-api" title="Permanent link">&para;</a></h2>
+<p>Una <strong>API</strong> (<em>Application Programming Interface</em>) es un conjunto de reglas que permite que dos programas se comuniquen. En desarrollo web, casi siempre se refiere a una <strong>API REST</strong> que devuelve datos en formato <strong>JSON</strong>.</p>
+<div class="admonition quote">
+<p class="admonition-title">Una API es como un camarero</p>
+<p>Tú (el cliente) pides algo del menú (la petición). El camarero (la API) va a la cocina (el servidor), recoge tu pedido y te lo trae (la respuesta). No necesitas saber cómo funciona la cocina.</p>
+</div>
+<hr />
+<h2 id="capitulos-08-apis-anatomia-de-una-peticion-http">🌐 Anatomía de una petición HTTP<a class="headerlink" href="#capitulos-08-apis-anatomia-de-una-peticion-http" title="Permanent link">&para;</a></h2>
+<p>```
+GET https://api.ejemplo.com/usuarios?limit=10
+Headers:
+  Authorization: Bearer token123
+  Content-Type: application/json
+```</p>
 <table>
 <thead>
 <tr>
-<th>Método</th>
-<th>Uso</th>
+<th style="text-align: left;">Verbo</th>
+<th style="text-align: left;">Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>GET</code></td>
-<td>Obtener datos</td>
+<td style="text-align: left;">`GET`</td>
+<td style="text-align: left;">Obtener datos</td>
 </tr>
 <tr>
-<td><code>POST</code></td>
-<td>Crear un recurso</td>
+<td style="text-align: left;">`POST`</td>
+<td style="text-align: left;">Crear un recurso</td>
 </tr>
 <tr>
-<td><code>PUT</code> / <code>PATCH</code></td>
-<td>Actualizar</td>
+<td style="text-align: left;">`PUT` / `PATCH`</td>
+<td style="text-align: left;">Actualizar un recurso</td>
 </tr>
 <tr>
-<td><code>DELETE</code></td>
-<td>Borrar</td>
+<td style="text-align: left;">`DELETE`</td>
+<td style="text-align: left;">Eliminar un recurso</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capitulos-08-apis-json">JSON<a class="headerlink" href="#capitulos-08-apis-json" title="Permanent link">&para;</a></h2>
-<p><strong>JSON</strong> (<em>JavaScript Object Notation</em>) es el formato estándar para intercambiar datos.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Urukais"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"edad"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"lenguajes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"HTML"</span><span class="p">,</span><span class="w"> </span><span class="s2">"CSS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"JavaScript"</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-08-apis-peticiones-con-fetch">Peticiones con fetch<a class="headerlink" href="#capitulos-08-apis-peticiones-con-fetch" title="Permanent link">&para;</a></h2>
-<p><code>fetch()</code> es la forma moderna de hacer peticiones HTTP desde el navegador.</p>
-<h3 id="capitulos-08-apis-get-basico">GET básico<a class="headerlink" href="#capitulos-08-apis-get-basico" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.github.com/users/urukaisk-maker'</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-</code></pre></div>
-<h3 id="capitulos-08-apis-con-asyncawait-mas-limpio">Con async/await (más limpio)<a class="headerlink" href="#capitulos-08-apis-con-asyncawait-mas-limpio" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerUsuario</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.github.com/users/urukaisk-maker'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">obtenerUsuario</span><span class="p">();</span>
-</code></pre></div>
-<h3 id="capitulos-08-apis-manejo-de-errores">Manejo de errores<a class="headerlink" href="#capitulos-08-apis-manejo-de-errores" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerUsuario</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.github.com/users/urukaisk-maker'</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-08-apis-post-con-datos">POST con datos<a class="headerlink" href="#capitulos-08-apis-post-con-datos" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/posts'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">'Hola'</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">'Mundo'</span><span class="w"> </span><span class="p">})</span>
-<span class="p">});</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-</code></pre></div>
-<h2 id="capitulos-08-apis-mostrar-datos-en-el-dom">Mostrar datos en el DOM<a class="headerlink" href="#capitulos-08-apis-mostrar-datos-en-el-dom" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarUsuarios</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/users'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#lista'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">usuarios</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;li&gt;</span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> — </span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">email</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">cargarUsuarios</span><span class="p">();</span>
-</code></pre></div>
-<h2 id="capitulos-08-apis-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-08-apis-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-08-apis-ejemplo">ejemplos/08-apis/ejemplo.html</a>.</p>
-<h2 id="capitulos-08-apis-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-08-apis-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Muestra una lista de usuarios de <code>jsonplaceholder.typicode.com/users</code>.</li>
-<li>Añade un <code>input</code> para buscar usuarios por nombre.</li>
-<li>Muestra un mensaje de "Cargando…" mientras llega la respuesta.</li>
-<li>Maneja el error cuando la API devuelve 404.</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Código</th>
+<th style="text-align: left;">Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">OK</td>
+</tr>
+<tr>
+<td style="text-align: left;">201</td>
+<td style="text-align: left;">Creado</td>
+</tr>
+<tr>
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">Petición incorrecta</td>
+</tr>
+<tr>
+<td style="text-align: left;">401</td>
+<td style="text-align: left;">No autorizado</td>
+</tr>
+<tr>
+<td style="text-align: left;">403</td>
+<td style="text-align: left;">Prohibido</td>
+</tr>
+<tr>
+<td style="text-align: left;">404</td>
+<td style="text-align: left;">No encontrado</td>
+</tr>
+<tr>
+<td style="text-align: left;">500</td>
+<td style="text-align: left;">Error del servidor</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="capitulos-08-apis-capitulo-7-git-capitulo-9-despliegue-y-hosting">⬅ <a href="#capitulos-07-git">Capítulo 7 — Git</a> | ➡ <a href="#capitulos-09-despliegue">Capítulo 9 — Despliegue y hosting</a><a class="headerlink" href="#capitulos-08-apis-capitulo-7-git-capitulo-9-despliegue-y-hosting" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-08-apis-fetch-basico">📡 Fetch básico<a class="headerlink" href="#capitulos-08-apis-fetch-basico" title="Permanent link">&para;</a></h2>
+<p>```javascript
+fetch('https://api.ejemplo.com/usuarios')
+  .then(res =&gt; {
+    if (!res.ok) throw new Error('Error HTTP ' + res.status);
+    return res.json();
+  })
+  .then(data =&gt; console.log(data))
+  .catch(err =&gt; console.error(err));
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">fetch no falla en errores HTTP</p>
+<p>`fetch` solo rechaza la promesa si hay un error <strong>de red</strong>. Si el servidor devuelve un 404 o un 500, la promesa se resuelve igual. Por eso hay que comprobar `res.ok` manualmente.</p>
+</div>
+<hr />
+<h2 id="capitulos-08-apis-asyncawait">⚡ async/await<a class="headerlink" href="#capitulos-08-apis-asyncawait" title="Permanent link">&para;</a></h2>
+<p>La forma moderna y más legible:</p>
+<p>```javascript
+async function cargarUsuarios() {
+  try {
+    const res = await fetch('https://api.ejemplo.com/usuarios');
+    if (!res.ok) throw new Error('Error HTTP ' + res.status);
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error('Algo salió mal:', err);
+  }
+}</p>
+<p>cargarUsuarios();
+```</p>
+<hr />
+<h2 id="capitulos-08-apis-enviar-datos-post">📤 Enviar datos (POST)<a class="headerlink" href="#capitulos-08-apis-enviar-datos-post" title="Permanent link">&para;</a></h2>
+<p>```javascript
+async function crearUsuario(usuario) {
+  const res = await fetch('https://api.ejemplo.com/usuarios', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(usuario),
+  });</p>
+<p>if (!res.ok) throw new Error('Error al crear usuario');
+  return res.json();
+}</p>
+<p>crearUsuario({ nombre: 'Ana', email: 'ana@ejemplo.com' })
+  .then(data =&gt; console.log('Creado:', data))
+  .catch(err =&gt; console.error(err));
+```</p>
+<hr />
+<h2 id="capitulos-08-apis-autenticacion-con-tokens">🔑 Autenticación con tokens<a class="headerlink" href="#capitulos-08-apis-autenticacion-con-tokens" title="Permanent link">&para;</a></h2>
+<p>```javascript
+const res = await fetch('https://api.ejemplo.com/perfil', {
+  headers: {
+    'Authorization': 'Bearer ' + token,
+  },
+});
+```</p>
+<div class="admonition warning">
+<p class="admonition-title">Nunca guardes tokens en el código</p>
+<p>Los tokens van en variables de entorno o en `localStorage` (con cuidado). <strong>Nunca</strong> en el código fuente que subes a GitHub.</p>
+</div>
+<hr />
+<h2 id="capitulos-08-apis-peticiones-en-paralelo">🔄 Peticiones en paralelo<a class="headerlink" href="#capitulos-08-apis-peticiones-en-paralelo" title="Permanent link">&para;</a></h2>
+<p>```javascript
+const [usuarios, posts] = await Promise.all([
+  fetch('/api/usuarios').then(r =&gt; r.json()),
+  fetch('/api/posts').then(r =&gt; r.json()),
+]);
+```</p>
+<p>`Promise.all` espera a que <strong>todas</strong> terminen. Si una falla, todo falla.</p>
+<p>```javascript
+const resultados = await Promise.allSettled([
+  fetch('/api/a').then(r =&gt; r.json()),
+  fetch('/api/b').then(r =&gt; r.json()),
+]);
+// resultados[0].status === 'fulfilled' o 'rejected'
+```</p>
+<p>`Promise.allSettled` espera a todas, pero <strong>no falla</strong> si alguna falla.</p>
+<hr />
+<h2 id="capitulos-08-apis-manejo-de-errores">🚨 Manejo de errores<a class="headerlink" href="#capitulos-08-apis-manejo-de-errores" title="Permanent link">&para;</a></h2>
+<p>```javascript
+async function cargarDatos() {
+  try {
+    const res = await fetch('/api/datos');
+    if (!res.ok) {
+      if (res.status === 401) throw new Error('No autorizado');
+      if (res.status === 404) throw new Error('No encontrado');
+      throw new Error('Error HTTP ' + res.status);
+    }
+    return await res.json();
+  } catch (err) {
+    console.error(err.message);
+    return null;
+  }
+}
+```</p>
+<hr />
 <h2 id="capitulos-08-apis-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-08-apis-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué significa API?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Application Programming Interface</button>
-    <button class="quiz-option" data-option="b">B) Advanced Programming Interaction</button>
-    <button class="quiz-option" data-option="c">C) Automated Process Integration</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-8">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué verbo HTTP se usa para obtener datos?</p>
+<button class="quiz-option" data-opt="a">A) POST</button>
+<button class="quiz-option" data-opt="b">B) GET</button>
+<button class="quiz-option" data-opt="c">C) DELETE</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué hay que comprobar después de un fetch para saber si hubo error HTTP?</p>
+<button class="quiz-option" data-opt="a">A) res.ok</button>
+<button class="quiz-option" data-opt="b">B) res.error</button>
+<button class="quiz-option" data-opt="c">C) res.status === 0</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué método espera a que todas las promesas terminen?</p>
+<button class="quiz-option" data-opt="a">A) Promise.race</button>
+<button class="quiz-option" data-opt="b">B) Promise.any</button>
+<button class="quiz-option" data-opt="c">C) Promise.all</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué formato de datos es el más común al consumir APIs hoy en día?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) XML</button>
-    <button class="quiz-option" data-option="b">B) CSV</button>
-    <button class="quiz-option" data-option="c">C) JSON</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-09-despliegue" heading-number="17.3"><h1 id="capitulos-09-despliegue-capitulo-9-despliegue-y-hosting">Capítulo 9 — Despliegue y hosting<a class="headerlink" href="#capitulos-09-despliegue-capitulo-9-despliegue-y-hosting" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-08-apis-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-08-apis-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%208%3A%20Consumo%20de%20APIs%20con%20fetch&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%208%3A%20Consumo%20de%20APIs%20con%20fetch%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/08-apis/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-08-apis-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-08-apis-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-09-despliegue">Ir al Capítulo 9 — Despliegue y hosting</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-09-despliegue" heading-number="17.3"><h1 id="capitulos-09-despliegue-capitulo-9-despliegue-y-hosting">Capítulo 9 — Despliegue y hosting<a class="headerlink" href="#capitulos-09-despliegue-capitulo-9-despliegue-y-hosting" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-09-despliegue-que-es-desplegar">¿Qué es desplegar?<a class="headerlink" href="#capitulos-09-despliegue-que-es-desplegar" title="Permanent link">&para;</a></h2>
 <p><strong>Desplegar</strong> (o <em>deploy</em>) significa publicar tu web en internet para que cualquiera pueda visitarla. Hasta ahora has trabajado en local (<code>file://</code>), ahora toca subirla a un servidor.</p>
 <h2 id="capitulos-09-despliegue-opciones-de-hosting">Opciones de hosting<a class="headerlink" href="#capitulos-09-despliegue-opciones-de-hosting" title="Permanent link">&para;</a></h2>
