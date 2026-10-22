@@ -9099,13 +9099,11 @@ Copiar enlace
 <p><a class="md-button md-button--primary" href="#.">📖 Volver al índice</a>
 <a class="md-button" href="#logros">🎯 Ver mi progreso</a></p>
 <hr />
-<p><strong>Última actualización:</strong> Octubre 2026 · <strong>Autor:</strong> <a href="#autor">Manuel Casimiro Carrasco (Urukais)</a></p></section><section class="print-page" id="entrevistas" heading-number="11"><p>cd ~/Libro-desarrollador-Web-Urukais-
-bash -c 'cat &gt; docs/entrevistas.md &lt;&lt; "ENTREVISTAS_EOF"</p>
-<h1 id="entrevistas-preguntas-de-entrevista">💼 Preguntas de Entrevista<a class="headerlink" href="#entrevistas-preguntas-de-entrevista" title="Permanent link">&para;</a></h1>
-<div class="admonition quote">
-<p class="admonition-title">Prepárate para tu próxima oportunidad</p>
-<p>Una colección de las preguntas más comunes en entrevistas técnicas para desarrolladores frontend, con respuestas detalladas y ejemplos de código. Organizadas por nivel para que puedas practicar según tu experiencia.</p>
-</div>
+<p><strong>Última actualización:</strong> Octubre 2026 · <strong>Autor:</strong> <a href="#autor">Manuel Casimiro Carrasco (Urukais)</a></p></section><section class="print-page" id="entrevistas" heading-number="11"><h1 id="entrevistas-entrevistas">Preguntas de Entrevista</h1><p>cd ~/Libro-desarrollador-Web-Urukais-
+python3 -c "
+contenido = '''# 💼 Preguntas de Entrevista</p>
+<p>!!! quote \"Prepárate para tu próxima oportunidad\"
+    Una colección de las preguntas más comunes en entrevistas técnicas para desarrolladores frontend, con respuestas detalladas y ejemplos de código. Organizadas por nivel para que puedas practicar según tu experiencia.</p>
 <hr />
 <h2 id="entrevistas-como-usar-esta-pagina">🎯 Cómo usar esta página<a class="headerlink" href="#entrevistas-como-usar-esta-pagina" title="Permanent link">&para;</a></h2>
 <ol>
@@ -9114,22 +9112,344 @@ bash -c 'cat &gt; docs/entrevistas.md &lt;&lt; "ENTREVISTAS_EOF"</p>
 <li><strong>Practica el código</strong> de los ejemplos en tu editor.</li>
 <li><strong>No memorices</strong>: entiende el concepto.</li>
 </ol>
-<div class="admonition tip">
-<p class="admonition-title">Consejo para entrevistas</p>
-<p>En una entrevista técnica no solo importa la respuesta correcta, sino <strong>cómo piensas</strong>. Si no sabes algo, dilo y explica cómo lo buscarías. La honestidad vale más que fingir.</p>
-</div>
+<p>!!! tip \"Consejo para entrevistas\"
+    En una entrevista técnica no solo importa la respuesta correcta, sino <strong>cómo piensas</strong>. Si no sabes algo, dilo y explica cómo lo buscarías. La honestidad vale más que fingir.</p>
 <hr />
 <h2 id="entrevistas-nivel-principiante">🟢 Nivel Principiante<a class="headerlink" href="#entrevistas-nivel-principiante" title="Permanent link">&para;</a></h2>
-<details class="question">
-<summary>¿Qué diferencia hay entre <code>let</code>, <code>const</code> y <code>var</code>?</summary>
-<p><strong><code>var</code></strong>: Tiene alcance de función y se eleva (hoisting). Se puede redeclarar. Evítalo en código moderno.</p>
-<p><strong><code>let</code></strong>: Tiene alcance de bloque. No se puede redeclarar, pero sí reasignar.</p>
-<p><strong><code>const</code></strong>: Tiene alcance de bloque. No se puede redeclarar ni reasignar. Requiere inicialización.</p>
-<p>```javascript
-var x = 1;     // function scope
-let y = 2;     // block scope
-const z = 3;   // block scope, no reasignable</p>
-</details></section><section class="print-page" id="apoya" heading-number="12"><h1 id="apoya-apoya-el-proyecto">❤️ Apoya el Proyecto<a class="headerlink" href="#apoya-apoya-el-proyecto" title="Permanent link">&para;</a></h1>
+<p>??? question \"¿Qué diferencia hay entre let, const y var?\"
+    <strong>var</strong>: Tiene alcance de función y se eleva (hoisting). Se puede redeclarar. Evítalo en código moderno.</p>
+<div class="highlight"><pre><span></span><code>**let**: Tiene alcance de bloque. No se puede redeclarar, pero sí reasignar.
+
+**const**: Tiene alcance de bloque. No se puede redeclarar ni reasignar. Requiere inicialización.
+
+\`\`\`javascript
+var x = 1;
+let y = 2;
+const z = 3;
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es el DOM y para qué sirve?\"
+    El <strong>DOM</strong> (<em>Document Object Model</em>) es una representación en forma de árbol del documento HTML que el navegador construye en memoria. Permite a JavaScript acceder y manipular los elementos de la página.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+const titulo = document.querySelector('h1');
+titulo.textContent = 'Nuevo título';
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es un evento y cómo se maneja en JavaScript?\"
+    Un <strong>evento</strong> es una acción que ocurre en el navegador: un clic, una tecla, el envío de un formulario, el scroll, la carga de la página… JavaScript puede <strong>escuchar</strong> esos eventos y ejecutar código cuando ocurren.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+const boton = document.querySelector('button');
+boton.addEventListener('click', (event) =&gt; {
+  console.log('Se hizo clic', event.target);
+});
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué diferencia hay entre == y ===?\"
+    - <strong>==</strong> compara solo el valor después de una coerción de tipos.
+    - <strong>===</strong> compara valor y tipo (igualdad estricta).</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+5 == '5';   // true
+5 === '5';  // false
+null == undefined;   // true
+null === undefined;  // false
+\`\`\`
+
+**Siempre usa ===** salvo que tengas una razón muy justificada para lo contrario.
+</code></pre></div>
+<p>??? question \"¿Qué es el hoisting?\"
+    Es el comportamiento de JavaScript que <strong>eleva las declaraciones de variables y funciones al inicio de su scope</strong>. Las funciones declaradas se pueden usar antes de su definición; las variables var se elevan pero su valor es undefined hasta la asignación.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+console.log(nombre); // undefined (no error)
+var nombre = 'Ana';
+
+saludar(); // 'Hola' (funciona)
+function saludar() { console.log('Hola'); }
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es un closure y para qué sirve?\"
+    Un <strong>closure</strong> es una función que \"recuerda\" el entorno en el que fue creada, incluso después de que ese entorno haya dejado de existir. Se usa para encapsular estado privado.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+function crearContador() {
+  let contador = 0;
+  return function () {
+    contador++;
+    return contador;
+  };
+}
+
+const contador = crearContador();
+console.log(contador()); // 1
+console.log(contador()); // 2
+console.log(contador()); // 3
+\`\`\`
+</code></pre></div>
+<hr />
+<h2 id="entrevistas-nivel-intermedio">🟡 Nivel Intermedio<a class="headerlink" href="#entrevistas-nivel-intermedio" title="Permanent link">&para;</a></h2>
+<p>??? question \"¿Qué es el event loop en JavaScript?\"
+    El <strong>event loop</strong> es el mecanismo que permite a JavaScript (que es de un solo hilo) gestionar operaciones asíncronas. Funciona con:</p>
+<div class="highlight"><pre><span></span><code>1. **Call stack**: pila de llamadas síncronas.
+2. **Task queue**: cola de tareas (macrotareas) como setTimeout.
+3. **Microtask queue**: cola de microtareas como promesas.
+
+El event loop vacía la pila, luego las microtareas, luego las macrotareas, una por una.
+
+\`\`\`javascript
+console.log('1');
+setTimeout(() =&gt; console.log('2'), 0);
+Promise.resolve().then(() =&gt; console.log('3'));
+console.log('4');
+// Salida: 1, 4, 3, 2
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué diferencia hay entre una promesa y async/await?\"
+    <strong>Ambas son la misma cosa por debajo</strong>: async/await es azúcar sintáctico sobre promesas. La diferencia es de estilo:</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+// Con promesas
+fetch('/api/user')
+  .then(res =&gt; res.json())
+  .then(data =&gt; console.log(data))
+  .catch(err =&gt; console.error(err));
+
+// Con async/await
+async function cargar() {
+  try {
+    const res = await fetch('/api/user');
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+\`\`\`
+
+async/await es más legible, especialmente cuando hay varias operaciones encadenadas.
+</code></pre></div>
+<p>??? question \"¿Qué es la delegación de eventos y por qué es útil?\"
+    Es una técnica que consiste en <strong>añadir un único event listener a un elemento padre</strong> en lugar de añadirlo a cada uno de los hijos. Se basa en el bubbling de los eventos.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+document.querySelector('ul').addEventListener('click', (e) =&gt; {
+  if (e.target.matches('li')) {
+    console.log('Click en li:', e.target.textContent);
+  }
+});
+\`\`\`
+
+**Ventajas**: menos listeners (mejor rendimiento), funciona con elementos añadidos dinámicamente, código más limpio.
+</code></pre></div>
+<p>??? question \"¿Qué diferencia hay entre localStorage, sessionStorage y cookies?\"
+    | Característica | localStorage | sessionStorage | Cookies |
+    | :--- | :--- | :--- | :--- |
+    | <strong>Persistencia</strong> | Permanente | Solo la sesión | Configurable |
+    | <strong>Capacidad</strong> | ~5 MB | ~5 MB | ~4 KB |
+    | <strong>Enviado al servidor</strong> | No | No | Sí (con cada petición) |
+    | <strong>Accesible desde JS</strong> | Sí | Sí | Sí (salvo HttpOnly) |
+    | <strong>Usos típicos</strong> | Preferencias, logros | Formularios temporales | Autenticación, tracking |</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+localStorage.setItem('tema', 'oscuro');
+sessionStorage.setItem('carrito', JSON.stringify(items));
+document.cookie = 'usuario=ana; max-age=3600; path=/';
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es la propagación de eventos (bubbling y capturing)?\"
+    Cuando ocurre un evento en un elemento, se propaga en tres fases:</p>
+<div class="highlight"><pre><span></span><code>1. **Capturing**: del documento raíz hacia el elemento objetivo.
+2. **Target**: el evento llega al elemento objetivo.
+3. **Bubbling**: del elemento objetivo hacia la raíz.
+
+\`\`\`javascript
+// Bubbling (por defecto)
+hijo.addEventListener('click', () =&gt; console.log('hijo'));
+padre.addEventListener('click', () =&gt; console.log('padre'));
+// Click en hijo → 'hijo', 'padre'
+
+// Capturing
+padre.addEventListener('click', () =&gt; console.log('padre'), true);
+// Click en hijo → 'padre', 'hijo'
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Cómo funciona this en JavaScript?\"
+    this depende de <strong>cómo se llama la función</strong>, no de dónde se define. Hay 4 reglas principales:</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+// 1. Método de objeto → el objeto
+const obj = { nombre: 'Ana', saludar() { console.log(this.nombre); } };
+obj.saludar(); // 'Ana'
+
+// 2. Función normal → window (o undefined en strict mode)
+function global() { console.log(this); }
+global(); // window / undefined
+
+// 3. Arrow function → this del contexto donde se define
+const obj2 = {
+  nombre: 'Ana',
+  saludar: () =&gt; console.log(this.nombre)
+};
+
+// 4. call/apply/bind → el objeto que se pasa
+function saludar() { console.log(this.nombre); }
+saludar.call({ nombre: 'Luis' }); // 'Luis'
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es el patrón módulo?\"
+    Es un patrón para encapsular código y exponer solo lo que necesitas, usando closures o módulos ES6.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+// Con closure
+const contador = (() =&gt; {
+  let valor = 0;
+  return {
+    incrementar: () =&gt; ++valor,
+    obtener: () =&gt; valor,
+  };
+})();
+
+contador.incrementar();
+console.log(contador.obtener()); // 1
+
+// Con módulos ES6
+export const PI = 3.14;
+export function sumar(a, b) { return a + b; }
+\`\`\`
+</code></pre></div>
+<hr />
+<h2 id="entrevistas-nivel-avanzado">🟠 Nivel Avanzado<a class="headerlink" href="#entrevistas-nivel-avanzado" title="Permanent link">&para;</a></h2>
+<p>??? question \"¿Qué es el Virtual DOM?\"
+    Es una <strong>representación en memoria del DOM real</strong>, que usan frameworks como React para minimizar las manipulaciones del DOM (que son lentas). Cuando cambia el estado, se crea un nuevo Virtual DOM, se compara con el anterior (diffing) y se aplican solo los cambios necesarios al DOM real.</p>
+<p>??? question \"¿Qué es un debounce y un throttle?\"
+    <strong>Debounce</strong>: retrasa la ejecución de una función hasta que pase un tiempo sin que ocurra el evento. Útil en inputs de búsqueda.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`javascript
+function debounce(fn, ms = 300) {
+  let timer;
+  return (...args) =&gt; {
+    clearTimeout(timer);
+    timer = setTimeout(() =&gt; fn(...args), ms);
+  };
+}
+\`\`\`
+
+**Throttle**: ejecuta la función como máximo una vez cada X ms. Útil en scroll o resize.
+
+\`\`\`javascript
+function throttle(fn, ms = 200) {
+  let last = 0;
+  return (...args) =&gt; {
+    const now = Date.now();
+    if (now - last &gt;= ms) { last = now; fn(...args); }
+  };
+}
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es el renderizado condicional en React?\"
+    Es mostrar u ocultar partes de la interfaz según el estado o las props.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`jsx
+function Saludo({ usuario }) {
+  return usuario ? &lt;p&gt;Hola, {usuario.nombre}&lt;/p&gt; : &lt;p&gt;Hola, visitante&lt;/p&gt;;
+}
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es el Context API de React?\"
+    Es una forma de <strong>pasar datos a través del árbol de componentes sin tener que pasar props manualmente en cada nivel</strong>.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`jsx
+const TemaContext = React.createContext('claro');
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué son los hooks y cuáles son los más usados?\"
+    Los <strong>hooks</strong> son funciones de React que permiten usar estado y otras características en componentes funcionales.</p>
+<div class="highlight"><pre><span></span><code>| Hook | Uso |
+| :--- | :--- |
+| useState | Estado local |
+| useEffect | Efectos secundarios |
+| useContext | Consumir un contexto |
+| useRef | Referencia mutable |
+| useMemo | Memorizar valores |
+| useCallback | Memorizar funciones |
+</code></pre></div>
+<p>??? question \"¿Qué es la optimización de rendimiento en frontend?\"
+    Mejorar la velocidad y fluidez de la web. Técnicas: lazy loading, code splitting, memoización, virtualización, imágenes modernas (WebP/AVIF), cacheo, service workers.</p>
+<p>??? question \"¿Qué es la accesibilidad web?\"
+    Diseñar webs que <strong>cualquier persona pueda usar</strong>. Buenas prácticas: HTML semántico, alt descriptivo, contraste WCAG AA, navegación por teclado, aria-label, focus visible.</p>
+<hr />
+<h2 id="entrevistas-nivel-profesional">🔴 Nivel Profesional<a class="headerlink" href="#entrevistas-nivel-profesional" title="Permanent link">&para;</a></h2>
+<p>??? question \"¿Qué es el Server-Side Rendering (SSR)?\"
+    <strong>SSR</strong> es renderizar el HTML en el servidor antes de enviarlo al navegador. Ventajas: mejor SEO y primer renderizado más rápido. Desventajas: más carga en el servidor y más complejidad.</p>
+<p>??? question \"¿Qué es un micro-frontend?\"
+    Arquitectura que divide un frontend grande en <strong>aplicaciones más pequeñas e independientes</strong>, que se pueden desarrollar y desplegar por separado.</p>
+<p>??? question \"¿Qué es la hidratación en SSR?\"
+    Proceso por el cual el HTML renderizado en el servidor se \"activa\" en el navegador, añadiéndole los event listeners y el estado.</p>
+<p>??? question \"¿Cómo funciona la caché HTTP?\"
+    | Cabecera | Uso |
+    | :--- | :--- |
+    | Cache-Control | Directivas de cacheo |
+    | ETag | Identificador de versión |
+    | Last-Modified | Última modificación |</p>
+<div class="highlight"><pre><span></span><code>Estrategias: assets con hash → max-age largo; HTML → no-cache; API → private, max-age corto.
+</code></pre></div>
+<p>??? question \"¿Qué es CORS y por qué da errores?\"
+    <strong>CORS</strong> es un mecanismo de seguridad que permite o bloquea peticiones entre dominios. El servidor debe incluir Access-Control-Allow-Origin.</p>
+<div class="highlight"><pre><span></span><code>\`\`\`http
+Access-Control-Allow-Origin: https://libro.urukais.com
+\`\`\`
+</code></pre></div>
+<p>??? question \"¿Qué es una Content Security Policy (CSP)?\"
+    Cabecera HTTP que restringe qué recursos puede cargar una página (scripts, estilos, imágenes). Defensa contra XSS.</p>
+<p>??? question \"¿Cómo mejorarías el rendimiento de una web lenta?\"
+    1. Medir con Lighthouse y Core Web Vitals
+    2. Optimizar imágenes (WebP/AVIF, lazy loading)
+    3. Minificar CSS/JS y hacer code splitting
+    4. font-display: swap en fuentes
+    5. Cacheo HTTP y service workers
+    6. CDN para assets estáticos
+    7. SSR o SSG si el SEO importa
+    8. Critical CSS inline</p>
+<hr />
+<h2 id="entrevistas-consejos-para-la-entrevista">📊 Consejos para la entrevista<a class="headerlink" href="#entrevistas-consejos-para-la-entrevista" title="Permanent link">&para;</a></h2>
+<p>!!! tip \"Antes\"
+    - Investiga la empresa
+    - Practica en voz alta
+    - Prepara preguntas para el entrevistador</p>
+<p>!!! tip \"Durante\"
+    - Piensa antes de responder
+    - Si no sabes algo, dilo
+    - Muestra tu proceso</p>
+<p>!!! tip \"Después\"
+    - Anota las preguntas que te han hecho
+    - Pide feedback si es posible
+    - No te obsesiones</p>
+<hr />
+<h2 id="entrevistas-recursos">📚 Recursos<a class="headerlink" href="#entrevistas-recursos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Recurso</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/yangshun/front-end-interview-handbook">Front-end Interview Handbook</a></td>
+<td style="text-align: left;">Guía completa</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/lydiahallie/javascript-questions">JavaScript Questions</a></td>
+<td style="text-align: left;">100+ preguntas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://leetcode.com/">LeetCode</a></td>
+<td style="text-align: left;">Algoritmos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://exercism.org/tracks/javascript">Exercism</a></td>
+<td style="text-align: left;">Ejercicios</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="entrevistas-siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#entrevistas-siguientes-pasos" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#playground">🎮 Ir al Playground</a>
+<a class="md-button" href="#ejercicios">📝 Ver los ejercicios resueltos</a>
+<a class="md-button" href="#logros">🏆 Ver mis logros</a>
+'''
+open('docs/entrevistas.md', 'w', encoding='utf-8').write(contenido)
+print('OK:', len(contenido.splitlines()), 'líneas escritas')
+"</p></section><section class="print-page" id="apoya" heading-number="12"><h1 id="apoya-apoya-el-proyecto">❤️ Apoya el Proyecto<a class="headerlink" href="#apoya-apoya-el-proyecto" title="Permanent link">&para;</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">El libro es gratis. Siempre lo será.</p>
 <p>Este proyecto no tiene publicidad, ni suscripciones, ni muros de pago. Todo el contenido es accesible para cualquiera, independientemente de su situación económica. Pero mantenerlo lleva tiempo y esfuerzo. Si te resulta útil, aquí tienes formas de apoyarlo.</p>
