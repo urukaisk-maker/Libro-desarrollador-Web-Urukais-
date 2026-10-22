@@ -1,69 +1,29 @@
-# Capítulo 19 — Full-stack con Node.js
+# 19 — Full-stack con Node.js
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué es Node.js y por qué se usa en el servidor.
+    - Crear un servidor HTTP con Express.
+    - Rutas, middlewares y controladores.
+    - Bases de datos con PostgreSQL y Prisma.
+    - Autenticación con JWT.
 
-Hasta ahora has construido el **frontend**: la parte que ve el usuario. Pero una aplicación web real necesita también un **backend**: el que guarda datos, autentica usuarios y expone APIs.
+---
 
-En este capítulo vas a construir un backend completo con **Node.js** y **Express**, conectar una base de datos **PostgreSQL** usando **Prisma** y desplegarlo en producción.
+## 🟢 ¿Qué es Node.js?
 
-## ¿Qué es Node.js?
-
-Node.js es un entorno que permite ejecutar JavaScript **fuera del navegador**, en el servidor. Está construido sobre el motor V8 de Chrome y usa un modelo **asíncrono no bloqueante** que lo hace muy eficiente para I/O.
-
-### Qué puedes hacer con Node.js
-
-- Servidores web y APIs REST.
-- WebSockets y aplicaciones en tiempo real.
-- CLIs y herramientas de línea de comandos.
-- Procesos de build y automatización.
-
-### Lo que NO es Node.js
-
-- No es un lenguaje (es JavaScript o TypeScript).
-- No es un framework (Express, Fastify, NestJS son frameworks).
-- No es un navegador (no tiene DOM).
-
-## Instalación
-
-Descarga Node.js desde [nodejs.org](https://nodejs.org/) (versión LTS). Comprueba:
+**Node.js** es un entorno que permite ejecutar JavaScript **fuera del navegador**, en el servidor. Usa el motor V8 de Chrome y un modelo de I/O no bloqueante.
 
 ```bash
-node --version    # v20.x o superior
-npm --version     # 10.x o superior
+node --version   # v20.x o superior
+npm --version
 ```
 
-O usa un gestor de versiones como **nvm** o **fnm** para cambiar entre versiones.
+!!! quote "JavaScript en todas partes"
+    Con Node.js puedes usar el mismo lenguaje en el frontend y el backend. Eso reduce la carga cognitiva y facilita compartir código.
 
-## Tu primer servidor
+---
 
-```javascript
-// server.js
-import http from 'node:http';
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hola desde Node.js');
-});
-
-server.listen(3000, () => {
-  console.log('Servidor en http://localhost:3000');
-});
-```
-
-Ejecuta con:
-
-```bash
-node server.js
-```
-
-!!! tip "Módulos ES en Node"
-    Añade `"type": "module"` a tu `package.json` para usar `import`/`export` en lugar de `require`. Es el estándar moderno.
-
-## Express: el framework estándar
-
-Express es minimalista, flexible y el más usado. Perfecto para aprender y para producir.
-
-### Instalación
+## ⚡ Tu primer servidor con Express
 
 ```bash
 mkdir mi-api && cd mi-api
@@ -71,269 +31,137 @@ npm init -y
 npm install express
 ```
 
-Añade a `package.json`:
-
-```json
-{
-  "type": "module",
-  "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
-  }
-}
-```
-
-### Servidor básico
-
 ```javascript
-// src/server.js
-import express from 'express';
+// index.js
+import express from "express";
 
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ mensaje: 'API funcionando' });
+app.get("/", (req, res) => {
+  res.json({ mensaje: "Hola, mundo" });
 });
 
 app.listen(3000, () => {
-  console.log('http://localhost:3000');
+  console.log("Servidor en http://localhost:3000");
 });
 ```
-
-Ejecuta:
 
 ```bash
-npm run dev
+node index.js
 ```
 
-### Métodos HTTP
+---
+
+## 🛣️ Rutas y middlewares
 
 ```javascript
-app.get('/usuarios', listarUsuarios);
-app.get('/usuarios/:id', obtenerUsuario);
-app.post('/usuarios', crearUsuario);
-app.put('/usuarios/:id', actualizarUsuario);
-app.patch('/usuarios/:id', actualizarParcial);
-app.delete('/usuarios/:id', borrarUsuario);
-```
+app.get("/usuarios", (req, res) => {
+  res.json([{ id: 1, nombre: "Ana" }]);
+});
 
-### Middleware
+app.get("/usuarios/:id", (req, res) => {
+  const { id } = req.params;
+  res.json({ id, nombre: "Ana" });
+});
 
-Un **middleware** es una función que se ejecuta entre la petición y la respuesta.
+app.post("/usuarios", (req, res) => {
+  const { nombre } = req.body;
+  res.status(201).json({ id: Date.now(), nombre });
+});
 
-```javascript
-app.use(express.json()); // parsea JSON del body
-
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next(); // pasa al siguiente middleware
+app.delete("/usuarios/:id", (req, res) => {
+  res.status(204).end();
 });
 ```
 
-### Middleware de error
+### Middleware de logging
+
+```javascript
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+```
+
+### Middleware de errores
 
 ```javascript
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(err.status || 500).json({
-    error: err.message || 'Error del servidor',
-  });
+  res.status(500).json({ error: "Algo salió mal" });
 });
 ```
 
-### Rutas organizadas
+---
 
-```javascript
-// src/routes/usuarios.js
-import { Router } from 'express';
-const router = Router();
-
-router.get('/', (req, res) => res.json({ usuarios: [] }));
-router.post('/', (req, res) => res.status(201).json({ creado: true }));
-
-export default router;
-```
-
-```javascript
-// src/server.js
-import usuariosRouter from './routes/usuarios.js';
-app.use('/api/usuarios', usuariosRouter);
-```
-
-## Variables de entorno
-
-Nunca metas secretos en el código. Usa `.env`:
-
-```
-PORT=3000
-DATABASE_URL=postgresql://usuario:pass@localhost:5432/miapp
-JWT_SECRET=algo-muy-largo-y-aleatorio
-```
-
-Carga con **dotenv**:
+## 🗄️ Base de datos con Prisma
 
 ```bash
-npm install dotenv
-```
-
-```javascript
-import 'dotenv/config';
-const port = process.env.PORT || 3000;
-```
-
-!!! warning "Nunca subas .env a Git"
-    Añade `.env` a `.gitignore`. En producción, las variables se configuran en el hosting (Railway, Vercel, etc.).
-
-## Base de datos con PostgreSQL
-
-**PostgreSQL** es la base de datos relacional de referencia. Robusta, gratuita, con años de desarrollo.
-
-### Instalación local
-
-- **Linux**: `sudo pacman -S postgresql` (Arch) o `sudo apt install postgresql` (Debian/Ubuntu).
-- **macOS**: `brew install postgresql`.
-- **Docker** (más fácil y portable):
-
-```bash
-docker run --name postgres -e POSTGRES_PASSWORD=pass -p 5432:5432 -d postgres
-```
-
-## Prisma: el ORM moderno
-
-**Prisma** es un ORM (Object-Relational Mapping) que te permite trabajar con la base de datos usando TypeScript/JavaScript con tipado automático.
-
-### Instalación
-
-```bash
-npm install -D prisma
-npm install @prisma/client
+npm install prisma @prisma/client
 npx prisma init
 ```
 
-Esto crea `prisma/schema.prisma` y añade `DATABASE_URL` a `.env`.
-
-### Schema
-
 ```prisma
 // prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model Usuario {
   id        Int      @id @default(autoincrement())
   nombre    String
   email     String   @unique
   password  String
-  posts     Post[]
-  creadoEn  DateTime @default(now())
-}
-
-model Post {
-  id        Int      @id @default(autoincrement())
-  titulo    String
-  contenido String
-  autor     Usuario  @relation(fields: [autorId], references: [id])
-  autorId   Int
   creadoEn  DateTime @default(now())
 }
 ```
-
-### Migraciones
 
 ```bash
 npx prisma migrate dev --name init
+npx prisma generate
 ```
 
-Crea la base de datos y genera el cliente.
-
-### Uso en código
-
 ```javascript
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-// Crear
-const usuario = await prisma.usuario.create({
-  data: { nombre: 'Urukais', email: 'urukaisk@gmail.com', password: 'hash' },
+app.get("/usuarios", async (req, res) => {
+  const usuarios = await prisma.usuario.findMany();
+  res.json(usuarios);
 });
-
-// Leer
-const usuarios = await prisma.usuario.findMany();
-const uno = await prisma.usuario.findUnique({ where: { id: 1 } });
-
-// Actualizar
-await prisma.usuario.update({
-  where: { id: 1 },
-  data: { nombre: 'Nuevo nombre' },
-});
-
-// Borrar
-await prisma.usuario.delete({ where: { id: 1 } });
 ```
 
-### Prisma Studio
+---
 
-Interfaz visual para inspeccionar la base de datos:
+## 🔐 Autenticación con JWT
 
 ```bash
-npx prisma studio
+npm install jsonwebtoken bcryptjs
 ```
-
-## Autenticación con JWT
-
-**JSON Web Tokens** son la forma estándar de autenticar APIs.
-
-```bash
-npm install jsonwebtoken bcrypt
-```
-
-### Registrar usuario
 
 ```javascript
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
-app.post('/api/auth/registro', async (req, res) => {
+const SECRET = process.env.JWT_SECRET;
+
+// Registro
+app.post("/registro", async (req, res) => {
   const { nombre, email, password } = req.body;
-
-  const existe = await prisma.usuario.findUnique({ where: { email } });
-  if (existe) return res.status(409).json({ error: 'Email ya registrado' });
-
   const hash = await bcrypt.hash(password, 10);
   const usuario = await prisma.usuario.create({
-    data: { nombre, email, password: hash },
+    data: { nombre, email, password: hash }
   });
-
-  const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
-  });
-
-  res.status(201).json({ token, usuario: { id: usuario.id, nombre, email } });
+  res.status(201).json({ id: usuario.id });
 });
-```
 
-### Login
-
-```javascript
-app.post('/api/auth/login', async (req, res) => {
+// Login
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
   const usuario = await prisma.usuario.findUnique({ where: { email } });
-  if (!usuario) return res.status(401).json({ error: 'Credenciales inválidas' });
+  if (!usuario) return res.status(401).json({ error: "Credenciales inválidas" });
 
-  const ok = await bcrypt.compare(password, usuario.password);
-  if (!ok) return res.status(401).json({ error: 'Credenciales inválidas' });
+  const valido = await bcrypt.compare(password, usuario.password);
+  if (!valido) return res.status(401).json({ error: "Credenciales inválidas" });
 
-  const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
-  });
-
+  const token = jwt.sign({ id: usuario.id }, SECRET, { expiresIn: "7d" });
   res.json({ token });
 });
 ```
@@ -341,214 +169,112 @@ app.post('/api/auth/login', async (req, res) => {
 ### Middleware de autenticación
 
 ```javascript
-function autenticar(req, res, next) {
-  const auth = req.headers.authorization;
-  if (!auth?.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Token no proporcionado' });
-  }
+function auth(req, res, next) {
+  const header = req.headers.authorization;
+  if (!header) return res.status(401).json({ error: "Sin token" });
 
+  const token = header.split(" ")[1];
   try {
-    const token = auth.slice(7);
-    req.usuario = jwt.verify(token, process.env.JWT_SECRET);
+    req.usuario = jwt.verify(token, SECRET);
     next();
   } catch {
-    res.status(401).json({ error: 'Token inválido' });
+    res.status(401).json({ error: "Token inválido" });
   }
 }
 
 // Ruta protegida
-app.get('/api/perfil', autenticar, async (req, res) => {
+app.get("/perfil", auth, async (req, res) => {
   const usuario = await prisma.usuario.findUnique({
     where: { id: req.usuario.id },
-    select: { id: true, nombre: true, email: true },
+    select: { id: true, nombre: true, email: true }
   });
   res.json(usuario);
 });
 ```
 
-## Validación con Zod
+!!! warning "Nunca guardes el JWT_SECRET en el código"
+    Usa variables de entorno (.env) y nunca las subas a GitHub. Añade .env al .gitignore.
 
-Valida los datos de entrada antes de tocar la base de datos:
+---
 
-```bash
-npm install zod
-```
+## 🚀 Despliegue del backend
 
-```javascript
-import { z } from 'zod';
-
-const esquemaRegistro = z.object({
-  nombre: z.string().min(2).max(50),
-  email: z.string().email(),
-  password: z.string().min(8),
-});
-
-app.post('/api/auth/registro', async (req, res) => {
-  const resultado = esquemaRegistro.safeParse(req.body);
-  if (!resultado.success) {
-    return res.status(400).json({ errores: resultado.error.issues });
-  }
-  // ...
-});
-```
-
-## CORS
-
-Para que el frontend pueda llamar a la API desde otro dominio:
+| Plataforma | Ideal para |
+| :--- | :--- |
+| **Railway** | Node.js + PostgreSQL, muy fácil |
+| **Render** | Node.js + PostgreSQL, tier gratis limitado |
+| **Fly.io** | Node.js + Docker, global |
+| **Vercel** | Serverless functions (sin servidor persistente) |
 
 ```bash
-npm install cors
+# Railway
+npm install -g @railway/cli
+railway login
+railway init
+railway up
 ```
 
-```javascript
-import cors from 'cors';
+---
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://miapp.com'],
-  credentials: true,
-}));
-```
-
-## Estructura recomendada
+## 📁 Estructura de un proyecto full-stack
 
 ```
 mi-api/
-├── prisma/
-│   └── schema.prisma
 ├── src/
 │   ├── routes/
-│   │   ├── auth.js
 │   │   ├── usuarios.js
-│   │   └── posts.js
+│   │   └── auth.js
 │   ├── middlewares/
-│   │   ├── auth.js
-│   │   └── error.js
-│   ├── lib/
-│   │   └── prisma.js
-│   └── server.js
+│   │   └── auth.js
+│   ├── controllers/
+│   ├── services/
+│   └── index.js
+├── prisma/
+│   └── schema.prisma
 ├── .env
 ├── .gitignore
 └── package.json
 ```
 
-## Despliegue
-
-### Railway (recomendado para empezar)
-
-1. Crea cuenta en [railway.app](https://railway.app/).
-2. Nuevo proyecto → **Deploy from GitHub repo**.
-3. Añade un plugin **PostgreSQL**.
-4. Configura las variables (`DATABASE_URL`, `JWT_SECRET`, `PORT`).
-5. Railway despliega automáticamente en cada push.
-
-### Fly.io
-
-```bash
-fly launch
-fly postgres create
-fly postgres attach
-fly secrets set JWT_SECRET=xxx
-fly deploy
-```
-
-### Dockerfile mínimo
-
-```dockerfile
-FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --production
-COPY . .
-EXPOSE 3000
-CMD ["node", "src/server.js"]
-```
-
-## Diagrama: arquitectura full-stack
-
-```mermaid
-flowchart LR
-    A[Cliente<br/>Navegador] -->|HTTPS| B[Servidor<br/>Node.js + Express]
-    B -->|Prisma| C[(PostgreSQL)]
-    B -->|JWT| A
-    B -->|API REST| D[Servicios externos]
-```
-
-Arquitectura típica: el navegador se comunica con el backend vía APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.
-
-## Buenas prácticas
-
-- **Nunca guardes contraseñas en texto plano**. Usa `bcrypt` o `argon2`.
-- **Valida todos los datos de entrada**. Zod o Joi.
-- **Usa HTTPS siempre** en producción.
-- **Rate limiting** en endpoints sensibles:
-
-```bash
-npm install express-rate-limit
-```
-
-```javascript
-import rateLimit from 'express-rate-limit';
-app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, max: 20 }));
-```
-
-- **Logs estructurados**: `pino`, `winston`.
-- **Manejo de errores centralizado**. Un middleware al final.
-- **Nunca expongas stack traces** en producción.
-- **Migraciones versionadas** con Prisma.
-- **Tests de integración** con Vitest + Supertest.
-
-## Ejercicios
-
-1. Crea una API con un endpoint `GET /api/saludo` que devuelva un JSON.
-2. Añade una ruta `POST /api/usuarios` con validación Zod.
-3. Conecta PostgreSQL con Prisma y crea un modelo `Tarea`.
-4. Implementa registro y login con JWT.
-5. Protege una ruta `GET /api/perfil` con middleware de autenticación.
-6. Añade CORS para permitir peticiones desde `localhost:5173`.
-7. Despliega la API en Railway y pruébala con Postman o `curl`.
-8. Conecta esta API a tu frontend del Capítulo 10.
-
 ---
 
-⬅️ [Capítulo 18 — Arquitectura frontend](18-arquitectura.md) | ➡️ [Capítulo 20 — DevOps para frontend](20-devops.md)
-
-
-## Diagrama: arquitectura full-stack
-
-\`\`\`mermaid
-flowchart LR
-    A[Cliente<br/>Navegador] -->|HTTPS| B[Servidor<br/>Node.js + Express]
-    B -->|Prisma| C[(PostgreSQL)]
-    B -->|JWT| A
-    B -->|API REST| D[Servicios externos]
-\`\`\`
-
-Flujo típico de una aplicación full-stack: el navegador se comunica con el backend mediante APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.
----
-### 🧪 Laboratorio en Vivo: Node.js + Express
-
-Prueba el código de este capítulo en un entorno real de Node.js directamente en tu navegador. StackBlitz lanzará un servidor Express en la nube.
-
-<a href="https://stackblitz.com/fork/node-express" target="_blank" class="md-button md-button--primary">🧪 Abrir laboratorio Node.js</a>
-<a href="https://stackblitz.com/fork/vitest" target="_blank" class="md-button">🧪 Probar Testing con Vitest</a>
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué framework de Node.js es el más popular para crear APIs?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Django</button>
-    <button class="quiz-option" data-option="b">B) Express</button>
-    <button class="quiz-option" data-option="c">C) Laravel</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-19">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es Node.js?</p>
+<button class="quiz-option" data-opt="a">A) Un framework de frontend</button>
+<button class="quiz-option" data-opt="b">B) Un entorno para ejecutar JavaScript en el servidor</button>
+<button class="quiz-option" data-opt="c">C) Una base de datos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué framework se usa para crear APIs en Node.js?</p>
+<button class="quiz-option" data-opt="a">A) Express</button>
+<button class="quiz-option" data-opt="b">B) React</button>
+<button class="quiz-option" data-opt="c">C) Vue</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué estándar se usa para autenticación con tokens?</p>
+<button class="quiz-option" data-opt="a">A) CSS</button>
+<button class="quiz-option" data-opt="b">B) HTML</button>
+<button class="quiz-option" data-opt="c">C) JWT</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué herramienta se usa en el capítulo para hablar con PostgreSQL desde Node.js?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Prisma</button>
-    <button class="quiz-option" data-option="b">B) Mongoose</button>
-    <button class="quiz-option" data-option="c">C) Sequelize</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2019%3A%20Full-stack%20con%20Node.js&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2019%3A%20Full-stack%20con%20Node.js%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/19-fullstack-node/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 20 — DevOps para frontend](20-devops.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
