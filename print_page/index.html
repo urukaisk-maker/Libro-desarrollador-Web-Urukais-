@@ -10698,15 +10698,35 @@ graph LR
     });
   </script>
 </body>
-</html></section><section class="print-page" id="capitulos-02-html-basico" heading-number="16.2"><h1 id="capitulos-02-html-basico-capitulo-2-html-basico">Capítulo 2 — HTML básico<a class="headerlink" href="#capitulos-02-html-basico-capitulo-2-html-basico" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-02-html-basico-que-es-html">¿Qué es HTML?<a class="headerlink" href="#capitulos-02-html-basico-que-es-html" title="Permanent link">&para;</a></h2>
-<p>HTML (<em>HyperText Markup Language</em>) es el lenguaje de marcado que define la <strong>estructura</strong> del contenido de una página web. No es un lenguaje de programación, sino una forma de describir qué es cada cosa: un título, un párrafo, una imagen, un enlace…</p>
-<h2 id="capitulos-02-html-basico-estructura-minima-de-un-documento-html">Estructura mínima de un documento HTML<a class="headerlink" href="#capitulos-02-html-basico-estructura-minima-de-un-documento-html" title="Permanent link">&para;</a></h2>
+</html></section><section class="print-page" id="capitulos-02-html-basico" heading-number="16.2"><h1 id="capitulos-02-html-basico-02-html-basico">02 — HTML básico<a class="headerlink" href="#capitulos-02-html-basico-02-html-basico" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>La estructura de un documento HTML.</li>
+<li>Las etiquetas semánticas más importantes.</li>
+<li>Cómo enlazar páginas, imágenes y formularios.</li>
+<li>Las bases de la accesibilidad.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-02-html-basico-que-es-html">🌐 ¿Qué es HTML?<a class="headerlink" href="#capitulos-02-html-basico-que-es-html" title="Permanent link">&para;</a></h2>
+<p><strong>HTML</strong> (<em>HyperText Markup Language</em>) es el lenguaje de marcado que define la <strong>estructura</strong> de una página web. No es un lenguaje de programación: no tiene variables, ni bucles, ni funciones. Es un lenguaje de <strong>etiquetas</strong> que le dice al navegador qué es cada cosa.</p>
+<p>```html</p>
+<h1>Esto es un título</h1>
+<p>Esto es un párrafo con <strong>texto en negrita</strong>.</p>
+<p>```</p>
+<div class="admonition tip">
+<p class="admonition-title">HTML no es programación</p>
+<p>HTML describe la estructura. CSS describe la presentación. JavaScript describe el comportamiento.</p>
+</div>
+<hr />
+<h2 id="capitulos-02-html-basico-estructura-de-un-documento-html">🏗️ Estructura de un documento HTML<a class="headerlink" href="#capitulos-02-html-basico-estructura-de-un-documento-html" title="Permanent link">&para;</a></h2>
 <p>```html</p>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi primera página</title>
 
         <script type="text/javascript">
@@ -10717,70 +10737,169 @@ graph LR
         </head>
 <body>
   <h1>Hola, mundo</h1>
-  <p>Esta es mi primera página web.</p>
-  ---
-
-## 🧠 Pon a prueba tus conocimientos
-
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué significa la sigla HTML?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) High Tech Modern Language</button>
-    <button class="quiz-option" data-option="b">B) HyperText Markup Language</button>
-    <button class="quiz-option" data-option="c">C) Home Tool Markup Language</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div>
-### 🎮 Editor en Vivo
-
-Prueba tus conocimientos de HTML editando el código de la izquierda y viendo el resultado a la derecha (o abajo).
-
-<div class="live-sandbox-wrapper">
-  <p>💡 Edita el texto y pulsa el botón para ver los cambios.</p>
-  <iframe 
-    class="live-sandbox" 
-    srcdoc='
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <style>
-          body { font-family: sans-serif; padding: 2rem; text-align: center; background: #f8fafc; }
-          h1 { color: #6a5acd; }
-        </style>
-      
-        <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
-        })
-        </script>
-        </head>
-      <body>
-        <h1>¡Hola, mundo!</h1>
-        <p>Este es mi primer código HTML interactivo.</p>
-        <button onclick="alert('"'"'¡Funciona! 🎉'"'"')">Haz clic aquí</button>
-      </body>
-      </html>
-    '>
-  </iframe>
-  ### 🌐 Abrir en un Playground externo
-
-Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
-
-- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
-- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
-</div>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuál es la etiqueta correcta para crear un enlace?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) &lt;link&gt;</button>
-    <button class="quiz-option" data-option="b">B) &lt;href&gt;</button>
-    <button class="quiz-option" data-option="c">C) &lt;a&gt;</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div>
-
 </body>
-</html></section><section class="print-page" id="capitulos-03-css-basico" heading-number="16.3"><h1 id="capitulos-03-css-basico-capitulo-3-css-basico">Capítulo 3 — CSS básico<a class="headerlink" href="#capitulos-03-css-basico-capitulo-3-css-basico" title="Permanent link">&para;</a></h1>
+</html>
+<p>```</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Etiqueta</th>
+<th style="text-align: left;">Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">&lt;!DOCTYPE html&gt;</td>
+<td style="text-align: left;">Indica al navegador que es HTML5</td>
+</tr>
+<tr>
+<td style="text-align: left;"><html></td>
+<td style="text-align: left;">Elemento raíz del documento</td>
+</tr>
+<tr>
+<td style="text-align: left;"><head></td>
+<td style="text-align: left;">Metadatos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><body></td>
+<td style="text-align: left;">Contenido visible</td>
+</tr>
+<tr>
+<td style="text-align: left;"><meta charset="UTF-8"></td>
+<td style="text-align: left;">Codificación de caracteres</td>
+</tr>
+<tr>
+<td style="text-align: left;"><meta name="viewport"></td>
+<td style="text-align: left;">Para que se vea bien en móvil</td>
+</tr>
+<tr>
+<td style="text-align: left;"><title></td>
+<td style="text-align: left;">Título de la pestaña</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-02-html-basico-etiquetas-semanticas">📝 Etiquetas semánticas<a class="headerlink" href="#capitulos-02-html-basico-etiquetas-semanticas" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<header>
+  <h1>Mi sitio web</h1>
+  <nav>
+    <a href="#capitulos-02-html-basico-inicio">Inicio</a>
+    <a href="#capitulos-02-html-basico-sobre-mi">Sobre mí</a>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <h2>Mi primer artículo</h2>
+    <p>Contenido del artículo…</p>
+  </article>
+</main>
+
+<footer>
+  <p>© 2026 Mi sitio web</p>
+</footer>
+<p>```</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Etiqueta</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><header></td>
+<td style="text-align: left;">Cabecera</td>
+</tr>
+<tr>
+<td style="text-align: left;"><nav></td>
+<td style="text-align: left;">Menú de navegación</td>
+</tr>
+<tr>
+<td style="text-align: left;"><main></td>
+<td style="text-align: left;">Contenido principal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><article></td>
+<td style="text-align: left;">Contenido independiente</td>
+</tr>
+<tr>
+<td style="text-align: left;"><section></td>
+<td style="text-align: left;">Sección temática</td>
+</tr>
+<tr>
+<td style="text-align: left;"><aside></td>
+<td style="text-align: left;">Contenido lateral</td>
+</tr>
+<tr>
+<td style="text-align: left;"><footer></td>
+<td style="text-align: left;">Pie de página</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Por qué importa la semántica</p>
+<p>Usar <div> para todo es tentador, pero las etiquetas semánticas mejoran la accesibilidad, el SEO y la legibilidad del código.</p>
+</div>
+<hr />
+<h2 id="capitulos-02-html-basico-enlaces-e-imagenes">🔗 Enlaces e imágenes<a class="headerlink" href="#capitulos-02-html-basico-enlaces-e-imagenes" title="Permanent link">&para;</a></h2>
+<p>```html
+<a href="https://example.com" target="_blank" rel="noopener">Ir a ejemplo</a>
+<a href="#capitulos-02-html-basico-seccion">Ir a la sección</a>
+<img src="../capitulos/02-html-basico/foto.jpg" alt="Descripción de la imagen" width="400" height="300" >
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">El atributo alt es obligatorio</p>
+<p>El texto alternativo describe la imagen a quienes no pueden verla.</p>
+</div>
+<hr />
+<h2 id="capitulos-02-html-basico-formularios">📝 Formularios<a class="headerlink" href="#capitulos-02-html-basico-formularios" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<form action="/enviar" method="POST">
+  <label for="capitulos-02-html-basico-nombre">Nombre:</label>
+  <input type="text" id="capitulos-02-html-basico-nombre" name="capitulos-02-html-basico-nombre" required>
+
+  <label for="capitulos-02-html-basico-email">Email:</label>
+  <input type="email" id="capitulos-02-html-basico-email" name="capitulos-02-html-basico-email" required>
+
+  <button type="submit">Enviar</button>
+</form>
+<p>```</p>
+<div class="admonition warning">
+<p class="admonition-title">Siempre asocia label con input</p>
+<p>El atributo for del label debe coincidir con el id del input.</p>
+</div>
+<hr />
+<h2 id="capitulos-02-html-basico-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-02-html-basico-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-2">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué etiqueta define el contenido principal de una página?</p>
+<button class="quiz-option" data-opt="a">A) &lt;div&gt;</button>
+<button class="quiz-option" data-opt="b">B) &lt;main&gt;</button>
+<button class="quiz-option" data-opt="c">C) &lt;body&gt;</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Para qué sirve el atributo alt de una imagen?</p>
+<button class="quiz-option" data-opt="a">A) Para darle un título</button>
+<button class="quiz-option" data-opt="b">B) Para cambiar su tamaño</button>
+<button class="quiz-option" data-opt="c">C) Para describirla a quien no puede verla</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-02-html-basico-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-02-html-basico-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%202%3A%20HTML%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%202%3A%20HTML%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/02-html-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-02-html-basico-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-02-html-basico-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-03-css-basico">Ir al Capítulo 3 — CSS básico</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-03-css-basico" heading-number="16.3"><h1 id="capitulos-03-css-basico-capitulo-3-css-basico">Capítulo 3 — CSS básico<a class="headerlink" href="#capitulos-03-css-basico-capitulo-3-css-basico" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-03-css-basico-que-es-css">¿Qué es CSS?<a class="headerlink" href="#capitulos-03-css-basico-que-es-css" title="Permanent link">&para;</a></h2>
 <p>CSS (<em>Cascading Style Sheets</em>) es el lenguaje que define <strong>cómo se ve</strong> una página web: colores, tipografías, tamaños, espaciados, disposición de los elementos… Si HTML es el esqueleto, CSS es la piel y la ropa.</p>
 <h2 id="capitulos-03-css-basico-formas-de-aplicar-css">Formas de aplicar CSS<a class="headerlink" href="#capitulos-03-css-basico-formas-de-aplicar-css" title="Permanent link">&para;</a></h2>
