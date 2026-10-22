@@ -20820,1096 +20820,292 @@ console.log(numero.toFixed(2));   // "42.00"
 </ul>
 <hr />
 <p><a class="md-button" href="#ejercicios-14-accesibilidad">← Ejercicio 14</a>
-<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-16-testing" heading-number="24.17"><h1 id="ejercicios-16-testing-ejercicios-resueltos-capitulo-16">Ejercicios resueltos — Capítulo 16<a class="headerlink" href="#ejercicios-16-testing-ejercicios-resueltos-capitulo-16" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-16-testing">Capítulo original</a></p>
-<h2 id="ejercicios-16-testing-ejercicio-1-tests-de-formatearprecio">Ejercicio 1: Tests de <code>formatearPrecio</code><a class="headerlink" href="#ejercicios-16-testing-ejercicio-1-tests-de-formatearprecio" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe tests unitarios para una función <code>formatearPrecio(n)</code>.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// precios.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">formatearPrecio</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="s1">'es-ES'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s1">'currency'</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">currency</span><span class="o">:</span><span class="w"> </span><span class="s1">'EUR'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">}).</span><span class="nx">format</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// precios.test.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vitest'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">formatearPrecio</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./precios.js'</span><span class="p">;</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="s1">'formatearPrecio'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'formatea un número entero'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">formatearPrecio</span><span class="p">(</span><span class="mf">10</span><span class="p">)).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'10,00'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'formatea decimales'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">formatearPrecio</span><span class="p">(</span><span class="mf">29.99</span><span class="p">)).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'29,99'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'incluye el símbolo del euro'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">formatearPrecio</span><span class="p">(</span><span class="mf">100</span><span class="p">)).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'€'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'maneja el cero'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">formatearPrecio</span><span class="p">(</span><span class="mf">0</span><span class="p">)).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'0,00'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-2-tests-de-validaremail">Ejercicio 2: Tests de <code>validarEmail</code><a class="headerlink" href="#ejercicios-16-testing-ejercicio-2-tests-de-validaremail" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Cubre con Vitest una función <code>validarEmail(email)</code>.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_1">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// validacion.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">validarEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// validacion.test.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vitest'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">validarEmail</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./validacion.js'</span><span class="p">;</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="s1">'validarEmail'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'acepta emails válidos'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">'usuario@ejemplo.com'</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">'a.b@sub.dominio.es'</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'rechaza emails sin @'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">'usuario.com'</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'rechaza emails sin dominio'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">'usuario@'</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'rechaza emails con espacios'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">'usuario @ejemplo.com'</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'rechaza strings vacíos'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">validarEmail</span><span class="p">(</span><span class="s1">''</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-3-test-de-formulario-con-testing-library">Ejercicio 3: Test de formulario con Testing Library<a class="headerlink" href="#ejercicios-16-testing-ejercicio-3-test-de-formulario-con-testing-library" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Rellena y envía un formulario con Testing Library.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_2">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@testing-library/dom'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">userEvent</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@testing-library/user-event'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">vi</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vitest'</span><span class="p">;</span>
-
-<span class="nx">it</span><span class="p">(</span><span class="s1">'rellena y envía el formulario'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">    &lt;form&gt;</span>
-<span class="sb">      &lt;label for="nombre"&gt;Nombre&lt;/label&gt;</span>
-<span class="sb">      &lt;input type="text" id="nombre" required&gt;</span>
-<span class="sb">      &lt;label for="email"&gt;Email&lt;/label&gt;</span>
-<span class="sb">      &lt;input type="email" id="email" required&gt;</span>
-<span class="sb">      &lt;button type="submit"&gt;Enviar&lt;/button&gt;</span>
-<span class="sb">    &lt;/form&gt;</span>
-<span class="sb">  `</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">enviar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'form'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">enviar</span><span class="p">();</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByLabelText</span><span class="p">(</span><span class="s1">'Nombre'</span><span class="p">),</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByLabelText</span><span class="p">(</span><span class="s1">'Email'</span><span class="p">),</span><span class="w"> </span><span class="s1">'urukaisk@gmail.com'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Enviar'</span><span class="w"> </span><span class="p">}));</span>
-
-<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">enviar</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-4-mock-de-api-con-msw">Ejercicio 4: Mock de API con MSW<a class="headerlink" href="#ejercicios-16-testing-ejercicio-4-mock-de-api-con-msw" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Mockea una API con MSW y prueba un componente que la consume.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_3">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// mocks/handlers.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">http</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpResponse</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'msw'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">handlers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">HttpResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">([</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">]);</span>
-<span class="w">  </span><span class="p">}),</span>
-<span class="p">];</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// mocks/server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setupServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'msw/node'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">handlers</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./handlers.js'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setupServer</span><span class="p">(...</span><span class="nx">handlers</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// usuarios.test.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">beforeAll</span><span class="p">,</span><span class="w"> </span><span class="nx">afterAll</span><span class="p">,</span><span class="w"> </span><span class="nx">afterEach</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vitest'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./mocks/server.js'</span><span class="p">;</span>
-
-<span class="nx">beforeAll</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">());</span>
-<span class="nx">afterEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">resetHandlers</span><span class="p">());</span>
-<span class="nx">afterAll</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">close</span><span class="p">());</span>
-
-<span class="nx">it</span><span class="p">(</span><span class="s1">'carga la lista de usuarios'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-
-<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">usuarios</span><span class="p">).</span><span class="nx">toHaveLength</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">usuarios</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">nombre</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">'Urukais'</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-5-test-e2e-con-playwright">Ejercicio 5: Test E2E con Playwright<a class="headerlink" href="#ejercicios-16-testing-ejercicio-5-test-e2e-con-playwright" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe un test E2E para "buscar producto → añadir al carrito".</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_4">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// e2e/carrito.spec.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@playwright/test'</span><span class="p">;</span>
-
-<span class="nx">test</span><span class="p">(</span><span class="s1">'buscar producto y añadir al carrito'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Buscar</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByPlaceholder</span><span class="p">(</span><span class="s1">'Buscar productos'</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">'camiseta'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Buscar'</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Ver resultados</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">'Camiseta'</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Añadir al carrito</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Añadir al carrito'</span><span class="w"> </span><span class="p">}).</span><span class="nx">first</span><span class="p">().</span><span class="nx">click</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Verificar contador</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByTestId</span><span class="p">(</span><span class="s1">'carrito-contador'</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-6-cobertura">Ejercicio 6: Cobertura<a class="headerlink" href="#ejercicios-16-testing-ejercicio-6-cobertura" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura <code>npm run test:coverage</code> y analiza el informe.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_5">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_5" title="Permanent link">&para;</a></h3>
-<p>Instala:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@vitest/coverage-v8
-</code></pre></div>
-<p>Añade a <code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"test:coverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vitest run --coverage"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Configura en <code>vite.config.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s1">'v8'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">reporter</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'text'</span><span class="p">,</span><span class="w"> </span><span class="s1">'html'</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">exclude</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'**/*.test.js'</span><span class="p">,</span><span class="w"> </span><span class="s1">'**/node_modules/**'</span><span class="p">],</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Ejecuta:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>test:coverage
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-16-testing-ejercicio-7-github-action-de-tests">Ejercicio 7: GitHub Action de tests<a class="headerlink" href="#ejercicios-16-testing-ejercicio-7-github-action-de-tests" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un workflow que ejecute los tests en cada PR.</p>
-</blockquote>
-<h3 id="ejercicios-16-testing-solucion_6">Solución<a class="headerlink" href="#ejercicios-16-testing-solucion_6" title="Permanent link">&para;</a></h3>
-<p><code>.github/workflows/test.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tests</span>
-
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
-
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run test:run</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-16-testing">Capítulo original</a></p></section><section class="print-page" id="ejercicios-17-rendimiento" heading-number="24.18"><h1 id="ejercicios-17-rendimiento-ejercicios-resueltos-capitulo-17">Ejercicios resueltos — Capítulo 17<a class="headerlink" href="#ejercicios-17-rendimiento-ejercicios-resueltos-capitulo-17" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-17-rendimiento">Capítulo original</a></p>
-<h2 id="ejercicios-17-rendimiento-ejercicio-1-medir-con-lighthouse">Ejercicio 1: Medir con Lighthouse<a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-1-medir-con-lighthouse" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Mide tu portfolio con Lighthouse.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Abre DevTools (<code>F12</code>).</li>
-<li>Pestaña <strong>Lighthouse</strong>.</li>
-<li>Marca <strong>Performance</strong>, <strong>Accessibility</strong>, <strong>Best Practices</strong>, <strong>SEO</strong>.</li>
-<li>Elige <strong>Mobile</strong> (más realista).</li>
-<li><strong>Analyze page load</strong>.</li>
-</ol>
-<p>Anota:
-- <strong>FCP</strong> (First Contentful Paint)
-- <strong>LCP</strong> (Largest Contentful Paint)
-- <strong>CLS</strong> (Cumulative Layout Shift)
-- <strong>TBT</strong> (Total Blocking Time)</p>
-<hr />
-<h2 id="ejercicios-17-rendimiento-ejercicio-2-imagenes-en-webp">Ejercicio 2: Imágenes en WebP<a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-2-imagenes-en-webp" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Convierte tus imágenes a WebP y añade <code>loading="lazy"</code>.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion_1">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion_1" title="Permanent link">&para;</a></h3>
-<p><strong>Conversión (con <code>cwebp</code>):</strong></p>
-<div class="highlight"><pre><span></span><code>cwebp<span class="w"> </span>foto.jpg<span class="w"> </span>-q<span class="w"> </span><span class="m">80</span><span class="w"> </span>-o<span class="w"> </span>foto.webp
-</code></pre></div>
-<p><strong>HTML con fallback:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"foto.webp"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/webp"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span> <span class="na">width</span><span class="o">=</span><span class="s">"800"</span> <span class="na">height</span><span class="o">=</span><span class="s">"600"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Sin convertir, con <code>srcset</code> responsive:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span>
-  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.jpg"</span>
-  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.jpg 400w, foto-800.jpg 800w, foto-1200.jpg 1200w"</span>
-  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"</span>
-  <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span>
-  <span class="na">width</span><span class="o">=</span><span class="s">"800"</span>
-  <span class="na">height</span><span class="o">=</span><span class="s">"600"</span>
-  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
-  <span class="na">decoding</span><span class="o">=</span><span class="s">"async"</span>
-<span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-17-rendimiento-ejercicio-3-width-y-height-en-imagenes">Ejercicio 3: <code>width</code> y <code>height</code> en imágenes<a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-3-width-y-height-en-imagenes" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade dimensiones a todas las imágenes para evitar CLS.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion_2">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- ❌ Mal: el navegador no reserva espacio --&gt;</span>
-<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"..."</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- ✅ Bien: el navegador reserva espacio y evita el salto --&gt;</span>
-<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"..."</span> <span class="na">width</span><span class="o">=</span><span class="s">"800"</span> <span class="na">height</span><span class="o">=</span><span class="s">"600"</span><span class="p">&gt;</span>
-
-<span class="cm">&lt;!-- Alternativa con CSS aspect-ratio --&gt;</span>
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">video</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
-<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">class</span><span class="o">=</span><span class="s">"video"</span> <span class="na">src</span><span class="o">=</span><span class="s">"..."</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-17-rendimiento-ejercicio-4-font-display-swap">Ejercicio 4: <code>font-display: swap</code><a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-4-font-display-swap" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura <code>font-display: swap</code> en tus fuentes.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion_3">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">font-face</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s1">'Inter'</span><span class="o">;</span>
-<span class="w">  </span><span class="nt">src</span><span class="o">:</span><span class="w"> </span><span class="nt">url</span><span class="o">(</span><span class="s1">'/fonts/inter.woff2'</span><span class="o">)</span><span class="w"> </span><span class="nt">format</span><span class="o">(</span><span class="s1">'woff2'</span><span class="o">);</span>
-<span class="w">  </span><span class="nt">font-weight</span><span class="o">:</span><span class="w"> </span><span class="nt">400</span><span class="o">;</span>
-<span class="w">  </span><span class="nt">font-style</span><span class="o">:</span><span class="w"> </span><span class="nt">normal</span><span class="o">;</span>
-<span class="w">  </span><span class="nt">font-display</span><span class="o">:</span><span class="w"> </span><span class="nt">swap</span><span class="o">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>O con Google Fonts:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preconnect"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://fonts.gstatic.com"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span>
-  <span class="na">href</span><span class="o">=</span><span class="s">"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap"</span>
-  <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span>
-<span class="p">&gt;</span>
-</code></pre></div>
-<p><strong><code>display=swap</code></strong> → muestra texto con fuente fallback mientras carga la real.</p>
-<hr />
-<h2 id="ejercicios-17-rendimiento-ejercicio-5-analizar-el-bundle">Ejercicio 5: Analizar el bundle<a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-5-analizar-el-bundle" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Analiza el bundle con <code>vite-bundle-visualizer</code>.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion_4">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vite-bundle-visualizer
-</code></pre></div>
-<p>Añade a <code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"analyze"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite-bundle-visualizer"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ejecuta:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>analyze
-</code></pre></div>
-<p>Se abre un gráfico con el tamaño de cada dependencia. Identifica las más pesadas y busca alternativas más ligeras:</p>
-<table>
-<thead>
-<tr>
-<th>Paquete pesado</th>
-<th>Alternativa ligera</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>moment</code> (~70 KB)</td>
-<td><code>dayjs</code> (~2 KB)</td>
-</tr>
-<tr>
-<td><code>lodash</code> (~70 KB)</td>
-<td><code>lodash-es</code> con tree shaking</td>
-</tr>
-<tr>
-<td><code>axios</code> (~50 KB)</td>
-<td><code>fetch</code> nativo</td>
-</tr>
-<tr>
-<td><code>jQuery</code> (~90 KB)</td>
-<td>DOM nativo</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="ejercicios-17-rendimiento-ejercicio-6-preconnect-y-preload">Ejercicio 6: <code>preconnect</code> y <code>preload</code><a class="headerlink" href="#ejercicios-17-rendimiento-ejercicio-6-preconnect-y-preload" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade <code>preconnect</code> y <code>preload</code> para recursos críticos.</p>
-</blockquote>
-<h3 id="ejercicios-17-rendimiento-solucion_5">Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="cm">&lt;!-- Anticipa la conexión con la CDN de fuentes --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preconnect"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://fonts.gstatic.com"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-
-  <span class="cm">&lt;!-- Precarga la fuente principal (usa las que aparecen en el primer render) --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/fonts/inter.woff2"</span> <span class="na">as</span><span class="o">=</span><span class="s">"font"</span> <span class="na">type</span><span class="o">=</span><span class="s">"font/woff2"</span> <span class="na">crossorigin</span><span class="p">&gt;</span>
-
-  <span class="cm">&lt;!-- Precarga el CSS crítico --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/estilos.css"</span> <span class="na">as</span><span class="o">=</span><span class="s">"style"</span><span class="p">&gt;</span>
-
-  <span class="cm">&lt;!-- DNS prefetch para servicios externos --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"dns-prefetch"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://analytics.ejemplo.com"</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">No abuses del preload</p>
-<p>Cada <code>preload</code> compite por ancho de banda. Úsalo solo para recursos <strong>críticos</strong> que descubrirías tarde.</p>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-16-testing" heading-number="24.17"><h1 id="ejercicios-16-testing-16-testing">16 — Testing<a class="headerlink" href="#ejercicios-16-testing-16-testing" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica testing unitario con Vitest.</p>
 </div>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-17-rendimiento">Capítulo original</a></p></section><section class="print-page" id="ejercicios-18-arquitectura" heading-number="24.19"><h1 id="ejercicios-18-arquitectura-ejercicios-resueltos-capitulo-18">Ejercicios resueltos — Capítulo 18<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicios-resueltos-capitulo-18" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-18-arquitectura">Capítulo original</a></p>
-<h2 id="ejercicios-18-arquitectura-ejercicio-1-reorganizar-a-feature-first">Ejercicio 1: Reorganizar a feature-first<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicio-1-reorganizar-a-feature-first" title="Permanent link">&para;</a></h2>
+<h2 id="ejercicios-16-testing-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-16-testing-objetivo" title="Permanent link">&para;</a></h2>
+<p>Escribe tests para una función `esPar(n)` que devuelve `true` si `n` es par.</p>
+<hr />
+<h2 id="ejercicios-16-testing-solucion">💡 Solución<a class="headerlink" href="#ejercicios-16-testing-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+// esPar.js
+export function esPar(n) {
+  return n % 2 === 0;
+}
+```</p>
+<p>```javascript
+// esPar.test.js
+import { describe, it, expect } from 'vitest';
+import { esPar } from './esPar.js';</p>
+<p>describe('esPar', () =&gt; {
+  it('devuelve true para 2', () =&gt; {
+    expect(esPar(2)).toBe(true);
+  });</p>
+<p>it('devuelve false para 3', () =&gt; {
+    expect(esPar(3)).toBe(false);
+  });</p>
+<p>it('devuelve true para 0', () =&gt; {
+    expect(esPar(0)).toBe(true);
+  });</p>
+<p>it('devuelve true para números negativos pares', () =&gt; {
+    expect(esPar(-4)).toBe(true);
+  });
+});
+```</p>
+<p>```bash
+npx vitest run
+```</p>
+<hr />
+<h2 id="ejercicios-16-testing-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-16-testing-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`describe`: agrupa tests.</li>
+<li>`it`: define un test.</li>
+<li>`expect(...).toBe(...)`: aserción.</li>
+<li>Casos límite: 0, negativos.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-16-testing-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-16-testing-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un test para `null` y `undefined`.</li>
+<li>[ ] Usa `toThrow` para una función que lance error.</li>
+<li>[ ] Mide la cobertura con `npx vitest run --coverage`.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-15-typescript">← Ejercicio 15</a>
+<a class="md-button md-button--primary" href="#ejercicios-17-rendimiento">Ir al ejercicio 17 →</a></p></section><section class="print-page" id="ejercicios-17-rendimiento" heading-number="24.18"><h1 id="ejercicios-17-rendimiento-17-rendimiento">17 — Rendimiento<a class="headerlink" href="#ejercicios-17-rendimiento-17-rendimiento" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica lazy loading y optimización de imágenes.</p>
+</div>
+<hr />
+<h2 id="ejercicios-17-rendimiento-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-17-rendimiento-objetivo" title="Permanent link">&para;</a></h2>
+<p>Optimiza una página con 10 imágenes para que:</p>
+<ol>
+<li>Solo carguen cuando se acerquen al viewport.</li>
+<li>Usen formatos modernos.</li>
+<li>Tengan `width` y `height` para evitar CLS.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-17-rendimiento-solucion">💡 Solución<a class="headerlink" href="#ejercicios-17-rendimiento-solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<div class="galeria">
+  <img src="../ejercicios/17-rendimiento/img1.webp" alt="Imagen 1"  width="400" height="300">
+  <img src="../ejercicios/17-rendimiento/img2.webp" alt="Imagen 2"  width="400" height="300">
+  <!-- ... -->
+</div>
+<p>```</p>
+<p>```html</p>
+<!-- Con srcset para responsive -->
+<p>&lt;img
+  src="foto-800.webp"
+  srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
+  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+  alt="Foto"
+  loading="lazy"
+  width="800"
+  height="600"</p>
 <blockquote>
-<p>Reorganiza un proyecto de <code>type-first</code> a <code>feature-first</code>.</p>
+<p>```</p>
 </blockquote>
-<h3 id="ejercicios-18-arquitectura-antes-type-first">Antes (type-first)<a class="headerlink" href="#ejercicios-18-arquitectura-antes-type-first" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>src/
-├── components/
-│   ├── Producto.jsx
-│   ├── Carrito.jsx
-│   └── Perfil.jsx
-├── hooks/
-│   ├── useProductos.js
-│   └── useCarrito.js
-├── api/
-│   ├── productos.js
-│   └── carrito.js
-└── utils/
-    └── formato.js
-</code></pre></div>
-<h3 id="ejercicios-18-arquitectura-solucion-feature-first">Solución (feature-first)<a class="headerlink" href="#ejercicios-18-arquitectura-solucion-feature-first" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>src/
+<hr />
+<h2 id="ejercicios-17-rendimiento-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-17-rendimiento-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`loading="lazy"`: carga diferida.</li>
+<li>`width` y `height`: reservan espacio, evitan CLS.</li>
+<li>`srcset` y `sizes`: imágenes responsive.</li>
+<li>WebP/AVIF: formatos modernos más ligeros.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-17-rendimiento-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-17-rendimiento-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Convierte las imágenes a WebP con <a href="https://squoosh.app/">Squoosh</a>.</li>
+<li>[ ] Añade `<picture>` con fallback JPG.</li>
+<li>[ ] Mide el LCP antes y después con Lighthouse.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-16-testing">← Ejercicio 16</a>
+<a class="md-button md-button--primary" href="#ejercicios-18-arquitectura">Ir al ejercicio 18 →</a></p></section><section class="print-page" id="ejercicios-18-arquitectura" heading-number="24.19"><h1 id="ejercicios-18-arquitectura-18-arquitectura">18 — Arquitectura<a class="headerlink" href="#ejercicios-18-arquitectura-18-arquitectura" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la estructura feature-first.</p>
+</div>
+<hr />
+<h2 id="ejercicios-18-arquitectura-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-18-arquitectura-objetivo" title="Permanent link">&para;</a></h2>
+<p>Organiza una app con features `auth` y `carrito` en estructura feature-first.</p>
+<hr />
+<h2 id="ejercicios-18-arquitectura-solucion">💡 Solución<a class="headerlink" href="#ejercicios-18-arquitectura-solucion" title="Permanent link">&para;</a></h2>
+<p>```
+src/
+├── app/
+│   ├── App.jsx
+│   └── routes.jsx
 ├── features/
-│   ├── productos/
+│   ├── auth/
 │   │   ├── components/
-│   │   │   └── Producto.jsx
+│   │   │   └── LoginForm.jsx
 │   │   ├── hooks/
-│   │   │   └── useProductos.js
+│   │   │   └── useAuth.js
 │   │   ├── api.js
 │   │   └── index.js
-│   ├── carrito/
-│   │   ├── components/
-│   │   │   └── Carrito.jsx
-│   │   ├── hooks/
-│   │   │   └── useCarrito.js
-│   │   └── index.js
-│   └── perfil/
-│       └── components/
-│           └── Perfil.jsx
-├── shared/
-│   ├── components/
-│   ├── hooks/
-│   └── utils/
-│       └── formato.js
-└── app/
-    ├── rutas.js
-    └── layouts/
-</code></pre></div>
-<p><strong>Regla de oro</strong>: <code>shared/</code> no puede importar nada de <code>features/</code>.</p>
+│   └── carrito/
+│       ├── components/
+│       │   └── CarritoItem.jsx
+│       ├── hooks/
+│       │   └── useCarrito.js
+│       └── api.js
+└── shared/
+    ├── components/
+    │   └── Button.jsx
+    └── utils/
+        └── format.js
+```</p>
+<p>```javascript
+// features/auth/index.js
+export { LoginForm } from './components/LoginForm';
+export { useAuth } from './hooks/useAuth';
+```</p>
 <hr />
-<h2 id="ejercicios-18-arquitectura-ejercicio-2-clasificar-estados">Ejercicio 2: Clasificar estados<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicio-2-clasificar-estados" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Identifica tres estados en tu app y clasifícalos.</p>
-</blockquote>
-<h3 id="ejercicios-18-arquitectura-solucion">Solución<a class="headerlink" href="#ejercicios-18-arquitectura-solucion" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Estado</th>
-<th>Tipo</th>
-<th>Dónde va</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Menú abierto/cerrado</td>
-<td>Local</td>
-<td><code>useState</code> del componente</td>
-</tr>
-<tr>
-<td>Usuario logueado</td>
-<td>Global</td>
-<td>Context o store</td>
-</tr>
-<tr>
-<td>Lista de productos desde API</td>
-<td>Servidor</td>
-<td>React Query / SWR</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Regla</strong>: empieza local, sube solo si es necesario.</p>
+<h2 id="ejercicios-18-arquitectura-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-18-arquitectura-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cada feature tiene sus componentes, hooks y api.</li>
+<li>`shared/` para lo reutilizable.</li>
+<li>Barrel files (`index.js`) para simplificar imports.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-18-arquitectura-ejercicio-3-react-query-para-estado-del-servidor">Ejercicio 3: React Query para estado del servidor<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicio-3-react-query-para-estado-del-servidor" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Sustituye un store global con estado del servidor por React Query.</p>
-</blockquote>
-<h3 id="ejercicios-18-arquitectura-antes">Antes<a class="headerlink" href="#ejercicios-18-arquitectura-antes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Antipatrón: el servidor en un store global</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">useStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">create</span><span class="p">((</span><span class="nx">set</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">  </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nx">cargarProductos</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/productos'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">set</span><span class="p">({</span><span class="w"> </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">}));</span>
-</code></pre></div>
-<h3 id="ejercicios-18-arquitectura-solucion_1">Solución<a class="headerlink" href="#ejercicios-18-arquitectura-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useQuery</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@tanstack/react-query'</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">useProductos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">useQuery</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">queryKey</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'productos'</span><span class="p">],</span>
-<span class="w">    </span><span class="nx">queryFn</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/productos'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error al cargar'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">staleTime</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 5 min</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// En el componente</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">ListaProductos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">isLoading</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useProductos</span><span class="p">();</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isLoading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Spinner</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="ne">Error</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Lista</span><span class="w"> </span><span class="nx">items</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>React Query se encarga de caché, revalidación y reintentos.</p>
+<h2 id="ejercicios-18-arquitectura-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-18-arquitectura-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade una feature `productos`.</li>
+<li>[ ] Crea un barrel file en `shared/components`.</li>
+<li>[ ] Añade tests junto a cada componente.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-18-arquitectura-ejercicio-4-compound-component">Ejercicio 4: Compound component<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicio-4-compound-component" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe un componente <code>Tabs</code> con compound components.</p>
-</blockquote>
-<h3 id="ejercicios-18-arquitectura-solucion_2">Solución<a class="headerlink" href="#ejercicios-18-arquitectura-solucion_2" title="Permanent link">&para;</a></h3>
-<p><strong>React:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">TabsContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="p">();</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">Tabs</span><span class="p">({</span><span class="w"> </span><span class="nx">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="nx">defaultValue</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">TabsContext</span><span class="p">.</span><span class="na">Provider</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="w"> </span><span class="p">}}&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"tabs"</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">TabsContext</span><span class="p">.</span><span class="na">Provider</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">List</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">List</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"tabs-list"</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
-<span class="p">};</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Trigger</span><span class="p">({</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">TabsContext</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span>
-<span class="w">      </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">activo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'activo'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">}</span>
-<span class="w">      </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setActivo</span><span class="p">(</span><span class="nx">value</span><span class="p">)}</span>
-<span class="w">    </span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">{</span><span class="nx">children</span><span class="p">}</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">Panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Panel</span><span class="p">({</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">activo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">TabsContext</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">activo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><strong>Uso:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">Tabs</span><span class="w"> </span><span class="na">defaultValue</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">List</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span><span class="nx">Perfil</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;</span><span class="nx">Cuenta</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">List</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span><span class="nx">Contenido</span><span class="w"> </span><span class="nx">del</span><span class="w"> </span><span class="nx">perfil</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;</span><span class="nx">Contenido</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">la</span><span class="w"> </span><span class="nx">cuenta</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">&gt;</span>
-</code></pre></div>
+<p><a class="md-button" href="#ejercicios-17-rendimiento">← Ejercicio 17</a>
+<a class="md-button md-button--primary" href="#ejercicios-19-fullstack-node">Ir al ejercicio 19 →</a></p></section><section class="print-page" id="ejercicios-19-fullstack-node" heading-number="24.20"><h1 id="ejercicios-19-fullstack-node-19-full-stack-con-nodejs">19 — Full-stack con Node.js<a class="headerlink" href="#ejercicios-19-fullstack-node-19-full-stack-con-nodejs" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la creación de una API REST con Express.</p>
+</div>
 <hr />
-<h2 id="ejercicios-18-arquitectura-ejercicio-5-lazy-loading-por-rutas">Ejercicio 5: Lazy loading por rutas<a class="headerlink" href="#ejercicios-18-arquitectura-ejercicio-5-lazy-loading-por-rutas" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura lazy loading por rutas.</p>
-</blockquote>
-<h3 id="ejercicios-18-arquitectura-solucion_3">Solución<a class="headerlink" href="#ejercicios-18-arquitectura-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">lazy</span><span class="p">,</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Routes</span><span class="p">,</span><span class="w"> </span><span class="nx">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react-router-dom'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">Inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Inicio'</span><span class="p">));</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">Productos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Productos'</span><span class="p">));</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">Perfil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Perfil'</span><span class="p">));</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Suspense</span><span class="w"> </span><span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Cargando</span><span class="err">…</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;}&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Routes</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Inicio</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/productos"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Productos</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/perfil"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Perfil</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">      </span><span class="p">&lt;/</span><span class="nt">Routes</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Cada ruta genera un chunk separado que se carga solo cuando se visita.</p>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-18-arquitectura">Capítulo original</a></p></section><section class="print-page" id="ejercicios-19-fullstack-node" heading-number="24.20"><h1 id="ejercicios-19-fullstack-node-ejercicios-resueltos-capitulo-19">Ejercicios resueltos — Capítulo 19<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicios-resueltos-capitulo-19" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-19-fullstack-node">Capítulo original</a></p>
-<h2 id="ejercicios-19-fullstack-node-ejercicio-1-endpoint-get">Ejercicio 1: Endpoint GET<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-1-endpoint-get" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una API con un endpoint <code>GET /api/saludo</code>.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// src/server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/saludo'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s1">'Hola desde Node.js'</span><span class="w"> </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'http://localhost:3000'</span><span class="p">));</span>
-</code></pre></div>
-<p>Ejecuta:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
-curl<span class="w"> </span>http://localhost:3000/api/saludo
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-2-post-con-validacion-zod">Ejercicio 2: POST con validación Zod<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-2-post-con-validacion-zod" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade una ruta <code>POST /api/usuarios</code> con validación Zod.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_1">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'zod'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">schemaUsuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">string</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">2</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">50</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">string</span><span class="p">().</span><span class="nx">email</span><span class="p">(),</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">schemaUsuario</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">errores</span><span class="o">:</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">issues</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">        </span><span class="nx">campo</span><span class="o">:</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'.'</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
-<span class="w">      </span><span class="p">})),</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s1">'Usuario creado'</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">usuario</span><span class="o">:</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-3-modelo-tarea-con-prisma">Ejercicio 3: Modelo Tarea con Prisma<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-3-modelo-tarea-con-prisma" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Conecta PostgreSQL con Prisma y crea un modelo <code>Tarea</code>.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_2">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_2" title="Permanent link">&para;</a></h3>
-<p><code>prisma/schema.prisma</code>:</p>
-<div class="highlight"><pre><span></span><code>model Tarea {
-  id        Int      @id @default(autoincrement())
-  titulo    String
-  completada Boolean @default(false)
-  creadaEn  DateTime @default(now())
-}
-</code></pre></div>
-<p>Migración:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>dev<span class="w"> </span>--name<span class="w"> </span>add-tarea
-</code></pre></div>
-<p>Endpoints:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@prisma/client'</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/tareas'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tareas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">tarea</span><span class="p">.</span><span class="nx">findMany</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">tareas</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/tareas'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">tarea</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">titulo</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">titulo</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">tarea</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">patch</span><span class="p">(</span><span class="s1">'/api/tareas/:id'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">tarea</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">completada</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">completada</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">tarea</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">'/api/tareas/:id'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">tarea</span><span class="p">.</span><span class="ow">delete</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">204</span><span class="p">).</span><span class="nx">end</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-4-registro-y-login-con-jwt">Ejercicio 4: Registro y login con JWT<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-4-registro-y-login-con-jwt" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa registro y login con JWT.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_3">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'bcrypt'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'jsonwebtoken'</span><span class="p">;</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/auth/registro'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">existe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existe</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">409</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Email en uso'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">'7d'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/auth/login'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Credenciales inválidas'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Credenciales inválidas'</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">'7d'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-5-middleware-de-autenticacion">Ejercicio 5: Middleware de autenticación<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-5-middleware-de-autenticacion" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Protege una ruta <code>GET /api/perfil</code>.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_4">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'jsonwebtoken'</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">autenticar</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">auth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">;</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="o">?</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">'Bearer '</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Token no proporcionado'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">auth</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">7</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Token inválido'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/perfil'</span><span class="p">,</span><span class="w"> </span><span class="nx">autenticar</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">usuario</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-6-cors">Ejercicio 6: CORS<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-6-cors" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade CORS para permitir peticiones desde <code>localhost:5173</code>.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_5">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">cors</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'cors'</span><span class="p">;</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">'http://localhost:5173'</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">'https://libro.urukais.com'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="p">}));</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-7-desplegar-en-railway">Ejercicio 7: Desplegar en Railway<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-7-desplegar-en-railway" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Despliega la API en Railway.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_6">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_6" title="Permanent link">&para;</a></h3>
+<h2 id="ejercicios-19-fullstack-node-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-19-fullstack-node-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una API REST con:</p>
 <ol>
-<li><strong>Crea cuenta</strong> en <a href="https://railway.app">railway.app</a>.</li>
-<li><strong>New Project</strong> → <strong>Deploy from GitHub repo</strong>.</li>
-<li>Selecciona tu repo.</li>
-<li><strong>Add plugin</strong> → <strong>PostgreSQL</strong>.</li>
-<li>Railway añade <code>DATABASE_URL</code> automáticamente.</li>
-<li>Configura variables extra (<code>JWT_SECRET</code>, <code>PORT</code>).</li>
-<li>Railway despliega en cada push.</li>
+<li>`GET /api/tareas`: devuelve todas las tareas.</li>
+<li>`POST /api/tareas`: crea una tarea.</li>
+<li>`DELETE /api/tareas/:id`: elimina una tarea.</li>
 </ol>
 <hr />
-<h2 id="ejercicios-19-fullstack-node-ejercicio-8-conectar-la-api-al-frontend">Ejercicio 8: Conectar la API al frontend<a class="headerlink" href="#ejercicios-19-fullstack-node-ejercicio-8-conectar-la-api-al-frontend" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Conecta esta API a tu frontend del Capítulo 10.</p>
-</blockquote>
-<h3 id="ejercicios-19-fullstack-node-solucion_7">Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion_7" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// cliente.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">API</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'https://tu-api.up.railway.app'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API</span><span class="si">}</span><span class="sb">/api/auth/login`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}),</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Credenciales inválidas'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'token'</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">token</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerPerfil</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'token'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API</span><span class="si">}</span><span class="sb">/api/perfil`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">token</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No autorizado'</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="ejercicios-19-fullstack-node-solucion">💡 Solución<a class="headerlink" href="#ejercicios-19-fullstack-node-solucion" title="Permanent link">&para;</a></h2>
+<p>```bash
+npm init -y
+npm install express
+```</p>
+<p>```javascript
+// server.js
+import express from 'express';</p>
+<p>const app = express();
+app.use(express.json());</p>
+<p>let tareas = [
+  { id: 1, texto: 'Aprender Node.js', completada: false }
+];</p>
+<p>app.get('/api/tareas', (req, res) =&gt; {
+  res.json(tareas);
+});</p>
+<p>app.post('/api/tareas', (req, res) =&gt; {
+  const nueva = {
+    id: Date.now(),
+    texto: req.body.texto,
+    completada: false
+  };
+  tareas.push(nueva);
+  res.status(201).json(nueva);
+});</p>
+<p>app.delete('/api/tareas/:id', (req, res) =&gt; {
+  const id = Number(req.params.id);
+  tareas = tareas.filter(t =&gt; t.id !== id);
+  res.status(204).end();
+});</p>
+<p>app.listen(3000, () =&gt; console.log('http://localhost:3000'));
+```</p>
+<p>```bash
+node server.js
+```</p>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-19-fullstack-node">Capítulo original</a></p></section><section class="print-page" id="ejercicios-20-devops" heading-number="24.21"><h1 id="ejercicios-20-devops-ejercicios-resueltos-capitulo-20">Ejercicios resueltos — Capítulo 20<a class="headerlink" href="#ejercicios-20-devops-ejercicios-resueltos-capitulo-20" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-20-devops">Capítulo original</a></p>
-<h2 id="ejercicios-20-devops-ejercicio-1-workflow-de-ci">Ejercicio 1: Workflow de CI<a class="headerlink" href="#ejercicios-20-devops-ejercicio-1-workflow-de-ci" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura un workflow con lint + test + build.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion" title="Permanent link">&para;</a></h3>
-<p><code>.github/workflows/ci.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
-
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
-
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instalar dependencias</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run lint</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tests</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run test:run</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
-</code></pre></div>
+<h2 id="ejercicios-19-fullstack-node-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-19-fullstack-node-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`express.json()`: middleware para parsear JSON.</li>
+<li>`req.body`: datos enviados en el body.</li>
+<li>`req.params`: parámetros de la URL.</li>
+<li>Códigos HTTP: 200, 201, 204.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-20-devops-ejercicio-2-husky-lint-staged">Ejercicio 2: Husky + lint-staged<a class="headerlink" href="#ejercicios-20-devops-ejercicio-2-husky-lint-staged" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade Husky + lint-staged a un proyecto.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_1">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>husky<span class="w"> </span>lint-staged
-npx<span class="w"> </span>husky<span class="w"> </span>init
-</code></pre></div>
-<p><code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"lint-staged"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"*.{js,ts,jsx,tsx}"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"eslint --fix"</span><span class="p">,</span><span class="w"> </span><span class="s2">"prettier --write"</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"*.{css,scss}"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"prettier --write"</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"*.md"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"prettier --write"</span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>.husky/pre-commit</code>:</p>
-<div class="highlight"><pre><span></span><code>npx lint-staged
-</code></pre></div>
+<h2 id="ejercicios-19-fullstack-node-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-19-fullstack-node-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un `PUT /api/tareas/:id` para actualizar.</li>
+<li>[ ] Persiste las tareas en un archivo JSON.</li>
+<li>[ ] Conecta con PostgreSQL y Prisma.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-20-devops-ejercicio-3-sentry">Ejercicio 3: Sentry<a class="headerlink" href="#ejercicios-20-devops-ejercicio-3-sentry" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Integra Sentry y captura un error forzado.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_2">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@sentry/react
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Sentry</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@sentry/react'</span><span class="p">;</span>
-
-<span class="nx">Sentry</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">dsn</span><span class="o">:</span><span class="w"> </span><span class="s1">'https://...@sentry.io/...'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">environment</span><span class="o">:</span><span class="w"> </span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MODE</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">tracesSampleRate</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">integrations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">Sentry</span><span class="p">.</span><span class="nx">browserTracingIntegration</span><span class="p">()],</span>
-<span class="p">});</span>
-</code></pre></div>
-<p><strong>Botón de prueba:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error de prueba'</span><span class="p">);</span>
-<span class="p">}}</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="nx">Lanzar</span><span class="w"> </span><span class="nx">error</span>
-<span class="o">&lt;</span><span class="err">/button&gt;</span>
-</code></pre></div>
-<p>El error aparecerá en el panel de Sentry en segundos.</p>
+<p><a class="md-button" href="#ejercicios-18-arquitectura">← Ejercicio 18</a>
+<a class="md-button md-button--primary" href="#ejercicios-20-devops">Ir al ejercicio 20 →</a></p></section><section class="print-page" id="ejercicios-20-devops" heading-number="24.21"><h1 id="ejercicios-20-devops-20-devops">20 — DevOps<a class="headerlink" href="#ejercicios-20-devops-20-devops" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la automatización con GitHub Actions.</p>
+</div>
 <hr />
-<h2 id="ejercicios-20-devops-ejercicio-4-web-vitals-en-produccion">Ejercicio 4: Web Vitals en producción<a class="headerlink" href="#ejercicios-20-devops-ejercicio-4-web-vitals-en-produccion" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade <code>web-vitals</code> y envía las métricas a tu backend.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_3">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>web-vitals
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onCLS</span><span class="p">,</span><span class="w"> </span><span class="nx">onINP</span><span class="p">,</span><span class="w"> </span><span class="nx">onLCP</span><span class="p">,</span><span class="w"> </span><span class="nx">onFCP</span><span class="p">,</span><span class="w"> </span><span class="nx">onTTFB</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'web-vitals'</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">enviar</span><span class="p">(</span><span class="nx">metrica</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuerpo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">metrica</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">metrica</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">metrica</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="c1">// sendBeacon envía incluso al cerrar la pestaña</span>
-<span class="w">  </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">sendBeacon</span><span class="p">(</span><span class="s1">'/api/vitals'</span><span class="p">,</span><span class="w"> </span><span class="nx">cuerpo</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">onCLS</span><span class="p">(</span><span class="nx">enviar</span><span class="p">);</span>
-<span class="nx">onINP</span><span class="p">(</span><span class="nx">enviar</span><span class="p">);</span>
-<span class="nx">onLCP</span><span class="p">(</span><span class="nx">enviar</span><span class="p">);</span>
-<span class="nx">onFCP</span><span class="p">(</span><span class="nx">enviar</span><span class="p">);</span>
-<span class="nx">onTTFB</span><span class="p">(</span><span class="nx">enviar</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-20-devops-ejercicio-5-dockerfile-multi-stage">Ejercicio 5: Dockerfile multi-stage<a class="headerlink" href="#ejercicios-20-devops-ejercicio-5-dockerfile-multi-stage" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un Dockerfile multi-stage para una SPA con Nginx.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_4">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_4" title="Permanent link">&para;</a></h3>
-<p><strong>Dockerfile:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c"># Etapa 1: build</span>
-<span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span>
-<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
-<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci
-<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
-<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
-
-<span class="c"># Etapa 2: servir</span>
-<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
-<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/app/dist<span class="w"> </span>/usr/share/nginx/html
-<span class="k">COPY</span><span class="w"> </span>nginx.conf<span class="w"> </span>/etc/nginx/conf.d/default.conf
-<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"nginx"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-g"</span><span class="p">,</span><span class="w"> </span><span class="s2">"daemon off;"</span><span class="p">]</span>
-</code></pre></div>
-<p><strong>nginx.conf:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<span class="w">  </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
-<span class="w">  </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1"># SPA fallback</span>
-<span class="w">  </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.html</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1"># Cache largo para assets con hash</span>
-<span class="w">  </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">\.(js|css|woff2|png|jpg|svg)</span>$<span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">expires</span><span class="w"> </span><span class="s">1y</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w"> </span><span class="s">"public,</span><span class="w"> </span><span class="s">immutable"</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-20-devops-ejercicio-6-dependabot">Ejercicio 6: Dependabot<a class="headerlink" href="#ejercicios-20-devops-ejercicio-6-dependabot" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura Dependabot para actualizar dependencias semanalmente.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_5">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_5" title="Permanent link">&para;</a></h3>
-<p><code>.github/dependabot.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">updates</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weekly</span>
-<span class="w">      </span><span class="nt">day</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monday</span>
-<span class="w">    </span><span class="nt">open-pull-requests-limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-actions</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monthly</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-20-devops-ejercicio-7-postmortem">Ejercicio 7: Postmortem<a class="headerlink" href="#ejercicios-20-devops-ejercicio-7-postmortem" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe un postmortem de un bug real.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_6">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_6" title="Permanent link">&para;</a></h3>
-<p><strong>Formato:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="gh"># Postmortem: [título del incidente]</span>
-
-<span class="gs">**Fecha**</span>: 2026-10-12
-<span class="gs">**Duración**</span>: 45 minutos
-<span class="gs">**Impacto**</span>: usuarios no podían iniciar sesión
-
-<span class="gu">## Qué pasó</span>
-
-Descripción cronológica del incidente.
-
-<span class="gu">## Timeline</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**10:00**</span> — deploy de la versión 2.3.0
-<span class="k">-</span><span class="w"> </span><span class="gs">**10:05**</span> — primeros reportes de usuarios
-<span class="k">-</span><span class="w"> </span><span class="gs">**10:15**</span> — identificado el problema
-<span class="k">-</span><span class="w"> </span><span class="gs">**10:30**</span> — rollback a 2.2.0
-<span class="k">-</span><span class="w"> </span><span class="gs">**10:45**</span> — servicio restaurado
-
-<span class="gu">## Causa raíz</span>
-
-El nuevo middleware de autenticación verificaba el token antes de que
-la base de datos estuviera lista. En producción, el arranque es más
-lento que en local y fallaba la verificación.
-
-<span class="gu">## Qué se hizo bien</span>
-
-<span class="k">-</span><span class="w"> </span>Detección rápida (5 min).
-<span class="k">-</span><span class="w"> </span>Comunicación clara con el equipo.
-<span class="k">-</span><span class="w"> </span>Rollback sin pérdida de datos.
-
-<span class="gu">## Qué mejorar</span>
-
-<span class="k">-</span><span class="w"> </span>Añadir healthcheck que espere a la BD.
-<span class="k">-</span><span class="w"> </span>Test de integración con la BD en CI.
-<span class="k">-</span><span class="w"> </span>Alertas automáticas por tasa de errores.
-
-<span class="gu">## Acciones</span>
-
-<span class="k">- [ ]</span> Healthcheck esperando a la BD (@urukais)
-<span class="k">- [ ]</span> Test de integración en CI (@urukais)
-<span class="k">- [ ]</span> Alertas con Sentry (@urukais)
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-20-devops-ejercicio-8-staging-y-produccion">Ejercicio 8: Staging y producción<a class="headerlink" href="#ejercicios-20-devops-ejercicio-8-staging-y-produccion" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Despliega la misma app en staging y producción.</p>
-</blockquote>
-<h3 id="ejercicios-20-devops-solucion_7">Solución<a class="headerlink" href="#ejercicios-20-devops-solucion_7" title="Permanent link">&para;</a></h3>
-<p><strong>En Vercel:</strong></p>
+<h2 id="ejercicios-20-devops-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-20-devops-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un workflow que se ejecute en cada push a `main` y:</p>
 <ol>
-<li>Crea un proyecto para <code>main</code> (producción).</li>
-<li>Crea otro proyecto conectado a <code>staging</code> (staging).</li>
-<li>Cada uno con sus variables de entorno.</li>
+<li>Instale dependencias.</li>
+<li>Ejecute tests.</li>
+<li>Construya el proyecto.</li>
 </ol>
-<p><strong>En GitHub Actions:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span>
-<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">if [ "${{ github.ref }}" = "refs/heads/main" ]; then</span>
-<span class="w">      </span><span class="no">npx vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}</span>
-<span class="w">    </span><span class="no">else</span>
-<span class="w">      </span><span class="no">npx vercel deploy --token=${{ secrets.VERCEL_TOKEN }}</span>
-<span class="w">    </span><span class="no">fi</span>
-</code></pre></div>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-20-devops">Capítulo original</a></p></section><section class="print-page" id="ejercicios-21-web-components" heading-number="24.22"><h1 id="ejercicios-21-web-components-ejercicios-resueltos-capitulo-21">Ejercicios resueltos — Capítulo 21<a class="headerlink" href="#ejercicios-21-web-components-ejercicios-resueltos-capitulo-21" title="Permanent link">&para;</a></h1>
+<h2 id="ejercicios-20-devops-solucion">💡 Solución<a class="headerlink" href="#ejercicios-20-devops-solucion" title="Permanent link">&para;</a></h2>
+<p>```yaml</p>
+<h1 id="ejercicios-20-devops-githubworkflowsciyml">.github/workflows/ci.yml<a class="headerlink" href="#ejercicios-20-devops-githubworkflowsciyml" title="Permanent link">&para;</a></h1>
+<p>name: CI</p>
+<p>on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]</p>
+<p>jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4</p>
+<div class="highlight"><pre><span></span><code>  - uses: actions/setup-node@v4
+    with:
+      node-version: 20
+      cache: 'npm'
+
+  - run: npm ci
+  - run: npm test
+  - run: npm run build
+</code></pre></div>
+<p>```</p>
+<hr />
+<h2 id="ejercicios-20-devops-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-20-devops-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`on`: eventos que disparan el workflow.</li>
+<li>`jobs`: tareas que se ejecutan.</li>
+<li>`steps`: pasos dentro de un job.</li>
+<li>`actions/checkout`: clona el repo.</li>
+<li>`actions/setup-node`: instala Node.js.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-20-devops-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-20-devops-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un paso de deploy a GitHub Pages.</li>
+<li>[ ] Usa una matriz para testear en Node 18 y 20.</li>
+<li>[ ] Añade un paso de linting con ESLint.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-19-fullstack-node">← Ejercicio 19</a>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-21-web-components" heading-number="24.22"><h1 id="ejercicios-21-web-components-ejercicios-resueltos-capitulo-21">Ejercicios resueltos — Capítulo 21<a class="headerlink" href="#ejercicios-21-web-components-ejercicios-resueltos-capitulo-21" title="Permanent link">&para;</a></h1>
 <p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-21-web-components">Capítulo original</a></p>
 <h2 id="ejercicios-21-web-components-ejercicio-1-mi-saludo">Ejercicio 1: <code>&lt;mi-saludo&gt;</code><a class="headerlink" href="#ejercicios-21-web-components-ejercicio-1-mi-saludo" title="Permanent link">&para;</a></h2>
 <blockquote>

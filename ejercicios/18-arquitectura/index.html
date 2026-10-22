@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-18" class="md-skip">
+        <a href="#18-arquitectura" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3759,164 +3759,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-reorganizar-a-feature-first" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Reorganizar a feature-first
+        🎯 Objetivo
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 1: Reorganizar a feature-first">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#antes-type-first" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Antes (type-first)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solucion-feature-first" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución (feature-first)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-clasificar-estados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 2: Clasificar estados
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Clasificar estados">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-react-query-para-estado-del-servidor" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: React Query para estado del servidor
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: React Query para estado del servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#antes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Antes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-4-compound-component" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 4: Compound component
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Compound component">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-5-lazy-loading-por-rutas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5: Lazy loading por rutas
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 5: Lazy loading por rutas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4733,208 +4615,63 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-18">Ejercicios resueltos — Capítulo 18<a class="headerlink" href="#ejercicios-resueltos-capitulo-18" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/18-arquitectura/">Capítulo original</a></p>
-<h2 id="ejercicio-1-reorganizar-a-feature-first">Ejercicio 1: Reorganizar a feature-first<a class="headerlink" href="#ejercicio-1-reorganizar-a-feature-first" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Reorganiza un proyecto de <code>type-first</code> a <code>feature-first</code>.</p>
-</blockquote>
-<h3 id="antes-type-first">Antes (type-first)<a class="headerlink" href="#antes-type-first" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>src/
-├── components/
-│   ├── Producto.jsx
-│   ├── Carrito.jsx
-│   └── Perfil.jsx
-├── hooks/
-│   ├── useProductos.js
-│   └── useCarrito.js
-├── api/
-│   ├── productos.js
-│   └── carrito.js
-└── utils/
-    └── formato.js
-</code></pre></div>
-<h3 id="solucion-feature-first">Solución (feature-first)<a class="headerlink" href="#solucion-feature-first" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>src/
+<h1 id="18-arquitectura">18 — Arquitectura<a class="headerlink" href="#18-arquitectura" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la estructura feature-first.</p>
+</div>
+<hr />
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Organiza una app con features `auth` y `carrito` en estructura feature-first.</p>
+<hr />
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```
+src/
+├── app/
+│   ├── App.jsx
+│   └── routes.jsx
 ├── features/
-│   ├── productos/
+│   ├── auth/
 │   │   ├── components/
-│   │   │   └── Producto.jsx
+│   │   │   └── LoginForm.jsx
 │   │   ├── hooks/
-│   │   │   └── useProductos.js
+│   │   │   └── useAuth.js
 │   │   ├── api.js
 │   │   └── index.js
-│   ├── carrito/
-│   │   ├── components/
-│   │   │   └── Carrito.jsx
-│   │   ├── hooks/
-│   │   │   └── useCarrito.js
-│   │   └── index.js
-│   └── perfil/
-│       └── components/
-│           └── Perfil.jsx
-├── shared/
-│   ├── components/
-│   ├── hooks/
-│   └── utils/
-│       └── formato.js
-└── app/
-    ├── rutas.js
-    └── layouts/
-</code></pre></div>
-<p><strong>Regla de oro</strong>: <code>shared/</code> no puede importar nada de <code>features/</code>.</p>
+│   └── carrito/
+│       ├── components/
+│       │   └── CarritoItem.jsx
+│       ├── hooks/
+│       │   └── useCarrito.js
+│       └── api.js
+└── shared/
+    ├── components/
+    │   └── Button.jsx
+    └── utils/
+        └── format.js
+```</p>
+<p>```javascript
+// features/auth/index.js
+export { LoginForm } from './components/LoginForm';
+export { useAuth } from './hooks/useAuth';
+```</p>
 <hr />
-<h2 id="ejercicio-2-clasificar-estados">Ejercicio 2: Clasificar estados<a class="headerlink" href="#ejercicio-2-clasificar-estados" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Identifica tres estados en tu app y clasifícalos.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Estado</th>
-<th>Tipo</th>
-<th>Dónde va</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Menú abierto/cerrado</td>
-<td>Local</td>
-<td><code>useState</code> del componente</td>
-</tr>
-<tr>
-<td>Usuario logueado</td>
-<td>Global</td>
-<td>Context o store</td>
-</tr>
-<tr>
-<td>Lista de productos desde API</td>
-<td>Servidor</td>
-<td>React Query / SWR</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Regla</strong>: empieza local, sube solo si es necesario.</p>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cada feature tiene sus componentes, hooks y api.</li>
+<li>`shared/` para lo reutilizable.</li>
+<li>Barrel files (`index.js`) para simplificar imports.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-3-react-query-para-estado-del-servidor">Ejercicio 3: React Query para estado del servidor<a class="headerlink" href="#ejercicio-3-react-query-para-estado-del-servidor" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Sustituye un store global con estado del servidor por React Query.</p>
-</blockquote>
-<h3 id="antes">Antes<a class="headerlink" href="#antes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Antipatrón: el servidor en un store global</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">useStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">create</span><span class="p">((</span><span class="nx">set</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">  </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">  </span><span class="nx">cargarProductos</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/productos'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">set</span><span class="p">({</span><span class="w"> </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">}));</span>
-</code></pre></div>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useQuery</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@tanstack/react-query'</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">useProductos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">useQuery</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">queryKey</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'productos'</span><span class="p">],</span>
-<span class="w">    </span><span class="nx">queryFn</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/productos'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error al cargar'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">staleTime</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 5 min</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// En el componente</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">ListaProductos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">isLoading</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useProductos</span><span class="p">();</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isLoading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Spinner</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="ne">Error</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Lista</span><span class="w"> </span><span class="nx">items</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>React Query se encarga de caché, revalidación y reintentos.</p>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade una feature `productos`.</li>
+<li>[ ] Crea un barrel file en `shared/components`.</li>
+<li>[ ] Añade tests junto a cada componente.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-4-compound-component">Ejercicio 4: Compound component<a class="headerlink" href="#ejercicio-4-compound-component" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe un componente <code>Tabs</code> con compound components.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<p><strong>React:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">TabsContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="p">();</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">Tabs</span><span class="p">({</span><span class="w"> </span><span class="nx">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="nx">defaultValue</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">TabsContext</span><span class="p">.</span><span class="na">Provider</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="w"> </span><span class="p">}}&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"tabs"</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">TabsContext</span><span class="p">.</span><span class="na">Provider</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">List</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">List</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"tabs-list"</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
-<span class="p">};</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Trigger</span><span class="p">({</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">activo</span><span class="p">,</span><span class="w"> </span><span class="nx">setActivo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">TabsContext</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span>
-<span class="w">      </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">activo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'activo'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">}</span>
-<span class="w">      </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setActivo</span><span class="p">(</span><span class="nx">value</span><span class="p">)}</span>
-<span class="w">    </span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">{</span><span class="nx">children</span><span class="p">}</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="nx">Tabs</span><span class="p">.</span><span class="nx">Panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Panel</span><span class="p">({</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">activo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">TabsContext</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">activo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><strong>Uso:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">Tabs</span><span class="w"> </span><span class="na">defaultValue</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">List</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span><span class="nx">Perfil</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;</span><span class="nx">Cuenta</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Trigger</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">List</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span><span class="nx">Contenido</span><span class="w"> </span><span class="nx">del</span><span class="w"> </span><span class="nx">perfil</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">&lt;</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;</span><span class="nx">Contenido</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">la</span><span class="w"> </span><span class="nx">cuenta</span><span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">.</span><span class="na">Panel</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">Tabs</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicio-5-lazy-loading-por-rutas">Ejercicio 5: Lazy loading por rutas<a class="headerlink" href="#ejercicio-5-lazy-loading-por-rutas" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura lazy loading por rutas.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">lazy</span><span class="p">,</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Routes</span><span class="p">,</span><span class="w"> </span><span class="nx">Route</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react-router-dom'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">Inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Inicio'</span><span class="p">));</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">Productos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Productos'</span><span class="p">));</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">Perfil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./paginas/Perfil'</span><span class="p">));</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Suspense</span><span class="w"> </span><span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Cargando</span><span class="err">…</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;}&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Routes</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Inicio</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/productos"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Productos</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Route</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s">"/perfil"</span><span class="w"> </span><span class="na">element</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">Perfil</span><span class="w"> </span><span class="p">/&gt;}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">      </span><span class="p">&lt;/</span><span class="nt">Routes</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Cada ruta genera un chunk separado que se carga solo cuando se visita.</p>
-<hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/18-arquitectura/">Capítulo original</a></p>
+<p><a class="md-button" href="../17-rendimiento/">← Ejercicio 17</a>
+<a class="md-button md-button--primary" href="../19-fullstack-node/">Ir al ejercicio 19 →</a></p>
 
 
 
