@@ -11623,106 +11623,224 @@ form.addEventListener('submit', (e) =&gt; {
 <hr />
 <h2 id="capitulos-05-responsive-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-05-responsive-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-06-formularios">Ir al Capítulo 6 — Formularios HTML</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-06-formularios" heading-number="16.6"><h1 id="capitulos-06-formularios-capitulo-6-formularios-html">Capítulo 6 — Formularios HTML<a class="headerlink" href="#capitulos-06-formularios-capitulo-6-formularios-html" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-06-formularios-que-es-un-formulario">¿Qué es un formulario?<a class="headerlink" href="#capitulos-06-formularios-que-es-un-formulario" title="Permanent link">&para;</a></h2>
-<p>Un formulario permite al usuario <strong>introducir datos</strong> y enviarlos a un servidor o procesarlos con JavaScript.</p>
-<h2 id="capitulos-06-formularios-estructura-basica">Estructura básica<a class="headerlink" href="#capitulos-06-formularios-estructura-basica" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/enviar"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="capitulos-06-formularios-tipos-de-input">Tipos de input<a class="headerlink" href="#capitulos-06-formularios-tipos-de-input" title="Permanent link">&para;</a></h2>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-06-formularios" heading-number="16.6"><h1 id="capitulos-06-formularios-06-formularios-html">06 — Formularios HTML<a class="headerlink" href="#capitulos-06-formularios-06-formularios-html" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Las etiquetas y atributos esenciales de formularios.</li>
+<li>Los tipos de input más usados.</li>
+<li>Validación nativa del navegador.</li>
+<li>Accesibilidad en formularios.</li>
+<li>Buenas prácticas.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-06-formularios-que-es-un-formulario">📝 ¿Qué es un formulario?<a class="headerlink" href="#capitulos-06-formularios-que-es-un-formulario" title="Permanent link">&para;</a></h2>
+<p>Un <strong>formulario</strong> es la forma principal de recoger datos del usuario. Puede ser un login, un buscador, un checkout, un formulario de contacto, una encuesta… Todos usan las mismas etiquetas.</p>
+<p>```html</p>
+<form action="/enviar" method="POST">
+  <label for="capitulos-06-formularios-nombre">Nombre:</label>
+  <input type="text" id="capitulos-06-formularios-nombre" name="capitulos-06-formularios-nombre" required>
+  <button type="submit">Enviar</button>
+</form>
+<p>```</p>
+<hr />
+<h2 id="capitulos-06-formularios-etiquetas-basicas">🏷️ Etiquetas básicas<a class="headerlink" href="#capitulos-06-formularios-etiquetas-basicas" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Tipo</th>
-<th>Uso</th>
+<th style="text-align: left;">Etiqueta</th>
+<th style="text-align: left;">Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>text</code></td>
-<td>Texto corto</td>
+<td style="text-align: left;">`<form>`</td>
+<td style="text-align: left;">Contenedor del formulario</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>Correo electrónico</td>
+<td style="text-align: left;">`<input>`</td>
+<td style="text-align: left;">Campo de entrada</td>
 </tr>
 <tr>
-<td><code>password</code></td>
-<td>Contraseña</td>
+<td style="text-align: left;">`<label>`</td>
+<td style="text-align: left;">Etiqueta asociada a un campo</td>
 </tr>
 <tr>
-<td><code>number</code></td>
-<td>Número</td>
+<td style="text-align: left;">`<textarea>`</td>
+<td style="text-align: left;">Texto largo (multilínea)</td>
 </tr>
 <tr>
-<td><code>date</code></td>
-<td>Fecha</td>
+<td style="text-align: left;">`<select>`</td>
+<td style="text-align: left;">Desplegable</td>
 </tr>
 <tr>
-<td><code>checkbox</code></td>
-<td>Casilla de verificación</td>
+<td style="text-align: left;">`<option>`</td>
+<td style="text-align: left;">Opción dentro de un select</td>
 </tr>
 <tr>
-<td><code>radio</code></td>
-<td>Opción única</td>
+<td style="text-align: left;">`<button>`</td>
+<td style="text-align: left;">Botón (submit o reset)</td>
 </tr>
 <tr>
-<td><code>file</code></td>
-<td>Subir archivo</td>
+<td style="text-align: left;">`<fieldset>`</td>
+<td style="text-align: left;">Agrupa campos relacionados</td>
+</tr>
+<tr>
+<td style="text-align: left;">`<legend>`</td>
+<td style="text-align: left;">Título del fieldset</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capitulos-06-formularios-validacion">Validación<a class="headerlink" href="#capitulos-06-formularios-validacion" title="Permanent link">&para;</a></h2>
-<p>HTML5 trae validación nativa:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">min</span><span class="o">=</span><span class="s">"0"</span> <span class="na">max</span><span class="o">=</span><span class="s">"100"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">pattern</span><span class="o">=</span><span class="s">"[A-Za-z]{3,}"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Mínimo 3 letras"</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Nunca confíes solo en la validación del navegador</p>
-<p>Siempre valida también en el servidor. La validación HTML5 es una ayuda para el usuario, no una medida de seguridad.</p>
-</div>
-<h2 id="capitulos-06-formularios-accesibilidad">Accesibilidad<a class="headerlink" href="#capitulos-06-formularios-accesibilidad" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Cada <code>&lt;input&gt;</code> debe tener un <code>&lt;label&gt;</code> asociado con <code>for</code>/<code>id</code>.</li>
-<li>Usa <code>aria-*</code> cuando sea necesario.</li>
-<li>No dependas solo del color para comunicar información.</li>
-</ul>
-<h2 id="capitulos-06-formularios-ejemplo-practico">Ejemplo práctico<a class="headerlink" href="#capitulos-06-formularios-ejemplo-practico" title="Permanent link">&para;</a></h2>
-<p>Ver <a href="#ejemplos-06-formularios-ejemplo">ejemplos/06-formularios/ejemplo.html</a>.</p>
-<h2 id="capitulos-06-formularios-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-06-formularios-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un formulario de contacto con nombre, email y mensaje.</li>
-<li>Añade validación para que el email sea obligatorio.</li>
-<li>Muestra en consola los datos al enviar.</li>
-</ol>
 <hr />
-<h2 id="capitulos-06-formularios-capitulo-5-responsive-apendices-proximamente">⬅️ <a href="#capitulos-05-responsive">Capítulo 5 — Responsive</a> | ➡️ Apéndices (próximamente)<a class="headerlink" href="#capitulos-06-formularios-capitulo-5-responsive-apendices-proximamente" title="Permanent link">&para;</a></h2>
+<h2 id="capitulos-06-formularios-tipos-de-input">🔤 Tipos de input<a class="headerlink" href="#capitulos-06-formularios-tipos-de-input" title="Permanent link">&para;</a></h2>
+<p>```html
+<input type="text">        <!-- texto libre -->
+<input type="email">       <!-- email (valida formato) -->
+<input type="password">    <!-- contraseña -->
+<input type="number">      <!-- número -->
+<input type="tel">         <!-- teléfono -->
+<input type="url">         <!-- URL -->
+<input type="date">        <!-- fecha -->
+<input type="time">        <!-- hora -->
+<input type="datetime-local"> <!-- fecha y hora -->
+<input type="color">       <!-- selector de color -->
+<input type="range">       <!-- deslizador -->
+<input type="file">        <!-- subida de archivos -->
+<input type="checkbox">    <!-- casilla -->
+<input type="radio">       <!-- opción única -->
+<input type="hidden">      <!-- campo oculto -->
+<input type="search">      <!-- búsqueda -->
+```</p>
+<div class="admonition tip">
+<p class="admonition-title">Usa el tipo correcto</p>
+<p>Los móviles cambian el teclado según el tipo de input: `email` muestra la @, `tel` muestra el teclado numérico, `date` muestra el selector de fecha. Es una mejora gratuita de UX.</p>
+</div>
+<hr />
+<h2 id="capitulos-06-formularios-label-y-accesibilidad">🏷️ Label y accesibilidad<a class="headerlink" href="#capitulos-06-formularios-label-y-accesibilidad" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<!-- Correcto: label asociado por for/id -->
+<p><label for="capitulos-06-formularios-email">Email:</label>
+<input type="email" id="capitulos-06-formularios-email" name="capitulos-06-formularios-email"></p>
+<!-- Correcto: label envolviendo el input -->
+<p><label>
+  Email:
+  <input type="email" name="capitulos-06-formularios-email">
+</label></p>
+<!-- Incorrecto: sin label -->
+<p><input type="email" placeholder="Email">
+```</p>
+<div class="admonition warning">
+<p class="admonition-title">El placeholder NO sustituye al label</p>
+<p>El placeholder desaparece al escribir y no es leído por todos los lectores de pantalla. Siempre usa un `<label>` visible.</p>
+</div>
+<hr />
+<h2 id="capitulos-06-formularios-validacion-nativa">✅ Validación nativa<a class="headerlink" href="#capitulos-06-formularios-validacion-nativa" title="Permanent link">&para;</a></h2>
+<p>HTML5 incluye validación sin JavaScript:</p>
+<p>```html
+<input type="email" required>                     <!-- obligatorio -->
+<input type="text" minlength="3" maxlength="20"> <!-- longitud -->
+<input type="number" min="1" max="100">         <!-- rango -->
+<input type="text" pattern="[A-Za-z]+">          <!-- regex -->
+<input type="url">                                <!-- URL válida -->
+```</p>
+<p>Cuando el usuario envía el formulario, el navegador valida y muestra un mensaje si algo falla.</p>
+<div class="admonition tip">
+<p class="admonition-title">Personalizar mensajes</p>
+<p>Puedes cambiar los mensajes con JavaScript usando la <strong>Constraint Validation API</strong>:</p>
+<p>```javascript
+input.setCustomValidity('Este campo no es válido');
+```</p>
+</div>
+<hr />
+<h2 id="capitulos-06-formularios-ejemplo-completo">📋 Ejemplo completo<a class="headerlink" href="#capitulos-06-formularios-ejemplo-completo" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<form action="/registro" method="POST">
+  <fieldset>
+    <legend>Datos personales</legend>
+
+    <label for="capitulos-06-formularios-nombre">Nombre:</label>
+    <input type="text" id="capitulos-06-formularios-nombre" name="capitulos-06-formularios-nombre" required minlength="2">
+
+    <label for="capitulos-06-formularios-email">Email:</label>
+    <input type="email" id="capitulos-06-formularios-email" name="capitulos-06-formularios-email" required>
+
+    <label for="capitulos-06-formularios-password">Contraseña:</label>
+    <input type="password" id="capitulos-06-formularios-password" name="capitulos-06-formularios-password" required minlength="8">
+  </fieldset>
+
+  <fieldset>
+    <legend>Preferencias</legend>
+
+    <label>
+      <input type="checkbox" name="capitulos-06-formularios-newsletter" checked>
+      Recibir newsletter
+    </label>
+
+    <p>Plan:</p>
+    <label><input type="radio" name="capitulos-06-formularios-plan" value="free" checked> Gratis</label>
+    <label><input type="radio" name="capitulos-06-formularios-plan" value="pro"> Pro</label>
+
+    <label for="capitulos-06-formularios-pais">País:</label>
+    <select id="pais" name="pais">
+      <option value="es">España</option>
+      <option value="mx">México</option>
+      <option value="ar">Argentina</option>
+    </select>
+  </fieldset>
+
+  <button type="submit">Registrarse</button>
+  <button type="reset">Limpiar</button>
+</form>
+<p>```</p>
+<hr />
+<h2 id="capitulos-06-formularios-buenas-practicas">🎯 Buenas prácticas<a class="headerlink" href="#capitulos-06-formularios-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Siempre</strong> asocia cada input con un `<label>`.</li>
+<li>✅ Usa el <strong>tipo correcto</strong> de input (`email`, `tel`, `date`…).</li>
+<li>✅ Añade <strong>validación nativa</strong> (`required`, `minlength`, `pattern`).</li>
+<li>✅ Agrupa campos relacionados con `<fieldset>` y `<legend>`.</li>
+<li>✅ Da feedback claro cuando algo falla.</li>
+<li>❌ <strong>No</strong> uses el placeholder como sustituto del label.</li>
+<li>❌ <strong>No</strong> bloquees el pegado en el campo de contraseña (mala UX).</li>
+<li>❌ <strong>No</strong> uses `autocomplete="off"` sin razón.</li>
+</ul>
+<hr />
 <h2 id="capitulos-06-formularios-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-06-formularios-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué etiqueta se usa para crear un campo de texto en un formulario?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) &lt;text&gt;</button>
-    <button class="quiz-option" data-option="b">B) &lt;input type="text"&gt;</button>
-    <button class="quiz-option" data-option="c">C) &lt;form&gt;</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-6">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Cómo se asocia un label con un input?</p>
+<button class="quiz-option" data-opt="a">A) Con el atributo name</button>
+<button class="quiz-option" data-opt="b">B) Con el atributo for del label y el id del input</button>
+<button class="quiz-option" data-opt="c">C) No se pueden asociar</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué tipo de input valida automáticamente un email?</p>
+<button class="quiz-option" data-opt="a">A) type="email"</button>
+<button class="quiz-option" data-opt="b">B) type="text"</button>
+<button class="quiz-option" data-opt="c">C) type="mail"</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué atributo hace que un campo sea obligatorio?</p>
+<button class="quiz-option" data-opt="a">A) mandatory</button>
+<button class="quiz-option" data-opt="b">B) force</button>
+<button class="quiz-option" data-opt="c">C) required</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Para qué sirve el atributo <code>required</code> en un input?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Para que el navegador no permita enviar el formulario si está vacío</button>
-    <button class="quiz-option" data-option="b">B) Para cambiar el color del campo</button>
-    <button class="quiz-option" data-option="c">C) Para hacer que el campo sea de solo lectura</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section></section>
+<hr />
+<h2 id="capitulos-06-formularios-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-06-formularios-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%206%3A%20Formularios%20HTML&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F06-formularios%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F06-formularios%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%206%3A%20Formularios%20HTML%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F06-formularios%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/06-formularios/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-06-formularios-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-06-formularios-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-07-git">Ir al Capítulo 7 — Git y control de versiones</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section></section>
                     <section class='print-page md-section' id='section-17' heading-number='17'>
                         <h1>Nivel intermedio<a class='headerlink' href='#section-17' title='Permanent link'></a>
                         </h1>
