@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  console.log('[DD] Loaded (mega-menu v2)');
+  console.log('[DD] Loaded (mega-menu v3 header-inline)');
 
   var EMOJI_RE = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/gu;
   var TOP_EMOJI = {
@@ -12,10 +12,10 @@
     'Nivel principiante': '🟢', 'Nivel intermedio': '🟡', 'Nivel avanzado': '🟠',
     'Nivel profesional': '🔴', 'Nivel experto': '🟣', 'Nivel élite': '🔵',
     'Nivel vanguardia': '🚀', 'Diagramas': '📊', 'Ejercicios resueltos': '✅',
-    'Recursos': '📚', 'Roadmap': '🗺️', 'Changelog': '📝', 'Contribuir': '🤝',
-    'Sobre el autor': '👤', 'Contacto': '✉️', 'FAQ': '❓',
-    'Agradecimientos': '🙏', 'Prensa': '📢', 'Apéndices': '📎',
-    'Versión imprimible': '🖨️'
+    'Recursos': '📚', 'Música para programar': '🎵', 'Roadmap': '🗺️',
+    'Changelog': '📝', 'Contribuir': '🤝', 'Sobre el autor': '👤',
+    'Contacto': '✉️', 'FAQ': '❓', 'Agradecimientos': '🙏',
+    'Prensa': '📢', 'Apéndices': '📎', 'Versión imprimible': '🖨️'
   };
 
   function norm(s) {
@@ -109,7 +109,7 @@
     panel.className = 'dd-mega-panel';
     panel.setAttribute('role', 'menu');
 
-    // --- Header ---
+    // --- Header del panel ---
     var header = document.createElement('div');
     header.className = 'dd-mega-header';
 
@@ -141,7 +141,7 @@
 
     panel.appendChild(header);
 
-    // --- Grid ---
+    // --- Grid de secciones ---
     var grid = document.createElement('div');
     grid.className = 'dd-mega-grid';
     navData.forEach(function (item) { grid.appendChild(buildSection(item)); });
@@ -154,7 +154,7 @@
 
     panel.appendChild(grid);
 
-    // --- Filtro ---
+    // --- Filtro en vivo ---
     search.addEventListener('input', function () {
       var q = search.value.trim().toLowerCase();
       var visible = 0;
@@ -172,24 +172,35 @@
   function init() {
     if (window.innerWidth < 1220) return true;
 
-    var tabsBar = document.querySelector('.md-tabs');
-    if (!tabsBar) return false;
-    if (tabsBar.dataset.megaReady) return true;
+    // El botón se inserta en el header, no en las tabs
+    var headerInner = document.querySelector('.md-header__inner');
+    if (!headerInner) return false;
+    if (headerInner.dataset.megaReady) return true;
 
     var navData = readNav();
     if (!navData || !navData.length) return false;
 
-    tabsBar.dataset.megaReady = '1';
+    headerInner.dataset.megaReady = '1';
 
-    var tabsList = tabsBar.querySelector('.md-tabs__list');
-    if (tabsList) tabsList.style.display = 'none';
+    // Ocultar el bloque de tabs horizontal completo (para que no ocupe espacio)
+    var tabsBar = document.querySelector('.md-tabs');
+    if (tabsBar) tabsBar.style.display = 'none';
 
+    // Crear el botón "Explorar"
     var button = document.createElement('button');
     button.className = 'dd-menu-button';
     button.type = 'button';
     button.innerHTML = '<span class="dd-menu-icon">🗂️</span> Explorar <span class="dd-menu-arrow">▾</span>';
-    tabsBar.appendChild(button);
 
+    // Insertar ANTES del buscador (si existe)
+    var searchBox = headerInner.querySelector('.md-search');
+    if (searchBox) {
+      headerInner.insertBefore(button, searchBox);
+    } else {
+      headerInner.appendChild(button);
+    }
+
+    // Construir y añadir el panel al body
     var built = buildPanel(navData);
     var panel = built.panel;
     document.body.appendChild(panel);
@@ -252,7 +263,7 @@
       }
     });
 
-    console.log('[DD] Mega-menú v2 listo con', navData.length, 'secciones');
+    console.log('[DD] Mega-menú v3 listo con', navData.length, 'secciones');
     return true;
   }
 
@@ -268,7 +279,8 @@
   } else {
     loop();
   }
-    // Si se redimensiona a móvil, eliminar todo
+
+  // Recarga al cambiar entre escritorio y móvil
   var lastW = window.innerWidth;
   window.addEventListener('resize', function () {
     var w = window.innerWidth;
