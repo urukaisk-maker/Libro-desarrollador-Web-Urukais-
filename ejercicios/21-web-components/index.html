@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-21" class="md-skip">
+        <a href="#21-web-components" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3843,142 +3843,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-mi-saludo" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: &lt;mi-saludo&gt;
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: &lt;mi-saludo&gt;">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-anadir-slot" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Añadir &lt;slot&gt;
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Añadir &lt;slot&gt;">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-contador-con-evento-cambio" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Contador con evento cambio
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Contador con evento cambio">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-tarjeta-con-shadow-dom-encapsulado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Tarjeta con Shadow DOM encapsulado
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Tarjeta con Shadow DOM encapsulado">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-5-observedattributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5: observedAttributes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 5: observedAttributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4711,175 +4615,65 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-21">Ejercicios resueltos — Capítulo 21<a class="headerlink" href="#ejercicios-resueltos-capitulo-21" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/21-web-components/">Capítulo original</a></p>
-<h2 id="ejercicio-1-mi-saludo">Ejercicio 1: <code>&lt;mi-saludo&gt;</code><a class="headerlink" href="#ejercicio-1-mi-saludo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un Web Component <code>&lt;mi-saludo nombre="Urukais"&gt;</code>.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiSaludo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'nombre'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'mundo'</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-saludo'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiSaludo</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-saludo</span> <span class="na">nombre</span><span class="o">=</span><span class="s">"Urukais"</span><span class="p">&gt;&lt;/</span><span class="nt">mi-saludo</span><span class="p">&gt;</span>
-</code></pre></div>
+<h1 id="21-web-components">21 — Web Components<a class="headerlink" href="#21-web-components" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Crea un componente nativo con Custom Elements y Shadow DOM.</p>
+</div>
 <hr />
-<h2 id="ejercicio-2-anadir-slot">Ejercicio 2: Añadir <code>&lt;slot&gt;</code><a class="headerlink" href="#ejercicio-2-anadir-slot" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un <code>&lt;slot&gt;</code> y pruébalo con contenido externo.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">super</span><span class="p">();</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">'open'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">      &lt;style&gt;</span>
-<span class="sb">        .card {</span>
-<span class="sb">          border: 1px solid #e2e8f0;</span>
-<span class="sb">          border-radius: 12px;</span>
-<span class="sb">          padding: 1rem;</span>
-<span class="sb">        }</span>
-<span class="sb">        header { font-weight: 700; color: #6a5acd; }</span>
-<span class="sb">      &lt;/style&gt;</span>
-<span class="sb">      &lt;div class="card"&gt;</span>
-<span class="sb">        &lt;header&gt;&lt;slot name="titulo"&gt;&lt;/slot&gt;&lt;/header&gt;</span>
-<span class="sb">        &lt;main&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/main&gt;</span>
-<span class="sb">      &lt;/div&gt;</span>
-<span class="sb">    `</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-tarjeta'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-tarjeta</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">slot</span><span class="o">=</span><span class="s">"titulo"</span><span class="p">&gt;</span>Título<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contenido principal.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">mi-tarjeta</span><span class="p">&gt;</span>
-</code></pre></div>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un componente `<mi-tarjeta>` que:</p>
+<ol>
+<li>Use Shadow DOM para encapsular estilos.</li>
+<li>Reciba un atributo `titulo`.</li>
+<li>Use un `<slot>` para el contenido.</li>
+</ol>
 <hr />
-<h2 id="ejercicio-3-contador-con-evento-cambio">Ejercicio 3: Contador con evento <code>cambio</code><a class="headerlink" href="#ejercicio-3-contador-con-evento-cambio" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa un contador con botones y evento <code>cambio</code>.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiContador</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">#valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">super</span><span class="p">();</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">'open'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">      &lt;style&gt;</span>
-<span class="sb">        :host { display: inline-flex; align-items: center; gap: 0.5rem; font-family: system-ui; }</span>
-<span class="sb">        button { width: 2rem; height: 2rem; border: none; border-radius: 50%; background: #6a5acd; color: white; cursor: pointer; }</span>
-<span class="sb">        span { font-weight: 700; min-width: 2ch; text-align: center; }</span>
-<span class="sb">      &lt;/style&gt;</span>
-<span class="sb">      &lt;button id="menos"&gt;−&lt;/button&gt;</span>
-<span class="sb">      &lt;span id="valor"&gt;0&lt;/span&gt;</span>
-<span class="sb">      &lt;button id="mas"&gt;+&lt;/button&gt;</span>
-<span class="sb">    `</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mas'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#cambiar</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'menos'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#cambiar</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">));</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">#cambiar</span><span class="p">(</span><span class="nx">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#valor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">delta</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'valor'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#valor</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span><span class="s1">'cambio'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">valor</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#valor</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="nx">bubbles</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">composed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}));</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-contador'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiContador</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-contador</span><span class="p">&gt;&lt;/</span><span class="nt">mi-contador</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'mi-contador'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'cambio'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Nuevo valor:'</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">valor</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+class MiTarjeta extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `
+      <style>
+        .card {
+          background: #6a5acd;
+          color: white;
+          padding: 1rem;
+          border-radius: 8px;
+        }
+      </style>
+      <div class="card">
+        <h3>${this.getAttribute('titulo') || 'Tarjeta'}</h3>
+        <slot></slot>
+      </div>
+    `;
+  }
+}</p>
+<p>customElements.define('mi-tarjeta', MiTarjeta);
+```</p>
+<p>```html
+<mi-tarjeta titulo="Hola">Contenido del slot</mi-tarjeta>
+```</p>
 <hr />
-<h2 id="ejercicio-4-tarjeta-con-shadow-dom-encapsulado">Ejercicio 4: Tarjeta con Shadow DOM encapsulado<a class="headerlink" href="#ejercicio-4-tarjeta-con-shadow-dom-encapsulado" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una tarjeta con estilos encapsulados.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiCard</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">super</span><span class="p">();</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">'open'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">      &lt;style&gt;</span>
-<span class="sb">        /* Estos estilos NO afectan al exterior */</span>
-<span class="sb">        .card {</span>
-<span class="sb">          background: white;</span>
-<span class="sb">          border-radius: 12px;</span>
-<span class="sb">          padding: 1.5rem;</span>
-<span class="sb">          box-shadow: 0 4px 12px rgba(0,0,0,0.08);</span>
-<span class="sb">          font-family: system-ui, sans-serif;</span>
-<span class="sb">        }</span>
-<span class="sb">        h3 { margin: 0 0 0.5rem; color: #6a5acd; }</span>
-<span class="sb">      &lt;/style&gt;</span>
-<span class="sb">      &lt;div class="card"&gt;</span>
-<span class="sb">        &lt;h3&gt;&lt;slot name="titulo"&gt;Sin título&lt;/slot&gt;&lt;/h3&gt;</span>
-<span class="sb">        &lt;slot&gt;&lt;/slot&gt;</span>
-<span class="sb">      &lt;/div&gt;</span>
-<span class="sb">    `</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-card'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiCard</span><span class="p">);</span>
-</code></pre></div>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`attachShadow({ mode: 'open' })`: crea el Shadow DOM.</li>
+<li>`<slot>`: inyecta contenido externo.</li>
+<li>`customElements.define()`: registra el componente.</li>
+<li>Los estilos del Shadow DOM no se filtran fuera.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-5-observedattributes">Ejercicio 5: <code>observedAttributes</code><a class="headerlink" href="#ejercicio-5-observedattributes" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade <code>observedAttributes</code> y reacciona a cambios de atributos.</p>
-</blockquote>
-<h3 id="solucion_4">Solución<a class="headerlink" href="#solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiCaja</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">observedAttributes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s1">'color'</span><span class="p">,</span><span class="w"> </span><span class="s1">'size'</span><span class="p">];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">'open'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;div class="box"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;`</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#aplicar</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">attributeChangedCallback</span><span class="p">(</span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">viejo</span><span class="p">,</span><span class="w"> </span><span class="nx">nuevo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">viejo</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">nuevo</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#aplicar</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">#aplicar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'color'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'#6a5acd'</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'size'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'1rem'</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">shadowRoot</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.box'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">box</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`2px solid </span><span class="si">${</span><span class="nx">color</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">box</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">size</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">box</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'8px'</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-caja'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiCaja</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-caja</span> <span class="na">color</span><span class="o">=</span><span class="s">"#22d3ee"</span> <span class="na">size</span><span class="o">=</span><span class="s">"1.5rem"</span><span class="p">&gt;</span>Contenido<span class="p">&lt;/</span><span class="nt">mi-caja</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Cambia el atributo desde devtools y verás que se actualiza solo.</p>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un atributo observado con `observedAttributes`.</li>
+<li>[ ] Añade un evento personalizado al hacer clic.</li>
+<li>[ ] Usa un `<template>` para el markup.</li>
+</ul>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/21-web-components/">Capítulo original</a></p>
+<p><a class="md-button" href="../20-devops/">← Ejercicio 20</a>
+<a class="md-button md-button--primary" href="../22-pwa/">Ir al ejercicio 22 →</a></p>
 
 
 
