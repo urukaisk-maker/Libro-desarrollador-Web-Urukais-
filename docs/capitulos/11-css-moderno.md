@@ -1,337 +1,294 @@
-# Capítulo 11 — CSS moderno
+# 11 — CSS moderno
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Variables CSS y funciones modernas.
+    - Selectores avanzados: :has(), :is(), :where().
+    - Container queries.
+    - Grid avanzado y subgrid.
+    - Animaciones y transiciones.
 
-El CSS que se escribe hoy en producción ya no se parece al de hace cinco años. Nuevas características del lenguaje permiten escribir estilos **más expresivos, mantenibles y potentes** sin necesidad de preprocesadores ni frameworks.
+---
 
-Este capítulo repasa las técnicas que todo desarrollador profesional debería dominar en 2026.
+## 🎨 CSS ya no es lo que era
 
-## Variables CSS (custom properties)
+CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería JavaScript o preprocesadores ahora es nativo: variables, anidamiento, funciones matemáticas, container queries…
 
-A diferencia de las variables de SCSS, las **custom properties** existen en tiempo de ejecución y se pueden modificar con JavaScript o con media queries.
+!!! quote "CSS es un lenguaje de programación (casi)"
+    Aunque no tiene bucles ni funciones como JavaScript, CSS moderno tiene variables, condicionales (con @supports y media queries) y funciones. Es mucho más potente de lo que parece.
 
-```css
+---
+
+## 🔤 Variables CSS
+
+\`\`\`css
 :root {
-  --color-primary: #6a5acd;
-  --color-text: #1e293b;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --radius: 12px;
+  --primario: #6a5acd;
+  --acento: #00bcd4;
+  --espaciado: 1rem;
+  --radio: 8px;
 }
 
-.button {
-  background: var(--color-primary);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius);
+.boton {
+  background: var(--primario);
+  padding: var(--espaciado);
+  border-radius: var(--radio);
 }
-```
+\`\`\`
 
-### Cambiar tema con variables
+### Ventajas
 
-```css
-:root {
-  --bg: #ffffff;
-  --text: #1e293b;
-}
+- **Tematización**: cambia una variable y se actualiza todo.
+- **Modo oscuro**: redefine las variables en \`[data-theme="dark"]\`.
+- **Legibilidad**: nombres descriptivos en lugar de valores mágicos.
 
+\`\`\`css
 [data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #e2e8f0;
+  --primario: #a78bfa;
+  --acento: #22d3ee;
 }
+\`\`\`
 
-body {
-  background: var(--bg);
-  color: var(--text);
+---
+
+## 🧮 Funciones modernas
+
+### calc()
+
+\`\`\`css
+.elemento {
+  width: calc(100% - 2rem);
+  padding: calc(var(--espaciado) * 2);
 }
-```
+\`\`\`
 
-Con JavaScript, cambiar el tema es solo:
+### clamp()
 
-```javascript
-document.documentElement.dataset.theme = 'dark';
-```
-
-!!! tip "Fallback de variables"
-    Puedes dar un valor por defecto: `var(--color, #333)`. Útil cuando la variable puede no estar definida.
-
-## Funciones modernas: `clamp()`, `min()` y `max()`
-
-Permiten escribir **tipografía y espaciados fluidos** sin media queries.
-
-```css
-/* Título que escala entre 1.5rem y 3rem según el viewport */
+\`\`\`css
 h1 {
-  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
 }
+\`\`\`
 
-/* Ancho que nunca supera los 800px */
-.container {
-  width: min(100% - 2rem, 800px);
-  margin-inline: auto;
-}
+\`clamp(min, ideal, max)\` es perfecto para tipografía fluida.
 
-/* Padding mínimo garantizado */
-.card {
+### min() y max()
+
+\`\`\`css
+.contenedor {
+  width: min(90%, 1200px);
   padding: max(1rem, 2vw);
 }
-```
+\`\`\`
 
-## Selectores `:is()` y `:where()`
+### color-mix()
 
-Simplifican listas largas de selectores y mejoran la legibilidad.
-
-```css
-/* Antes */
-article h1, article h2, article h3 { margin-top: 0; }
-
-/* Ahora */
-article :is(h1, h2, h3) { margin-top: 0; }
-```
-
-`:where()` hace lo mismo, pero con **especificidad cero**. Perfecto para resets:
-
-```css
-:where(ul, ol) {
-  list-style: none;
-  padding: 0;
+\`\`\`css
+.boton {
+  background: color-mix(in srgb, var(--primario) 80%, white);
 }
-```
+\`\`\`
 
-## El selector `:has()` — el "selector padre"
+---
 
-` :has()` permite estilizar un elemento **en función de sus hijos**. Es una de las novedades más potentes de los últimos años.
+## 🎯 Selectores avanzados
 
-```css
-/* Tarjeta con imagen */
+### :is()
+
+\`\`\`css
+:is(h1, h2, h3) {
+  line-height: 1.2;
+}
+\`\`\`
+
+### :where()
+
+Igual que \`:is()\`, pero con **especificidad 0**:
+
+\`\`\`css
+:where(h1, h2, h3) {
+  margin: 0;
+}
+\`\`\`
+
+### :has()
+
+Selecciona un elemento que **contiene** otro:
+
+\`\`\`css
 .card:has(img) {
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
-/* Formulario con error */
 .form:has(input:invalid) {
-  border-color: crimson;
+  border-color: red;
 }
+\`\`\`
 
-/* Menú con submenú abierto */
-.nav-item:has(> .submenu:hover) {
-  background: #f1f5f9;
+!!! tip ":has() es un cambio de juego"
+    Antes necesitabas JavaScript para aplicar estilos a un padre según sus hijos. Con \`:has()\` es CSS puro. Ya está soportado en todos los navegadores modernos.
+
+### :not()
+
+\`\`\`css
+.boton:not(.boton--disabled) {
+  cursor: pointer;
 }
-```
+\`\`\`
 
-!!! info "Soporte"
-    `:has()` está soportado en todos los navegadores modernos desde 2023. Puedes usarlo en producción sin problema.
+---
 
-## Container queries
+## 📐 Container queries
 
-Antes, el diseño responsive dependía del tamaño del **viewport**. Con `@container`, un componente responde al tamaño de **su contenedor**.
+Las **container queries** permiten aplicar estilos según el tamaño del **contenedor**, no del viewport.
 
-```css
-.card-wrapper {
+\`\`\`css
+.card-container {
   container-type: inline-size;
   container-name: card;
 }
 
-.card {
-  display: grid;
-  gap: 1rem;
-}
-
-/* Cuando el contenedor supera los 400px */
 @container card (min-width: 400px) {
   .card {
+    display: grid;
     grid-template-columns: 200px 1fr;
   }
 }
-```
+\`\`\`
 
-Esto permite **componentes verdaderamente reutilizables** en cualquier contexto.
+!!! quote "El fin de los media queries para componentes"
+    Los media queries siguen siendo útiles para layouts de página. Pero para componentes reutilizables, las container queries son mucho más potentes: un mismo componente puede verse distinto según el espacio que tenga.
 
-## Cascade layers (`@layer`)
+---
 
-Controlan el orden de precedencia de los estilos sin depender de la especificidad.
+## 🔲 Grid avanzado
 
-```css
-@layer reset, base, components, utilities;
+### Grid template areas
 
-@layer reset {
-  * { box-sizing: border-box; }
+\`\`\`css
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
-@layer base {
-  body { font-family: system-ui; }
-}
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+\`\`\`
 
-@layer utilities {
-  .text-center { text-align: center; }
-}
-```
+### Subgrid
 
-El orden de las capas importa más que la especificidad dentro de ellas. Ideal para trabajar con librerías externas sin pelearse con sus estilos.
-
-## `@scope`
-
-Limita el alcance de los estilos a un subárbol del DOM.
-
-```css
-@scope (.card) to (.card-footer) {
-  img { border-radius: 12px; }
-  p { color: #475569; }
-}
-```
-
-Los estilos solo se aplican dentro de `.card` y **no** dentro de `.card-footer`.
-
-## Subgrid
-
-Hereda la cuadrícula del elemento padre, algo imposible con grid normal.
-
-```css
-.parent {
+\`\`\`css
+.padre {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.child {
+.hijo {
   display: grid;
-  grid-column: span 3;
+  grid-column: span 2;
   grid-template-columns: subgrid;
 }
-```
+\`\`\`
 
-Perfecto para alinear contenido entre tarjetas.
+### auto-fit vs auto-fill
 
-## Colores modernos: `oklch()` y `color-mix()`
+\`\`\`css
+/* auto-fit: las columnas vacías colapsan */
+.grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
-```css
-:root {
-  --brand: oklch(60% 0.18 280);
-  --brand-light: color-mix(in oklch, var(--brand) 30%, white);
-  --brand-dark: color-mix(in oklch, var(--brand) 70%, black);
-}
-```
-
-`oklch()` ofrece **percepción uniforme del color**, ideal para generar paletas consistentes.
-
-## Propiedades lógicas
-
-Sustituyen `left/right/top/bottom` por `inline-start`, `inline-end`, `block-start`, `block-end`. Esencial para internacionalización (RTL, árabe, hebreo).
-
-```css
-.card {
-  margin-inline: auto;
-  padding-block: 1rem;
-  border-inline-start: 2px solid var(--brand);
-}
-```
-
-## `aspect-ratio`
-
-Antes se usaba el truco del `padding-top: 56.25%`. Ahora:
-
-```css
-.video {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-```
-
-## Caso real: tarjeta de producto responsive
-
-```html
-<article class="product">
-  <img src="camiseta.jpg" alt="Camiseta">
-  <div class="product-info">
-    <h3>Camiseta</h3>
-    <p class="price">29 €</p>
-    <button>Añadir al carrito</button>
-  </div>
-</article>
-```
-
-```css
-.product {
-  container-type: inline-size;
-  display: grid;
-  gap: 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1rem;
-  background: var(--bg, white);
-}
-
-.product:has(.price:empty) {
-  opacity: 0.5;
-}
-
-@container (min-width: 400px) {
-  .product {
-    grid-template-columns: 120px 1fr;
-    align-items: center;
-  }
-}
-
-.price {
-  font-weight: 700;
-  color: var(--brand, #6a5acd);
-}
-```
-
-## Diagrama: capas de la cascada CSS
-
-```mermaid
-flowchart TB
-    A[Navegador] --> B[Estilos del usuario]
-    B --> C[!important]
-    C --> D[Estilos inline]
-    D --> E[Media queries]
-    E --> F[Especificidad y @layer]
-    F --> G[Estilos del navegador]
-```
-
-Orden de precedencia en CSS: de mayor a menor prioridad. Las capas (`@layer`) permiten controlar este orden sin depender de la especificidad.
-
-## Buenas prácticas
-
-- **Usa variables CSS** para todo lo que se repita: colores, espaciados, radios, tipografías.
-- **Combina `:is()` y `:where()`** para reducir ruido en los selectores.
-- **Prefiere `container queries`** a media queries cuando diseñes componentes.
-- **Organiza con `@layer`** para separar resets, base, componentes y utilidades.
-- **Usa `clamp()`** para tipografía fluida y `min()`/`max()` para tamaños con límites.
-- **Adopta propiedades lógicas** desde el principio; evita refactorizar después.
-- **Comprueba compatibilidad** en [caniuse.com](https://caniuse.com/) antes de usar features muy nuevas.
-
-## Ejercicios
-
-1. Crea un sistema de temas (claro/oscuro) usando solo custom properties.
-2. Diseña una tarjeta que cambie de layout según el ancho de su contenedor con `@container`.
-3. Usa `:has()` para resaltar un formulario cuando tiene un campo inválido.
-4. Implementa un título con tipografía fluida usando `clamp()`.
-5. Organiza tus estilos con `@layer` en cuatro capas: reset, base, components y utilities.
+/* auto-fill: las columnas vacías se mantienen */
+.grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+\`\`\`
 
 ---
 
-⬅️ [Capítulo 10 — Proyecto final](../capitulos/10-proyecto-final.md) | ➡️ Capítulo 12 — JavaScript asíncrono (pendiente)python3 -c "print(open('docs/capitulos/11-css-moderno.md').read()[:200])"
+## ✨ Animaciones y transiciones
+
+### Transiciones
+
+\`\`\`css
+.boton {
+  transition: background-color .2s ease, transform .15s ease;
+}
+
+.boton:hover {
+  background-color: var(--acento);
+  transform: translateY(-2px);
+}
+\`\`\`
+
+### Animaciones con keyframes
+
+\`\`\`css
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animado {
+  animation: fadeIn .4s ease forwards;
+}
+\`\`\`
+
+### Respetar prefers-reduced-motion
+
+\`\`\`css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+\`\`\`
+
+!!! warning "Accesibilidad en animaciones"
+    Algunas personas sufren mareos con animaciones. Respeta \`prefers-reduced-motion\` siempre que puedas.
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Para qué sirven las variables CSS (custom properties)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Para crear funciones matemáticas complejas</button>
-    <button class="quiz-option" data-option="b">B) Para almacenar valores reutilizables (colores, tamaños, etc.)</button>
-    <button class="quiz-option" data-option="c">C) Para conectar con bases de datos</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-11">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Cómo se declara una variable CSS?</p>
+<button class="quiz-option" data-opt="a">A) : valor;</button>
+<button class="quiz-option" data-opt="b">B) --variable: valor;</button>
+<button class="quiz-option" data-opt="c">C) var variable = valor;</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué selector aplica estilos a un padre que contiene un hijo concreto?</p>
+<button class="quiz-option" data-opt="a">A) :is()</button>
+<button class="quiz-option" data-opt="b">B) :where()</button>
+<button class="quiz-option" data-opt="c">C) :has()</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué función limita un valor entre un mínimo y un máximo?</p>
+<button class="quiz-option" data-opt="a">A) clamp()</button>
+<button class="quiz-option" data-opt="b">B) calc()</button>
+<button class="quiz-option" data-opt="c">C) minmax()</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué selector se utiliza para estilizar un elemento padre basándose en sus hijos?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) :is()</button>
-    <button class="quiz-option" data-option="b">B) :where()</button>
-    <button class="quiz-option" data-option="c">C) :has()</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/11-css-moderno/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
 
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 12 — JavaScript asíncrono](12-javascript-asincrono.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
