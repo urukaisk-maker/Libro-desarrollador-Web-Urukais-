@@ -18299,250 +18299,232 @@ wrangler<span class="w"> </span>deploy
 <hr />
 <h2 id="capitulos-33-edge-computing-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-33-edge-computing-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-34-docker">Ir al Capítulo 34 — Docker para frontend</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-34-docker" heading-number="22.4"><h1 id="capitulos-34-docker-capitulo-34-docker-para-frontend">Capítulo 34 — Docker para frontend<a class="headerlink" href="#capitulos-34-docker-capitulo-34-docker-para-frontend" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-34-docker-introduccion">Introducción<a class="headerlink" href="#capitulos-34-docker-introduccion" title="Permanent link">&para;</a></h2>
-<p><strong>Docker</strong> empaqueta tu aplicación y todas sus dependencias en un <strong>contenedor</strong>: una unidad ligera, portable y reproducible que funciona igual en tu portátil, en el servidor de tu compañero y en producción.</p>
-<p>Para frontend, Docker resuelve el clásico <em>"en mi máquina funciona"</em>. Con un <code>Dockerfile</code> describes el entorno exacto y cualquiera puede reproducirlo con un solo comando.</p>
-<h2 id="capitulos-34-docker-que-es-un-contenedor">¿Qué es un contenedor?<a class="headerlink" href="#capitulos-34-docker-que-es-un-contenedor" title="Permanent link">&para;</a></h2>
-<p>Un contenedor es como una <strong>máquina virtual ultraligera</strong>:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-34-docker" heading-number="22.4"><h1 id="capitulos-34-docker-34-docker-para-frontend">34 — Docker para frontend<a class="headerlink" href="#capitulos-34-docker-34-docker-para-frontend" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Comparte el kernel del sistema operativo (no emula hardware).</li>
-<li>Arranca en milisegundos.</li>
-<li>Ocupa MBs en lugar de GBs.</li>
-<li>Es <strong>inmutable</strong>: una vez construido, siempre se ejecuta igual.</li>
+<li>Qué es Docker y por qué usarlo en frontend.</li>
+<li>Imágenes y contenedores.</li>
+<li>Dockerfile para una app frontend.</li>
+<li>Multi-stage build.</li>
+<li>Docker Compose.</li>
 </ul>
-<h2 id="capitulos-34-docker-docker-vs-maquina-virtual">Docker vs Máquina Virtual<a class="headerlink" href="#capitulos-34-docker-docker-vs-maquina-virtual" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Docker</th>
-<th>VM</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Arranque</td>
-<td>Segundos</td>
-<td>Minutos</td>
-</tr>
-<tr>
-<td>Tamaño</td>
-<td>MBs</td>
-<td>GBs</td>
-</tr>
-<tr>
-<td>Sistema operativo</td>
-<td>Comparte kernel</td>
-<td>Completo</td>
-</tr>
-<tr>
-<td>Aislamiento</td>
-<td>Procesos</td>
-<td>Hardware</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-34-docker-instalacion">Instalación<a class="headerlink" href="#capitulos-34-docker-instalacion" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Linux (Arch)</strong>: <code>sudo pacman -S docker docker-compose</code></li>
-<li><strong>macOS/Windows</strong>: <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></li>
-</ul>
-<p>Activa el servicio:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
-<span class="c1"># Cierra sesión y vuelve a entrar</span>
-</code></pre></div></p>
-<h2 id="capitulos-34-docker-conceptos-clave">Conceptos clave<a class="headerlink" href="#capitulos-34-docker-conceptos-clave" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Concepto</th>
-<th>Qué es</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Imagen</strong></td>
-<td>Plantilla inmutable (receta)</td>
-</tr>
-<tr>
-<td><strong>Contenedor</strong></td>
-<td>Instancia en ejecución de una imagen</td>
-</tr>
-<tr>
-<td><strong>Dockerfile</strong></td>
-<td>Receta para construir una imagen</td>
-</tr>
-<tr>
-<td><strong>Volume</strong></td>
-<td>Almacenamiento persistente</td>
-</tr>
-<tr>
-<td><strong>Compose</strong></td>
-<td>Orquestador local multi-contenedor</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-34-docker-tu-primer-dockerfile">Tu primer Dockerfile<a class="headerlink" href="#capitulos-34-docker-tu-primer-dockerfile" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
-
-<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-
-<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
-<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci
-
-<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
-
-<span class="k">EXPOSE</span><span class="w"> </span><span class="s">5173</span>
-
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"npm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"dev"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--host"</span><span class="p">]</span>
+</div>
+<hr />
+<h2 id="capitulos-34-docker-que-es-docker">🐳 ¿Qué es Docker?<a class="headerlink" href="#capitulos-34-docker-que-es-docker" title="Permanent link">&para;</a></h2>
+<p><strong>Docker</strong> empaqueta tu aplicación con <strong>todas sus dependencias</strong> en un contenedor. Ese contenedor funciona igual en tu portátil, en el servidor de tu empresa y en producción.</p>
+<div class="highlight"><pre><span></span><code>Sin Docker: "en mi máquina funciona" 🤷
+Con Docker: "funciona en todas partes" ✅
 </code></pre></div>
-<p>Construir:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mi-app<span class="w"> </span>.
-</code></pre></div></p>
-<p>Ejecutar:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">5173</span>:5173<span class="w"> </span>mi-app
-</code></pre></div></p>
-<p>Visita <code>http://localhost:5173</code>.</p>
-<h2 id="capitulos-34-docker-multi-stage-build-el-estandar-en-produccion">Multi-stage build (el estándar en producción)<a class="headerlink" href="#capitulos-34-docker-multi-stage-build-el-estandar-en-produccion" title="Permanent link">&para;</a></h2>
-<p>En producción no necesitas <code>node_modules</code> ni el código fuente. Solo el resultado del build. <strong>Multi-stage</strong> permite usar una imagen para compilar y otra (mucho más ligera) para servir.</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Etapa 1: Build</span>
+<div class="admonition quote">
+<p class="admonition-title">Un contenedor es una caja hermética</p>
+<p>Dentro lleva tu app, Node.js, las dependencias y la configuración. Fuera da igual qué sistema operativo haya: se ejecuta igual.</p>
+</div>
+<hr />
+<h2 id="capitulos-34-docker-imagenes-y-contenedores">📦 Imágenes y contenedores<a class="headerlink" href="#capitulos-34-docker-imagenes-y-contenedores" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concepto</th>
+<th style="text-align: left;">Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Imagen</strong></td>
+<td style="text-align: left;">Plantilla de solo lectura con la app y sus dependencias</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contenedor</strong></td>
+<td style="text-align: left;">Instancia en ejecución de una imagen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dockerfile</strong></td>
+<td style="text-align: left;">Receta para construir una imagen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Registry</strong></td>
+<td style="text-align: left;">Repositorio de imágenes (Docker Hub)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Volume</strong></td>
+<td style="text-align: left;">Almacenamiento persistente</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Network</strong></td>
+<td style="text-align: left;">Red virtual entre contenedores</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>nginx:alpine
+docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>nginx:alpine
+docker<span class="w"> </span>ps
+docker<span class="w"> </span>stop<span class="w"> </span>&lt;id&gt;
+docker<span class="w"> </span>rm<span class="w"> </span>&lt;id&gt;
+</code></pre></div>
+<hr />
+<h2 id="capitulos-34-docker-dockerfile-para-frontend">📝 Dockerfile para frontend<a class="headerlink" href="#capitulos-34-docker-dockerfile-para-frontend" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c"># Etapa 1: build</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span>
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
 <span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
 <span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci
+
 <span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
 <span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
 
-<span class="c"># Etapa 2: Servir con Nginx</span>
+<span class="c"># Etapa 2: servir con Nginx</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/app/dist<span class="w"> </span>/usr/share/nginx/html
 <span class="k">COPY</span><span class="w"> </span>nginx.conf<span class="w"> </span>/etc/nginx/conf.d/default.conf
+
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"nginx"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-g"</span><span class="p">,</span><span class="w"> </span><span class="s2">"daemon off;"</span><span class="p">]</span>
 </code></pre></div>
-<p>Resultado: de ~800 MB a ~25 MB. 🎯</p>
-<h2 id="capitulos-34-docker-configuracion-de-nginx-para-spa">Configuración de Nginx para SPA<a class="headerlink" href="#capitulos-34-docker-configuracion-de-nginx-para-spa" title="Permanent link">&para;</a></h2>
-<p><code>nginx.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mi-frontend<span class="w"> </span>.
+docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>mi-frontend
+</code></pre></div>
+<hr />
+<h2 id="capitulos-34-docker-multi-stage-build">🏗️ Multi-stage build<a class="headerlink" href="#capitulos-34-docker-multi-stage-build" title="Permanent link">&para;</a></h2>
+<p>El Dockerfile anterior usa <strong>dos etapas</strong>:</p>
+<ol>
+<li><strong>build</strong>: instala dependencias y construye la app (imagen grande).</li>
+<li><strong>runtime</strong>: copia solo los archivos estáticos a Nginx (imagen pequeña).</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Imagen</th>
+<th style="text-align: left;">Tamaño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Single-stage</td>
+<td style="text-align: left;">~1 GB</td>
+</tr>
+<tr>
+<td style="text-align: left;">Multi-stage</td>
+<td style="text-align: left;">~25 MB</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Siempre multi-stage</p>
+<p>La imagen final solo contiene Nginx y los archivos estáticos. Node.js y las dependencias se quedan en la etapa de build, que se descarta.</p>
+</div>
+<hr />
+<h2 id="capitulos-34-docker-nginxconf">⚙️ nginx.conf<a class="headerlink" href="#capitulos-34-docker-nginxconf" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 <span class="w">  </span><span class="kn">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
 <span class="w">  </span><span class="kn">index</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1"># SPA fallback: siempre sirve index.html si no encuentra archivo</span>
+<span class="w">  </span><span class="c1"># SPA: redirigir todo a index.html</span>
 <span class="w">  </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.html</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1"># Cache largo para assets con hash</span>
-<span class="w">  </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">\.(js|css|woff2|png|jpg|svg)</span>$<span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># Cache de assets</span>
+<span class="w">  </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">\.(js|css|png|jpg|svg|woff2)</span>$<span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">expires</span><span class="w"> </span><span class="s">1y</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Cache-Control</span><span class="w"> </span><span class="s">"public,</span><span class="w"> </span><span class="s">immutable"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1"># Gzip</span>
-<span class="w">  </span><span class="kn">gzip</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-<span class="w">  </span><span class="kn">gzip_types</span><span class="w"> </span><span class="s">text/css</span><span class="w"> </span><span class="s">application/javascript</span><span class="w"> </span><span class="s">image/svg+xml</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="capitulos-34-docker-docker-compose">Docker Compose<a class="headerlink" href="#capitulos-34-docker-docker-compose" title="Permanent link">&para;</a></h2>
-<p>Para varios servicios (frontend + backend + base de datos) usa <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<hr />
+<h2 id="capitulos-34-docker-docker-compose">🐙 Docker Compose<a class="headerlink" href="#capitulos-34-docker-docker-compose" title="Permanent link">&para;</a></h2>
+<p><strong>Docker Compose</strong> permite definir y ejecutar varios contenedores a la vez (frontend + backend + base de datos) con un solo archivo.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker-compose.yml</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8080:80"</span>
 <span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VITE_API_URL=http://localhost:3000</span>
 
 <span class="w">  </span><span class="nt">api</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./api</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"3000:3000"</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL=postgres://user:pass@db:5432/app</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL=postgres://user:pass@db:5432/miapp</span>
 <span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
 
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16-alpine</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=pass</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=user</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=app</span>
+<span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pass</span>
+<span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">miapp</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgdata:/var/lib/postgresql/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres_data:/var/lib/postgresql/data</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">pgdata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">postgres_data</span><span class="p">:</span>
 </code></pre></div>
-<p>Arrancar todo:
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div></p>
-<p>Parar:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>down
-</code></pre></div></p>
-<h2 id="capitulos-34-docker-dockerignore">.dockerignore<a class="headerlink" href="#capitulos-34-docker-dockerignore" title="Permanent link">&para;</a></h2>
-<p>Igual que <code>.gitignore</code>, pero para Docker. <strong>Muy importante</strong> para que el build sea rápido:</p>
-<div class="highlight"><pre><span></span><code>node_modules
-dist
+docker<span class="w"> </span>compose<span class="w"> </span>down
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f
+</code></pre></div>
+<hr />
+<h2 id="capitulos-34-docker-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#capitulos-34-docker-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Multi-stage build</strong>: imagen final pequeña.</li>
+<li>✅ <strong><code>npm ci</code></strong> en lugar de <code>npm install</code> en Docker (más rápido y reproducible).</li>
+<li>✅ <strong><code>.dockerignore</code></strong> para no copiar <code>node_modules</code>, <code>.git</code>, etc.</li>
+<li>✅ <strong>Usuario no root</strong> en el contenedor.</li>
+<li>✅ <strong>Cachea las capas</strong>: copia <code>package.json</code> antes que el resto.</li>
+<li>✅ <strong>Fija versiones</strong>: <code>node:20.11-alpine</code>, no <code>node:latest</code>.</li>
+<li>✅ <strong>Healthchecks</strong> para saber si el contenedor está sano.</li>
+<li>❌ <strong>No metas secretos</strong> en el Dockerfile.</li>
+</ul>
+<div class="highlight"><pre><span></span><code># .dockerignore
+node_modules
 .git
 .env
-.env.local
+dist
 *.log
-.DS_Store
-coverage
 </code></pre></div>
-<p>Sin este archivo, Docker copiaría <code>node_modules</code> (miles de archivos) y el build tardaría minutos en lugar de segundos.</p>
-<h2 id="capitulos-34-docker-volumes-persistencia">Volumes: persistencia<a class="headerlink" href="#capitulos-34-docker-volumes-persistencia" title="Permanent link">&para;</a></h2>
-<p>Los contenedores son <strong>efímeros</strong>: cuando se borran, pierden los datos. Los volumes persisten:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgdata:/var/lib/postgresql/data</span>
-</code></pre></div>
-<h2 id="capitulos-34-docker-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-34-docker-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Usa imágenes Alpine</strong>: mucho más ligeras (~5 MB vs ~900 MB).</li>
-<li><strong>Multi-stage builds</strong> para producción: solo lo necesario.</li>
-<li><strong>Un proceso por contenedor</strong>: no mezcles frontend y backend.</li>
-<li><strong><code>.dockerignore</code> siempre</strong>.</li>
-<li><strong>Fija versiones</strong>: <code>node:20.11.0-alpine</code>, no <code>node:latest</code>.</li>
-<li><strong>No ejecutes como root</strong>: crea un usuario sin privilegios.</li>
-<li><strong>Escanea vulnerabilidades</strong>: <code>docker scout cves mi-imagen</code>.</li>
-<li><strong>Logs a stdout/stderr</strong>, nunca a archivos dentro del contenedor.</li>
-<li><strong>Compose para desarrollo, Kubernetes para producción a gran escala</strong>.</li>
-</ul>
-<h2 id="capitulos-34-docker-ejemplo-usuario-no-root">Ejemplo: usuario no root<a class="headerlink" href="#capitulos-34-docker-ejemplo-usuario-no-root" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
-<span class="k">RUN</span><span class="w"> </span>addgroup<span class="w"> </span>-S<span class="w"> </span>app<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adduser<span class="w"> </span>-S<span class="w"> </span>app<span class="w"> </span>-G<span class="w"> </span>app
-<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span>app:app<span class="w"> </span>.<span class="w"> </span>.
-<span class="k">USER</span><span class="w"> </span><span class="s">app</span>
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"node"</span><span class="p">,</span><span class="w"> </span><span class="s2">"server.js"</span><span class="p">]</span>
-</code></pre></div>
-<h2 id="capitulos-34-docker-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-34-docker-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un Dockerfile con <code>node:20-alpine</code> para un proyecto Vite y ejecútalo con <code>docker run</code>.</li>
-<li>Convierte el Dockerfile a multi-stage usando Nginx.</li>
-<li>Añade un <code>.dockerignore</code> y comprueba cuánto tarda el build antes y después.</li>
-<li>Crea un <code>docker-compose.yml</code> con frontend, backend y PostgreSQL.</li>
-<li>Escanea tu imagen con <code>docker scout cves</code> y corrige las vulnerabilidades.</li>
-</ol>
-<hr />
-<p>⬅️ <a href="#capitulos-33-edge-computing">Capítulo 33 — Edge Computing</a> | ➡️ <a href="#capitulos-35-graphql">Capítulo 35 — GraphQL</a></p>
 <hr />
 <h2 id="capitulos-34-docker-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-34-docker-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué es un contenedor Docker?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Un entorno ligero y aislado para ejecutar una aplicación</button>
-    <button class="quiz-option" data-option="b">B) Una máquina virtual completa</button>
-    <button class="quiz-option" data-option="c">C) Un lenguaje de programación</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-35-graphql" heading-number="22.5"><h1 id="capitulos-35-graphql-capitulo-35-graphql">Capítulo 35 — GraphQL<a class="headerlink" href="#capitulos-35-graphql-capitulo-35-graphql" title="Permanent link">&para;</a></h1>
+<div class="quiz" data-quiz="capitulo-34">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es una imagen Docker?</p>
+<button class="quiz-option" data-opt="a">A) Un contenedor en ejecución</button>
+<button class="quiz-option" data-opt="b">B) Una plantilla de solo lectura con la app</button>
+<button class="quiz-option" data-opt="c">C) Un archivo de configuración</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué ventaja tiene el multi-stage build?</p>
+<button class="quiz-option" data-opt="a">A) Imagen final mucho más pequeña</button>
+<button class="quiz-option" data-opt="b">B">Más velocidad de build</button>
+<button class="quiz-option" data-opt="c">C) Más seguridad</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué herramienta orquesta varios contenedores?</p>
+<button class="quiz-option" data-opt="a">A) Dockerfile</button>
+<button class="quiz-option" data-opt="b">B) Kubernetes</button>
+<button class="quiz-option" data-opt="c">C) Docker Compose</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-34-docker-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-34-docker-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2034%3A%20Docker%20para%20frontend&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2034%3A%20Docker%20para%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/34-docker/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-34-docker-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-34-docker-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-35-graphql">Ir al Capítulo 35 — GraphQL</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-35-graphql" heading-number="22.5"><h1 id="capitulos-35-graphql-capitulo-35-graphql">Capítulo 35 — GraphQL<a class="headerlink" href="#capitulos-35-graphql-capitulo-35-graphql" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-35-graphql-introduccion">Introducción<a class="headerlink" href="#capitulos-35-graphql-introduccion" title="Permanent link">&para;</a></h2>
 <p><strong>GraphQL</strong> es un lenguaje de consulta para APIs creado por Facebook en 2015. A diferencia de REST, donde el servidor define qué devuelve cada endpoint, en GraphQL <strong>el cliente pide exactamente los datos que necesita</strong>.</p>
 <p>Esto resuelve dos problemas clásicos de REST:</p>
