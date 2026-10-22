@@ -18749,214 +18749,249 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <hr />
 <h2 id="capitulos-35-graphql-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-35-graphql-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-36-micro-frontends">Ir al Capítulo 36 — Micro-frontends</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-36-micro-frontends" heading-number="22.6"><h1 id="capitulos-36-micro-frontends-capitulo-36-micro-frontends">Capítulo 36 — Micro-frontends<a class="headerlink" href="#capitulos-36-micro-frontends-capitulo-36-micro-frontends" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-36-micro-frontends-introduccion">Introducción<a class="headerlink" href="#capitulos-36-micro-frontends-introduccion" title="Permanent link">&para;</a></h2>
-<p>Los <strong>micro-frontends</strong> aplican las ideas de microservicios al frontend: dividir una aplicación grande en <strong>aplicaciones más pequeñas e independientes</strong>, cada una mantenida por un equipo distinto, que se integran para formar un producto coherente.</p>
-<p>Si has trabajado en una app enorme donde un cambio de un equipo rompe el trabajo de otro, sabes por qué existen.</p>
-<h2 id="capitulos-36-micro-frontends-el-problema-que-resuelven">El problema que resuelven<a class="headerlink" href="#capitulos-36-micro-frontends-el-problema-que-resuelven" title="Permanent link">&para;</a></h2>
-<p>Imagina una aplicación enterprise con:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-36-micro-frontends" heading-number="22.6"><h1 id="capitulos-36-micro-frontends-36-micro-frontends">36 — Micro-frontends<a class="headerlink" href="#capitulos-36-micro-frontends-36-micro-frontends" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>5 equipos trabajando en paralelo.</li>
-<li>300.000 líneas de código.</li>
-<li>Un build de 15 minutos.</li>
-<li>Un despliegue al día, que falla una vez de cada tres.</li>
+<li>Qué son los micro-frontends y cuándo usarlos.</li>
+<li>Module Federation con Vite.</li>
+<li>Composición en tiempo de ejecución.</li>
+<li>Comunicación entre micro-frontends.</li>
+<li>Ventajas y desventajas.</li>
 </ul>
-<p><strong>Micro-frontends</strong> permiten que cada equipo despliegue <strong>su parte</strong> cuando quiera, sin bloquear a los demás.</p>
-<h2 id="capitulos-36-micro-frontends-que-es-un-micro-frontend">¿Qué es un micro-frontend?<a class="headerlink" href="#capitulos-36-micro-frontends-que-es-un-micro-frontend" title="Permanent link">&para;</a></h2>
-<p>Una aplicación frontend <strong>autónoma</strong> que:</p>
-<ul>
-<li>Se desarrolla en su propio repositorio.</li>
-<li>Se despliega en su propia URL o CDN.</li>
-<li>Se integra en una "aplicación contenedor" (shell).</li>
-<li>Puede usar <strong>cualquier tecnología</strong> (React, Vue, Svelte...).</li>
-</ul>
-<p>Ejemplo: una tienda online dividida en:</p>
-<ul>
-<li><code>header</code> (React).</li>
-<li><code>productos</code> (Vue).</li>
-<li><code>carrito</code> (Svelte).</li>
-<li><code>checkout</code> (React).</li>
-</ul>
-<p>Todo se ve como una sola app.</p>
-<h2 id="capitulos-36-micro-frontends-formas-de-integrar-micro-frontends">Formas de integrar micro-frontends<a class="headerlink" href="#capitulos-36-micro-frontends-formas-de-integrar-micro-frontends" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-36-micro-frontends-1-iframes-la-mas-antigua">1. Iframes (la más antigua)<a class="headerlink" href="#capitulos-36-micro-frontends-1-iframes-la-mas-antigua" title="Permanent link">&para;</a></h3>
-<p>Cada micro-frontend vive en su <code>&lt;iframe&gt;</code>.</p>
-<p>✅ Aislamiento total.
-❌ Pésima experiencia: no compartes estado, CSS, ni rutas.</p>
-<h3 id="capitulos-36-micro-frontends-2-web-components">2. Web Components<a class="headerlink" href="#capitulos-36-micro-frontends-2-web-components" title="Permanent link">&para;</a></h3>
-<p>Cada micro-frontend expone un <strong>Custom Element</strong> (<code>&lt;mi-productos&gt;</code>).</p>
-<p>✅ Estándar nativo, aislamiento real.
-❌ Requiere aprender Shadow DOM, eventos personalizados.</p>
-<h3 id="capitulos-36-micro-frontends-3-module-federation-el-mas-moderno">3. Module Federation (el más moderno)<a class="headerlink" href="#capitulos-36-micro-frontends-3-module-federation-el-mas-moderno" title="Permanent link">&para;</a></h3>
-<p>Webpack 5 (y Vite con plugins) permite compartir módulos entre aplicaciones en tiempo de ejecución.</p>
-<h3 id="capitulos-36-micro-frontends-4-composicion-en-build-time">4. Composición en build time<a class="headerlink" href="#capitulos-36-micro-frontends-4-composicion-en-build-time" title="Permanent link">&para;</a></h3>
-<p>Un monorepo con todas las partes que se construyen juntas.</p>
-<h2 id="capitulos-36-micro-frontends-module-federation-con-webpack">Module Federation con Webpack<a class="headerlink" href="#capitulos-36-micro-frontends-module-federation-con-webpack" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-36-micro-frontends-aplicacion-remota-productos">Aplicación remota (<code>productos</code>)<a class="headerlink" href="#capitulos-36-micro-frontends-aplicacion-remota-productos" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// webpack.config.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ModuleFederationPlugin</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">).</span><span class="nx">container</span><span class="p">;</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ModuleFederationPlugin</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'productos'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s1">'remoteEntry.js'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">exposes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s1">'./ListaProductos'</span><span class="o">:</span><span class="w"> </span><span class="s1">'./src/ListaProductos'</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">react</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">singleton</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="s1">'react-dom'</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">singleton</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}),</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="p">};</span>
+</div>
+<hr />
+<h2 id="capitulos-36-micro-frontends-que-son-los-micro-frontends">🧩 ¿Qué son los micro-frontends?<a class="headerlink" href="#capitulos-36-micro-frontends-que-son-los-micro-frontends" title="Permanent link">&para;</a></h2>
+<p>Los <strong>micro-frontends</strong> dividen una aplicación frontend grande en <strong>aplicaciones más pequeñas e independientes</strong>, que se pueden desarrollar, desplegar y escalar por separado. Es el equivalente frontend de los microservicios.</p>
+<div class="highlight"><pre><span></span><code>Monolito frontend:  1 app gigante, 1 equipo, 1 despliegue
+Micro-frontends:    N apps pequeñas, N equipos, N despliegues
 </code></pre></div>
-<h3 id="capitulos-36-micro-frontends-aplicacion-contenedora-shell">Aplicación contenedora (<code>shell</code>)<a class="headerlink" href="#capitulos-36-micro-frontends-aplicacion-contenedora-shell" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ModuleFederationPlugin</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">).</span><span class="nx">container</span><span class="p">;</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ModuleFederationPlugin</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'shell'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">remotes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="s1">'productos@https://productos.miapp.com/remoteEntry.js'</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">react</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">singleton</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="s1">'react-dom'</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">singleton</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}),</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Uso:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">ListaProductos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'productos/ListaProductos'</span><span class="p">));</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">Suspense</span><span class="w"> </span><span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Cargando</span><span class="w"> </span><span class="nx">productos</span><span class="p">...&lt;/</span><span class="nt">p</span><span class="p">&gt;}&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">ListaProductos</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-36-micro-frontends-module-federation-con-vite">Module Federation con Vite<a class="headerlink" href="#capitulos-36-micro-frontends-module-federation-con-vite" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@originjs/vite-plugin-federation
-</code></pre></div>
-<p><code>vite.config.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vite'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">federation</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@originjs/vite-plugin-federation'</span><span class="p">;</span>
+<div class="admonition quote">
+<p class="admonition-title">Divide y vencerás (también en frontend)</p>
+<p>Si tienes 50 desarrolladores trabajando en el mismo repositorio, los conflictos son constantes. Los micro-frontends permiten que cada equipo sea dueño de su parte.</p>
+</div>
+<hr />
+<h2 id="capitulos-36-micro-frontends-cuando-usar-micro-frontends">🎯 ¿Cuándo usar micro-frontends?<a class="headerlink" href="#capitulos-36-micro-frontends-cuando-usar-micro-frontends" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">¿Micro-frontends?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Equipos grandes (10+ devs)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Múltiples equipos independientes</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Migración incremental de Angular a React</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Múltiples productos en una plataforma</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Proyecto pequeño (1-3 devs)</td>
+<td style="text-align: left;">❌</td>
+</tr>
+<tr>
+<td style="text-align: left;">MVP o prototipo</td>
+<td style="text-align: left;">❌</td>
+</tr>
+<tr>
+<td style="text-align: left;">App con mucha interacción entre partes</td>
+<td style="text-align: left;">❌</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-36-micro-frontends-module-federation">⚡ Module Federation<a class="headerlink" href="#capitulos-36-micro-frontends-module-federation" title="Permanent link">&para;</a></h2>
+<p><strong>Module Federation</strong> (Webpack 5, Vite 5+) permite que una app cargue código de otra en <strong>tiempo de ejecución</strong>, sin duplicar dependencias.</p>
+<h3 id="capitulos-36-micro-frontends-host-contenedor">Host (contenedor)<a class="headerlink" href="#capitulos-36-micro-frontends-host-contenedor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// vite.config.js del host</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">federation</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@originjs/vite-plugin-federation"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nx">federation</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'productos'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s1">'remoteEntry.js'</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">exposes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s1">'./ListaProductos'</span><span class="o">:</span><span class="w"> </span><span class="s1">'./src/ListaProductos.jsx'</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"host"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">remotes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="s2">"http://localhost:5001/assets/remoteEntry.js"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">carrito</span><span class="o">:</span><span class="w"> </span><span class="s2">"http://localhost:5002/assets/remoteEntry.js"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'react'</span><span class="p">,</span><span class="w"> </span><span class="s1">'react-dom'</span><span class="p">],</span>
-<span class="w">    </span><span class="p">}),</span>
-<span class="w">  </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"react"</span><span class="p">,</span><span class="w"> </span><span class="s2">"react-dom"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="capitulos-36-micro-frontends-ventajas">Ventajas<a class="headerlink" href="#capitulos-36-micro-frontends-ventajas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Despliegues independientes</strong> por equipo.</li>
-<li><strong>Equipos autónomos</strong>: eligen su stack.</li>
-<li><strong>Escalabilidad organizacional</strong>: puedes añadir equipos sin bloquear.</li>
-<li><strong>Builds más rápidos</strong>: cada micro-frontend compila solo lo suyo.</li>
-<li><strong>Migraciones graduales</strong>: puedes reescribir una parte sin tocar el resto.</li>
-</ul>
-<h2 id="capitulos-36-micro-frontends-desventajas">Desventajas<a class="headerlink" href="#capitulos-36-micro-frontends-desventajas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Complejidad de integración</strong>: no es trivial.</li>
-<li><strong>Duplicación de dependencias</strong>: cada micro-frontend puede traer React.</li>
-<li><strong>Consistencia de diseño</strong>: hay que coordinar un design system.</li>
-<li><strong>Depuración más difícil</strong>: el bug puede estar en cualquier parte.</li>
-<li><strong>Rendimiento</strong>: múltiples bundles, más peticiones.</li>
-</ul>
-<h2 id="capitulos-36-micro-frontends-el-rol-del-design-system">El rol del design system<a class="headerlink" href="#capitulos-36-micro-frontends-el-rol-del-design-system" title="Permanent link">&para;</a></h2>
-<p>En micro-frontends es <strong>obligatorio</strong> tener un <strong>design system compartido</strong>:</p>
-<ul>
-<li>Tokens de diseño (colores, tipografía, espaciados).</li>
-<li>Componentes base (<code>Button</code>, <code>Input</code>, <code>Modal</code>).</li>
-<li>Guías de estilo documentadas.</li>
-</ul>
-<p>Sin esto, cada equipo hará su propia versión del botón y la app parecerá un Frankenstein.</p>
-<h2 id="capitulos-36-micro-frontends-comunicacion-entre-micro-frontends">Comunicación entre micro-frontends<a class="headerlink" href="#capitulos-36-micro-frontends-comunicacion-entre-micro-frontends" title="Permanent link">&para;</a></h2>
-<p>No deben acoplarse directamente. Opciones:</p>
-<h3 id="capitulos-36-micro-frontends-1-custom-events">1. Custom Events<a class="headerlink" href="#capitulos-36-micro-frontends-1-custom-events" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// Micro-frontend A</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span><span class="s1">'carrito:add'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="nx">producto</span><span class="w"> </span><span class="p">}));</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Productos</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"productos/Productos"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Carrito</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"carrito/Carrito"</span><span class="p">;</span>
 
-<span class="c1">// Micro-frontend B</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'carrito:add'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">actualizarContador</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Productos</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Carrito</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="capitulos-36-micro-frontends-remote-remoto">Remote (remoto)<a class="headerlink" href="#capitulos-36-micro-frontends-remote-remoto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// vite.config.js del remote</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">federation</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"productos"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s2">"remoteEntry.js"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">exposes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"./Productos"</span><span class="o">:</span><span class="w"> </span><span class="s2">"./src/Productos.jsx"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"react"</span><span class="p">,</span><span class="w"> </span><span class="s2">"react-dom"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="capitulos-36-micro-frontends-2-estado-compartido-en-el-shell">2. Estado compartido en el shell<a class="headerlink" href="#capitulos-36-micro-frontends-2-estado-compartido-en-el-shell" title="Permanent link">&para;</a></h3>
-<p>El contenedor expone un store global (Zustand, Redux) y los micro-frontends lo consumen.</p>
-<h3 id="capitulos-36-micro-frontends-3-url-y-query-params">3. URL y query params<a class="headerlink" href="#capitulos-36-micro-frontends-3-url-y-query-params" title="Permanent link">&para;</a></h3>
-<p>La más simple: el estado vive en la URL.</p>
-<h3 id="capitulos-36-micro-frontends-4-event-bus-compartido">4. Event bus compartido<a class="headerlink" href="#capitulos-36-micro-frontends-4-event-bus-compartido" title="Permanent link">&para;</a></h3>
-<p>Una librería pequeña que actúa como mediador.</p>
-<h2 id="capitulos-36-micro-frontends-cuando-usar-micro-frontends">¿Cuándo usar micro-frontends?<a class="headerlink" href="#capitulos-36-micro-frontends-cuando-usar-micro-frontends" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-36-micro-frontends-usalos-si">✅ Úsalos si...<a class="headerlink" href="#capitulos-36-micro-frontends-usalos-si" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Tienes <strong>múltiples equipos</strong> trabajando en paralelo.</li>
-<li>La app es <strong>muy grande</strong> y el monolito se vuelve lento.</li>
-<li>Necesitas <strong>despliegues independientes</strong>.</li>
-<li>Estás migrando tecnología <strong>gradualmente</strong>.</li>
-</ul>
-<h3 id="capitulos-36-micro-frontends-evitalos-si">❌ Evítalos si...<a class="headerlink" href="#capitulos-36-micro-frontends-evitalos-si" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Eres <strong>un solo equipo pequeño</strong>.</li>
-<li>La app es <strong>pequeña o mediana</strong>.</li>
-<li>No tienes un design system maduro.</li>
-<li>No tienes experiencia con arquitecturas distribuidas.</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">La regla más importante</p>
-<p><strong>No empieces con micro-frontends</strong>. Empieza con un monolito modular bien organizado. Cuando el dolor sea real (equipos bloqueándose, builds de 20 minutos), migra. Los micro-frontends resuelven un problema <strong>organizacional</strong>, no técnico.</p>
-</div>
-<h2 id="capitulos-36-micro-frontends-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-36-micro-frontends-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Empieza con un monolito</strong> y migra solo si es necesario.</li>
-<li><strong>Design system compartido</strong> obligatorio.</li>
-<li><strong>Contratos claros</strong> entre shell y micro-frontends.</li>
-<li><strong>Versiona los <code>remoteEntry.js</code></strong> para evitar roturas.</li>
-<li><strong>Observabilidad</strong>: logs, métricas y errores centralizados.</li>
-<li><strong>Rendimiento</strong>: lazy loading, prefetch inteligente.</li>
-<li><strong>CI/CD independiente</strong> por micro-frontend.</li>
-<li><strong>Mide el coste</strong>: la complejidad debe estar justificada.</li>
-</ul>
-<h2 id="capitulos-36-micro-frontends-el-futuro">El futuro<a class="headerlink" href="#capitulos-36-micro-frontends-el-futuro" title="Permanent link">&para;</a></h2>
-<p>Los micro-frontends son <strong>una solución organizacional</strong>. Funcionan muy bien en empresas grandes (Spotify, IKEA, Zalando) pero son <strong>overkill</strong> para la mayoría de proyectos.</p>
-<p>La tendencia actual es:</p>
-<ul>
-<li><strong>Monolitos modulares</strong> para equipos pequeños.</li>
-<li><strong>Server Components</strong> para reducir JavaScript.</li>
-<li><strong>Micro-frontends</strong> solo donde el tamaño lo exige.</li>
-</ul>
-<h2 id="capitulos-36-micro-frontends-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-36-micro-frontends-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Piensa en una app grande que conozcas. ¿Cómo la dividirías en micro-frontends?</li>
-<li>Crea dos apps pequeñas con Vite + Module Federation e intégralas.</li>
-<li>Diseña un contrato de comunicación entre shell y micro-frontend usando Custom Events.</li>
-<li>Explica qué es el "problema del CSS global" en micro-frontends y cómo lo resuelve Shadow DOM.</li>
-<li>Lee el post original de <a href="https://martinfowler.com/articles/micro-frontends.html">Martin Fowler sobre micro-frontends</a> y saca 3 conclusiones.</li>
-</ol>
 <hr />
-<p>⬅️ <a href="#capitulos-35-graphql">Capítulo 35 — GraphQL</a> | ➡️ <a href="#apendices">Apéndices</a></p>
+<h2 id="capitulos-36-micro-frontends-composicion-en-tiempo-de-ejecucion">🔗 Composición en tiempo de ejecución<a class="headerlink" href="#capitulos-36-micro-frontends-composicion-en-tiempo-de-ejecucion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Estrategia</th>
+<th style="text-align: left;">Cuándo se compone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Build time</strong></td>
+<td style="text-align: left;">Al construir la app (npm packages)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Run time</strong></td>
+<td style="text-align: left;">Al cargar la app (Module Federation)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Iframes</strong></td>
+<td style="text-align: left;">Aislamiento total (pero limitado)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Web Components</strong></td>
+<td style="text-align: left;">Composición nativa</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Empieza simple</p>
+<p>Si nunca has hecho micro-frontends, empieza con <strong>Web Components</strong> o <strong>iframes</strong>. Module Federation es potente pero complejo.</p>
+</div>
+<hr />
+<h2 id="capitulos-36-micro-frontends-comunicacion-entre-micro-frontends">📡 Comunicación entre micro-frontends<a class="headerlink" href="#capitulos-36-micro-frontends-comunicacion-entre-micro-frontends" title="Permanent link">&para;</a></h2>
+<p>Los micro-frontends deben comunicarse sin acoplarse. Opciones:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Estrategia</th>
+<th style="text-align: left;">Cuándo usarla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Custom Events</strong></td>
+<td style="text-align: left;">Comunicación simple entre apps</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estado global compartido</strong></td>
+<td style="text-align: left;">Estado pequeño (usuario, tema)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>URL / query params</strong></td>
+<td style="text-align: left;">Navegación entre apps</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Web Components</strong></td>
+<td style="text-align: left;">Componentes nativos compartidos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bus de eventos</strong></td>
+<td style="text-align: left;">Comunicación compleja (EventEmitter)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// App A emite un evento</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span><span class="s2">"carrito:add"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">productoId</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}));</span>
+
+<span class="c1">// App B lo escucha</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"carrito:add"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Añadido:"</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">productoId</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con el acoplamiento</p>
+<p>Si dos micro-frontends se comunican mucho, quizá no deberían ser micro-frontends separados. La comunicación excesiva es señal de que el dominio está mal dividido.</p>
+</div>
+<hr />
+<h2 id="capitulos-36-micro-frontends-ventajas-y-desventajas">⚖️ Ventajas y desventajas<a class="headerlink" href="#capitulos-36-micro-frontends-ventajas-y-desventajas" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-36-micro-frontends-ventajas">Ventajas<a class="headerlink" href="#capitulos-36-micro-frontends-ventajas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <strong>Equipos independientes</strong>: cada equipo despliega cuando quiere.</li>
+<li>✅ <strong>Escalabilidad organizacional</strong>: añadir equipos sin conflictos.</li>
+<li>✅ <strong>Aislamiento de fallos</strong>: si un micro-frontend cae, los demás siguen.</li>
+<li>✅ <strong>Migración incremental</strong>: puedes migrar una parte sin reescribir todo.</li>
+<li>✅ <strong>Tecnologías distintas</strong>: un equipo puede usar React, otro Vue.</li>
+</ul>
+<h3 id="capitulos-36-micro-frontends-desventajas">Desventajas<a class="headerlink" href="#capitulos-36-micro-frontends-desventajas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>❌ <strong>Complejidad</strong>: más repos, más pipelines, más despliegues.</li>
+<li>❌ <strong>Duplicación</strong>: cada app carga sus dependencias.</li>
+<li>❌ <strong>Consistencia visual</strong>: hay que compartir el design system.</li>
+<li>❌ <strong>Rendimiento</strong>: más peticiones, más JS.</li>
+<li>❌ <strong>Debugging</strong>: más difícil seguir un flujo entre apps.</li>
+<li>❌ <strong>Testing E2E</strong>: más complejo de automatizar.</li>
+</ul>
 <hr />
 <h2 id="capitulos-36-micro-frontends-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-36-micro-frontends-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuándo tiene sentido usar micro-frontends?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Siempre, es la mejor arquitectura</button>
-    <button class="quiz-option" data-option="b">B) Cuando el proyecto es pequeño</button>
-    <button class="quiz-option" data-option="c">C) Cuando hay múltiples equipos trabajando en una app grande</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-37-ia-generativa" heading-number="22.7"><h1 id="capitulos-37-ia-generativa-capitulo-37-introduccion-a-la-ia-generativa">Capítulo 37 — Introducción a la IA Generativa<a class="headerlink" href="#capitulos-37-ia-generativa-capitulo-37-introduccion-a-la-ia-generativa" title="Permanent link">&para;</a></h1>
+<div class="quiz" data-quiz="capitulo-36">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué son los micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) Pequeños componentes de React</button>
+<button class="quiz-option" data-opt="b">B) Apps frontend independientes que se componen</button>
+<button class="quiz-option" data-opt="c">C) Microservicios en el backend</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué herramienta permite compartir código en runtime?</p>
+<button class="quiz-option" data-opt="a">A) Module Federation</button>
+<button class="quiz-option" data-opt="b">B) Webpack</button>
+<button class="quiz-option" data-opt="c">C) npm</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Cuándo NO usar micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) En equipos grandes</button>
+<button class="quiz-option" data-opt="b">B) En migraciones incrementales</button>
+<button class="quiz-option" data-opt="c">C">En proyectos pequeños con 1-3 devs</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-36-micro-frontends-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-36-micro-frontends-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/36-micro-frontends/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-36-micro-frontends-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-36-micro-frontends-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-37-ia-generativa">Ir al Capítulo 37 — Introducción a la IA Generativa</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-37-ia-generativa" heading-number="22.7"><h1 id="capitulos-37-ia-generativa-capitulo-37-introduccion-a-la-ia-generativa">Capítulo 37 — Introducción a la IA Generativa<a class="headerlink" href="#capitulos-37-ia-generativa-capitulo-37-introduccion-a-la-ia-generativa" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-37-ia-generativa-que-es-la-ia-generativa">¿Qué es la IA generativa?<a class="headerlink" href="#capitulos-37-ia-generativa-que-es-la-ia-generativa" title="Permanent link">&para;</a></h2>
 <p>La IA generativa es una rama de la inteligencia artificial que se centra en crear contenido nuevo (texto, imágenes, código, audio) a partir de patrones aprendidos de grandes cantidades de datos. A diferencia de la IA tradicional, que clasifica o predice, la IA generativa <strong>produce</strong>.</p>
 <h2 id="capitulos-37-ia-generativa-modelos-de-lenguaje-llms">Modelos de Lenguaje (LLMs)<a class="headerlink" href="#capitulos-37-ia-generativa-modelos-de-lenguaje-llms" title="Permanent link">&para;</a></h2>
