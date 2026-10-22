@@ -13373,230 +13373,156 @@ async function cargar() {
 <hr />
 <h2 id="capitulos-12-javascript-asincrono-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-12-javascript-asincrono-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-13-modulos-bundlers">Ir al Capítulo 13 — Módulos y bundlers</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-13-modulos-bundlers" heading-number="18.3"><h1 id="capitulos-13-modulos-bundlers-capitulo-13-modulos-y-bundlers">Capítulo 13 — Módulos y bundlers<a class="headerlink" href="#capitulos-13-modulos-bundlers-capitulo-13-modulos-y-bundlers" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-13-modulos-bundlers-introduccion">Introducción<a class="headerlink" href="#capitulos-13-modulos-bundlers-introduccion" title="Permanent link">&para;</a></h2>
-<p>Durante años, todo el JavaScript de una página vivía en un solo archivo o se cargaba con múltiples etiquetas <code>&lt;script&gt;</code>. Aquello era un caos: colisiones de nombres, orden de carga frágil, cero encapsulación.</p>
-<p>Los <strong>módulos</strong> resolvieron ese problema. Y los <strong>bundlers</strong> hacen que todo eso funcione de forma eficiente en producción.</p>
-<h2 id="capitulos-13-modulos-bundlers-que-es-un-modulo">¿Qué es un módulo?<a class="headerlink" href="#capitulos-13-modulos-bundlers-que-es-un-modulo" title="Permanent link">&para;</a></h2>
-<p>Un módulo es un archivo que <strong>exporta</strong> ciertas cosas y <strong>oculta</strong> el resto. Solo lo que exportas es accesible desde fuera.</p>
-<h3 id="capitulos-13-modulos-bundlers-exportar">Exportar<a class="headerlink" href="#capitulos-13-modulos-bundlers-exportar" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// matematicas.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span>
-
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-13-modulos-bundlers" heading-number="18.3"><h1 id="capitulos-13-modulos-bundlers-13-modulos-y-bundlers">13 — Módulos y bundlers<a class="headerlink" href="#capitulos-13-modulos-bundlers-13-modulos-y-bundlers" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué son los módulos y por qué existen.</li>
+<li>
+<p>Módulos ES6 (import/export).</p>
+</li>
+<li>
+<p>Qué hace un bundler y por qué lo necesitas.</p>
+</li>
+<li>Vite, Webpack y esbuild.</li>
+<li>Code splitting y tree shaking.</li>
+</ul>
+</div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-que-es-un-modulo">📦 ¿Qué es un módulo?<a class="headerlink" href="#capitulos-13-modulos-bundlers-que-es-un-modulo" title="Permanent link">&para;</a></h2>
+<p>Un <strong>módulo</strong> es un archivo que encapsula código y expone solo lo que quiere compartir.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// math.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">multiplicar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span>
+
+<span class="c1">// app.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./math.js"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">// 5</span>
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">Divide y vencerás</p>
+<p>Los módulos permiten que varios desarrolladores trabajen en paralelo sin pisarse.</p>
+</div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-modulos-es6">📤 Módulos ES6<a class="headerlink" href="#capitulos-13-modulos-bundlers-modulos-es6" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-13-modulos-bundlers-exportar">Exportar<a class="headerlink" href="#capitulos-13-modulos-bundlers-exportar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">"Hola"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">principal</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h3 id="capitulos-13-modulos-bundlers-importar">Importar<a class="headerlink" href="#capitulos-13-modulos-bundlers-importar" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// app.js</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">multiplicar</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PI</span><span class="p">,</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./matematicas.js'</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">       </span><span class="c1">// 5</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">PI</span><span class="p">);</span><span class="w">                 </span><span class="c1">// 3.1416</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiplicar</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">));</span><span class="w">  </span><span class="c1">// 20</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">saludar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./modulo.js"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">principal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./modulo.js"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">modulo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./modulo.js"</span><span class="p">;</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Export default vs named</p>
-<ul>
-<li><strong>Named exports</strong>: <code>export function foo() {}</code> → <code>import { foo } from './x.js'</code></li>
-<li><strong>Default export</strong>: <code>export default function() {}</code> → <code>import cualquiera from './x.js'</code></li>
-</ul>
-<p>Los <strong>named</strong> son más explícitos y permiten varios por archivo. Los <strong>default</strong> son cómodos para un único valor principal.</p>
-</div>
-<h2 id="capitulos-13-modulos-bundlers-modulos-en-el-navegador">Módulos en el navegador<a class="headerlink" href="#capitulos-13-modulos-bundlers-modulos-en-el-navegador" title="Permanent link">&para;</a></h2>
-<p>Añade <code>type="module"</code> a tu <code>&lt;script&gt;</code>:</p>
+<h3 id="capitulos-13-modulos-bundlers-en-html">En HTML<a class="headerlink" href="#capitulos-13-modulos-bundlers-en-html" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Con eso ya puedes usar <code>import</code> / <code>export</code> sin bundler. Los navegadores modernos lo soportan.</p>
-<h2 id="capitulos-13-modulos-bundlers-import-dinamico">Import dinámico<a class="headerlink" href="#capitulos-13-modulos-bundlers-import-dinamico" title="Permanent link">&para;</a></h2>
-<p>Carga módulos <strong>solo cuando los necesitas</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./modal.js'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">abrirModal</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Perfecto para <em>code splitting</em> y reducir el bundle inicial.</p>
-<h2 id="capitulos-13-modulos-bundlers-el-problema-demasiados-archivos">El problema: demasiados archivos<a class="headerlink" href="#capitulos-13-modulos-bundlers-el-problema-demasiados-archivos" title="Permanent link">&para;</a></h2>
-<p>En un proyecto grande tienes cientos de módulos. Pedir cada uno por separado al servidor sería lentísimo. Aquí entran los <strong>bundlers</strong>.</p>
-<h2 id="capitulos-13-modulos-bundlers-que-es-un-bundler">¿Qué es un bundler?<a class="headerlink" href="#capitulos-13-modulos-bundlers-que-es-un-bundler" title="Permanent link">&para;</a></h2>
-<p>Un bundler:</p>
+<div class="admonition warning">
+<p class="admonition-title">Los módulos tienen scope propio</p>
+<p>Las variables de un módulo no son globales.</p>
+</div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-que-es-un-bundler">🔧 ¿Qué es un bundler?<a class="headerlink" href="#capitulos-13-modulos-bundlers-que-es-un-bundler" title="Permanent link">&para;</a></h2>
+<p>Un <strong>bundler</strong> empaqueta todos tus módulos en uno o varios archivos optimizados.</p>
+<h3 id="capitulos-13-modulos-bundlers-por-que-necesitas-un-bundler">¿Por qué necesitas un bundler?<a class="headerlink" href="#capitulos-13-modulos-bundlers-por-que-necesitas-un-bundler" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Lee todos tus módulos.</li>
-<li>Resuelve las dependencias.</li>
-<li>Combina todo en uno o varios archivos.</li>
-<li>Optimiza: minifica, elimina código muerto, aplica <em>tree shaking</em>.</li>
+<li><strong>Compatibilidad</strong>: las dependencias de npm suelen estar en otros formatos.</li>
+<li><strong>Rendimiento</strong>: un solo archivo es más rápido que 50 pequeños.</li>
+<li><strong>Optimización</strong>: minificación, tree shaking.</li>
+<li><strong>Assets</strong>: procesa CSS, imágenes, fuentes.</li>
 </ol>
-<p>Bundlers populares:</p>
-<table>
-<thead>
-<tr>
-<th>Bundler</th>
-<th>Cuándo usarlo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Vite</strong></td>
-<td>Proyecto moderno, rápido, el estándar hoy</td>
-</tr>
-<tr>
-<td><strong>Webpack</strong></td>
-<td>Proyectos legacy, configuraciones muy complejas</td>
-</tr>
-<tr>
-<td><strong>Rollup</strong></td>
-<td>Librerías npm</td>
-</tr>
-<tr>
-<td><strong>esbuild</strong></td>
-<td>Herramienta rápida, base de Vite</td>
-</tr>
-<tr>
-<td><strong>Parcel</strong></td>
-<td>Zero-config, proyectos pequeños</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-13-modulos-bundlers-vite-paso-a-paso">Vite paso a paso<a class="headerlink" href="#capitulos-13-modulos-bundlers-vite-paso-a-paso" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-13-modulos-bundlers-crear-un-proyecto">Crear un proyecto<a class="headerlink" href="#capitulos-13-modulos-bundlers-crear-un-proyecto" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-vite">⚡ Vite<a class="headerlink" href="#capitulos-13-modulos-bundlers-vite" title="Permanent link">&para;</a></h2>
+<p><strong>Vite</strong> es el bundler moderno más popular. Usa ES modules nativos en desarrollo y Rollup en producción.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>vanilla
 <span class="nb">cd</span><span class="w"> </span>mi-app
 npm<span class="w"> </span>install
 npm<span class="w"> </span>run<span class="w"> </span>dev
+npm<span class="w"> </span>run<span class="w"> </span>build
 </code></pre></div>
-<p>Vite te da:</p>
-<ul>
-<li>Servidor de desarrollo ultrarrápido (HMR).</li>
-<li>Soporte nativo de TypeScript, JSX, CSS modules…</li>
-<li>Build de producción optimizado.</li>
-</ul>
-<h3 id="capitulos-13-modulos-bundlers-estructura-tipica">Estructura típica<a class="headerlink" href="#capitulos-13-modulos-bundlers-estructura-tipica" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>mi-app/
-├── index.html
-├── package.json
-├── vite.config.js
-└── src/
-    ├── main.js
-    ├── estilos.css
-    └── componentes/
+<h3 id="capitulos-13-modulos-bundlers-viteconfigjs">vite.config.js<a class="headerlink" href="#capitulos-13-modulos-bundlers-viteconfigjs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="nx">open</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">outDir</span><span class="o">:</span><span class="w"> </span><span class="s2">"dist"</span><span class="p">,</span><span class="w"> </span><span class="nx">sourcemap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
 </code></pre></div>
-<h3 id="capitulos-13-modulos-bundlers-packagejson-explicado"><code>package.json</code> explicado<a class="headerlink" href="#capitulos-13-modulos-bundlers-packagejson-explicado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-app"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite build"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite preview"</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"vite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.0.0"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Los scripts se ejecutan con <code>npm run nombre</code>.</p>
-<h3 id="capitulos-13-modulos-bundlers-npm-run-dev"><code>npm run dev</code><a class="headerlink" href="#capitulos-13-modulos-bundlers-npm-run-dev" title="Permanent link">&para;</a></h3>
-<p>Arranca el servidor de desarrollo en <code>http://localhost:5173</code>. Cada vez que guardas un archivo, el navegador se actualiza automáticamente.</p>
-<h3 id="capitulos-13-modulos-bundlers-npm-run-build"><code>npm run build</code><a class="headerlink" href="#capitulos-13-modulos-bundlers-npm-run-build" title="Permanent link">&para;</a></h3>
-<p>Genera la carpeta <code>dist/</code> con todo optimizado:</p>
-<ul>
-<li>JavaScript minificado.</li>
-<li>CSS separado.</li>
-<li>Assets con hash (<code>app-a1b2c3.js</code>).</li>
-</ul>
-<p>Ese <code>dist/</code> es lo que subes a producción.</p>
-<h2 id="capitulos-13-modulos-bundlers-npm-el-gestor-de-paquetes">npm: el gestor de paquetes<a class="headerlink" href="#capitulos-13-modulos-bundlers-npm-el-gestor-de-paquetes" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-13-modulos-bundlers-comandos-esenciales">Comandos esenciales<a class="headerlink" href="#capitulos-13-modulos-bundlers-comandos-esenciales" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y<span class="w">              </span><span class="c1"># crea package.json</span>
-npm<span class="w"> </span>install<span class="w">              </span><span class="c1"># instala todas las dependencias</span>
-npm<span class="w"> </span>install<span class="w"> </span>axios<span class="w">        </span><span class="c1"># añade una dependencia</span>
-npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vitest<span class="w">    </span><span class="c1"># añade una dev-dependency</span>
-npm<span class="w"> </span>uninstall<span class="w"> </span>axios<span class="w">      </span><span class="c1"># la quita</span>
-npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">              </span><span class="c1"># ejecuta un script</span>
-npm<span class="w"> </span>outdated<span class="w">             </span><span class="c1"># muestra paquetes desactualizados</span>
-npm<span class="w"> </span>update<span class="w">               </span><span class="c1"># actualiza</span>
-</code></pre></div>
-<h3 id="capitulos-13-modulos-bundlers-dependencies-vs-devdependencies"><code>dependencies</code> vs <code>devDependencies</code><a class="headerlink" href="#capitulos-13-modulos-bundlers-dependencies-vs-devdependencies" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>dependencies</strong>: código que usa tu app en producción (React, axios…).</li>
-<li><strong>devDependencies</strong>: herramientas de desarrollo (Vite, ESLint, tests…).</li>
-</ul>
-<h3 id="capitulos-13-modulos-bundlers-package-lockjson"><code>package-lock.json</code><a class="headerlink" href="#capitulos-13-modulos-bundlers-package-lockjson" title="Permanent link">&para;</a></h3>
-<p>Registra las versiones exactas instaladas. <strong>Súbelo al repo</strong>. Garantiza que todo el equipo use las mismas.</p>
-<h3 id="capitulos-13-modulos-bundlers-gitignore-para-proyectos-node"><code>.gitignore</code> para proyectos Node<a class="headerlink" href="#capitulos-13-modulos-bundlers-gitignore-para-proyectos-node" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>node_modules/
-dist/
-.env
-.DS_Store
-</code></pre></div>
-<p><strong>Nunca subas <code>node_modules/</code></strong>. Es enorme y se regenera con <code>npm install</code>.</p>
-<h2 id="capitulos-13-modulos-bundlers-variables-de-entorno-con-vite">Variables de entorno con Vite<a class="headerlink" href="#capitulos-13-modulos-bundlers-variables-de-entorno-con-vite" title="Permanent link">&para;</a></h2>
-<p>Crea un archivo <code>.env</code>:</p>
-<div class="highlight"><pre><span></span><code>VITE_API_URL=https://api.mi-app.com
-</code></pre></div>
-<p>Úsalo en código:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">VITE_API_URL</span><span class="p">;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">No metas secretos</p>
-<p>Todo lo que empiece por <code>VITE_</code> acaba en el bundle. <strong>Nunca</strong> pongas API keys privadas ahí. Los secretos van al backend.</p>
+<div class="admonition tip">
+<p class="admonition-title">Vite es ultrarrápido</p>
+<p>En desarrollo, Vite no empaqueta: sirve los módulos directamente al navegador.</p>
 </div>
-<h2 id="capitulos-13-modulos-bundlers-diagrama-que-hace-un-bundler">Diagrama: qué hace un bundler<a class="headerlink" href="#capitulos-13-modulos-bundlers-diagrama-que-hace-un-bundler" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[módulo1.js] --&gt; D[Bundler]
-    B[módulo2.js] --&gt; D
-    C[módulo3.js] --&gt; D
-    D --&gt; E[Tree shaking]
-    E --&gt; F[Minificación]
-    F --&gt; G[app.min.js único]</code></pre>
-<p>El bundler combina todos los módulos, elimina el código no usado (tree shaking) y minifica el resultado en uno o varios archivos optimizados.</p>
-<h2 id="capitulos-13-modulos-bundlers-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-13-modulos-bundlers-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Un archivo, una responsabilidad</strong>. Si un módulo hace demasiadas cosas, divídelo.</li>
-<li><strong>Named exports por defecto</strong>. Son más fáciles de refactorizar.</li>
-<li><strong>Rutas relativas o alias</strong>: configura <code>@/</code> para evitar <code>../../../</code>.</li>
-<li><strong><code>.gitignore</code> siempre</strong> con <code>node_modules/</code> y <code>dist/</code>.</li>
-<li><strong><code>package-lock.json</code> en Git</strong>. Es la garantía de reproducibilidad.</li>
-<li><strong>Actualiza dependencias con cabeza</strong>. Usa <code>npm audit</code> para vulnerabilidades.</li>
-<li><strong>Analiza tu bundle</strong> con <code>vite-bundle-visualizer</code> o <code>rollup-plugin-visualizer</code>.</li>
-</ul>
-<h2 id="capitulos-13-modulos-bundlers-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-13-modulos-bundlers-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un proyecto con <code>npm create vite@latest</code> y añade un módulo propio.</li>
-<li>Exporta dos funciones y un valor con named exports, e impórtalos en <code>main.js</code>.</li>
-<li>Usa import dinámico para cargar un módulo solo al pulsar un botón.</li>
-<li>Añade <code>axios</code> como dependencia y <code>vitest</code> como dev-dependency.</li>
-<li>Configura un alias <code>@/</code> que apunte a <code>src/</code> en <code>vite.config.js</code>.</li>
-<li>Genera el build con <code>npm run build</code> y examina la carpeta <code>dist/</code>.</li>
-</ol>
 <hr />
-<p>⬅️ <a href="#capitulos-12-javascript-asincrono">Capítulo 12 — JavaScript asíncrono</a> | ➡️ <a href="#capitulos-14-accesibilidad">Capítulo 14 — Accesibilidad web</a>
-git add -A ; git commit -m "feat: capítulo 13 módulos y bundlers" ; git push</p>
+<h2 id="capitulos-13-modulos-bundlers-webpack">📦 Webpack<a class="headerlink" href="#capitulos-13-modulos-bundlers-webpack" title="Permanent link">&para;</a></h2>
+<p><strong>Webpack</strong> es el bundler clásico. Muy potente pero más complejo de configurar.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">entry</span><span class="o">:</span><span class="w"> </span><span class="s2">"./src/index.js"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s2">"bundle.js"</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/dist"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.js$/</span><span class="p">,</span><span class="w"> </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="s2">"babel-loader"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.css$/</span><span class="p">,</span><span class="w"> </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"style-loader"</span><span class="p">,</span><span class="w"> </span><span class="s2">"css-loader"</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-esbuild">🪶 esbuild<a class="headerlink" href="#capitulos-13-modulos-bundlers-esbuild" title="Permanent link">&para;</a></h2>
+<p><strong>esbuild</strong> es un bundler escrito en Go, <strong>extremadamente rápido</strong>.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>esbuild
+npx<span class="w"> </span>esbuild<span class="w"> </span>app.js<span class="w"> </span>--bundle<span class="w"> </span>--outfile<span class="o">=</span>out.js<span class="w"> </span>--minify
+</code></pre></div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-tree-shaking">🌳 Tree shaking<a class="headerlink" href="#capitulos-13-modulos-bundlers-tree-shaking" title="Permanent link">&para;</a></h2>
+<p><strong>Tree shaking</strong> elimina el código que no se usa.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// modulo.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">usada</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">noUsada</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// app.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">usada</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./modulo.js"</span><span class="p">;</span>
+<span class="nx">usada</span><span class="p">();</span>
+<span class="c1">// noUsada() se elimina del bundle</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-code-splitting">✂️ Code splitting<a class="headerlink" href="#capitulos-13-modulos-bundlers-code-splitting" title="Permanent link">&para;</a></h2>
+<p><strong>Code splitting</strong> divide el bundle en trozos que se cargan <strong>bajo demanda</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s2">"./modal.js"</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">abrirModal</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 <h2 id="capitulos-13-modulos-bundlers-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-13-modulos-bundlers-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuál es el bundler recomendado por defecto para nuevos proyectos hoy en día?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Webpack</button>
-    <button class="quiz-option" data-option="b">B) Parcel</button>
-    <button class="quiz-option" data-option="c">C) Vite</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-13">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué palabra se usa para exportar en módulos ES6?</p>
+<button class="quiz-option" data-opt="a">A) module.exports</button>
+<button class="quiz-option" data-opt="b">B) export</button>
+<button class="quiz-option" data-opt="c">C) public</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué bundler es el más rápido?</p>
+<button class="quiz-option" data-opt="a">A) esbuild</button>
+<button class="quiz-option" data-opt="b">B) Webpack</button>
+<button class="quiz-option" data-opt="c">C) Parcel</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué técnica elimina el código no usado?</p>
+<button class="quiz-option" data-opt="a">A) Code splitting</button>
+<button class="quiz-option" data-opt="b">B) Minificación</button>
+<button class="quiz-option" data-opt="c">C) Tree shaking</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué comando se usa para instalar las dependencias de un proyecto en Node.js?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) npm install</button>
-    <button class="quiz-option" data-option="b">B) npm start</button>
-    <button class="quiz-option" data-option="c">C) npm run build</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-14-accesibilidad" heading-number="18.4"><h1 id="capitulos-14-accesibilidad-capitulo-14-accesibilidad-web">Capítulo 14 — Accesibilidad web<a class="headerlink" href="#capitulos-14-accesibilidad-capitulo-14-accesibilidad-web" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-13-modulos-bundlers-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-13-modulos-bundlers-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-14-accesibilidad">Ir al Capítulo 14 — Accesibilidad web</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-14-accesibilidad" heading-number="18.4"><h1 id="capitulos-14-accesibilidad-capitulo-14-accesibilidad-web">Capítulo 14 — Accesibilidad web<a class="headerlink" href="#capitulos-14-accesibilidad-capitulo-14-accesibilidad-web" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-14-accesibilidad-introduccion">Introducción<a class="headerlink" href="#capitulos-14-accesibilidad-introduccion" title="Permanent link">&para;</a></h2>
 <p>La <strong>accesibilidad web</strong> consiste en diseñar y construir sitios que <strong>cualquier persona pueda usar</strong>, independientemente de sus capacidades físicas, sensoriales o cognitivas, del dispositivo o del contexto.</p>
 <p>No es un extra opcional. Es una <strong>obligación legal</strong> en muchos países (WCAG 2.2, ADA, EN 301 549) y, sobre todo, es <strong>lo correcto</strong>.</p>
