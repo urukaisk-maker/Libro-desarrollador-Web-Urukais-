@@ -1744,3 +1744,73 @@ body {
     overflow-x: auto;
   }
 }
+
+/* ============================================================
+   Header en una sola línea (solo escritorio)
+   ============================================================ */
+@media screen and (min-width: 1220px) {
+
+  /* Header: contenedor flex en fila */
+  .md-header {
+    padding: 0 .5rem !important;
+  }
+  .md-header__inner {
+    display: flex !important;
+    align-items: center !important;
+    gap: .75rem !important;
+    flex-wrap: nowrap !important;
+    height: 3.2rem !important;
+    padding: 0 !important;
+  }
+
+  /* 1. Logo */
+  .md-header__button.md-logo {
+    margin: 0 !important;
+    padding: .35rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 2. Título: ocupa el espacio, sin saltos de línea */
+  .md-header__title {
+    flex: 1 1 auto !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+  .md-header__ellipsis {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* 3. El botón "Explorar" (que vive en .md-tabs) se mueve al header */
+  .md-tabs {
+    display: contents !important;   /* el .md-tabs deja de ser bloque */
+  }
+  .md-tabs__list {
+    display: none !important;        /* ocultamos las tabs horizontales */
+  }
+  .dd-menu-button {
+    order: -1 !important;            /* lo colocamos antes del buscador */
+    margin: 0 .25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 4. Buscador */
+  .md-header__option,
+  .md-search {
+    flex-shrink: 0 !important;
+  }
+  .md-search__inner {
+    margin: 0 !important;
+  }
+
+  /* 5. Botón del repo (GitHub + 1 0) */
+  .md-header__source {
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+  .md-source {
+    padding: .2rem .5rem !important;
+    white-space: nowrap !important;
+  }
+}
