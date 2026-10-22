@@ -1,262 +1,202 @@
-# Capítulo 36 — Micro-frontends
+# 36 — Micro-frontends
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué son los micro-frontends y cuándo usarlos.
+    - Module Federation con Vite.
+    - Composición en tiempo de ejecución.
+    - Comunicación entre micro-frontends.
+    - Ventajas y desventajas.
 
-Los **micro-frontends** aplican las ideas de microservicios al frontend: dividir una aplicación grande en **aplicaciones más pequeñas e independientes**, cada una mantenida por un equipo distinto, que se integran para formar un producto coherente.
+---
 
-Si has trabajado en una app enorme donde un cambio de un equipo rompe el trabajo de otro, sabes por qué existen.
+## 🧩 ¿Qué son los micro-frontends?
 
-## El problema que resuelven
+Los **micro-frontends** dividen una aplicación frontend grande en **aplicaciones más pequeñas e independientes**, que se pueden desarrollar, desplegar y escalar por separado. Es el equivalente frontend de los microservicios.
 
-Imagina una aplicación enterprise con:
+```
+Monolito frontend:  1 app gigante, 1 equipo, 1 despliegue
+Micro-frontends:    N apps pequeñas, N equipos, N despliegues
+```
 
-- 5 equipos trabajando en paralelo.
-- 300.000 líneas de código.
-- Un build de 15 minutos.
-- Un despliegue al día, que falla una vez de cada tres.
+!!! quote "Divide y vencerás (también en frontend)"
+    Si tienes 50 desarrolladores trabajando en el mismo repositorio, los conflictos son constantes. Los micro-frontends permiten que cada equipo sea dueño de su parte.
 
-**Micro-frontends** permiten que cada equipo despliegue **su parte** cuando quiera, sin bloquear a los demás.
+---
 
-## ¿Qué es un micro-frontend?
+## 🎯 ¿Cuándo usar micro-frontends?
 
-Una aplicación frontend **autónoma** que:
+| Caso | ¿Micro-frontends? |
+| :--- | :--- |
+| Equipos grandes (10+ devs) | ✅ |
+| Múltiples equipos independientes | ✅ |
+| Migración incremental de Angular a React | ✅ |
+| Múltiples productos en una plataforma | ✅ |
+| Proyecto pequeño (1-3 devs) | ❌ |
+| MVP o prototipo | ❌ |
+| App con mucha interacción entre partes | ❌ |
 
-- Se desarrolla en su propio repositorio.
-- Se despliega en su propia URL o CDN.
-- Se integra en una "aplicación contenedor" (shell).
-- Puede usar **cualquier tecnología** (React, Vue, Svelte...).
+---
 
-Ejemplo: una tienda online dividida en:
+## ⚡ Module Federation
 
-- `header` (React).
-- `productos` (Vue).
-- `carrito` (Svelte).
-- `checkout` (React).
+**Module Federation** (Webpack 5, Vite 5+) permite que una app cargue código de otra en **tiempo de ejecución**, sin duplicar dependencias.
 
-Todo se ve como una sola app.
-
-## Formas de integrar micro-frontends
-
-### 1. Iframes (la más antigua)
-
-Cada micro-frontend vive en su `<iframe>`.
-
-✅ Aislamiento total.
-❌ Pésima experiencia: no compartes estado, CSS, ni rutas.
-
-### 2. Web Components
-
-Cada micro-frontend expone un **Custom Element** (`<mi-productos>`).
-
-✅ Estándar nativo, aislamiento real.
-❌ Requiere aprender Shadow DOM, eventos personalizados.
-
-### 3. Module Federation (el más moderno)
-
-Webpack 5 (y Vite con plugins) permite compartir módulos entre aplicaciones en tiempo de ejecución.
-
-### 4. Composición en build time
-
-Un monorepo con todas las partes que se construyen juntas.
-
-## Module Federation con Webpack
-
-### Aplicación remota (`productos`)
+### Host (contenedor)
 
 ```javascript
-// webpack.config.js
-const { ModuleFederationPlugin } = require('webpack').container;
-
-module.exports = {
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'productos',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './ListaProductos': './src/ListaProductos',
-      },
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
-    }),
-  ],
-};
-```
-
-### Aplicación contenedora (`shell`)
-
-```javascript
-const { ModuleFederationPlugin } = require('webpack').container;
-
-module.exports = {
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'shell',
-      remotes: {
-        productos: 'productos@https://productos.miapp.com/remoteEntry.js',
-      },
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
-    }),
-  ],
-};
-```
-
-Uso:
-
-```jsx
-import React, { Suspense } from 'react';
-
-const ListaProductos = React.lazy(() => import('productos/ListaProductos'));
-
-function App() {
-  return (
-    <Suspense fallback={<p>Cargando productos...</p>}>
-      <ListaProductos />
-    </Suspense>
-  );
-}
-```
-
-## Module Federation con Vite
-
-```bash
-npm install -D @originjs/vite-plugin-federation
-```
-
-`vite.config.js`:
-
-```javascript
-import { defineConfig } from 'vite';
-import federation from '@originjs/vite-plugin-federation';
+// vite.config.js del host
+import { defineConfig } from "vite";
+import federation from "@originjs/vite-plugin-federation";
 
 export default defineConfig({
   plugins: [
     federation({
-      name: 'productos',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './ListaProductos': './src/ListaProductos.jsx',
+      name: "host",
+      remotes: {
+        productos: "http://localhost:5001/assets/remoteEntry.js",
+        carrito: "http://localhost:5002/assets/remoteEntry.js"
       },
-      shared: ['react', 'react-dom'],
-    }),
-  ],
+      shared: ["react", "react-dom"]
+    })
+  ]
 });
 ```
 
-## Ventajas
+```jsx
+import Productos from "productos/Productos";
+import Carrito from "carrito/Carrito";
 
-- **Despliegues independientes** por equipo.
-- **Equipos autónomos**: eligen su stack.
-- **Escalabilidad organizacional**: puedes añadir equipos sin bloquear.
-- **Builds más rápidos**: cada micro-frontend compila solo lo suyo.
-- **Migraciones graduales**: puedes reescribir una parte sin tocar el resto.
+function App() {
+  return (
+    <div>
+      <Productos />
+      <Carrito />
+    </div>
+  );
+}
+```
 
-## Desventajas
-
-- **Complejidad de integración**: no es trivial.
-- **Duplicación de dependencias**: cada micro-frontend puede traer React.
-- **Consistencia de diseño**: hay que coordinar un design system.
-- **Depuración más difícil**: el bug puede estar en cualquier parte.
-- **Rendimiento**: múltiples bundles, más peticiones.
-
-## El rol del design system
-
-En micro-frontends es **obligatorio** tener un **design system compartido**:
-
-- Tokens de diseño (colores, tipografía, espaciados).
-- Componentes base (`Button`, `Input`, `Modal`).
-- Guías de estilo documentadas.
-
-Sin esto, cada equipo hará su propia versión del botón y la app parecerá un Frankenstein.
-
-## Comunicación entre micro-frontends
-
-No deben acoplarse directamente. Opciones:
-
-### 1. Custom Events
+### Remote (remoto)
 
 ```javascript
-// Micro-frontend A
-window.dispatchEvent(new CustomEvent('carrito:add', { detail: producto }));
-
-// Micro-frontend B
-window.addEventListener('carrito:add', (e) => {
-  actualizarContador(e.detail);
+// vite.config.js del remote
+export default defineConfig({
+  plugins: [
+    federation({
+      name: "productos",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Productos": "./src/Productos.jsx"
+      },
+      shared: ["react", "react-dom"]
+    })
+  ]
 });
 ```
-
-### 2. Estado compartido en el shell
-
-El contenedor expone un store global (Zustand, Redux) y los micro-frontends lo consumen.
-
-### 3. URL y query params
-
-La más simple: el estado vive en la URL.
-
-### 4. Event bus compartido
-
-Una librería pequeña que actúa como mediador.
-
-## ¿Cuándo usar micro-frontends?
-
-### ✅ Úsalos si...
-
-- Tienes **múltiples equipos** trabajando en paralelo.
-- La app es **muy grande** y el monolito se vuelve lento.
-- Necesitas **despliegues independientes**.
-- Estás migrando tecnología **gradualmente**.
-
-### ❌ Evítalos si...
-
-- Eres **un solo equipo pequeño**.
-- La app es **pequeña o mediana**.
-- No tienes un design system maduro.
-- No tienes experiencia con arquitecturas distribuidas.
-
-!!! warning "La regla más importante"
-    **No empieces con micro-frontends**. Empieza con un monolito modular bien organizado. Cuando el dolor sea real (equipos bloqueándose, builds de 20 minutos), migra. Los micro-frontends resuelven un problema **organizacional**, no técnico.
-
-## Buenas prácticas
-
-- **Empieza con un monolito** y migra solo si es necesario.
-- **Design system compartido** obligatorio.
-- **Contratos claros** entre shell y micro-frontends.
-- **Versiona los `remoteEntry.js`** para evitar roturas.
-- **Observabilidad**: logs, métricas y errores centralizados.
-- **Rendimiento**: lazy loading, prefetch inteligente.
-- **CI/CD independiente** por micro-frontend.
-- **Mide el coste**: la complejidad debe estar justificada.
-
-## El futuro
-
-Los micro-frontends son **una solución organizacional**. Funcionan muy bien en empresas grandes (Spotify, IKEA, Zalando) pero son **overkill** para la mayoría de proyectos.
-
-La tendencia actual es:
-
-- **Monolitos modulares** para equipos pequeños.
-- **Server Components** para reducir JavaScript.
-- **Micro-frontends** solo donde el tamaño lo exige.
-
-## Ejercicios
-
-1. Piensa en una app grande que conozcas. ¿Cómo la dividirías en micro-frontends?
-2. Crea dos apps pequeñas con Vite + Module Federation e intégralas.
-3. Diseña un contrato de comunicación entre shell y micro-frontend usando Custom Events.
-4. Explica qué es el "problema del CSS global" en micro-frontends y cómo lo resuelve Shadow DOM.
-5. Lee el post original de [Martin Fowler sobre micro-frontends](https://martinfowler.com/articles/micro-frontends.html) y saca 3 conclusiones.
 
 ---
 
-⬅️ [Capítulo 35 — GraphQL](35-graphql.md) | ➡️ [Apéndices](../apendices/index.md)
+## 🔗 Composición en tiempo de ejecución
+
+| Estrategia | Cuándo se compone |
+| :--- | :--- |
+| **Build time** | Al construir la app (npm packages) |
+| **Run time** | Al cargar la app (Module Federation) |
+| **Iframes** | Aislamiento total (pero limitado) |
+| **Web Components** | Composición nativa |
+
+!!! tip "Empieza simple"
+    Si nunca has hecho micro-frontends, empieza con **Web Components** o **iframes**. Module Federation es potente pero complejo.
+
+---
+
+## 📡 Comunicación entre micro-frontends
+
+Los micro-frontends deben comunicarse sin acoplarse. Opciones:
+
+| Estrategia | Cuándo usarla |
+| :--- | :--- |
+| **Custom Events** | Comunicación simple entre apps |
+| **Estado global compartido** | Estado pequeño (usuario, tema) |
+| **URL / query params** | Navegación entre apps |
+| **Web Components** | Componentes nativos compartidos |
+| **Bus de eventos** | Comunicación compleja (EventEmitter) |
+
+```javascript
+// App A emite un evento
+window.dispatchEvent(new CustomEvent("carrito:add", {
+  detail: { productoId: 42 }
+}));
+
+// App B lo escucha
+window.addEventListener("carrito:add", (e) => {
+  console.log("Añadido:", e.detail.productoId);
+});
+```
+
+!!! warning "Cuidado con el acoplamiento"
+    Si dos micro-frontends se comunican mucho, quizá no deberían ser micro-frontends separados. La comunicación excesiva es señal de que el dominio está mal dividido.
+
+---
+
+## ⚖️ Ventajas y desventajas
+
+### Ventajas
+
+- ✅ **Equipos independientes**: cada equipo despliega cuando quiere.
+- ✅ **Escalabilidad organizacional**: añadir equipos sin conflictos.
+- ✅ **Aislamiento de fallos**: si un micro-frontend cae, los demás siguen.
+- ✅ **Migración incremental**: puedes migrar una parte sin reescribir todo.
+- ✅ **Tecnologías distintas**: un equipo puede usar React, otro Vue.
+
+### Desventajas
+
+- ❌ **Complejidad**: más repos, más pipelines, más despliegues.
+- ❌ **Duplicación**: cada app carga sus dependencias.
+- ❌ **Consistencia visual**: hay que compartir el design system.
+- ❌ **Rendimiento**: más peticiones, más JS.
+- ❌ **Debugging**: más difícil seguir un flujo entre apps.
+- ❌ **Testing E2E**: más complejo de automatizar.
 
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuándo tiene sentido usar micro-frontends?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Siempre, es la mejor arquitectura</button>
-    <button class="quiz-option" data-option="b">B) Cuando el proyecto es pequeño</button>
-    <button class="quiz-option" data-option="c">C) Cuando hay múltiples equipos trabajando en una app grande</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-36">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué son los micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) Pequeños componentes de React</button>
+<button class="quiz-option" data-opt="b">B) Apps frontend independientes que se componen</button>
+<button class="quiz-option" data-opt="c">C) Microservicios en el backend</button>
 </div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué herramienta permite compartir código en runtime?</p>
+<button class="quiz-option" data-opt="a">A) Module Federation</button>
+<button class="quiz-option" data-opt="b">B) Webpack</button>
+<button class="quiz-option" data-opt="c">C) npm</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Cuándo NO usar micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) En equipos grandes</button>
+<button class="quiz-option" data-opt="b">B) En migraciones incrementales</button>
+<button class="quiz-option" data-opt="c">C">En proyectos pequeños con 1-3 devs</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/36-micro-frontends/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 37 — Introducción a la IA Generativa](37-ia-generativa.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
