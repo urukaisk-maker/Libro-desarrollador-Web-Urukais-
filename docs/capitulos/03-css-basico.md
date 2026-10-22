@@ -1,134 +1,227 @@
-# Capítulo 3 — CSS básico
+# 03 — CSS básico
 
-## ¿Qué es CSS?
+!!! abstract "Qué vas a aprender"
+    - Qué es CSS y cómo se aplica.
+    - Los selectores más importantes.
+    - El modelo de caja (box model).
+    - Flexbox y Grid para maquetar.
+    - Variables CSS y media queries.
 
-CSS (*Cascading Style Sheets*) es el lenguaje que define **cómo se ve** una página web: colores, tipografías, tamaños, espaciados, disposición de los elementos… Si HTML es el esqueleto, CSS es la piel y la ropa.
+---
 
-## Formas de aplicar CSS
+## 🎨 ¿Qué es CSS?
 
-### 1. CSS en línea (inline)
+**CSS** (*Cascading Style Sheets*) es el lenguaje que define la **presentación** de una página web: colores, tipografía, layout, animaciones.
 
-```html
-<p style="color: red;">Texto en rojo</p>
-```
-
-Rápido pero **no recomendado** para proyectos reales.
-
-### 2. CSS en el `<head>` (interno)
-
-```html
-<head>
-  <style>
-    p { color: red; }
-  </style>
-</head>
-```
-
-Válido para páginas pequeñas.
-
-### 3. CSS en archivo externo (recomendado)
-
-```html
-<head>
-  <link rel="stylesheet" href="estilos.css">
-</head>
-```
-
-Es la práctica profesional: separa contenido de presentación.
-
-## Sintaxis de una regla CSS
-
-```css
-selector {
-  propiedad: valor;
-  otra-propiedad: otro-valor;
-}
-```
-
-Ejemplo:
-
-```css
+\`\`\`css
 h1 {
   color: #6a5acd;
   font-size: 2rem;
 }
-```
+\`\`\`
 
-## Selectores esenciales
+---
 
-| Selector | Ejemplo | Selecciona |
-|---|---|---|
-| Etiqueta | `p` | Todos los `<p>` |
-| Clase | `.destacado` | Elementos con `class="destacado"` |
-| ID | `#principal` | El elemento con `id="principal"` |
-| Descendiente | `nav a` | Los `<a>` dentro de `<nav>` |
-| Pseudo-clase | `a:hover` | Enlaces al pasar el ratón |
+## 🔗 Cómo aplicar CSS
 
-## El modelo de caja
+Hay tres formas:
 
-Todo elemento HTML es una **caja** compuesta por:
+### 1. CSS externo (recomendado)
 
-- **Contenido** — el texto o imagen.
-- **Padding** — espacio interior.
-- **Border** — borde.
-- **Margin** — espacio exterior.
+\`\`\`html
+<link rel="stylesheet" href="styles.css">
+\`\`\`
 
-```css
+### 2. CSS interno
+
+\`\`\`html
+<style>
+  h1 { color: red; }
+</style>
+\`\`\`
+
+### 3. CSS inline
+
+\`\`\`html
+<h1 style="color: red;">Título</h1>
+\`\`\`
+
+!!! tip "Siempre CSS externo"
+    El CSS externo separa estructura y presentación, se cachea mejor y se reutiliza.
+
+---
+
+## 🎯 Selectores
+
+\`\`\`css
+p { color: #333; }
+.boton { background: #6a5acd; }
+#header { padding: 1rem; }
+nav a { text-decoration: none; }
+ul > li { margin: 0.5rem 0; }
+a:hover { color: #00bcd4; }
+input[type="text"] { border: 1px solid #ccc; }
+\`\`\`
+
+| Selector | Ejemplo | Uso |
+| :--- | :--- | :--- |
+| Etiqueta | p | Todos los párrafos |
+| Clase | .boton | Elementos con class="boton" |
+| ID | #header | Elemento con id="header" |
+| Descendiente | nav a | Enlaces dentro de nav |
+| Hijo directo | ul > li | li hijos directos de ul |
+| Pseudo-clase | a:hover | Enlace al pasar el ratón |
+
+---
+
+## 📦 El modelo de caja
+
+\`\`\`css
 .caja {
-  padding: 1rem;
-  border: 2px solid #6a5acd;
-  margin: 1rem;
+  width: 200px;
+  height: 100px;
+  padding: 16px;
+  border: 2px solid #333;
+  margin: 8px;
+  box-sizing: border-box;
 }
-```
+\`\`\`
 
-## Ejemplo práctico
+!!! warning "box-sizing: border-box"
+    Por defecto, width no incluye padding ni border. Con box-sizing: border-box, sí. Casi todo el mundo lo pone globalmente:
 
-Ver [ejemplos/03-css-basico/ejemplo.html](../ejemplos/03-css-basico/ejemplo.html).
+    \`\`\`css
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    \`\`\`
 
-### 🎮 Prueba tú mismo
+---
 
-Puedes ver el ejemplo de este capítulo en vivo haciendo clic aquí:
+## 🧩 Flexbox
 
-<a href="../ejemplos/03-css-basico/ejemplo.html" target="_blank" class="md-button md-button--primary">Ver ejemplo interactivo en pantalla completa</a>
+**Flexbox** es un modelo de layout unidimensional.
 
-### 🌐 Abrir en un Playground externo
+\`\`\`css
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 
-Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
+.hijo {
+  flex: 1 1 auto;
+}
+\`\`\`
 
-- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
-- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
+| Propiedad | Uso |
+| :--- | :--- |
+| display: flex | Activa Flexbox |
+| flex-direction | Dirección (row, column) |
+| justify-content | Alineación en el eje principal |
+| align-items | Alineación en el eje transversal |
+| gap | Espacio entre hijos |
 
-## Ejercicios
+---
 
-1. Cambia el color de fondo del `body` a un tono claro.
-2. Aplica una tipografía distinta a los `h1`.
-3. Crea una clase `.destacado` y úsala en un párrafo.
-4. Añade `padding` y `border` a un `<div>`.
+## 🔲 Grid
+
+**Grid** es un modelo de layout bidimensional.
+
+\`\`\`css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.grid__item {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+\`\`\`
+
+!!! tip "¿Flexbox o Grid?"
+    - **Flexbox**: una dimensión (fila o columna). Menús, barras.
+    - **Grid**: dos dimensiones (filas y columnas). Layouts de página, galerías.
+
+---
+
+## 🎨 Variables CSS
+
+\`\`\`css
+:root {
+  --primario: #6a5acd;
+  --acento: #00bcd4;
+  --radio: 8px;
+}
+
+.boton {
+  background: var(--primario);
+  border-radius: var(--radio);
+}
+\`\`\`
+
+---
+
+## 📱 Media queries
+
+\`\`\`css
+.elemento { padding: 1rem; }
+
+@media screen and (min-width: 640px) {
+  .elemento { padding: 2rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: #1a1726; color: #fff; }
+}
+\`\`\`
+
+!!! tip "Mobile first"
+    Diseña primero para móvil y luego amplía con min-width.
 
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué significa la sigla CSS?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Computer Style Sheets</button>
-    <button class="quiz-option" data-option="b">B) Creative Style System</button>
-    <button class="quiz-option" data-option="c">C) Cascading Style Sheets</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-3">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué propiedad activa Flexbox en un contenedor?</p>
+<button class="quiz-option" data-opt="a">A) display: grid</button>
+<button class="quiz-option" data-opt="b">B) display: flex</button>
+<button class="quiz-option" data-opt="c">C) flex: 1</button>
 </div>
-
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué propiedad CSS se utiliza para cambiar el color del texto?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) text-color</button>
-    <button class="quiz-option" data-option="b">B) color</button>
-    <button class="quiz-option" data-option="c">C) font-color</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué hace box-sizing: border-box?</p>
+<button class="quiz-option" data-opt="a">A) Añade un borde</button>
+<button class="quiz-option" data-opt="b">B) Elimina el padding</button>
+<button class="quiz-option" data-opt="c">C) El width incluye padding y border</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué modelo de layout es bidimensional?</p>
+<button class="quiz-option" data-opt="a">A) Grid</button>
+<button class="quiz-option" data-opt="b">B) Flexbox</button>
+<button class="quiz-option" data-opt="c">C) Float</button>
+</div>
 </div>
 
 ---
 
-⬅️ [Capítulo 2 — HTML básico](02-html-basico.md) | ➡️ [Capítulo 4 — JavaScript esencial](04-javascript.md)
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/03-css-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 4 — JavaScript esencial](04-javascript.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
