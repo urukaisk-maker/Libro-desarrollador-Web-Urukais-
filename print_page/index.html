@@ -17858,28 +17858,230 @@ npx<span class="w"> </span>playwright<span class="w"> </span>codegen<span class=
 <hr />
 <h2 id="capitulos-31-testing-e2e-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-31-testing-e2e-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-32-server-components">Ir al Capítulo 32 — Server Components</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-32-server-components" heading-number="22.2"><h1 id="capitulos-32-server-components-capitulos-32-server-components">32 — Server Components</h1><p><em>(Guarda con <code>Ctrl+S</code>)</em></p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-32-server-components" heading-number="22.2"><h1 id="capitulos-32-server-components-32-server-components">32 — Server Components<a class="headerlink" href="#capitulos-32-server-components-32-server-components" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>Qué son los React Server Components (RSC).</li>
+<li>Diferencia entre SSR y RSC.</li>
+<li>Cuándo usar Server Components y cuándo Client Components.</li>
+<li>Streaming y Suspense.</li>
+<li>Frameworks que los soportan.</li>
+</ul>
+</div>
 <hr />
-<h3 id="capitulos-32-server-components-paso-5-actualiza-el-menu-mkdocsyml">Paso 5: Actualiza el menú (<code>mkdocs.yml</code>)<a class="headerlink" href="#capitulos-32-server-components-paso-5-actualiza-el-menu-mkdocsyml" title="Permanent link">&para;</a></h3>
-<p>En VS Code, abre el archivo <code>mkdocs.yml</code> que está en la raíz del proyecto.</p>
-<p>Busca la sección <code>Nivel élite:</code> (usa <code>Ctrl+F</code> para encontrarlo rápido).
-Justo debajo de la última línea de ese bloque (que es <code>- "30 — Web3": capitulos/30-web3.md</code>), añade estas líneas:</p>
-<p>```yaml
-  - Nivel vanguardia:
-      - "31 — Testing E2E con Playwright": capitulos/31-testing-e2e.md
-      - "32 — Server Components": capitulos/32-server-components.md
-      - "33 — Edge Computing": capitulos/33-edge-computing.md</p>
+<h2 id="capitulos-32-server-components-que-son-los-server-components">🖥️ ¿Qué son los Server Components?<a class="headerlink" href="#capitulos-32-server-components-que-son-los-server-components" title="Permanent link">&para;</a></h2>
+<p>Los <strong>Server Components</strong> son componentes de React que se ejecutan <strong>solo en el servidor</strong>. No envían JavaScript al cliente, lo que reduce el bundle y mejora el rendimiento.</p>
+<div class="highlight"><pre><span></span><code>Server Component  → se ejecuta en el servidor, no envía JS al cliente
+Client Component  → se ejecuta en el navegador, es interactivo
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">El mejor código es el que no se envía</p>
+<p>Un Server Component no manda ni una línea de JavaScript al navegador. Eso es menos datos, menos tiempo de parseo y menos consumo de batería.</p>
+</div>
+<hr />
+<h2 id="capitulos-32-server-components-ssr-vs-rsc">🔄 SSR vs RSC<a class="headerlink" href="#capitulos-32-server-components-ssr-vs-rsc" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">SSR (Server-Side Rendering)</th>
+<th style="text-align: left;">RSC (React Server Components)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Qué renderiza</td>
+<td style="text-align: left;">HTML en el servidor</td>
+<td style="text-align: left;">Componentes en el servidor</td>
+</tr>
+<tr>
+<td style="text-align: left;">JS al cliente</td>
+<td style="text-align: left;">Sí, la app entera</td>
+<td style="text-align: left;">No, solo los Client Components</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hidratación</td>
+<td style="text-align: left;">Toda la app</td>
+<td style="text-align: left;">Solo las partes interactivas</td>
+</tr>
+<tr>
+<td style="text-align: left;">Estado</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">No (solo datos)</td>
+</tr>
+<tr>
+<td style="text-align: left;">useEffect</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-32-server-components-server-components">🧩 Server Components<a class="headerlink" href="#capitulos-32-server-components-server-components" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/page.jsx (Server Component por defecto en Next.js App Router)</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Pagina</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://api.ejemplo.com/posts"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Posts</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">p</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;{</span><span class="nx">p</span><span class="p">.</span><span class="nx">title</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Puedes usar <code>async/await</code> directamente en el componente. No hay <code>useEffect</code>, ni <code>useState</code>, ni eventos.</p>
+<hr />
+<h2 id="capitulos-32-server-components-client-components">🖱️ Client Components<a class="headerlink" href="#capitulos-32-server-components-client-components" title="Permanent link">&para;</a></h2>
+<p>Para interactividad, necesitas Client Components. Se marcan con <code>"use client"</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="s2">"use client"</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Boton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">clicks</span><span class="p">,</span><span class="w"> </span><span class="nx">setClicks</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setClicks</span><span class="p">(</span><span class="nx">clicks</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="nx">Clics</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">clicks</span><span class="p">}&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Puedes usar</th>
+<th style="text-align: left;">Server Component</th>
+<th style="text-align: left;">Client Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>async/await</code></td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>useState</code>, <code>useEffect</code></td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Eventos (<code>onClick</code>)</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">APIs del navegador (<code>window</code>)</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Acceso a base de datos</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-32-server-components-streaming-y-suspense">🌊 Streaming y Suspense<a class="headerlink" href="#capitulos-32-server-components-streaming-y-suspense" title="Permanent link">&para;</a></h2>
+<p>Los Server Components permiten <strong>streaming</strong>: enviar HTML por trozos mientras se genera. Con <code>&lt;Suspense&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Pagina</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Mi</span><span class="w"> </span><span class="nx">app</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Suspense</span><span class="w"> </span><span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Cargando</span><span class="w"> </span><span class="nx">posts</span><span class="p">...&lt;/</span><span class="nt">p</span><span class="p">&gt;}&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Posts</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El usuario ve el <code>&lt;h1&gt;</code> inmediatamente y los posts cuando terminan de cargar.</p>
+<hr />
+<h2 id="capitulos-32-server-components-frameworks-que-los-soportan">🛠️ Frameworks que los soportan<a class="headerlink" href="#capitulos-32-server-components-frameworks-que-los-soportan" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Framework</th>
+<th style="text-align: left;">Soporte RSC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Next.js</strong> (App Router)</td>
+<td style="text-align: left;">✅ Nativo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Remix</strong></td>
+<td style="text-align: left;">⚠️ Parcial</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Astro</strong></td>
+<td style="text-align: left;">✅ Islas (similar)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Waku</strong></td>
+<td style="text-align: left;">✅ Nativo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RedwoodJS</strong></td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vite + React</strong></td>
+<td style="text-align: left;">❌ Necesita plugin</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-32-server-components-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#capitulos-32-server-components-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Server Components por defecto</strong>: solo añade <code>"use client"</code> cuando necesites interactividad.</li>
+<li>✅ <strong>Mueve <code>"use client"</code> lo más abajo posible</strong>: cuanto más abajo, menos JS se envía.</li>
+<li>✅ <strong>Fetch de datos en Server Components</strong>: evita <code>useEffect</code> para cargar datos.</li>
+<li>✅ <strong>Usa Suspense</strong> para streaming y estados de carga.</li>
+<li>✅ <strong>No pases funciones como props</strong> de Server a Client Components (no son serializables).</li>
+<li>✅ <strong>Separa lógica de datos y UI interactiva</strong>.</li>
+<li>❌ <strong>No uses <code>window</code> o <code>localStorage</code> en Server Components</strong>.</li>
+</ul>
 <hr />
 <h2 id="capitulos-32-server-components-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-32-server-components-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué framework populariza los React Server Components?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Angular</button>
-    <button class="quiz-option" data-option="b">B) Next.js (App Router)</button>
-    <button class="quiz-option" data-option="c">C) Svelte</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-33-edge-computing" heading-number="22.3"><h1 id="capitulos-33-edge-computing-capitulo-33-edge-computing">Capítulo 33 — Edge Computing<a class="headerlink" href="#capitulos-33-edge-computing-capitulo-33-edge-computing" title="Permanent link">&para;</a></h1>
+<div class="quiz" data-quiz="capitulo-32">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Dónde se ejecutan los Server Components?</p>
+<button class="quiz-option" data-opt="a">A) En el navegador</button>
+<button class="quiz-option" data-opt="b">B) En el servidor</button>
+<button class="quiz-option" data-opt="c">C) En ambos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué directiva marca un Client Component?</p>
+<button class="quiz-option" data-opt="a">A) "use client"</button>
+<button class="quiz-option" data-opt="b">B) "use server"</button>
+<button class="quiz-option" data-opt="c">C) "use browser"</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué componente de React permite mostrar un fallback mientras carga?</p>
+<button class="quiz-option" data-opt="a">A) &lt;Lazy&gt;</button>
+<button class="quiz-option" data-opt="b">B) &lt;Loading&gt;</button>
+<button class="quiz-option" data-opt="c">C) &lt;Suspense&gt;</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-32-server-components-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-32-server-components-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2032%3A%20Server%20Components&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2032%3A%20Server%20Components%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/32-server-components/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-32-server-components-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-32-server-components-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-33-edge-computing">Ir al Capítulo 33 — Edge Computing</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-33-edge-computing" heading-number="22.3"><h1 id="capitulos-33-edge-computing-capitulo-33-edge-computing">Capítulo 33 — Edge Computing<a class="headerlink" href="#capitulos-33-edge-computing-capitulo-33-edge-computing" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-33-edge-computing-introduccion">Introducción<a class="headerlink" href="#capitulos-33-edge-computing-introduccion" title="Permanent link">&para;</a></h2>
 <p>Tradicionalmente, todo tu código vivía en un servidor central (por ejemplo, en Virginia, EE. UU.). Si un usuario accedía desde España, su petición viajaba hasta Virginia, se procesaba y volvía.</p>
 <p>El <strong>Edge Computing</strong> consiste en ejecutar el código <strong>lo más cerca posible del usuario</strong>, en nodos distribuidos por todo el mundo. La latencia se reduce drásticamente (de 200ms a 20ms).</p>
