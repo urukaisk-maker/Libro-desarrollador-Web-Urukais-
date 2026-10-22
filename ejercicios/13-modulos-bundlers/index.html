@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-13" class="md-skip">
+        <a href="#13-modulos-y-bundlers" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3619,142 +3619,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-crear-un-proyecto-con-vite" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Crear un proyecto con Vite
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Crear un proyecto con Vite">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-named-exports" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Named exports
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Named exports">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-import-dinamico" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Import dinámico
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Import dinámico">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-instalar-dependencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Instalar dependencias
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Instalar dependencias">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-5-alias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5: Alias @/
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 5: Alias @/">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4711,132 +4615,55 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-13">Ejercicios resueltos — Capítulo 13<a class="headerlink" href="#ejercicios-resueltos-capitulo-13" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/13-modulos-bundlers/">Capítulo original</a></p>
-<h2 id="ejercicio-1-crear-un-proyecto-con-vite">Ejercicio 1: Crear un proyecto con Vite<a class="headerlink" href="#ejercicio-1-crear-un-proyecto-con-vite" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un proyecto con <code>npm create vite@latest</code> y añade un módulo propio.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>vanilla
-<span class="nb">cd</span><span class="w"> </span>mi-app
-npm<span class="w"> </span>install
-npm<span class="w"> </span>run<span class="w"> </span>dev
-</code></pre></div>
-<p>Crea <code>src/saludo.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Y en <code>src/main.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">saludar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./saludo.js'</span><span class="p">;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#app'</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;h1&gt;</span><span class="si">${</span><span class="nx">saludar</span><span class="p">(</span><span class="s1">'Urukais'</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/h1&gt;`</span><span class="p">;</span>
-</code></pre></div>
+<h1 id="13-modulos-y-bundlers">13 — Módulos y bundlers<a class="headerlink" href="#13-modulos-y-bundlers" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica módulos ES6 y compilación con Vite.</p>
+</div>
 <hr />
-<h2 id="ejercicio-2-named-exports">Ejercicio 2: Named exports<a class="headerlink" href="#ejercicio-2-named-exports" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Exporta dos funciones y un valor con named exports.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// utilidades.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'1.0.0'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">restar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// main.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VERSION</span><span class="p">,</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">restar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./utilidades.js'</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">VERSION</span><span class="p">);</span><span class="w"> </span><span class="c1">// '1.0.0'</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">// 5</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">restar</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span><span class="w"> </span><span class="c1">// 3</span>
-</code></pre></div>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea 2 módulos: `math.js` (exporta `sumar` y `PI`) y `app.js` (los importa).</li>
+<li>Usa `<script type="module">` para cargarlos.</li>
+<li>Comprueba que funciona en el navegador.</li>
+</ol>
 <hr />
-<h2 id="ejercicio-3-import-dinamico">Ejercicio 3: Import dinámico<a class="headerlink" href="#ejercicio-3-import-dinamico" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa import dinámico para cargar un módulo solo al pulsar un botón.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>Abrir modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./modal.js'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">abrirModal</span><span class="p">(</span><span class="s1">'¡Hola desde el modal!'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// modal.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">abrirModal</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">div</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'modal'</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">    &lt;div class="modal-content"&gt;</span>
-<span class="sb">      &lt;p&gt;</span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">&lt;/p&gt;</span>
-<span class="sb">      &lt;button onclick="this.closest('.modal').remove()"&gt;Cerrar&lt;/button&gt;</span>
-<span class="sb">    &lt;/div&gt;</span>
-<span class="sb">  `</span><span class="p">;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+// math.js
+export const PI = 3.1416;
+export function sumar(a, b) {
+  return a + b;
+}
+```</p>
+<p>```javascript
+// app.js
+import { sumar, PI } from './math.js';
+console.log(sumar(2, 3)); // 5
+console.log(PI);          // 3.1416
+```</p>
+<p>```html</p>
+<!-- index.html -->
+<script type="module" src="app.js"></script>
+<p>```</p>
 <hr />
-<h2 id="ejercicio-4-instalar-dependencias">Ejercicio 4: Instalar dependencias<a class="headerlink" href="#ejercicio-4-instalar-dependencias" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade <code>axios</code> como dependencia y <code>vitest</code> como dev-dependency.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>axios
-npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vitest
-</code></pre></div>
-<p>Comprueba el <code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"axios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.7.0"</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"vitest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.0.0"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Añade script:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vitest"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`export`: expone funciones o constantes del módulo.</li>
+<li>`import`: las importa en otro archivo.</li>
+<li>`<script type="module">`: carga el módulo en el navegador.</li>
+<li>Los módulos tienen scope propio.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-5-alias">Ejercicio 5: Alias <code>@/</code><a class="headerlink" href="#ejercicio-5-alias" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura un alias <code>@/</code> que apunte a <code>src/</code>.</p>
-</blockquote>
-<h3 id="solucion_4">Solución<a class="headerlink" href="#solucion_4" title="Permanent link">&para;</a></h3>
-<p><code>vite.config.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vite'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">resolve</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">alias</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s1">'@'</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'./src'</span><span class="p">),</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Uso:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Antes</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">algo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../../utils/algo.js'</span><span class="p">;</span>
-
-<span class="c1">// Ahora</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">algo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@/utils/algo.js'</span><span class="p">;</span>
-</code></pre></div>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Crea un módulo `utils.js` con `esPar` y `esImpar`.</li>
+<li>[ ] Usa `export default` para una función principal.</li>
+<li>[ ] Migra el proyecto a Vite (`npm create vite@latest`).</li>
+</ul>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/13-modulos-bundlers/">Capítulo original</a></p>
+<p><a class="md-button" href="../12-javascript-asincrono/">← Ejercicio 12</a>
+<a class="md-button md-button--primary" href="../14-accesibilidad/">Ir al ejercicio 14 →</a></p>
 
 
 

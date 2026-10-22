@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-15" class="md-skip">
+        <a href="#15-typescript" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3675,181 +3675,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-funcion-tipada" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Función tipada
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 1: Función tipada">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#antes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Antes
+        🎯 Objetivo
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-interface-producto" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Interface Producto
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Interface Producto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-generico-ultimo" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Genérico ultimo
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Genérico ultimo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-type-union-resultado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Type unión Resultado
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Type unión Resultado">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-5-partialproducto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5: Partial&lt;Producto&gt;
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 5: Partial&lt;Producto&gt;">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-6-clase-carrito" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 6: Clase Carrito
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 6: Clase Carrito">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4750,148 +4615,49 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-15">Ejercicios resueltos — Capítulo 15<a class="headerlink" href="#ejercicios-resueltos-capitulo-15" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/15-typescript/">Capítulo original</a></p>
-<h2 id="ejercicio-1-funcion-tipada">Ejercicio 1: Función tipada<a class="headerlink" href="#ejercicio-1-funcion-tipada" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Convierte una función JavaScript sin tipos a TypeScript con parámetros y retorno tipados.</p>
-</blockquote>
-<h3 id="antes">Antes<a class="headerlink" href="#antes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Con parámetros opcionales</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">saludo?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">saludo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">'Hola'</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Arrow function tipada</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">multiplicar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-</code></pre></div>
+<h1 id="15-typescript">15 — TypeScript<a class="headerlink" href="#15-typescript" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica tipos, interfaces y genéricos.</p>
+</div>
 <hr />
-<h2 id="ejercicio-2-interface-producto">Ejercicio 2: Interface Producto<a class="headerlink" href="#ejercicio-2-interface-producto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una interface <code>Producto</code> con <code>id</code>, <code>nombre</code>, <code>precio</code> y <code>categorias</code> (array).</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Producto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<span class="w">  </span><span class="nx">descripcion?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// opcional</span>
-<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span><span class="w"> </span><span class="c1">// no modificable</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">camiseta</span><span class="o">:</span><span class="w"> </span><span class="kt">Producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Camiseta'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">29.99</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'ropa'</span><span class="p">,</span><span class="w"> </span><span class="s1">'hombre'</span><span class="p">],</span>
-<span class="w">  </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
-<span class="p">};</span>
-</code></pre></div>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una función `identidad<T>` que:</p>
+<ol>
+<li>Reciba cualquier tipo.</li>
+<li>Devuelva el mismo tipo.</li>
+<li>Use genéricos.</li>
+</ol>
 <hr />
-<h2 id="ejercicio-3-generico-ultimo">Ejercicio 3: Genérico <code>ultimo</code><a class="headerlink" href="#ejercicio-3-generico-ultimo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe una función genérica <code>ultimo&lt;T&gt;(array: T[]): T | undefined</code>.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">ultimo</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">array</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="nx">ultimo</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]);</span><span class="w"> </span><span class="c1">// number | undefined → 3</span>
-<span class="nx">ultimo</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span><span class="w"> </span><span class="s1">'b'</span><span class="p">]);</span><span class="w"> </span><span class="c1">// string | undefined → 'b'</span>
-<span class="nx">ultimo</span><span class="p">([{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}]);</span><span class="w"> </span><span class="c1">// { id: number } | undefined</span>
-</code></pre></div>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```typescript
+function identidad<T>(valor: T): T {
+  return valor;
+}</p>
+<p>// Uso
+const texto = identidad<string>("hola");
+const numero = identidad<number>(42);
+const objeto = identidad({ nombre: "Ana", edad: 30 });</p>
+<p>console.log(texto.toUpperCase()); // "HOLA"
+console.log(numero.toFixed(2));   // "42.00"
+```</p>
 <hr />
-<h2 id="ejercicio-4-type-union-resultado">Ejercicio 4: Type unión <code>Resultado</code><a class="headerlink" href="#ejercicio-4-type-union-resultado" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Define un type unión <code>Resultado</code>.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">Resultado</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"> </span><span class="nx">datos</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">;</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">procesar</span><span class="p">(</span><span class="nx">resultado</span><span class="o">:</span><span class="w"> </span><span class="kt">Resultado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Datos:'</span><span class="p">,</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">datos</span><span class="p">);</span><span class="w"> </span><span class="c1">// TS sabe que es { ok: true, datos }</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span><span class="w"> </span><span class="c1">// TS sabe que es { ok: false, error }</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`<T>`: parámetro de tipo genérico.</li>
+<li>TypeScript infiere el tipo automáticamente en muchos casos.</li>
+<li>Los genéricos permiten reutilizar funciones sin perder tipado.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-5-partialproducto">Ejercicio 5: <code>Partial&lt;Producto&gt;</code><a class="headerlink" href="#ejercicio-5-partialproducto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa <code>Partial&lt;Producto&gt;</code> para escribir una función <code>actualizarProducto</code>.</p>
-</blockquote>
-<h3 id="solucion_4">Solución<a class="headerlink" href="#solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">actualizarProducto</span><span class="p">(</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">cambios</span><span class="o">:</span><span class="w"> </span><span class="kt">Partial</span><span class="o">&lt;</span><span class="nx">Producto</span><span class="o">&gt;</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Producto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obtenerProducto</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span><span class="nx">producto</span><span class="p">,</span>
-<span class="w">    </span><span class="p">...</span><span class="nx">cambios</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">producto.id</span><span class="p">,</span><span class="w"> </span><span class="c1">// el id no se puede cambiar</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="c1">// Uso: solo pasas los campos que cambian</span>
-<span class="nx">actualizarProducto</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">24.99</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">actualizarProducto</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Nuevo nombre'</span><span class="p">,</span><span class="w"> </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'oferta'</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Crea un tipo `Respuesta<T>` con `data` y `error`.</li>
+<li>[ ] Crea una función `primero<T>(arr: T[]): T | undefined`.</li>
+<li>[ ] Usa `Partial<Usuario>` para hacer un tipo con todas las propiedades opcionales.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-6-clase-carrito">Ejercicio 6: Clase Carrito<a class="headerlink" href="#ejercicio-6-clase-carrito" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe una clase <code>Carrito</code> con métodos <code>añadir</code>, <code>total</code> y <code>vaciar</code>.</p>
-</blockquote>
-<h3 id="solucion_5">Solución<a class="headerlink" href="#solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Carrito</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="w">  </span><span class="nx">añadir</span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">total</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">precio</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">vaciar</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">cantidad</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">carrito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Carrito</span><span class="p">();</span>
-<span class="nx">carrito</span><span class="p">.</span><span class="nx">añadir</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Camiseta'</span><span class="p">,</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">29.99</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">carrito</span><span class="p">.</span><span class="nx">añadir</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Pantalón'</span><span class="p">,</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">49.99</span><span class="w"> </span><span class="p">});</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carrito</span><span class="p">.</span><span class="nx">total</span><span class="p">());</span><span class="w"> </span><span class="c1">// 79.98</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carrito</span><span class="p">.</span><span class="nx">cantidad</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2</span>
-</code></pre></div>
-<hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/15-typescript/">Capítulo original</a></p>
+<p><a class="md-button" href="../14-accesibilidad/">← Ejercicio 14</a>
+<a class="md-button md-button--primary" href="../">Volver al índice</a></p>
 
 
 

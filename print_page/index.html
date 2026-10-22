@@ -20563,726 +20563,264 @@ body {
 </ul>
 <hr />
 <p><a class="md-button" href="#ejercicios-09-despliegue">← Ejercicio 09</a>
-<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-11-css-moderno" heading-number="24.12"><h1 id="ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11">Ejercicios resueltos — Capítulo 11<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-11-css-moderno">Capítulo original</a></p>
-<h2 id="ejercicios-11-css-moderno-ejercicio-1-sistema-de-temas-con-custom-properties">Ejercicio 1: Sistema de temas con custom properties<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-1-sistema-de-temas-con-custom-properties" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un sistema de temas (claro/oscuro) usando solo custom properties.</p>
-</blockquote>
-<h3 id="ejercicios-11-css-moderno-solucion">Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--surface</span><span class="p">:</span><span class="w"> </span><span class="mh">#f8fafc</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--muted</span><span class="p">:</span><span class="w"> </span><span class="mh">#64748b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--border</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#0f172a</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--surface</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--muted</span><span class="p">:</span><span class="w"> </span><span class="mh">#94a3b8</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--border</span><span class="p">:</span><span class="w"> </span><span class="mh">#334155</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">,</span><span class="w"> </span><span class="kc">color</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--surface</span><span class="p">);</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--border</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'tema'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'light'</span><span class="p">;</span>
-</code></pre></div>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-11-css-moderno" heading-number="24.12"><h1 id="ejercicios-11-css-moderno-11-css-moderno">11 — CSS moderno<a class="headerlink" href="#ejercicios-11-css-moderno-11-css-moderno" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica variables CSS, `:has()` y container queries.</p>
+</div>
 <hr />
-<h2 id="ejercicios-11-css-moderno-ejercicio-2-tarjeta-con-container">Ejercicio 2: Tarjeta con <code>@container</code><a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-2-tarjeta-con-container" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Diseña una tarjeta que cambie de layout según el ancho de su contenedor.</p>
-</blockquote>
-<h3 id="ejercicios-11-css-moderno-solucion_1">Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">tarjeta-wrapper</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
-<span class="w">  </span><span class="k">container-name</span><span class="p">:</span><span class="w"> </span><span class="n">tarjeta</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="nt">tarjeta</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Explicación:</strong> La tarjeta se adapta a <strong>su contenedor</strong>, no al viewport. Reutilizable en cualquier contexto.</p>
-<hr />
-<h2 id="ejercicios-11-css-moderno-ejercicio-3-has-para-formularios">Ejercicio 3: <code>:has()</code> para formularios<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-3-has-para-formularios" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Resalta un formulario cuando tiene un campo inválido.</p>
-</blockquote>
-<h3 id="ejercicios-11-css-moderno-solucion_2">Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">formulario</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#dc2626</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fef2f2</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">formulario</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">valid</span><span class="o">)</span><span class="w"> </span><span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"submit"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">formulario</span><span class="w"> </span><span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"submit"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
-<span class="w">  </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-11-css-moderno-ejercicio-4-tipografia-fluida">Ejercicio 4: Tipografía fluida<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-4-tipografia-fluida" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa un título con tipografía fluida usando <code>clamp()</code>.</p>
-</blockquote>
-<h3 id="ejercicios-11-css-moderno-solucion_3">Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.75</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="kt">rem</span><span class="p">);</span>
-<span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.03</span><span class="kt">em</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nt">p</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.875</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">1.125</span><span class="kt">rem</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-11-css-moderno-ejercicio-5-capas-con-layer">Ejercicio 5: Capas con <code>@layer</code><a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-5-capas-con-layer" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Organiza tus estilos en 4 capas: reset, base, components y utilities.</p>
-</blockquote>
-<h3 id="ejercicios-11-css-moderno-solucion_4">Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="o">,</span><span class="w"> </span><span class="nt">base</span><span class="o">,</span><span class="w"> </span><span class="nt">components</span><span class="o">,</span><span class="w"> </span><span class="nt">utilities</span><span class="p">;</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">base</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
-<span class="w">    </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">components</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
-<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">utilities</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">text-center</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">mt-4</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-11-css-moderno">Capítulo original</a></p></section><section class="print-page" id="ejercicios-12-javascript-asincrono" heading-number="24.13"><h1 id="ejercicios-12-javascript-asincrono-ejercicios-resueltos-capitulo-12">Ejercicios resueltos — Capítulo 12<a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicios-resueltos-capitulo-12" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-12-javascript-asincrono">Capítulo original</a></p>
-<h2 id="ejercicios-12-javascript-asincrono-ejercicio-1-callbacks-a-asyncawait">Ejercicio 1: Callbacks a async/await<a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicio-1-callbacks-a-asyncawait" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Reescribe un callback anidado de tres niveles usando <code>async/await</code>.</p>
-</blockquote>
-<h3 id="ejercicios-12-javascript-asincrono-antes">Antes<a class="headerlink" href="#ejercicios-12-javascript-asincrono-antes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">login</span><span class="p">(</span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">sesion</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">obtenerPerfil</span><span class="p">(</span><span class="nx">sesion</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">perfil</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">obtenerPosts</span><span class="p">(</span><span class="nx">perfil</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="ejercicios-12-javascript-asincrono-solucion">Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">usuario</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">perfil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">obtenerPerfil</span><span class="p">(</span><span class="nx">sesion</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">obtenerPosts</span><span class="p">(</span><span class="nx">perfil</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">posts</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-12-javascript-asincrono-ejercicio-2-timeout-con-abortcontroller">Ejercicio 2: Timeout con <code>AbortController</code><a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicio-2-timeout-con-abortcontroller" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa una función <code>buscarConTimeout(url, ms)</code> que aborte la petición si excede el tiempo.</p>
-</blockquote>
-<h3 id="ejercicios-12-javascript-asincrono-solucion_1">Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">buscarConTimeout</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AbortController</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">abort</span><span class="p">(),</span><span class="w"> </span><span class="nx">ms</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">signal</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'AbortError'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Timeout: la petición tardó demasiado'</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Uso</span>
-<span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">buscarConTimeout</span><span class="p">(</span><span class="s1">'https://api.com/datos'</span><span class="p">,</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-12-javascript-asincrono-ejercicio-3-descargas-paralelas">Ejercicio 3: Descargas paralelas<a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicio-3-descargas-paralelas" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Simula un sistema de descargas con <code>Promise.all</code> y muestra progreso.</p>
-</blockquote>
-<h3 id="ejercicios-12-javascript-asincrono-solucion_2">Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">descargarTodo</span><span class="p">(</span><span class="nx">urls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">completadas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tareas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">urls</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">completadas</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Progreso: </span><span class="si">${</span><span class="nx">completadas</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">urls</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">tareas</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s1">'https://jsonplaceholder.typicode.com/posts/1'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'https://jsonplaceholder.typicode.com/posts/2'</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">'https://jsonplaceholder.typicode.com/posts/3'</span><span class="p">,</span>
-<span class="p">];</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">descargarTodo</span><span class="p">(</span><span class="nx">urls</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-12-javascript-asincrono-ejercicio-4-buscador-con-debounce">Ejercicio 4: Buscador con debounce<a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicio-4-buscador-con-debounce" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un buscador con <code>debounce</code> que consulte una API al escribir.</p>
-</blockquote>
-<h3 id="ejercicios-12-javascript-asincrono-solucion_3">Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">debounce</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span><span class="w"> </span><span class="nx">ms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">timer</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fn</span><span class="p">(...</span><span class="nx">args</span><span class="p">),</span><span class="w"> </span><span class="nx">ms</span><span class="p">);</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#buscar'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#resultados'</span><span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">buscar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">debounce</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`/api/buscar?q=</span><span class="si">${</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">resultados</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">datos</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;li&gt;</span><span class="si">${</span><span class="nx">d</span><span class="p">.</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">},</span><span class="w"> </span><span class="mf">300</span><span class="p">);</span>
-
-<span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">buscar</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-12-javascript-asincrono-ejercicio-5-reintentos-con-backoff-exponencial">Ejercicio 5: Reintentos con backoff exponencial<a class="headerlink" href="#ejercicios-12-javascript-asincrono-ejercicio-5-reintentos-con-backoff-exponencial" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa un patrón de reintento con 3 intentos y espera exponencial.</p>
-</blockquote>
-<h3 id="ejercicios-12-javascript-asincrono-solucion_4">Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">esperar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">ms</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="nx">ms</span><span class="p">));</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchConReintentos</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">intentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">intentos</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">intentos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">espera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1s, 2s, 4s...</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="sb">`Reintentando en </span><span class="si">${</span><span class="nx">espera</span><span class="si">}</span><span class="sb">ms...`</span><span class="p">);</span>
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">esperar</span><span class="p">(</span><span class="nx">espera</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-12-javascript-asincrono">Capítulo original</a></p></section><section class="print-page" id="ejercicios-13-modulos-bundlers" heading-number="24.14"><h1 id="ejercicios-13-modulos-bundlers-ejercicios-resueltos-capitulo-13">Ejercicios resueltos — Capítulo 13<a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicios-resueltos-capitulo-13" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-13-modulos-bundlers">Capítulo original</a></p>
-<h2 id="ejercicios-13-modulos-bundlers-ejercicio-1-crear-un-proyecto-con-vite">Ejercicio 1: Crear un proyecto con Vite<a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicio-1-crear-un-proyecto-con-vite" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un proyecto con <code>npm create vite@latest</code> y añade un módulo propio.</p>
-</blockquote>
-<h3 id="ejercicios-13-modulos-bundlers-solucion">Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>vanilla
-<span class="nb">cd</span><span class="w"> </span>mi-app
-npm<span class="w"> </span>install
-npm<span class="w"> </span>run<span class="w"> </span>dev
-</code></pre></div>
-<p>Crea <code>src/saludo.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Y en <code>src/main.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">saludar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./saludo.js'</span><span class="p">;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#app'</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;h1&gt;</span><span class="si">${</span><span class="nx">saludar</span><span class="p">(</span><span class="s1">'Urukais'</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/h1&gt;`</span><span class="p">;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-13-modulos-bundlers-ejercicio-2-named-exports">Ejercicio 2: Named exports<a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicio-2-named-exports" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Exporta dos funciones y un valor con named exports.</p>
-</blockquote>
-<h3 id="ejercicios-13-modulos-bundlers-solucion_1">Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// utilidades.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'1.0.0'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">restar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// main.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VERSION</span><span class="p">,</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">restar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./utilidades.js'</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">VERSION</span><span class="p">);</span><span class="w"> </span><span class="c1">// '1.0.0'</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">// 5</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">restar</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span><span class="w"> </span><span class="c1">// 3</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-13-modulos-bundlers-ejercicio-3-import-dinamico">Ejercicio 3: Import dinámico<a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicio-3-import-dinamico" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa import dinámico para cargar un módulo solo al pulsar un botón.</p>
-</blockquote>
-<h3 id="ejercicios-13-modulos-bundlers-solucion_2">Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>Abrir modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">abrirModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">'./modal.js'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">abrirModal</span><span class="p">(</span><span class="s1">'¡Hola desde el modal!'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// modal.js</span>
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">abrirModal</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">div</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'modal'</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">    &lt;div class="modal-content"&gt;</span>
-<span class="sb">      &lt;p&gt;</span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">&lt;/p&gt;</span>
-<span class="sb">      &lt;button onclick="this.closest('.modal').remove()"&gt;Cerrar&lt;/button&gt;</span>
-<span class="sb">    &lt;/div&gt;</span>
-<span class="sb">  `</span><span class="p">;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-13-modulos-bundlers-ejercicio-4-instalar-dependencias">Ejercicio 4: Instalar dependencias<a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicio-4-instalar-dependencias" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade <code>axios</code> como dependencia y <code>vitest</code> como dev-dependency.</p>
-</blockquote>
-<h3 id="ejercicios-13-modulos-bundlers-solucion_3">Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>axios
-npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vitest
-</code></pre></div>
-<p>Comprueba el <code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"axios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.7.0"</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"vitest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.0.0"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Añade script:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vitest"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-13-modulos-bundlers-ejercicio-5-alias">Ejercicio 5: Alias <code>@/</code><a class="headerlink" href="#ejercicios-13-modulos-bundlers-ejercicio-5-alias" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura un alias <code>@/</code> que apunte a <code>src/</code>.</p>
-</blockquote>
-<h3 id="ejercicios-13-modulos-bundlers-solucion_4">Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion_4" title="Permanent link">&para;</a></h3>
-<p><code>vite.config.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vite'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">resolve</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">alias</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s1">'@'</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'./src'</span><span class="p">),</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Uso:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Antes</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">algo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../../utils/algo.js'</span><span class="p">;</span>
-
-<span class="c1">// Ahora</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">algo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@/utils/algo.js'</span><span class="p">;</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-13-modulos-bundlers">Capítulo original</a></p></section><section class="print-page" id="ejercicios-14-accesibilidad" heading-number="24.15"><h1 id="ejercicios-14-accesibilidad-ejercicios-resueltos-capitulo-14">Ejercicios resueltos — Capítulo 14<a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicios-resueltos-capitulo-14" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-14-accesibilidad">Capítulo original</a></p>
-<h2 id="ejercicios-14-accesibilidad-ejercicio-1-auditar-con-lighthouse">Ejercicio 1: Auditar con Lighthouse<a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicio-1-auditar-con-lighthouse" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Audita tu portfolio con Lighthouse y corrige los problemas.</p>
-</blockquote>
-<h3 id="ejercicios-14-accesibilidad-solucion">Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion" title="Permanent link">&para;</a></h3>
-<p><strong>Pasos:</strong></p>
+<h2 id="ejercicios-11-css-moderno-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-11-css-moderno-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una tarjeta que:</p>
 <ol>
-<li>Abre DevTools con <code>F12</code>.</li>
-<li>Ve a la pestaña <strong>Lighthouse</strong>.</li>
-<li>Marca solo <strong>Accessibility</strong>.</li>
-<li>Pulsa <strong>Analyze page load</strong>.</li>
-<li>Revisa los problemas y corrígelos uno a uno.</li>
+<li>Use variables CSS para colores.</li>
+<li>Cambie de estilo si contiene una imagen (`:has()`).</li>
+<li>Se adapte al tamaño del contenedor (container query).</li>
 </ol>
-<p><strong>Problemas típicos y sus soluciones:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Problema</th>
-<th>Solución</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Imágenes sin <code>alt</code></td>
-<td>Añade <code>alt</code> descriptivo</td>
-</tr>
-<tr>
-<td>Contraste insuficiente</td>
-<td>Ajusta los colores (AA mínimo)</td>
-</tr>
-<tr>
-<td><code>&lt;html&gt;</code> sin <code>lang</code></td>
-<td>Añade <code>lang="es"</code></td>
-</tr>
-<tr>
-<td>Botones sin nombre</td>
-<td>Añade texto visible o <code>aria-label</code></td>
-</tr>
-<tr>
-<td>Orden de encabezados</td>
-<td>Usa <code>h1</code> → <code>h2</code> → <code>h3</code> sin saltos</td>
-</tr>
-</tbody>
-</table>
 <hr />
-<h2 id="ejercicios-14-accesibilidad-ejercicio-2-navegar-con-tab">Ejercicio 2: Navegar con <code>Tab</code><a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicio-2-navegar-con-tab" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Navega toda la home solo con la tecla <code>Tab</code>.</p>
-</blockquote>
-<h3 id="ejercicios-14-accesibilidad-solucion_1">Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion_1" title="Permanent link">&para;</a></h3>
-<p><strong>Cómo comprobar:</strong></p>
+<h2 id="ejercicios-11-css-moderno-solucion">💡 Solución<a class="headerlink" href="#ejercicios-11-css-moderno-solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<div class="card-container">
+  <div class="card">
+    <img src="https://picsum.photos/200" alt="Ejemplo">
+    <h3>Tarjeta con imagen</h3>
+  </div>
+</div>
+<p>```</p>
+<p>```css
+:root {
+  --primario: #6a5acd;
+  --fondo: #f8f7fb;
+}</p>
+<p>.card-container {
+  container-type: inline-size;
+  container-name: card;
+}</p>
+<p>.card {
+  background: var(--fondo);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}</p>
+<p>.card:has(img) {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+}</p>
+<p>@container card (min-width: 400px) {
+  .card {
+    padding: 2rem;
+  }
+}
+```</p>
+<hr />
+<h2 id="ejercicios-11-css-moderno-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-11-css-moderno-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`:has(img)`: aplica estilos si contiene una imagen.</li>
+<li>`container-type: inline-size`: activa container queries.</li>
+<li>`@container card (min-width: 400px)`: aplica estilos según el contenedor.</li>
+<li>Variables CSS para tematización.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-11-css-moderno-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-11-css-moderno-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Cambia las variables en modo oscuro con `prefers-color-scheme`.</li>
+<li>[ ] Añade `:focus-within` para resaltar la tarjeta al enfocar un input.</li>
+<li>[ ] Usa `clamp()` para el tamaño de la fuente.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-10-proyecto-final">← Ejercicio 10</a>
+<a class="md-button md-button--primary" href="#ejercicios-12-javascript-asincrono">Ir al ejercicio 12 →</a></p></section><section class="print-page" id="ejercicios-12-javascript-asincrono" heading-number="24.13"><h1 id="ejercicios-12-javascript-asincrono-12-javascript-asincrono">12 — JavaScript asíncrono<a class="headerlink" href="#ejercicios-12-javascript-asincrono-12-javascript-asincrono" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica promesas, async/await y manejo de errores.</p>
+</div>
+<hr />
+<h2 id="ejercicios-12-javascript-asincrono-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-12-javascript-asincrono-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una función que:</p>
 <ol>
-<li>Recarga la página.</li>
-<li>Pulsa <code>Tab</code> repetidamente.</li>
-<li>Comprueba:</li>
-<li>¿Ves dónde está el foco?</li>
-<li>¿Puedes llegar a todos los enlaces y botones?</li>
-<li>¿Puedes activarlos con <code>Enter</code> o <code>Espacio</code>?</li>
+<li>Haga 2 peticiones en paralelo.</li>
+<li>Combine los resultados.</li>
+<li>Maneje errores de red.</li>
 </ol>
-<p><strong>Si el foco no se ve, arregla el CSS:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
 <hr />
-<h2 id="ejercicios-14-accesibilidad-ejercicio-3-skip-link">Ejercicio 3: Skip link<a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicio-3-skip-link" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un skip link y verifícalo con el teclado.</p>
-</blockquote>
-<h3 id="ejercicios-14-accesibilidad-solucion_2">Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#main"</span> <span class="na">class</span><span class="o">=</span><span class="s">"skip-link"</span><span class="p">&gt;</span>Saltar al contenido principal<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">"main"</span><span class="p">&gt;</span>
-  <span class="cm">&lt;!-- contenido --&gt;</span>
-<span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<h2 id="ejercicios-12-javascript-asincrono-solucion">💡 Solución<a class="headerlink" href="#ejercicios-12-javascript-asincrono-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+async function cargarDatos() {
+  try {
+    const [usuarios, posts] = await Promise.all([
+      fetch('https://jsonplaceholder.typicode.com/users').then(r =&gt; r.json()),
+      fetch('https://jsonplaceholder.typicode.com/posts').then(r =&gt; r.json())
+    ]);</p>
+<div class="highlight"><pre><span></span><code>return {
+  usuarios: usuarios.length,
+  posts: posts.length,
+  ultimoPost: posts[posts.length - 1].title
+};
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">skip-link</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
-<span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">-60</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">  </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="kc">top</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">skip-link</span><span class="p">:</span><span class="nd">focus</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Verificación:</strong> recarga y pulsa <code>Tab</code>. El skip link debe aparecer arriba a la izquierda.</p>
+<p>} catch (err) {
+    console.error('Error:', err.message);
+    return null;
+  }
+}</p>
+<p>cargarDatos().then(data =&gt; console.log(data));
+```</p>
 <hr />
-<h2 id="ejercicios-14-accesibilidad-ejercicio-4-formulario-accesible">Ejercicio 4: Formulario accesible<a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicio-4-formulario-accesible" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un formulario accesible con errores bien asociados.</p>
-</blockquote>
-<h3 id="ejercicios-14-accesibilidad-solucion_3">Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">novalidate</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Correo electrónico<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span>
-    <span class="na">type</span><span class="o">=</span><span class="s">"email"</span>
-    <span class="na">id</span><span class="o">=</span><span class="s">"email"</span>
-    <span class="na">name</span><span class="o">=</span><span class="s">"email"</span>
-    <span class="na">required</span>
-    <span class="na">aria-describedby</span><span class="o">=</span><span class="s">"email-error"</span>
-    <span class="na">aria-invalid</span><span class="o">=</span><span class="s">"false"</span>
-  <span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"email-error"</span> <span class="na">role</span><span class="o">=</span><span class="s">"alert"</span> <span class="na">hidden</span><span class="p">&gt;</span>
-    El correo no tiene un formato válido.
-  <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'form'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'email'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'email-error'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">email</span><span class="p">.</span><span class="nx">validity</span><span class="p">.</span><span class="nx">valid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">email</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'aria-invalid'</span><span class="p">,</span><span class="w"> </span><span class="s1">'true'</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">error</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">email</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">email</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'aria-invalid'</span><span class="p">,</span><span class="w"> </span><span class="s1">'false'</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">error</span><span class="p">.</span><span class="nx">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Formulario válido'</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+<h2 id="ejercicios-12-javascript-asincrono-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-12-javascript-asincrono-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`Promise.all()`: espera a que todas las promesas se resuelvan.</li>
+<li>`async/await`: sintaxis más legible.</li>
+<li>`try/catch`: manejo de errores.</li>
+<li>Desestructuración de arrays.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-14-accesibilidad-ejercicio-5-prefers-reduced-motion">Ejercicio 5: <code>prefers-reduced-motion</code><a class="headerlink" href="#ejercicios-14-accesibilidad-ejercicio-5-prefers-reduced-motion" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa <code>prefers-reduced-motion</code> en tus animaciones.</p>
-</blockquote>
-<h3 id="ejercicios-14-accesibilidad-solucion_4">Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="o">*,</span>
-<span class="w">  </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span>
-<span class="w">  </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">animation-iteration-count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">transition-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">    </span><span class="k">scroll-behavior</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>O selectivo: solo desactiva las animaciones grandes.</p>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">animacion-grande</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="ejercicios-12-javascript-asincrono-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-12-javascript-asincrono-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Usa `Promise.allSettled` para que un error no cancele todo.</li>
+<li>[ ] Añade un timeout con `Promise.race`.</li>
+<li>[ ] Muestra un estado de carga mientras se cargan los datos.</li>
+</ul>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-14-accesibilidad">Capítulo original</a></p></section><section class="print-page" id="ejercicios-15-typescript" heading-number="24.16"><h1 id="ejercicios-15-typescript-ejercicios-resueltos-capitulo-15">Ejercicios resueltos — Capítulo 15<a class="headerlink" href="#ejercicios-15-typescript-ejercicios-resueltos-capitulo-15" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-15-typescript">Capítulo original</a></p>
-<h2 id="ejercicios-15-typescript-ejercicio-1-funcion-tipada">Ejercicio 1: Función tipada<a class="headerlink" href="#ejercicios-15-typescript-ejercicio-1-funcion-tipada" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Convierte una función JavaScript sin tipos a TypeScript con parámetros y retorno tipados.</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-antes">Antes<a class="headerlink" href="#ejercicios-15-typescript-antes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="ejercicios-15-typescript-solucion">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Con parámetros opcionales</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">saludo?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">saludo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">'Hola'</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Arrow function tipada</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">multiplicar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-</code></pre></div>
+<p><a class="md-button" href="#ejercicios-11-css-moderno">← Ejercicio 11</a>
+<a class="md-button md-button--primary" href="#ejercicios-13-modulos-bundlers">Ir al ejercicio 13 →</a></p></section><section class="print-page" id="ejercicios-13-modulos-bundlers" heading-number="24.14"><h1 id="ejercicios-13-modulos-bundlers-13-modulos-y-bundlers">13 — Módulos y bundlers<a class="headerlink" href="#ejercicios-13-modulos-bundlers-13-modulos-y-bundlers" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica módulos ES6 y compilación con Vite.</p>
+</div>
 <hr />
-<h2 id="ejercicios-15-typescript-ejercicio-2-interface-producto">Ejercicio 2: Interface Producto<a class="headerlink" href="#ejercicios-15-typescript-ejercicio-2-interface-producto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una interface <code>Producto</code> con <code>id</code>, <code>nombre</code>, <code>precio</code> y <code>categorias</code> (array).</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-solucion_1">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Producto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<span class="w">  </span><span class="nx">descripcion?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// opcional</span>
-<span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span><span class="w"> </span><span class="c1">// no modificable</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">camiseta</span><span class="o">:</span><span class="w"> </span><span class="kt">Producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Camiseta'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">29.99</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'ropa'</span><span class="p">,</span><span class="w"> </span><span class="s1">'hombre'</span><span class="p">],</span>
-<span class="w">  </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
-<span class="p">};</span>
-</code></pre></div>
+<h2 id="ejercicios-13-modulos-bundlers-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-13-modulos-bundlers-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea 2 módulos: `math.js` (exporta `sumar` y `PI`) y `app.js` (los importa).</li>
+<li>Usa `<script type="module">` para cargarlos.</li>
+<li>Comprueba que funciona en el navegador.</li>
+</ol>
 <hr />
-<h2 id="ejercicios-15-typescript-ejercicio-3-generico-ultimo">Ejercicio 3: Genérico <code>ultimo</code><a class="headerlink" href="#ejercicios-15-typescript-ejercicio-3-generico-ultimo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe una función genérica <code>ultimo&lt;T&gt;(array: T[]): T | undefined</code>.</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-solucion_2">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">ultimo</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">array</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="nx">ultimo</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]);</span><span class="w"> </span><span class="c1">// number | undefined → 3</span>
-<span class="nx">ultimo</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span><span class="w"> </span><span class="s1">'b'</span><span class="p">]);</span><span class="w"> </span><span class="c1">// string | undefined → 'b'</span>
-<span class="nx">ultimo</span><span class="p">([{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="w"> </span><span class="p">}]);</span><span class="w"> </span><span class="c1">// { id: number } | undefined</span>
-</code></pre></div>
+<h2 id="ejercicios-13-modulos-bundlers-solucion">💡 Solución<a class="headerlink" href="#ejercicios-13-modulos-bundlers-solucion" title="Permanent link">&para;</a></h2>
+<p>```javascript
+// math.js
+export const PI = 3.1416;
+export function sumar(a, b) {
+  return a + b;
+}
+```</p>
+<p>```javascript
+// app.js
+import { sumar, PI } from './math.js';
+console.log(sumar(2, 3)); // 5
+console.log(PI);          // 3.1416
+```</p>
+<p>```html</p>
+<!-- index.html -->
+<script type="module" src="app.js"></script>
+<p>```</p>
 <hr />
-<h2 id="ejercicios-15-typescript-ejercicio-4-type-union-resultado">Ejercicio 4: Type unión <code>Resultado</code><a class="headerlink" href="#ejercicios-15-typescript-ejercicio-4-type-union-resultado" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Define un type unión <code>Resultado</code>.</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-solucion_3">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">Resultado</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"> </span><span class="nx">datos</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">;</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">procesar</span><span class="p">(</span><span class="nx">resultado</span><span class="o">:</span><span class="w"> </span><span class="kt">Resultado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Datos:'</span><span class="p">,</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">datos</span><span class="p">);</span><span class="w"> </span><span class="c1">// TS sabe que es { ok: true, datos }</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span><span class="w"> </span><span class="c1">// TS sabe que es { ok: false, error }</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="ejercicios-13-modulos-bundlers-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-13-modulos-bundlers-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`export`: expone funciones o constantes del módulo.</li>
+<li>`import`: las importa en otro archivo.</li>
+<li>`<script type="module">`: carga el módulo en el navegador.</li>
+<li>Los módulos tienen scope propio.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-15-typescript-ejercicio-5-partialproducto">Ejercicio 5: <code>Partial&lt;Producto&gt;</code><a class="headerlink" href="#ejercicios-15-typescript-ejercicio-5-partialproducto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa <code>Partial&lt;Producto&gt;</code> para escribir una función <code>actualizarProducto</code>.</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-solucion_4">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">actualizarProducto</span><span class="p">(</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">cambios</span><span class="o">:</span><span class="w"> </span><span class="kt">Partial</span><span class="o">&lt;</span><span class="nx">Producto</span><span class="o">&gt;</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Producto</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obtenerProducto</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span><span class="nx">producto</span><span class="p">,</span>
-<span class="w">    </span><span class="p">...</span><span class="nx">cambios</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">producto.id</span><span class="p">,</span><span class="w"> </span><span class="c1">// el id no se puede cambiar</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="c1">// Uso: solo pasas los campos que cambian</span>
-<span class="nx">actualizarProducto</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">24.99</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">actualizarProducto</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Nuevo nombre'</span><span class="p">,</span><span class="w"> </span><span class="nx">categorias</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'oferta'</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
+<h2 id="ejercicios-13-modulos-bundlers-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-13-modulos-bundlers-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Crea un módulo `utils.js` con `esPar` y `esImpar`.</li>
+<li>[ ] Usa `export default` para una función principal.</li>
+<li>[ ] Migra el proyecto a Vite (`npm create vite@latest`).</li>
+</ul>
 <hr />
-<h2 id="ejercicios-15-typescript-ejercicio-6-clase-carrito">Ejercicio 6: Clase Carrito<a class="headerlink" href="#ejercicios-15-typescript-ejercicio-6-clase-carrito" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Escribe una clase <code>Carrito</code> con métodos <code>añadir</code>, <code>total</code> y <code>vaciar</code>.</p>
-</blockquote>
-<h3 id="ejercicios-15-typescript-solucion_5">Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Item</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Carrito</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="w">  </span><span class="nx">añadir</span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">Item</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">total</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">precio</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">vaciar</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">cantidad</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">carrito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Carrito</span><span class="p">();</span>
-<span class="nx">carrito</span><span class="p">.</span><span class="nx">añadir</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Camiseta'</span><span class="p">,</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">29.99</span><span class="w"> </span><span class="p">});</span>
-<span class="nx">carrito</span><span class="p">.</span><span class="nx">añadir</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Pantalón'</span><span class="p">,</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">49.99</span><span class="w"> </span><span class="p">});</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carrito</span><span class="p">.</span><span class="nx">total</span><span class="p">());</span><span class="w"> </span><span class="c1">// 79.98</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carrito</span><span class="p">.</span><span class="nx">cantidad</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2</span>
-</code></pre></div>
+<p><a class="md-button" href="#ejercicios-12-javascript-asincrono">← Ejercicio 12</a>
+<a class="md-button md-button--primary" href="#ejercicios-14-accesibilidad">Ir al ejercicio 14 →</a></p></section><section class="print-page" id="ejercicios-14-accesibilidad" heading-number="24.15"><h1 id="ejercicios-14-accesibilidad-14-accesibilidad">14 — Accesibilidad<a class="headerlink" href="#ejercicios-14-accesibilidad-14-accesibilidad" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica HTML semántico, ARIA y navegación por teclado.</p>
+</div>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-15-typescript">Capítulo original</a></p></section><section class="print-page" id="ejercicios-16-testing" heading-number="24.17"><h1 id="ejercicios-16-testing-ejercicios-resueltos-capitulo-16">Ejercicios resueltos — Capítulo 16<a class="headerlink" href="#ejercicios-16-testing-ejercicios-resueltos-capitulo-16" title="Permanent link">&para;</a></h1>
+<h2 id="ejercicios-14-accesibilidad-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-14-accesibilidad-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un botón de "Cerrar" que:</p>
+<ol>
+<li>Sea accesible (teclado + lector de pantalla).</li>
+<li>Tenga `aria-label` descriptivo.</li>
+<li>Muestre feedback visual al enfocarse.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-14-accesibilidad-solucion">💡 Solución<a class="headerlink" href="#ejercicios-14-accesibilidad-solucion" title="Permanent link">&para;</a></h2>
+<p>```html
+<button class="cerrar" aria-label="Cerrar modal">✕</button>
+```</p>
+<p>```css
+.cerrar {
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: .5rem .75rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}</p>
+<p>.cerrar:focus-visible {
+  outline: 2px solid #6a5acd;
+  outline-offset: 2px;
+}
+```</p>
+<hr />
+<h2 id="ejercicios-14-accesibilidad-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-14-accesibilidad-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`<button>` nativo es accesible por defecto (teclado + lector de pantalla).</li>
+<li>`aria-label`: describe el botón a lectores de pantalla.</li>
+<li>`:focus-visible`: estilo de foco solo cuando se navega con teclado.</li>
+<li><strong>Nunca</strong> uses `<div onclick>` para botones.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-14-accesibilidad-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-14-accesibilidad-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un modal con `<dialog>` nativo.</li>
+<li>[ ] Añade `aria-hidden` a los elementos decorativos.</li>
+<li>[ ] Prueba con un lector de pantalla (Orca, NVDA o VoiceOver).</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-13-modulos-bundlers">← Ejercicio 13</a>
+<a class="md-button md-button--primary" href="#ejercicios-15-typescript">Ir al ejercicio 15 →</a></p></section><section class="print-page" id="ejercicios-15-typescript" heading-number="24.16"><h1 id="ejercicios-15-typescript-15-typescript">15 — TypeScript<a class="headerlink" href="#ejercicios-15-typescript-15-typescript" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica tipos, interfaces y genéricos.</p>
+</div>
+<hr />
+<h2 id="ejercicios-15-typescript-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-15-typescript-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una función `identidad<T>` que:</p>
+<ol>
+<li>Reciba cualquier tipo.</li>
+<li>Devuelva el mismo tipo.</li>
+<li>Use genéricos.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-15-typescript-solucion">💡 Solución<a class="headerlink" href="#ejercicios-15-typescript-solucion" title="Permanent link">&para;</a></h2>
+<p>```typescript
+function identidad<T>(valor: T): T {
+  return valor;
+}</p>
+<p>// Uso
+const texto = identidad<string>("hola");
+const numero = identidad<number>(42);
+const objeto = identidad({ nombre: "Ana", edad: 30 });</p>
+<p>console.log(texto.toUpperCase()); // "HOLA"
+console.log(numero.toFixed(2));   // "42.00"
+```</p>
+<hr />
+<h2 id="ejercicios-15-typescript-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-15-typescript-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`<T>`: parámetro de tipo genérico.</li>
+<li>TypeScript infiere el tipo automáticamente en muchos casos.</li>
+<li>Los genéricos permiten reutilizar funciones sin perder tipado.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-15-typescript-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-15-typescript-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Crea un tipo `Respuesta<T>` con `data` y `error`.</li>
+<li>[ ] Crea una función `primero<T>(arr: T[]): T | undefined`.</li>
+<li>[ ] Usa `Partial<Usuario>` para hacer un tipo con todas las propiedades opcionales.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-14-accesibilidad">← Ejercicio 14</a>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-16-testing" heading-number="24.17"><h1 id="ejercicios-16-testing-ejercicios-resueltos-capitulo-16">Ejercicios resueltos — Capítulo 16<a class="headerlink" href="#ejercicios-16-testing-ejercicios-resueltos-capitulo-16" title="Permanent link">&para;</a></h1>
 <p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-16-testing">Capítulo original</a></p>
 <h2 id="ejercicios-16-testing-ejercicio-1-tests-de-formatearprecio">Ejercicio 1: Tests de <code>formatearPrecio</code><a class="headerlink" href="#ejercicios-16-testing-ejercicio-1-tests-de-formatearprecio" title="Permanent link">&para;</a></h2>
 <blockquote>

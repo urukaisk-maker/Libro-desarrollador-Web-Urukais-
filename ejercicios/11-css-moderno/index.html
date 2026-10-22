@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-11" class="md-skip">
+        <a href="#11-css-moderno" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3563,142 +3563,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-sistema-de-temas-con-custom-properties" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Sistema de temas con custom properties
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Sistema de temas con custom properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-tarjeta-con-container" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Tarjeta con @container
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Tarjeta con @container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-has-para-formularios" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: :has() para formularios
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: :has() para formularios">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-tipografia-fluida" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Tipografía fluida
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Tipografía fluida">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-5-capas-con-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5: Capas con @layer
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 5: Capas con @layer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4711,150 +4615,73 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-11">Ejercicios resueltos — Capítulo 11<a class="headerlink" href="#ejercicios-resueltos-capitulo-11" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/11-css-moderno/">Capítulo original</a></p>
-<h2 id="ejercicio-1-sistema-de-temas-con-custom-properties">Ejercicio 1: Sistema de temas con custom properties<a class="headerlink" href="#ejercicio-1-sistema-de-temas-con-custom-properties" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un sistema de temas (claro/oscuro) usando solo custom properties.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--surface</span><span class="p">:</span><span class="w"> </span><span class="mh">#f8fafc</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--muted</span><span class="p">:</span><span class="w"> </span><span class="mh">#64748b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--border</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#0f172a</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--surface</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--muted</span><span class="p">:</span><span class="w"> </span><span class="mh">#94a3b8</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--border</span><span class="p">:</span><span class="w"> </span><span class="mh">#334155</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">,</span><span class="w"> </span><span class="kc">color</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--surface</span><span class="p">);</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--border</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'tema'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'light'</span><span class="p">;</span>
-</code></pre></div>
+<h1 id="11-css-moderno">11 — CSS moderno<a class="headerlink" href="#11-css-moderno" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica variables CSS, `:has()` y container queries.</p>
+</div>
 <hr />
-<h2 id="ejercicio-2-tarjeta-con-container">Ejercicio 2: Tarjeta con <code>@container</code><a class="headerlink" href="#ejercicio-2-tarjeta-con-container" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Diseña una tarjeta que cambie de layout según el ancho de su contenedor.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">tarjeta-wrapper</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
-<span class="w">  </span><span class="k">container-name</span><span class="p">:</span><span class="w"> </span><span class="n">tarjeta</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="nt">tarjeta</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Explicación:</strong> La tarjeta se adapta a <strong>su contenedor</strong>, no al viewport. Reutilizable en cualquier contexto.</p>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una tarjeta que:</p>
+<ol>
+<li>Use variables CSS para colores.</li>
+<li>Cambie de estilo si contiene una imagen (`:has()`).</li>
+<li>Se adapte al tamaño del contenedor (container query).</li>
+</ol>
 <hr />
-<h2 id="ejercicio-3-has-para-formularios">Ejercicio 3: <code>:has()</code> para formularios<a class="headerlink" href="#ejercicio-3-has-para-formularios" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Resalta un formulario cuando tiene un campo inválido.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">formulario</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#dc2626</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fef2f2</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">formulario</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">valid</span><span class="o">)</span><span class="w"> </span><span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"submit"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">formulario</span><span class="w"> </span><span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"submit"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
-<span class="w">  </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mi">200</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<div class="card-container">
+  <div class="card">
+    <img src="https://picsum.photos/200" alt="Ejemplo">
+    <h3>Tarjeta con imagen</h3>
+  </div>
+</div>
+<p>```</p>
+<p>```css
+:root {
+  --primario: #6a5acd;
+  --fondo: #f8f7fb;
+}</p>
+<p>.card-container {
+  container-type: inline-size;
+  container-name: card;
+}</p>
+<p>.card {
+  background: var(--fondo);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}</p>
+<p>.card:has(img) {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+}</p>
+<p>@container card (min-width: 400px) {
+  .card {
+    padding: 2rem;
+  }
+}
+```</p>
 <hr />
-<h2 id="ejercicio-4-tipografia-fluida">Ejercicio 4: Tipografía fluida<a class="headerlink" href="#ejercicio-4-tipografia-fluida" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Implementa un título con tipografía fluida usando <code>clamp()</code>.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.75</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="kt">rem</span><span class="p">);</span>
-<span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.03</span><span class="kt">em</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nt">p</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.875</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">1.125</span><span class="kt">rem</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`:has(img)`: aplica estilos si contiene una imagen.</li>
+<li>`container-type: inline-size`: activa container queries.</li>
+<li>`@container card (min-width: 400px)`: aplica estilos según el contenedor.</li>
+<li>Variables CSS para tematización.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-5-capas-con-layer">Ejercicio 5: Capas con <code>@layer</code><a class="headerlink" href="#ejercicio-5-capas-con-layer" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Organiza tus estilos en 4 capas: reset, base, components y utilities.</p>
-</blockquote>
-<h3 id="solucion_4">Solución<a class="headerlink" href="#solucion_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="o">,</span><span class="w"> </span><span class="nt">base</span><span class="o">,</span><span class="w"> </span><span class="nt">components</span><span class="o">,</span><span class="w"> </span><span class="nt">utilities</span><span class="p">;</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">reset</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">base</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
-<span class="w">    </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">components</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
-<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">utilities</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">text-center</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">mt-4</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Cambia las variables en modo oscuro con `prefers-color-scheme`.</li>
+<li>[ ] Añade `:focus-within` para resaltar la tarjeta al enfocar un input.</li>
+<li>[ ] Usa `clamp()` para el tamaño de la fuente.</li>
+</ul>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/11-css-moderno/">Capítulo original</a></p>
+<p><a class="md-button" href="../10-proyecto-final/">← Ejercicio 10</a>
+<a class="md-button md-button--primary" href="../12-javascript-asincrono/">Ir al ejercicio 12 →</a></p>
 
 
 
