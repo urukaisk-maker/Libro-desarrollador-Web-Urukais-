@@ -1,55 +1,129 @@
-# Capítulo 9 — Despliegue y hosting
+# 09 — Despliegue y hosting
 
-## ¿Qué es desplegar?
+!!! abstract "Qué vas a aprender"
+    - Qué significa desplegar una web.
+    - Las opciones de hosting más usadas.
+    - Cómo desplegar en Netlify, Vercel y GitHub Pages.
+    - Dominios y DNS.
+    - Buenas prácticas antes de publicar.
 
-**Desplegar** (o *deploy*) significa publicar tu web en internet para que cualquiera pueda visitarla. Hasta ahora has trabajado en local (`file://`), ahora toca subirla a un servidor.
+---
 
-## Opciones de hosting
+## 🚀 ¿Qué es desplegar?
 
-| Servicio | Ideal para | Coste |
-|---|---|---|
-| **GitHub Pages** | Sitios estáticos (HTML/CSS/JS) | Gratis |
-| **Netlify** | Sitios estáticos + funciones serverless | Gratis con límites |
-| **Vercel** | Frontend moderno, frameworks (Next, Vite) | Gratis con límites |
-| **Cloudflare Pages** | Estático con CDN global | Gratis |
-| **Servidor VPS** | Control total (Node, PHP, Python…) | Desde 5 €/mes |
+**Desplegar** (o *deployar*) es publicar tu web en internet para que cualquiera pueda acceder a ella. Hasta que no despliegas, tu web solo existe en tu ordenador.
 
-## GitHub Pages paso a paso
+!!! quote "Tu web no existe hasta que está online"
+    Puedes tener el código más bonito del mundo, pero si no lo despliegas, nadie puede verlo. El despliegue es el paso final de cualquier proyecto.
 
-1. Sube tu proyecto a un repositorio en GitHub.
-2. Ve a **Settings → Pages**.
-3. En **Source** elige `Deploy from a branch`.
-4. Selecciona la rama (`main` o `gh-pages`) y la carpeta (`/ (root)` o `/docs`).
-5. Guarda. En 1–2 minutos estará en:
-   ```
-   https://tu-usuario.github.io/tu-repo/
-   ```
+---
 
-!!! tip "Dominio propio"
-    Puedes apuntar un dominio personalizado (ej. `milibro.dev`) a GitHub Pages. Añade un archivo `CNAME` con el dominio y configura los DNS con registros `A` o `CNAME`.
+## 🏠 Opciones de hosting
 
-## Desplegar con Netlify
+| Plataforma | Precio | Ideal para |
+| :--- | :--- | :--- |
+| **GitHub Pages** | Gratis | Sitios estáticos, portfolios, documentación |
+| **Netlify** | Gratis (hasta cierto límite) | Sitios estáticos, funciones serverless |
+| **Vercel** | Gratis (hasta cierto límite) | Frontend moderno, Next.js |
+| **Cloudflare Pages** | Gratis | CDN global, sitios estáticos |
+| **Render** | Gratis limitado | Full-stack, bases de datos |
+| **Railway** | De pago (prueba gratis) | Full-stack, bases de datos |
 
-1. Regístrate en [netlify.com](https://netlify.com) con GitHub.
-2. Pulsa **"Add new site" → "Import an existing project"**.
-3. Autoriza tu cuenta de GitHub y elige el repositorio.
-4. Configura:
-   - **Build command**: `npm run build` (o déjalo vacío si es estático puro).
-   - **Publish directory**: `dist` o `public`.
-5. Deploy. En 1 minuto tienes URL tipo `https://tu-proyecto.netlify.app`.
+!!! tip "Empieza por GitHub Pages"
+    Si tu web es estática (HTML, CSS, JS sin backend), GitHub Pages es la opción más sencilla: subes el código a GitHub y se publica solo.
 
-## CI/CD con GitHub Actions
+---
 
-**CI/CD** = *Continuous Integration / Continuous Deployment*. Cada vez que hagas push, GitHub puede:
+## 🐙 Desplegar en GitHub Pages
 
-1. Instalar dependencias.
-2. Ejecutar tests.
-3. Construir el sitio.
-4. Desplegarlo automáticamente.
+### 1. Sube tu proyecto a GitHub
 
-Ejemplo mínimo para desplegar un sitio estático:
+\`\`\`bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/tu-usuario/tu-repo.git
+git push -u origin main
+\`\`\`
 
-```yaml
+### 2. Activa GitHub Pages
+
+1. Ve a **Settings** → **Pages** en tu repositorio.
+2. En **Source**, selecciona **Deploy from a branch**.
+3. Elige la rama \`main\` y la carpeta \`/ (root)\` (o \`/docs\` si tu web está en \`docs/\`).
+4. Pulsa **Save**.
+
+En unos segundos, tu web estará en \`https://tu-usuario.github.io/tu-repo/\`.
+
+!!! tip "Dominio personalizado"
+    En la misma página de **Pages**, puedes añadir un dominio personalizado (ej. \`tudominio.com\`) y configurar los DNS en tu proveedor.
+
+---
+
+## 🟢 Desplegar en Netlify
+
+1. Crea una cuenta en [netlify.com](https://www.netlify.com/).
+2. Conecta tu repositorio de GitHub.
+3. Netlify detecta el framework automáticamente.
+4. Pulsa **Deploy site**.
+
+Cada vez que hagas \`push\` a \`main\`, Netlify redespliega automáticamente.
+
+!!! tip "Preview deployments"
+    Netlify genera una URL de preview para cada Pull Request. Perfecto para revisar cambios antes de fusionar.
+
+---
+
+## ⚡ Desplegar en Vercel
+
+1. Crea una cuenta en [vercel.com](https://vercel.com/).
+2. Importa tu repositorio de GitHub.
+3. Vercel detecta el framework automáticamente.
+4. Pulsa **Deploy**.
+
+Igual que Netlify, cada \`push\` a \`main\` redespliega. También genera previews por PR.
+
+---
+
+## 🌐 Dominios y DNS
+
+Un **dominio** (ej. \`misitio.com\`) es la dirección de tu web. Para usarlo con tu hosting:
+
+1. **Compra el dominio** en un registrador (Namecheap, Cloudflare, Donweb…).
+2. **Configura los DNS** para que apunten al hosting:
+   - **Registro A**: apunta a la IP del hosting.
+   - **Registro CNAME**: apunta a un subdominio del hosting (ej. \`tu-sitio.netlify.app\`).
+3. **Espera la propagación** (puede tardar hasta 24 h, aunque suele ser minutos).
+4. **Configura HTTPS**: la mayoría de hostings lo hacen automático (Let's Encrypt).
+
+!!! warning "HTTPS no es opcional"
+    Google penaliza los sitios sin HTTPS. Todos los hostings modernos ofrecen HTTPS gratis con Let's Encrypt. Actívalo siempre.
+
+---
+
+## ✅ Antes de desplegar: checklist
+
+- [ ] **HTTPS activado** (candado en la barra del navegador).
+- [ ] **Responsive** comprobado en móvil, tablet y escritorio.
+- [ ] **Enlaces internos** funcionan (no hay 404).
+- [ ] **Imágenes optimizadas** (WebP/AVIF, \`loading="lazy"\`).
+- [ ] **Metadatos SEO** (title, description, Open Graph).
+- [ ] **Favicon** configurado.
+- [ ] **Analytics** (opcional, pero recomendado).
+- [ ] **Cookies** (banner si usas analíticas).
+- [ ] **Formularios** probados (que envíen de verdad).
+- [ ] **Consola del navegador** sin errores.
+
+---
+
+## 🔄 CI/CD: despliegue automático
+
+**CI/CD** (*Continuous Integration / Continuous Deployment*) es la práctica de automatizar el despliegue cada vez que haces \`push\`.
+
+### GitHub Actions
+
+\`\`\`yaml
 name: Deploy
 
 on:
@@ -61,43 +135,58 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-```
+          publish_dir: ./dist
+\`\`\`
 
-## Checklist antes de publicar
+Este workflow se ejecuta en cada \`push\` a \`main\`, construye el proyecto y lo publica en GitHub Pages.
 
-- [ ] Todos los enlaces funcionan.
-- [ ] Meta etiquetas (`title`, `description`) rellenas.
-- [ ] Favicon configurado.
-- [ ] Funciona en móvil (prueba con `F12` → responsive).
-- [ ] Sin errores en la consola.
-- [ ] HTTPS activo (GitHub Pages, Netlify y Vercel lo hacen automáticamente).
-- [ ] Sin contraseñas ni API keys en el código.
-
-## Ejercicios
-
-1. Sube un proyecto simple a GitHub Pages.
-2. Conecta un repositorio a Netlify y despliega.
-3. Añade una GitHub Action que ejecute un linter en cada push.
-4. Configura un dominio propio (si tienes uno).
-
----
-
-⬅ [Capítulo 8 — APIs](08-apis.md) | ➡ [Capítulo 10 — Proyecto final](10-proyecto-final.md)
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Cuál de estos servicios es ideal para desplegar una web estática gratis?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) AWS EC2</button>
-    <button class="quiz-option" data-option="b">B) Netlify o Vercel</button>
-    <button class="quiz-option" data-option="c">C) Un servidor VPS propio</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-9">
+<div class="quiz-question" data-answer="a">
+<p><strong>1.</strong> ¿Qué es desplegar una web?</p>
+<button class="quiz-option" data-opt="a">A) Publicarla en internet para que cualquiera acceda</button>
+<button class="quiz-option" data-opt="b">B) Guardarla en tu ordenador</button>
+<button class="quiz-option" data-opt="c">C) Hacerle una copia de seguridad</button>
 </div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué hosting es gratuito para sitios estáticos?</p>
+<button class="quiz-option" data-opt="a">A) AWS</button>
+<button class="quiz-option" data-opt="b">B) DigitalOcean</button>
+<button class="quiz-option" data-opt="c">C) GitHub Pages</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>3.</strong> ¿Qué significa CI/CD?</p>
+<button class="quiz-option" data-opt="a">A) Code Inspector / Code Debugger</button>
+<button class="quiz-option" data-opt="b">B) Continuous Integration / Continuous Deployment</button>
+<button class="quiz-option" data-opt="c">C) Cloud Infrastructure / Cloud Data</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%209%3A%20Despliegue%20y%20hosting&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%209%3A%20Despliegue%20y%20hosting%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/09-despliegue/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 10 — Proyecto final: portfolio](10-proyecto-final.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
