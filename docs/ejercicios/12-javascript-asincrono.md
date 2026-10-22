@@ -1,168 +1,62 @@
-# Ejercicios resueltos — Capítulo 12
+# 12 — JavaScript asíncrono
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/12-javascript-asincrono.md)
+!!! quote "Ejercicio resuelto"
+    Practica promesas, async/await y manejo de errores.
 
-## Ejercicio 1: Callbacks a async/await
+---
 
-> Reescribe un callback anidado de tres niveles usando `async/await`.
+## 🎯 Objetivo
 
-### Antes
+Crea una función que:
 
-```javascript
-login(usuario, (err, sesion) => {
-  obtenerPerfil(sesion.id, (err, perfil) => {
-    obtenerPosts(perfil.id, (err, posts) => {
-      console.log(posts);
-    });
-  });
-});
-```
+1. Haga 2 peticiones en paralelo.
+2. Combine los resultados.
+3. Maneje errores de red.
 
-### Solución
+---
 
-```javascript
-async function cargarDatos(usuario) {
+## 💡 Solución
+
+\`\`\`javascript
+async function cargarDatos() {
   try {
-    const sesion = await login(usuario);
-    const perfil = await obtenerPerfil(sesion.id);
-    const posts = await obtenerPosts(perfil.id);
-    return posts;
+    const [usuarios, posts] = await Promise.all([
+      fetch('https://jsonplaceholder.typicode.com/users').then(r => r.json()),
+      fetch('https://jsonplaceholder.typicode.com/posts').then(r => r.json())
+    ]);
+
+    return {
+      usuarios: usuarios.length,
+      posts: posts.length,
+      ultimoPost: posts[posts.length - 1].title
+    };
   } catch (err) {
     console.error('Error:', err.message);
-  }
-}
-```
-
----
-
-## Ejercicio 2: Timeout con `AbortController`
-
-> Implementa una función `buscarConTimeout(url, ms)` que aborte la petición si excede el tiempo.
-
-### Solución
-
-```javascript
-async function buscarConTimeout(url, ms = 5000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), ms);
-
-  try {
-    const res = await fetch(url, { signal: controller.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    if (err.name === 'AbortError') {
-      throw new Error('Timeout: la petición tardó demasiado');
-    }
-    throw err;
-  } finally {
-    clearTimeout(timer);
+    return null;
   }
 }
 
-// Uso
-try {
-  const datos = await buscarConTimeout('https://api.com/datos', 3000);
-} catch (err) {
-  console.error(err.message);
-}
-```
+cargarDatos().then(data => console.log(data));
+\`\`\`
 
 ---
 
-## Ejercicio 3: Descargas paralelas
+## 🧠 Conceptos clave
 
-> Simula un sistema de descargas con `Promise.all` y muestra progreso.
-
-### Solución
-
-```javascript
-async function descargarTodo(urls) {
-  let completadas = 0;
-
-  const tareas = urls.map(async (url) => {
-    const res = await fetch(url);
-    completadas++;
-    console.log(`Progreso: ${completadas}/${urls.length}`);
-    return res.json();
-  });
-
-  return Promise.all(tareas);
-}
-
-const urls = [
-  'https://jsonplaceholder.typicode.com/posts/1',
-  'https://jsonplaceholder.typicode.com/posts/2',
-  'https://jsonplaceholder.typicode.com/posts/3',
-];
-
-const resultados = await descargarTodo(urls);
-```
+- \`Promise.all()\`: espera a que todas las promesas se resuelvan.
+- \`async/await\`: sintaxis más legible.
+- \`try/catch\`: manejo de errores.
+- Desestructuración de arrays.
 
 ---
 
-## Ejercicio 4: Buscador con debounce
+## 🚀 Retos extra
 
-> Crea un buscador con `debounce` que consulte una API al escribir.
-
-### Solución
-
-```javascript
-function debounce(fn, ms) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), ms);
-  };
-}
-
-const input = document.querySelector('#buscar');
-const resultados = document.querySelector('#resultados');
-
-const buscar = debounce(async (texto) => {
-  if (texto.length < 3) return;
-
-  try {
-    const res = await fetch(`/api/buscar?q=${encodeURIComponent(texto)}`);
-    const datos = await res.json();
-    resultados.innerHTML = datos
-      .map(d => `<li>${d.nombre}</li>`)
-      .join('');
-  } catch (err) {
-    console.error(err);
-  }
-}, 300);
-
-input.addEventListener('input', (e) => buscar(e.target.value));
-```
+- [ ] Usa \`Promise.allSettled\` para que un error no cancele todo.
+- [ ] Añade un timeout con \`Promise.race\`.
+- [ ] Muestra un estado de carga mientras se cargan los datos.
 
 ---
 
-## Ejercicio 5: Reintentos con backoff exponencial
-
-> Implementa un patrón de reintento con 3 intentos y espera exponencial.
-
-### Solución
-
-```javascript
-const esperar = (ms) => new Promise(r => setTimeout(r, ms));
-
-async function fetchConReintentos(url, intentos = 3) {
-  for (let i = 0; i < intentos; i++) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch (err) {
-      if (i === intentos - 1) throw err;
-      const espera = 2 ** i * 1000; // 1s, 2s, 4s...
-      console.warn(`Reintentando en ${espera}ms...`);
-      await esperar(espera);
-    }
-  }
-}
-```
-
----
-
-[Volver al índice](index.md) · [Capítulo original](../capitulos/12-javascript-asincrono.md)
+[← Ejercicio 11](11-css-moderno.md){ .md-button }
+[Ir al ejercicio 13 →](13-modulos-bundlers.md){ .md-button .md-button--primary }

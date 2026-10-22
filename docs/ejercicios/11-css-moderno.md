@@ -1,169 +1,80 @@
-# Ejercicios resueltos — Capítulo 11
+# 11 — CSS moderno
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/11-css-moderno.md)
+!!! quote "Ejercicio resuelto"
+    Practica variables CSS, \`:has()\` y container queries.
 
-## Ejercicio 1: Sistema de temas con custom properties
+---
 
-> Crea un sistema de temas (claro/oscuro) usando solo custom properties.
+## 🎯 Objetivo
 
-### Solución
+Crea una tarjeta que:
 
-```css
+1. Use variables CSS para colores.
+2. Cambie de estilo si contiene una imagen (\`:has()\`).
+3. Se adapte al tamaño del contenedor (container query).
+
+---
+
+## 💡 Solución
+
+\`\`\`html
+<div class="card-container">
+  <div class="card">
+    <img src="https://picsum.photos/200" alt="Ejemplo">
+    <h3>Tarjeta con imagen</h3>
+  </div>
+</div>
+\`\`\`
+
+\`\`\`css
 :root {
-  --bg: #ffffff;
-  --surface: #f8fafc;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --primario: #6a5acd;
+  --fondo: #f8f7fb;
 }
 
-[data-theme="dark"] {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --border: #334155;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: background 300ms, color 300ms;
+.card-container {
+  container-type: inline-size;
+  container-name: card;
 }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-```
-
-```javascript
-document.documentElement.dataset.theme =
-  localStorage.getItem('tema') || 'light';
-```
-
----
-
-## Ejercicio 2: Tarjeta con `@container`
-
-> Diseña una tarjeta que cambie de layout según el ancho de su contenedor.
-
-### Solución
-
-```css
-.tarjeta-wrapper {
-  container-type: inline-size;
-  container-name: tarjeta;
-}
-
-.tarjeta {
-  display: grid;
-  gap: 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  background: var(--fondo);
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 1rem;
 }
 
-@container tarjeta (min-width: 400px) {
-  .tarjeta {
-    grid-template-columns: 120px 1fr;
-    align-items: center;
+.card:has(img) {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+}
+
+@container card (min-width: 400px) {
+  .card {
+    padding: 2rem;
   }
 }
-```
-
-**Explicación:** La tarjeta se adapta a **su contenedor**, no al viewport. Reutilizable en cualquier contexto.
+\`\`\`
 
 ---
 
-## Ejercicio 3: `:has()` para formularios
+## 🧠 Conceptos clave
 
-> Resalta un formulario cuando tiene un campo inválido.
-
-### Solución
-
-```css
-.formulario:has(input:invalid) {
-  border-color: #dc2626;
-  background: #fef2f2;
-}
-
-.formulario:has(input:valid) button[type="submit"] {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.formulario button[type="submit"] {
-  opacity: 0.5;
-  pointer-events: none;
-  transition: opacity 200ms;
-}
-```
+- \`:has(img)\`: aplica estilos si contiene una imagen.
+- \`container-type: inline-size\`: activa container queries.
+- \`@container card (min-width: 400px)\`: aplica estilos según el contenedor.
+- Variables CSS para tematización.
 
 ---
 
-## Ejercicio 4: Tipografía fluida
+## 🚀 Retos extra
 
-> Implementa un título con tipografía fluida usando `clamp()`.
-
-### Solución
-
-```css
-h1 {
-  font-size: clamp(1.75rem, 4vw + 1rem, 3.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-}
-
-h2 {
-  font-size: clamp(1.25rem, 2vw + 0.75rem, 2rem);
-}
-
-p {
-  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
-}
-```
+- [ ] Cambia las variables en modo oscuro con \`prefers-color-scheme\`.
+- [ ] Añade \`:focus-within\` para resaltar la tarjeta al enfocar un input.
+- [ ] Usa \`clamp()\` para el tamaño de la fuente.
 
 ---
 
-## Ejercicio 5: Capas con `@layer`
-
-> Organiza tus estilos en 4 capas: reset, base, components y utilities.
-
-### Solución
-
-```css
-@layer reset, base, components, utilities;
-
-@layer reset {
-  *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; }
-}
-
-@layer base {
-  body {
-    font-family: system-ui, sans-serif;
-    line-height: 1.6;
-  }
-  a { color: #6a5acd; }
-}
-
-@layer components {
-  .btn {
-    background: #6a5acd;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-  }
-}
-
-@layer utilities {
-  .text-center { text-align: center; }
-  .mt-4 { margin-top: 1rem; }
-}
-```
-
----
-
-[Volver al índice](index.md) · [Capítulo original](../capitulos/11-css-moderno.md)
+[← Ejercicio 10](10-proyecto-final.md){ .md-button }
+[Ir al ejercicio 12 →](12-javascript-asincrono.md){ .md-button .md-button--primary }
