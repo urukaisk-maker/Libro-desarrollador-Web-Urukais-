@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-5" class="md-skip">
+        <a href="#05-responsive" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3395,114 +3395,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-tarjeta-con-layout-adaptativo" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Tarjeta con layout adaptativo
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Tarjeta con layout adaptativo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-centrado-con-flexbox" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Centrado con Flexbox
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Centrado con Flexbox">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-cuadricula-responsive" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Cuadrícula responsive
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Cuadrícula responsive">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-tipografia-fluida" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Tipografía fluida
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Tipografía fluida">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4683,108 +4615,74 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-5">Ejercicios resueltos — Capítulo 5<a class="headerlink" href="#ejercicios-resueltos-capitulo-5" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/05-responsive/">Capítulo original</a></p>
-<h2 id="ejercicio-1-tarjeta-con-layout-adaptativo">Ejercicio 1: Tarjeta con layout adaptativo<a class="headerlink" href="#ejercicio-1-tarjeta-con-layout-adaptativo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una tarjeta que cambie de una columna (móvil) a dos (desktop).</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">tarjeta</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- Mobile-first: por defecto una columna.
-- <code>@media (min-width: 640px)</code> añade la segunda columna.
-- <code>1fr</code> → ocupa el espacio disponible.</p>
+<h1 id="05-responsive">05 — Responsive<a class="headerlink" href="#05-responsive" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica el diseño responsive con media queries.</p>
+</div>
 <hr />
-<h2 id="ejercicio-2-centrado-con-flexbox">Ejercicio 2: Centrado con Flexbox<a class="headerlink" href="#ejercicio-2-centrado-con-flexbox" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Usa Flexbox para centrar un elemento vertical y horizontalmente.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">   </span><span class="c">/* horizontal */</span>
-<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">       </span><span class="c">/* vertical */</span>
-<span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f8fafc</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">contenido</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"contenedor"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"contenido"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Centrado<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Con Flexbox es trivial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>min-height: 100vh</code> → altura mínima de la pantalla completa.
-- <code>justify-content</code> → eje principal (horizontal por defecto).
-- <code>align-items</code> → eje cruzado (vertical).</p>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea una galería que:</p>
+<ol>
+<li>Muestre 1 columna en móvil.</li>
+<li>Muestre 2 columnas en tablet.</li>
+<li>Muestre 3 columnas en escritorio.</li>
+</ol>
 <hr />
-<h2 id="ejercicio-3-cuadricula-responsive">Ejercicio 3: Cuadrícula responsive<a class="headerlink" href="#ejercicio-3-cuadricula-responsive" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una cuadrícula de 3 columnas que se convierta en 1 en móvil.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">960px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Alternativa sin media queries: <code>auto-fit</code> + <code>minmax</code>:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">250</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Esta versión se adapta sola sin media queries.</p>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<div class="galeria">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+<p>```</p>
+<p>```css
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}</p>
+<p>@media (min-width: 640px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}</p>
+<p>@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}</p>
+<p>.item {
+  background: #6a5acd;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+}
+```</p>
 <hr />
-<h2 id="ejercicio-4-tipografia-fluida">Ejercicio 4: Tipografía fluida<a class="headerlink" href="#ejercicio-4-tipografia-fluida" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un título con tipografía fluida usando <code>clamp()</code>.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
-<span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">;</span>
-<span class="w">  </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.02</span><span class="kt">em</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>clamp(min, ideal, max)</code> → 1.5rem mínimo, 3rem máximo.
-- <code>4vw + 1rem</code> → crece con el viewport pero no linealmente.</p>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Mobile first</strong>: empieza con 1 columna y amplía con `min-width`.</li>
+<li>`grid-template-columns`: define las columnas.</li>
+<li>`repeat(n, 1fr)`: repite n columnas de igual tamaño.</li>
+<li>`@media (min-width: ...)`: aplica estilos a partir de ese ancho.</li>
+</ul>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/05-responsive/">Capítulo original</a></p>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Usa `auto-fit` con `minmax` para que se adapte automáticamente.</li>
+<li>[ ] Añade hover a cada item.</li>
+<li>[ ] Añade imágenes en lugar de números.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="../04-javascript/">← Ejercicio 04</a>
+<a class="md-button md-button--primary" href="../">Volver al índice</a></p>
 
 
 

@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-4" class="md-skip">
+        <a href="#04-javascript" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3367,114 +3367,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-boton-que-cambia-el-color-de-fondo" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Botón que cambia el color de fondo
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Botón que cambia el color de fondo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-mensaje-con-prompt" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Mensaje con prompt
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Mensaje con prompt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-suma-de-un-array" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Suma de un array
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Suma de un array">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-filtrar-numeros-pares" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Filtrar números pares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Filtrar números pares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4683,136 +4615,53 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-4">Ejercicios resueltos — Capítulo 4<a class="headerlink" href="#ejercicios-resueltos-capitulo-4" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/04-javascript/">Capítulo original</a></p>
-<h2 id="ejercicio-1-boton-que-cambia-el-color-de-fondo">Ejercicio 1: Botón que cambia el color de fondo<a class="headerlink" href="#ejercicio-1-boton-que-cambia-el-color-de-fondo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un botón que cambie el color de fondo del <code>body</code>.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Cambiar fondo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
-<span class="w">      </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background-color</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
-<span class="w">      </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nt">button</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">      </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
-<span class="w">      </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">      </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
-<span class="w">      </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
-<span class="w">      </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>Cambiar fondo<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">colores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'#f8fafc'</span><span class="p">,</span><span class="w"> </span><span class="s1">'#fef3c7'</span><span class="p">,</span><span class="w"> </span><span class="s1">'#dbeafe'</span><span class="p">,</span><span class="w"> </span><span class="s1">'#fce7f3'</span><span class="p">,</span><span class="w"> </span><span class="s1">'#dcfce7'</span><span class="p">];</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">indice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">);</span>
-
-<span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">indice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">colores</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colores</span><span class="p">[</span><span class="nx">indice</span><span class="p">];</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong></p>
-<ul>
-<li>Array de colores → alterna entre ellos con cada clic.</li>
-<li><code>% colores.length</code> → reinicia al principio cuando llegue al final.</li>
-<li><code>transition</code> en CSS → hace que el cambio sea suave.</li>
-</ul>
-<hr />
-<h2 id="ejercicio-2-mensaje-con-prompt">Ejercicio 2: Mensaje con prompt<a class="headerlink" href="#ejercicio-2-mensaje-con-prompt" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra un mensaje con el nombre del usuario usando <code>prompt()</code>.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'¿Cómo te llamas?'</span><span class="p">);</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`¡Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">! Bienvenido al libro.`</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'No has escrito tu nombre.'</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Explicación:</strong></p>
-<ul>
-<li><code>prompt()</code> → abre un cuadro de diálogo pidiendo texto.</li>
-<li>Devuelve <code>null</code> si el usuario cancela.</li>
-<li>Comprobamos con <code>if (nombre)</code> antes de usarlo.</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title"><code>prompt()</code> es intrusivo</p>
-<p>En proyectos reales, <code>prompt()</code> molesta al usuario. Usa un formulario o un modal propio.</p>
+<h1 id="04-javascript">04 — JavaScript<a class="headerlink" href="#04-javascript" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica variables, funciones y manipulación del DOM.</p>
 </div>
 <hr />
-<h2 id="ejercicio-3-suma-de-un-array">Ejercicio 3: Suma de un array<a class="headerlink" href="#ejercicio-3-suma-de-un-array" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Recorre un array de números y muestra la suma en consola.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">];</span>
-
-<span class="c1">// Opción 1: bucle tradicional</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">numeros</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">suma</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">numeros</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Suma (for):'</span><span class="p">,</span><span class="w"> </span><span class="nx">suma</span><span class="p">);</span>
-
-<span class="c1">// Opción 2: forEach</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">suma2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="nx">numeros</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">suma2</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">n</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Suma (forEach):'</span><span class="p">,</span><span class="w"> </span><span class="nx">suma2</span><span class="p">);</span>
-
-<span class="c1">// Opción 3: reduce (la más elegante)</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">suma3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numeros</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Suma (reduce):'</span><span class="p">,</span><span class="w"> </span><span class="nx">suma3</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>Explicación:</strong></p>
-<ul>
-<li><strong>for clásico</strong>: útil para controlar el índice.</li>
-<li><strong>forEach</strong>: más limpio cuando solo recorres.</li>
-<li><strong>reduce</strong>: la forma idiomática de acumular.</li>
-</ul>
-<p><code>reduce((acc, n) =&gt; acc + n, 0)</code> significa: empieza con <code>0</code>, y por cada número ve sumando.</p>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un contador que:</p>
+<ol>
+<li>Empiece en 0.</li>
+<li>Se incremente al pulsar un botón.</li>
+<li>Muestre el número en pantalla.</li>
+</ol>
 <hr />
-<h2 id="ejercicio-4-filtrar-numeros-pares">Ejercicio 4: Filtrar números pares<a class="headerlink" href="#ejercicio-4-filtrar-numeros-pares" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Filtra los números pares de un array y muéstralos.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">];</span>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<h1 id="numero">0</h1>
+<p><button id="incrementar">+1</button></p>
+<script>
+  let contador = 0;
+  const numero = document.getElementById('numero');
+  const boton = document.getElementById('incrementar');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">pares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numeros</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pares</span><span class="p">);</span><span class="w"> </span><span class="c1">// [2, 4, 6, 8, 10]</span>
-
-<span class="c1">// Versión con map para multiplicar los pares</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">dobles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pares</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dobles</span><span class="p">);</span><span class="w"> </span><span class="c1">// [4, 8, 12, 16, 20]</span>
-</code></pre></div>
-<p><strong>Explicación:</strong></p>
+  boton.addEventListener('click', () => {
+    contador++;
+    numero.textContent = contador;
+  });
+</script>
+<p>```</p>
+<hr />
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>filter()</code> → devuelve un nuevo array con los elementos que cumplen la condición.</li>
-<li><code>n % 2 === 0</code> → el resto de dividir entre 2 es 0 → par.</li>
-<li><code>map()</code> → transforma cada elemento.</li>
+<li>`let`: variable reasignable.</li>
+<li>`document.getElementById()`: selecciona elemento por id.</li>
+<li>`addEventListener('click', ...)`: escucha el clic.</li>
+<li>`textContent`: cambia el texto del elemento.</li>
 </ul>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/04-javascript/">Capítulo original</a></p>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un botón de reset.</li>
+<li>[ ] Añade un botón de -1.</li>
+<li>[ ] Guarda el contador en `localStorage` para que persista.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="../03-css-basico/">← Ejercicio 03</a>
+<a class="md-button md-button--primary" href="../05-responsive/">Ir al ejercicio 05 →</a></p>
 
 
 
