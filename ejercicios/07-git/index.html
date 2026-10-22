@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-7" class="md-skip">
+        <a href="#07-git" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3451,114 +3451,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-crear-un-repositorio-y-subirlo" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Crear un repositorio y subirlo
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Crear un repositorio y subirlo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-2-crear-rama-cambio-y-merge" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 2: Crear rama, cambio y merge
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Crear rama, cambio y merge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-3-ver-el-historial" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 3: Ver el historial
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Ver el historial">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-gitignore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: .gitignore
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: .gitignore">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4683,109 +4593,62 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-7">Ejercicios resueltos — Capítulo 7<a class="headerlink" href="#ejercicios-resueltos-capitulo-7" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/07-git/">Capítulo original</a></p>
-<h2 id="ejercicio-1-crear-un-repositorio-y-subirlo">Ejercicio 1: Crear un repositorio y subirlo<a class="headerlink" href="#ejercicio-1-crear-un-repositorio-y-subirlo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un repositorio nuevo en GitHub y súbelo desde tu ordenador.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># En GitHub: crear repositorio vacío (sin README, sin .gitignore)</span>
-
-<span class="c1"># En local:</span>
-mkdir<span class="w"> </span>mi-proyecto<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mi-proyecto
-git<span class="w"> </span>init
-git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"# Mi proyecto"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
-git<span class="w"> </span>add<span class="w"> </span>README.md
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: primer commit"</span>
-
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/TU_USUARIO/mi-proyecto.git
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>git init</code> → crea el repositorio local.
-- <code>git branch -M main</code> → renombra la rama a <code>main</code> (estándar actual).
-- <code>git push -u origin main</code> → sube y establece el upstream.</p>
-<hr />
-<h2 id="ejercicio-2-crear-rama-cambio-y-merge">Ejercicio 2: Crear rama, cambio y merge<a class="headerlink" href="#ejercicio-2-crear-rama-cambio-y-merge" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una rama, haz un cambio, fusiónala con <code>main</code>.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/saludo
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hola"</span><span class="w"> </span>&gt;<span class="w"> </span>saludo.txt
-git<span class="w"> </span>add<span class="w"> </span>saludo.txt
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: añadir saludo"</span>
-
-git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>merge<span class="w"> </span>feature/saludo
-git<span class="w"> </span>push
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>-b</code> → crea y cambia a la rama nueva.
-- El merge se hace desde <code>main</code> (la rama destino).
-- Después puedes borrar la rama: <code>git branch -d feature/saludo</code>.</p>
-<hr />
-<h2 id="ejercicio-3-ver-el-historial">Ejercicio 3: Ver el historial<a class="headerlink" href="#ejercicio-3-ver-el-historial" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Practica <code>git log --graph --oneline --all</code>.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--all
-</code></pre></div>
-<p>Salida típica:</p>
-<div class="highlight"><pre><span></span><code>* 3a4b5c6 (HEAD -&gt; main) feat: añadir saludo
-* 1f2e3d4 chore: primer commit
-</code></pre></div>
-<p>Con ramas y merges se ve más útil:</p>
-<div class="highlight"><pre><span></span><code>*   merge commit
-|\
-| * feat: nueva funcionalidad
-|/
-* chore: base
-</code></pre></div>
-<hr />
-<h2 id="ejercicio-4-gitignore">Ejercicio 4: <code>.gitignore</code><a class="headerlink" href="#ejercicio-4-gitignore" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un <code>.gitignore</code> que excluya <code>node_modules/</code> y <code>.env</code>.</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<p>Archivo <code>.gitignore</code>:</p>
-<div class="highlight"><pre><span></span><code># Dependencias
-node_modules/
-
-# Variables de entorno
-.env
-.env.local
-
-# Sistema
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-
-# Build
-dist/
-build/
-</code></pre></div>
-<p><strong>Comandos para aplicarlo:</strong></p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.gitignore
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: añadir .gitignore"</span>
-git<span class="w"> </span>push
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Si ya has subido algo por error</p>
-<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>archivo-indeseado.txt
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: quitar archivo del repo"</span>
-</code></pre></div>
-El <code>--cached</code> mantiene el archivo en disco pero lo quita del control de versiones.</p>
+<h1 id="07-git">07 — Git<a class="headerlink" href="#07-git" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica los comandos básicos de Git.</p>
 </div>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/07-git/">Capítulo original</a></p>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Simula el flujo básico de Git:</p>
+<ol>
+<li>Inicializa un repositorio.</li>
+<li>Crea un archivo `index.html`.</li>
+<li>Haz un commit.</li>
+<li>Crea una rama `feature`.</li>
+<li>Añade un archivo `style.css` y haz commit.</li>
+<li>Fusiona la rama en `main`.</li>
+</ol>
+<hr />
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```bash</p>
+<h1 id="1-inicializar">1. Inicializar<a class="headerlink" href="#1-inicializar" title="Permanent link">&para;</a></h1>
+<p>git init
+git config user.name "Tu Nombre"
+git config user.email "tu@email.com"</p>
+<h1 id="2-crear-archivo-y-commit">2. Crear archivo y commit<a class="headerlink" href="#2-crear-archivo-y-commit" title="Permanent link">&para;</a></h1>
+<p>echo "<h1>Hola</h1>" &gt; index.html
+git add index.html
+git commit -m "feat: añadir index.html"</p>
+<h1 id="3-rama">3. Rama<a class="headerlink" href="#3-rama" title="Permanent link">&para;</a></h1>
+<p>git checkout -b feature</p>
+<h1 id="4-anadir-css">4. Añadir CSS<a class="headerlink" href="#4-anadir-css" title="Permanent link">&para;</a></h1>
+<p>echo "h1 { color: red; }" &gt; style.css
+git add style.css
+git commit -m "feat: añadir estilos"</p>
+<h1 id="5-volver-a-main-y-fusionar">5. Volver a main y fusionar<a class="headerlink" href="#5-volver-a-main-y-fusionar" title="Permanent link">&para;</a></h1>
+<p>git checkout main
+git merge feature
+```</p>
+<hr />
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`git init`: crea un repositorio vacío.</li>
+<li>`git add`: añade al staging.</li>
+<li>`git commit -m`: crea un commit.</li>
+<li>`git checkout -b`: crea y cambia a una rama.</li>
+<li>`git merge`: fusiona ramas.</li>
+</ul>
+<hr />
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Sube el repositorio a GitHub con `git remote add` y `git push`.</li>
+<li>[ ] Crea un conflicto y resuélvelo.</li>
+<li>[ ] Usa `git log --oneline --graph` para ver el historial.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="../06-formularios/">← Ejercicio 06</a>
+<a class="md-button md-button--primary" href="../08-apis/">Ir al ejercicio 08 →</a></p>
 
 
 

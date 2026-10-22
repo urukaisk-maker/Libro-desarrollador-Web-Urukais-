@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-9" class="md-skip">
+        <a href="#09-despliegue" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3507,114 +3507,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-subir-a-github-pages" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Subir a GitHub Pages
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Subir a GitHub Pages">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-2-desplegar-en-netlify" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 2: Desplegar en Netlify
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Desplegar en Netlify">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-3-github-action-de-lint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 3: GitHub Action de lint
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: GitHub Action de lint">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ejercicio-4-dominio-propio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 4: Dominio propio
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 4: Dominio propio">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4683,95 +4593,59 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-9">Ejercicios resueltos — Capítulo 9<a class="headerlink" href="#ejercicios-resueltos-capitulo-9" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/09-despliegue/">Capítulo original</a></p>
-<h2 id="ejercicio-1-subir-a-github-pages">Ejercicio 1: Subir a GitHub Pages<a class="headerlink" href="#ejercicio-1-subir-a-github-pages" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Sube un proyecto simple a GitHub Pages.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
+<h1 id="09-despliegue">09 — Despliegue<a class="headerlink" href="#09-despliegue" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica el despliegue de una web estática en GitHub Pages.</p>
+</div>
+<hr />
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Crea el repo en GitHub y sube tu código.</li>
+<li>Crea un repositorio en GitHub.</li>
+<li>Sube un `index.html` con un "Hola, mundo".</li>
+<li>Activa GitHub Pages.</li>
+<li>Verifica que la web es accesible.</li>
+</ol>
+<hr />
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```bash</p>
+<h1 id="1-crear-repo-local">1. Crear repo local<a class="headerlink" href="#1-crear-repo-local" title="Permanent link">&para;</a></h1>
+<p>mkdir mi-web &amp;&amp; cd mi-web
+echo "<h1>Hola, mundo</h1>" &gt; index.html</p>
+<h1 id="2-inicializar-git">2. Inicializar git<a class="headerlink" href="#2-inicializar-git" title="Permanent link">&para;</a></h1>
+<p>git init
+git add index.html
+git commit -m "feat: primera versión"</p>
+<h1 id="3-crear-repo-remoto-en-github-y-conectar">3. Crear repo remoto en GitHub y conectar<a class="headerlink" href="#3-crear-repo-remoto-en-github-y-conectar" title="Permanent link">&para;</a></h1>
+<p>git remote add origin https://github.com/tu-usuario/mi-web.git
+git branch -M main
+git push -u origin main
+```</p>
+<p><strong>En GitHub</strong>:</p>
+<ol>
 <li>Settings → Pages.</li>
-<li><strong>Source</strong>: <code>Deploy from a branch</code>.</li>
-<li><strong>Branch</strong>: <code>main</code> / <code>/ (root)</code>.</li>
+<li>Source: Deploy from a branch.</li>
+<li>Branch: main, carpeta / (root).</li>
 <li>Save.</li>
-<li>En 1-2 min, tu web está en <code>https://TU_USUARIO.github.io/TU_REPO/</code>.</li>
 </ol>
-<p><strong>Ejemplo de proyecto mínimo:</strong></p>
-<div class="highlight"><pre><span></span><code>mi-web/
-├── index.html
-├── estilos.css
-└── app.js
-</code></pre></div>
+<p>Tu web estará en `https://tu-usuario.github.io/mi-web/`.</p>
 <hr />
-<h2 id="ejercicio-2-desplegar-en-netlify">Ejercicio 2: Desplegar en Netlify<a class="headerlink" href="#ejercicio-2-desplegar-en-netlify" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Conecta un repositorio a Netlify.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Regístrate en <a href="https://netlify.com">netlify.com</a> con GitHub.</li>
-<li><strong>Add new site</strong> → <strong>Import an existing project</strong>.</li>
-<li>Elige el repositorio.</li>
-<li>Configura:</li>
-<li><strong>Build command</strong>: (vacío si es estático puro)</li>
-<li><strong>Publish directory</strong>: <code>.</code> o <code>dist</code></li>
-<li><strong>Deploy site</strong>.</li>
-</ol>
-<p>Cada push a <code>main</code> dispara un nuevo deploy automáticamente.</p>
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>GitHub Pages aloja sitios estáticos gratis.</li>
+<li>Necesitas un repositorio público (o Pro para privados).</li>
+<li>La rama y carpeta se configuran en Settings → Pages.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-3-github-action-de-lint">Ejercicio 3: GitHub Action de lint<a class="headerlink" href="#ejercicio-3-github-action-de-lint" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade una GitHub Action que ejecute un linter en cada push.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<p><code>.github/workflows/lint.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint</span>
-
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
-
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run lint</span>
-</code></pre></div>
-<p><strong><code>package.json</code> con el script:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un dominio personalizado.</li>
+<li>[ ] Añade un archivo `CNAME`.</li>
+<li>[ ] Configura un workflow de GitHub Actions para desplegar automáticamente.</li>
+</ul>
 <hr />
-<h2 id="ejercicio-4-dominio-propio">Ejercicio 4: Dominio propio<a class="headerlink" href="#ejercicio-4-dominio-propio" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura un dominio propio (si tienes uno).</p>
-</blockquote>
-<h3 id="solucion_3">Solución<a class="headerlink" href="#solucion_3" title="Permanent link">&para;</a></h3>
-<p><strong>En GitHub Pages:</strong></p>
-<ol>
-<li>Settings → Pages → Custom domain → escribe <code>tudominio.com</code>.</li>
-<li>En tu registrador, añade:</li>
-<li><strong>CNAME</strong> <code>www</code> → <code>tu-usuario.github.io</code></li>
-<li><strong>A</strong> <code>@</code> → <code>185.199.108.153</code> (y los otros 3).</li>
-<li>Espera la verificación (5 min - 24 h).</li>
-<li>Activa <strong>Enforce HTTPS</strong>.</li>
-</ol>
-<hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/09-despliegue/">Capítulo original</a></p>
+<p><a class="md-button" href="../08-apis/">← Ejercicio 08</a>
+<a class="md-button md-button--primary" href="../10-proyecto-final/">Ir al ejercicio 10 →</a></p>
 
 
 

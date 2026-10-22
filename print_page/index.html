@@ -20243,527 +20243,327 @@ body {
 </ul>
 <hr />
 <p><a class="md-button" href="#ejercicios-04-javascript">← Ejercicio 04</a>
-<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-06-formularios" heading-number="24.7"><h1 id="ejercicios-06-formularios-ejercicios-resueltos-capitulo-6">Ejercicios resueltos — Capítulo 6<a class="headerlink" href="#ejercicios-06-formularios-ejercicios-resueltos-capitulo-6" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-06-formularios">Capítulo original</a></p>
-<h2 id="ejercicios-06-formularios-ejercicio-1-formulario-de-contacto">Ejercicio 1: Formulario de contacto<a class="headerlink" href="#ejercicios-06-formularios-ejercicio-1-formulario-de-contacto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un formulario de contacto con nombre, email y mensaje.</p>
-</blockquote>
-<h3 id="ejercicios-06-formularios-solucion">Solución<a class="headerlink" href="#ejercicios-06-formularios-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/enviar"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"2"</span> <span class="na">maxlength</span><span class="o">=</span><span class="s">"50"</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"mensaje"</span><span class="p">&gt;</span>Mensaje<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"10"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- Cada <code>&lt;input&gt;</code> con su <code>&lt;label&gt;</code> asociado por <code>for</code>/<code>id</code>.
-- <code>required</code> → validación nativa.
-- <code>minlength</code> y <code>maxlength</code> → limitan la longitud.</p>
-<hr />
-<h2 id="ejercicios-06-formularios-ejercicio-2-validacion-de-email-obligatoria">Ejercicio 2: Validación de email obligatoria<a class="headerlink" href="#ejercicios-06-formularios-ejercicio-2-validacion-de-email-obligatoria" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade validación para que el email sea obligatorio.</p>
-</blockquote>
-<h3 id="ejercicios-06-formularios-solucion_1">Solución<a class="headerlink" href="#ejercicios-06-formularios-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
-  <span class="na">type</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">id</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">name</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">required</span>
-  <span class="na">placeholder</span><span class="o">=</span><span class="s">"tu@email.com"</span>
-  <span class="na">pattern</span><span class="o">=</span><span class="s">"[^@\s]+@[^@\s]+\.[^@\s]+"</span>
-  <span class="na">title</span><span class="o">=</span><span class="s">"Introduce un email válido"</span>
-<span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>type="email"</code> → el navegador valida el formato.
-- <code>pattern</code> → expresión regular adicional.
-- <code>title</code> → mensaje de error personalizado.</p>
-<div class="admonition warning">
-<p class="admonition-title">Valida también en el servidor</p>
-<p>La validación del navegador es solo para UX. <strong>Nunca</strong> confíes en ella como seguridad. Valida siempre en el backend.</p>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-06-formularios" heading-number="24.7"><h1 id="ejercicios-06-formularios-06-formularios">06 — Formularios<a class="headerlink" href="#ejercicios-06-formularios-06-formularios" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la creación de formularios accesibles.</p>
 </div>
 <hr />
-<h2 id="ejercicios-06-formularios-ejercicio-3-mostrar-datos-en-consola">Ejercicio 3: Mostrar datos en consola<a class="headerlink" href="#ejercicios-06-formularios-ejercicio-3-mostrar-datos-en-consola" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra en consola los datos al enviar.</p>
-</blockquote>
-<h3 id="ejercicios-06-formularios-solucion_2">Solución<a class="headerlink" href="#ejercicios-06-formularios-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"mi-form"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mi-form'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FormData</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">objeto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">datos</span><span class="p">.</span><span class="nx">entries</span><span class="p">());</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Datos del formulario:'</span><span class="p">,</span><span class="w"> </span><span class="nx">objeto</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>e.preventDefault()</code> → evita el envío por defecto.
-- <code>FormData</code> → recoge todos los campos.
-- <code>Object.fromEntries()</code> → convierte a objeto JS.</p>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-06-formularios">Capítulo original</a></p></section><section class="print-page" id="ejercicios-07-git" heading-number="24.8"><h1 id="ejercicios-07-git-ejercicios-resueltos-capitulo-7">Ejercicios resueltos — Capítulo 7<a class="headerlink" href="#ejercicios-07-git-ejercicios-resueltos-capitulo-7" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-07-git">Capítulo original</a></p>
-<h2 id="ejercicios-07-git-ejercicio-1-crear-un-repositorio-y-subirlo">Ejercicio 1: Crear un repositorio y subirlo<a class="headerlink" href="#ejercicios-07-git-ejercicio-1-crear-un-repositorio-y-subirlo" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un repositorio nuevo en GitHub y súbelo desde tu ordenador.</p>
-</blockquote>
-<h3 id="ejercicios-07-git-solucion">Solución<a class="headerlink" href="#ejercicios-07-git-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># En GitHub: crear repositorio vacío (sin README, sin .gitignore)</span>
-
-<span class="c1"># En local:</span>
-mkdir<span class="w"> </span>mi-proyecto<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mi-proyecto
-git<span class="w"> </span>init
-git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"# Mi proyecto"</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
-git<span class="w"> </span>add<span class="w"> </span>README.md
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: primer commit"</span>
-
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/TU_USUARIO/mi-proyecto.git
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>git init</code> → crea el repositorio local.
-- <code>git branch -M main</code> → renombra la rama a <code>main</code> (estándar actual).
-- <code>git push -u origin main</code> → sube y establece el upstream.</p>
-<hr />
-<h2 id="ejercicios-07-git-ejercicio-2-crear-rama-cambio-y-merge">Ejercicio 2: Crear rama, cambio y merge<a class="headerlink" href="#ejercicios-07-git-ejercicio-2-crear-rama-cambio-y-merge" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea una rama, haz un cambio, fusiónala con <code>main</code>.</p>
-</blockquote>
-<h3 id="ejercicios-07-git-solucion_1">Solución<a class="headerlink" href="#ejercicios-07-git-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/saludo
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hola"</span><span class="w"> </span>&gt;<span class="w"> </span>saludo.txt
-git<span class="w"> </span>add<span class="w"> </span>saludo.txt
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: añadir saludo"</span>
-
-git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>merge<span class="w"> </span>feature/saludo
-git<span class="w"> </span>push
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>-b</code> → crea y cambia a la rama nueva.
-- El merge se hace desde <code>main</code> (la rama destino).
-- Después puedes borrar la rama: <code>git branch -d feature/saludo</code>.</p>
-<hr />
-<h2 id="ejercicios-07-git-ejercicio-3-ver-el-historial">Ejercicio 3: Ver el historial<a class="headerlink" href="#ejercicios-07-git-ejercicio-3-ver-el-historial" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Practica <code>git log --graph --oneline --all</code>.</p>
-</blockquote>
-<h3 id="ejercicios-07-git-solucion_2">Solución<a class="headerlink" href="#ejercicios-07-git-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--all
-</code></pre></div>
-<p>Salida típica:</p>
-<div class="highlight"><pre><span></span><code>* 3a4b5c6 (HEAD -&gt; main) feat: añadir saludo
-* 1f2e3d4 chore: primer commit
-</code></pre></div>
-<p>Con ramas y merges se ve más útil:</p>
-<div class="highlight"><pre><span></span><code>*   merge commit
-|\
-| * feat: nueva funcionalidad
-|/
-* chore: base
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-07-git-ejercicio-4-gitignore">Ejercicio 4: <code>.gitignore</code><a class="headerlink" href="#ejercicios-07-git-ejercicio-4-gitignore" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un <code>.gitignore</code> que excluya <code>node_modules/</code> y <code>.env</code>.</p>
-</blockquote>
-<h3 id="ejercicios-07-git-solucion_3">Solución<a class="headerlink" href="#ejercicios-07-git-solucion_3" title="Permanent link">&para;</a></h3>
-<p>Archivo <code>.gitignore</code>:</p>
-<div class="highlight"><pre><span></span><code># Dependencias
-node_modules/
-
-# Variables de entorno
-.env
-.env.local
-
-# Sistema
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-
-# Build
-dist/
-build/
-</code></pre></div>
-<p><strong>Comandos para aplicarlo:</strong></p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.gitignore
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: añadir .gitignore"</span>
-git<span class="w"> </span>push
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Si ya has subido algo por error</p>
-<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>archivo-indeseado.txt
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: quitar archivo del repo"</span>
-</code></pre></div>
-El <code>--cached</code> mantiene el archivo en disco pero lo quita del control de versiones.</p>
-</div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-07-git">Capítulo original</a></p></section><section class="print-page" id="ejercicios-08-apis" heading-number="24.9"><h1 id="ejercicios-08-apis-ejercicios-resueltos-capitulo-8">Ejercicios resueltos — Capítulo 8<a class="headerlink" href="#ejercicios-08-apis-ejercicios-resueltos-capitulo-8" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-08-apis">Capítulo original</a></p>
-<h2 id="ejercicios-08-apis-ejercicio-1-lista-de-usuarios">Ejercicio 1: Lista de usuarios<a class="headerlink" href="#ejercicios-08-apis-ejercicio-1-lista-de-usuarios" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra una lista de usuarios de <code>jsonplaceholder.typicode.com/users</code>.</p>
-</blockquote>
-<h3 id="ejercicios-08-apis-solucion">Solución<a class="headerlink" href="#ejercicios-08-apis-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"lista"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarUsuarios</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/users'</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lista'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">usuarios</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;li&gt;&lt;strong&gt;</span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/strong&gt; — </span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">email</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">cargarUsuarios</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Cuidado con <code>innerHTML</code></p>
-<p>Aquí <code>innerHTML</code> es seguro porque los datos vienen de una API fiable. Con datos del usuario, usa <code>textContent</code> o escapa el HTML.</p>
-</div>
-<hr />
-<h2 id="ejercicios-08-apis-ejercicio-2-buscar-usuarios-por-nombre">Ejercicio 2: Buscar usuarios por nombre<a class="headerlink" href="#ejercicios-08-apis-ejercicio-2-buscar-usuarios-por-nombre" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade un <code>input</code> para buscar usuarios por nombre.</p>
-</blockquote>
-<h3 id="ejercicios-08-apis-solucion_1">Solución<a class="headerlink" href="#ejercicios-08-apis-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"buscar"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Buscar..."</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"lista"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/users'</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">render</span><span class="p">(</span><span class="nx">usuarios</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">render</span><span class="p">(</span><span class="nx">lista</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lista'</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">lista</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;li&gt;</span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'buscar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filtrados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">usuarios</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">      </span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="nx">render</span><span class="p">(</span><span class="nx">filtrados</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">cargar</span><span class="p">();</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-08-apis-ejercicio-3-mensaje-de-cargando">Ejercicio 3: Mensaje de "Cargando…"<a class="headerlink" href="#ejercicios-08-apis-ejercicio-3-mensaje-de-cargando" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra un mensaje mientras llega la respuesta.</p>
-</blockquote>
-<h3 id="ejercicios-08-apis-solucion_2">Solución<a class="headerlink" href="#ejercicios-08-apis-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"estado"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"lista"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'estado'</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lista'</span><span class="p">);</span>
-
-<span class="w">    </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Cargando…'</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/users'</span><span class="p">);</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">lista</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">usuarios</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;li&gt;</span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">usuarios</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> usuarios cargados`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">estado</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Error: </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">cargar</span><span class="p">();</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-08-apis-ejercicio-4-manejo-de-error-404">Ejercicio 4: Manejo de error 404<a class="headerlink" href="#ejercicios-08-apis-ejercicio-4-manejo-de-error-404" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Maneja el error cuando la API devuelve 404.</p>
-</blockquote>
-<h3 id="ejercicios-08-apis-solucion_3">Solución<a class="headerlink" href="#ejercicios-08-apis-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtener</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Recurso no encontrado'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Fallo:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Prueba con URL inexistente</span>
-<span class="nx">obtener</span><span class="p">(</span><span class="s1">'https://jsonplaceholder.typicode.com/inexistente'</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-08-apis">Capítulo original</a></p></section><section class="print-page" id="ejercicios-09-despliegue" heading-number="24.10"><h1 id="ejercicios-09-despliegue-ejercicios-resueltos-capitulo-9">Ejercicios resueltos — Capítulo 9<a class="headerlink" href="#ejercicios-09-despliegue-ejercicios-resueltos-capitulo-9" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-09-despliegue">Capítulo original</a></p>
-<h2 id="ejercicios-09-despliegue-ejercicio-1-subir-a-github-pages">Ejercicio 1: Subir a GitHub Pages<a class="headerlink" href="#ejercicios-09-despliegue-ejercicio-1-subir-a-github-pages" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Sube un proyecto simple a GitHub Pages.</p>
-</blockquote>
-<h3 id="ejercicios-09-despliegue-solucion">Solución<a class="headerlink" href="#ejercicios-09-despliegue-solucion" title="Permanent link">&para;</a></h3>
+<h2 id="ejercicios-06-formularios-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-06-formularios-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un formulario de registro con:</p>
 <ol>
-<li>Crea el repo en GitHub y sube tu código.</li>
+<li>Campo de nombre.</li>
+<li>Campo de email.</li>
+<li>Campo de contraseña.</li>
+<li>Checkbox de términos.</li>
+<li>Botón de envío.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-06-formularios-solucion">💡 Solución<a class="headerlink" href="#ejercicios-06-formularios-solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<form action="/registro" method="POST">
+  <label for="ejercicios-06-formularios-nombre">Nombre:</label>
+  <input type="text" id="ejercicios-06-formularios-nombre" name="ejercicios-06-formularios-nombre" required minlength="2">
+
+  <label for="ejercicios-06-formularios-email">Email:</label>
+  <input type="email" id="ejercicios-06-formularios-email" name="ejercicios-06-formularios-email" required>
+
+  <label for="ejercicios-06-formularios-password">Contraseña:</label>
+  <input type="password" id="ejercicios-06-formularios-password" name="ejercicios-06-formularios-password" required minlength="8">
+
+  <label>
+    <input type="checkbox" name="ejercicios-06-formularios-terminos" required>
+    Acepto los términos
+  </label>
+
+  <button type="submit">Registrarse</button>
+</form>
+<p>```</p>
+<hr />
+<h2 id="ejercicios-06-formularios-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-06-formularios-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cada input debe tener un `<label>` con `for` igual al `id` del input.</li>
+<li>`required`: obligatorio.</li>
+<li>`minlength`: longitud mínima.</li>
+<li>`type="email"`: valida formato de email.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-06-formularios-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-06-formularios-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un campo de teléfono con `type="tel"`.</li>
+<li>[ ] Añade un select de país.</li>
+<li>[ ] Valida la contraseña con JS en tiempo real.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-05-responsive">← Ejercicio 05</a>
+<a class="md-button md-button--primary" href="#ejercicios-07-git">Ir al ejercicio 07 →</a></p></section><section class="print-page" id="ejercicios-07-git" heading-number="24.8"><h1 id="ejercicios-07-git-07-git">07 — Git<a class="headerlink" href="#ejercicios-07-git-07-git" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica los comandos básicos de Git.</p>
+</div>
+<hr />
+<h2 id="ejercicios-07-git-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-07-git-objetivo" title="Permanent link">&para;</a></h2>
+<p>Simula el flujo básico de Git:</p>
+<ol>
+<li>Inicializa un repositorio.</li>
+<li>Crea un archivo `index.html`.</li>
+<li>Haz un commit.</li>
+<li>Crea una rama `feature`.</li>
+<li>Añade un archivo `style.css` y haz commit.</li>
+<li>Fusiona la rama en `main`.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-07-git-solucion">💡 Solución<a class="headerlink" href="#ejercicios-07-git-solucion" title="Permanent link">&para;</a></h2>
+<p>```bash</p>
+<h1 id="ejercicios-07-git-1-inicializar">1. Inicializar<a class="headerlink" href="#ejercicios-07-git-1-inicializar" title="Permanent link">&para;</a></h1>
+<p>git init
+git config user.name "Tu Nombre"
+git config user.email "tu@email.com"</p>
+<h1 id="ejercicios-07-git-2-crear-archivo-y-commit">2. Crear archivo y commit<a class="headerlink" href="#ejercicios-07-git-2-crear-archivo-y-commit" title="Permanent link">&para;</a></h1>
+<p>echo "<h1>Hola</h1>" &gt; index.html
+git add index.html
+git commit -m "feat: añadir index.html"</p>
+<h1 id="ejercicios-07-git-3-rama">3. Rama<a class="headerlink" href="#ejercicios-07-git-3-rama" title="Permanent link">&para;</a></h1>
+<p>git checkout -b feature</p>
+<h1 id="ejercicios-07-git-4-anadir-css">4. Añadir CSS<a class="headerlink" href="#ejercicios-07-git-4-anadir-css" title="Permanent link">&para;</a></h1>
+<p>echo "h1 { color: red; }" &gt; style.css
+git add style.css
+git commit -m "feat: añadir estilos"</p>
+<h1 id="ejercicios-07-git-5-volver-a-main-y-fusionar">5. Volver a main y fusionar<a class="headerlink" href="#ejercicios-07-git-5-volver-a-main-y-fusionar" title="Permanent link">&para;</a></h1>
+<p>git checkout main
+git merge feature
+```</p>
+<hr />
+<h2 id="ejercicios-07-git-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-07-git-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`git init`: crea un repositorio vacío.</li>
+<li>`git add`: añade al staging.</li>
+<li>`git commit -m`: crea un commit.</li>
+<li>`git checkout -b`: crea y cambia a una rama.</li>
+<li>`git merge`: fusiona ramas.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-07-git-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-07-git-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Sube el repositorio a GitHub con `git remote add` y `git push`.</li>
+<li>[ ] Crea un conflicto y resuélvelo.</li>
+<li>[ ] Usa `git log --oneline --graph` para ver el historial.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-06-formularios">← Ejercicio 06</a>
+<a class="md-button md-button--primary" href="#ejercicios-08-apis">Ir al ejercicio 08 →</a></p></section><section class="print-page" id="ejercicios-08-apis" heading-number="24.9"><h1 id="ejercicios-08-apis-08-apis">08 — APIs<a class="headerlink" href="#ejercicios-08-apis-08-apis" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica el consumo de APIs con `fetch`.</p>
+</div>
+<hr />
+<h2 id="ejercicios-08-apis-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-08-apis-objetivo" title="Permanent link">&para;</a></h2>
+<p>Consume la API pública de JSONPlaceholder (`https://jsonplaceholder.typicode.com/posts`) y muestra los títulos de los primeros 5 posts.</p>
+<hr />
+<h2 id="ejercicios-08-apis-solucion">💡 Solución<a class="headerlink" href="#ejercicios-08-apis-solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<h1>Posts</h1>
+<ul id="posts"></ul>
+
+<script>
+  async function cargarPosts() {
+    try {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+      if (!res.ok) throw new Error('Error HTTP ' + res.status);
+      const posts = await res.json();
+
+      const lista = document.getElementById('posts');
+      posts.slice(0, 5).forEach(post => {
+        const li = document.createElement('li');
+        li.textContent = post.title;
+        lista.appendChild(li);
+      });
+    } catch (err) {
+      console.error('Algo salió mal:', err);
+    }
+  }
+
+  cargarPosts();
+</script>
+<p>```</p>
+<hr />
+<h2 id="ejercicios-08-apis-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-08-apis-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>`fetch()`: hace peticiones HTTP.</li>
+<li>`await`: espera la respuesta.</li>
+<li>`res.ok`: comprueba si la respuesta es exitosa.</li>
+<li>`res.json()`: convierte la respuesta a objeto JS.</li>
+<li>`try/catch`: maneja errores de red.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-08-apis-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-08-apis-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Muestra también el cuerpo del post.</li>
+<li>[ ] Añade un botón para recargar.</li>
+<li>[ ] Maneja el estado de carga con un `<p>Cargando...</p>`.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-07-git">← Ejercicio 07</a>
+<a class="md-button md-button--primary" href="#ejercicios-09-despliegue">Ir al ejercicio 09 →</a></p></section><section class="print-page" id="ejercicios-09-despliegue" heading-number="24.10"><h1 id="ejercicios-09-despliegue-09-despliegue">09 — Despliegue<a class="headerlink" href="#ejercicios-09-despliegue-09-despliegue" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica el despliegue de una web estática en GitHub Pages.</p>
+</div>
+<hr />
+<h2 id="ejercicios-09-despliegue-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-09-despliegue-objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea un repositorio en GitHub.</li>
+<li>Sube un `index.html` con un "Hola, mundo".</li>
+<li>Activa GitHub Pages.</li>
+<li>Verifica que la web es accesible.</li>
+</ol>
+<hr />
+<h2 id="ejercicios-09-despliegue-solucion">💡 Solución<a class="headerlink" href="#ejercicios-09-despliegue-solucion" title="Permanent link">&para;</a></h2>
+<p>```bash</p>
+<h1 id="ejercicios-09-despliegue-1-crear-repo-local">1. Crear repo local<a class="headerlink" href="#ejercicios-09-despliegue-1-crear-repo-local" title="Permanent link">&para;</a></h1>
+<p>mkdir mi-web &amp;&amp; cd mi-web
+echo "<h1>Hola, mundo</h1>" &gt; index.html</p>
+<h1 id="ejercicios-09-despliegue-2-inicializar-git">2. Inicializar git<a class="headerlink" href="#ejercicios-09-despliegue-2-inicializar-git" title="Permanent link">&para;</a></h1>
+<p>git init
+git add index.html
+git commit -m "feat: primera versión"</p>
+<h1 id="ejercicios-09-despliegue-3-crear-repo-remoto-en-github-y-conectar">3. Crear repo remoto en GitHub y conectar<a class="headerlink" href="#ejercicios-09-despliegue-3-crear-repo-remoto-en-github-y-conectar" title="Permanent link">&para;</a></h1>
+<p>git remote add origin https://github.com/tu-usuario/mi-web.git
+git branch -M main
+git push -u origin main
+```</p>
+<p><strong>En GitHub</strong>:</p>
+<ol>
 <li>Settings → Pages.</li>
-<li><strong>Source</strong>: <code>Deploy from a branch</code>.</li>
-<li><strong>Branch</strong>: <code>main</code> / <code>/ (root)</code>.</li>
+<li>Source: Deploy from a branch.</li>
+<li>Branch: main, carpeta / (root).</li>
 <li>Save.</li>
-<li>En 1-2 min, tu web está en <code>https://TU_USUARIO.github.io/TU_REPO/</code>.</li>
 </ol>
-<p><strong>Ejemplo de proyecto mínimo:</strong></p>
-<div class="highlight"><pre><span></span><code>mi-web/
-├── index.html
-├── estilos.css
-└── app.js
-</code></pre></div>
+<p>Tu web estará en `https://tu-usuario.github.io/mi-web/`.</p>
 <hr />
-<h2 id="ejercicios-09-despliegue-ejercicio-2-desplegar-en-netlify">Ejercicio 2: Desplegar en Netlify<a class="headerlink" href="#ejercicios-09-despliegue-ejercicio-2-desplegar-en-netlify" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Conecta un repositorio a Netlify.</p>
-</blockquote>
-<h3 id="ejercicios-09-despliegue-solucion_1">Solución<a class="headerlink" href="#ejercicios-09-despliegue-solucion_1" title="Permanent link">&para;</a></h3>
+<h2 id="ejercicios-09-despliegue-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-09-despliegue-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>GitHub Pages aloja sitios estáticos gratis.</li>
+<li>Necesitas un repositorio público (o Pro para privados).</li>
+<li>La rama y carpeta se configuran en Settings → Pages.</li>
+</ul>
+<hr />
+<h2 id="ejercicios-09-despliegue-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-09-despliegue-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un dominio personalizado.</li>
+<li>[ ] Añade un archivo `CNAME`.</li>
+<li>[ ] Configura un workflow de GitHub Actions para desplegar automáticamente.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="#ejercicios-08-apis">← Ejercicio 08</a>
+<a class="md-button md-button--primary" href="#ejercicios-10-proyecto-final">Ir al ejercicio 10 →</a></p></section><section class="print-page" id="ejercicios-10-proyecto-final" heading-number="24.11"><h1 id="ejercicios-10-proyecto-final-10-portfolio">10 — Portfolio<a class="headerlink" href="#ejercicios-10-proyecto-final-10-portfolio" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Crea un portfolio sencillo con HTML semántico y CSS.</p>
+</div>
+<hr />
+<h2 id="ejercicios-10-proyecto-final-objetivo">🎯 Objetivo<a class="headerlink" href="#ejercicios-10-proyecto-final-objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un portfolio con:</p>
 <ol>
-<li>Regístrate en <a href="https://netlify.com">netlify.com</a> con GitHub.</li>
-<li><strong>Add new site</strong> → <strong>Import an existing project</strong>.</li>
-<li>Elige el repositorio.</li>
-<li>Configura:</li>
-<li><strong>Build command</strong>: (vacío si es estático puro)</li>
-<li><strong>Publish directory</strong>: <code>.</code> o <code>dist</code></li>
-<li><strong>Deploy site</strong>.</li>
-</ol>
-<p>Cada push a <code>main</code> dispara un nuevo deploy automáticamente.</p>
-<hr />
-<h2 id="ejercicios-09-despliegue-ejercicio-3-github-action-de-lint">Ejercicio 3: GitHub Action de lint<a class="headerlink" href="#ejercicios-09-despliegue-ejercicio-3-github-action-de-lint" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade una GitHub Action que ejecute un linter en cada push.</p>
-</blockquote>
-<h3 id="ejercicios-09-despliegue-solucion_2">Solución<a class="headerlink" href="#ejercicios-09-despliegue-solucion_2" title="Permanent link">&para;</a></h3>
-<p><code>.github/workflows/lint.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint</span>
-
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
-
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">lint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run lint</span>
-</code></pre></div>
-<p><strong><code>package.json</code> con el script:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="ejercicios-09-despliegue-ejercicio-4-dominio-propio">Ejercicio 4: Dominio propio<a class="headerlink" href="#ejercicios-09-despliegue-ejercicio-4-dominio-propio" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Configura un dominio propio (si tienes uno).</p>
-</blockquote>
-<h3 id="ejercicios-09-despliegue-solucion_3">Solución<a class="headerlink" href="#ejercicios-09-despliegue-solucion_3" title="Permanent link">&para;</a></h3>
-<p><strong>En GitHub Pages:</strong></p>
-<ol>
-<li>Settings → Pages → Custom domain → escribe <code>tudominio.com</code>.</li>
-<li>En tu registrador, añade:</li>
-<li><strong>CNAME</strong> <code>www</code> → <code>tu-usuario.github.io</code></li>
-<li><strong>A</strong> <code>@</code> → <code>185.199.108.153</code> (y los otros 3).</li>
-<li>Espera la verificación (5 min - 24 h).</li>
-<li>Activa <strong>Enforce HTTPS</strong>.</li>
+<li>Sección "Sobre mí".</li>
+<li>Sección "Proyectos" con 3 tarjetas.</li>
+<li>Sección "Contacto" con email.</li>
+<li>Diseño responsive.</li>
 </ol>
 <hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-09-despliegue">Capítulo original</a></p></section><section class="print-page" id="ejercicios-10-proyecto-final" heading-number="24.11"><h1 id="ejercicios-10-proyecto-final-ejercicios-resueltos-capitulo-10">Ejercicios resueltos — Capítulo 10<a class="headerlink" href="#ejercicios-10-proyecto-final-ejercicios-resueltos-capitulo-10" title="Permanent link">&para;</a></h1>
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-10-proyecto-final">Capítulo original</a></p>
-<h2 id="ejercicios-10-proyecto-final-ejercicio-1-personalizar-colores-y-tipografia">Ejercicio 1: Personalizar colores y tipografía<a class="headerlink" href="#ejercicios-10-proyecto-final-ejercicio-1-personalizar-colores-y-tipografia" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Personaliza colores y tipografía a tu gusto.</p>
-</blockquote>
-<h3 id="ejercicios-10-proyecto-final-solucion">Solución<a class="headerlink" href="#ejercicios-10-proyecto-final-solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--color-primary</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--color-accent</span><span class="p">:</span><span class="w"> </span><span class="mh">#22d3ee</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--color-bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--color-text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--font-main</span><span class="p">:</span><span class="w"> </span><span class="s1">'Inter'</span><span class="p">,</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
-<span class="p">}</span>
+<h2 id="ejercicios-10-proyecto-final-solucion">💡 Solución<a class="headerlink" href="#ejercicios-10-proyecto-final-solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Ana</title>
+  <link rel="stylesheet" href="styles.css">
 
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--font-main</span><span class="p">);</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-bg</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-text</span><span class="p">);</span>
-<span class="p">}</span>
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+<body>
+  <header>
+    <h1>Ana García</h1>
+    <p>Desarrolladora frontend</p>
+  </header>
 
-<span class="nt">a</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
-<span class="p">}</span>
+  <main>
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>Me encanta construir interfaces accesibles y rápidas.</p>
+    </section>
 
-<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">90</span><span class="kt">deg</span><span class="p">,</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">),</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-accent</span><span class="p">));</span>
-<span class="w">  </span><span class="kp">-webkit-</span><span class="k">background-clip</span><span class="p">:</span><span class="w"> </span><span class="kc">text</span><span class="p">;</span>
-<span class="w">  </span><span class="k">background-clip</span><span class="p">:</span><span class="w"> </span><span class="kc">text</span><span class="p">;</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">transparent</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="proyectos">
+        <article>
+          <h3>Lista de tareas</h3>
+          <p>App para gestionar tareas con localStorage.</p>
+        </article>
+        <article>
+          <h3>Buscador de películas</h3>
+          <p>Consume la API de OMDB.</p>
+        </article>
+        <article>
+          <h3>Clon de Twitter</h3>
+          <p>Interfaz hecha con React.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Escríbeme a <a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Ana García</p>
+  </footer>
+</body>
+</html>
+<p>```</p>
+<p>```css
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}</p>
+<p>.proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}</p>
+<p>article {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+```</p>
 <hr />
-<h2 id="ejercicios-10-proyecto-final-ejercicio-2-seccion-sobre-mi">Ejercicio 2: Sección "Sobre mí"<a class="headerlink" href="#ejercicios-10-proyecto-final-ejercicio-2-seccion-sobre-mi" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade una sección con tu foto.</p>
-</blockquote>
-<h3 id="ejercicios-10-proyecto-final-solucion_1">Solución<a class="headerlink" href="#ejercicios-10-proyecto-final-solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">"sobre-mi"</span> <span class="na">class</span><span class="o">=</span><span class="s">"sobre-mi"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/perfil.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Foto de Tu Nombre"</span> <span class="na">class</span><span class="o">=</span><span class="s">"perfil"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Sobre mí<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Soy desarrollador web con experiencia en frontend...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">sobre-mi</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">rem</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">perfil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">  </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">max-width</span><span class="o">:</span><span class="w"> </span><span class="nt">600px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">sobre-mi</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="ejercicios-10-proyecto-final-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#ejercicios-10-proyecto-final-conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>HTML semántico (`header`, `main`, `section`, `article`, `footer`).</li>
+<li>CSS Grid con `auto-fit` para responsive.</li>
+<li>Enlaces `mailto`.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-10-proyecto-final-ejercicio-3-formulario-de-contacto-con-formspree">Ejercicio 3: Formulario de contacto con Formspree<a class="headerlink" href="#ejercicios-10-proyecto-final-ejercicio-3-formulario-de-contacto-con-formspree" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un formulario de contacto funcional.</p>
-</blockquote>
-<h3 id="ejercicios-10-proyecto-final-solucion_2">Solución<a class="headerlink" href="#ejercicios-10-proyecto-final-solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"https://formspree.io/f/TU_ID"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"_replyto"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"mensaje"</span><span class="p">&gt;</span>Mensaje<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Regístrate gratis en <a href="https://formspree.io">formspree.io</a>, crea un form y sustituye <code>TU_ID</code>.</p>
+<h2 id="ejercicios-10-proyecto-final-retos-extra">🚀 Retos extra<a class="headerlink" href="#ejercicios-10-proyecto-final-retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade modo oscuro.</li>
+<li>[ ] Añade una foto de perfil.</li>
+<li>[ ] Añade animaciones sutiles al hover.</li>
+</ul>
 <hr />
-<h2 id="ejercicios-10-proyecto-final-ejercicio-4-modo-oscuro">Ejercicio 4: Modo oscuro<a class="headerlink" href="#ejercicios-10-proyecto-final-ejercicio-4-modo-oscuro" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade modo oscuro con un botón.</p>
-</blockquote>
-<h3 id="ejercicios-10-proyecto-final-solucion_3">Solución<a class="headerlink" href="#ejercicios-10-proyecto-final-solucion_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"toggle-tema"</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">"Cambiar tema"</span><span class="p">&gt;</span>🌙<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'toggle-tema'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nuevo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'dark'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'light'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'dark'</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nuevo</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nuevo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'dark'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'☀️'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'🌙'</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'tema'</span><span class="p">,</span><span class="w"> </span><span class="nx">nuevo</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="c1">// Cargar preferencia guardada</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'tema'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'light'</span><span class="p">;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">guardado</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">guardado</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'dark'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'☀️'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'🌙'</span><span class="p">;</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#ffffff</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--bg</span><span class="p">:</span><span class="w"> </span><span class="mh">#0f172a</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--text</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--bg</span><span class="p">);</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--text</span><span class="p">);</span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">,</span><span class="w"> </span><span class="kc">color</span><span class="w"> </span><span class="mi">300</span><span class="kt">ms</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-10-proyecto-final">Capítulo original</a></p></section><section class="print-page" id="ejercicios-11-css-moderno" heading-number="24.12"><h1 id="ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11">Ejercicios resueltos — Capítulo 11<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11" title="Permanent link">&para;</a></h1>
+<p><a class="md-button" href="#ejercicios-09-despliegue">← Ejercicio 09</a>
+<a class="md-button md-button--primary" href="#ejercicios">Volver al índice</a></p></section><section class="print-page" id="ejercicios-11-css-moderno" heading-number="24.12"><h1 id="ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11">Ejercicios resueltos — Capítulo 11<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicios-resueltos-capitulo-11" title="Permanent link">&para;</a></h1>
 <p><a href="#ejercicios">Volver al índice</a> · <a href="#capitulos-11-css-moderno">Capítulo original</a></p>
 <h2 id="ejercicios-11-css-moderno-ejercicio-1-sistema-de-temas-con-custom-properties">Ejercicio 1: Sistema de temas con custom properties<a class="headerlink" href="#ejercicios-11-css-moderno-ejercicio-1-sistema-de-temas-con-custom-properties" title="Permanent link">&para;</a></h2>
 <blockquote>

@@ -131,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-resueltos-capitulo-6" class="md-skip">
+        <a href="#06-formularios" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -3423,86 +3423,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-1-formulario-de-contacto" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1: Formulario de contacto
+        🎯 Objetivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicio 1: Formulario de contacto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solucion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solución
+        💡 Solución
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-2-validacion-de-email-obligatoria" class="md-nav__link">
+  <a href="#conceptos-clave" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2: Validación de email obligatoria
+        🧠 Conceptos clave
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 2: Validación de email obligatoria">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-3-mostrar-datos-en-consola" class="md-nav__link">
+  <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3: Mostrar datos en consola
+        🚀 Retos extra
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ejercicio 3: Mostrar datos en consola">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4655,88 +4615,60 @@
   
 
 
-<h1 id="ejercicios-resueltos-capitulo-6">Ejercicios resueltos — Capítulo 6<a class="headerlink" href="#ejercicios-resueltos-capitulo-6" title="Permanent link">&para;</a></h1>
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/06-formularios/">Capítulo original</a></p>
-<h2 id="ejercicio-1-formulario-de-contacto">Ejercicio 1: Formulario de contacto<a class="headerlink" href="#ejercicio-1-formulario-de-contacto" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Crea un formulario de contacto con nombre, email y mensaje.</p>
-</blockquote>
-<h3 id="solucion">Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/enviar"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"2"</span> <span class="na">maxlength</span><span class="o">=</span><span class="s">"50"</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"mensaje"</span><span class="p">&gt;</span>Mensaje<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"10"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- Cada <code>&lt;input&gt;</code> con su <code>&lt;label&gt;</code> asociado por <code>for</code>/<code>id</code>.
-- <code>required</code> → validación nativa.
-- <code>minlength</code> y <code>maxlength</code> → limitan la longitud.</p>
-<hr />
-<h2 id="ejercicio-2-validacion-de-email-obligatoria">Ejercicio 2: Validación de email obligatoria<a class="headerlink" href="#ejercicio-2-validacion-de-email-obligatoria" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Añade validación para que el email sea obligatorio.</p>
-</blockquote>
-<h3 id="solucion_1">Solución<a class="headerlink" href="#solucion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
-  <span class="na">type</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">id</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">name</span><span class="o">=</span><span class="s">"email"</span>
-  <span class="na">required</span>
-  <span class="na">placeholder</span><span class="o">=</span><span class="s">"tu@email.com"</span>
-  <span class="na">pattern</span><span class="o">=</span><span class="s">"[^@\s]+@[^@\s]+\.[^@\s]+"</span>
-  <span class="na">title</span><span class="o">=</span><span class="s">"Introduce un email válido"</span>
-<span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>type="email"</code> → el navegador valida el formato.
-- <code>pattern</code> → expresión regular adicional.
-- <code>title</code> → mensaje de error personalizado.</p>
-<div class="admonition warning">
-<p class="admonition-title">Valida también en el servidor</p>
-<p>La validación del navegador es solo para UX. <strong>Nunca</strong> confíes en ella como seguridad. Valida siempre en el backend.</p>
+<h1 id="06-formularios">06 — Formularios<a class="headerlink" href="#06-formularios" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Ejercicio resuelto</p>
+<p>Practica la creación de formularios accesibles.</p>
 </div>
 <hr />
-<h2 id="ejercicio-3-mostrar-datos-en-consola">Ejercicio 3: Mostrar datos en consola<a class="headerlink" href="#ejercicio-3-mostrar-datos-en-consola" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Muestra en consola los datos al enviar.</p>
-</blockquote>
-<h3 id="solucion_2">Solución<a class="headerlink" href="#solucion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"mi-form"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mi-form'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FormData</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">objeto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">datos</span><span class="p">.</span><span class="nx">entries</span><span class="p">());</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Datos del formulario:'</span><span class="p">,</span><span class="w"> </span><span class="nx">objeto</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p><strong>Explicación:</strong>
-- <code>e.preventDefault()</code> → evita el envío por defecto.
-- <code>FormData</code> → recoge todos los campos.
-- <code>Object.fromEntries()</code> → convierte a objeto JS.</p>
+<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Crea un formulario de registro con:</p>
+<ol>
+<li>Campo de nombre.</li>
+<li>Campo de email.</li>
+<li>Campo de contraseña.</li>
+<li>Checkbox de términos.</li>
+<li>Botón de envío.</li>
+</ol>
 <hr />
-<p><a href="../">Volver al índice</a> · <a href="../../capitulos/06-formularios/">Capítulo original</a></p>
+<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
+<p>```html</p>
+<form action="/registro" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required minlength="2">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="password">Contraseña:</label>
+  <input type="password" id="password" name="password" required minlength="8">
+
+  <label>
+    <input type="checkbox" name="terminos" required>
+    Acepto los términos
+  </label>
+
+  <button type="submit">Registrarse</button>
+</form>
+<p>```</p>
+<hr />
+<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cada input debe tener un `<label>` con `for` igual al `id` del input.</li>
+<li>`required`: obligatorio.</li>
+<li>`minlength`: longitud mínima.</li>
+<li>`type="email"`: valida formato de email.</li>
+</ul>
+<hr />
+<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Añade un campo de teléfono con `type="tel"`.</li>
+<li>[ ] Añade un select de país.</li>
+<li>[ ] Valida la contraseña con JS en tiempo real.</li>
+</ul>
+<hr />
+<p><a class="md-button" href="../05-responsive/">← Ejercicio 05</a>
+<a class="md-button md-button--primary" href="../07-git/">Ir al ejercicio 07 →</a></p>
 
 
 
