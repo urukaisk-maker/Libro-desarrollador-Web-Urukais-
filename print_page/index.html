@@ -19263,46 +19263,323 @@ Micro-frontends:    N apps pequeñas, N equipos, N despliegues
 <hr />
 <h2 id="capitulos-37-ia-generativa-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-37-ia-generativa-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-38-seguridad-avanzada">Ir al Capítulo 38 — Seguridad Web Avanzada</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-38-seguridad-avanzada" heading-number="22.8"><h1 id="capitulos-38-seguridad-avanzada-capitulo-38-seguridad-web-avanzada">Capítulo 38 — Seguridad Web Avanzada<a class="headerlink" href="#capitulos-38-seguridad-avanzada-capitulo-38-seguridad-web-avanzada" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-38-seguridad-avanzada-introduccion">Introducción<a class="headerlink" href="#capitulos-38-seguridad-avanzada-introduccion" title="Permanent link">&para;</a></h2>
-<p>En el Capítulo 26 vimos los fundamentos de la seguridad web. Aquí vamos a profundizar en las técnicas más avanzadas que usan los profesionales para proteger aplicaciones críticas.</p>
-<h2 id="capitulos-38-seguridad-avanzada-cabeceras-de-seguridad-avanzadas">Cabeceras de Seguridad Avanzadas<a class="headerlink" href="#capitulos-38-seguridad-avanzada-cabeceras-de-seguridad-avanzadas" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-38-seguridad-avanzada-content-security-policy-csp">Content Security Policy (CSP)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-content-security-policy-csp" title="Permanent link">&para;</a></h3>
-<p>CSP es una capa adicional de seguridad que ayuda a detectar y mitigar ataques como XSS e inyección de datos.</p>
-<div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.cdn.com; style-src 'self' 'unsafe-inline'</span>
-</code></pre></div>
-<h3 id="capitulos-38-seguridad-avanzada-strict-transport-security-hsts">Strict-Transport-Security (HSTS)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-strict-transport-security-hsts" title="Permanent link">&para;</a></h3>
-<p>Fuerza a que todas las conexiones se hagan por HTTPS.</p>
-<div class="highlight"><pre><span></span><code><span class="err">Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</span>
-</code></pre></div>
-<h2 id="capitulos-38-seguridad-avanzada-autenticacion-con-webauthn">Autenticación con WebAuthn<a class="headerlink" href="#capitulos-38-seguridad-avanzada-autenticacion-con-webauthn" title="Permanent link">&para;</a></h2>
-<p>WebAuthn permite a los usuarios autenticarse con huella digital, Face ID o llaves de seguridad físicas (YubiKey), eliminando las contraseñas.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">credencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">publicKey</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">challenge</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">(</span><span class="mf">32</span><span class="p">),</span>
-<span class="w">    </span><span class="nx">rp</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Mi App'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">(</span><span class="mf">16</span><span class="p">),</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'usuario@ejemplo.com'</span><span class="p">,</span><span class="w"> </span><span class="nx">displayName</span><span class="o">:</span><span class="w"> </span><span class="s1">'Usuario'</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">pubKeyCredParams</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">alg</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">'public-key'</span><span class="w"> </span><span class="p">}]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="capitulos-38-seguridad-avanzada-rate-limiting-y-proteccion-contra-ddos">Rate Limiting y Protección contra DDoS<a class="headerlink" href="#capitulos-38-seguridad-avanzada-rate-limiting-y-proteccion-contra-ddos" title="Permanent link">&para;</a></h2>
-<p>Usa middlewares como <code>express-rate-limit</code> en el backend y soluciones como Cloudflare en el frontend.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">rateLimit</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express-rate-limit'</span><span class="p">;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/'</span><span class="p">,</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 15 minutos</span>
-<span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// 100 peticiones por IP</span>
-<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">'Demasiadas peticiones. Inténtalo más tarde.'</span>
-<span class="p">}));</span>
-</code></pre></div>
-<h2 id="capitulos-38-seguridad-avanzada-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-38-seguridad-avanzada-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Configura CSP en tu proyecto y verifica con securityheaders.com.</li>
-<li>Implementa rate limiting en una API Express.</li>
-<li>Investiga cómo funciona WebAuthn con una llave de seguridad.</li>
-</ol>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-38-seguridad-avanzada" heading-number="22.8"><h1 id="capitulos-38-seguridad-avanzada-38-seguridad-web-avanzada">38 — Seguridad Web Avanzada<a class="headerlink" href="#capitulos-38-seguridad-avanzada-38-seguridad-web-avanzada" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
+<ul>
+<li>El OWASP Top 10 en profundidad.</li>
+<li>Ataques avanzados: SSRF, XXE, prototype pollution.</li>
+<li>Content Security Policy (CSP) en producción.</li>
+<li>Gestión de secretos.</li>
+<li>Auditoría y respuesta a incidentes.</li>
+</ul>
+</div>
 <hr />
-<p>⬅️ <a href="#capitulos-37-ia-generativa">Capítulo 37 — IA Generativa</a> | ➡️ <a href="#apendices">Apéndices</a></p></section></section><section class="print-page" id="diagramas" heading-number="23"><h1 id="diagramas-diagramas">Diagramas</h1><p>cd ~/Libro-desarrollador-Web-Urukais-
+<h2 id="capitulos-38-seguridad-avanzada-por-que-seguridad-avanzada">🛡️ ¿Por qué seguridad avanzada?<a class="headerlink" href="#capitulos-38-seguridad-avanzada-por-que-seguridad-avanzada" title="Permanent link">&para;</a></h2>
+<p>La seguridad básica (HTTPS, validación, hashing) cubre el 80% de los ataques. Pero los atacantes profesionales buscan el 20% restante: configuraciones mal hechas, dependencias vulnerables, lógica de negocio rota.</p>
+<div class="admonition quote">
+<p class="admonition-title">La seguridad es una carrera armamentística</p>
+<p>Los atacantes evolucionan constantemente. Lo que hoy es seguro, mañana puede no serlo. La seguridad no es un estado, es un proceso continuo.</p>
+</div>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-owasp-top-10-2021">📋 OWASP Top 10 (2021)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-owasp-top-10-2021" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Vulnerabilidad</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><strong>Broken Access Control</strong></td>
+<td style="text-align: left;">Acceder a /admin sin ser admin</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><strong>Cryptographic Failures</strong></td>
+<td style="text-align: left;">Guardar contraseñas en texto plano</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><strong>Injection</strong></td>
+<td style="text-align: left;">SQL Injection, XSS</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><strong>Insecure Design</strong></td>
+<td style="text-align: left;">Lógica de negocio sin validar</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><strong>Security Misconfiguration</strong></td>
+<td style="text-align: left;">Debug activo en producción</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"><strong>Vulnerable Components</strong></td>
+<td style="text-align: left;">Dependencias con CVEs</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;"><strong>Authentication Failures</strong></td>
+<td style="text-align: left;">Contraseñas débiles, sin rate limit</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;"><strong>Data Integrity Failures</strong></td>
+<td style="text-align: left;">Deserialización insegura</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;"><strong>Logging Failures</strong></td>
+<td style="text-align: left;">No registrar ataques</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"><strong>SSRF</strong></td>
+<td style="text-align: left;">Server-Side Request Forgery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-ataques-avanzados">🎯 Ataques avanzados<a class="headerlink" href="#capitulos-38-seguridad-avanzada-ataques-avanzados" title="Permanent link">&para;</a></h2>
+<h3 id="capitulos-38-seguridad-avanzada-ssrf-server-side-request-forgery">SSRF (Server-Side Request Forgery)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-ssrf-server-side-request-forgery" title="Permanent link">&para;</a></h3>
+<p>El atacante hace que <strong>el servidor</strong> haga peticiones a recursos internos.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Vulnerable: fetch de una URL del usuario</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/proxy"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">text</span><span class="p">());</span>
+<span class="p">});</span>
+<span class="c1">// Ataque: /proxy?url=http://localhost:6379</span>
+
+<span class="c1">// ✅ Seguro: validar contra una allowlist</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ALLOWED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://api.ejemplo.com"</span><span class="p">];</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ALLOWED</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">origin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">"URL no permitida"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="capitulos-38-seguridad-avanzada-prototype-pollution">Prototype Pollution<a class="headerlink" href="#capitulos-38-seguridad-avanzada-prototype-pollution" title="Permanent link">&para;</a></h3>
+<p>El atacante inyecta propiedades en <code>Object.prototype</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Vulnerable</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">merge</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">target</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">source</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">target</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">merge</span><span class="p">({},</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="err">\</span><span class="nx">x27</span><span class="p">{</span><span class="s2">"__proto__"</span><span class="o">:</span><span class="p">{</span><span class="s2">"isAdmin"</span><span class="o">:</span><span class="kc">true</span><span class="p">}}</span><span class="err">\</span><span class="nx">x27</span><span class="p">));</span>
+<span class="c1">// Ahora TODOS los objetos tienen isAdmin=true</span>
+
+<span class="c1">// ✅ Seguro: usar Object.create(null) o filtrar __proto__</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">safe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="capitulos-38-seguridad-avanzada-xxe-xml-external-entity">XXE (XML External Entity)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-xxe-xml-external-entity" title="Permanent link">&para;</a></h3>
+<p>Si parseas XML sin protección, el atacante puede leer archivos del servidor.</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- Payload malicioso --&gt;
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;]&gt;
+&lt;foo&gt;&amp;xxe;&lt;/foo&gt;
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Nunca parsees XML sin protección</p>
+<p>Usa librerías con <code>resolveEntities: false</code> o, mejor, no uses XML: usa JSON.</p>
+</div>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-content-security-policy-csp">🔒 Content Security Policy (CSP)<a class="headerlink" href="#capitulos-38-seguridad-avanzada-content-security-policy-csp" title="Permanent link">&para;</a></h2>
+<p>CSP es una cabecera HTTP que restringe qué recursos puede cargar una página.</p>
+<div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy:</span>
+<span class="err">  default-src \x27self\x27;</span>
+<span class="err">  script-src \x27self\x27 https://trusted.cdn.com;</span>
+<span class="err">  style-src \x27self\x27 \x27unsafe-inline\x27;</span>
+<span class="err">  img-src \x27self\x27 data: https:;</span>
+<span class="err">  connect-src \x27self\x27 https://api.miapp.com;</span>
+<span class="err">  frame-ancestors \x27none\x27;</span>
+<span class="err">  base-uri \x27self\x27;</span>
+<span class="err">  form-action \x27self\x27;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Empieza en modo report</p>
+<p>Usa <code>Content-Security-Policy-Report-Only</code> al principio para ver qué se rompe sin bloquear nada. Cuando esté limpio, cámbialo a <code>Content-Security-Policy</code>.</p>
+</div>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-gestion-de-secretos">🔑 Gestión de secretos<a class="headerlink" href="#capitulos-38-seguridad-avanzada-gestion-de-secretos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Práctica</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Nunca en el código</strong></td>
+<td style="text-align: left;">Ni en el frontend ni en el repo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Variables de entorno</strong></td>
+<td style="text-align: left;"><code>.env</code> en local, secrets en CI/CD</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rotación periódica</strong></td>
+<td style="text-align: left;">Cambia claves cada 90 días</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Principio de menor privilegio</strong></td>
+<td style="text-align: left;">Cada servicio solo los permisos que necesita</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cifrado en reposo</strong></td>
+<td style="text-align: left;">Secrets manager (Vault, AWS Secrets Manager)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Auditoría</strong></td>
+<td style="text-align: left;">Registra quién accede a cada secreto</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># .gitignore</span>
+.env
+.env.local
+*.pem
+*.key
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Si subes un secreto a GitHub</p>
+<p>Considéralo comprometido. Rótalo inmediatamente, aunque lo borres en el siguiente commit (queda en el historial).</p>
+</div>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-auditoria-y-monitorizacion">🔍 Auditoría y monitorización<a class="headerlink" href="#capitulos-38-seguridad-avanzada-auditoria-y-monitorizacion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Snyk</strong></td>
+<td style="text-align: left;">Vulnerabilidades en dependencias</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>npm audit</strong></td>
+<td style="text-align: left;">Vulnerabilidades en npm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OWASP ZAP</strong></td>
+<td style="text-align: left;">Escáner de vulnerabilidades web</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dependabot</strong></td>
+<td style="text-align: left;">Actualizaciones automáticas de dependencias</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sentry</strong></td>
+<td style="text-align: left;">Errores en producción</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Security Headers</strong></td>
+<td style="text-align: left;">Analiza cabeceras de seguridad</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>audit
+npm<span class="w"> </span>audit<span class="w"> </span>fix
+</code></pre></div>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-38-seguridad-avanzada-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-38">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué ataque hace que el servidor haga peticiones internas?</p>
+<button class="quiz-option" data-opt="a">A) XSS</button>
+<button class="quiz-option" data-opt="b">B) SSRF</button>
+<button class="quiz-option" data-opt="c">C) CSRF</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué cabecera restringe qué recursos puede cargar una página?</p>
+<button class="quiz-option" data-opt="a">A) Content-Security-Policy</button>
+<button class="quiz-option" data-opt="b">B) Access-Control-Allow-Origin</button>
+<button class="quiz-option" data-opt="c">C) X-Frame-Options</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Dónde NO debes guardar secretos?</p>
+<button class="quiz-option" data-opt="a">A) En variables de entorno</button>
+<button class="quiz-option" data-opt="b">B) En un secrets manager</button>
+<button class="quiz-option" data-opt="c">C">En el código del frontend</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-38-seguridad-avanzada-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2038%3A%20Seguridad%20Web%20Avanzada&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2038%3A%20Seguridad%20Web%20Avanzada%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/38-seguridad-avanzada/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-has-completado-el-libro">🏆 ¡HAS COMPLETADO EL LIBRO!<a class="headerlink" href="#capitulos-38-seguridad-avanzada-has-completado-el-libro" title="Permanent link">&para;</a></h2>
+<p>Si has llegado hasta aquí, has terminado los <strong>38 capítulos</strong> del Libro del Desarrollador Web. Eso es un logro enorme. 🎉</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nivel</th>
+<th style="text-align: left;">Capítulos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">🟢 Principiante</td>
+<td style="text-align: left;">01–06</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟡 Intermedio</td>
+<td style="text-align: left;">07–10</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟠 Avanzado</td>
+<td style="text-align: left;">11–18</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔴 Profesional</td>
+<td style="text-align: left;">19–20</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟣 Experto</td>
+<td style="text-align: left;">21–25</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔵 Élite</td>
+<td style="text-align: left;">26–30</td>
+</tr>
+<tr>
+<td style="text-align: left;">🚀 Vanguardia</td>
+<td style="text-align: left;">31–38</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition quote">
+<p class="admonition-title">Enhorabuena</p>
+<p>Has pasado de no saber qué era HTML a dominar seguridad avanzada, WebAssembly, IA generativa y micro-frontends. Ahora toca <strong>construir</strong>, <strong>compartir</strong> y <strong>enseñar</strong>.</p>
+</div>
+<h3 id="capitulos-38-seguridad-avanzada-y-ahora-que">¿Y ahora qué?<a class="headerlink" href="#capitulos-38-seguridad-avanzada-y-ahora-que" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🎓 <strong>Genera tu certificado</strong> en la página de <a href="#capitulos-38-seguridad-avanzada-certificado.md">Certificado</a>.</li>
+<li>🏅 <strong>Aparece en el Hall of Fame</strong> (<a href="#capitulos-38-seguridad-avanzada-hall-of-fame.md">Hall of Fame</a>).</li>
+<li>🤝 <strong>Contribuye al proyecto</strong> (<a href="#capitulos-38-seguridad-avanzada-contribuir.md">Contribuir</a>).</li>
+<li>📣 <strong>Comparte tu logro</strong> en redes sociales.</li>
+<li>🚀 <strong>Sigue aprendiendo</strong>: la web nunca deja de evolucionar.</li>
+</ul>
+<hr />
+<h2 id="capitulos-38-seguridad-avanzada-siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#capitulos-38-seguridad-avanzada-siguientes-pasos" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-38-seguridad-avanzada-certificado.md">🎓 Generar mi certificado</a>
+<a class="md-button" href="#capitulos-38-seguridad-avanzada-hall-of-fame.md">🏅 Ver el Hall of Fame</a>
+<a class="md-button" href="#capitulos-38-seguridad-avanzada-contribuir.md">🤝 Contribuir al proyecto</a>
+<a class="md-button" href="#.">📖 Volver al índice</a></p></section></section><section class="print-page" id="diagramas" heading-number="23"><h1 id="diagramas-diagramas">Diagramas</h1><p>cd ~/Libro-desarrollador-Web-Urukais-
 python3 -c "
 contenido = '''# 📊 Galería de diagramas</p>
 <p>!!! quote \"Visualiza lo que aprendes\"
