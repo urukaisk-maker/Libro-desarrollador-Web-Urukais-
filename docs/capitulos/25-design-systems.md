@@ -1,455 +1,225 @@
-# Capítulo 25 — Design systems
-
-## Introducción
-
-Un **design system** es un conjunto de decisiones compartidas sobre diseño y código: colores, tipografía, espaciado, componentes reutilizables, patrones de interacción y reglas de uso.
-
-No es una librería de componentes. No es una guía de estilo. Es **todo junto** y, sobre todo, es un **producto vivo** que evoluciona con el equipo.
-
-Empresas como Airbnb, Shopify, GitHub, Stripe o IBM tienen design systems públicos. No es casualidad: ahorran tiempo, evitan inconsistencias y aceleran a los equipos.
-
-## ¿Por qué importa?
-
-### Sin design system
-
-- Cada desarrollador elige colores distintos.
-- Los botones tienen 8 tamaños diferentes.
-- Los espaciados son aleatorios.
-- Cada nuevo proyecto empieza de cero.
-- Diseño y desarrollo se pisan constantemente.
-
-### Con design system
-
-- **Consistencia visual** en todos los productos.
-- **Velocidad**: los componentes ya existen.
-- **Documentación viva**: el equipo sabe qué usar y cuándo.
-- **Onboarding rápido**: nuevos miembros entienden las reglas.
-- **Escalabilidad**: sirve para una web, una app y un panel.
-
-## Anatomía de un design system
-
-Un design system completo incluye:
-
-1. **Fundamentos** (design tokens): colores, tipografía, espaciado, radios, sombras.
-2. **Componentes**: botones, inputs, tarjetas, modales…
-3. **Patrones**: formularios, navegación, layouts.
-4. **Reglas de uso**: cuándo usar cada cosa.
-5. **Documentación**: guías escritas.
-6. **Código**: implementación en tu stack.
-7. **Gobernanza**: cómo evoluciona y quién decide.
-
-## Design tokens
-
-Los **tokens** son las unidades mínimas del sistema: valores con nombre.
-
-### Colores
-
-```css
-:root {
-  /* Primarios */
-  --color-primary-50:  #faf5ff;
-  --color-primary-100: #f3e8ff;
-  --color-primary-300: #d8b4fe;
-  --color-primary-500: #a855f7;
-  --color-primary-700: #7e22ce;
-  --color-primary-900: #581c87;
-
-  /* Semánticos */
-  --color-bg:      #ffffff;
-  --color-surface: #f8fafc;
-  --color-text:    #1e293b;
-  --color-muted:   #64748b;
-  --color-border:  #e2e8f0;
-
-  --color-success: #16a34a;
-  --color-warning: #d97706;
-  --color-danger:  #dc2626;
-  --color-info:    #0891b2;
-}
-```
-
-!!! tip "Tokens semánticos > tokens primitivos"
-    Usa `--color-primary-500` para definir la paleta, pero en componentes usa `--color-bg` o `--color-text`. Así puedes cambiar el tema sin tocar componentes.
-
-### Tipografía
-
-```css
-:root {
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Code", monospace;
-
-  --text-xs:   0.75rem;   /* 12px */
-  --text-sm:   0.875rem;  /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-lg:   1.125rem;  /* 18px */
-  --text-xl:   1.25rem;   /* 20px */
-  --text-2xl:  1.5rem;    /* 24px */
-  --text-3xl:  1.875rem;  /* 30px */
-  --text-4xl:  2.25rem;   /* 36px */
-
-  --leading-tight:  1.25;
-  --leading-normal: 1.5;
-  --leading-loose:  1.75;
-
-  --font-normal:   400;
-  --font-medium:   500;
-  --font-semibold: 600;
-  --font-bold:     700;
-}
-```
-
-### Espaciado
-
-Escala basada en múltiplos de 4:
-
-```css
-:root {
-  --space-1:  0.25rem;  /* 4px */
-  --space-2:  0.5rem;   /* 8px */
-  --space-3:  0.75rem;  /* 12px */
-  --space-4:  1rem;     /* 16px */
-  --space-5:  1.25rem;  /* 20px */
-  --space-6:  1.5rem;   /* 24px */
-  --space-8:  2rem;     /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-}
-```
-
-### Radios, sombras y transiciones
-
-```css
-:root {
-  --radius-sm:  4px;
-  --radius-md:  8px;
-  --radius-lg:  12px;
-  --radius-xl:  20px;
-  --radius-full: 9999px;
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
-
-  --transition-fast: 150ms ease-out;
-  --transition-base: 250ms ease-out;
-  --transition-slow: 400ms ease-out;
-}
-```
-
-## Documentar los tokens
-
-Un token sin contexto no sirve. Cada uno debería responder:
-
-- **Qué es**: un color, un espacio, una sombra.
-- **Cuándo usarlo**: en este contexto concreto.
-- **Cuándo NO usarlo**: para evitar malos usos.
-- **Ejemplo**: en el código real.
-
-Ejemplo de documentación:
-
-```markdown
-### `--color-primary-500`
-
-**Tipo**: Color · **Uso**: acciones principales.
-
-Úsalo para el fondo de botones primarios, enlaces activos y elementos destacados.
-
-**No usar** para texto largo sobre fondo blanco: no pasa contraste AA.
-
-```css
-.button-primary {
-  background: var(--color-primary-500);
-  color: white;
-}
-```
-```
-
-## Componentes
-
-Cada componente debe:
-
-- **Ser configurable** mediante props/atributos.
-- **Tener un estado por defecto**.
-- **Ser accesible** (teclado, ARIA, contraste).
-- **Estar documentado** con ejemplos.
-- **Estar testeado**.
-
-### Ejemplo: botón
-
-```css
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border: none;
-  border-radius: var(--radius-md);
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: var(--font-medium);
-  cursor: pointer;
-  transition: background var(--transition-fast), transform var(--transition-fast);
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn:focus-visible {
-  outline: 3px solid var(--color-primary-300);
-  outline-offset: 2px;
-}
-
-/* Variantes */
-.btn--primary {
-  background: var(--color-primary-500);
-  color: white;
-}
-.btn--primary:hover {
-  background: var(--color-primary-700);
-}
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-
-.btn--danger {
-  background: var(--color-danger);
-  color: white;
-}
-
-/* Tamaños */
-.btn--sm { padding: var(--space-1) var(--space-3); font-size: var(--text-sm); }
-.btn--lg { padding: var(--space-3) var(--space-6); font-size: var(--text-lg); }
-```
-
-Uso:
-
-```html
-<button class="btn btn--primary">Guardar</button>
-<button class="btn btn--secondary btn--sm">Cancelar</button>
-<button class="btn btn--danger btn--lg">Eliminar cuenta</button>
-```
-
-### Ejemplo: tarjeta
-
-```css
-.card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.card__title {
-  font-size: var(--text-xl);
-  font-weight: var(--font-semibold);
-  margin: 0 0 var(--space-2);
-}
-
-.card__body {
-  color: var(--color-muted);
-  line-height: var(--leading-normal);
-}
-```
-
-## Modo oscuro con tokens
-
-Gracias a los tokens, cambiar de tema es trivial:
-
-```css
-:root {
-  --color-bg: #ffffff;
-  --color-surface: #f8fafc;
-  --color-text: #1e293b;
-  --color-muted: #64748b;
-  --color-border: #e2e8f0;
-}
-
-[data-theme="dark"] {
-  --color-bg: #0f172a;
-  --color-surface: #1e293b;
-  --color-text: #e2e8f0;
-  --color-muted: #94a3b8;
-  --color-border: #334155;
-}
-```
-
-Cambio desde JavaScript:
-
-```javascript
-document.documentElement.dataset.theme = 'dark';
-```
-
-Todo el sitio se adapta **automáticamente** porque los componentes usan tokens semánticos.
-
-## Estructura de un design system
-
-```
-design-system/
-├── tokens/
-│   ├── colors.css
-│   ├── typography.css
-│   ├── spacing.css
-│   └── index.css
-├── components/
-│   ├── button/
-│   │   ├── button.css
-│   │   ├── button.js
-│   │   └── button.stories.js
-│   ├── input/
-│   └── card/
-├── patterns/
-│   ├── form/
-│   └── navigation/
-├── utils/
-├── docs/
-└── README.md
-```
-
-## Herramientas
-
-### Storybook
-
-El estándar para documentar y probar componentes de forma aislada.
-
-```bash
-npx storybook@latest init
-```
-
-```javascript
-// button.stories.js
-import { html } from 'lit';
-
-export default {
-  title: 'Componentes/Button',
-  argTypes: {
-    variant: { control: 'select', options: ['primary', 'secondary', 'danger'] },
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
-  },
-};
-
-const Template = ({ variant, size, label }) => html`
-  <button class="btn btn--${variant} btn--${size}">${label}</button>
-`;
-
-export const Primary = Template.bind({});
-Primary.args = { variant: 'primary', size: 'md', label: 'Guardar' };
-
-export const Danger = Template.bind({});
-Danger.args = { variant: 'danger', size: 'md', label: 'Eliminar' };
-```
-
-### Style Dictionary
-
-Convierte tokens definidos en JSON a CSS, SCSS, iOS, Android…
-
-```json
-{
-  "color": {
-    "primary": {
-      "500": { "value": "#a855f7" },
-      "700": { "value": "#7e22ce" }
-    }
-  }
-}
-```
-
-```bash
-npx style-dictionary build
-```
-
-### Chromatic
-
-Servicio de **visual regression testing** para Storybook. Detecta cambios visuales no intencionados en cada PR.
-
-## Gobernanza
-
-Un design system sin reglas se pudre. Define:
-
-- **Quién mantiene** el sistema.
-- **Cómo se proponen cambios** (issue, PR, RFC).
-- **Cómo se versiona** (SemVer: el sistema es un producto).
-- **Cómo se comunica** (changelog, newsletter interna).
-- **Cómo se mide el uso** (analytics de componentes).
-
-Un patrón común es **Figma + GitHub + Storybook**:
-
-- Diseño en Figma.
-- Tokens sincronizados a código.
-- Componentes documentados en Storybook.
-- Cambios revisados por PR.
-
-## Design systems famosos
-
-Estudia los que ya existen:
-
-- **[Material Design](https://m3.material.io/)** — Google.
-- **[Carbon](https://carbondesignsystem.com/)** — IBM.
-- **[Polaris](https://polaris.shopify.com/)** — Shopify.
-- **[Primer](https://primer.style/)** — GitHub.
-- **[Atlassian Design System](https://atlassian.design/)**.
-- **[Adobe Spectrum](https://spectrum.adobe.com/)**.
-- **[GOV.UK Design System](https://design-system.service.gov.uk/)** — referencia en accesibilidad.
-
-## Buenas prácticas
-
-- **Empieza pequeño**. No intentes cubrir todo el producto el primer día.
-- **Tokens primero**. Antes de componentes.
-- **Componentes accesibles**. Nunca sacrifiques a11y por estética.
-- **Documenta el porqué**, no solo el cómo.
-- **Versiona con SemVer**. Los cambios rompen proyectos.
-- **Mide el uso**. Si un componente no se usa, cuestiónalo.
-- **Un componente, una responsabilidad**.
-- **Consistencia > perfección**.
-- **Itera**. Un design system nunca está "terminado".
-- **Adóptalo tú primero**. Si tu propio equipo no lo usa, nadie lo hará.
-
-## Ejercicios
-
-1. Define tus tokens: 10 colores, 8 tamaños de tipografía, 8 espaciados.
-2. Aplica tokens a un componente Button con 3 variantes y 3 tamaños.
-3. Añade modo oscuro cambiando solo los tokens semánticos.
-4. Documenta un componente con Storybook (o página HTML estática).
-5. Crea una página `/design-system` en tu web con todos los componentes.
-6. Publica tus tokens con Style Dictionary en CSS y SCSS.
-7. Establece una regla: "todo color debe venir de un token".
-8. Revisa un proyecto tuyo y sustituye valores sueltos por tokens.
+# 25 — Design systems
+
+!!! abstract "Qué vas a aprender"
+    - Qué es un design system y por qué importa.
+    - Design tokens: colores, tipografía, espaciado.
+    - Componentes reutilizables.
+    - Documentación con Storybook.
+    - Gobernanza y mantenimiento.
 
 ---
 
-⬅️ [Capítulo 24 — Animaciones avanzadas](24-animaciones.md) | ➡️ [Apéndices](../apendices/index.md)
+## 🎨 ¿Qué es un design system?
+
+Un **design system** es un conjunto de **componentes reutilizables**, **guías de estilo** y **reglas** que garantizan coherencia visual y de comportamiento en un producto. No es solo una librería de componentes: es un lenguaje compartido entre diseño y desarrollo.
+
+!!! quote "Un design system es un producto, no un proyecto"
+    No se hace una vez y se olvida. Se mantiene, se documenta y se versiona como cualquier otro producto.
+
+---
+
+## 🎯 ¿Por qué usar un design system?
+
+| Ventaja | Descripción |
+| :--- | :--- |
+| **Consistencia** | Todos los botones se ven y se comportan igual |
+| **Velocidad** | Los equipos no reinventan la rueda |
+| **Escalabilidad** | Añadir una feature es más rápido |
+| **Mantenibilidad** | Cambiar un color se hace en un sitio |
+| **Comunicación** | Diseño y desarrollo hablan el mismo idioma |
+
+---
+
+## 🎨 Design tokens
+
+Los **design tokens** son los valores atómicos del sistema: colores, tipografía, espaciado, sombras, radios… Se definen una vez y se usan en todas partes.
+
+```css
+:root {
+  /* Colores */
+  --color-primary: #6a5acd;
+  --color-primary-hover: #7d6ce0;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+
+  /* Tipografía */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --text-sm: .875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+
+  /* Espaciado */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+
+  /* Radios */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.1);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.15);
+}
+```
+
+!!! tip "Nomenclatura de tokens"
+    Usa nombres **semánticos**, no visuales: `--color-primary` mejor que `--color-purple`. Si cambias el color, el nombre sigue teniendo sentido.
+
+---
+
+## 🧩 Componentes
+
+Cada componente debe:
+
+1. **Tener una API clara** (props/atributos).
+2. **Ser accesible** (teclado, ARIA, contraste).
+3. **Ser testeable** (unitario + visual).
+4. **Estar documentado** (props, ejemplos, cuándo usarlo).
+5. **Ser versionado** (cambios compatibles vs breaking).
+
+```jsx
+// Button.jsx
+export function Button({
+  children,
+  variant = "primary",
+  size = "md",
+  disabled = false,
+  onClick
+}) {
+  return (
+    <button
+      className={`btn btn--${variant} btn--${size}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+---
+
+## 📚 Storybook
+
+**Storybook** es la herramienta estándar para documentar y probar componentes de forma aislada.
+
+```bash
+npx storybook@latest init
+npm run storybook
+```
+
+```jsx
+// Button.stories.jsx
+import { Button } from "./Button";
+
+export default {
+  title: "Components/Button",
+  component: Button,
+  argTypes: {
+    variant: { control: "select", options: ["primary", "secondary"] },
+    size: { control: "select", options: ["sm", "md", "lg"] }
+  }
+};
+
+export const Primary = {
+  args: { children: "Haz clic", variant: "primary" }
+};
+
+export const Secondary = {
+  args: { children: "Cancelar", variant: "secondary" }
+};
+```
+
+!!! tip "Storybook es la documentación viva"
+    Cada componente tiene sus "stories": casos de uso reales que sirven como documentación, tests visuales y playground para diseñadores.
+
+---
+
+## 🏛️ Gobernanza
+
+Un design system sin gobernanza muere en 6 meses. Necesitas:
+
+- **Owner**: alguien responsable del sistema.
+- **Proceso de contribución**: cómo se añaden componentes nuevos.
+- **Versionado semántico**: MAJOR.MINOR.PATCH.
+- **Changelog**: qué cambia en cada versión.
+- **Deprecation policy**: cuándo y cómo se eliminan componentes.
+- **Comunicación**: canal de Slack/Discord, newsletter interna.
+
+---
+
+## ✅ Buenas prácticas
+
+- ✅ **Empieza pequeño**: 5-10 componentes bien hechos valen más que 50 a medias.
+- ✅ **Documenta cada componente**: props, ejemplos, cuándo usarlo y cuándo no.
+- ✅ **Versiona con semver**: los breaking changes deben ser raros y avisados.
+- ✅ **Testea visualmente**: Chromatic, Percy o reg-suit.
+- ✅ **Involucra a diseño**: el sistema es de ambos equipos.
+- ✅ **Mide adopción**: ¿cuántos equipos lo usan? ¿cuántos componentes se reutilizan?
+- ❌ **No lo hagas todo de golpe**: empieza por los componentes más usados.
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué son los "design tokens"?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Componentes de React</button>
-    <button class="quiz-option" data-option="b">B) Animaciones predefinidas</button>
-    <button class="quiz-option" data-option="c">C) Valores reutilizables (colores, espaciados, tipografía) que definen el sistema</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-25">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué son los design tokens?</p>
+<button class="quiz-option" data-opt="a">A) Componentes de React</button>
+<button class="quiz-option" data-opt="b">B) Valores atómicos del sistema (colores, tipografía, espaciado)</button>
+<button class="quiz-option" data-opt="c">C) Iconos SVG</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué herramienta documenta componentes de forma aislada?</p>
+<button class="quiz-option" data-opt="a">A) Storybook</button>
+<button class="quiz-option" data-opt="b">B) Figma</button>
+<button class="quiz-option" data-opt="c">C) Webpack</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué es la gobernanza de un design system?</p>
+<button class="quiz-option" data-opt="a">A) El color de los botones</button>
+<button class="quiz-option" data-opt="b">B) La documentación de componentes</button>
+<button class="quiz-option" data-opt="c">C) Las reglas de contribución, versionado y mantenimiento</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué regla CSS permite controlar el orden de precedencia sin depender de la especificidad?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) @layer</button>
-    <button class="quiz-option" data-option="b">B) @scope</button>
-    <button class="quiz-option" data-option="c">C) @container</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2025%3A%20Design%20systems&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F25-design-systems%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F25-design-systems%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2025%3A%20Design%20systems%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F25-design-systems%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/25-design-systems/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## 🏆 ¡Has terminado el Nivel Experto!
+
+Si has llegado hasta aquí, ya sabes:
+
+- Web Components nativos
+- PWA: manifest, service worker, offline
+- WebSockets: tiempo real
+- Animaciones avanzadas: CSS, WAAPI, GSAP
+- Design systems: tokens, componentes, Storybook
+
+!!! quote "Enhorabuena"
+    Has pasado de frontend a experto. Ahora toca el **Nivel Élite**: seguridad, WebAssembly, IA, WebXR y Web3.
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 26 — Seguridad web](26-seguridad.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
