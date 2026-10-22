@@ -1847,3 +1847,149 @@ body {
   color: var(--md-primary-bg-color);
   transform: translateY(-1px);
 }
+
+
+/* ===== Progreso de logros ===== */
+.logros-progreso {
+  padding: 1.5rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+.logros-progreso__bar {
+  width: 100%;
+  height: 14px;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.logros-progreso__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+  border-radius: 999px;
+  transition: width .5s ease;
+}
+.logros-progreso__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.logros-progreso__stat {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.logros-progreso__num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--md-primary-fg-color);
+}
+.logros-progreso__label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ===== Tarjetas de logros ===== */
+.logros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .85rem;
+  margin: 1rem 0 2rem;
+}
+.logro-card {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding: 1rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  opacity: .65;
+  transition: all .2s;
+}
+.logro-card--unlocked {
+  opacity: 1;
+  border-color: var(--md-primary-fg-color);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 6%, var(--md-default-bg-color));
+  box-shadow: 0 4px 16px rgba(106, 90, 205, .15);
+}
+.logro-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.logro-card__info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.logro-card__info h3 {
+  margin: 0 0 .15rem;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+.logro-card__info p {
+  margin: 0;
+  font-size: .72rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.4;
+}
+.logro-card__recompensa {
+  display: inline-block;
+  margin-top: .35rem;
+  padding: .1rem .45rem;
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 15%, transparent);
+  border-radius: 999px;
+}
+.logro-card__estado {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ===== Acciones ===== */
+.logros-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.5rem 0;
+}
+.md-button--danger {
+  background: #dc3545 !important;
+  color: #fff !important;
+}
+.md-button--danger:hover {
+  background: #b02a37 !important;
+}
+
+/* ===== Hall of Fame ===== */
+.hall-of-fame {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(106, 90, 205, .08), rgba(0, 188, 212, .08));
+  border: 1px dashed var(--md-primary-fg-color);
+  border-radius: 12px;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* ===== Stats ===== */
+.logros-stats table {
+  font-size: .82rem;
+}
+.logros-stats td:first-child {
+  font-weight: 600;
+}
+.logros-stats td:last-child {
+  text-align: right;
+  font-family: var(--md-code-font-family);
+}
+
+@media screen and (max-width: 640px) {
+  .logros-progreso__stats { grid-template-columns:

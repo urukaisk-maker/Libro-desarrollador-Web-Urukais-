@@ -1088,10 +1088,181 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tu-progreso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Tu progreso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-funciona" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 ¿Cómo funciona?
+        🎯 Cómo funciona
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logros-desbloqueables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏅 Logros desbloqueables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏅 Logros desbloqueables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principiante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Principiante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intermedio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 Intermedio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟠 Avanzado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 Profesional
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟣 Experto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔵 Élite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vanguardia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Vanguardia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logros-especiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Logros especiales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hall-of-fame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏅 Hall of Fame
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estadisticas-de-tu-progreso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Estadísticas de tu progreso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestionar-mis-logros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Gestionar mis logros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preguntas-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Preguntas frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguientes-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguientes pasos
       
     </span>
   </a>
@@ -4578,17 +4749,485 @@
 
 
 <h1 id="mis-logros">🏆 Mis Logros<a class="headerlink" href="#mis-logros" title="Permanent link">&para;</a></h1>
-<p>Aquí puedes ver tu progreso a través del libro. Tu avance se guarda automáticamente en este navegador.</p>
-<div id="achievements-dashboard">
-  <p>Cargando tus logros...</p>
+<div class="admonition quote">
+<p class="admonition-title">Aprender también es un juego</p>
+<p>Cada capítulo que completas, cada ejercicio que resuelves y cada reto que superas desbloquea un logro. Es una forma de <strong>visualizar tu progreso</strong> y mantener la motivación. Todo se guarda en tu navegador, sin cuentas ni servidores.</p>
+</div>
+<hr />
+<h2 id="tu-progreso">📊 Tu progreso<a class="headerlink" href="#tu-progreso" title="Permanent link">&para;</a></h2>
+<div class="logros-progreso">
+  <div class="logros-progreso__bar">
+    <div class="logros-progreso__fill" id="logros-progreso-fill" style="width: 0%"></div>
+  </div>
+  <div class="logros-progreso__stats">
+    <div class="logros-progreso__stat">
+      <span class="logros-progreso__num" id="logros-cap-completados">0</span>
+      <span class="logros-progreso__label">Capítulos</span>
+    </div>
+    <div class="logros-progreso__stat">
+      <span class="logros-progreso__num" id="logros-ejercicios">0</span>
+      <span class="logros-progreso__label">Ejercicios</span>
+    </div>
+    <div class="logros-progreso__stat">
+      <span class="logros-progreso__num" id="logros-retos">0</span>
+      <span class="logros-progreso__label">Retos</span>
+    </div>
+    <div class="logros-progreso__stat">
+      <span class="logros-progreso__num" id="logros-total">0</span>
+      <span class="logros-progreso__label">Logros</span>
+    </div>
+  </div>
 </div>
 
-<h2 id="como-funciona">🎯 ¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="como-funciona">🎯 Cómo funciona<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Ve a cualquier capítulo del libro.</li>
-<li>Baja hasta el final y pulsa el botón <strong>"Marcar como completado"</strong>.</li>
-<li>Vuelve a esta página para ver cómo tu barra de progreso avanza.</li>
+<li><strong>Completa</strong> un capítulo, ejercicio o reto.</li>
+<li><strong>Marca</strong> la casilla de verificación al final de la página.</li>
+<li><strong>Desbloquea</strong> el logro correspondiente.</li>
+<li><strong>Comparte</strong> tus logros en la comunidad.</li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Sin cuentas, sin servidores</p>
+<p>Todo se guarda en tu navegador con <code>localStorage</code>. No se envía nada a ningún servidor. Si borras los datos del navegador, pierdes el progreso.</p>
+</div>
+<hr />
+<h2 id="logros-desbloqueables">🏅 Logros desbloqueables<a class="headerlink" href="#logros-desbloqueables" title="Permanent link">&para;</a></h2>
+<h3 id="principiante">🟢 Principiante<a class="headerlink" href="#principiante" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="primer-paso">
+<div class="logro-card__icon">🚀</div>
+<div class="logro-card__info">
+<h3>Primer Paso</h3>
+<p>Completa el capítulo 01 — Introducción al desarrollo web</p>
+<div class="logro-card__recompensa">+10 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="primer-paso">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="bases-html">
+<div class="logro-card__icon">🌐</div>
+<div class="logro-card__info">
+<h3>Constructor de Bases</h3>
+<p>Completa los capítulos 02, 03 y 04 (HTML, CSS y JS)</p>
+<div class="logro-card__recompensa">+30 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="bases-html">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="principiante-completo">
+<div class="logro-card__icon">🟢</div>
+<div class="logro-card__info">
+<h3>Nivel Principiante</h3>
+<p>Completa los 6 capítulos del nivel principiante</p>
+<div class="logro-card__recompensa">+50 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="principiante-completo">🔒</div>
+</div>
+
+</div>
+
+<h3 id="intermedio">🟡 Intermedio<a class="headerlink" href="#intermedio" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="git-master">
+<div class="logro-card__icon">🔀</div>
+<div class="logro-card__info">
+<h3>Git Master</h3>
+<p>Completa el capítulo 07 — Git y control de versiones</p>
+<div class="logro-card__recompensa">+15 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="git-master">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="api-explorer">
+<div class="logro-card__icon">🔌</div>
+<div class="logro-card__info">
+<h3>API Explorer</h3>
+<p>Completa el capítulo 08 — Consumo de APIs con fetch</p>
+<div class="logro-card__recompensa">+15 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="api-explorer">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="intermedio-completo">
+<div class="logro-card__icon">🟡</div>
+<div class="logro-card__info">
+<h3>Nivel Intermedio</h3>
+<p>Completa los 4 capítulos del nivel intermedio</p>
+<div class="logro-card__recompensa">+40 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="intermedio-completo">🔒</div>
+</div>
+
+</div>
+
+<h3 id="avanzado">🟠 Avanzado<a class="headerlink" href="#avanzado" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="typescript">
+<div class="logro-card__icon">🔷</div>
+<div class="logro-card__info">
+<h3>TypeScript Hero</h3>
+<p>Completa el capítulo 15 — TypeScript desde cero</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="typescript">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="testing">
+<div class="logro-card__icon">🧪</div>
+<div class="logro-card__info">
+<h3>Testing Master</h3>
+<p>Completa el capítulo 16 — Testing frontend</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="testing">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="avanzado-completo">
+<div class="logro-card__icon">🟠</div>
+<div class="logro-card__info">
+<h3>Nivel Avanzado</h3>
+<p>Completa los 8 capítulos del nivel avanzado</p>
+<div class="logro-card__recompensa">+80 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="avanzado-completo">🔒</div>
+</div>
+
+</div>
+
+<h3 id="profesional">🔴 Profesional<a class="headerlink" href="#profesional" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="fullstack">
+<div class="logro-card__icon">🔴</div>
+<div class="logro-card__info">
+<h3>Full-stack</h3>
+<p>Completa el capítulo 19 — Full-stack con Node.js</p>
+<div class="logro-card__recompensa">+25 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="fullstack">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="devops">
+<div class="logro-card__icon">⚙️</div>
+<div class="logro-card__info">
+<h3>DevOps</h3>
+<p>Completa el capítulo 20 — DevOps para frontend</p>
+<div class="logro-card__recompensa">+25 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="devops">🔒</div>
+</div>
+
+</div>
+
+<h3 id="experto">🟣 Experto<a class="headerlink" href="#experto" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="web-components">
+<div class="logro-card__icon">🟣</div>
+<div class="logro-card__info">
+<h3>Web Components</h3>
+<p>Completa el capítulo 21 — Web Components</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="web-components">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="pwa">
+<div class="logro-card__icon">📱</div>
+<div class="logro-card__info">
+<h3>PWA Master</h3>
+<p>Completa el capítulo 22 — Progressive Web Apps</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="pwa">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="websockets">
+<div class="logro-card__icon">🔌</div>
+<div class="logro-card__info">
+<h3>WebSockets</h3>
+<p>Completa el capítulo 23 — WebSockets y tiempo real</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="websockets">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="experto-completo">
+<div class="logro-card__icon">🏅</div>
+<div class="logro-card__info">
+<h3>Nivel Experto</h3>
+<p>Completa los 5 capítulos del nivel experto</p>
+<div class="logro-card__recompensa">+100 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="experto-completo">🔒</div>
+</div>
+
+</div>
+
+<h3 id="elite">🔵 Élite<a class="headerlink" href="#elite" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="seguridad">
+<div class="logro-card__icon">🔒</div>
+<div class="logro-card__info">
+<h3>Seguridad Web</h3>
+<p>Completa el capítulo 26 — Seguridad web</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="seguridad">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="wasm">
+<div class="logro-card__icon">⚡</div>
+<div class="logro-card__info">
+<h3>WebAssembly</h3>
+<p>Completa el capítulo 27 — WebAssembly</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="wasm">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="ia-frontend">
+<div class="logro-card__icon">🤖</div>
+<div class="logro-card__info">
+<h3>IA en el Frontend</h3>
+<p>Completa el capítulo 28 — IA en el frontend</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="ia-frontend">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="elite-completo">
+<div class="logro-card__icon">🔵</div>
+<div class="logro-card__info">
+<h3>Nivel Élite</h3>
+<p>Completa los 5 capítulos del nivel élite</p>
+<div class="logro-card__recompensa">+100 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="elite-completo">🔒</div>
+</div>
+
+</div>
+
+<h3 id="vanguardia">🚀 Vanguardia<a class="headerlink" href="#vanguardia" title="Permanent link">&para;</a></h3>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="playwright">
+<div class="logro-card__icon">🎭</div>
+<div class="logro-card__info">
+<h3>E2E Master</h3>
+<p>Completa el capítulo 31 — Testing E2E con Playwright</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="playwright">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="edge">
+<div class="logro-card__icon">☁️</div>
+<div class="logro-card__info">
+<h3>Edge Computing</h3>
+<p>Completa el capítulo 33 — Edge Computing</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="edge">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="ia-generativa">
+<div class="logro-card__icon">✨</div>
+<div class="logro-card__info">
+<h3>IA Generativa</h3>
+<p>Completa el capítulo 37 — Introducción a la IA Generativa</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="ia-generativa">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="vanguardia-completo">
+<div class="logro-card__icon">🚀</div>
+<div class="logro-card__info">
+<h3>Nivel Vanguardia</h3>
+<p>Completa los 8 capítulos del nivel vanguardia</p>
+<div class="logro-card__recompensa">+150 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="vanguardia-completo">🔒</div>
+</div>
+
+</div>
+
+<hr />
+<h2 id="logros-especiales">🌟 Logros especiales<a class="headerlink" href="#logros-especiales" title="Permanent link">&para;</a></h2>
+<p>Estos logros no se desbloquean con capítulos, sino con <strong>constancia</strong>:</p>
+<div class="logros-grid">
+
+<div class="logro-card" data-logro="racha-7">
+<div class="logro-card__icon">🔥</div>
+<div class="logro-card__info">
+<h3>Racha de 7 días</h3>
+<p>Visita el libro 7 días consecutivos</p>
+<div class="logro-card__recompensa">+15 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="racha-7">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="racha-30">
+<div class="logro-card__icon">💎</div>
+<div class="logro-card__info">
+<h3>Racha de 30 días</h3>
+<p>Visita el libro 30 días consecutivos</p>
+<div class="logro-card__recompensa">+50 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="racha-30">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="primer-ejercicio">
+<div class="logro-card__icon">✅</div>
+<div class="logro-card__info">
+<h3>Primer Ejercicio</h3>
+<p>Completa tu primer ejercicio resuelto</p>
+<div class="logro-card__recompensa">+10 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="primer-ejercicio">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="solucionador">
+<div class="logro-card__icon">🧩</div>
+<div class="logro-card__info">
+<h3>Solucionador</h3>
+<p>Completa 10 ejercicios resueltos</p>
+<div class="logro-card__recompensa">+30 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="solucionador">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="primer-reto">
+<div class="logro-card__icon">🎯</div>
+<div class="logro-card__info">
+<h3>Retador</h3>
+<p>Completa tu primer reto semanal</p>
+<div class="logro-card__recompensa">+20 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="primer-reto">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="retos-5">
+<div class="logro-card__icon">🏆</div>
+<div class="logro-card__info">
+<h3>Cinco Retos</h3>
+<p>Completa 5 retos semanales</p>
+<div class="logro-card__recompensa">+50 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="retos-5">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="libro-completo">
+<div class="logro-card__icon">🎓</div>
+<div class="logro-card__info">
+<h3>Libro Completo</h3>
+<p>Completa los 38 capítulos del libro</p>
+<div class="logro-card__recompensa">+500 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="libro-completo">🔒</div>
+</div>
+
+<div class="logro-card" data-logro="certificado">
+<div class="logro-card__icon">📜</div>
+<div class="logro-card__info">
+<h3>Certificado</h3>
+<p>Genera tu certificado de finalización</p>
+<div class="logro-card__recompensa">+100 XP</div>
+</div>
+<div class="logro-card__estado" data-estado="certificado">🔒</div>
+</div>
+
+</div>
+
+<hr />
+<h2 id="hall-of-fame">🏅 Hall of Fame<a class="headerlink" href="#hall-of-fame" title="Permanent link">&para;</a></h2>
+<p>Aquí aparecen los nombres de los lectores que han completado el libro. ¿Serás el próximo?</p>
+<div class="hall-of-fame">
+<p>🏆 <strong>Aún no hay nadie en el Hall of Fame.</strong></p>
+<p>Completa los 38 capítulos y genera tu certificado para aparecer aquí.</p>
+<a href="certificado.md" class="md-button md-button--primary">Ir al certificado</a>
+</div>
+
+<hr />
+<h2 id="estadisticas-de-tu-progreso">📊 Estadísticas de tu progreso<a class="headerlink" href="#estadisticas-de-tu-progreso" title="Permanent link">&para;</a></h2>
+<div class="logros-stats">
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Capítulos completados</td><td id="stat-cap">0 / 38</td></tr>
+<tr><td>Ejercicios completados</td><td id="stat-ej">0 / 30</td></tr>
+<tr><td>Retos completados</td><td id="stat-retos">0 / 5</td></tr>
+<tr><td>XP total</td><td id="stat-xp">0 XP</td></tr>
+<tr><td>Nivel actual</td><td id="stat-nivel">🌱 Novato</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr />
+<h2 id="gestionar-mis-logros">⚙️ Gestionar mis logros<a class="headerlink" href="#gestionar-mis-logros" title="Permanent link">&para;</a></h2>
+<div class="logros-acciones">
+
+<button class="md-button" id="logros-exportar">📤 Exportar progreso</button>
+<button class="md-button" id="logros-importar">📥 Importar progreso</button>
+<button class="md-button md-button--danger" id="logros-resetear">🗑️ Resetear progreso</button>
+
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con el reset</p>
+<p>Si reseteas el progreso, <strong>perderás todos los logros</strong>. Esta acción no se puede deshacer. Asegúrate de exportar antes si quieres conservar una copia.</p>
+</div>
+<hr />
+<h2 id="preguntas-frecuentes">❓ Preguntas frecuentes<a class="headerlink" href="#preguntas-frecuentes" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>¿Cómo se guardan los logros?</summary>
+<p>Se guardan en tu navegador con <code>localStorage</code>. No se envían a ningún servidor. Si borras los datos del navegador, pierdes los logros.</p>
+</details>
+<details class="question">
+<summary>¿Puedo sincronizar los logros entre dispositivos?</summary>
+<p><strong>Todavía no.</strong> Es una de las features en el <a href="../roadmap/">Roadmap</a>, pero requiere un sistema de autenticación que aún no está implementado.</p>
+</details>
+<details class="question">
+<summary>¿Los logros caducan?</summary>
+<p><strong>No.</strong> Una vez desbloqueados, se quedan para siempre (hasta que resetees el progreso).</p>
+</details>
+<details class="question">
+<summary>¿Puedo compartir mis logros?</summary>
+<p><strong>Sí.</strong> Puedes compartir una captura de pantalla de esta página en redes sociales. Cuando tengas todos los logros, ¡presume de ello!</p>
+</details>
+<details class="question">
+<summary>¿Qué es el XP?</summary>
+<p>Es una medida simbólica de tu progreso. No tiene ningún valor real, pero te da una idea de cuánto has avanzado. Al final del libro, habrás acumulado más de 1.500 XP.</p>
+</details>
+<details class="question">
+<summary>¿Cómo desbloqueo los logros especiales?</summary>
+<ul>
+<li><strong>Racha de 7 días</strong>: visita el libro 7 días seguidos.</li>
+<li><strong>Racha de 30 días</strong>: visita el libro 30 días seguidos.</li>
+<li><strong>Primer ejercicio</strong>: completa tu primer ejercicio resuelto.</li>
+<li><strong>Solucionador</strong>: completa 10 ejercicios.</li>
+<li><strong>Retador</strong>: completa tu primer reto semanal.</li>
+<li><strong>Cinco retos</strong>: completa 5 retos.</li>
+<li><strong>Libro completo</strong>: completa los 38 capítulos.</li>
+<li><strong>Certificado</strong>: genera tu certificado.</li>
+</ul>
+</details>
+<hr />
+<h2 id="siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../">📖 Volver al índice</a>
+<a class="md-button" href="../retos/">🎯 Ver los retos</a>
+<a class="md-button" href="../certificado/">🎓 Ver el certificado</a></p>
 
 
 
@@ -4807,7 +5446,7 @@
           <span class="uru-footer__logo-text">Libro del Desarrollador Web</span>
         </a>
         <p class="uru-footer__tagline">
-          De cero a Silicon Valley.<br>
+          De Reus Tarragona Urukais KLick<br>
           38 capítulos · 7 niveles · 100% open source.
         </p>
 
@@ -4883,7 +5522,7 @@
           <li><a href="../contribuir/">Contribuir</a></li>
           <li><a href="../prensa/">Prensa</a></li>
           <li><a href="../agradecimientos/">Agradecimientos</a></li>
-          <li><a href="https://silly-boba-dc057e.netlify.app/" target="_blank" rel="noopener">🎮 El Niño</a></li>
+          <li><a href="https://plataforma-el-ni-o.vercel.app/" target="_blank" rel="noopener">🎮 El Niño</a></li>
         </ul>
       </div>
 
@@ -4894,7 +5533,7 @@
   <div class="uru-footer__bottom">
     <div class="uru-footer__bottom-inner">
       <p class="uru-footer__copyright">
-        © 2026 <strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
+        © 2026 , 27<strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
       </p>
       <ul class="uru-footer__legal">
         <li><a href="..#licencia">Licencia</a></li>
