@@ -14689,431 +14689,253 @@ https://pagespeed.web.dev/
                     <section class='print-page md-section' id='section-19' heading-number='19'>
                         <h1>Nivel profesional<a class='headerlink' href='#section-19' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="capitulos-19-fullstack-node" heading-number="19.1"><h1 id="capitulos-19-fullstack-node-capitulo-19-full-stack-con-nodejs">Capítulo 19 — Full-stack con Node.js<a class="headerlink" href="#capitulos-19-fullstack-node-capitulo-19-full-stack-con-nodejs" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-19-fullstack-node-introduccion">Introducción<a class="headerlink" href="#capitulos-19-fullstack-node-introduccion" title="Permanent link">&para;</a></h2>
-<p>Hasta ahora has construido el <strong>frontend</strong>: la parte que ve el usuario. Pero una aplicación web real necesita también un <strong>backend</strong>: el que guarda datos, autentica usuarios y expone APIs.</p>
-<p>En este capítulo vas a construir un backend completo con <strong>Node.js</strong> y <strong>Express</strong>, conectar una base de datos <strong>PostgreSQL</strong> usando <strong>Prisma</strong> y desplegarlo en producción.</p>
-<h2 id="capitulos-19-fullstack-node-que-es-nodejs">¿Qué es Node.js?<a class="headerlink" href="#capitulos-19-fullstack-node-que-es-nodejs" title="Permanent link">&para;</a></h2>
-<p>Node.js es un entorno que permite ejecutar JavaScript <strong>fuera del navegador</strong>, en el servidor. Está construido sobre el motor V8 de Chrome y usa un modelo <strong>asíncrono no bloqueante</strong> que lo hace muy eficiente para I/O.</p>
-<h3 id="capitulos-19-fullstack-node-que-puedes-hacer-con-nodejs">Qué puedes hacer con Node.js<a class="headerlink" href="#capitulos-19-fullstack-node-que-puedes-hacer-con-nodejs" title="Permanent link">&para;</a></h3>
+                    <section class="print-page" id="capitulos-19-fullstack-node" heading-number="19.1"><h1 id="capitulos-19-fullstack-node-19-full-stack-con-nodejs">19 — Full-stack con Node.js<a class="headerlink" href="#capitulos-19-fullstack-node-19-full-stack-con-nodejs" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Servidores web y APIs REST.</li>
-<li>WebSockets y aplicaciones en tiempo real.</li>
-<li>CLIs y herramientas de línea de comandos.</li>
-<li>Procesos de build y automatización.</li>
+<li>Qué es Node.js y por qué se usa en el servidor.</li>
+<li>Crear un servidor HTTP con Express.</li>
+<li>Rutas, middlewares y controladores.</li>
+<li>Bases de datos con PostgreSQL y Prisma.</li>
+<li>Autenticación con JWT.</li>
 </ul>
-<h3 id="capitulos-19-fullstack-node-lo-que-no-es-nodejs">Lo que NO es Node.js<a class="headerlink" href="#capitulos-19-fullstack-node-lo-que-no-es-nodejs" title="Permanent link">&para;</a></h3>
-<ul>
-<li>No es un lenguaje (es JavaScript o TypeScript).</li>
-<li>No es un framework (Express, Fastify, NestJS son frameworks).</li>
-<li>No es un navegador (no tiene DOM).</li>
-</ul>
-<h2 id="capitulos-19-fullstack-node-instalacion">Instalación<a class="headerlink" href="#capitulos-19-fullstack-node-instalacion" title="Permanent link">&para;</a></h2>
-<p>Descarga Node.js desde <a href="https://nodejs.org/">nodejs.org</a> (versión LTS). Comprueba:</p>
-<div class="highlight"><pre><span></span><code>node<span class="w"> </span>--version<span class="w">    </span><span class="c1"># v20.x o superior</span>
-npm<span class="w"> </span>--version<span class="w">     </span><span class="c1"># 10.x o superior</span>
-</code></pre></div>
-<p>O usa un gestor de versiones como <strong>nvm</strong> o <strong>fnm</strong> para cambiar entre versiones.</p>
-<h2 id="capitulos-19-fullstack-node-tu-primer-servidor">Tu primer servidor<a class="headerlink" href="#capitulos-19-fullstack-node-tu-primer-servidor" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:http'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hola desde Node.js'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Servidor en http://localhost:3000'</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Ejecuta con:</p>
-<div class="highlight"><pre><span></span><code>node<span class="w"> </span>server.js
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Módulos ES en Node</p>
-<p>Añade <code>"type": "module"</code> a tu <code>package.json</code> para usar <code>import</code>/<code>export</code> en lugar de <code>require</code>. Es el estándar moderno.</p>
 </div>
-<h2 id="capitulos-19-fullstack-node-express-el-framework-estandar">Express: el framework estándar<a class="headerlink" href="#capitulos-19-fullstack-node-express-el-framework-estandar" title="Permanent link">&para;</a></h2>
-<p>Express es minimalista, flexible y el más usado. Perfecto para aprender y para producir.</p>
-<h3 id="capitulos-19-fullstack-node-instalacion_1">Instalación<a class="headerlink" href="#capitulos-19-fullstack-node-instalacion_1" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="capitulos-19-fullstack-node-que-es-nodejs">🟢 ¿Qué es Node.js?<a class="headerlink" href="#capitulos-19-fullstack-node-que-es-nodejs" title="Permanent link">&para;</a></h2>
+<p><strong>Node.js</strong> es un entorno que permite ejecutar JavaScript <strong>fuera del navegador</strong>, en el servidor. Usa el motor V8 de Chrome y un modelo de I/O no bloqueante.</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>--version<span class="w">   </span><span class="c1"># v20.x o superior</span>
+npm<span class="w"> </span>--version
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">JavaScript en todas partes</p>
+<p>Con Node.js puedes usar el mismo lenguaje en el frontend y el backend. Eso reduce la carga cognitiva y facilita compartir código.</p>
+</div>
+<hr />
+<h2 id="capitulos-19-fullstack-node-tu-primer-servidor-con-express">⚡ Tu primer servidor con Express<a class="headerlink" href="#capitulos-19-fullstack-node-tu-primer-servidor-con-express" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>mi-api<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mi-api
 npm<span class="w"> </span>init<span class="w"> </span>-y
 npm<span class="w"> </span>install<span class="w"> </span>express
 </code></pre></div>
-<p>Añade a <code>package.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node src/server.js"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node --watch src/server.js"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="capitulos-19-fullstack-node-servidor-basico">Servidor básico<a class="headerlink" href="#capitulos-19-fullstack-node-servidor-basico" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// src/server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// index.js</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"express"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s1">'API funcionando'</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">"Hola, mundo"</span><span class="w"> </span><span class="p">});</span>
 <span class="p">});</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'http://localhost:3000'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Servidor en http://localhost:3000"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Ejecuta:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>index.js
 </code></pre></div>
-<h3 id="capitulos-19-fullstack-node-metodos-http">Métodos HTTP<a class="headerlink" href="#capitulos-19-fullstack-node-metodos-http" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="nx">listarUsuarios</span><span class="p">);</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/usuarios/:id'</span><span class="p">,</span><span class="w"> </span><span class="nx">obtenerUsuario</span><span class="p">);</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="nx">crearUsuario</span><span class="p">);</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">'/usuarios/:id'</span><span class="p">,</span><span class="w"> </span><span class="nx">actualizarUsuario</span><span class="p">);</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">patch</span><span class="p">(</span><span class="s1">'/usuarios/:id'</span><span class="p">,</span><span class="w"> </span><span class="nx">actualizarParcial</span><span class="p">);</span>
-<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">'/usuarios/:id'</span><span class="p">,</span><span class="w"> </span><span class="nx">borrarUsuario</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="capitulos-19-fullstack-node-middleware">Middleware<a class="headerlink" href="#capitulos-19-fullstack-node-middleware" title="Permanent link">&para;</a></h3>
-<p>Un <strong>middleware</strong> es una función que se ejecuta entre la petición y la respuesta.</p>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"> </span><span class="c1">// parsea JSON del body</span>
+<hr />
+<h2 id="capitulos-19-fullstack-node-rutas-y-middlewares">🛣️ Rutas y middlewares<a class="headerlink" href="#capitulos-19-fullstack-node-rutas-y-middlewares" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/usuarios"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="w"> </span><span class="p">}]);</span>
+<span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">next</span><span class="p">();</span><span class="w"> </span><span class="c1">// pasa al siguiente middleware</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/usuarios/:id"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/usuarios"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">"/usuarios/:id"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">204</span><span class="p">).</span><span class="nx">end</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="capitulos-19-fullstack-node-middleware-de-error">Middleware de error<a class="headerlink" href="#capitulos-19-fullstack-node-middleware-de-error" title="Permanent link">&para;</a></h3>
+<h3 id="capitulos-19-fullstack-node-middleware-de-logging">Middleware de logging<a class="headerlink" href="#capitulos-19-fullstack-node-middleware-de-logging" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="capitulos-19-fullstack-node-middleware-de-errores">Middleware de errores<a class="headerlink" href="#capitulos-19-fullstack-node-middleware-de-errores" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'Error del servidor'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"Algo salió mal"</span><span class="w"> </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="capitulos-19-fullstack-node-rutas-organizadas">Rutas organizadas<a class="headerlink" href="#capitulos-19-fullstack-node-rutas-organizadas" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// src/routes/usuarios.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Router</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Router</span><span class="p">();</span>
-
-<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">usuarios</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}));</span>
-<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">creado</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}));</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// src/server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">usuariosRouter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./routes/usuarios.js'</span><span class="p">;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="nx">usuariosRouter</span><span class="p">);</span>
-</code></pre></div>
-<h2 id="capitulos-19-fullstack-node-variables-de-entorno">Variables de entorno<a class="headerlink" href="#capitulos-19-fullstack-node-variables-de-entorno" title="Permanent link">&para;</a></h2>
-<p>Nunca metas secretos en el código. Usa <code>.env</code>:</p>
-<div class="highlight"><pre><span></span><code>PORT=3000
-DATABASE_URL=postgresql://usuario:pass@localhost:5432/miapp
-JWT_SECRET=algo-muy-largo-y-aleatorio
-</code></pre></div>
-<p>Carga con <strong>dotenv</strong>:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>dotenv
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="s1">'dotenv/config'</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Nunca subas .env a Git</p>
-<p>Añade <code>.env</code> a <code>.gitignore</code>. En producción, las variables se configuran en el hosting (Railway, Vercel, etc.).</p>
-</div>
-<h2 id="capitulos-19-fullstack-node-base-de-datos-con-postgresql">Base de datos con PostgreSQL<a class="headerlink" href="#capitulos-19-fullstack-node-base-de-datos-con-postgresql" title="Permanent link">&para;</a></h2>
-<p><strong>PostgreSQL</strong> es la base de datos relacional de referencia. Robusta, gratuita, con años de desarrollo.</p>
-<h3 id="capitulos-19-fullstack-node-instalacion-local">Instalación local<a class="headerlink" href="#capitulos-19-fullstack-node-instalacion-local" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Linux</strong>: <code>sudo pacman -S postgresql</code> (Arch) o <code>sudo apt install postgresql</code> (Debian/Ubuntu).</li>
-<li><strong>macOS</strong>: <code>brew install postgresql</code>.</li>
-<li><strong>Docker</strong> (más fácil y portable):</li>
-</ul>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>postgres<span class="w"> </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>pass<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span>-d<span class="w"> </span>postgres
-</code></pre></div>
-<h2 id="capitulos-19-fullstack-node-prisma-el-orm-moderno">Prisma: el ORM moderno<a class="headerlink" href="#capitulos-19-fullstack-node-prisma-el-orm-moderno" title="Permanent link">&para;</a></h2>
-<p><strong>Prisma</strong> es un ORM (Object-Relational Mapping) que te permite trabajar con la base de datos usando TypeScript/JavaScript con tipado automático.</p>
-<h3 id="capitulos-19-fullstack-node-instalacion_2">Instalación<a class="headerlink" href="#capitulos-19-fullstack-node-instalacion_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>prisma
-npm<span class="w"> </span>install<span class="w"> </span>@prisma/client
+<hr />
+<h2 id="capitulos-19-fullstack-node-base-de-datos-con-prisma">🗄️ Base de datos con Prisma<a class="headerlink" href="#capitulos-19-fullstack-node-base-de-datos-con-prisma" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>prisma<span class="w"> </span>@prisma/client
 npx<span class="w"> </span>prisma<span class="w"> </span>init
 </code></pre></div>
-<p>Esto crea <code>prisma/schema.prisma</code> y añade <code>DATABASE_URL</code> a <code>.env</code>.</p>
-<h3 id="capitulos-19-fullstack-node-schema">Schema<a class="headerlink" href="#capitulos-19-fullstack-node-schema" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>// prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model Usuario {
   id        Int      @id @default(autoincrement())
   nombre    String
   email     String   @unique
   password  String
-  posts     Post[]
-  creadoEn  DateTime @default(now())
-}
-
-model Post {
-  id        Int      @id @default(autoincrement())
-  titulo    String
-  contenido String
-  autor     Usuario  @relation(fields: [autorId], references: [id])
-  autorId   Int
   creadoEn  DateTime @default(now())
 }
 </code></pre></div>
-<h3 id="capitulos-19-fullstack-node-migraciones">Migraciones<a class="headerlink" href="#capitulos-19-fullstack-node-migraciones" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>dev<span class="w"> </span>--name<span class="w"> </span>init
+npx<span class="w"> </span>prisma<span class="w"> </span>generate
 </code></pre></div>
-<p>Crea la base de datos y genera el cliente.</p>
-<h3 id="capitulos-19-fullstack-node-uso-en-codigo">Uso en código<a class="headerlink" href="#capitulos-19-fullstack-node-uso-en-codigo" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@prisma/client'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
 
-<span class="c1">// Crear</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'urukaisk@gmail.com'</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s1">'hash'</span><span class="w"> </span><span class="p">},</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/usuarios"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findMany</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">usuarios</span><span class="p">);</span>
 <span class="p">});</span>
-
-<span class="c1">// Leer</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findMany</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">uno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-
-<span class="c1">// Actualizar</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Nuevo nombre'</span><span class="w"> </span><span class="p">},</span>
-<span class="p">});</span>
-
-<span class="c1">// Borrar</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="ow">delete</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
-<h3 id="capitulos-19-fullstack-node-prisma-studio">Prisma Studio<a class="headerlink" href="#capitulos-19-fullstack-node-prisma-studio" title="Permanent link">&para;</a></h3>
-<p>Interfaz visual para inspeccionar la base de datos:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>prisma<span class="w"> </span>studio
+<hr />
+<h2 id="capitulos-19-fullstack-node-autenticacion-con-jwt">🔐 Autenticación con JWT<a class="headerlink" href="#capitulos-19-fullstack-node-autenticacion-con-jwt" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>jsonwebtoken<span class="w"> </span>bcryptjs
 </code></pre></div>
-<h2 id="capitulos-19-fullstack-node-autenticacion-con-jwt">Autenticación con JWT<a class="headerlink" href="#capitulos-19-fullstack-node-autenticacion-con-jwt" title="Permanent link">&para;</a></h2>
-<p><strong>JSON Web Tokens</strong> son la forma estándar de autenticar APIs.</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>jsonwebtoken<span class="w"> </span>bcrypt
-</code></pre></div>
-<h3 id="capitulos-19-fullstack-node-registrar-usuario">Registrar usuario<a class="headerlink" href="#capitulos-19-fullstack-node-registrar-usuario" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'bcrypt'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'jsonwebtoken'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"jsonwebtoken"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"bcryptjs"</span><span class="p">;</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/auth/registro'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">;</span>
+
+<span class="c1">// Registro</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/registro"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">existe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existe</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">409</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Email ya registrado'</span><span class="w"> </span><span class="p">});</span>
-
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">'7d'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">});</span>
 <span class="p">});</span>
-</code></pre></div>
-<h3 id="capitulos-19-fullstack-node-login">Login<a class="headerlink" href="#capitulos-19-fullstack-node-login" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/auth/login'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">// Login</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
-
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Credenciales inválidas'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"Credenciales inválidas"</span><span class="w"> </span><span class="p">});</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Credenciales inválidas'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">valido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">valido</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"Credenciales inválidas"</span><span class="w"> </span><span class="p">});</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">'7d'</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s2">"7d"</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="capitulos-19-fullstack-node-middleware-de-autenticacion">Middleware de autenticación<a class="headerlink" href="#capitulos-19-fullstack-node-middleware-de-autenticacion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">autenticar</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">auth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="o">?</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">'Bearer '</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Token no proporcionado'</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">auth</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"Sin token"</span><span class="w"> </span><span class="p">});</span>
 
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">auth</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">7</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">SECRET</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">next</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">'Token inválido'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"Token inválido"</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Ruta protegida</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/perfil'</span><span class="p">,</span><span class="w"> </span><span class="nx">autenticar</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/perfil"</span><span class="p">,</span><span class="w"> </span><span class="nx">auth</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">usuario</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="capitulos-19-fullstack-node-validacion-con-zod">Validación con Zod<a class="headerlink" href="#capitulos-19-fullstack-node-validacion-con-zod" title="Permanent link">&para;</a></h2>
-<p>Valida los datos de entrada antes de tocar la base de datos:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>zod
+<div class="admonition warning">
+<p class="admonition-title">Nunca guardes el JWT_SECRET en el código</p>
+<p>Usa variables de entorno (.env) y nunca las subas a GitHub. Añade .env al .gitignore.</p>
+</div>
+<hr />
+<h2 id="capitulos-19-fullstack-node-despliegue-del-backend">🚀 Despliegue del backend<a class="headerlink" href="#capitulos-19-fullstack-node-despliegue-del-backend" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Plataforma</th>
+<th style="text-align: left;">Ideal para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Railway</strong></td>
+<td style="text-align: left;">Node.js + PostgreSQL, muy fácil</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Render</strong></td>
+<td style="text-align: left;">Node.js + PostgreSQL, tier gratis limitado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fly.io</strong></td>
+<td style="text-align: left;">Node.js + Docker, global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vercel</strong></td>
+<td style="text-align: left;">Serverless functions (sin servidor persistente)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># Railway</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@railway/cli
+railway<span class="w"> </span>login
+railway<span class="w"> </span>init
+railway<span class="w"> </span>up
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'zod'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">esquemaRegistro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">string</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">2</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">50</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">string</span><span class="p">().</span><span class="nx">email</span><span class="p">(),</span>
-<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">string</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">8</span><span class="p">),</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/auth/registro'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">esquemaRegistro</span><span class="p">.</span><span class="nx">safeParse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">resultado</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">errores</span><span class="o">:</span><span class="w"> </span><span class="nx">resultado</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">issues</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="c1">// ...</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="capitulos-19-fullstack-node-cors">CORS<a class="headerlink" href="#capitulos-19-fullstack-node-cors" title="Permanent link">&para;</a></h2>
-<p>Para que el frontend pueda llamar a la API desde otro dominio:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>cors
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">cors</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'cors'</span><span class="p">;</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'http://localhost:5173'</span><span class="p">,</span><span class="w"> </span><span class="s1">'https://miapp.com'</span><span class="p">],</span>
-<span class="w">  </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="p">}));</span>
-</code></pre></div>
-<h2 id="capitulos-19-fullstack-node-estructura-recomendada">Estructura recomendada<a class="headerlink" href="#capitulos-19-fullstack-node-estructura-recomendada" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="capitulos-19-fullstack-node-estructura-de-un-proyecto-full-stack">📁 Estructura de un proyecto full-stack<a class="headerlink" href="#capitulos-19-fullstack-node-estructura-de-un-proyecto-full-stack" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mi-api/
-├── prisma/
-│   └── schema.prisma
 ├── src/
 │   ├── routes/
-│   │   ├── auth.js
 │   │   ├── usuarios.js
-│   │   └── posts.js
+│   │   └── auth.js
 │   ├── middlewares/
-│   │   ├── auth.js
-│   │   └── error.js
-│   ├── lib/
-│   │   └── prisma.js
-│   └── server.js
+│   │   └── auth.js
+│   ├── controllers/
+│   ├── services/
+│   └── index.js
+├── prisma/
+│   └── schema.prisma
 ├── .env
 ├── .gitignore
 └── package.json
 </code></pre></div>
-<h2 id="capitulos-19-fullstack-node-despliegue">Despliegue<a class="headerlink" href="#capitulos-19-fullstack-node-despliegue" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-19-fullstack-node-railway-recomendado-para-empezar">Railway (recomendado para empezar)<a class="headerlink" href="#capitulos-19-fullstack-node-railway-recomendado-para-empezar" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Crea cuenta en <a href="https://railway.app/">railway.app</a>.</li>
-<li>Nuevo proyecto → <strong>Deploy from GitHub repo</strong>.</li>
-<li>Añade un plugin <strong>PostgreSQL</strong>.</li>
-<li>Configura las variables (<code>DATABASE_URL</code>, <code>JWT_SECRET</code>, <code>PORT</code>).</li>
-<li>Railway despliega automáticamente en cada push.</li>
-</ol>
-<h3 id="capitulos-19-fullstack-node-flyio">Fly.io<a class="headerlink" href="#capitulos-19-fullstack-node-flyio" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>fly<span class="w"> </span>launch
-fly<span class="w"> </span>postgres<span class="w"> </span>create
-fly<span class="w"> </span>postgres<span class="w"> </span>attach
-fly<span class="w"> </span>secrets<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">JWT_SECRET</span><span class="o">=</span>xxx
-fly<span class="w"> </span>deploy
-</code></pre></div>
-<h3 id="capitulos-19-fullstack-node-dockerfile-minimo">Dockerfile mínimo<a class="headerlink" href="#capitulos-19-fullstack-node-dockerfile-minimo" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
-<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
-<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci<span class="w"> </span>--production
-<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
-<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"node"</span><span class="p">,</span><span class="w"> </span><span class="s2">"src/server.js"</span><span class="p">]</span>
-</code></pre></div>
-<h2 id="capitulos-19-fullstack-node-diagrama-arquitectura-full-stack">Diagrama: arquitectura full-stack<a class="headerlink" href="#capitulos-19-fullstack-node-diagrama-arquitectura-full-stack" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[Cliente&lt;br/&gt;Navegador] --&gt;|HTTPS| B[Servidor&lt;br/&gt;Node.js + Express]
-    B --&gt;|Prisma| C[(PostgreSQL)]
-    B --&gt;|JWT| A
-    B --&gt;|API REST| D[Servicios externos]</code></pre>
-<p>Arquitectura típica: el navegador se comunica con el backend vía APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.</p>
-<h2 id="capitulos-19-fullstack-node-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-19-fullstack-node-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Nunca guardes contraseñas en texto plano</strong>. Usa <code>bcrypt</code> o <code>argon2</code>.</li>
-<li><strong>Valida todos los datos de entrada</strong>. Zod o Joi.</li>
-<li><strong>Usa HTTPS siempre</strong> en producción.</li>
-<li><strong>Rate limiting</strong> en endpoints sensibles:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>express-rate-limit
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">rateLimit</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express-rate-limit'</span><span class="p">;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/auth'</span><span class="p">,</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span><span class="w"> </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}));</span>
-</code></pre></div>
-<ul>
-<li><strong>Logs estructurados</strong>: <code>pino</code>, <code>winston</code>.</li>
-<li><strong>Manejo de errores centralizado</strong>. Un middleware al final.</li>
-<li><strong>Nunca expongas stack traces</strong> en producción.</li>
-<li><strong>Migraciones versionadas</strong> con Prisma.</li>
-<li><strong>Tests de integración</strong> con Vitest + Supertest.</li>
-</ul>
-<h2 id="capitulos-19-fullstack-node-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-19-fullstack-node-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea una API con un endpoint <code>GET /api/saludo</code> que devuelva un JSON.</li>
-<li>Añade una ruta <code>POST /api/usuarios</code> con validación Zod.</li>
-<li>Conecta PostgreSQL con Prisma y crea un modelo <code>Tarea</code>.</li>
-<li>Implementa registro y login con JWT.</li>
-<li>Protege una ruta <code>GET /api/perfil</code> con middleware de autenticación.</li>
-<li>Añade CORS para permitir peticiones desde <code>localhost:5173</code>.</li>
-<li>Despliega la API en Railway y pruébala con Postman o <code>curl</code>.</li>
-<li>Conecta esta API a tu frontend del Capítulo 10.</li>
-</ol>
 <hr />
-<p>⬅️ <a href="#capitulos-18-arquitectura">Capítulo 18 — Arquitectura frontend</a> | ➡️ <a href="#capitulos-20-devops">Capítulo 20 — DevOps para frontend</a></p>
-<h2 id="capitulos-19-fullstack-node-diagrama-arquitectura-full-stack_1">Diagrama: arquitectura full-stack<a class="headerlink" href="#capitulos-19-fullstack-node-diagrama-arquitectura-full-stack_1" title="Permanent link">&para;</a></h2>
-<p>```mermaid
-flowchart LR
-    A[Cliente<br/>Navegador] --&gt;|HTTPS| B[Servidor<br/>Node.js + Express]
-    B --&gt;|Prisma| C[(PostgreSQL)]
-    B --&gt;|JWT| A
-    B --&gt;|API REST| D[Servicios externos]
-```</p>
-<h2 id="capitulos-19-fullstack-node-flujo-tipico-de-una-aplicacion-full-stack-el-navegador-se-comunica-con-el-backend-mediante-apis-rest-el-backend-gestiona-la-base-de-datos-y-devuelve-respuestas-en-json">Flujo típico de una aplicación full-stack: el navegador se comunica con el backend mediante APIs REST, el backend gestiona la base de datos y devuelve respuestas en JSON.<a class="headerlink" href="#capitulos-19-fullstack-node-flujo-tipico-de-una-aplicacion-full-stack-el-navegador-se-comunica-con-el-backend-mediante-apis-rest-el-backend-gestiona-la-base-de-datos-y-devuelve-respuestas-en-json" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-19-fullstack-node-laboratorio-en-vivo-nodejs-express">🧪 Laboratorio en Vivo: Node.js + Express<a class="headerlink" href="#capitulos-19-fullstack-node-laboratorio-en-vivo-nodejs-express" title="Permanent link">&para;</a></h3>
-<p>Prueba el código de este capítulo en un entorno real de Node.js directamente en tu navegador. StackBlitz lanzará un servidor Express en la nube.</p>
-<p><a href="https://stackblitz.com/fork/node-express" target="_blank" class="md-button md-button--primary">🧪 Abrir laboratorio Node.js</a>
-<a href="https://stackblitz.com/fork/vitest" target="_blank" class="md-button">🧪 Probar Testing con Vitest</a></p>
 <h2 id="capitulos-19-fullstack-node-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-19-fullstack-node-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué framework de Node.js es el más popular para crear APIs?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Django</button>
-    <button class="quiz-option" data-option="b">B) Express</button>
-    <button class="quiz-option" data-option="c">C) Laravel</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-19">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es Node.js?</p>
+<button class="quiz-option" data-opt="a">A) Un framework de frontend</button>
+<button class="quiz-option" data-opt="b">B) Un entorno para ejecutar JavaScript en el servidor</button>
+<button class="quiz-option" data-opt="c">C) Una base de datos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué framework se usa para crear APIs en Node.js?</p>
+<button class="quiz-option" data-opt="a">A) Express</button>
+<button class="quiz-option" data-opt="b">B) React</button>
+<button class="quiz-option" data-opt="c">C) Vue</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué estándar se usa para autenticación con tokens?</p>
+<button class="quiz-option" data-opt="a">A) CSS</button>
+<button class="quiz-option" data-opt="b">B) HTML</button>
+<button class="quiz-option" data-opt="c">C) JWT</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué herramienta se usa en el capítulo para hablar con PostgreSQL desde Node.js?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Prisma</button>
-    <button class="quiz-option" data-option="b">B) Mongoose</button>
-    <button class="quiz-option" data-option="c">C) Sequelize</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-20-devops" heading-number="19.2"><h1 id="capitulos-20-devops-capitulo-20-devops-para-frontend">Capítulo 20 — DevOps para frontend<a class="headerlink" href="#capitulos-20-devops-capitulo-20-devops-para-frontend" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="capitulos-19-fullstack-node-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-19-fullstack-node-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2019%3A%20Full-stack%20con%20Node.js&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2019%3A%20Full-stack%20con%20Node.js%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F19-fullstack-node%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/19-fullstack-node/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-19-fullstack-node-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-19-fullstack-node-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-20-devops">Ir al Capítulo 20 — DevOps para frontend</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-20-devops" heading-number="19.2"><h1 id="capitulos-20-devops-capitulo-20-devops-para-frontend">Capítulo 20 — DevOps para frontend<a class="headerlink" href="#capitulos-20-devops-capitulo-20-devops-para-frontend" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-20-devops-introduccion">Introducción<a class="headerlink" href="#capitulos-20-devops-introduccion" title="Permanent link">&para;</a></h2>
 <p><strong>DevOps</strong> es la cultura y el conjunto de prácticas que unen <strong>desarrollo</strong> y <strong>operaciones</strong>. En el mundo frontend, significa:</p>
 <ul>
