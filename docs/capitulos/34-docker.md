@@ -1,106 +1,96 @@
-# Capítulo 34 — Docker para frontend
+# 34 — Docker para frontend
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué es Docker y por qué usarlo en frontend.
+    - Imágenes y contenedores.
+    - Dockerfile para una app frontend.
+    - Multi-stage build.
+    - Docker Compose.
 
-**Docker** empaqueta tu aplicación y todas sus dependencias en un **contenedor**: una unidad ligera, portable y reproducible que funciona igual en tu portátil, en el servidor de tu compañero y en producción.
+---
 
-Para frontend, Docker resuelve el clásico *"en mi máquina funciona"*. Con un `Dockerfile` describes el entorno exacto y cualquiera puede reproducirlo con un solo comando.
+## 🐳 ¿Qué es Docker?
 
-## ¿Qué es un contenedor?
+**Docker** empaqueta tu aplicación con **todas sus dependencias** en un contenedor. Ese contenedor funciona igual en tu portátil, en el servidor de tu empresa y en producción.
 
-Un contenedor es como una **máquina virtual ultraligera**:
-
-- Comparte el kernel del sistema operativo (no emula hardware).
-- Arranca en milisegundos.
-- Ocupa MBs en lugar de GBs.
-- Es **inmutable**: una vez construido, siempre se ejecuta igual.
-
-## Docker vs Máquina Virtual
-
-| Aspecto | Docker | VM |
-|---|---|---|
-| Arranque | Segundos | Minutos |
-| Tamaño | MBs | GBs |
-| Sistema operativo | Comparte kernel | Completo |
-| Aislamiento | Procesos | Hardware |
-
-## Instalación
-
-- **Linux (Arch)**: `sudo pacman -S docker docker-compose`
-- **macOS/Windows**: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-
-Activa el servicio:
-```bash
-sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
-# Cierra sesión y vuelve a entrar
+```
+Sin Docker: "en mi máquina funciona" 🤷
+Con Docker: "funciona en todas partes" ✅
 ```
 
-## Conceptos clave
+!!! quote "Un contenedor es una caja hermética"
+    Dentro lleva tu app, Node.js, las dependencias y la configuración. Fuera da igual qué sistema operativo haya: se ejecuta igual.
+
+---
+
+## 📦 Imágenes y contenedores
 
 | Concepto | Qué es |
-|---|---|
-| **Imagen** | Plantilla inmutable (receta) |
+| :--- | :--- |
+| **Imagen** | Plantilla de solo lectura con la app y sus dependencias |
 | **Contenedor** | Instancia en ejecución de una imagen |
 | **Dockerfile** | Receta para construir una imagen |
+| **Registry** | Repositorio de imágenes (Docker Hub) |
 | **Volume** | Almacenamiento persistente |
-| **Compose** | Orquestador local multi-contenedor |
+| **Network** | Red virtual entre contenedores |
 
-## Tu primer Dockerfile
+```bash
+docker pull nginx:alpine
+docker run -p 8080:80 nginx:alpine
+docker ps
+docker stop <id>
+docker rm <id>
+```
+
+---
+
+## 📝 Dockerfile para frontend
 
 ```dockerfile
-FROM node:20-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci
-
-COPY . .
-
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
-```
-
-Construir:
-```bash
-docker build -t mi-app .
-```
-
-Ejecutar:
-```bash
-docker run -p 5173:5173 mi-app
-```
-
-Visita `http://localhost:5173`.
-
-## Multi-stage build (el estándar en producción)
-
-En producción no necesitas `node_modules` ni el código fuente. Solo el resultado del build. **Multi-stage** permite usar una imagen para compilar y otra (mucho más ligera) para servir.
-
-```dockerfile
-# Etapa 1: Build
+# Etapa 1: build
 FROM node:20-alpine AS build
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm ci
+
 COPY . .
 RUN npm run build
 
-# Etapa 2: Servir con Nginx
+# Etapa 2: servir con Nginx
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Resultado: de ~800 MB a ~25 MB. 🎯
+```bash
+docker build -t mi-frontend .
+docker run -p 8080:80 mi-frontend
+```
 
-## Configuración de Nginx para SPA
+---
 
-`nginx.conf`:
+## 🏗️ Multi-stage build
+
+El Dockerfile anterior usa **dos etapas**:
+
+1. **build**: instala dependencias y construye la app (imagen grande).
+2. **runtime**: copia solo los archivos estáticos a Nginx (imagen pequeña).
+
+| Imagen | Tamaño |
+| :--- | :--- |
+| Single-stage | ~1 GB |
+| Multi-stage | ~25 MB |
+
+!!! tip "Siempre multi-stage"
+    La imagen final solo contiene Nginx y los archivos estáticos. Node.js y las dependencias se quedan en la etapa de build, que se descarta.
+
+---
+
+## ⚙️ nginx.conf
 
 ```nginx
 server {
@@ -108,141 +98,124 @@ server {
   root /usr/share/nginx/html;
   index index.html;
 
-  # SPA fallback: siempre sirve index.html si no encuentra archivo
+  # SPA: redirigir todo a index.html
   location / {
     try_files $uri $uri/ /index.html;
   }
 
-  # Cache largo para assets con hash
-  location ~* \.(js|css|woff2|png|jpg|svg)$ {
+  # Cache de assets
+  location ~* \.(js|css|png|jpg|svg|woff2)$ {
     expires 1y;
     add_header Cache-Control "public, immutable";
   }
-
-  # Gzip
-  gzip on;
-  gzip_types text/css application/javascript image/svg+xml;
 }
 ```
 
-## Docker Compose
+---
 
-Para varios servicios (frontend + backend + base de datos) usa `docker-compose.yml`:
+## 🐙 Docker Compose
+
+**Docker Compose** permite definir y ejecutar varios contenedores a la vez (frontend + backend + base de datos) con un solo archivo.
 
 ```yaml
+# docker-compose.yml
 services:
-  web:
+  frontend:
     build: .
     ports:
       - "8080:80"
     depends_on:
       - api
-    environment:
-      - VITE_API_URL=http://localhost:3000
 
   api:
     build: ./api
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgres://user:pass@db:5432/app
+      - DATABASE_URL=postgres://user:pass@db:5432/miapp
     depends_on:
       - db
 
   db:
     image: postgres:16-alpine
     environment:
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_USER=user
-      - POSTGRES_DB=app
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: miapp
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  postgres_data:
 ```
 
-Arrancar todo:
 ```bash
 docker compose up -d
-```
-
-Parar:
-```bash
 docker compose down
+docker compose logs -f
 ```
-
-## .dockerignore
-
-Igual que `.gitignore`, pero para Docker. **Muy importante** para que el build sea rápido:
-
-```
-node_modules
-dist
-.git
-.env
-.env.local
-*.log
-.DS_Store
-coverage
-```
-
-Sin este archivo, Docker copiaría `node_modules` (miles de archivos) y el build tardaría minutos en lugar de segundos.
-
-## Volumes: persistencia
-
-Los contenedores son **efímeros**: cuando se borran, pierden los datos. Los volumes persisten:
-
-```yaml
-volumes:
-  - pgdata:/var/lib/postgresql/data
-```
-
-## Buenas prácticas
-
-- **Usa imágenes Alpine**: mucho más ligeras (~5 MB vs ~900 MB).
-- **Multi-stage builds** para producción: solo lo necesario.
-- **Un proceso por contenedor**: no mezcles frontend y backend.
-- **`.dockerignore` siempre**.
-- **Fija versiones**: `node:20.11.0-alpine`, no `node:latest`.
-- **No ejecutes como root**: crea un usuario sin privilegios.
-- **Escanea vulnerabilidades**: `docker scout cves mi-imagen`.
-- **Logs a stdout/stderr**, nunca a archivos dentro del contenedor.
-- **Compose para desarrollo, Kubernetes para producción a gran escala**.
-
-## Ejemplo: usuario no root
-
-```dockerfile
-FROM node:20-alpine
-RUN addgroup -S app && adduser -S app -G app
-WORKDIR /app
-COPY --chown=app:app . .
-USER app
-CMD ["node", "server.js"]
-```
-
-## Ejercicios
-
-1. Crea un Dockerfile con `node:20-alpine` para un proyecto Vite y ejecútalo con `docker run`.
-2. Convierte el Dockerfile a multi-stage usando Nginx.
-3. Añade un `.dockerignore` y comprueba cuánto tarda el build antes y después.
-4. Crea un `docker-compose.yml` con frontend, backend y PostgreSQL.
-5. Escanea tu imagen con `docker scout cves` y corrige las vulnerabilidades.
 
 ---
 
-⬅️ [Capítulo 33 — Edge Computing](33-edge-computing.md) | ➡️ [Capítulo 35 — GraphQL](35-graphql.md)
+## ✅ Buenas prácticas
+
+- ✅ **Multi-stage build**: imagen final pequeña.
+- ✅ **`npm ci`** en lugar de `npm install` en Docker (más rápido y reproducible).
+- ✅ **`.dockerignore`** para no copiar `node_modules`, `.git`, etc.
+- ✅ **Usuario no root** en el contenedor.
+- ✅ **Cachea las capas**: copia `package.json` antes que el resto.
+- ✅ **Fija versiones**: `node:20.11-alpine`, no `node:latest`.
+- ✅ **Healthchecks** para saber si el contenedor está sano.
+- ❌ **No metas secretos** en el Dockerfile.
+
+```gitignore
+# .dockerignore
+node_modules
+.git
+.env
+dist
+*.log
+```
 
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="a">
-  <p class="quiz-question">¿Qué es un contenedor Docker?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Un entorno ligero y aislado para ejecutar una aplicación</button>
-    <button class="quiz-option" data-option="b">B) Una máquina virtual completa</button>
-    <button class="quiz-option" data-option="c">C) Un lenguaje de programación</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-34">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es una imagen Docker?</p>
+<button class="quiz-option" data-opt="a">A) Un contenedor en ejecución</button>
+<button class="quiz-option" data-opt="b">B) Una plantilla de solo lectura con la app</button>
+<button class="quiz-option" data-opt="c">C) Un archivo de configuración</button>
 </div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué ventaja tiene el multi-stage build?</p>
+<button class="quiz-option" data-opt="a">A) Imagen final mucho más pequeña</button>
+<button class="quiz-option" data-opt="b">B">Más velocidad de build</button>
+<button class="quiz-option" data-opt="c">C) Más seguridad</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué herramienta orquesta varios contenedores?</p>
+<button class="quiz-option" data-opt="a">A) Dockerfile</button>
+<button class="quiz-option" data-opt="b">B) Kubernetes</button>
+<button class="quiz-option" data-opt="c">C) Docker Compose</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2034%3A%20Docker%20para%20frontend&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2034%3A%20Docker%20para%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F34-docker%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/34-docker/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 35 — GraphQL](35-graphql.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
