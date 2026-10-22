@@ -1,75 +1,156 @@
-# Capítulo 2 — HTML básico
+# 02 — HTML básico
 
-## ¿Qué es HTML?
+!!! abstract "Qué vas a aprender"
+    - La estructura de un documento HTML.
+    - Las etiquetas semánticas más importantes.
+    - Cómo enlazar páginas, imágenes y formularios.
+    - Las bases de la accesibilidad.
 
-HTML (*HyperText Markup Language*) es el lenguaje de marcado que define la **estructura** del contenido de una página web. No es un lenguaje de programación, sino una forma de describir qué es cada cosa: un título, un párrafo, una imagen, un enlace…
+---
 
-## Estructura mínima de un documento HTML
+## 🌐 ¿Qué es HTML?
 
-```html
+**HTML** (*HyperText Markup Language*) es el lenguaje de marcado que define la **estructura** de una página web. No es un lenguaje de programación: no tiene variables, ni bucles, ni funciones. Es un lenguaje de **etiquetas** que le dice al navegador qué es cada cosa.
+
+\`\`\`html
+<h1>Esto es un título</h1>
+<p>Esto es un párrafo con <strong>texto en negrita</strong>.</p>
+\`\`\`
+
+!!! tip "HTML no es programación"
+    HTML describe la estructura. CSS describe la presentación. JavaScript describe el comportamiento.
+
+---
+
+## 🏗️ Estructura de un documento HTML
+
+\`\`\`html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi primera página</title>
 </head>
 <body>
   <h1>Hola, mundo</h1>
-  <p>Esta es mi primera página web.</p>
-  ---
+</body>
+</html>
+\`\`\`
+
+| Etiqueta | Para qué sirve |
+| :--- | :--- |
+| <!DOCTYPE html> | Indica al navegador que es HTML5 |
+| <html> | Elemento raíz del documento |
+| <head> | Metadatos |
+| <body> | Contenido visible |
+| <meta charset="UTF-8"> | Codificación de caracteres |
+| <meta name="viewport"> | Para que se vea bien en móvil |
+| <title> | Título de la pestaña |
+
+---
+
+## 📝 Etiquetas semánticas
+
+\`\`\`html
+<header>
+  <h1>Mi sitio web</h1>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <h2>Mi primer artículo</h2>
+    <p>Contenido del artículo…</p>
+  </article>
+</main>
+
+<footer>
+  <p>© 2026 Mi sitio web</p>
+</footer>
+\`\`\`
+
+| Etiqueta | Uso |
+| :--- | :--- |
+| <header> | Cabecera |
+| <nav> | Menú de navegación |
+| <main> | Contenido principal |
+| <article> | Contenido independiente |
+| <section> | Sección temática |
+| <aside> | Contenido lateral |
+| <footer> | Pie de página |
+
+!!! warning "Por qué importa la semántica"
+    Usar <div> para todo es tentador, pero las etiquetas semánticas mejoran la accesibilidad, el SEO y la legibilidad del código.
+
+---
+
+## 🔗 Enlaces e imágenes
+
+\`\`\`html
+<a href="https://example.com" target="_blank" rel="noopener">Ir a ejemplo</a>
+<a href="#seccion">Ir a la sección</a>
+<img src="foto.jpg" alt="Descripción de la imagen" width="400" height="300" loading="lazy">
+\`\`\`
+
+!!! tip "El atributo alt es obligatorio"
+    El texto alternativo describe la imagen a quienes no pueden verla.
+
+---
+
+## 📝 Formularios
+
+\`\`\`html
+<form action="/enviar" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <button type="submit">Enviar</button>
+</form>
+\`\`\`
+
+!!! warning "Siempre asocia label con input"
+    El atributo for del label debe coincidir con el id del input.
+
+---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué significa la sigla HTML?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) High Tech Modern Language</button>
-    <button class="quiz-option" data-option="b">B) HyperText Markup Language</button>
-    <button class="quiz-option" data-option="c">C) Home Tool Markup Language</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-2">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué etiqueta define el contenido principal de una página?</p>
+<button class="quiz-option" data-opt="a">A) &lt;div&gt;</button>
+<button class="quiz-option" data-opt="b">B) &lt;main&gt;</button>
+<button class="quiz-option" data-opt="c">C) &lt;body&gt;</button>
 </div>
-### 🎮 Editor en Vivo
-
-Prueba tus conocimientos de HTML editando el código de la izquierda y viendo el resultado a la derecha (o abajo).
-
-<div class="live-sandbox-wrapper">
-  <p>💡 Edita el texto y pulsa el botón para ver los cambios.</p>
-  <iframe 
-    class="live-sandbox" 
-    srcdoc='
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <style>
-          body { font-family: sans-serif; padding: 2rem; text-align: center; background: #f8fafc; }
-          h1 { color: #6a5acd; }
-        </style>
-      </head>
-      <body>
-        <h1>¡Hola, mundo!</h1>
-        <p>Este es mi primer código HTML interactivo.</p>
-        <button onclick="alert('"'"'¡Funciona! 🎉'"'"')">Haz clic aquí</button>
-      </body>
-      </html>
-    '>
-  </iframe>
-  ### 🌐 Abrir en un Playground externo
-
-Si quieres experimentar en tu propio editor, puedes abrir este ejemplo en:
-
-- [CodePen](https://codepen.io/pen/?template=html-basico){ .md-button target="_blank" }
-- [StackBlitz](https://stackblitz.com/edit/html-basico){ .md-button target="_blank" }
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Para qué sirve el atributo alt de una imagen?</p>
+<button class="quiz-option" data-opt="a">A) Para darle un título</button>
+<button class="quiz-option" data-opt="b">B) Para cambiar su tamaño</button>
+<button class="quiz-option" data-opt="c">C) Para describirla a quien no puede verla</button>
 </div>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuál es la etiqueta correcta para crear un enlace?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) &lt;link&gt;</button>
-    <button class="quiz-option" data-option="b">B) &lt;href&gt;</button>
-    <button class="quiz-option" data-option="c">C) &lt;a&gt;</button>
-  </div>
-  <div class="quiz-feedback"></div>
 </div>
 
-</body>
-</html>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%202%3A%20HTML%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%202%3A%20HTML%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/02-html-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 3 — CSS básico](03-css-basico.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
