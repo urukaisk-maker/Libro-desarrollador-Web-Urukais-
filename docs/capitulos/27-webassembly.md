@@ -1,94 +1,56 @@
-# Capítulo 27 — WebAssembly
+# 27 — WebAssembly
 
-## Introducción
+!!! abstract "Qué vas a aprender"
+    - Qué es WebAssembly y por qué existe.
+    - Cuándo usarlo y cuándo no.
+    - Compilar Rust a Wasm.
+    - Integrarlo con JavaScript.
+    - Casos de uso reales.
 
-**WebAssembly** (Wasm) es un formato binario que se ejecuta en el navegador a velocidades cercanas al código nativo. Es un complemento a JavaScript, no un sustituto.
+---
 
-Lo usan Figma, AutoCAD Web, Google Earth, Photoshop Web, y cualquier aplicación que necesite rendimiento extremo en el navegador.
+## 🧩 ¿Qué es WebAssembly?
 
-## ¿Qué es exactamente?
-
-Wasm es:
-
-- **Un formato binario** — compacto, rápido de descargar.
-- **Un estándar abierto** — soportado por todos los navegadores modernos.
-- **Multi-lenguaje** — puedes compilar desde C, C++, Rust, Go, Zig…
-- **Sandboxed** — se ejecuta en un entorno seguro, sin acceso directo al sistema.
-
-No es:
-
-- Un reemplazo de JavaScript.
-- Un lenguaje que escribas a mano (normalmente se compila).
-- Solo para juegos.
-
-## ¿Cuándo usar WebAssembly?
-
-### ✅ Buen caso
-
-- **Cálculos intensivos**: procesamiento de imagen, vídeo, criptografía.
-- **Portar código existente**: apps de escritorio en C++ al navegador.
-- **Juegos y simulaciones**.
-- **Edición de audio/vídeo en tiempo real**.
-- **Machine learning en el navegador**.
-
-### ❌ Mal caso
-
-- Manipulación del DOM (usa JavaScript).
-- Lógica de negocio simple.
-- Formularios, navegación, UI.
-- Cuando ya funciona bien con JS.
-
-!!! tip "Regla práctica"
-    Si no tienes un problema de rendimiento medido, **no necesitas WebAssembly**. JS es rapidísimo para el 99% de casos.
-
-## Cómo funciona
+**WebAssembly** (Wasm) es un formato binario que permite ejecutar código de **otros lenguajes** (Rust, C, C++, Go…) en el navegador a **velocidad casi nativa**. No sustituye a JavaScript: lo complementa.
 
 ```
-Código fuente (Rust/C/C++)
-        ↓
-   Compilador (wasm-pack, emscripten, etc.)
-        ↓
-   archivo .wasm (binario)
-        ↓
-   Cargado en el navegador
-        ↓
-   Ejecutado junto a JavaScript
+JavaScript  → rápido, pero no tanto para cálculo intensivo
+WebAssembly → velocidad casi nativa para cálculo intensivo
 ```
 
-Desde JavaScript se carga y ejecuta así:
+!!! quote "Wasm no reemplaza a JS"
+    WebAssembly no va a sustituir a JavaScript. Va a convivir con él: JS para la lógica de la app, Wasm para las partes que necesitan máximo rendimiento.
 
-```javascript
-const respuesta = await fetch('modulo.wasm');
-const buffer = await respuesta.arrayBuffer();
-const modulo = await WebAssembly.instantiate(buffer);
-const resultado = modulo.instance.exports.sumar(2, 3);
-console.log(resultado); // 5
-```
+---
 
-## Ejemplo: compilar Rust a WebAssembly
+## 🎯 ¿Cuándo usar WebAssembly?
 
-### Instalar herramientas
+| Caso | ¿Wasm? |
+| :--- | :--- |
+| Vídeo y audio en tiempo real | ✅ |
+| Juegos 3D y simulaciones | ✅ |
+| Criptografía y compresión | ✅ |
+| Edición de imágenes en el navegador | ✅ |
+| IA y machine learning | ✅ |
+| CRUD de una app web | ❌ |
+| Formularios y validaciones | ❌ |
+| Animaciones básicas | ❌ |
+
+---
+
+## 🦀 Compilar Rust a WebAssembly
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install wasm-pack
-```
+# Instalar wasm-pack
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-### Crear un proyecto
-
-```bash
+# Crear proyecto
 cargo new --lib mi-wasm
 cd mi-wasm
 ```
 
-Edita `Cargo.toml`:
-
 ```toml
-[package]
-name = "mi-wasm"
-version = "0.1.0"
-edition = "2021"
-
+# Cargo.toml
 [lib]
 crate-type = ["cdylib"]
 
@@ -96,224 +58,164 @@ crate-type = ["cdylib"]
 wasm-bindgen = "0.2"
 ```
 
-### Escribir la función
-
 ```rust
+// src/lib.rs
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn fibonacci(n: u32) -> u64 {
-    match n {
-        0 => 0,
-        1 => 1,
-        _ => {
-            let mut a = 0u64;
-            let mut b = 1u64;
-            for _ in 2..=n {
-                let t = a + b;
-                a = b;
-                b = t;
-            }
-            b
-        }
-    }
+pub fn sumar(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 #[wasm_bindgen]
-pub fn sumar_array(numeros: &[i32]) -> i32 {
-    numeros.iter().sum()
+pub fn fibonacci(n: u32) -> u64 {
+    if n <= 1 { return n as u64; }
+    let mut a = 0;
+    let mut b = 1;
+    for _ in 2..=n {
+        let temp = a + b;
+        a = b;
+        b = temp;
+    }
+    b
 }
 ```
-
-### Compilar
 
 ```bash
 wasm-pack build --target web
 ```
 
-Genera una carpeta `pkg/` con el `.wasm`, un `.js` de pegamento y un `.d.ts`.
-
-### Usar en JavaScript
-
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Wasm demo</title>
-</head>
-<body>
-  <p>Fibonacci(40) = <span id="resultado"></span></p>
-
-  <script type="module">
-    import init, { fibonacci } from './pkg/mi_wasm.js';
-
-    await init();
-    const inicio = performance.now();
-    const resultado = fibonacci(40);
-    const fin = performance.now();
-    document.getElementById('resultado').textContent =
-      `${resultado} (${(fin - inicio).toFixed(2)} ms)`;
-  </script>
-</body>
-</html>
-```
-
-## Comparativa de rendimiento
-
-Caso real: calcular 1 millón de números primos.
-
-| Tecnología | Tiempo |
-|---|---|
-| JavaScript puro | ~850 ms |
-| WebAssembly (Rust) | ~120 ms |
-| WebAssembly (C++) | ~110 ms |
-
-**7-8× más rápido**. Pero ojo: la carga inicial del `.wasm` añade latencia. Para tareas pequeñas, JS gana.
-
-## Emscripten (C/C++ a Wasm)
-
-Si tienes código en C o C++, usa **Emscripten**:
-
-```bash
-git clone https://github.com/emscripten-core/emsdk.git
-cd emsdk
-./emsdk install latest
-./emsdk activate latest
-source ./emsdk_env.sh
-```
-
-Compilar:
-
-```bash
-emcc mi_programa.c -o mi_programa.js -s WASM=1 -O3
-```
-
-Genera `mi_programa.wasm` + `mi_programa.js`.
-
-## WASI: WebAssembly fuera del navegador
-
-**WASI** (WebAssembly System Interface) permite ejecutar Wasm en el servidor, la terminal o el edge. Es el futuro de la portabilidad.
-
-Casos de uso:
-
-- **Cloudflare Workers** — funciones en el edge.
-- **Fastly Compute@Edge**.
-- **Fermyon Spin** — microservicios.
-- **Docker + Wasm** — contenedores más ligeros.
-
-## Aplicaciones reales
-
-- **Figma** — renderizado de vectores.
-- **AutoCAD Web** — CAD completo en el navegador.
-- **Google Earth** — 3D global.
-- **Photoshop Web** — edición de imagen.
-- **Amazon Prime Video** — decodificación.
-- **Zoom Web** — procesamiento de audio/vídeo.
-
-## Limitaciones
-
-- **No accede directamente al DOM** (hay que pasar por JavaScript).
-- **Tamaño del binario** — puede ser grande si no se optimiza.
-- **Debugging complicado** — aunque mejora cada año.
-- **No reemplaza a JS** — se complementan.
-
-## Diagrama: cómo se ejecuta un módulo Wasm
-
-```mermaid
-sequenceDiagram
-    participant U as Usuario
-    participant N as Navegador
-    participant JS as JavaScript
-    participant W as WebAssembly
-
-    U->>N: Carga la página
-    N->>JS: Descarga app.js
-    JS->>N: Pide modulo.wasm
-    N-->>JS: Devuelve binario
-    JS->>W: instantiate()
-    JS->>W: Llama función exportada
-    W-->>JS: Resultado
-    JS-->>U: Actualiza la UI
-```
-
-JavaScript orquesta la carga y llama a las funciones de WebAssembly. El código pesado se ejecuta dentro del módulo Wasm a velocidad casi nativa.
-
-## Buenas prácticas
-
-- **Mide antes**. Solo usa Wasm si JS no es suficiente.
-- **Usa `wasm-pack`** para Rust.
-- **Optimiza el tamaño** con `-O3` y `wasm-opt`.
-- **Carga diferida**: no bloquees el arranque con el `.wasm`.
-- **Comparte memoria** con `SharedArrayBuffer` si necesitas hilos.
-- **Usa Web Workers** para no bloquear el hilo principal.
-- **Cachea el `.wasm`** con Cache Storage.
-- **Prueba en móvil**. El rendimiento varía mucho.
-
-## Ejemplo real: procesar imágenes
-
-```rust
-use wasm_bindgen::prelude::*;
-use image::{DynamicImage, ImageOutputFormat};
-
-#[wasm_bindgen]
-pub fn escala_grises(bytes: &[u8]) -> Vec<u8> {
-    let img = image::load_from_memory(bytes).unwrap();
-    let gris = img.grayscale();
-    let mut salida = Vec::new();
-    gris.write_to(&mut salida, ImageOutputFormat::Png).unwrap();
-    salida
-}
-```
-
-En JavaScript:
-
-```javascript
-import init, { escala_grises } from './pkg/mi_wasm.js';
-await init();
-
-const input = document.querySelector('input[type=file]');
-input.addEventListener('change', async (e) => {
-  const file = e.target.files[0];
-  const bytes = new Uint8Array(await file.arrayBuffer());
-  const resultado = escala_grises(bytes);
-  const blob = new Blob([resultado], { type: 'image/png' });
-  document.querySelector('img').src = URL.createObjectURL(blob);
-});
-```
-
-## Ejercicios
-
-1. Compila una función de Fibonacci a Wasm con Rust y compárala con JS.
-2. Usa `wasm-pack` para crear un paquete npm con tu módulo.
-3. Porta una función intensiva de tu proyecto a Wasm y mide la mejora.
-4. Prueba un módulo Wasm desde Cloudflare Workers.
-5. Escribe el mismo algoritmo en JS y en Rust, compara el rendimiento.
-6. Añade un Web Worker que ejecute el módulo Wasm en segundo plano.
+Esto genera una carpeta `pkg/` con el `.wasm` y los bindings de JavaScript.
 
 ---
 
-⬅️ [Capítulo 26 — Seguridad web](26-seguridad.md) | ➡️ [Capítulo 28 — IA en el frontend](28-ia-frontend.md)
+## 🔗 Integrar con JavaScript
+
+```html
+<script type="module">
+  import init, { sumar, fibonacci } from "./pkg/mi_wasm.js";
+
+  await init();
+  console.log(sumar(2, 3));      // 5
+  console.log(fibonacci(40));    // 102334155 (rápido)
+</script>
+```
+
+!!! tip "async init"
+    La función `init()` carga y compila el binario `.wasm`. Devuelve una promesa, así que hay que esperar.
+
+---
+
+## ⚡ WebAssembly en el navegador (API nativa)
+
+```javascript
+const respuesta = await fetch("modulo.wasm");
+const bytes = await respuesta.arrayBuffer();
+const { instance } = await WebAssembly.instantiate(bytes);
+
+console.log(instance.exports.sumar(2, 3));
+```
+
+La API nativa es más verbose. `wasm-bindgen` (Rust) o `Emscripten` (C/C++) generan los bindings automáticamente.
+
+---
+
+## 🏆 Casos de uso reales
+
+| Empresa | Uso de Wasm |
+| :--- | :--- |
+| **Figma** | Renderizado y edición de gráficos vectoriales |
+| **Google Earth** | Visualización 3D del planeta |
+| **AutoCAD Web** | Diseño CAD en el navegador |
+| **Photoshop Web** | Edición de imágenes |
+| **Zoom** | Procesamiento de vídeo y audio |
+| **Unity** | Juegos 3D en el navegador |
+| **Pyodide** | Python completo en el navegador |
+
+---
+
+## ⚡ Rendimiento: Wasm vs JS
+
+| Tarea | JavaScript | WebAssembly | Mejora |
+| :--- | :--- | :--- | :--- |
+| Fibonacci(40) | ~2 s | ~0.4 s | **5x** |
+| Compresión gzip | ~1.5 s | ~0.3 s | **5x** |
+| Renderizado 3D | ~16 ms/frame | ~4 ms/frame | **4x** |
+| Cálculo matricial | ~800 ms | ~100 ms | **8x** |
+
+!!! note "Los números varían"
+    Estas cifras son orientativas. Dependen del navegador, del hardware y del tipo de tarea. Para operaciones pequeñas, el coste de cargar el `.wasm` puede hacer que no compense.
+
+---
+
+## 🛠️ Herramientas
+
+| Herramienta | Lenguaje | Uso |
+| :--- | :--- | :--- |
+| **wasm-pack** | Rust | Empaquetar Rust a Wasm |
+| **wasm-bindgen** | Rust | Bindings JS ↔ Rust |
+| **Emscripten** | C/C++ | Compilar C/C++ a Wasm |
+| **AssemblyScript** | TypeScript-like | Escribir Wasm con sintaxis JS |
+| **TinyGo** | Go | Compilar Go a Wasm |
+| **Blazor** | C# | .NET en el navegador |
+| **Pyodide** | Python | Python en el navegador |
+
+```bash
+# AssemblyScript (el más fácil si vienes de JS)
+npm install -g assemblyscript
+npx asc modulo.ts -o modulo.wasm
+```
+
+---
+
+## ✅ Buenas prácticas
+
+- ✅ **Usa Wasm solo si el rendimiento importa**: para CRUD, JS es suficiente.
+- ✅ **Carga el `.wasm` bajo demanda**: no lo cargues en la primera visita si no es necesario.
+- ✅ **Mide antes y después**: no asumas que Wasm será más rápido.
+- ✅ **Usa `wasm-bindgen`** (Rust) para no escribir bindings a mano.
+- ✅ **Cachea el `.wasm`** con Service Worker si es grande.
+- ❌ **No reescribas toda tu app en Rust**: integra solo las partes críticas.
+
 ---
 
 ## 🧠 Pon a prueba tus conocimientos
 
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Qué es WebAssembly (Wasm)?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Un framework de JavaScript</button>
-    <button class="quiz-option" data-option="b">B) Un reemplazo total de JavaScript</button>
-    <button class="quiz-option" data-option="c">C) Un formato binario para ejecutar código a alta velocidad en el navegador</button>
-  </div>
-  <div class="quiz-feedback"></div>
+<div class="quiz" data-quiz="capitulo-27">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué es WebAssembly?</p>
+<button class="quiz-option" data-opt="a">A) Un framework de JavaScript</button>
+<button class="quiz-option" data-opt="b">B">Un formato binario para ejecutar otros lenguajes en el navegador</button>
+<button class="quiz-option" data-opt="c">C) Una base de datos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué lenguaje se usa más con Wasm?</p>
+<button class="quiz-option" data-opt="a">A) Rust</button>
+<button class="quiz-option" data-opt="b">B) PHP</button>
+<button class="quiz-option" data-opt="c">C) Ruby</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Cuándo NO usar WebAssembly?</p>
+<button class="quiz-option" data-opt="a">A) En juegos 3D</button>
+<button class="quiz-option" data-opt="b">B) En edición de imágenes</button>
+<button class="quiz-option" data-opt="c">C) En un formulario de contacto</button>
+</div>
 </div>
 
-<div class="quiz-container" data-correct="b">
-  <p class="quiz-question">¿Qué lenguaje es ideal para compilar a WebAssembly?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) Python</button>
-    <button class="quiz-option" data-option="b">B) Rust o C++</button>
-    <button class="quiz-option" data-option="c">C) HTML</button>
-  </div>
-  <div class="quiz-feedback"></div>
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2027%3A%20WebAssembly&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2027%3A%20WebAssembly%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/27-webassembly/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
+
+---
+
+## ➡️ Siguiente paso
+
+[Ir al Capítulo 28 — IA en el frontend](28-ia-frontend.md){ .md-button .md-button--primary }
+[Volver al índice](../index.md){ .md-button }
