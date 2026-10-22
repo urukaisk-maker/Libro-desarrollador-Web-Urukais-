@@ -4,10 +4,13 @@
 
 **El manual definitivo para aprender desarrollo web en español. Desde los cimientos hasta la vanguardia tecnológica.**
 
-[![MkDocs Material](https://img.shields.io/badge/Made%20with-MkDocs%20Material-526CFE?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-222222?style=for-the-badge&logo=github)](https://libro.urukais.com/)
-[![Dev.to](https://img.shields.io/badge/Read%20on-Dev.to-0A0A0A?style=for-the-badge&logo=devdotto)](https://dev.to/urukaisklick)
+[![MkDocs](https://img.shields.io/badge/MkDocs-1.6-blue?logo=markdown&logoColor=white)](https://www.mkdocs.org/)
+[![Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-9.7-6a5acd?logo=materialdesign&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-live-success?logo=github)](https://libro.urukais.com)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)](https://www.python.org/)
+
+[🌐 Ver el libro](https://libro.urukais.com) · [📖 Documentación](https://libro.urukais.com/introduccion/) · [🐛 Reportar error](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) · [💬 Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions)
 
 </div>
 
@@ -19,25 +22,31 @@
 
 No es solo un libro de texto; es un **entorno de aprendizaje interactivo** con quizzes, editores de código en vivo, sistema de logros y certificados.
 
+> *"Aprender a programar es como aprender a tocar un instrumento: hace falta practicar, equivocarse y volver a intentarlo."*
+
+---
+
 ## ✨ Características principales
 
-- **38 Capítulos** organizados en 7 niveles (desde Principiante hasta Vanguardia).
-- **Ejercicios Resueltos**: Soluciones comentadas para practicar.
-- **Quizzes Interactivos**: Tests al final de cada capítulo.
-- **Editores de Código en Vivo**: Prueba HTML, CSS y JS directamente en la página.
-- **Laboratorios StackBlitz**: Entornos Node.js reales en el navegador.
-- **Sistema de Logros y Certificación**: Genera tu certificado en PDF.
-- **Proyectos Guiados**: Tutoriales paso a paso (ej. Lista de Tareas).
-- **Diagramas de Arquitectura**: Creados con Mermaid.js.
-- **Comentarios (Giscus)**: Debate en cada capítulo usando GitHub Discussions.
-- **Modo Oscuro/Claro**: Con diseño Ultra-Premium (glassmorphism, gradientes).
-- **PWA**: Instalable y funcional sin conexión.
-- **Comunidad Activa**: Diario, Agenda, Retos Semanales y Hall of Fame.
+- **📚 38 capítulos** organizados en **7 niveles** (desde Principiante hasta Vanguardia).
+- **✅ Ejercicios resueltos**: soluciones comentadas para practicar.
+- **🧠 Quizzes interactivos**: tests al final de cada capítulo.
+- **💻 Editores de código en vivo**: prueba HTML, CSS y JS directamente en la página.
+- **🧪 Laboratorios StackBlitz**: entornos Node.js reales en el navegador.
+- **🏆 Sistema de logros y certificación**: genera tu certificado en PDF.
+- **📁 Proyectos guiados**: tutoriales paso a paso (ej. Lista de Tareas).
+- **📊 Diagramas de arquitectura**: creados con Mermaid.js.
+- **💬 Comentarios (Giscus)**: debate en cada capítulo usando GitHub Discussions.
+- **🌙 Modo oscuro/claro**: con diseño Ultra-Premium (glassmorphism, gradientes).
+- **📱 PWA**: instalable y funcional sin conexión.
+- **🌍 Comunidad activa**: Diario, Agenda, Retos Semanales y Hall of Fame.
 
-## 📚 Niveles del libro
+---
+
+## 🗺️ Niveles del libro
 
 | Nivel | Descripción |
-|---|---|
+| :--- | :--- |
 | 🟢 **Principiante** | HTML, CSS, JavaScript, diseño responsive, formularios. |
 | 🟡 **Intermedio** | Git, consumo de APIs, despliegue, portfolio. |
 | 🟠 **Avanzado** | CSS moderno, JS asíncrono, TypeScript, testing, arquitectura. |
@@ -46,17 +55,22 @@ No es solo un libro de texto; es un **entorno de aprendizaje interactivo** con q
 | 🔵 **Élite** | Seguridad, WebAssembly, IA, WebXR y Web3. |
 | 🚀 **Vanguardia** | Testing E2E, Server Components, Edge Computing, Docker, GraphQL, Micro-frontends, IA Generativa y Seguridad Avanzada. |
 
-## 🛠️ Stack Tecnológico
+---
 
-- **MkDocs** + **Material for MkDocs**: Generación del sitio estático y diseño premium.
-- **Python**: Motor de construcción y scripts de automatización.
-- **HTML/CSS/JS**: Personalización de la UI, lógica de quizzes, sandbox y gamificación.
-- **GitHub Actions**: CI/CD automatizado para despliegues.
-- **GitHub Pages**: Alojamiento con dominio personalizado.
+## 🛠️ Stack tecnológico
 
-## 🚀 Cómo ejecutar el libro en local
+| Tecnología | Uso |
+| :--- | :--- |
+| **MkDocs + Material for MkDocs** | Generación del sitio estático y diseño premium. |
+| **Python 3.12** | Motor de construcción y scripts de automatización. |
+| **HTML/CSS/JS** | Personalización de la UI, lógica de quizzes, sandbox y gamificación. |
+| **GitHub Actions** | CI/CD automatizado para despliegues. |
+| **GitHub Pages** | Alojamiento con dominio personalizado. |
+| **Giscus** | Comentarios anclados a GitHub Discussions. |
+| **Mermaid.js** | Diagramas de arquitectura y flujo. |
+| **FullCalendar** | Calendario de eventos de la agenda. |
+| **Google Analytics 4** | Analíticas de visitas. |
 
-1. **Clona el repositorio:**
-   ```bash
-   git clone https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git
-   cd Libro-desarrollador-Web-Urukais-
+---
+
+## 📂 Estructura del proyecto
