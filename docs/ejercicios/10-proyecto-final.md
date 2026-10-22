@@ -1,156 +1,113 @@
-# Ejercicios resueltos — Capítulo 10
+# 10 — Portfolio
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/10-proyecto-final.md)
-
-## Ejercicio 1: Personalizar colores y tipografía
-
-> Personaliza colores y tipografía a tu gusto.
-
-### Solución
-
-```css
-:root {
-  --color-primary: #6a5acd;
-  --color-accent: #22d3ee;
-  --color-bg: #ffffff;
-  --color-text: #1e293b;
-  --font-main: 'Inter', system-ui, sans-serif;
-}
-
-body {
-  font-family: var(--font-main);
-  background: var(--color-bg);
-  color: var(--color-text);
-}
-
-a {
-  color: var(--color-primary);
-}
-
-.hero h1 {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-```
+!!! quote "Ejercicio resuelto"
+    Crea un portfolio sencillo con HTML semántico y CSS.
 
 ---
 
-## Ejercicio 2: Sección "Sobre mí"
+## 🎯 Objetivo
 
-> Añade una sección con tu foto.
+Crea un portfolio con:
 
-### Solución
+1. Sección "Sobre mí".
+2. Sección "Proyectos" con 3 tarjetas.
+3. Sección "Contacto" con email.
+4. Diseño responsive.
 
-```html
-<section id="sobre-mi" class="sobre-mi">
-  <img src="img/perfil.jpg" alt="Foto de Tu Nombre" class="perfil">
-  <div>
-    <h2>Sobre mí</h2>
-    <p>Soy desarrollador web con experiencia en frontend...</p>
-  </div>
-</section>
-```
+---
 
-```css
-.sobre-mi {
+## 💡 Solución
+
+\`\`\`html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Ana</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Ana García</h1>
+    <p>Desarrolladora frontend</p>
+  </header>
+
+  <main>
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>Me encanta construir interfaces accesibles y rápidas.</p>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="proyectos">
+        <article>
+          <h3>Lista de tareas</h3>
+          <p>App para gestionar tareas con localStorage.</p>
+        </article>
+        <article>
+          <h3>Buscador de películas</h3>
+          <p>Consume la API de OMDB.</p>
+        </article>
+        <article>
+          <h3>Clon de Twitter</h3>
+          <p>Interfaz hecha con React.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Escríbeme a <a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Ana García</p>
+  </footer>
+</body>
+</html>
+\`\`\`
+
+\`\`\`css
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.proyectos {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2rem;
-  align-items: center;
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 0 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
-.perfil {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
+article {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
-
-@media (max-width: 600px) {
-  .sobre-mi {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-```
+\`\`\`
 
 ---
 
-## Ejercicio 3: Formulario de contacto con Formspree
+## 🧠 Conceptos clave
 
-> Crea un formulario de contacto funcional.
-
-### Solución
-
-```html
-<form action="https://formspree.io/f/TU_ID" method="POST">
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" required>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="_replyto" required>
-
-  <label for="mensaje">Mensaje</label>
-  <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
-  <button type="submit">Enviar</button>
-</form>
-```
-
-Regístrate gratis en [formspree.io](https://formspree.io), crea un form y sustituye `TU_ID`.
+- HTML semántico (\`header\`, \`main\`, \`section\`, \`article\`, \`footer\`).
+- CSS Grid con \`auto-fit\` para responsive.
+- Enlaces \`mailto\`.
 
 ---
 
-## Ejercicio 4: Modo oscuro
+## 🚀 Retos extra
 
-> Añade modo oscuro con un botón.
-
-### Solución
-
-```html
-<button id="toggle-tema" aria-label="Cambiar tema">🌙</button>
-
-<script>
-  const btn = document.getElementById('toggle-tema');
-
-  btn.addEventListener('click', () => {
-    const actual = document.documentElement.dataset.theme;
-    const nuevo = actual === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = nuevo;
-    btn.textContent = nuevo === 'dark' ? '☀️' : '🌙';
-    localStorage.setItem('tema', nuevo);
-  });
-
-  // Cargar preferencia guardada
-  const guardado = localStorage.getItem('tema') || 'light';
-  document.documentElement.dataset.theme = guardado;
-  btn.textContent = guardado === 'dark' ? '☀️' : '🌙';
-</script>
-```
-
-```css
-:root {
-  --bg: #ffffff;
-  --text: #1e293b;
-}
-
-[data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #e2e8f0;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: background 300ms, color 300ms;
-}
-```
+- [ ] Añade modo oscuro.
+- [ ] Añade una foto de perfil.
+- [ ] Añade animaciones sutiles al hover.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/10-proyecto-final.md)
+[← Ejercicio 09](09-despliegue.md){ .md-button }
+[Volver al índice](index.md){ .md-button .md-button--primary }

@@ -1,107 +1,63 @@
-# Ejercicios resueltos — Capítulo 9
+# 09 — Despliegue
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/09-despliegue.md)
-
-## Ejercicio 1: Subir a GitHub Pages
-
-> Sube un proyecto simple a GitHub Pages.
-
-### Solución
-
-1. Crea el repo en GitHub y sube tu código.
-2. Settings → Pages.
-3. **Source**: `Deploy from a branch`.
-4. **Branch**: `main` / `/ (root)`.
-5. Save.
-6. En 1-2 min, tu web está en `https://TU_USUARIO.github.io/TU_REPO/`.
-
-**Ejemplo de proyecto mínimo:**
-
-```
-mi-web/
-├── index.html
-├── estilos.css
-└── app.js
-```
+!!! quote "Ejercicio resuelto"
+    Practica el despliegue de una web estática en GitHub Pages.
 
 ---
 
-## Ejercicio 2: Desplegar en Netlify
+## 🎯 Objetivo
 
-> Conecta un repositorio a Netlify.
-
-### Solución
-
-1. Regístrate en [netlify.com](https://netlify.com) con GitHub.
-2. **Add new site** → **Import an existing project**.
-3. Elige el repositorio.
-4. Configura:
-   - **Build command**: (vacío si es estático puro)
-   - **Publish directory**: `.` o `dist`
-5. **Deploy site**.
-
-Cada push a `main` dispara un nuevo deploy automáticamente.
+1. Crea un repositorio en GitHub.
+2. Sube un \`index.html\` con un "Hola, mundo".
+3. Activa GitHub Pages.
+4. Verifica que la web es accesible.
 
 ---
 
-## Ejercicio 3: GitHub Action de lint
+## 💡 Solución
 
-> Añade una GitHub Action que ejecute un linter en cada push.
+\`\`\`bash
+# 1. Crear repo local
+mkdir mi-web && cd mi-web
+echo "<h1>Hola, mundo</h1>" > index.html
 
-### Solución
+# 2. Inicializar git
+git init
+git add index.html
+git commit -m "feat: primera versión"
 
-`.github/workflows/lint.yml`:
+# 3. Crear repo remoto en GitHub y conectar
+git remote add origin https://github.com/tu-usuario/mi-web.git
+git branch -M main
+git push -u origin main
+\`\`\`
 
-```yaml
-name: Lint
+**En GitHub**:
 
-on:
-  push:
-    branches: [main]
-  pull_request:
+1. Settings → Pages.
+2. Source: Deploy from a branch.
+3. Branch: main, carpeta / (root).
+4. Save.
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-      - run: npm run lint
-```
-
-**`package.json` con el script:**
-
-```json
-{
-  "scripts": {
-    "lint": "eslint src"
-  }
-}
-```
+Tu web estará en \`https://tu-usuario.github.io/mi-web/\`.
 
 ---
 
-## Ejercicio 4: Dominio propio
+## 🧠 Conceptos clave
 
-> Configura un dominio propio (si tienes uno).
-
-### Solución
-
-**En GitHub Pages:**
-
-1. Settings → Pages → Custom domain → escribe `tudominio.com`.
-2. En tu registrador, añade:
-   - **CNAME** `www` → `tu-usuario.github.io`
-   - **A** `@` → `185.199.108.153` (y los otros 3).
-3. Espera la verificación (5 min - 24 h).
-4. Activa **Enforce HTTPS**.
+- GitHub Pages aloja sitios estáticos gratis.
+- Necesitas un repositorio público (o Pro para privados).
+- La rama y carpeta se configuran en Settings → Pages.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/09-despliegue.md)
+## 🚀 Retos extra
+
+- [ ] Añade un dominio personalizado.
+- [ ] Añade un archivo \`CNAME\`.
+- [ ] Configura un workflow de GitHub Actions para desplegar automáticamente.
+
+---
+
+[← Ejercicio 08](08-apis.md){ .md-button }
+[Ir al ejercicio 10 →](10-proyecto-final.md){ .md-button .md-button--primary }

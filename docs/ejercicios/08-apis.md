@@ -1,135 +1,63 @@
-# Ejercicios resueltos — Capítulo 8
+# 08 — APIs
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/08-apis.md)
-
-## Ejercicio 1: Lista de usuarios
-
-> Muestra una lista de usuarios de `jsonplaceholder.typicode.com/users`.
-
-### Solución
-
-```html
-<ul id="lista"></ul>
-
-<script>
-  async function cargarUsuarios() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const usuarios = await res.json();
-
-    const lista = document.getElementById('lista');
-    lista.innerHTML = usuarios
-      .map(u => `<li><strong>${u.name}</strong> — ${u.email}</li>`)
-      .join('');
-  }
-
-  cargarUsuarios().catch(err => console.error(err));
-</script>
-```
-
-!!! warning "Cuidado con `innerHTML`"
-    Aquí `innerHTML` es seguro porque los datos vienen de una API fiable. Con datos del usuario, usa `textContent` o escapa el HTML.
+!!! quote "Ejercicio resuelto"
+    Practica el consumo de APIs con \`fetch\`.
 
 ---
 
-## Ejercicio 2: Buscar usuarios por nombre
+## 🎯 Objetivo
 
-> Añade un `input` para buscar usuarios por nombre.
-
-### Solución
-
-```html
-<input type="text" id="buscar" placeholder="Buscar...">
-<ul id="lista"></ul>
-
-<script>
-  let usuarios = [];
-
-  async function cargar() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    usuarios = await res.json();
-    render(usuarios);
-  }
-
-  function render(lista) {
-    document.getElementById('lista').innerHTML = lista
-      .map(u => `<li>${u.name}</li>`)
-      .join('');
-  }
-
-  document.getElementById('buscar').addEventListener('input', (e) => {
-    const texto = e.target.value.toLowerCase();
-    const filtrados = usuarios.filter(u =>
-      u.name.toLowerCase().includes(texto)
-    );
-    render(filtrados);
-  });
-
-  cargar();
-</script>
-```
+Consume la API pública de JSONPlaceholder (\`https://jsonplaceholder.typicode.com/posts\`) y muestra los títulos de los primeros 5 posts.
 
 ---
 
-## Ejercicio 3: Mensaje de "Cargando…"
+## 💡 Solución
 
-> Muestra un mensaje mientras llega la respuesta.
-
-### Solución
-
-```html
-<div id="estado"></div>
-<ul id="lista"></ul>
+\`\`\`html
+<h1>Posts</h1>
+<ul id="posts"></ul>
 
 <script>
-  async function cargar() {
-    const estado = document.getElementById('estado');
-    const lista = document.getElementById('lista');
-
-    estado.textContent = 'Cargando…';
-    lista.innerHTML = '';
-
+  async function cargarPosts() {
     try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users');
-      const usuarios = await res.json();
-      lista.innerHTML = usuarios.map(u => `<li>${u.name}</li>`).join('');
-      estado.textContent = `${usuarios.length} usuarios cargados`;
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+      if (!res.ok) throw new Error('Error HTTP ' + res.status);
+      const posts = await res.json();
+
+      const lista = document.getElementById('posts');
+      posts.slice(0, 5).forEach(post => {
+        const li = document.createElement('li');
+        li.textContent = post.title;
+        lista.appendChild(li);
+      });
     } catch (err) {
-      estado.textContent = `Error: ${err.message}`;
+      console.error('Algo salió mal:', err);
     }
   }
 
-  cargar();
+  cargarPosts();
 </script>
-```
+\`\`\`
 
 ---
 
-## Ejercicio 4: Manejo de error 404
+## 🧠 Conceptos clave
 
-> Maneja el error cuando la API devuelve 404.
-
-### Solución
-
-```javascript
-async function obtener(url) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      if (res.status === 404) throw new Error('Recurso no encontrado');
-      throw new Error(`HTTP ${res.status}`);
-    }
-    return await res.json();
-  } catch (err) {
-    console.error('Fallo:', err.message);
-    return null;
-  }
-}
-
-// Prueba con URL inexistente
-obtener('https://jsonplaceholder.typicode.com/inexistente');
-```
+- \`fetch()\`: hace peticiones HTTP.
+- \`await\`: espera la respuesta.
+- \`res.ok\`: comprueba si la respuesta es exitosa.
+- \`res.json()\`: convierte la respuesta a objeto JS.
+- \`try/catch\`: maneja errores de red.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/08-apis.md)
+## 🚀 Retos extra
+
+- [ ] Muestra también el cuerpo del post.
+- [ ] Añade un botón para recargar.
+- [ ] Maneja el estado de carga con un \`<p>Cargando...</p>\`.
+
+---
+
+[← Ejercicio 07](07-git.md){ .md-button }
+[Ir al ejercicio 09 →](09-despliegue.md){ .md-button .md-button--primary }

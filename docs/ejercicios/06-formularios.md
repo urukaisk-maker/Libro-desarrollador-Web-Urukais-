@@ -1,98 +1,62 @@
-# Ejercicios resueltos — Capítulo 6
+# 06 — Formularios
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/06-formularios.md)
+!!! quote "Ejercicio resuelto"
+    Practica la creación de formularios accesibles.
 
-## Ejercicio 1: Formulario de contacto
+---
 
-> Crea un formulario de contacto con nombre, email y mensaje.
+## 🎯 Objetivo
 
-### Solución
+Crea un formulario de registro con:
 
-```html
-<form action="/enviar" method="POST">
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="50">
+1. Campo de nombre.
+2. Campo de email.
+3. Campo de contraseña.
+4. Checkbox de términos.
+5. Botón de envío.
 
-  <label for="email">Email</label>
+---
+
+## 💡 Solución
+
+\`\`\`html
+<form action="/registro" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required minlength="2">
+
+  <label for="email">Email:</label>
   <input type="email" id="email" name="email" required>
 
-  <label for="mensaje">Mensaje</label>
-  <textarea id="mensaje" name="mensaje" rows="5" required minlength="10"></textarea>
+  <label for="password">Contraseña:</label>
+  <input type="password" id="password" name="password" required minlength="8">
 
-  <button type="submit">Enviar</button>
+  <label>
+    <input type="checkbox" name="terminos" required>
+    Acepto los términos
+  </label>
+
+  <button type="submit">Registrarse</button>
 </form>
-```
-
-**Explicación:**
-- Cada `<input>` con su `<label>` asociado por `for`/`id`.
-- `required` → validación nativa.
-- `minlength` y `maxlength` → limitan la longitud.
+\`\`\`
 
 ---
 
-## Ejercicio 2: Validación de email obligatoria
+## 🧠 Conceptos clave
 
-> Añade validación para que el email sea obligatorio.
-
-### Solución
-
-```html
-<input
-  type="email"
-  id="email"
-  name="email"
-  required
-  placeholder="tu@email.com"
-  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-  title="Introduce un email válido"
->
-```
-
-**Explicación:**
-- `type="email"` → el navegador valida el formato.
-- `pattern` → expresión regular adicional.
-- `title` → mensaje de error personalizado.
-
-!!! warning "Valida también en el servidor"
-    La validación del navegador es solo para UX. **Nunca** confíes en ella como seguridad. Valida siempre en el backend.
+- Cada input debe tener un \`<label>\` con \`for\` igual al \`id\` del input.
+- \`required\`: obligatorio.
+- \`minlength\`: longitud mínima.
+- \`type="email"\`: valida formato de email.
 
 ---
 
-## Ejercicio 3: Mostrar datos en consola
+## 🚀 Retos extra
 
-> Muestra en consola los datos al enviar.
-
-### Solución
-
-```html
-<form id="mi-form">
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" required>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required>
-
-  <button type="submit">Enviar</button>
-</form>
-
-<script>
-  const form = document.getElementById('mi-form');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const datos = new FormData(form);
-    const objeto = Object.fromEntries(datos.entries());
-    console.log('Datos del formulario:', objeto);
-    form.reset();
-  });
-</script>
-```
-
-**Explicación:**
-- `e.preventDefault()` → evita el envío por defecto.
-- `FormData` → recoge todos los campos.
-- `Object.fromEntries()` → convierte a objeto JS.
+- [ ] Añade un campo de teléfono con \`type="tel"\`.
+- [ ] Añade un select de país.
+- [ ] Valida la contraseña con JS en tiempo real.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/06-formularios.md)
+[← Ejercicio 05](05-responsive.md){ .md-button }
+[Ir al ejercicio 07 →](07-git.md){ .md-button .md-button--primary }

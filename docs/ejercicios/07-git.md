@@ -1,133 +1,68 @@
-# Ejercicios resueltos — Capítulo 7
+# 07 — Git
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/07-git.md)
+!!! quote "Ejercicio resuelto"
+    Practica los comandos básicos de Git.
 
-## Ejercicio 1: Crear un repositorio y subirlo
+---
 
-> Crea un repositorio nuevo en GitHub y súbelo desde tu ordenador.
+## 🎯 Objetivo
 
-### Solución
+Simula el flujo básico de Git:
 
-```bash
-# En GitHub: crear repositorio vacío (sin README, sin .gitignore)
+1. Inicializa un repositorio.
+2. Crea un archivo \`index.html\`.
+3. Haz un commit.
+4. Crea una rama \`feature\`.
+5. Añade un archivo \`style.css\` y haz commit.
+6. Fusiona la rama en \`main\`.
 
-# En local:
-mkdir mi-proyecto && cd mi-proyecto
+---
+
+## 💡 Solución
+
+\`\`\`bash
+# 1. Inicializar
 git init
-git branch -M main
+git config user.name "Tu Nombre"
+git config user.email "tu@email.com"
 
-echo "# Mi proyecto" > README.md
-git add README.md
-git commit -m "chore: primer commit"
+# 2. Crear archivo y commit
+echo "<h1>Hola</h1>" > index.html
+git add index.html
+git commit -m "feat: añadir index.html"
 
-git remote add origin https://github.com/TU_USUARIO/mi-proyecto.git
-git push -u origin main
-```
+# 3. Rama
+git checkout -b feature
 
-**Explicación:**
-- `git init` → crea el repositorio local.
-- `git branch -M main` → renombra la rama a `main` (estándar actual).
-- `git push -u origin main` → sube y establece el upstream.
+# 4. Añadir CSS
+echo "h1 { color: red; }" > style.css
+git add style.css
+git commit -m "feat: añadir estilos"
 
----
-
-## Ejercicio 2: Crear rama, cambio y merge
-
-> Crea una rama, haz un cambio, fusiónala con `main`.
-
-### Solución
-
-```bash
-git checkout -b feature/saludo
-echo "Hola" > saludo.txt
-git add saludo.txt
-git commit -m "feat: añadir saludo"
-
+# 5. Volver a main y fusionar
 git checkout main
-git merge feature/saludo
-git push
-```
-
-**Explicación:**
-- `-b` → crea y cambia a la rama nueva.
-- El merge se hace desde `main` (la rama destino).
-- Después puedes borrar la rama: `git branch -d feature/saludo`.
+git merge feature
+\`\`\`
 
 ---
 
-## Ejercicio 3: Ver el historial
+## 🧠 Conceptos clave
 
-> Practica `git log --graph --oneline --all`.
-
-### Solución
-
-```bash
-git log --graph --oneline --all
-```
-
-Salida típica:
-
-```
-* 3a4b5c6 (HEAD -> main) feat: añadir saludo
-* 1f2e3d4 chore: primer commit
-```
-
-Con ramas y merges se ve más útil:
-
-```
-*   merge commit
-|\
-| * feat: nueva funcionalidad
-|/
-* chore: base
-```
+- \`git init\`: crea un repositorio vacío.
+- \`git add\`: añade al staging.
+- \`git commit -m\`: crea un commit.
+- \`git checkout -b\`: crea y cambia a una rama.
+- \`git merge\`: fusiona ramas.
 
 ---
 
-## Ejercicio 4: `.gitignore`
+## 🚀 Retos extra
 
-> Añade un `.gitignore` que excluya `node_modules/` y `.env`.
-
-### Solución
-
-Archivo `.gitignore`:
-
-```
-# Dependencias
-node_modules/
-
-# Variables de entorno
-.env
-.env.local
-
-# Sistema
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-
-# Build
-dist/
-build/
-```
-
-**Comandos para aplicarlo:**
-
-```bash
-git add .gitignore
-git commit -m "chore: añadir .gitignore"
-git push
-```
-
-!!! warning "Si ya has subido algo por error"
-    ```bash
-    git rm --cached archivo-indeseado.txt
-    git commit -m "chore: quitar archivo del repo"
-    ```
-    El `--cached` mantiene el archivo en disco pero lo quita del control de versiones.
+- [ ] Sube el repositorio a GitHub con \`git remote add\` y \`git push\`.
+- [ ] Crea un conflicto y resuélvelo.
+- [ ] Usa \`git log --oneline --graph\` para ver el historial.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/07-git.md)
+[← Ejercicio 06](06-formularios.md){ .md-button }
+[Ir al ejercicio 08 →](08-apis.md){ .md-button .md-button--primary }
