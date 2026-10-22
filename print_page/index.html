@@ -15677,515 +15677,228 @@ F12<span class="w"> </span>-&gt;<span class="w"> </span>Lighthouse<span class="w
 <hr />
 <h2 id="capitulos-22-pwa-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-22-pwa-siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="#capitulos-23-websockets">Ir al Capítulo 23 — WebSockets y tiempo real</a>
-<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-23-websockets" heading-number="20.3"><h1 id="capitulos-23-websockets-capitulo-23-websockets-y-tiempo-real">Capítulo 23 — WebSockets y tiempo real<a class="headerlink" href="#capitulos-23-websockets-capitulo-23-websockets-y-tiempo-real" title="Permanent link">&para;</a></h1>
-<h2 id="capitulos-23-websockets-introduccion">Introducción<a class="headerlink" href="#capitulos-23-websockets-introduccion" title="Permanent link">&para;</a></h2>
-<p>HTTP funciona con un modelo <strong>petición-respuesta</strong>: el cliente pregunta, el servidor responde, la conexión se cierra. Perfecto para la mayoría de casos, pero insuficiente para aplicaciones en <strong>tiempo real</strong>:</p>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-23-websockets" heading-number="20.3"><h1 id="capitulos-23-websockets-23-websockets-y-tiempo-real">23 — WebSockets y tiempo real<a class="headerlink" href="#capitulos-23-websockets-23-websockets-y-tiempo-real" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Chats.</li>
-<li>Notificaciones instantáneas.</li>
-<li>Juegos multijugador.</li>
-<li>Edición colaborativa (tipo Google Docs).</li>
-<li>Paneles con datos en vivo.</li>
+<li>Qué son los WebSockets y cuándo usarlos.</li>
+<li>La API WebSocket en el navegador.</li>
+<li>Servidor WebSocket con Node.js y ws.</li>
+<li>Salas y broadcasting.</li>
+<li>Reconexión y manejo de errores.</li>
 </ul>
-<p>Para eso existen los <strong>WebSockets</strong>: un canal <strong>bidireccional y persistente</strong> entre cliente y servidor.</p>
-<h2 id="capitulos-23-websockets-http-vs-websockets">HTTP vs WebSockets<a class="headerlink" href="#capitulos-23-websockets-http-vs-websockets" title="Permanent link">&para;</a></h2>
+</div>
+<hr />
+<h2 id="capitulos-23-websockets-que-es-un-websocket">🔌 ¿Qué es un WebSocket?<a class="headerlink" href="#capitulos-23-websockets-que-es-un-websocket" title="Permanent link">&para;</a></h2>
+<p>Un <strong>WebSocket</strong> es un protocolo de comunicación <strong>bidireccional</strong> y <strong>persistente</strong> entre cliente y servidor. A diferencia de HTTP, la conexión no se cierra después de cada petición: queda abierta para enviar y recibir mensajes en tiempo real.</p>
+<div class="highlight"><pre><span></span><code>HTTP:     petición → respuesta → cerrar
+WebSocket: conexión persistente ↔ mensajes en ambos sentidos
+</code></pre></div>
+<div class="admonition quote">
+<p class="admonition-title">Tiempo real de verdad</p>
+<p>Los WebSockets son la base de chats, notificaciones en vivo, colaboración en tiempo real y juegos multijugador.</p>
+</div>
+<hr />
+<h2 id="capitulos-23-websockets-cuando-usar-websockets">🎯 ¿Cuándo usar WebSockets?<a class="headerlink" href="#capitulos-23-websockets-cuando-usar-websockets" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Aspecto</th>
-<th>HTTP</th>
-<th>WebSockets</th>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">WebSocket</th>
+<th style="text-align: left;">HTTP polling</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Dirección</td>
-<td>Cliente → Servidor</td>
-<td>Bidireccional</td>
+<td style="text-align: left;">Chat</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td>Conexión</td>
-<td>Se cierra tras cada respuesta</td>
-<td>Persistente</td>
+<td style="text-align: left;">Notificaciones en vivo</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td>Latencia</td>
-<td>Alta (handshake cada vez)</td>
-<td>Muy baja</td>
+<td style="text-align: left;">Edición colaborativa</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td>Uso típico</td>
-<td>Cargar páginas, APIs</td>
-<td>Tiempo real</td>
+<td style="text-align: left;">Juegos multijugador</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datos que cambian poco</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">APIs REST tradicionales</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
 </tr>
 </tbody>
 </table>
-<h2 id="capitulos-23-websockets-como-funciona-un-websocket">Cómo funciona un WebSocket<a class="headerlink" href="#capitulos-23-websockets-como-funciona-un-websocket" title="Permanent link">&para;</a></h2>
-<ol>
-<li>El cliente envía una petición HTTP especial con <code>Upgrade: websocket</code>.</li>
-<li>El servidor acepta (<code>101 Switching Protocols</code>).</li>
-<li>La conexión pasa a ser <strong>WebSocket</strong>: ya no es HTTP.</li>
-<li>Ambos lados pueden enviarse mensajes cuando quieran.</li>
-<li>La conexión se cierra cuando alguien la cierra o falla la red.</li>
-</ol>
-<h2 id="capitulos-23-websockets-api-de-websocket-en-el-navegador">API de WebSocket en el navegador<a class="headerlink" href="#capitulos-23-websockets-api-de-websocket-en-el-navegador" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://api.miapp.com/ws'</span><span class="p">);</span>
+<hr />
+<h2 id="capitulos-23-websockets-cliente-la-api-websocket">💻 Cliente: la API WebSocket<a class="headerlink" href="#capitulos-23-websockets-cliente-la-api-websocket" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s2">"wss://mi-servidor.com"</span><span class="p">);</span>
 
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conectado'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s1">'saludo'</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="w"> </span><span class="p">}));</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"open"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Conectado"</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s2">"saludo"</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="w"> </span><span class="p">}));</span>
 <span class="p">});</span>
 
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Recibido:'</span><span class="p">,</span><span class="w"> </span><span class="nx">datos</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Mensaje recibido:"</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"close"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Desconectado"</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Cerrado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">reason</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">wss vs ws</p>
-<ul>
-<li><code>ws://</code> → WebSocket sin cifrar (solo para desarrollo).</li>
-<li><code>wss://</code> → WebSocket sobre TLS (obligatorio en producción).</li>
-</ul>
+<div class="admonition warning">
+<p class="admonition-title">wss:// en producción</p>
+<p>Usa siempre <code>wss://</code> (WebSocket seguro) en producción. <code>ws://</code> solo para desarrollo local.</p>
 </div>
-<h2 id="capitulos-23-websockets-enviar-y-recibir">Enviar y recibir<a class="headerlink" href="#capitulos-23-websockets-enviar-y-recibir" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-23-websockets-enviar-texto">Enviar texto<a class="headerlink" href="#capitulos-23-websockets-enviar-texto" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hola servidor'</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-enviar-json">Enviar JSON<a class="headerlink" href="#capitulos-23-websockets-enviar-json" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s1">'mensaje'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">sala</span><span class="o">:</span><span class="w"> </span><span class="s1">'general'</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="s1">'Hola a todos'</span><span class="p">,</span>
-<span class="p">}));</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-mensajes-binarios">Mensajes binarios<a class="headerlink" href="#capitulos-23-websockets-mensajes-binarios" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">socket</span><span class="p">.</span><span class="nx">binaryType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'arraybuffer'</span><span class="p">;</span>
-<span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]));</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-cerrar">Cerrar<a class="headerlink" href="#capitulos-23-websockets-cerrar" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">socket</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="s1">'Cierre normal'</span><span class="p">);</span>
-</code></pre></div>
-<h2 id="capitulos-23-websockets-reconexion-automatica">Reconexión automática<a class="headerlink" href="#capitulos-23-websockets-reconexion-automatica" title="Permanent link">&para;</a></h2>
-<p>Las conexiones se caen. Un buen cliente <strong>se reconecta solo</strong>, con <strong>backoff exponencial</strong> para no saturar.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">SocketReconectable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">#url</span><span class="p">;</span>
-<span class="w">  </span><span class="n">#socket</span><span class="p">;</span>
-<span class="w">  </span><span class="n">#intentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">  </span><span class="n">#maxIntentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#conectar</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">#conectar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">#url</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="n">#intentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conectado'</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">#intentos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#maxIntentos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">espera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#intentos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Reintentando en </span><span class="si">${</span><span class="nx">espera</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="n">#intentos</span><span class="o">++</span><span class="p">;</span>
-<span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="n">#conectar</span><span class="p">();</span>
-<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="nx">espera</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">enviar</span><span class="p">(</span><span class="nx">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">#socket</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="n">#socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">datos</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="capitulos-23-websockets-servidor-websocket-con-nodejs">Servidor WebSocket con Node.js<a class="headerlink" href="#capitulos-23-websockets-servidor-websocket-con-nodejs" title="Permanent link">&para;</a></h2>
-<p>Usaremos la librería <strong>ws</strong>, la más popular y ligera.</p>
-<h3 id="capitulos-23-websockets-instalacion">Instalación<a class="headerlink" href="#capitulos-23-websockets-instalacion" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="capitulos-23-websockets-servidor-con-nodejs-y-ws">🖥️ Servidor con Node.js y ws<a class="headerlink" href="#capitulos-23-websockets-servidor-con-nodejs-y-ws" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>ws
 </code></pre></div>
-<h3 id="capitulos-23-websockets-servidor-basico">Servidor básico<a class="headerlink" href="#capitulos-23-websockets-servidor-basico" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// server.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ws'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"ws"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">wss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="p">({</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">8080</span><span class="w"> </span><span class="p">});</span>
 
-<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Cliente conectado'</span><span class="p">);</span>
+<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"connection"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">ws</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Cliente conectado"</span><span class="p">);</span>
 
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Recibido:'</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Recibido:"</span><span class="p">,</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// Eco al mismo cliente</span>
-<span class="w">    </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`Eco: </span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Cliente desconectado'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Ejecuta con <code>node server.js</code> y prueba desde el navegador con <code>new WebSocket('ws://localhost:8080')</code>.</p>
-<h3 id="capitulos-23-websockets-difusion-a-todos-broadcast">Difusión a todos (broadcast)<a class="headerlink" href="#capitulos-23-websockets-difusion-a-todos-broadcast" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Reenviar a todos los clientes conectados</span>
-<span class="w">    </span><span class="nx">wss</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">cliente</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cliente</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">cliente</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">cliente</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// Reenviar a todos los clientes</span>
+<span class="w">    </span><span class="nx">wss</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">client</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s2">"mensaje"</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="nx">mensaje</span><span class="p">.</span><span class="nx">texto</span><span class="w"> </span><span class="p">}));</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"close"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Cliente desconectado"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="capitulos-23-websockets-salas-rooms">Salas (rooms)<a class="headerlink" href="#capitulos-23-websockets-salas-rooms" title="Permanent link">&para;</a></h2>
-<p>Para chats con varios canales, agrupa clientes en salas.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">salas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span><span class="w"> </span><span class="c1">// sala -&gt; Set de sockets</span>
+<hr />
+<h2 id="capitulos-23-websockets-salas-y-broadcasting">🏠 Salas y broadcasting<a class="headerlink" href="#capitulos-23-websockets-salas-y-broadcasting" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">salas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
 
-<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">raw</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">raw</span><span class="p">);</span>
+<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"connection"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">ws</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tipo</span><span class="p">,</span><span class="w"> </span><span class="nx">sala</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">tipo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'unirse'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">salas</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">sala</span><span class="p">))</span><span class="w"> </span><span class="nx">salas</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">sala</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">());</span>
-<span class="w">      </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">sala</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="nx">socket</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">sala</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tipo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"entrar"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">salas</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">sala</span><span class="p">))</span><span class="w"> </span><span class="nx">salas</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">sala</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">());</span>
+<span class="w">      </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">sala</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="nx">ws</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sala</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">tipo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'mensaje'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">miembros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">socket</span><span class="p">.</span><span class="nx">sala</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">miembros</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">s</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s1">'mensaje'</span><span class="p">,</span><span class="w"> </span><span class="nx">de</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">de</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">texto</span><span class="w"> </span><span class="p">}));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tipo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"mensaje"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">client</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">client</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="p">}));</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">.</span><span class="nx">sala</span><span class="p">)</span><span class="w"> </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">socket</span><span class="p">.</span><span class="nx">sala</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">socket</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"close"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">salas</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">salas</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">ws</span><span class="p">.</span><span class="nx">sala</span><span class="p">).</span><span class="ow">delete</span><span class="p">(</span><span class="nx">ws</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="capitulos-23-websockets-integrar-websocket-con-http">Integrar WebSocket con HTTP<a class="headerlink" href="#capitulos-23-websockets-integrar-websocket-con-http" title="Permanent link">&para;</a></h2>
-<p>Lo habitual es <strong>HTTP para la API</strong> y <strong>WebSocket para eventos en vivo</strong>. Ambos conviven en el mismo servidor.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:http'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ws'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/salud'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}));</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">wss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="p">({</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="p">});</span>
-
-<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s1">'bienvenida'</span><span class="w"> </span><span class="p">}));</span>
-<span class="p">});</span>
-
-<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'http://localhost:3000'</span><span class="p">));</span>
-</code></pre></div>
-<p>El cliente se conecta a <code>ws://localhost:3000</code> y la API sigue en <code>http://localhost:3000/api/...</code>.</p>
-<h2 id="capitulos-23-websockets-socketio-la-alternativa-con-esteroides">Socket.IO: la alternativa con esteroides<a class="headerlink" href="#capitulos-23-websockets-socketio-la-alternativa-con-esteroides" title="Permanent link">&para;</a></h2>
-<p><strong>Socket.IO</strong> no es WebSocket puro; es una capa sobre WebSocket que añade:</p>
-<ul>
-<li><strong>Fallback</strong> a long-polling si WebSocket falla.</li>
-<li><strong>Reconexión automática</strong>.</li>
-<li><strong>Salas y namespaces</strong> ya implementados.</li>
-<li><strong>Emisión con acks</strong> (confirmaciones).</li>
-</ul>
-<h3 id="capitulos-23-websockets-instalacion_1">Instalación<a class="headerlink" href="#capitulos-23-websockets-instalacion_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>socket.io<span class="w"> </span>socket.io-client
-</code></pre></div>
-<h3 id="capitulos-23-websockets-servidor">Servidor<a class="headerlink" href="#capitulos-23-websockets-servidor" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Server</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'socket.io'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:http'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">io</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Server</span><span class="p">(</span><span class="nx">server</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="s1">'http://localhost:5173'</span><span class="w"> </span><span class="p">},</span>
-<span class="p">});</span>
-
-<span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conectado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'unirse'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">sala</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">socket</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">sala</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'mensaje'</span><span class="p">,</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">sala</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">io</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">sala</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'mensaje'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">texto</span><span class="p">,</span><span class="w"> </span><span class="nx">autor</span><span class="o">:</span><span class="w"> </span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'disconnect'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Desconectado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-cliente">Cliente<a class="headerlink" href="#capitulos-23-websockets-cliente" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">io</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'socket.io-client'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">io</span><span class="p">(</span><span class="s1">'http://localhost:3000'</span><span class="p">);</span>
-
-<span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'unirse'</span><span class="p">,</span><span class="w"> </span><span class="s1">'general'</span><span class="p">);</span>
-
-<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'mensaje'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">autor</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">texto</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'mensaje'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sala</span><span class="o">:</span><span class="w"> </span><span class="s1">'general'</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="s1">'Hola'</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">¿WebSocket puro o Socket.IO?</p>
-<ul>
-<li><strong>WebSocket puro</strong>: más control, protocolo estándar, ideal para APIs públicas.</li>
-<li><strong>Socket.IO</strong>: más cómodo, reconexión y salas incluidas, ideal para apps propias.</li>
-</ul>
-</div>
-<h2 id="capitulos-23-websockets-autenticacion">Autenticación<a class="headerlink" href="#capitulos-23-websockets-autenticacion" title="Permanent link">&para;</a></h2>
-<p>WebSocket no tiene cabeceras HTTP, así que la autenticación se hace de otras formas.</p>
-<h3 id="capitulos-23-websockets-token-en-la-url">Token en la URL<a class="headerlink" href="#capitulos-23-websockets-token-en-la-url" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="sb">`wss://api.miapp.com/ws?token=</span><span class="si">${</span><span class="nx">jwt</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// Servidor</span>
-<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://localhost'</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'token'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">socket</span><span class="p">.</span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">socket</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mf">4001</span><span class="p">,</span><span class="w"> </span><span class="s1">'Token inválido'</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-primer-mensaje-de-autenticacion">Primer mensaje de autenticación<a class="headerlink" href="#capitulos-23-websockets-primer-mensaje-de-autenticacion" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">tipo</span><span class="o">:</span><span class="w"> </span><span class="s1">'auth'</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="p">}));</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>El servidor espera al primer mensaje antes de aceptar cualquier otra acción.</p>
-<div class="admonition warning">
-<p class="admonition-title">Nunca autentiques sin verificar</p>
-<p>Un WebSocket abierto sin autenticación es una puerta abierta. Verifica siempre el token al conectar.</p>
-</div>
-<h2 id="capitulos-23-websockets-casos-de-uso-reales">Casos de uso reales<a class="headerlink" href="#capitulos-23-websockets-casos-de-uso-reales" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-23-websockets-chat-en-tiempo-real">Chat en tiempo real<a class="headerlink" href="#capitulos-23-websockets-chat-en-tiempo-real" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Salas por conversación.</li>
-<li>Mensajes con timestamp.</li>
-<li>Indicador de "escribiendo…".</li>
-<li>Historial persistido en BD.</li>
-</ul>
-<h3 id="capitulos-23-websockets-notificaciones">Notificaciones<a class="headerlink" href="#capitulos-23-websockets-notificaciones" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Nuevo mensaje, nueva venta, nueva alerta.</li>
-<li>El servidor hace <code>emit</code> a un usuario concreto.</li>
-<li>El cliente muestra la notificación.</li>
-</ul>
-<h3 id="capitulos-23-websockets-panel-en-vivo">Panel en vivo<a class="headerlink" href="#capitulos-23-websockets-panel-en-vivo" title="Permanent link">&para;</a></h3>
-<ul>
-<li>KPIs que se actualizan al instante.</li>
-<li>Actualizaciones push cuando cambia algo en el servidor.</li>
-<li>Mejor que hacer polling cada 5 s.</li>
-</ul>
-<h3 id="capitulos-23-websockets-edicion-colaborativa">Edición colaborativa<a class="headerlink" href="#capitulos-23-websockets-edicion-colaborativa" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Varios usuarios editan el mismo documento.</li>
-<li>Los cambios se sincronizan vía WebSocket.</li>
-<li>Combina con <strong>CRDTs</strong> (Yjs, Automerge) para resolver conflictos.</li>
-</ul>
-<h2 id="capitulos-23-websockets-alternativas-a-websocket">Alternativas a WebSocket<a class="headerlink" href="#capitulos-23-websockets-alternativas-a-websocket" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Tecnología</th>
-<th>Dirección</th>
-<th>Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>WebSocket</strong></td>
-<td>Bidireccional</td>
-<td>Uso general tiempo real</td>
-</tr>
-<tr>
-<td><strong>SSE</strong> (Server-Sent Events)</td>
-<td>Servidor → Cliente</td>
-<td>Notificaciones unidireccionales</td>
-</tr>
-<tr>
-<td><strong>Long polling</strong></td>
-<td>Cliente → Servidor (simulado)</td>
-<td>Fallback legacy</td>
-</tr>
-<tr>
-<td><strong>WebRTC</strong></td>
-<td>Peer-to-peer</td>
-<td>Audio, vídeo, datos P2P</td>
-</tr>
-<tr>
-<td><strong>MQTT</strong></td>
-<td>Bidireccional (broker)</td>
-<td>IoT</td>
-</tr>
-</tbody>
-</table>
-<h2 id="capitulos-23-websockets-server-sent-events-sse">Server-Sent Events (SSE)<a class="headerlink" href="#capitulos-23-websockets-server-sent-events-sse" title="Permanent link">&para;</a></h2>
-<p>Unidireccional, más simple que WebSocket si solo necesitas que el servidor empuje datos.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Servidor</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/eventos'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span><span class="w"> </span><span class="s1">'text/event-stream'</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Cache-Control'</span><span class="p">,</span><span class="w"> </span><span class="s1">'no-cache'</span><span class="p">);</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">intervalo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`data: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">hora</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span><span class="w"> </span><span class="si">}</span><span class="sb">)}\n\n`</span><span class="p">);</span>
-<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalo</span><span class="p">));</span>
-<span class="p">});</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// Cliente</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">eventos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EventSource</span><span class="p">(</span><span class="s1">'/eventos'</span><span class="p">);</span>
-<span class="nx">eventos</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
-</code></pre></div>
-<h2 id="capitulos-23-websockets-diagrama-http-vs-websocket">Diagrama: HTTP vs WebSocket<a class="headerlink" href="#capitulos-23-websockets-diagrama-http-vs-websocket" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Cliente
-    participant S as Servidor
-
-    Note over C,S: HTTP: conexión por cada petición
-    C-&gt;&gt;S: Petición 1
-    S--&gt;&gt;C: Respuesta 1
-    C-&gt;&gt;S: Petición 2
-    S--&gt;&gt;C: Respuesta 2
-
-    Note over C,S: WebSocket: conexión persistente
-    C-&gt;&gt;S: Handshake (Upgrade)
-    S--&gt;&gt;C: 101 Switching Protocols
-    C-&gt;&gt;S: Mensaje
-    S--&gt;&gt;C: Mensaje
-    S--&gt;&gt;C: Mensaje push
-    C-&gt;&gt;S: Mensaje</code></pre>
-<p>Con HTTP cada petición abre y cierra conexión. Con WebSocket la conexión permanece abierta y ambos lados pueden enviar mensajes cuando quieran.</p>
-<h2 id="capitulos-23-websockets-buenas-practicas">Buenas prácticas<a class="headerlink" href="#capitulos-23-websockets-buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>HTTPS/WSS siempre</strong> en producción.</li>
-<li><strong>Autentica al conectar</strong>. Un WebSocket abierto es un agujero de seguridad.</li>
-<li><strong>Reconecta con backoff exponencial</strong>. Evita tormentas de reconexión.</li>
-<li><strong>Limita el tamaño de los mensajes</strong>. Los WebSockets no son para enviar archivos grandes.</li>
-<li><strong>Heartbeat (ping/pong)</strong>. Detecta conexiones muertas.</li>
-<li><strong>Escala con Redis pub/sub</strong> si tienes varias instancias del servidor.</li>
-<li><strong>Cierra conexiones inactivas</strong> tras un tiempo.</li>
-<li><strong>Registra eventos</strong> para diagnóstico.</li>
-<li><strong>Cuidado con la seguridad</strong>: valida todo lo que llega.</li>
-</ul>
-<h2 id="capitulos-23-websockets-ejemplo-chat-minimo-completo">Ejemplo: chat mínimo completo<a class="headerlink" href="#capitulos-23-websockets-ejemplo-chat-minimo-completo" title="Permanent link">&para;</a></h2>
-<h3 id="capitulos-23-websockets-servidor_1">Servidor<a class="headerlink" href="#capitulos-23-websockets-servidor_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'ws'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">wss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocketServer</span><span class="p">({</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">8080</span><span class="w"> </span><span class="p">});</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">clientes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">();</span>
-
-<span class="nx">wss</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">clientes</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">socket</span><span class="p">);</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">raw</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">raw</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">salida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">autor</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">autor</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">texto</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">hora</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="nx">clientes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">c</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">readyState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">salida</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clientes</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">socket</span><span class="p">));</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="capitulos-23-websockets-cliente_1">Cliente<a class="headerlink" href="#capitulos-23-websockets-cliente_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Chat<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensajes"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"form"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"texto"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Escribe..."</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">"off"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:8080'</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ul</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mensajes'</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'form'</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'texto'</span><span class="p">);</span>
-
-<span class="w">    </span><span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'li'</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">li</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">autor</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">texto</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">ul</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">autor</span><span class="o">:</span><span class="w"> </span><span class="s1">'Urukais'</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">}));</span>
-<span class="w">      </span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="capitulos-23-websockets-ejercicios">Ejercicios<a class="headerlink" href="#capitulos-23-websockets-ejercicios" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Crea un servidor WebSocket que haga eco de los mensajes.</li>
-<li>Añade broadcast: cada mensaje se reenvía a todos los clientes.</li>
-<li>Implementa salas: los mensajes solo van a los de la misma sala.</li>
-<li>Añade reconexión automática con backoff exponencial al cliente.</li>
-<li>Autentica el WebSocket con un JWT en el primer mensaje.</li>
-<li>Añade un indicador de "escribiendo…" en el chat.</li>
-<li>Persiste el historial de mensajes en PostgreSQL.</li>
-<li>Despliega en Railway y prueba con dos navegadores distintos.</li>
-</ol>
 <hr />
-<p>⬅️ <a href="#capitulos-22-pwa">Capítulo 22 — Progressive Web Apps</a> | ➡️ <a href="#capitulos-24-animaciones">Capítulo 24 — Animaciones avanzadas</a></p>
+<h2 id="capitulos-23-websockets-reconexion-automatica">🔄 Reconexión automática<a class="headerlink" href="#capitulos-23-websockets-reconexion-automatica" title="Permanent link">&para;</a></h2>
+<p>Los WebSockets se pueden cerrar por red, servidor caído o timeout. Implementa reconexión:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">ws</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">reintentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">conectar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s2">"wss://mi-servidor.com"</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"open"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Conectado"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reintentos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"close"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Desconectado, reconectando..."</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reintentos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="nx">reintentos</span><span class="p">,</span><span class="w"> </span><span class="mf">30000</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">conectar</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nx">conectar</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="capitulos-23-websockets-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#capitulos-23-websockets-buenas-practicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✅ <strong>Usa <code>wss://</code></strong> en producción (WebSocket seguro).</li>
+<li>✅ <strong>Reconexión con backoff exponencial</strong>: 1s, 2s, 4s, 8s...</li>
+<li>✅ <strong>Heartbeat</strong>: envía pings periódicos para detectar conexiones muertas.</li>
+<li>✅ <strong>Autenticación</strong>: valida el token al conectar, no solo al hacer login.</li>
+<li>✅ <strong>Limita el tamaño de los mensajes</strong>: los mensajes gigantes bloquean.</li>
+<li>✅ <strong>Valida los datos</strong> que llegan del cliente.</li>
+<li>❌ <strong>No uses WebSockets para todo</strong>: para CRUD simple, HTTP es suficiente.</li>
+</ul>
 <hr />
 <h2 id="capitulos-23-websockets-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#capitulos-23-websockets-pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz-container" data-correct="c">
-  <p class="quiz-question">¿Cuál es la principal diferencia entre HTTP y WebSocket?</p>
-  <div class="quiz-options">
-    <button class="quiz-option" data-option="a">A) WebSocket es más lento</button>
-    <button class="quiz-option" data-option="b">B) HTTP es bidireccional</button>
-    <button class="quiz-option" data-option="c">C) WebSocket mantiene una conexión persistente y bidireccional</button>
-  </div>
-  <div class="quiz-feedback"></div>
-</div></section><section class="print-page" id="capitulos-24-animaciones" heading-number="20.4"><h1 id="capitulos-24-animaciones-capitulo-24-animaciones-avanzadas">Capítulo 24 — Animaciones avanzadas<a class="headerlink" href="#capitulos-24-animaciones-capitulo-24-animaciones-avanzadas" title="Permanent link">&para;</a></h1>
+<div class="quiz" data-quiz="capitulo-23">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué diferencia principal hay entre HTTP y WebSocket?</p>
+<button class="quiz-option" data-opt="a">A) WebSocket es más lento</button>
+<button class="quiz-option" data-opt="b">B) WebSocket mantiene la conexión abierta y es bidireccional</button>
+<button class="quiz-option" data-opt="c">C) HTTP es más moderno</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Qué protocolo es seguro para WebSockets?</p>
+<button class="quiz-option" data-opt="a">A) wss://</button>
+<button class="quiz-option" data-opt="b">B) ws://</button>
+<button class="quiz-option" data-opt="c">C) http://</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Qué técnica evita reconectar demasiado rápido?</p>
+<button class="quiz-option" data-opt="a">A) Polling</button>
+<button class="quiz-option" data-opt="b">B) Heartbeat</button>
+<button class="quiz-option" data-opt="c">C) Backoff exponencial</button>
+</div>
+</div>
+
+<hr />
+<h2 id="capitulos-23-websockets-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#capitulos-23-websockets-comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2023%3A%20WebSockets%20y%20tiempo%20real&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F23-websockets%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F23-websockets%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2023%3A%20WebSockets%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F23-websockets%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/23-websockets/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="capitulos-23-websockets-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#capitulos-23-websockets-siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="#capitulos-24-animaciones">Ir al Capítulo 24 — Animaciones avanzadas</a>
+<a class="md-button" href="#.">Volver al índice</a></p></section><section class="print-page" id="capitulos-24-animaciones" heading-number="20.4"><h1 id="capitulos-24-animaciones-capitulo-24-animaciones-avanzadas">Capítulo 24 — Animaciones avanzadas<a class="headerlink" href="#capitulos-24-animaciones-capitulo-24-animaciones-avanzadas" title="Permanent link">&para;</a></h1>
 <h2 id="capitulos-24-animaciones-introduccion">Introducción<a class="headerlink" href="#capitulos-24-animaciones-introduccion" title="Permanent link">&para;</a></h2>
 <p>Una animación bien hecha mejora la experiencia. Una mal hecha la arruina. Este capítulo cubre las técnicas que usan los equipos profesionales para animar interfaces fluidas, accesibles y con buen rendimiento.</p>
 <h2 id="capitulos-24-animaciones-principios-de-animacion">Principios de animación<a class="headerlink" href="#capitulos-24-animaciones-principios-de-animacion" title="Permanent link">&para;</a></h2>
