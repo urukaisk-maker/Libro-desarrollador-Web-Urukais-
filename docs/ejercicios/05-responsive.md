@@ -1,129 +1,80 @@
-# Ejercicios resueltos — Capítulo 5
+# 05 — Responsive
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/05-responsive.md)
+!!! quote "Ejercicio resuelto"
+    Practica el diseño responsive con media queries.
 
-## Ejercicio 1: Tarjeta con layout adaptativo
+---
 
-> Crea una tarjeta que cambie de una columna (móvil) a dos (desktop).
+## 🎯 Objetivo
 
-### Solución
+Crea una galería que:
 
-```css
-.tarjeta {
+1. Muestre 1 columna en móvil.
+2. Muestre 2 columnas en tablet.
+3. Muestre 3 columnas en escritorio.
+
+---
+
+## 💡 Solución
+
+\`\`\`html
+<div class="galeria">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+\`\`\`
+
+\`\`\`css
+.galeria {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
   padding: 1rem;
 }
 
 @media (min-width: 640px) {
-  .tarjeta {
-    grid-template-columns: 200px 1fr;
-    align-items: center;
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-```
 
-**Explicación:**
-- Mobile-first: por defecto una columna.
-- `@media (min-width: 640px)` añade la segunda columna.
-- `1fr` → ocupa el espacio disponible.
-
----
-
-## Ejercicio 2: Centrado con Flexbox
-
-> Usa Flexbox para centrar un elemento vertical y horizontalmente.
-
-### Solución
-
-```css
-.contenedor {
-  display: flex;
-  justify-content: center;   /* horizontal */
-  align-items: center;       /* vertical */
-  min-height: 100vh;
-  background: #f8fafc;
+@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.contenido {
+.item {
+  background: #6a5acd;
+  color: white;
+  padding: 2rem;
   text-align: center;
+  border-radius: 8px;
 }
-```
-
-```html
-<div class="contenedor">
-  <div class="contenido">
-    <h1>Centrado</h1>
-    <p>Con Flexbox es trivial.</p>
-  </div>
-</div>
-```
-
-**Explicación:**
-- `min-height: 100vh` → altura mínima de la pantalla completa.
-- `justify-content` → eje principal (horizontal por defecto).
-- `align-items` → eje cruzado (vertical).
+\`\`\`
 
 ---
 
-## Ejercicio 3: Cuadrícula responsive
+## 🧠 Conceptos clave
 
-> Crea una cuadrícula de 3 columnas que se convierta en 1 en móvil.
-
-### Solución
-
-```css
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-@media (min-width: 640px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 960px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
-}
-```
-
-**Alternativa sin media queries: `auto-fit` + `minmax`:**
-
-```css
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-```
-
-Esta versión se adapta sola sin media queries.
+- **Mobile first**: empieza con 1 columna y amplía con \`min-width\`.
+- \`grid-template-columns\`: define las columnas.
+- \`repeat(n, 1fr)\`: repite n columnas de igual tamaño.
+- \`@media (min-width: ...)\`: aplica estilos a partir de ese ancho.
 
 ---
 
-## Ejercicio 4: Tipografía fluida
+## 🚀 Retos extra
 
-> Crea un título con tipografía fluida usando `clamp()`.
-
-### Solución
-
-```css
-h1 {
-  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-```
-
-**Explicación:**
-- `clamp(min, ideal, max)` → 1.5rem mínimo, 3rem máximo.
-- `4vw + 1rem` → crece con el viewport pero no linealmente.
+- [ ] Usa \`auto-fit\` con \`minmax\` para que se adapte automáticamente.
+- [ ] Añade hover a cada item.
+- [ ] Añade imágenes en lugar de números.
 
 ---
 
-[Volver al índice](index.md) · [Capítulo original](../capitulos/05-responsive.md)
+[← Ejercicio 04](04-javascript.md){ .md-button }
+[Volver al índice](index.md){ .md-button .md-button--primary }
