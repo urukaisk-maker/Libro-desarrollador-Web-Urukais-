@@ -33,61 +33,61 @@ Este libro no es solo un tutorial. Es un **camino estructurado** que te lleva de
 
 <div class="grid cards" markdown>
 
--   __Nivel 1: Principiante__
+    -   __Nivel 1: Principiante__
 
-<img src="img/1.jpg" alt="Nivel Principiante" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/1.jpg" alt="Nivel Principiante" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Aprende las bases: HTML, CSS, JavaScript, diseño responsive y formularios.
+        Aprende las bases: HTML, CSS, JavaScript, diseño responsive y formularios.
 
-[:octicons-arrow-right-24: Empezar el viaje](capitulos/01-introduccion.md)
+        [:octicons-arrow-right-24: Empezar el viaje](capitulos/01-introduccion.md)
 
--   __Nivel 2: Intermedio__
+    -   __Nivel 2: Intermedio__
 
-<img src="img/2.jpg" alt="Nivel Intermedio" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/2.jpg" alt="Nivel Intermedio" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Domina Git, el consumo de APIs, despliegue en producción y tu primer portfolio.
+        Domina Git, el consumo de APIs, despliegue en producción y tu primer portfolio.
 
-[:octicons-arrow-right-24: Subir de nivel](capitulos/07-git.md)
+        [:octicons-arrow-right-24: Subir de nivel](capitulos/07-git.md)
 
--   __Nivel 3: Avanzado__
+    -   __Nivel 3: Avanzado__
 
-<img src="img/3.jpg" alt="Nivel Avanzado" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/3.jpg" alt="Nivel Avanzado" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-CSS moderno, JavaScript asíncrono, TypeScript, testing y arquitectura frontend.
+        CSS moderno, JavaScript asíncrono, TypeScript, testing y arquitectura frontend.
 
-[:octicons-arrow-right-24: Explorar la técnica](capitulos/11-css-moderno.md)
+        [:octicons-arrow-right-24: Explorar la técnica](capitulos/11-css-moderno.md)
 
--   __Nivel 4: Profesional__
+    -   __Nivel 4: Profesional__
 
-<img src="img/4.png" alt="Nivel Profesional" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/4.png" alt="Nivel Profesional" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Conviértete en Full-stack con Node.js y domina el DevOps para frontend.
+        Conviértete en Full-stack con Node.js y domina el DevOps para frontend.
 
-[:octicons-arrow-right-24: Pensar como pro](capitulos/19-fullstack-node.md)
+        [:octicons-arrow-right-24: Pensar como pro](capitulos/19-fullstack-node.md)
 
--   __Nivel 5: Experto__
+    -   __Nivel 5: Experto__
 
-<img src="img/5.png" alt="Nivel Experto" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/5.png" alt="Nivel Experto" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Web Components, PWA, WebSockets, animaciones avanzadas y design systems.
+        Web Components, PWA, WebSockets, animaciones avanzadas y design systems.
 
-[:octicons-arrow-right-24: Crear experiencias](capitulos/21-web-components.md)
+        [:octicons-arrow-right-24: Crear experiencias](capitulos/21-web-components.md)
 
--   __Nivel 6: Élite__
+    -   __Nivel 6: Élite__
 
-<img src="img/6.jpg" alt="Nivel Élite" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/6.jpg" alt="Nivel Élite" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Seguridad, WebAssembly, IA en el frontend, WebXR y Web3.
+        Seguridad, WebAssembly, IA en el frontend, WebXR y Web3.
 
-[:octicons-arrow-right-24: Romper límites](capitulos/26-seguridad.md)
+        [:octicons-arrow-right-24: Romper límites](capitulos/26-seguridad.md)
 
--   __Nivel 7: Vanguardia__
+    -   __Nivel 7: Vanguardia__
 
-<img src="img/7.jpg" alt="Nivel Vanguardia" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/7.jpg" alt="Nivel Vanguardia" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-Testing E2E, Server Components, Edge Computing, Docker, GraphQL, Micro-frontends, IA Generativa y Seguridad Avanzada.
+        Testing E2E, Server Components, Edge Computing, Docker, GraphQL, Micro-frontends, IA Generativa y Seguridad Avanzada.
 
-[:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
+        [:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
 
 </div>
 
@@ -138,35 +138,35 @@ Aprende las tecnologías que las empresas están pidiendo hoy.
 
 <div class="grid cards" markdown>
 
--   __El día que el libro cobró vida__
+    -   __El día que el libro cobró vida__
 
-<img src="img/105.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/105.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-*18 de Octubre, 2026*
+        *18 de Octubre, 2026*
 
-Después de semanas de trabajo, el libro ya tiene 38 capítulos y un sistema de logros...
+        Después de semanas de trabajo, el libro ya tiene 38 capítulos y un sistema de logros...
 
-[:octicons-arrow-right-24: Leer más](diario.md)
+        [:octicons-arrow-right-24: Leer más](diario.md)
 
--   __Cuando decidí añadir quizzes__
+    -   __Cuando decidí añadir quizzes__
 
-<img src="img/103.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/103.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-*15 de Octubre, 2026*
+        *15 de Octubre, 2026*
 
-Leer sin practicar no sirve de nada. Así que me puse a investigar cómo añadir quizzes interactivos...
+        Leer sin practicar no sirve de nada. Así que me puse a investigar cómo añadir quizzes interactivos...
 
-[:octicons-arrow-right-24: Leer más](diario.md)
+        [:octicons-arrow-right-24: Leer más](diario.md)
 
--   __El problema de los playgrounds__
+    -   __El problema de los playgrounds__
 
-<img src="img/101.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="img/101.jpg" alt="Diario" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0;">
 
-*10 de Octubre, 2026*
+        *10 de Octubre, 2026*
 
-Integrar editores de código en vivo sin que el sitio se volviera lento fue todo un reto...
+        Integrar editores de código en vivo sin que el sitio se volviera lento fue todo un reto...
 
-[:octicons-arrow-right-24: Leer más](diario.md)
+        [:octicons-arrow-right-24: Leer más](diario.md)
 
 </div>
 
@@ -209,4 +209,4 @@ Más información en [Sobre el autor](autor.md).
 
 Este proyecto está bajo la **Licencia MIT**. Puedes usar, copiar, modificar y distribuir el contenido libremente siempre que mantengas la atribución.
 
-[Ver texto completo de la licencia](licencia.md))
+[Ver texto completo de la licencia](licencia.md)
