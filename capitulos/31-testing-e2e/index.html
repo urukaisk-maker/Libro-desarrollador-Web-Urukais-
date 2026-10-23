@@ -25,7 +25,7 @@
     
     
       
-        <title>31 — Testing E2E con Playwright - Libro del Desarrollador Web — Urukais</title>
+        <title>31 — Testing E2E - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -89,12 +89,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="31 — Testing E2E con Playwright - Libro del Desarrollador Web — Urukais">
+  <meta property="og:title" content="31 — Testing E2E - Libro del Desarrollador Web — Urukais">
   <meta property="og:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta property="og:url" content="https://libro.urukais.com/capitulos/31-testing-e2e/">
   <meta property="og:image" content="https://libro.urukais.com/assets/portada.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="31 — Testing E2E con Playwright - Libro del Desarrollador Web — Urukais">
+  <meta name="twitter:title" content="31 — Testing E2E - Libro del Desarrollador Web — Urukais">
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
@@ -122,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#31-testing-e2e-con-playwright" class="md-skip">
+        <a href="#31-testing-e2e" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              31 — Testing E2E con Playwright
+              31 — Testing E2E
             
           </span>
         </div>
@@ -7093,129 +7093,318 @@
   
 
 
-<h1 id="31-testing-e2e-con-playwright">31 — Testing E2E con Playwright<a class="headerlink" href="#31-testing-e2e-con-playwright" title="Permanent link">&para;</a></h1>
+<h1 id="31-testing-e2e">31 — Testing E2E<a class="headerlink" href="#31-testing-e2e" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Qué es el testing E2E y por qué es importante.</li>
-<li>Instalar y configurar Playwright.</li>
-<li>Escribir tu primer test E2E.</li>
-<li>Selectores, acciones y aserciones.</li>
-<li>Debugging y CI.</li>
+<li>Qué es un test End-to-End y en qué se diferencia del unitario y del de integración.</li>
+<li>Las herramientas principales: Playwright, Cypress, Selenium.</li>
+<li>Cómo escribir tu primer test E2E.</li>
+<li>Patrones: Page Object Model, fixtures, esperas.</li>
+<li>Cuándo usar E2E y cuándo NO.</li>
 </ul>
 </div>
 <hr />
-<h2 id="que-es-el-testing-e2e">🎭 ¿Qué es el testing E2E?<a class="headerlink" href="#que-es-el-testing-e2e" title="Permanent link">&para;</a></h2>
-<p>El <strong>testing End-to-End (E2E)</strong> simula a un usuario real interactuando con tu aplicación en un <strong>navegador de verdad</strong>. Abre la página, hace clic, rellena formularios y comprueba que todo funciona.</p>
-<div class="highlight"><pre><span></span><code>Unitario     → prueba una función
-Integración  → prueba varios módulos
-E2E          → prueba la app completa en el navegador
-</code></pre></div>
+<h2 id="que-es-un-test-e2e">🎯 ¿Qué es un test E2E?<a class="headerlink" href="#que-es-un-test-e2e" title="Permanent link">&para;</a></h2>
+<p>Un test <strong>End-to-End</strong> (E2E) simula a un <strong>usuario real</strong> interactuando con tu aplicación: abre el navegador, hace clic, escribe, navega, y verifica que el resultado es el esperado.</p>
 <div class="admonition quote">
-<p class="admonition-title">El test más realista</p>
-<p>Los tests E2E son los más lentos pero los más cercanos a la experiencia real del usuario. Si un E2E pasa, es muy probable que el flujo funcione.</p>
+<p class="admonition-title">La analogía del piloto de pruebas</p>
+<p>Un test unitario es como revisar cada pieza de un coche por separado. Un test E2E es como <strong>subir a un piloto de pruebas</strong> y dar una vuelta completa por carretera: comprueba que todo funciona junto, en condiciones reales.</p>
 </div>
+<pre class="mermaid"><code>graph LR
+    A[Test E2E] --&gt; B[Abre navegador]
+    B --&gt; C[Navega a la app]
+    C --&gt; D[Interactúa: clic, teclado, scroll]
+    D --&gt; E[Verifica resultados]
+    E --&gt; F[✅ Pasa / ❌ Falla]</code></pre>
 <hr />
-<h2 id="instalar-playwright">📦 Instalar Playwright<a class="headerlink" href="#instalar-playwright" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
-</code></pre></div>
-<p>Esto crea:</p>
-<ul>
-<li><code>playwright.config.js</code> — configuración</li>
-<li><code>tests/</code> — carpeta de tests</li>
-<li><code>tests-examples/</code> — ejemplos</li>
-</ul>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span>install
-</code></pre></div>
-<hr />
-<h2 id="tu-primer-test">✍️ Tu primer test<a class="headerlink" href="#tu-primer-test" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// tests/ejemplo.spec.js</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
-
-<span class="nx">test</span><span class="p">(</span><span class="s2">"la home carga correctamente"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"https://libro.urukais.com"</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveTitle</span><span class="p">(</span><span class="sr">/Libro del Desarrollador/</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
-npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui
-npx<span class="w"> </span>playwright<span class="w"> </span>show-report
-</code></pre></div>
-<hr />
-<h2 id="selectores">🎯 Selectores<a class="headerlink" href="#selectores" title="Permanent link">&para;</a></h2>
+<h2 id="e2e-vs-unitario-vs-integracion">🏛 E2E vs Unitario vs Integración<a class="headerlink" href="#e2e-vs-unitario-vs-integracion" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Selector</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Qué prueba</th>
+<th style="text-align: left;">Velocidad</th>
+<th style="text-align: left;">Coste</th>
 <th style="text-align: left;">Ejemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Por rol (recomendado)</td>
-<td style="text-align: left;"><code>page.getByRole("button", { name: "Enviar" })</code></td>
+<td style="text-align: left;"><strong>Unitario</strong></td>
+<td style="text-align: left;">Una función o componente aislado</td>
+<td style="text-align: left;">⚡ Muy rápido (ms)</td>
+<td style="text-align: left;">Bajo</td>
+<td style="text-align: left;"><code>sum(2,2) === 4</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Por texto</td>
-<td style="text-align: left;"><code>page.getByText("Hola")</code></td>
+<td style="text-align: left;"><strong>Integración</strong></td>
+<td style="text-align: left;">Varios módulos juntos</td>
+<td style="text-align: left;">🚀 Rápido (100ms)</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">API + DB + servicio</td>
 </tr>
 <tr>
-<td style="text-align: left;">Por label</td>
-<td style="text-align: left;"><code>page.getByLabel("Email")</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Por placeholder</td>
-<td style="text-align: left;"><code>page.getByPlaceholder("Tu nombre")</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Por test id</td>
-<td style="text-align: left;"><code>page.getByTestId("mi-boton")</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">CSS</td>
-<td style="text-align: left;"><code>page.locator(".boton")</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">XPath</td>
-<td style="text-align: left;"><code>page.locator("//button")</code></td>
+<td style="text-align: left;"><strong>E2E</strong></td>
+<td style="text-align: left;">La app <strong>completa</strong> desde el navegador</td>
+<td style="text-align: left;">🐢 Lento (segundos)</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Login → carrito → pago</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Usa selectores accesibles</p>
-<p>Prioriza <code>getByRole</code>, <code>getByLabel</code> y <code>getByText</code>. Son más resistentes a cambios de implementación y comprueban accesibilidad de paso.</p>
+<p class="admonition-title">La pirámide de tests</p>
+<p><strong>Muchos unitarios, algunos de integración, pocos E2E</strong>. Los E2E son lentos y frágiles; reservarlos para los <strong>flujos críticos</strong>: login, checkout, registro, pago.</p>
 </div>
 <hr />
-<h2 id="acciones">🎬 Acciones<a class="headerlink" href="#acciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#email"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ana@ejemplo.com"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#password"</span><span class="p">,</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s2">"button[type=submit]"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="s2">"#acepto"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">selectOption</span><span class="p">(</span><span class="s2">"#pais"</span><span class="p">,</span><span class="w"> </span><span class="s2">"es"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">hover</span><span class="p">(</span><span class="s2">".menu"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nx">press</span><span class="p">(</span><span class="s2">"Enter"</span><span class="p">);</span>
+<h2 id="herramientas-principales">🛠 Herramientas principales<a class="headerlink" href="#herramientas-principales" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Lenguaje</th>
+<th style="text-align: left;">Velocidad</th>
+<th style="text-align: left;">Multi-navegador</th>
+<th style="text-align: left;">Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Playwright</strong></td>
+<td style="text-align: left;">JS/TS, Python, C#, Java</td>
+<td style="text-align: left;">⚡ Muy rápido</td>
+<td style="text-align: left;">✅ Chromium, Firefox, WebKit</td>
+<td style="text-align: left;">Microsoft, muy activo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cypress</strong></td>
+<td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">🚀 Rápido</td>
+<td style="text-align: left;">⚠️ Solo Chromium (y Firefox experimental)</td>
+<td style="text-align: left;">DX excelente, popular</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Selenium</strong></td>
+<td style="text-align: left;">Múltiples</td>
+<td style="text-align: left;">🐢 Lento</td>
+<td style="text-align: left;">✅ Todos</td>
+<td style="text-align: left;">El clásico, más verboso</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Puppeteer</strong></td>
+<td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">🚀 Rápido</td>
+<td style="text-align: left;">⚠️ Solo Chromium</td>
+<td style="text-align: left;">Solo Chrome/Edge</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WebdriverIO</strong></td>
+<td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">🐢 Medio</td>
+<td style="text-align: left;">✅ Todos</td>
+<td style="text-align: left;">Sobre WebDriver</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Recomendación 2026</p>
+<p><strong>Playwright</strong> si necesitas multi-navegador o tests rápidos en CI. <strong>Cypress</strong> si priorizas DX y solo te importa Chromium. <strong>Selenium</strong> solo si tienes legacy o necesitas navegadores muy antiguos.</p>
+</div>
+<hr />
+<h2 id="tu-primer-test-con-playwright">📝 Tu primer test con Playwright<a class="headerlink" href="#tu-primer-test-con-playwright" title="Permanent link">&para;</a></h2>
+<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
+</code></pre></div>
+<p>Elige TypeScript, carpeta <code>tests/</code>, y GitHub Actions si quieres CI.</p>
+<h3 id="test-basico">Test básico<a class="headerlink" href="#test-basico" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tests/login.spec.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"login con credenciales válidas"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"https://mi-app.com/login"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">'input[name="email"]'</span><span class="p">,</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">'input[name="password"]'</span><span class="p">,</span><span class="w"> </span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">'button[type="submit"]'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">"https://mi-app.com/dashboard"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s2">"Bienvenido"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="ejecutar">Ejecutar<a class="headerlink" href="#ejecutar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--headed<span class="w">        </span><span class="c1"># ver el navegador</span>
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui<span class="w">             </span><span class="c1"># modo interactivo</span>
+npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span class="w">           </span><span class="c1"># ver el informe HTML</span>
 </code></pre></div>
 <hr />
-<h2 id="aserciones">✅ Aserciones<a class="headerlink" href="#aserciones" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s2">"Bienvenida"</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">".error"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">".modal"</span><span class="p">)).</span><span class="nx">toBeHidden</span><span class="p">();</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">)).</span><span class="nx">toBeEnabled</span><span class="p">();</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveScreenshot</span><span class="p">(</span><span class="s2">"home.png"</span><span class="p">);</span>
+<h2 id="patrones-clave">🧩 Patrones clave<a class="headerlink" href="#patrones-clave" title="Permanent link">&para;</a></h2>
+<h3 id="1-page-object-model-pom">1. Page Object Model (POM)<a class="headerlink" href="#1-page-object-model-pom" title="Permanent link">&para;</a></h3>
+<p>Encapsula las interacciones con una página en una clase. Evita duplicar selectores en cada test.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// pages/LoginPage.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoginPage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">page</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'input[name="email"]'</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'input[name="password"]'</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">submit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'button[type="submit"]'</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kr">goto</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">pass</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">pass</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">submit</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// tests/login.spec.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoginPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../pages/LoginPage"</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"login válido"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LoginPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">login</span><span class="p">.</span><span class="kr">goto</span><span class="p">();</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">login</span><span class="p">.</span><span class="nx">login</span><span class="p">(</span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="2-fixtures">2. Fixtures<a class="headerlink" href="#2-fixtures" title="Permanent link">&para;</a></h3>
+<p>Playwright inyecta <code>page</code>, <code>context</code>, <code>browser</code> automáticamente. Puedes crear fixtures propias:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// fixtures.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">base</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoginPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./pages/LoginPage"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">loginPage</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">use</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LoginPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">login</span><span class="p">.</span><span class="kr">goto</span><span class="p">();</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">use</span><span class="p">(</span><span class="nx">login</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./fixtures"</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"login"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">loginPage</span><span class="p">,</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">loginPage</span><span class="p">.</span><span class="nx">login</span><span class="p">(</span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="3-esperas-automaticas">3. Esperas automáticas<a class="headerlink" href="#3-esperas-automaticas" title="Permanent link">&para;</a></h3>
+<p>Playwright <strong>espera automáticamente</strong> a que los elementos estén visibles, habilitados y estables. <strong>No uses <code>sleep()</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ Playwright espera solo</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">'button[type="submit"]'</span><span class="p">);</span>
+
+<span class="c1">// ❌ No hagas esto</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">waitForTimeout</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="4-selectores-recomendados">4. Selectores recomendados<a class="headerlink" href="#4-selectores-recomendados" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Selector</th>
+<th style="text-align: left;">Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>getByRole('button', { name: 'Enviar' })</code></td>
+<td style="text-align: left;">✅ <strong>Recomendado</strong> (accesible y robusto)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getByLabel('Email')</code></td>
+<td style="text-align: left;">Formularios con label</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getByText('Bienvenido')</code></td>
+<td style="text-align: left;">Texto visible</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>getByTestId('login-btn')</code></td>
+<td style="text-align: left;">Cuando no hay rol/label claro</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>locator('css=.btn-primary')</code></td>
+<td style="text-align: left;">CSS (más frágil)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Usa <code>getByRole</code> primero</p>
+<p>Los selectores basados en <strong>rol accesible</strong> (<code>getByRole</code>) son los más robustos: sobreviven a cambios de clase, ID o estructura. Y de paso verifican accesibilidad.</p>
+</div>
+<hr />
+<h2 id="ejemplo-flujo-de-checkout">🏗 Ejemplo: flujo de checkout<a class="headerlink" href="#ejemplo-flujo-de-checkout" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"checkout completo"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Login</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Email"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"user@example.com"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Contraseña"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Entrar"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 2. Añadir al carrito</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/productos"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Añadir al carrito"</span><span class="w"> </span><span class="p">}).</span><span class="nx">first</span><span class="p">().</span><span class="nx">click</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 3. Ir al carrito</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"link"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Carrito"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Teclado mecánico"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 4. Checkout</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Pagar"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Tarjeta"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"4242424242424242"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Caducidad"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"12/30"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"CVC"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"123"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Confirmar pago"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 5. Verificar</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Pago exitoso"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="p">});</span>
 </code></pre></div>
 <hr />
-<h2 id="debugging">🐛 Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--debug
-npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui
-npx<span class="w"> </span>playwright<span class="w"> </span>codegen<span class="w"> </span>https://libro.urukais.com
-</code></pre></div>
-<p><code>codegen</code> abre un navegador y graba tus acciones en un test. Ideal para empezar.</p>
+<h2 id="cuando-no-usar-e2e">⚠️ Cuándo NO usar E2E<a class="headerlink" href="#cuando-no-usar-e2e" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Lógica de negocio compleja</td>
+<td style="text-align: left;">Mejor cubrirla con unitarios rápidos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Validaciones de formulario</td>
+<td style="text-align: left;">Unitarios de validadores</td>
+</tr>
+<tr>
+<td style="text-align: left;">Componentes aislados</td>
+<td style="text-align: left;">Storybook + tests de componente</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rendimiento</td>
+<td style="text-align: left;">Usa Lighthouse o k6, no E2E</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cada commit</td>
+<td style="text-align: left;">E2E es lento; en CI corre en paralelo o solo en PRs</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">E2E frágil = E2E que se ignora</p>
+<p>Un test E2E que falla aleatoriamente (flaky) es <strong>peor que no tener test</strong>: el equipo aprende a ignorar los fallos. Invierte en estabilidad: selectores robustos, esperas automáticas, datos de test aislados.</p>
+</div>
 <hr />
-<h2 id="ci-con-github-actions">🔄 CI con GitHub Actions<a class="headerlink" href="#ci-con-github-actions" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E2E</span>
+<h2 id="e2e-en-ci">🚀 E2E en CI<a class="headerlink" href="#e2e-en-ci" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/e2e.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E2E</span>
 <span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">test</span><span class="p">:</span>
@@ -7223,52 +7412,102 @@ npx<span class="w"> </span>playwright<span class="w"> </span>codegen<span class=
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> node-version</span><span class="p">:</span><span class="w"> </span><span class="nv">20</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright install --with-deps</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright test</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
-<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report/</span>
 </code></pre></div>
+<p><strong>Buenas prácticas en CI:</strong>
+- Ejecutar en <strong>paralelo</strong> (<code>--workers=4</code>).
+- <strong>Reintentar</strong> fallos sospechosos (<code>--retries=2</code>).
+- Subir el <strong>informe HTML</strong> como artefacto cuando falla.
+- Cachear dependencias de Playwright.</p>
 <hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-31">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué prueba el testing E2E?</p>
-<button class="quiz-option" data-opt="a">A) Una función aislada</button>
-<button class="quiz-option" data-opt="b">B) La app completa en un navegador real</button>
-<button class="quiz-option" data-opt="c">C) La base de datos</button>
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Test de login con 3 casos</p>
+<p>Escribe tests E2E para el login de una app con:</p>
+<ul>
+<li><strong>Caso 1:</strong> credenciales válidas → redirige a <code>/dashboard</code>.</li>
+<li><strong>Caso 2:</strong> contraseña incorrecta → muestra "Credenciales inválidas".</li>
+<li><strong>Caso 3:</strong> email vacío → el botón está deshabilitado o muestra error.</li>
+</ul>
 </div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué herramienta es el estándar para E2E?</p>
-<button class="quiz-option" data-opt="a">A) Playwright</button>
-<button class="quiz-option" data-opt="b">B) Vitest</button>
-<button class="quiz-option" data-opt="c">C) Jest</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué comando graba tus acciones en un test?</p>
-<button class="quiz-option" data-opt="a">A) npx playwright test</button>
-<button class="quiz-option" data-opt="b">B) npx playwright install</button>
-<button class="quiz-option" data-opt="c">C) npx playwright codegen</button>
-</div>
-</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E%20con%20Playwright&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/31-testing-e2e/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
+<span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s2">"Login"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
 
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"credenciales válidas"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Email"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"user@example.com"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Contraseña"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Entrar"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"contraseña incorrecta"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Email"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"user@example.com"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Contraseña"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"mal"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Entrar"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Credenciales inválidas"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"email vacío deshabilita el botón"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Contraseña"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"secreto123"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Entrar"</span><span class="w"> </span><span class="p">})</span>
+<span class="w">        </span><span class="p">).</span><span class="nx">toBeDisabled</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
 <hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../32-server-components/">Ir al Capítulo 32 — Server Components</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Qué diferencia hay entre un test unitario y un E2E?</summary>
+<p>Unitario: prueba una función o componente aislado, milisegundos. E2E: prueba la app completa desde el navegador, segundos o minutos.</p>
+</details>
+<details class="success">
+<summary>2. ¿Cuál es la recomendación general (pirámide de tests)?</summary>
+<p>Muchos unitarios, algunos de integración, pocos E2E. Los E2E solo para flujos críticos.</p>
+</details>
+<details class="success">
+<summary>3. ¿Qué es el Page Object Model?</summary>
+<p>Un patrón que encapsula las interacciones con una página en una clase, evitando duplicar selectores y facilitando el mantenimiento.</p>
+</details>
+<details class="success">
+<summary>4. ¿Por qué no usar <code>sleep()</code> o <code>waitForTimeout()</code> en Playwright?</summary>
+<p>Porque Playwright ya espera automáticamente a que los elementos estén listos. Los <code>sleep</code> fijos hacen los tests lentos y frágiles.</p>
+</details>
+<details class="success">
+<summary>5. ¿Qué es un test "flaky"?</summary>
+<p>Un test que a veces pasa y a veces falla sin cambios en el código. Es peor que no tener test, porque enseña al equipo a ignorar los fallos.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://playwright.dev/">Playwright — Docs oficiales</a></li>
+<li><a href="https://docs.cypress.io/">Cypress — Docs oficiales</a></li>
+<li><a href="https://www.selenium.dev/documentation/">Selenium — Docs</a></li>
+<li><a href="https://testing-library.com/docs/queries/about/#priority">Testing Library — Guía de selectores</a></li>
+<li><a href="https://web.dev/learn/testing">web.dev — Testing</a></li>
+<li><a href="https://martinfowler.com/articles/practical-test-pyramid.html">Test Pyramid — Martin Fowler</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../32-server-components/">32 — Server Components</a></p>
 
 
 
