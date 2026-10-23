@@ -7098,17 +7098,312 @@
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
 <li>La estructura de un documento HTML.</li>
-<li>Las etiquetas semánticas más importantes.</li>
-<li>Cómo enlazar páginas, imágenes y formularios.</li>
-<li>Las bases de la accesibilidad.</li>
+<li>Etiquetas, atributos y anidamiento.</li>
+<li>Las etiquetas esenciales: títulos, párrafos, listas, enlaces, imágenes.</li>
+<li>Qué es HTML semántico y por qué importa.</li>
+<li>Cómo validar tu HTML.</li>
 </ul>
 </div>
 <hr />
 <h2 id="que-es-html">🌐 ¿Qué es HTML?<a class="headerlink" href="#que-es-html" title="Permanent link">&para;</a></h2>
-<p><strong>HTML</strong> (<em>HyperText Markup Language</em>) es el lenguaje de marcado que define la <strong>estructura</strong> de una página web.</p>
-<p>```html</p>
-<h1>Esto es un título</h1>
-<p>Esto es un párrafo con <strong>texto en negrita</strong>.</p>
+<p><strong>HTML</strong> (<em>HyperText Markup Language</em>) es el lenguaje de marcado que define la <strong>estructura</strong> de una página web. No es un lenguaje de programación: no tiene variables, bucles ni condiciones. Es un <strong>lenguaje de marcado</strong>, es decir, un sistema de etiquetas que le dicen al navegador qué es cada cosa.</p>
+<div class="admonition quote">
+<p class="admonition-title">La analogía del esqueleto</p>
+<p>Si una página web fuera un cuerpo humano, HTML sería el <strong>esqueleto</strong> (estructura), CSS la <strong>piel y la ropa</strong> (apariencia) y JavaScript los <strong>músculos</strong> (movimiento e interacción).</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Esto es un título<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es un párrafo con <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>texto en negrita<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="estructura-de-un-documento-html">🏛 Estructura de un documento HTML<a class="headerlink" href="#estructura-de-un-documento-html" title="Permanent link">&para;</a></h2>
+<p>Todo documento HTML sigue el mismo esqueleto:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi primera página<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡Hola, mundo!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Mi primera página web.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="que-hace-cada-linea">¿Qué hace cada línea?<a class="headerlink" href="#que-hace-cada-linea" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Línea</th>
+<th style="text-align: left;">Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>&lt;!DOCTYPE html&gt;</code></td>
+<td style="text-align: left;">Le dice al navegador que el documento es HTML5.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;html lang="es"&gt;</code></td>
+<td style="text-align: left;">Raíz del documento. <code>lang="es"</code> indica el idioma (importante para lectores de pantalla y SEO).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;head&gt;</code></td>
+<td style="text-align: left;">Metadatos: no se ven en la página, pero configuran el documento.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;meta charset="UTF-8"&gt;</code></td>
+<td style="text-align: left;">Codificación de caracteres. Sin esto, acentos y eñes se ven raros.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;meta name="viewport" ...&gt;</code></td>
+<td style="text-align: left;">Hace que la página se adapte a móviles.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;title&gt;</code></td>
+<td style="text-align: left;">Texto que aparece en la pestaña del navegador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;body&gt;</code></td>
+<td style="text-align: left;"><strong>Todo lo visible</strong> de la página va aquí dentro.</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>graph TD
+    A[html] --&gt; B[head]
+    A --&gt; C[body]
+    B --&gt; B1[meta charset]
+    B --&gt; B2[title]
+    B --&gt; B3[meta viewport]
+    C --&gt; C1[h1]
+    C --&gt; C2[p]
+    C --&gt; C3[img]</code></pre>
+<hr />
+<h2 id="etiquetas-atributos-y-anidamiento">🏷 Etiquetas, atributos y anidamiento<a class="headerlink" href="#etiquetas-atributos-y-anidamiento" title="Permanent link">&para;</a></h2>
+<h3 id="etiquetas">Etiquetas<a class="headerlink" href="#etiquetas" title="Permanent link">&para;</a></h3>
+<p>Una <strong>etiqueta</strong> va entre <code>&lt;</code> y <code>&gt;</code>. Casi siempre vienen <strong>en pareja</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contenido<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;p&gt;</code> → etiqueta de apertura.</li>
+<li><code>&lt;/p&gt;</code> → etiqueta de cierre (con <code>/</code>).</li>
+<li><code>Contenido</code> → lo que hay entre ambas.</li>
+</ul>
+<p>Algunas son <strong>autocerradas</strong> (no llevan cierre):</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Una foto"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
+<p>Los <strong>atributos</strong> añaden información extra a una etiqueta. Van dentro de la etiqueta de apertura:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://developer.mozilla.org"</span><span class="p">&gt;</span>MDN Web Docs<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>href</code> es el atributo.</li>
+<li><code>"https://developer.mozilla.org"</code> es el valor.</li>
+</ul>
+<h3 id="anidamiento">Anidamiento<a class="headerlink" href="#anidamiento" title="Permanent link">&para;</a></h3>
+<p>Las etiquetas se pueden anidar (una dentro de otra). <strong>Deben cerrarse en orden inverso</strong> al que se abrieron:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>muy importante<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>   <span class="cm">&lt;!-- ✅ correcto --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>muy importante.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>   <span class="cm">&lt;!-- ❌ incorrecto --&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Errores de anidamiento</p>
+<p>Un error típico al empezar es cerrar etiquetas en orden equivocado. Si abres <code>&lt;strong&gt;</code> dentro de un <code>&lt;p&gt;</code>, debes cerrar <code>&lt;/strong&gt;</code> <strong>antes</strong> de <code>&lt;/p&gt;</code>.</p>
+</div>
+<hr />
+<h2 id="etiquetas-esenciales">📝 Etiquetas esenciales<a class="headerlink" href="#etiquetas-esenciales" title="Permanent link">&para;</a></h2>
+<h3 id="titulos-h1-a-h6">Títulos: <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code><a class="headerlink" href="#titulos-h1-a-h6" title="Permanent link">&para;</a></h3>
+<p>Hay 6 niveles de títulos. <code>&lt;h1&gt;</code> es el más importante y <code>&lt;h6&gt;</code> el menos. Cada página debería tener <strong>un solo <code>&lt;h1&gt;</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Título principal<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Sección<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Subsección<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Jerarquía, no tamaño</p>
+<p>No elijas <code>&lt;h3&gt;</code> "porque se ve más pequeño". Usa el nivel que corresponda <strong>semánticamente</strong> a la estructura del contenido. El tamaño lo controla CSS.</p>
+</div>
+<h3 id="parrafos-p">Párrafos: <code>&lt;p&gt;</code><a class="headerlink" href="#parrafos-p" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Este es un párrafo normal.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Este es otro párrafo separado.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="listas">Listas<a class="headerlink" href="#listas" title="Permanent link">&para;</a></h3>
+<p><strong>Desordenada</strong> (viñetas):</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>CSS<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>JavaScript<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><strong>Ordenada</strong> (números):</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Instalar el editor<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Crear el archivo<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Escribir el código<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="enlaces-a">Enlaces: <code>&lt;a&gt;</code><a class="headerlink" href="#enlaces-a" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://developer.mozilla.org"</span><span class="p">&gt;</span>Visitar MDN<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"contacto.html"</span><span class="p">&gt;</span>Página de contacto<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#seccion"</span><span class="p">&gt;</span>Ir a una sección<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Enlaces externos</p>
+<p>En enlaces que se abren en otra pestaña (<code>target="_blank"</code>), añade siempre <code>rel="noopener noreferrer"</code> por seguridad.</p>
+</div>
+<h3 id="imagenes-img">Imágenes: <code>&lt;img&gt;</code><a class="headerlink" href="#imagenes-img" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Una playa al atardecer"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>src</code> → ruta de la imagen.</li>
+<li><code>alt</code> → texto alternativo (obligatorio por accesibilidad).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">El <code>alt</code> no es opcional</p>
+<p>El atributo <code>alt</code> describe la imagen para quien no puede verla (lectores de pantalla, imágenes rotas, SEO). Si la imagen es decorativa, usa <code>alt=""</code> (vacío).</p>
+</div>
+<h3 id="enfasis-strong-y-em">Énfasis: <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code><a class="headerlink" href="#enfasis-strong-y-em" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>importante<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> y esto es <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>enfático<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;strong&gt;</code> → importancia (normalmente en <strong>negrita</strong>).</li>
+<li><code>&lt;em&gt;</code> → énfasis (normalmente en <em>cursiva</em>).</li>
+</ul>
+<hr />
+<h2 id="html-semantico">🧩 HTML semántico<a class="headerlink" href="#html-semantico" title="Permanent link">&para;</a></h2>
+<p>Las etiquetas <strong>semánticas</strong> describen el significado del contenido, no solo su aspecto. Son clave para accesibilidad y SEO:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Mi blog<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span><span class="p">&gt;</span>Inicio<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/sobre"</span><span class="p">&gt;</span>Sobre mí<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Mi primer post<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contenido del post…<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2026 Mi blog<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Etiqueta</th>
+<th style="text-align: left;">Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>&lt;header&gt;</code></td>
+<td style="text-align: left;">Cabecera (logo, título, navegación).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;nav&gt;</code></td>
+<td style="text-align: left;">Bloque de navegación (menú).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;main&gt;</code></td>
+<td style="text-align: left;">Contenido principal (uno por página).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;article&gt;</code></td>
+<td style="text-align: left;">Contenido independiente (post, noticia).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;section&gt;</code></td>
+<td style="text-align: left;">Sección temática con su propio título.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;aside&gt;</code></td>
+<td style="text-align: left;">Contenido tangencial (barra lateral).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;footer&gt;</code></td>
+<td style="text-align: left;">Pie de página.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Regla práctica</p>
+<p>Si dudas entre <code>&lt;div&gt;</code> y una etiqueta semántica, elige la semántica. <code>&lt;div&gt;</code> solo cuando no haya nada mejor.</p>
+</div>
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Tu primera página completa</p>
+<p>Crea un archivo <code>index.html</code> con:</p>
+<ul>
+<li>Un <code>&lt;h1&gt;</code> con tu nombre.</li>
+<li>Un <code>&lt;p&gt;</code> con una frase sobre ti.</li>
+<li>Una lista <code>&lt;ul&gt;</code> con tus 3 lenguajes favoritos.</li>
+<li>Un enlace a MDN.</li>
+<li>Una imagen (puede ser una URL).</li>
+</ul>
+<p>Cuando termines, ábrelo en el navegador (doble clic) y comprueba que se ve bien.</p>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi primera página<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Urukais<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Soy desarrollador web y me encanta enseñar.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Mis lenguajes favoritos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>CSS<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>JavaScript<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://developer.mozilla.org/es/"</span><span class="p">&gt;</span>Visitar MDN<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://picsum.photos/400/200"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Imagen aleatoria"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Qué etiqueta indica que el documento es HTML5?</summary>
+<p><code>&lt;!DOCTYPE html&gt;</code> al principio del archivo.</p>
+</details>
+<details class="success">
+<summary>2. ¿Cuál es la diferencia entre <code>&lt;strong&gt;</code> y <code>&lt;b&gt;</code>?</summary>
+<p><code>&lt;strong&gt;</code> indica <strong>importancia semántica</strong> (para lectores de pantalla y SEO); <code>&lt;b&gt;</code> solo aplica <strong>negrita visual</strong>. Siempre que puedas, usa <code>&lt;strong&gt;</code>.</p>
+</details>
+<details class="success">
+<summary>3. ¿Para qué sirve el atributo <code>alt</code> de las imágenes?</summary>
+<p>Describe la imagen para quien no puede verla (accesibilidad), para cuando la imagen no carga, y para SEO.</p>
+</details>
+<details class="success">
+<summary>4. ¿Cuántos <code>&lt;h1&gt;</code> debería tener una página?</summary>
+<p>Idealmente uno. Refleja el título principal del documento.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTML">MDN — HTML: Lenguaje de marcado de hipertexto</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element">MDN — Elementos HTML (referencia)</a></li>
+<li><a href="https://html.spec.whatwg.org/">HTML Living Standard (WHATWG)</a></li>
+<li><a href="https://validator.w3.org/">Validador HTML del W3C</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../03-css-basico/">03 — CSS básico</a></p>
 
 
 
