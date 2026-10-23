@@ -7098,239 +7098,28 @@
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
 <li>Qué es CSS y cómo se aplica.</li>
-<li>Los selectores más importantes.</li>
-<li>El modelo de caja (box model).</li>
-<li>Flexbox y Grid para maquetar.</li>
-<li>Variables CSS y media queries.</li>
+<li>Selectores, especificidad y cascada.</li>
+<li>El modelo de caja y <code>box-sizing</code>.</li>
+<li><code>display</code>, <code>position</code> y <code>z-index</code>.</li>
+<li>Flexbox y Grid en profundidad.</li>
+<li>Variables, funciones modernas y <code>clamp()</code>.</li>
+<li>Transitions, transforms y <code>prefers-reduced-motion</code>.</li>
+<li>Media queries y accesibilidad.</li>
 </ul>
 </div>
 <hr />
 <h2 id="que-es-css">🎨 ¿Qué es CSS?<a class="headerlink" href="#que-es-css" title="Permanent link">&para;</a></h2>
 <p><strong>CSS</strong> (<em>Cascading Style Sheets</em>) es el lenguaje que define la <strong>presentación</strong> de una página web: colores, tipografía, layout, animaciones.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="como-aplicar-css">🔗 Cómo aplicar CSS<a class="headerlink" href="#como-aplicar-css" title="Permanent link">&para;</a></h2>
-<p>Hay tres formas:</p>
-<h3 id="1-css-externo-recomendado">1. CSS externo (recomendado)<a class="headerlink" href="#1-css-externo-recomendado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"styles.css"</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="2-css-interno">2. CSS interno<a class="headerlink" href="#2-css-interno" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-</code></pre></div>
-<h3 id="3-css-inline">3. CSS inline<a class="headerlink" href="#3-css-inline" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Título<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Siempre CSS externo</p>
-<p>El CSS externo separa estructura y presentación, se cachea mejor y se reutiliza.</p>
+<div class="admonition quote">
+<p class="admonition-title">La analogía del cuerpo humano</p>
+<p>Si HTML es el <strong>esqueleto</strong>, CSS es la <strong>piel, la ropa y el maquillaje</strong>. Define cómo se ve, se siente y se mueve todo lo que el HTML estructura.</p>
 </div>
-<hr />
-<h2 id="selectores">🎯 Selectores<a class="headerlink" href="#selectores" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">#</span><span class="nn">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="nt">ul</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ccc</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Selector</th>
-<th style="text-align: left;">Ejemplo</th>
-<th style="text-align: left;">Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Etiqueta</td>
-<td style="text-align: left;">p</td>
-<td style="text-align: left;">Todos los párrafos</td>
-</tr>
-<tr>
-<td style="text-align: left;">Clase</td>
-<td style="text-align: left;">.boton</td>
-<td style="text-align: left;">Elementos con class="boton"</td>
-</tr>
-<tr>
-<td style="text-align: left;">ID</td>
-<td style="text-align: left;">#header</td>
-<td style="text-align: left;">Elemento con id="header"</td>
-</tr>
-<tr>
-<td style="text-align: left;">Descendiente</td>
-<td style="text-align: left;">nav a</td>
-<td style="text-align: left;">Enlaces dentro de nav</td>
-</tr>
-<tr>
-<td style="text-align: left;">Hijo directo</td>
-<td style="text-align: left;">ul &gt; li</td>
-<td style="text-align: left;">li hijos directos de ul</td>
-</tr>
-<tr>
-<td style="text-align: left;">Pseudo-clase</td>
-<td style="text-align: left;">a:hover</td>
-<td style="text-align: left;">Enlace al pasar el ratón</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="el-modelo-de-caja">📦 El modelo de caja<a class="headerlink" href="#el-modelo-de-caja" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">box-sizing: border-box</p>
-<p>Por defecto, width no incluye padding ni border. Con box-sizing: border-box, sí. Casi todo el mundo lo pone globalmente:</p>
-<div class="highlight"><pre><span></span><code><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<hr />
-<h2 id="flexbox">🧩 Flexbox<a class="headerlink" href="#flexbox" title="Permanent link">&para;</a></h2>
-<p><strong>Flexbox</strong> es un modelo de layout unidimensional.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-<span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">row</span><span class="p">;</span>
-<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span>
-<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">hijo</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Propiedad</th>
-<th style="text-align: left;">Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">display: flex</td>
-<td style="text-align: left;">Activa Flexbox</td>
-</tr>
-<tr>
-<td style="text-align: left;">flex-direction</td>
-<td style="text-align: left;">Dirección (row, column)</td>
-</tr>
-<tr>
-<td style="text-align: left;">justify-content</td>
-<td style="text-align: left;">Alineación en el eje principal</td>
-</tr>
-<tr>
-<td style="text-align: left;">align-items</td>
-<td style="text-align: left;">Alineación en el eje transversal</td>
-</tr>
-<tr>
-<td style="text-align: left;">gap</td>
-<td style="text-align: left;">Espacio entre hijos</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="grid">🔲 Grid<a class="headerlink" href="#grid" title="Permanent link">&para;</a></h2>
-<p><strong>Grid</strong> es un modelo de layout bidimensional.</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">240</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">grid__item</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-row</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">¿Flexbox o Grid?</p>
-<ul>
-<li><strong>Flexbox</strong>: una dimensión (fila o columna). Menús, barras.</li>
-<li><strong>Grid</strong>: dos dimensiones (filas y columnas). Layouts de página, galerías.</li>
-</ul>
-</div>
-<hr />
-<h2 id="variables-css">🎨 Variables CSS<a class="headerlink" href="#variables-css" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--radio</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primario</span><span class="p">);</span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radio</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="media-queries">📱 Media queries<a class="headerlink" href="#media-queries" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-color-scheme</span><span class="o">:</span><span class="w"> </span><span class="nt">dark</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#1a1726</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Mobile first</p>
-<p>Diseña primero para móvil y luego amplía con min-width.</p>
-</div>
-<hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-3">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué propiedad activa Flexbox en un contenedor?</p>
-<button class="quiz-option" data-opt="a">A) display: grid</button>
-<button class="quiz-option" data-opt="b">B) display: flex</button>
-<button class="quiz-option" data-opt="c">C) flex: 1</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>2.</strong> ¿Qué hace box-sizing: border-box?</p>
-<button class="quiz-option" data-opt="a">A) Añade un borde</button>
-<button class="quiz-option" data-opt="b">B) Elimina el padding</button>
-<button class="quiz-option" data-opt="c">C) El width incluye padding y border</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Qué modelo de layout es bidimensional?</p>
-<button class="quiz-option" data-opt="a">A) Grid</button>
-<button class="quiz-option" data-opt="b">B) Flexbox</button>
-<button class="quiz-option" data-opt="c">C) Float</button>
-</div>
-</div>
-
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/03-css-basico/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
-
-<hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../04-javascript/">Ir al Capítulo 4 — JavaScript esencial</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<p>```css
+h1 {
+  color: #6a5acd;
+  font-size: 2rem;
+  font-family: system-ui, sans-serif;
+}</p>
 
 
 
