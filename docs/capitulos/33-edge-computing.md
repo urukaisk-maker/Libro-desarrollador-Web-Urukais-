@@ -225,3 +225,39 @@ graph TD
 ---
 
 ➡️ Siguiente capítulo: [34 — Docker](34-docker.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-33">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué diferencia hay entre CDN y Edge Function?</p>
+<button class="quiz-option" data-opt="a">A) Ninguna</button>
+<button class="quiz-option" data-opt="b">B) CDN sirve archivos, Edge ejecuta código</button>
+<button class="quiz-option" data-opt="c">C) Edge solo sirve imágenes</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Por qué Cloudflare Workers es rápido?</p>
+<button class="quiz-option" data-opt="a">A) Usa contenedores</button>
+<button class="quiz-option" data-opt="b">B) Usa V8 Isolates</button>
+<button class="quiz-option" data-opt="c">C) Usa bases de datos</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>3.</strong> ¿Cuándo NO usar edge?</p>
+<button class="quiz-option" data-opt="a">A) Para autenticación</button>
+<button class="quiz-option" data-opt="b">B) Para redirecciones</button>
+<button class="quiz-option" data-opt="c">C) Para procesamiento pesado</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2033%3A%20Edge%20Computing&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/33-edge-computing/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
