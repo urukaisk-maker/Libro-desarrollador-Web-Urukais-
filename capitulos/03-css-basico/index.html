@@ -7114,12 +7114,412 @@
 <p class="admonition-title">La analogía del cuerpo humano</p>
 <p>Si HTML es el <strong>esqueleto</strong>, CSS es la <strong>piel, la ropa y el maquillaje</strong>. Define cómo se ve, se siente y se mueve todo lo que el HTML estructura.</p>
 </div>
-<p>```css
-h1 {
-  color: #6a5acd;
-  font-size: 2rem;
-  font-family: system-ui, sans-serif;
-}</p>
+<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="como-aplicar-css">🔗 Cómo aplicar CSS<a class="headerlink" href="#como-aplicar-css" title="Permanent link">&para;</a></h2>
+<p>Hay tres formas:</p>
+<h3 id="1-css-externo-recomendado">1. CSS externo (recomendado)<a class="headerlink" href="#1-css-externo-recomendado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"styles.css"</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="2-css-interno">2. CSS interno<a class="headerlink" href="#2-css-interno" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="3-css-inline">3. CSS inline<a class="headerlink" href="#3-css-inline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Título<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Siempre CSS externo</p>
+<p>El CSS externo separa estructura y presentación, se cachea mejor, se reutiliza y permite trabajar en equipo sin conflictos.</p>
+</div>
+<hr />
+<h2 id="selectores">🎯 Selectores<a class="headerlink" href="#selectores" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">#</span><span class="nn">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">ul</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"text"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ccc</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Selector</th>
+<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Etiqueta</td>
+<td style="text-align: left;"><code>p</code></td>
+<td style="text-align: left;">Todos los párrafos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Clase</td>
+<td style="text-align: left;"><code>.boton</code></td>
+<td style="text-align: left;">Elementos con <code>class="boton"</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;"><code>#header</code></td>
+<td style="text-align: left;">Elemento con <code>id="header"</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Descendiente</td>
+<td style="text-align: left;"><code>nav a</code></td>
+<td style="text-align: left;">Enlaces dentro de <code>nav</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Hijo directo</td>
+<td style="text-align: left;"><code>ul &gt; li</code></td>
+<td style="text-align: left;"><code>li</code> hijos directos de <code>ul</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Hermano adyacente</td>
+<td style="text-align: left;"><code>h2 + p</code></td>
+<td style="text-align: left;">Primer <code>p</code> tras un <code>h2</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Pseudo-clase</td>
+<td style="text-align: left;"><code>a:hover</code></td>
+<td style="text-align: left;">Enlace al pasar el ratón</td>
+</tr>
+<tr>
+<td style="text-align: left;">Atributo</td>
+<td style="text-align: left;"><code>input[type="email"]</code></td>
+<td style="text-align: left;">Solo inputs de tipo email</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title"><code>:focus-visible</code> es accesibilidad</p>
+<p>Nunca elimines el <code>outline</code> sin reemplazarlo. <code>:focus-visible</code> aplica el anillo solo cuando el usuario navega con teclado, no al hacer clic.</p>
+</div>
+<hr />
+<h2 id="especificidad-y-cascada">⚖️ Especificidad y cascada<a class="headerlink" href="#especificidad-y-cascada" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Peso</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Estilos inline</td>
+<td style="text-align: left;"><code>1000</code></td>
+<td style="text-align: left;"><code>style="..."</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">IDs</td>
+<td style="text-align: left;"><code>100</code></td>
+<td style="text-align: left;"><code>#header</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Clases / atributos / pseudo-clases</td>
+<td style="text-align: left;"><code>10</code></td>
+<td style="text-align: left;"><code>.boton</code>, <code>:hover</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Etiquetas / pseudo-elementos</td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>p</code>, <code>::before</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Evita <code>!important</code></p>
+<p><code>!important</code> rompe la cascada y hace el CSS impredecible.</p>
+</div>
+<hr />
+<h2 id="el-modelo-de-caja">📦 El modelo de caja<a class="headerlink" href="#el-modelo-de-caja" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">box-sizing: border-box</p>
+<p>Por defecto, width no incluye padding ni border. Con box-sizing: border-box, sí.</p>
+</div>
+<hr />
+<h2 id="display-y-position">🧱 <code>display</code> y <code>position</code><a class="headerlink" href="#display-y-position" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Valor</th>
+<th style="text-align: left;"><code>display</code></th>
+<th style="text-align: left;"><code>position</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>block</code></td>
+<td style="text-align: left;">Ocupa todo el ancho</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inline</code></td>
+<td style="text-align: left;">Solo lo necesario</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex</code></td>
+<td style="text-align: left;">Contenedor Flexbox</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid</code></td>
+<td style="text-align: left;">Contenedor Grid</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>none</code></td>
+<td style="text-align: left;">No se renderiza</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>static</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Flujo normal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>relative</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Su posición original</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>absolute</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">El ancestro posicionado más cercano</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fixed</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">El viewport</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sticky</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">El scroll, hasta un límite</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">tooltip-wrap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">tooltip</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateX</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">sidebar</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">sticky</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"><code>z-index</code> solo funciona con <code>position</code></p>
+<p>No tiene efecto en elementos <code>static</code>.</p>
+</div>
+<hr />
+<h2 id="flexbox">🧩 Flexbox<a class="headerlink" href="#flexbox" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">row</span><span class="p">;</span>
+<span class="w">  </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">space-between</span><span class="p">;</span>
+<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">hijo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="grid">🔲 Grid<a class="headerlink" href="#grid" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">240</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="grid-con-areas-con-nombre">Grid con áreas con nombre<a class="headerlink" href="#grid-con-areas-con-nombre" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-areas</span><span class="p">:</span>
+<span class="w">    </span><span class="s2">"header header"</span>
+<span class="w">    </span><span class="s2">"sidebar main"</span>
+<span class="w">    </span><span class="s2">"footer footer"</span><span class="p">;</span>
+<span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="variables-css">🎨 Variables CSS<a class="headerlink" href="#variables-css" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--radio</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primario</span><span class="p">);</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radio</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="funciones-modernas">⚡ Funciones modernas<a class="headerlink" href="#funciones-modernas" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">90</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="mi">100</span><span class="kt">vh</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">video</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">avatar</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="transitions-y-transforms">🎬 Transitions y transforms<a class="headerlink" href="#transitions-y-transforms" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#5a4abd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="media-queries-y-preferencias">📱 Media queries y preferencias<a class="headerlink" href="#media-queries-y-preferencias" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-color-scheme</span><span class="o">:</span><span class="w"> </span><span class="nt">dark</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#1a1726</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="accesibilidad-css">♿ Accesibilidad CSS<a class="headerlink" href="#accesibilidad-css" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nunca quites el <code>outline</code> sin reemplazarlo. Usa <code>:focus-visible</code>.</li>
+<li>Contraste mínimo 4.5:1 (WCAG AA).</li>
+<li>Respeta <code>prefers-reduced-motion</code>.</li>
+<li>Tamaño mínimo táctil: 44×44 px.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color-scheme</span><span class="p">:</span><span class="w"> </span><span class="n">light</span><span class="w"> </span><span class="n">dark</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">button</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<div class="quiz" data-quiz="capitulo-3">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué propiedad activa Flexbox en un contenedor?</p>
+<button class="quiz-option" data-opt="a">A) display: grid</button>
+<button class="quiz-option" data-opt="b">B) display: flex</button>
+<button class="quiz-option" data-opt="c">C) flex: 1</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Qué hace box-sizing: border-box?</p>
+<button class="quiz-option" data-opt="a">A) Añade un borde</button>
+<button class="quiz-option" data-opt="b">B) Elimina el padding</button>
+<button class="quiz-option" data-opt="c">C) El width incluye padding y border</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué modelo de layout es bidimensional?</p>
+<button class="quiz-option" data-opt="a">A) Grid</button>
+<button class="quiz-option" data-opt="b">B) Flexbox</button>
+<button class="quiz-option" data-opt="c">C) Float</button>
+</div>
+</div>
+
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Tarjeta de perfil con Flexbox</p>
+<p>Crea una tarjeta con avatar circular, nombre, descripción y botón "Seguir". Usa Flexbox columna, <code>gap: 12px</code>, y <code>transition</code> al hover del botón.</p>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+<span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">.08</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">avatar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">btn</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#5a4abd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-1</span><span class="kt">px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz-de-repaso">🧠 Quiz de repaso<a class="headerlink" href="#quiz-de-repaso" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Diferencia entre <code>padding</code> y <code>margin</code>?</summary>
+<p><code>padding</code> es el espacio interno. <code>margin</code> es el espacio externo.</p>
+</details>
+<details class="success">
+<summary>2. ¿Qué hace <code>position: absolute</code> sin ancestro posicionado?</summary>
+<p>Se posiciona respecto al viewport.</p>
+</details>
+<details class="success">
+<summary>3. ¿Diferencia entre <code>:is()</code> y <code>:where()</code>?</summary>
+<p><code>:is()</code> hereda especificidad. <code>:where()</code> siempre tiene especificidad 0.</p>
+</details>
+<details class="success">
+<summary>4. ¿Por qué usar <code>transform</code> en lugar de <code>top</code>/<code>left</code> para animar?</summary>
+<p>Se anima en la GPU y no provoca reflow.</p>
+</details>
+<details class="success">
+<summary>5. ¿Qué hace <code>repeat(auto-fit, minmax(240px, 1fr))</code>?</summary>
+<p>Columnas de mínimo 240px, reparto equitativo.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/CSS">MDN — CSS</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout">MDN — Flexbox</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout">MDN — Grid</a></li>
+<li><a href="https://flexboxfroggy.com/#es">Flexbox Froggy (juego)</a></li>
+<li><a href="https://cssgridgarden.com/#es">Grid Garden (juego)</a></li>
+<li><a href="https://web.dev/learn/css">web.dev — Learn CSS</a></li>
+</ul>
+<hr />
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/03-css-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
+
+<hr />
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../04-javascript/">Ir al Capítulo 4 — JavaScript esencial</a>
+<a class="md-button" href="../../">Volver al índice</a></p>
 
 
 
