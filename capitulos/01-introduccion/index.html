@@ -7101,6 +7101,7 @@
 <li>Los tres pilares: <strong>HTML</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>.</li>
 <li>La diferencia entre <strong>frontend</strong> y <strong>backend</strong>.</li>
 <li>Cómo funciona una página web desde que la pides hasta que la ves.</li>
+<li>Las herramientas que necesitas para empezar.</li>
 </ul>
 </div>
 <hr />
@@ -7111,7 +7112,7 @@
 <p>Cada vez que abres una página, un equipo de desarrolladores ha diseñado su estructura, su estilo y su comportamiento. Aprender desarrollo web es aprender a <strong>construir ese escaparate</strong>.</p>
 </div>
 <hr />
-<h2 id="los-tres-pilares-fundamentales">🏛️ Los tres pilares fundamentales<a class="headerlink" href="#los-tres-pilares-fundamentales" title="Permanent link">&para;</a></h2>
+<h2 id="los-tres-pilares-fundamentales">🏛 Los tres pilares fundamentales<a class="headerlink" href="#los-tres-pilares-fundamentales" title="Permanent link">&para;</a></h2>
 <p>Toda página web moderna se apoya en tres tecnologías:</p>
 <table>
 <thead>
@@ -7125,45 +7126,207 @@
 <tr>
 <td style="text-align: left;"><strong>HTML</strong></td>
 <td style="text-align: left;">Define la <strong>estructura</strong> y el contenido</td>
-<td style="text-align: left;">Los huesos</td>
+<td style="text-align: left;">El esqueleto</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CSS</strong></td>
-<td style="text-align: left;">Define la <strong>presentación</strong> y el estilo</td>
+<td style="text-align: left;">Define la <strong>apariencia</strong> (colores, tipografía, layout)</td>
 <td style="text-align: left;">La piel y la ropa</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>JavaScript</strong></td>
-<td style="text-align: left;">Define el <strong>comportamiento</strong> y la interactividad</td>
-<td style="text-align: left;">Los músculos y el cerebro</td>
+<td style="text-align: left;">Define el <strong>comportamiento</strong> (interacción, lógica)</td>
+<td style="text-align: left;">Los músculos</td>
 </tr>
 </tbody>
 </table>
-<p>```html</p>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Mi primera página</title>
-  <style>
-    /* CSS: estilos */
-    body { font-family: sans-serif; background: #f5f5f5; }
-    h1   { color: #6a5acd; }
-  </style>
-</head>
-<body>
-  <!-- HTML: estructura -->
-  <h1>Hola, mundo 🌍</h1>
-  <button id="saludo">Haz clic</button>
-
-  <script>
-    // JavaScript: comportamiento
-    document.getElementById('saludo').addEventListener('click', () => {
-      alert('¡Bienvenido al desarrollo web!');
-    });
-  </script>
-</body>
-</html>
+<pre class="mermaid"><code>graph LR
+    A[Tu código] --&gt; B[HTML]
+    A --&gt; C[CSS]
+    A --&gt; D[JavaScript]
+    B --&gt; E[Navegador]
+    C --&gt; E
+    D --&gt; E
+    E --&gt; F[Página web]</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Aprende en este orden</p>
+<p>Primero HTML (estructura), luego CSS (apariencia), luego JavaScript (comportamiento). Saltarse el orden es la causa nº1 de frustración al empezar.</p>
+</div>
+<hr />
+<h2 id="frontend-vs-backend">⚖️ Frontend vs Backend<a class="headerlink" href="#frontend-vs-backend" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><strong>Frontend</strong></th>
+<th style="text-align: left;"><strong>Backend</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Dónde se ejecuta</td>
+<td style="text-align: left;">En el <strong>navegador</strong> del usuario</td>
+<td style="text-align: left;">En el <strong>servidor</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Tecnologías</td>
+<td style="text-align: left;">HTML, CSS, JavaScript</td>
+<td style="text-align: left;">Node.js, Python, PHP, Java, Go…</td>
+</tr>
+<tr>
+<td style="text-align: left;">Qué gestiona</td>
+<td style="text-align: left;">Lo que <strong>ves</strong> y <strong>tocas</strong></td>
+<td style="text-align: left;">Datos, lógica, seguridad, base de datos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ejemplo</td>
+<td style="text-align: left;">Un botón que cambia de color</td>
+<td style="text-align: left;">Guardar tu contraseña en la base de datos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Full-stack</strong> = sabe hacer las dos cosas.</p>
+<hr />
+<h2 id="como-funciona-una-pagina-web">🔄 Cómo funciona una página web<a class="headerlink" href="#como-funciona-una-pagina-web" title="Permanent link">&para;</a></h2>
+<p>Cuando escribes <code>https://libro.urukais.com</code> en el navegador, ocurre esto:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant N as Navegador
+    participant D as DNS
+    participant S as Servidor
+    U-&gt;&gt;N: Escribe la URL
+    N-&gt;&gt;D: ¿Qué IP tiene libro.urukais.com?
+    D-&gt;&gt;N: 185.x.x.x
+    N-&gt;&gt;S: GET /
+    S-&gt;&gt;N: HTML, CSS, JS
+    N-&gt;&gt;U: Muestra la página</code></pre>
+<ol>
+<li><strong>DNS</strong>: traduce el dominio a una dirección IP.</li>
+<li><strong>Petición HTTP</strong>: el navegador pide los archivos al servidor.</li>
+<li><strong>Respuesta</strong>: el servidor devuelve HTML, CSS y JS.</li>
+<li><strong>Renderizado</strong>: el navegador interpreta esos archivos y pinta la página.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">El navegador no ejecuta todo igual</p>
+<p>HTML y CSS se interpretan (no son lenguajes de programación). JavaScript sí se <strong>ejecuta</strong> (tiene lógica: variables, bucles, condiciones).</p>
+</div>
+<hr />
+<h2 id="herramientas-que-necesitas">🧰 Herramientas que necesitas<a class="headerlink" href="#herramientas-que-necesitas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Para qué</th>
+<th style="text-align: left;">Recomendación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Editor de código</strong></td>
+<td style="text-align: left;">Escribir el código</td>
+<td style="text-align: left;">VS Code</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Navegador moderno</strong></td>
+<td style="text-align: left;">Probar y depurar</td>
+<td style="text-align: left;">Chrome / Firefox</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Git</strong></td>
+<td style="text-align: left;">Control de versiones</td>
+<td style="text-align: left;">Git + GitHub</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Terminal</strong></td>
+<td style="text-align: left;">Ejecutar comandos</td>
+<td style="text-align: left;">La de tu sistema</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">No necesitas 20 herramientas</p>
+<p>Con VS Code y un navegador puedes empezar. Todo lo demás se añade cuando lo necesites.</p>
+</div>
+<hr />
+<h2 id="tu-primer-hola-mundo">👋 Tu primer "Hola, mundo"<a class="headerlink" href="#tu-primer-hola-mundo" title="Permanent link">&para;</a></h2>
+<p>Crea un archivo llamado <code>index.html</code> con este contenido:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi primera página<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡Hola, mundo!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Ábrelo con doble clic. Verás tu primera página en el navegador. <strong>Ya eres desarrollador web.</strong> 😄</p>
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Preséntate en HTML</p>
+<p>Crea un archivo <code>presentacion.html</code> con:</p>
+<ul>
+<li>Un <code>&lt;h1&gt;</code> con tu nombre.</li>
+<li>Un <code>&lt;p&gt;</code> con una frase sobre ti.</li>
+<li>Un <code>&lt;h2&gt;</code> con "Mis objetivos".</li>
+<li>Una lista <code>&lt;ul&gt;</code> con 3 cosas que quieres aprender.</li>
+</ul>
+<p>Ábrelo en el navegador y comprueba que se ve bien.</p>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi presentación<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Urukais<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Soy desarrollador web y me encanta enseñar.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Mis objetivos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Dominar HTML y CSS<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Aprender JavaScript a fondo<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Construir mi propio portfolio<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Cuáles son los tres pilares del desarrollo web?</summary>
+<p>HTML (estructura), CSS (apariencia) y JavaScript (comportamiento).</p>
+</details>
+<details class="success">
+<summary>2. ¿Qué diferencia hay entre frontend y backend?</summary>
+<p>El frontend se ejecuta en el navegador (lo que ve el usuario); el backend se ejecuta en el servidor (datos, lógica, seguridad).</p>
+</details>
+<details class="success">
+<summary>3. ¿HTML es un lenguaje de programación?</summary>
+<p>No. Es un <strong>lenguaje de marcado</strong>. No tiene variables, bucles ni condiciones. JavaScript sí es un lenguaje de programación.</p>
+</details>
+<details class="success">
+<summary>4. ¿Qué hace el DNS cuando escribes una URL?</summary>
+<p>Traduce el nombre del dominio a la dirección IP del servidor donde está alojada la página.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Learn">MDN — Aprender desarrollo web</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web">MDN — Primeros pasos en la web</a></li>
+<li><a href="https://roadmap.sh/frontend">roadmap.sh — Frontend Developer Roadmap</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../02-html-basico/">02 — HTML básico</a></p>
 
 
 
