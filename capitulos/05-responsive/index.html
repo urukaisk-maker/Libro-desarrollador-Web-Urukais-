@@ -25,7 +25,7 @@
     
     
       
-        <title>05 — Diseño responsive - Libro del Desarrollador Web — Urukais</title>
+        <title>05 — Diseño Responsive - Libro del Desarrollador Web — Urukais</title>
       
     
     
@@ -89,12 +89,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="05 — Diseño responsive - Libro del Desarrollador Web — Urukais">
+  <meta property="og:title" content="05 — Diseño Responsive - Libro del Desarrollador Web — Urukais">
   <meta property="og:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta property="og:url" content="https://libro.urukais.com/capitulos/05-responsive/">
   <meta property="og:image" content="https://libro.urukais.com/assets/portada.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="05 — Diseño responsive - Libro del Desarrollador Web — Urukais">
+  <meta name="twitter:title" content="05 — Diseño Responsive - Libro del Desarrollador Web — Urukais">
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              05 — Diseño responsive
+              05 — Diseño Responsive
             
           </span>
         </div>
@@ -7093,215 +7093,417 @@
   
 
 
-<h1 id="05-diseno-responsive">05 — Diseño responsive<a class="headerlink" href="#05-diseno-responsive" title="Permanent link">&para;</a></h1>
+<h1 id="05-diseno-responsive">05 — Diseño Responsive<a class="headerlink" href="#05-diseno-responsive" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Qué es el diseño responsive y por qué es obligatorio.</li>
-<li>El viewport y la etiqueta meta.</li>
-<li>Media queries y mobile-first.</li>
-<li>Unidades relativas (rem, em, %, vw/vh).</li>
-<li>Imágenes responsive.</li>
+<li>Qué es el diseño responsive y por qué es obligatorio hoy.</li>
+<li>La filosofía <strong>mobile-first</strong>.</li>
+<li><code>meta viewport</code> y por qué es imprescindible.</li>
+<li>Media queries, unidades relativas y funciones modernas (<code>clamp()</code>).</li>
+<li>Imágenes responsive y container queries.</li>
 </ul>
 </div>
 <hr />
 <h2 id="que-es-el-diseno-responsive">📱 ¿Qué es el diseño responsive?<a class="headerlink" href="#que-es-el-diseno-responsive" title="Permanent link">&para;</a></h2>
-<p>El <strong>diseño responsive</strong> (o adaptativo) es la práctica de crear webs que se vean bien en <strong>cualquier tamaño de pantalla</strong>: móvil, tablet, portátil, monitor grande. Ya no es opcional: más del 60% del tráfico web viene de móvil.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Móvil primero */</span>
-<span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1024px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Mobile first</p>
-<p>Diseña primero para móvil y luego amplía con `min-width`. Es más fácil añadir complejidad que quitarla.</p>
+<p>El <strong>diseño responsive</strong> (o adaptativo) es la práctica de construir una web que se vea y funcione bien en <strong>cualquier tamaño de pantalla</strong>: móvil, tablet, portátil, monitor 4K.</p>
+<div class="admonition quote">
+<p class="admonition-title">La analogía del agua</p>
+<p>El agua se adapta al recipiente que la contiene. Una web responsive debe hacer lo mismo: no "romperse" al cambiar de tamaño, sino <strong>reorganizarse</strong> para seguir siendo usable.</p>
 </div>
+<pre class="mermaid"><code>graph LR
+    A[Móvil 320px] --&gt; B[Tablet 768px]
+    B --&gt; C[Portátil 1024px]
+    C --&gt; D[Escritorio 1440px+]
+    A -.-&gt; E[Mismo HTML]
+    B -.-&gt; E
+    C -.-&gt; E
+    D -.-&gt; E</code></pre>
 <hr />
-<h2 id="el-viewport">🖥️ El viewport<a class="headerlink" href="#el-viewport" title="Permanent link">&para;</a></h2>
-<p>Sin la etiqueta viewport, los móviles renderizan la página como si fueran un monitor de escritorio y luego la reducen. El resultado: texto minúsculo y zoom obligatorio.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
-</code></pre></div>
-<ul>
-<li>`width=device-width`: el ancho del viewport es el ancho del dispositivo.</li>
-<li>`initial-scale=1.0`: sin zoom inicial.</li>
-</ul>
-<hr />
-<h2 id="media-queries">📐 Media queries<a class="headerlink" href="#media-queries" title="Permanent link">&para;</a></h2>
-<p>Las <strong>media queries</strong> permiten aplicar estilos según las características del dispositivo.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Por ancho */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">max-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1023px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-
-<span class="c">/* Por orientación */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">orientation</span><span class="o">:</span><span class="w"> </span><span class="nt">landscape</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-
-<span class="c">/* Por preferencias del usuario */</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-color-scheme</span><span class="o">:</span><span class="w"> </span><span class="nt">dark</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
+<h2 id="mobile-first">🏛 Mobile-first<a class="headerlink" href="#mobile-first" title="Permanent link">&para;</a></h2>
+<p><strong>Mobile-first</strong> significa diseñar primero para móvil y <strong>después</strong> ampliar para pantallas grandes. Es lo contrario de "diseño de escritorio y luego lo adapto".</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Breakpoint</th>
-<th style="text-align: left;">Dispositivo típico</th>
+<th style="text-align: left;">Enfoque</th>
+<th style="text-align: left;">Ventaja</th>
+<th style="text-align: left;">Desventaja</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">&lt; 640px</td>
-<td style="text-align: left;">Móvil</td>
+<td style="text-align: left;"><strong>Mobile-first</strong></td>
+<td style="text-align: left;">CSS más limpio, mejor rendimiento en móvil</td>
+<td style="text-align: left;">Más trabajo inicial en móvil</td>
 </tr>
 <tr>
-<td style="text-align: left;">640–1023px</td>
-<td style="text-align: left;">Tablet</td>
-</tr>
-<tr>
-<td style="text-align: left;">1024–1279px</td>
-<td style="text-align: left;">Portátil</td>
-</tr>
-<tr>
-<td style="text-align: left;">≥ 1280px</td>
-<td style="text-align: left;">Monitor</td>
+<td style="text-align: left;"><strong>Desktop-first</strong></td>
+<td style="text-align: left;">Más rápido si ya tienes diseño de escritorio</td>
+<td style="text-align: left;">CSS con más <code>max-width</code>, más deuda técnica</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Por qué mobile-first</p>
+<p>El tráfico móvil supera el 60% en la mayoría de sitios. Diseñar para móvil primero te obliga a priorizar contenido y simplificar. Y en CSS, <code>min-width</code> (mobile-first) es más limpio que <code>max-width</code> (desktop-first).</p>
+</div>
+<hr />
+<h2 id="meta-viewport-imprescindible">🖥 Meta viewport (imprescindible)<a class="headerlink" href="#meta-viewport-imprescindible" title="Permanent link">&para;</a></h2>
+<p>Sin esta etiqueta en el <code>&lt;head&gt;</code>, el móvil <strong>simula</strong> un ancho de 980px y hace zoom out. Resultado: texto minúsculo e ilegible.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>width=device-width</code> → el ancho del viewport es el ancho real del dispositivo.</li>
+<li><code>initial-scale=1.0</code> → sin zoom inicial.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Sin viewport, no hay responsive</p>
+<p>Es el error nº1 al empezar. Si tu web se ve "enana" en el móvil, revisa esta etiqueta.</p>
+</div>
+<hr />
+<h2 id="media-queries">📐 Media queries<a class="headerlink" href="#media-queries" title="Permanent link">&para;</a></h2>
+<p>Las <strong>media queries</strong> aplican CSS solo cuando se cumple una condición (ancho de pantalla, orientación, preferencias…).</p>
+<div class="highlight"><pre><span></span><code><span class="c">/* Base: móvil */</span>
+<span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Tablet y superior */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/* Escritorio y superior */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1024px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">        </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="breakpoints-habituales">Breakpoints habituales<a class="headerlink" href="#breakpoints-habituales" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nombre</th>
+<th style="text-align: left;">Ancho</th>
+<th style="text-align: left;">Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>xs</strong></td>
+<td style="text-align: left;">0–479px</td>
+<td style="text-align: left;">Móvil pequeño</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>sm</strong></td>
+<td style="text-align: left;">≥ 480px</td>
+<td style="text-align: left;">Móvil grande</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>md</strong></td>
+<td style="text-align: left;">≥ 768px</td>
+<td style="text-align: left;">Tablet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>lg</strong></td>
+<td style="text-align: left;">≥ 1024px</td>
+<td style="text-align: left;">Portátil / escritorio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>xl</strong></td>
+<td style="text-align: left;">≥ 1280px</td>
+<td style="text-align: left;">Escritorio grande</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2xl</strong></td>
+<td style="text-align: left;">≥ 1536px</td>
+<td style="text-align: left;">Monitor 4K</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">No persigas dispositivos</p>
+<p>Los breakpoints deben basarse en <strong>dónde se rompe tu diseño</strong>, no en "el ancho del iPhone 15". Añade media queries cuando el contenido lo necesite.</p>
+</div>
+<h3 id="preferencias-del-usuario">Preferencias del usuario<a class="headerlink" href="#preferencias-del-usuario" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">/* Modo oscuro del sistema */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-color-scheme</span><span class="o">:</span><span class="w"> </span><span class="nt">dark</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#111</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#eee</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/* Reducir movimiento (accesibilidad) */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="unidades-relativas">📏 Unidades relativas<a class="headerlink" href="#unidades-relativas" title="Permanent link">&para;</a></h2>
+<p>Las unidades <strong>absolutas</strong> (<code>px</code>) no escalan. Las <strong>relativas</strong> sí:</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Unidad</th>
-<th style="text-align: left;">Relativa a</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Referencia</th>
+<th style="text-align: left;">Ejemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">`rem`</td>
-<td style="text-align: left;">Tamaño de fuente raíz (16px por defecto)</td>
-<td style="text-align: left;">Tipografía, espaciados</td>
+<td style="text-align: left;"><code>rem</code></td>
+<td style="text-align: left;">Tamaño de fuente <strong>raíz</strong> (16px por defecto)</td>
+<td style="text-align: left;"><code>font-size: 1.5rem;</code> = 24px</td>
 </tr>
 <tr>
-<td style="text-align: left;">`em`</td>
-<td style="text-align: left;">Tamaño de fuente del elemento padre</td>
-<td style="text-align: left;">Componentes</td>
+<td style="text-align: left;"><code>em</code></td>
+<td style="text-align: left;">Tamaño de fuente <strong>del elemento padre</strong></td>
+<td style="text-align: left;"><code>padding: 1em;</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">`%`</td>
-<td style="text-align: left;">Tamaño del contenedor padre</td>
-<td style="text-align: left;">Anchuras</td>
+<td style="text-align: left;"><code>%</code></td>
+<td style="text-align: left;">Ancho/alto del <strong>contenedor</strong></td>
+<td style="text-align: left;"><code>width: 100%;</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">`vw`</td>
-<td style="text-align: left;">1% del ancho del viewport</td>
-<td style="text-align: left;">Elementos a pantalla completa</td>
+<td style="text-align: left;"><code>vw</code> / <code>vh</code></td>
+<td style="text-align: left;">1% del <strong>viewport</strong></td>
+<td style="text-align: left;"><code>height: 100vh;</code> (pantalla completa)</td>
 </tr>
 <tr>
-<td style="text-align: left;">`vh`</td>
-<td style="text-align: left;">1% del alto del viewport</td>
-<td style="text-align: left;">Secciones a pantalla completa</td>
-</tr>
-<tr>
-<td style="text-align: left;">`ch`</td>
-<td style="text-align: left;">Ancho del carácter "0"</td>
-<td style="text-align: left;">Líneas de texto</td>
+<td style="text-align: left;"><code>svh</code> / <code>dvh</code></td>
+<td style="text-align: left;">Viewport <strong>dinámico</strong> (móvil con barra)</td>
+<td style="text-align: left;"><code>height: 100dvh;</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Evita píxeles para tipografía</p>
-<p>Usa `rem` para tipografía y espaciados. Los píxeles no escalan con las preferencias del usuario.</p>
+<p class="admonition-title">Cuidado con <code>vh</code> en móvil</p>
+<p><code>100vh</code> en móvil incluye la barra del navegador → contenido cortado. Usa <code>100svh</code> (smallest) o <code>100dvh</code> (dynamic) para pantalla completa.</p>
 </div>
+<h3 id="clamp-la-funcion-magica"><code>clamp()</code>: la función mágica<a class="headerlink" href="#clamp-la-funcion-magica" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">/* Tamaño fluido: mínimo 1rem, ideal 4vw, máximo 3rem */</span>
+<span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>clamp(min, preferido, max)</code> escala <strong>suavemente</strong> entre dos valores. Ideal para títulos y espaciados.</p>
+<div class="highlight"><pre><span></span><code><span class="c">/* Espaciado fluido sin media queries */</span>
+<span class="p">.</span><span class="nc">section</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">rem</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
-<h2 id="imagenes-responsive">🖼️ Imágenes responsive<a class="headerlink" href="#imagenes-responsive" title="Permanent link">&para;</a></h2>
+<h2 id="imagenes-responsive">🖼 Imágenes responsive<a class="headerlink" href="#imagenes-responsive" title="Permanent link">&para;</a></h2>
+<h3 id="max-width-100-la-base"><code>max-width: 100%</code> (la base)<a class="headerlink" href="#max-width-100-la-base" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Evita que las imágenes se salgan del contenedor.</p>
+<h3 id="srcset-y-sizes"><code>srcset</code> y <code>sizes</code><a class="headerlink" href="#srcset-y-sizes" title="Permanent link">&para;</a></h3>
+<p>Para servir <strong>la imagen adecuada</strong> a cada pantalla (y ahorrar datos):</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span>
-  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.jpg"</span>
-  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.jpg 400w, foto-800.jpg 800w, foto-1600.jpg 1600w"</span>
-  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"</span>
-  <span class="na">alt</span><span class="o">=</span><span class="s">"Descripción"</span>
-  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.jpg"</span>
+    <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.jpg 400w, foto-800.jpg 800w, foto-1600.jpg 1600w"</span>
+    <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 100vw, 50vw"</span>
+    <span class="na">alt</span><span class="o">=</span><span class="s">"Ejemplo responsive"</span>
 <span class="p">&gt;</span>
 </code></pre></div>
 <ul>
-<li>`srcset`: ofrece varias versiones de la imagen.</li>
-<li>`sizes`: indica al navegador qué tamaño tendrá en cada caso.</li>
-<li>`loading="lazy"`: carga la imagen solo cuando se acerca al viewport.</li>
+<li><code>srcset</code> → lista de imágenes con su ancho real.</li>
+<li><code>sizes</code> → qué ancho ocupará en cada pantalla.</li>
+<li>El navegador <strong>elige</strong> la mejor opción.</li>
 </ul>
+<h3 id="picture-formatos-alternativos"><code>&lt;picture&gt;</code> (formatos alternativos)<a class="headerlink" href="#picture-formatos-alternativos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"foto.avif"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/avif"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"foto.webp"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/webp"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Ejemplo"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>El navegador usa el primer formato que soporta (AVIF &gt; WebP &gt; JPG). Ahorra ancho de banda en navegadores modernos.</p>
+<hr />
+<h2 id="container-queries-moderno">📦 Container queries (moderno)<a class="headerlink" href="#container-queries-moderno" title="Permanent link">&para;</a></h2>
+<p>Las <strong>container queries</strong> aplican CSS según el tamaño de un <strong>contenedor padre</strong>, no del viewport. Es la evolución natural de las media queries.</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card-wrapper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">        </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Diferencia clave:</strong>
+- Media query → "si la <strong>pantalla</strong> es grande…"
+- Container query → "si el <strong>contenedor</strong> es grande…"</p>
+<p>Un mismo componente puede verse distinto según dónde se coloque (sidebar, hero, grid). Compatibilidad: 90%+ navegadores modernos (2024).</p>
 <div class="admonition tip">
-<p class="admonition-title">Formatos modernos</p>
-<p>Usa WebP o AVIF siempre que puedas. Pesan menos y se ven igual. Puedes ofrecer alternativas con `<picture>`.</p>
+<p class="admonition-title">Media vs Container</p>
+<p>Usa <strong>media queries</strong> para layout global (header, footer, sidebar). Usa <strong>container queries</strong> para <strong>componentes reutilizables</strong> (cards, widgets, botones).</p>
 </div>
 <hr />
-<h2 id="patrones-de-layout-responsive">🎯 Patrones de layout responsive<a class="headerlink" href="#patrones-de-layout-responsive" title="Permanent link">&para;</a></h2>
-<h3 id="contenedor-centrado">Contenedor centrado<a class="headerlink" href="#contenedor-centrado" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="grid-responsive">Grid responsive<a class="headerlink" href="#grid-responsive" title="Permanent link">&para;</a></h3>
+<h2 id="patrones-responsive">🧩 Patrones responsive<a class="headerlink" href="#patrones-responsive" title="Permanent link">&para;</a></h2>
+<h3 id="1-grid-auto-adaptativo-sin-media-queries">1. Grid auto-adaptativo (sin media queries)<a class="headerlink" href="#1-grid-auto-adaptativo-sin-media-queries" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">240</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">250</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span>
+<span class="w">    </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="barra-lateral-que-colapsa">Barra lateral que colapsa<a class="headerlink" href="#barra-lateral-que-colapsa" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
-<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<p>Crea tantas columnas como quepan (mínimo 250px). <strong>Cero media queries</strong>.</p>
+<h3 id="2-flexbox-con-wrap">2. Flexbox con wrap<a class="headerlink" href="#2-flexbox-con-wrap" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">flex</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">    </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">    </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">1024px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">flex</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">250</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-navegacion-responsive">3. Navegación responsive<a class="headerlink" href="#3-navegacion-responsive" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">    </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">    </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">max-width</span><span class="o">:</span><span class="w"> </span><span class="nt">600px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-5">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué etiqueta es obligatoria para que la web se vea bien en móvil?</p>
-<button class="quiz-option" data-opt="a">A) &lt;meta charset="UTF-8"&gt;</button>
-<button class="quiz-option" data-opt="b">B) &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</button>
-<button class="quiz-option" data-opt="c">C) &lt;meta name="mobile"&gt;</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué significa "mobile first"?</p>
-<button class="quiz-option" data-opt="a">A) Diseñar primero para móvil y luego ampliar</button>
-<button class="quiz-option" data-opt="b">B) Diseñar solo para móvil</button>
-<button class="quiz-option" data-opt="c">C) Diseñar primero para escritorio</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué unidad es relativa al tamaño de fuente raíz?</p>
-<button class="quiz-option" data-opt="a">A) px</button>
-<button class="quiz-option" data-opt="b">B) em</button>
-<button class="quiz-option" data-opt="c">C) rem</button>
-</div>
-</div>
+<h2 id="ejemplo-completo-tarjeta-responsive">🏗 Ejemplo completo: tarjeta responsive<a class="headerlink" href="#ejemplo-completo-tarjeta-responsive" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"card"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"foto.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Producto"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card-body"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Teclado mecánico<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>89 €<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Comprar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">    </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">    </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.1</span><span class="p">);</span>
+<span class="p">}</span>
 
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%205%3A%20Dise%C3%B1o%20responsive&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F05-responsive%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F05-responsive%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%205%3A%20Dise%C3%B1o%20responsive%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F05-responsive%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/05-responsive/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
+<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="p">.</span><span class="nc">card-body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">);</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">    </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+<span class="w">    </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* En pantallas grandes, imagen a la izquierda */</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">768px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">row</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">        </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../06-formularios/">Ir al Capítulo 6 — Formularios HTML</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Hero con tipografía fluida</p>
+<p>Crea una sección "hero" con:</p>
+<ul>
+<li>Un título <code>&lt;h1&gt;</code> con tamaño fluido entre <code>1.5rem</code> y <code>4rem</code>.</li>
+<li>Un párrafo <code>&lt;p&gt;</code> con ancho máximo de <code>60ch</code>.</li>
+<li>Centrado horizontalmente y con <code>padding</code> fluido.</li>
+</ul>
+<p>No uses media queries. Usa <code>clamp()</code> y unidades relativas.</p>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">2</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="kt">rem</span><span class="p">)</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">135</span><span class="kt">deg</span><span class="p">,</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">,</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">);</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">rem</span><span class="p">);</span>
+<span class="w">    </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">    </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">ch</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hero</span><span class="w"> </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="p">);</span>
+<span class="w">    </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="kt">ch</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Claves:</strong> <code>clamp()</code> para tipografía y espaciado, <code>max-width</code> con <code>ch</code> (ancho de carácter) para lectura cómoda, <code>margin: 0 auto</code> para centrar.</p>
+</details>
+<hr />
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Para qué sirve <code>meta viewport</code>?</summary>
+<p>Sin ella, el móvil simula un ancho de 980px y hace zoom out. Con <code>width=device-width, initial-scale=1.0</code> el navegador usa el ancho real del dispositivo y no aplica zoom inicial.</p>
+</details>
+<details class="success">
+<summary>2. ¿Qué diferencia hay entre <code>rem</code>, <code>em</code> y <code>vw</code>?</summary>
+<p><code>rem</code> → tamaño de fuente <strong>raíz</strong> (html). <code>em</code> → tamaño de fuente <strong>del elemento padre</strong>. <code>vw</code> → 1% del <strong>ancho del viewport</strong>.</p>
+</details>
+<details class="success">
+<summary>3. ¿Qué hace <code>clamp(1rem, 4vw, 3rem)</code>?</summary>
+<p>Devuelve un tamaño fluido: nunca menos de <code>1rem</code>, nunca más de <code>3rem</code>, y escala con <code>4vw</code> entre ambos.</p>
+</details>
+<details class="success">
+<summary>4. ¿Cuándo usar <code>container queries</code> en vez de media queries?</summary>
+<p>Para <strong>componentes reutilizables</strong> cuyo layout debe adaptarse al <strong>espacio disponible en su contenedor</strong>, no al tamaño del viewport.</p>
+</details>
+<details class="success">
+<summary>5. ¿Por qué <code>100vh</code> puede fallar en móvil?</summary>
+<p>Porque incluye la barra de navegación del navegador, que aparece y desaparece. Usa <code>100svh</code> (smallest) o <code>100dvh</code> (dynamic) para pantalla completa segura.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Responsive_Design">MDN — Diseño responsive</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/clamp">MDN — <code>clamp()</code></a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_containment/Container_queries">MDN — Container queries</a></li>
+<li><a href="https://web.dev/learn/design/">web.dev — Learn Responsive Design</a></li>
+<li><a href="https://caniuse.com/css-container-queries">Can I use — Container queries</a></li>
+<li><a href="https://moderncss.dev/">Modern CSS Solutions — Fluid typography</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../06-formularios/">06 — Formularios</a></p>
 
 
 
