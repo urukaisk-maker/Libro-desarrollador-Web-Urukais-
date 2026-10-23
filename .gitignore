@@ -1,11 +1,5 @@
 .venv/
-
-.venv/
 site/
 __pycache__/
 *.pyc
 *.bak
-site/
-.venv/
-__pycache__/
-*.pyc
