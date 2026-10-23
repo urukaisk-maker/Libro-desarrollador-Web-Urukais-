@@ -1,35 +1,36 @@
 ---
 name: 🐛 Reportar un error
-about: Algo no funciona o está mal escrito
-title: "[Bug] "
+about: Crea un informe para ayudarnos a mejorar el libro
+title: "[BUG] "
 labels: bug
+assignees: ''
 ---
 
-## Descripción
+## 📝 Descripción del error
 
-Describe el problema de forma clara y concisa.
+Una descripción clara y concisa del error.
 
-## Capítulo o página
+## 🔄 Pasos para reproducirlo
 
-- **Capítulo**:
-- **Sección**:
-- **URL**:
+1. Ir a "..."
+2. Hacer clic en "..."
+3. Ver el error
 
-## Comportamiento esperado
+## ✅ Comportamiento esperado
 
-¿Qué debería pasar?
+Descripción clara de lo que esperabas que ocurriera.
 
-## Comportamiento actual
+## 📸 Capturas
 
-¿Qué pasa en realidad?
+Si es posible, añade capturas para ayudar a explicar el problema.
 
-## Pasos para reproducirlo
+## 🖥️ Entorno
 
-1.
-2.
-3.
+- SO: [ej. Windows 11, macOS 14, Ubuntu 24.04]
+- Navegador: [ej. Chrome, Firefox, Safari]
+- Versión del libro: [ej. v1.0.0]
+- Capítulo/página afectada: [ej. Capítulo 12 - TypeScript]
 
-## Entorno
+## 📋 Información adicional
 
-- **Navegador**:
-- **Sistema operativo**:
+Cualquier otro contexto sobre el problema.
