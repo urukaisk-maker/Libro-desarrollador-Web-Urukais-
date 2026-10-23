@@ -7097,221 +7097,294 @@
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Qué es el Edge Computing y por qué importa.</li>
-<li>Cloudflare Workers, Vercel Edge y Deno Deploy.</li>
-<li>Casos de uso reales.</li>
-<li>Limitaciones y buenas prácticas.</li>
+<li>Qué es Edge Computing y por qué importa.</li>
+<li>La diferencia entre CDN tradicional y edge functions.</li>
+<li>Plataformas populares: Cloudflare Workers, Vercel Edge, Deno Deploy.</li>
+<li>Casos de uso reales: personalización, A/B testing, geolocalización.</li>
+<li>Limitaciones y cuándo NO usar edge.</li>
 </ul>
 </div>
 <hr />
 <h2 id="que-es-edge-computing">🌍 ¿Qué es Edge Computing?<a class="headerlink" href="#que-es-edge-computing" title="Permanent link">&para;</a></h2>
-<p>El <strong>Edge Computing</strong> consiste en ejecutar código en <strong>servidores distribuidos geográficamente</strong>, cerca del usuario. En lugar de un servidor central, hay cientos de nodos repartidos por el mundo.</p>
-<div class="highlight"><pre><span></span><code>Servidor central:  usuario en Madrid → servidor en Virginia (150 ms)
-Edge Computing:    usuario en Madrid → servidor en Madrid (10 ms)
-</code></pre></div>
+<p><strong>Edge Computing</strong> (computación en el borde) es ejecutar código <strong>lo más cerca posible del usuario</strong>, en lugar de en un servidor central. En vez de que todas las peticiones viajen al mismo datacenter, se distribuyen por una red global de nodos.</p>
 <div class="admonition quote">
-<p class="admonition-title">La latencia es la nueva velocidad</p>
-<p>Cada milisegundo cuenta. Si tu usuario está en Tokio y tu servidor en Frankfurt, pierdes 250 ms solo en el viaje de ida y vuelta. El edge elimina ese viaje.</p>
+<p class="admonition-title">La analogía del supermercado</p>
+<p>Un servidor central es como tener <strong>una única tienda en Madrid</strong> para toda España: cómodo para el dueño, pero el cliente de Barcelona tarda 6 horas en llegar. Edge Computing es tener <strong>una tienda en cada ciudad</strong>: misma mercancía, pero mucho más cerca del cliente.</p>
+</div>
+<pre class="mermaid"><code>graph LR
+    U1[Usuario Madrid] --&gt; E1[Edge Madrid]
+    U2[Usuario Tokio] --&gt; E2[Edge Tokio]
+    U3[Usuario NY] --&gt; E3[Edge NY]
+    E1 --&gt; DB[(Base de datos central)]
+    E2 --&gt; DB
+    E3 --&gt; DB</code></pre>
+<p>Cada usuario llega al <strong>nodo más cercano</strong>, que responde en milisegundos.</p>
+<hr />
+<h2 id="cdn-vs-edge-functions">⚡ CDN vs Edge Functions<a class="headerlink" href="#cdn-vs-edge-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><strong>CDN tradicional</strong></th>
+<th style="text-align: left;"><strong>Edge Functions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Qué hace</td>
+<td style="text-align: left;">Sirve <strong>archivos estáticos</strong> (HTML, CSS, JS, imágenes)</td>
+<td style="text-align: left;">Ejecuta <strong>código</strong> en el nodo</td>
+</tr>
+<tr>
+<td style="text-align: left;">Lógica</td>
+<td style="text-align: left;">Ninguna (solo cachea)</td>
+<td style="text-align: left;">JavaScript, TypeScript, Rust, WASM</td>
+</tr>
+<tr>
+<td style="text-align: left;">Personalización</td>
+<td style="text-align: left;">Limitada a headers</td>
+<td style="text-align: left;">Completa (leer cookies, geolocalización, etc.)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Latencia</td>
+<td style="text-align: left;">Baja para estáticos</td>
+<td style="text-align: left;">Baja para <strong>todo</strong> (incluida lógica)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ejemplo</td>
+<td style="text-align: left;">Cloudflare CDN, Fastly</td>
+<td style="text-align: left;">Cloudflare Workers, Vercel Edge</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CDN</strong> = repartir archivos.
+<strong>Edge</strong> = repartir archivos <strong>y ejecutar código</strong> cerca del usuario.</p>
+<div class="admonition tip">
+<p class="admonition-title">Regla práctica</p>
+<p>Usa CDN para todo lo estático (imágenes, fuentes, JS del cliente). Usa Edge Functions para lógica que se beneficia de estar cerca del usuario: redirecciones, personalización, autenticación, geolocalización.</p>
 </div>
 <hr />
-<h2 id="cloudflare-workers">⚡ Cloudflare Workers<a class="headerlink" href="#cloudflare-workers" title="Permanent link">&para;</a></h2>
-<p><strong>Cloudflare Workers</strong> es la plataforma de edge computing más popular. Ejecuta JavaScript/TypeScript en más de 300 ciudades del mundo.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// worker.js</span>
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"/api/saludo"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">Response</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">"Hola desde el edge"</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="s2">"Hola, mundo"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"text/plain"</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>wrangler
-wrangler<span class="w"> </span>login
-wrangler<span class="w"> </span>deploy
-</code></pre></div>
-<hr />
-<h2 id="otras-plataformas">🚀 Otras plataformas<a class="headerlink" href="#otras-plataformas" title="Permanent link">&para;</a></h2>
+<h2 id="plataformas-populares">🚀 Plataformas populares<a class="headerlink" href="#plataformas-populares" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Plataforma</th>
-<th style="text-align: left;">Runtime</th>
-<th style="text-align: left;">Lenguajes</th>
+<th style="text-align: left;">Lenguaje</th>
+<th style="text-align: left;">Free tier</th>
+<th style="text-align: left;">Casos ideales</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Cloudflare Workers</strong></td>
-<td style="text-align: left;">V8 isolates</td>
-<td style="text-align: left;">JS/TS, Rust, C</td>
+<td style="text-align: left;">JS/TS, Rust, WASM</td>
+<td style="text-align: left;">100.000 req/día</td>
+<td style="text-align: left;">APIs ligeras, middleware, A/B testing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Vercel Edge Functions</strong></td>
-<td style="text-align: left;">V8 isolates</td>
 <td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">100 GB-horas/mes</td>
+<td style="text-align: left;">Apps Next.js, personalización</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Deno Deploy</strong></td>
-<td style="text-align: left;">Deno</td>
 <td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">100.000 req/día</td>
+<td style="text-align: left;">APIs, bots, webhooks</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Netlify Edge Functions</strong></td>
-<td style="text-align: left;">Deno</td>
 <td style="text-align: left;">JS/TS</td>
+<td style="text-align: left;">1M invocaciones/mes</td>
+<td style="text-align: left;">Middleware de JAMstack</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AWS Lambda@Edge</strong></td>
-<td style="text-align: left;">Node.js</td>
-<td style="text-align: left;">JS/TS, Python</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Fastly Compute</strong></td>
-<td style="text-align: left;">Wasm</td>
-<td style="text-align: left;">Rust, Go, JS</td>
+<td style="text-align: left;">Node.js, Python</td>
+<td style="text-align: left;">Pago por uso</td>
+<td style="text-align: left;">Integración con CloudFront</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">No todas son iguales</p>
+<p>Cloudflare Workers usa <strong>V8 Isolates</strong> (no contenedores), arranque en <strong>&lt;5 ms</strong>. Las Lambdas tradicionales tardan <strong>100-500 ms</strong> en cold start. Para edge, los isolates son la norma.</p>
+</div>
 <hr />
-<h2 id="casos-de-uso-reales">🎯 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales" title="Permanent link">&para;</a></h2>
+<h2 id="casos-de-uso-reales">🧩 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales" title="Permanent link">&para;</a></h2>
+<h3 id="1-geolocalizacion-y-redireccion">1. Geolocalización y redirección<a class="headerlink" href="#1-geolocalizacion-y-redireccion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Cloudflare Worker: redirige según el país</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">cf</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">country</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">Response</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s2">"https://es.mi-sitio.com"</span><span class="p">,</span><span class="w"> </span><span class="mf">302</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="2-ab-testing-sin-backend">2. A/B testing sin backend<a class="headerlink" href="#2-ab-testing-sin-backend" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Vercel Edge Function: asigna variante según cookie</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">runtime</span><span class="o">:</span><span class="w"> </span><span class="s2">"edge"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handler</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"cookie"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">variant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cookie</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">"variant=b"</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">variant</span><span class="w"> </span><span class="p">}),</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"content-type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-personalizacion-de-html">3. Personalización de HTML<a class="headerlink" href="#3-personalizacion-de-html" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Deno Deploy: inyecta el nombre del usuario en el HTML</span>
+<span class="nx">Deno</span><span class="p">.</span><span class="nx">serve</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"user"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"invitado"</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://mi-sitio.com/index.html"</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">personalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{{user}}"</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span><span class="nx">personalized</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"content-type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="4-autenticacion-en-el-borde">4. Autenticación en el borde<a class="headerlink" href="#4-autenticacion-en-el-borde" title="Permanent link">&para;</a></h3>
+<p>Validar un JWT en el edge evita llegar al servidor central. Si el token no es válido, se rechaza en <strong>milisegundos</strong> sin consumir recursos del backend.</p>
+<div class="admonition tip">
+<p class="admonition-title">El patrón más común</p>
+<p><strong>Middleware de autenticación en el edge</strong> + <strong>lógica de negocio en el servidor central</strong>. El edge filtra el 90% del tráfico malicioso; el servidor solo procesa peticiones legítimas.</p>
+</div>
+<hr />
+<h2 id="limitaciones-de-edge">⚠️ Limitaciones de Edge<a class="headerlink" href="#limitaciones-de-edge" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Caso</th>
-<th style="text-align: left;">Por qué edge</th>
+<th style="text-align: left;">Limitación</th>
+<th style="text-align: left;">Por qué</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Personalización A/B</strong></td>
-<td style="text-align: left;">Decidir variante en el edge sin llamar al backend</td>
+<td style="text-align: left;"><strong>Sin estado persistente local</strong></td>
+<td style="text-align: left;">Cada petición puede ir a un nodo distinto</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Redirecciones geográficas</strong></td>
-<td style="text-align: left;">Redirigir según país sin latencia</td>
+<td style="text-align: left;"><strong>Sin sistema de archivos</strong></td>
+<td style="text-align: left;">Solo hay APIs web estándar (fetch, KV, D1, R2)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Autenticación</strong></td>
-<td style="text-align: left;">Validar JWT en el edge antes de llegar al origen</td>
+<td style="text-align: left;"><strong>Timeouts cortos</strong></td>
+<td style="text-align: left;">Cloudflare Workers: 50 ms de CPU por petición (free)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Caché inteligente</strong></td>
-<td style="text-align: left;">Cachear respuestas según reglas personalizadas</td>
+<td style="text-align: left;"><strong>Memoria limitada</strong></td>
+<td style="text-align: left;">Típicamente 128 MB</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Modificar HTML</strong></td>
-<td style="text-align: left;">Inyectar headers o contenido en la respuesta</td>
+<td style="text-align: left;"><strong>APIs limitadas</strong></td>
+<td style="text-align: left;">No hay <code>fs</code>, <code>child_process</code>, ni módulos nativos de Node</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Rate limiting</strong></td>
-<td style="text-align: left;">Bloquear abuso antes de llegar al servidor</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Bots y seguridad</strong></td>
-<td style="text-align: left;">Filtrar tráfico malicioso en el borde</td>
+<td style="text-align: left;"><strong>Cold start (en algunos)</strong></td>
+<td style="text-align: left;">Vercel/Netlify pueden tener arranques lentos</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="limitaciones">⚠️ Limitaciones<a class="headerlink" href="#limitaciones" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Cuándo NO usar edge</p>
 <ul>
-<li><strong>Runtime limitado</strong>: no es Node.js completo (sin <code>fs</code>, sin sockets TCP).</li>
-<li><strong>Memoria limitada</strong>: 128 MB por defecto en Cloudflare.</li>
-<li><strong>Tiempo de ejecución</strong>: pocos milisegundos por petición.</li>
-<li><strong>Cold starts</strong>: aunque son mucho más rápidos que Lambda, existen.</li>
-<li><strong>Debugging</strong>: más complejo que en un servidor local.</li>
-<li><strong>Coste</strong>: las peticiones al edge tienen coste (aunque hay tier gratis).</li>
+<li>Procesamiento pesado (imágenes, vídeo, ML).</li>
+<li>Operaciones que necesitan estado compartido en tiempo real.</li>
+<li>Lógica que depende de una base de datos relacional tradicional con latencia (a menos que uses D1/Turso/Neon serverless).</li>
+<li>Tareas de larga duración (&gt;30 s).</li>
+</ul>
+</div>
+<hr />
+<h2 id="arquitectura-edge-tipica">🏗 Arquitectura edge típica<a class="headerlink" href="#arquitectura-edge-tipica" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    U[Usuario] --&gt; C[CDN edge]
+    C --&gt;|estático| H[HTML/CSS/JS]
+    C --&gt;|dinámico| F[Edge Function]
+    F --&gt;|autenticación| A[Auth en el edge]
+    A --&gt;|válido| B[Backend central]
+    A --&gt;|inválido| R[401 Unauthorized]
+    B --&gt; DB[(Base de datos)]</code></pre>
+<p><strong>Flujo:</strong>
+1. El usuario pide una página.
+2. El CDN sirve los archivos estáticos.
+3. Si hay lógica, la Edge Function la ejecuta.
+4. Solo las peticiones válidas llegan al backend central.</p>
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Middleware de autenticación en el edge</p>
+<p>Escribe una Edge Function (Cloudflare Workers) que:</p>
+<ul>
+<li>Lea un header <code>Authorization: Bearer &lt;token&gt;</code>.</li>
+<li>Si el token es <code>"secreto123"</code>, deje pasar la petición.</li>
+<li>Si no, devuelva <code>401 Unauthorized</code> con un JSON <code>{ "error": "No autorizado" }</code>.</li>
+</ul>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">auth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"Authorization"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">auth</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"Bearer "</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"secreto123"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Response</span><span class="p">(</span>
+<span class="w">                </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"No autorizado"</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="mf">401</span><span class="p">,</span>
+<span class="w">                    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"content-type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Qué diferencia hay entre CDN y Edge Function?</summary>
+<p>La CDN solo sirve archivos estáticos; la Edge Function ejecuta código en el nodo más cercano al usuario.</p>
+</details>
+<details class="success">
+<summary>2. ¿Por qué Cloudflare Workers es más rápido que Lambda@Edge en cold start?</summary>
+<p>Workers usa <strong>V8 Isolates</strong> (arranque &lt;5 ms) en lugar de contenedores (arranque 100-500 ms).</p>
+</details>
+<details class="success">
+<summary>3. ¿Qué NO deberías hacer en el edge?</summary>
+<p>Procesamiento pesado (imágenes, vídeo, ML), operaciones con estado compartido en tiempo real, o tareas de más de 30 s.</p>
+</details>
+<details class="success">
+<summary>4. ¿Cuál es el patrón más común de edge en producción?</summary>
+<p>Middleware de autenticación en el edge + lógica de negocio en el servidor central.</p>
+</details>
+<details class="success">
+<summary>5. ¿Qué API usan las Edge Functions de Cloudflare para ejecutarse?</summary>
+<p>Las <strong>Web APIs estándar</strong> (fetch, Request, Response, URL, crypto). No tienen acceso a <code>fs</code>, <code>child_process</code> ni módulos nativos de Node.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developers.cloudflare.com/workers/">Cloudflare Workers — Docs</a></li>
+<li><a href="https://vercel.com/docs/functions/edge-functions">Vercel Edge Functions — Docs</a></li>
+<li><a href="https://deno.com/deploy">Deno Deploy — Docs</a></li>
+<li><a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/">The Edge Computing Landscape (artículo)</a></li>
+<li><a href="https://blog.cloudflare.com/cloud-computing-without-containers/">V8 Isolates vs contenedores (explicación)</a></li>
 </ul>
 <hr />
-<h2 id="buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
-<ul>
-<li>✅ <strong>Usa el edge para lo que aporta valor</strong>: latencia, personalización, seguridad.</li>
-<li>✅ <strong>Mantén el código pequeño</strong>: cada KB cuenta en el edge.</li>
-<li>✅ <strong>Cachea en el edge</strong> todo lo que puedas.</li>
-<li>✅ <strong>Valida en el edge</strong> antes de llegar al origen.</li>
-<li>✅ <strong>Monitoriza el rendimiento</strong> por región.</li>
-<li>✅ <strong>Prueba con latencias reales</strong> (no solo en localhost).</li>
-<li>❌ <strong>No ejecutes operaciones pesadas</strong> en el edge (procesamiento de imágenes, IA).</li>
-<li>❌ <strong>No uses bases de datos relacionales</strong> en el edge (usa KV, D1, Redis).</li>
-</ul>
-<hr />
-<h2 id="almacenamiento-en-el-edge">🗄️ Almacenamiento en el edge<a class="headerlink" href="#almacenamiento-en-el-edge" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Producto</th>
-<th style="text-align: left;">Tipo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Cloudflare KV</strong></td>
-<td style="text-align: left;">Key-value distribuido</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Cloudflare D1</strong></td>
-<td style="text-align: left;">SQLite distribuido</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Cloudflare R2</strong></td>
-<td style="text-align: left;">Object storage (S3 compatible)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Vercel KV</strong></td>
-<td style="text-align: left;">Redis (Upstash)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Vercel Postgres</strong></td>
-<td style="text-align: left;">PostgreSQL serverless</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Upstash Redis</strong></td>
-<td style="text-align: left;">Redis serverless</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-33">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué es Edge Computing?</p>
-<button class="quiz-option" data-opt="a">A) Ejecutar código en un servidor central</button>
-<button class="quiz-option" data-opt="b">B) Ejecutar código cerca del usuario, distribuido geográficamente</button>
-<button class="quiz-option" data-opt="c">C) Un tipo de base de datos</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué plataforma es la más popular de edge computing?</p>
-<button class="quiz-option" data-opt="a">A) Cloudflare Workers</button>
-<button class="quiz-option" data-opt="b">B) Heroku</button>
-<button class="quiz-option" data-opt="c">C) DigitalOcean</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué ventaja principal ofrece el edge?</p>
-<button class="quiz-option" data-opt="a">A) Más memoria</button>
-<button class="quiz-option" data-opt="b">B) Más CPU</button>
-<button class="quiz-option" data-opt="c">C">Menos latencia</button>
-</div>
-</div>
-
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2033%3A%20Edge%20Computing&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2033%3A%20Edge%20Computing%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F33-edge-computing%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/33-edge-computing/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
-
-<hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../34-docker/">Ir al Capítulo 34 — Docker para frontend</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<p>➡️ Siguiente capítulo: <a href="../34-docker/">34 — Docker</a></p>
 
 
 
