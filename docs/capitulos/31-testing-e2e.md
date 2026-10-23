@@ -344,3 +344,39 @@ jobs:
 ---
 
 ➡️ Siguiente capítulo: [32 — Server Components](32-server-components.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-31">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué prueba un test E2E?</p>
+<button class="quiz-option" data-opt="a">A) Una función aislada</button>
+<button class="quiz-option" data-opt="b">B) La app completa desde el navegador</button>
+<button class="quiz-option" data-opt="c">C) Un componente</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Qué herramienta es recomendada en 2026 para E2E?</p>
+<button class="quiz-option" data-opt="a">A) Selenium</button>
+<button class="quiz-option" data-opt="b">B) Playwright</button>
+<button class="quiz-option" data-opt="c">C) Puppeteer</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>3.</strong> ¿Qué es un test flaky?</p>
+<button class="quiz-option" data-opt="a">A) Un test que falla siempre</button>
+<button class="quiz-option" data-opt="b">B) Un test que a veces pasa y a veces falla</button>
+<button class="quiz-option" data-opt="c">C) Un test que no se ejecuta</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/31-testing-e2e/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
