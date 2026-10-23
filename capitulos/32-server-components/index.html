@@ -7097,226 +7097,341 @@
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Qué son los React Server Components (RSC).</li>
-<li>Diferencia entre SSR y RSC.</li>
-<li>Cuándo usar Server Components y cuándo Client Components.</li>
-<li>Streaming y Suspense.</li>
-<li>Frameworks que los soportan.</li>
+<li>Qué son los React Server Components (RSC) y qué problema resuelven.</li>
+<li>La diferencia entre componentes de servidor y de cliente.</li>
+<li>Cómo funciona el modelo de renderizado híbrido.</li>
+<li>Cuándo usar cada tipo de componente.</li>
+<li>Errores comunes y buenas prácticas.</li>
 </ul>
 </div>
 <hr />
-<h2 id="que-son-los-server-components">🖥️ ¿Qué son los Server Components?<a class="headerlink" href="#que-son-los-server-components" title="Permanent link">&para;</a></h2>
-<p>Los <strong>Server Components</strong> son componentes de React que se ejecutan <strong>solo en el servidor</strong>. No envían JavaScript al cliente, lo que reduce el bundle y mejora el rendimiento.</p>
-<div class="highlight"><pre><span></span><code>Server Component  → se ejecuta en el servidor, no envía JS al cliente
-Client Component  → se ejecuta en el navegador, es interactivo
-</code></pre></div>
+<h2 id="que-son-los-server-components">🌐 ¿Qué son los Server Components?<a class="headerlink" href="#que-son-los-server-components" title="Permanent link">&para;</a></h2>
+<p>Los <strong>React Server Components (RSC)</strong> son componentes que se ejecutan <strong>en el servidor</strong> y envían al cliente un árbol de React ya serializado, sin incluir el código JavaScript de esos componentes en el bundle del navegador.</p>
 <div class="admonition quote">
-<p class="admonition-title">El mejor código es el que no se envía</p>
-<p>Un Server Component no manda ni una línea de JavaScript al navegador. Eso es menos datos, menos tiempo de parseo y menos consumo de batería.</p>
+<p class="admonition-title">La analogía del restaurante</p>
+<p>Un <strong>Client Component</strong> es como cocinar en casa: tienes todos los ingredientes y utensilios (JavaScript) en tu cocina (navegador), aunque no los uses todos. Un <strong>Server Component</strong> es como pedir a domicilio: el restaurante (servidor) cocina y te envía el plato listo (HTML/React serializado), sin que tengas que cargar con la cocina entera.</p>
 </div>
+<pre class="mermaid"><code>graph LR
+    A[Código fuente] --&gt; B{¿Server o Client?}
+    B --&gt;|Server Component| C[Ejecuta en servidor]
+    B --&gt;|Client Component| D[Ejecuta en navegador]
+    C --&gt; E[Serializa a RSC Payload]
+    D --&gt; F[Envía JS al bundle]
+    E --&gt; G[Renderiza en navegador]
+    F --&gt; G</code></pre>
 <hr />
-<h2 id="ssr-vs-rsc">🔄 SSR vs RSC<a class="headerlink" href="#ssr-vs-rsc" title="Permanent link">&para;</a></h2>
+<h2 id="server-vs-client-components">🏛 Server vs Client Components<a class="headerlink" href="#server-vs-client-components" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Característica</th>
-<th style="text-align: left;">SSR (Server-Side Rendering)</th>
-<th style="text-align: left;">RSC (React Server Components)</th>
+<th style="text-align: left;"><strong>Server Component</strong></th>
+<th style="text-align: left;"><strong>Client Component</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Qué renderiza</td>
-<td style="text-align: left;">HTML en el servidor</td>
-<td style="text-align: left;">Componentes en el servidor</td>
+<td style="text-align: left;">Directiva</td>
+<td style="text-align: left;">Ninguna (por defecto en App Router)</td>
+<td style="text-align: left;"><code>"use client"</code> al inicio del archivo</td>
 </tr>
 <tr>
-<td style="text-align: left;">JS al cliente</td>
-<td style="text-align: left;">Sí, la app entera</td>
-<td style="text-align: left;">No, solo los Client Components</td>
+<td style="text-align: left;">Se ejecuta en</td>
+<td style="text-align: left;">Servidor</td>
+<td style="text-align: left;">Navegador (y servidor en SSR)</td>
 </tr>
 <tr>
-<td style="text-align: left;">Hidratación</td>
-<td style="text-align: left;">Toda la app</td>
-<td style="text-align: left;">Solo las partes interactivas</td>
+<td style="text-align: left;">Acceso a backend</td>
+<td style="text-align: left;">✅ Directo (base de datos, FS, secrets)</td>
+<td style="text-align: left;">❌ Solo vía API</td>
 </tr>
 <tr>
-<td style="text-align: left;">Estado</td>
-<td style="text-align: left;">Sí</td>
-<td style="text-align: left;">No (solo datos)</td>
+<td style="text-align: left;">Hooks (<code>useState</code>, <code>useEffect</code>)</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
 </tr>
 <tr>
-<td style="text-align: left;">useEffect</td>
-<td style="text-align: left;">Sí</td>
-<td style="text-align: left;">No</td>
+<td style="text-align: left;">Event handlers (<code>onClick</code>, etc.)</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+</tr>
+<tr>
+<td style="text-align: left;">APIs del navegador (<code>window</code>, <code>localStorage</code>)</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+</tr>
+<tr>
+<td style="text-align: left;">Añade peso al bundle JS</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+</tr>
+<tr>
+<td style="text-align: left;">Puede importar Client Components</td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">✅ Sí</td>
+</tr>
+<tr>
+<td style="text-align: left;">Puede importar Server Components</td>
+<td style="text-align: left;">❌ No (pero puede recibirlos como <code>children</code>)</td>
+<td style="text-align: left;">❌ No</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Regla mental</p>
+<p><strong>Server Component por defecto</strong>. Solo añade <code>"use client"</code> cuando necesites interactividad (hooks, eventos, APIs del navegador).</p>
+</div>
 <hr />
-<h2 id="server-components">🧩 Server Components<a class="headerlink" href="#server-components" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// app/page.jsx (Server Component por defecto en Next.js App Router)</span>
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Pagina</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://api.ejemplo.com/posts"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Posts</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">{</span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">p</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;{</span><span class="nx">p</span><span class="p">.</span><span class="nx">title</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)}</span>
-<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Puedes usar <code>async/await</code> directamente en el componente. No hay <code>useEffect</code>, ni <code>useState</code>, ni eventos.</p>
+<h2 id="el-modelo-hibrido">🔄 El modelo híbrido<a class="headerlink" href="#el-modelo-hibrido" title="Permanent link">&para;</a></h2>
+<p>En Next.js App Router (y frameworks similares), los componentes son <strong>Server por defecto</strong>. La comunicación fluye así:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Cliente (navegador)
+    participant S as Servidor
+    participant DB as Base de datos
+    C-&gt;&gt;S: Petición de página
+    S-&gt;&gt;DB: Query directa
+    DB-&gt;&gt;S: Datos
+    S-&gt;&gt;S: Renderiza Server Components
+    S-&gt;&gt;C: RSC Payload + HTML + JS de Client Components
+    C-&gt;&gt;C: Hidrata Client Components</code></pre>
+<p><strong>Flujo:</strong>
+1. El navegador pide una ruta.
+2. El servidor ejecuta los Server Components (incluyendo queries a la base de datos).
+3. El servidor serializa el resultado y envía:
+   - El <strong>HTML inicial</strong> (para pintar rápido).
+   - El <strong>RSC Payload</strong> (estructura de componentes para hidratar).
+   - El <strong>JS de los Client Components</strong> (para la interactividad).
+4. El navegador <strong>hidrata</strong> los Client Components.</p>
 <hr />
-<h2 id="client-components">🖱️ Client Components<a class="headerlink" href="#client-components" title="Permanent link">&para;</a></h2>
-<p>Para interactividad, necesitas Client Components. Se marcan con <code>"use client"</code>:</p>
+<h2 id="la-directiva-use-client">🏷 La directiva <code>"use client"</code><a class="headerlink" href="#la-directiva-use-client" title="Permanent link">&para;</a></h2>
+<p>Es una <strong>cadena de texto</strong> al inicio del archivo (antes de cualquier import) que marca el punto de entrada del código cliente:</p>
 <div class="highlight"><pre><span></span><code><span class="s2">"use client"</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Boton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">clicks</span><span class="p">,</span><span class="w"> </span><span class="nx">setClicks</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setClicks</span><span class="p">(</span><span class="nx">clicks</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span><span class="nx">Clics</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">clicks</span><span class="p">}&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">setN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setN</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Clicks</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/button&gt;;</span>
 <span class="p">}</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Puedes usar</th>
-<th style="text-align: left;">Server Component</th>
-<th style="text-align: left;">Client Component</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>async/await</code></td>
-<td style="text-align: left;">✅</td>
-<td style="text-align: left;">❌</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>useState</code>, <code>useEffect</code></td>
-<td style="text-align: left;">❌</td>
-<td style="text-align: left;">✅</td>
-</tr>
-<tr>
-<td style="text-align: left;">Eventos (<code>onClick</code>)</td>
-<td style="text-align: left;">❌</td>
-<td style="text-align: left;">✅</td>
-</tr>
-<tr>
-<td style="text-align: left;">APIs del navegador (<code>window</code>)</td>
-<td style="text-align: left;">❌</td>
-<td style="text-align: left;">✅</td>
-</tr>
-<tr>
-<td style="text-align: left;">Acceso a base de datos</td>
-<td style="text-align: left;">✅</td>
-<td style="text-align: left;">❌</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="streaming-y-suspense">🌊 Streaming y Suspense<a class="headerlink" href="#streaming-y-suspense" title="Permanent link">&para;</a></h2>
-<p>Los Server Components permiten <strong>streaming</strong>: enviar HTML por trozos mientras se genera. Con <code>&lt;Suspense&gt;</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
+<div class="admonition warning">
+<p class="admonition-title">No es una directiva mágica</p>
+<p><code>"use client"</code> <strong>no</strong> significa "esto se ejecuta solo en el navegador". El componente también se renderiza en el servidor (SSR), pero su <strong>código JS</strong> se envía al navegador para la hidratación. Lo que cambia es que puede usar hooks y eventos.</p>
+</div>
+<p><strong>Reglas de propagación:</strong>
+- Un Client Component <strong>no puede</strong> importar un Server Component.
+- Pero sí puede <strong>recibirlo como <code>children</code></strong> o como prop (patrón "children pattern").</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// page.js (Server Component)</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ClientWrapper</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./client-wrapper"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ServerChart</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./server-chart"</span><span class="p">;</span><span class="w"> </span><span class="c1">// es Server Component</span>
 
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Pagina</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Mi</span><span class="w"> </span><span class="nx">app</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Suspense</span><span class="w"> </span><span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Cargando</span><span class="w"> </span><span class="nx">posts</span><span class="p">...&lt;/</span><span class="nt">p</span><span class="p">&gt;}&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Posts</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">      </span><span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Page</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">ClientWrapper</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">ServerChart</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/ClientWrapper&gt;</span>
+<span class="w">    </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>El usuario ve el <code>&lt;h1&gt;</code> inmediatamente y los posts cuando terminan de cargar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// client-wrapper.js</span>
+<span class="s2">"use client"</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">ClientWrapper</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"click"</span><span class="p">)}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
-<h2 id="frameworks-que-los-soportan">🛠️ Frameworks que los soportan<a class="headerlink" href="#frameworks-que-los-soportan" title="Permanent link">&para;</a></h2>
+<h2 id="cuando-usar-cada-uno">🎯 Cuándo usar cada uno<a class="headerlink" href="#cuando-usar-cada-uno" title="Permanent link">&para;</a></h2>
+<h3 id="server-component-por-defecto">Server Component (por defecto)<a class="headerlink" href="#server-component-por-defecto" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Fetching de datos (DB, APIs externas, FS).</li>
+<li>✅ Acceso a variables de entorno y secrets.</li>
+<li>✅ Renderizar contenido estático o dependiente de datos.</li>
+<li>✅ Componentes grandes sin interactividad (listas, layouts, páginas).</li>
+<li>✅ Reducir el bundle JS del cliente.</li>
+</ul>
+<h3 id="client-component-use-client">Client Component (<code>"use client"</code>)<a class="headerlink" href="#client-component-use-client" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <code>useState</code>, <code>useEffect</code>, <code>useReducer</code>, <code>useContext</code>.</li>
+<li>✅ Event handlers (<code>onClick</code>, <code>onChange</code>, <code>onSubmit</code>).</li>
+<li>✅ APIs del navegador (<code>window</code>, <code>document</code>, <code>localStorage</code>, <code>IntersectionObserver</code>).</li>
+<li>✅ Librerías que dependen del DOM (chart.js, mapbox, etc.).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Aísla la interactividad</p>
+<p>Un buen patrón es tener <strong>páginas server</strong> con <strong>islas client</strong>: la página renderiza en el servidor, y solo los componentes interactivos (botones, formularios, modales) llevan <code>"use client"</code>. Así el bundle JS se mantiene pequeño.</p>
+</div>
+<hr />
+<h2 id="ejemplo-completo-dashboard">📝 Ejemplo completo: dashboard<a class="headerlink" href="#ejemplo-completo-dashboard" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/dashboard/page.js  (Server Component)</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@/lib/db"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">BotonRefrescar</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./boton-refrescar"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Dashboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ventas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">ventas</span><span class="p">.</span><span class="nx">findMany</span><span class="p">();</span><span class="w"> </span><span class="c1">// query directa</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ventas</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">monto</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Ventas</span><span class="w"> </span><span class="nx">totales</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">total</span><span class="p">}</span><span class="w"> </span><span class="err">€</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">                </span><span class="p">{</span><span class="nx">ventas</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">v</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">v</span><span class="p">.</span><span class="nx">producto</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">v</span><span class="p">.</span><span class="nx">monto</span><span class="p">}</span><span class="w"> </span><span class="err">€</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">                </span><span class="p">))}</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">BotonRefrescar</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/dashboard/boton-refrescar.js  (Client Component)</span>
+<span class="s2">"use client"</span><span class="p">;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useRouter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"next/navigation"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">BotonRefrescar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRouter</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">refresh</span><span class="p">()}</span><span class="o">&gt;</span><span class="nx">Refrescar</span><span class="o">&lt;</span><span class="err">/button&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Lo que consigues:</strong>
+- La query a la DB se ejecuta <strong>en el servidor</strong> (el cliente nunca ve las credenciales).
+- El bundle JS del navegador <strong>no incluye</strong> el código del dashboard, solo el del botón.
+- El botón sí es interactivo (Client Component).</p>
+<hr />
+<h2 id="errores-comunes">⚠️ Errores comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Framework</th>
-<th style="text-align: left;">Soporte RSC</th>
+<th style="text-align: left;">Error</th>
+<th style="text-align: left;">Qué pasa</th>
+<th style="text-align: left;">Solución</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Next.js</strong> (App Router)</td>
-<td style="text-align: left;">✅ Nativo</td>
+<td style="text-align: left;">Usar <code>useState</code> en un Server Component</td>
+<td style="text-align: left;">Error en build</td>
+<td style="text-align: left;">Añadir <code>"use client"</code> al archivo</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Remix</strong></td>
-<td style="text-align: left;">⚠️ Parcial</td>
+<td style="text-align: left;">Importar <code>fs</code> o <code>pg</code> en un Client Component</td>
+<td style="text-align: left;">Error en build (módulos no disponibles)</td>
+<td style="text-align: left;">Mover la lógica a un Server Component</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Astro</strong></td>
-<td style="text-align: left;">✅ Islas (similar)</td>
+<td style="text-align: left;">Importar un Server Component desde un Client Component</td>
+<td style="text-align: left;">Error en build</td>
+<td style="text-align: left;">Pasarlo como <code>children</code> o prop</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Waku</strong></td>
-<td style="text-align: left;">✅ Nativo</td>
+<td style="text-align: left;">Olvidar <code>"use client"</code> en un componente con <code>onClick</code></td>
+<td style="text-align: left;">Error: "Event handlers cannot be passed to Client Component props"</td>
+<td style="text-align: left;">Añadir <code>"use client"</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RedwoodJS</strong></td>
-<td style="text-align: left;">✅</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Vite + React</strong></td>
-<td style="text-align: left;">❌ Necesita plugin</td>
+<td style="text-align: left;">Usar <code>window</code> en el primer render</td>
+<td style="text-align: left;">Error de hidratación</td>
+<td style="text-align: left;">Envolver en <code>useEffect</code> o <code>typeof window !== "undefined"</code></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">El error más común</p>
+<p><code>Event handlers cannot be passed to Client Component props</code>. Ocurre cuando intentas pasar una función (como <code>onClick</code>) desde un Server Component a un Client Component. Las props que pasan de Server a Client deben ser <strong>serializables</strong> (números, strings, arrays, objetos planos). No funciones.</p>
+</div>
 <hr />
-<h2 id="buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
+<h2 id="arquitectura-recomendada">🏗 Arquitectura recomendada<a class="headerlink" href="#arquitectura-recomendada" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[app/layout.js] --&gt;|Server| B[app/page.js]
+    B --&gt;|Server| C[Lista de productos]
+    B --&gt;|Server| D[Detalle del producto]
+    C --&gt;|Client island| E[Boton añadir al carrito]
+    D --&gt;|Client island| F[Selector de cantidad]
+    E --&gt; G[Cart context]
+    F --&gt; G</code></pre>
+<p><strong>Regla:</strong> Server arriba, Client en las hojas (islas).</p>
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Convertir un componente interactivo en híbrido</p>
+<p>Tienes este componente con un contador. Divídelo en:</p>
 <ul>
-<li>✅ <strong>Server Components por defecto</strong>: solo añade <code>"use client"</code> cuando necesites interactividad.</li>
-<li>✅ <strong>Mueve <code>"use client"</code> lo más abajo posible</strong>: cuanto más abajo, menos JS se envía.</li>
-<li>✅ <strong>Fetch de datos en Server Components</strong>: evita <code>useEffect</code> para cargar datos.</li>
-<li>✅ <strong>Usa Suspense</strong> para streaming y estados de carga.</li>
-<li>✅ <strong>No pases funciones como props</strong> de Server a Client Components (no son serializables).</li>
-<li>✅ <strong>Separa lógica de datos y UI interactiva</strong>.</li>
-<li>❌ <strong>No uses <code>window</code> o <code>localStorage</code> en Server Components</strong>.</li>
+<li>Un <strong>Server Component</strong> <code>Producto</code> que cargue los datos de un producto (simulados con <code>fetch</code> a una API).</li>
+<li>Un <strong>Client Component</strong> <code>Contador</code> con un botón que sume 1 al hacer clic.</li>
+</ul>
+<p>El Server Component debe renderizar el nombre del producto y el Client Component debajo.</p>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/producto/page.js  (Server Component)</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Contador</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./contador"</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getProducto</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Teclado mecánico"</span><span class="p">,</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="mf">89</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Producto</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">prod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getProducto</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">prod</span><span class="p">.</span><span class="nx">nombre</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Precio</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">prod</span><span class="p">.</span><span class="nx">precio</span><span class="p">}</span><span class="w"> </span><span class="err">€</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">Contador</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/producto/contador.js  (Client Component)</span>
+<span class="s2">"use client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Contador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">setN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Cantidad</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">n</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setN</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Añadir</span><span class="w"> </span><span class="nx">uno</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Los Server Components se envían al bundle del navegador?</summary>
+<p>No. Solo se envía el <strong>RSC Payload</strong> (representación serializada). El código JS del componente se queda en el servidor.</p>
+</details>
+<details class="success">
+<summary>2. ¿Para qué sirve <code>"use client"</code>?</summary>
+<p>Marca el punto de entrada del código cliente. Indica que el componente y sus imports pueden usar hooks, event handlers y APIs del navegador. También hace que su JS se incluya en el bundle.</p>
+</details>
+<details class="success">
+<summary>3. ¿Puede un Client Component importar un Server Component?</summary>
+<p>No directamente. Pero puede recibirlo como <code>children</code> o como prop desde un Server Component padre.</p>
+</details>
+<details class="success">
+<summary>4. ¿Qué tipo de props pueden pasar de Server a Client?</summary>
+<p>Solo props <strong>serializables</strong>: strings, números, booleanos, arrays, objetos planos, fechas, <code>null</code>. No funciones, clases, símbolos ni <code>undefined</code> (aunque este último se permite).</p>
+</details>
+<details class="success">
+<summary>5. ¿Cuál es el patrón recomendado de arquitectura?</summary>
+<p><strong>Server arriba, Client en las hojas</strong>: páginas y layouts en el servidor, islas interactivas (botones, formularios, modales) como Client Components.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://react.dev/reference/rsc/server-components">React — Server Components (docs oficiales)</a></li>
+<li><a href="https://nextjs.org/docs/app/building-your-application/rendering/server-components">Next.js — Server Components</a></li>
+<li><a href="https://nextjs.org/docs/app/building-your-application/rendering/client-components">Next.js — Client Components</a></li>
+<li><a href="https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md">RFC original de React Server Components</a></li>
+<li><a href="https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns">Patrones de composición Server/Client</a></li>
 </ul>
 <hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-32">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Dónde se ejecutan los Server Components?</p>
-<button class="quiz-option" data-opt="a">A) En el navegador</button>
-<button class="quiz-option" data-opt="b">B) En el servidor</button>
-<button class="quiz-option" data-opt="c">C) En ambos</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué directiva marca un Client Component?</p>
-<button class="quiz-option" data-opt="a">A) "use client"</button>
-<button class="quiz-option" data-opt="b">B) "use server"</button>
-<button class="quiz-option" data-opt="c">C) "use browser"</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué componente de React permite mostrar un fallback mientras carga?</p>
-<button class="quiz-option" data-opt="a">A) &lt;Lazy&gt;</button>
-<button class="quiz-option" data-opt="b">B) &lt;Loading&gt;</button>
-<button class="quiz-option" data-opt="c">C) &lt;Suspense&gt;</button>
-</div>
-</div>
-
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2032%3A%20Server%20Components&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2032%3A%20Server%20Components%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/32-server-components/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
-
-<hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../33-edge-computing/">Ir al Capítulo 33 — Edge Computing</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<p>➡️ Siguiente capítulo: <a href="../33-edge-computing/">33 — Edge Computing</a></p>
 
 
 
