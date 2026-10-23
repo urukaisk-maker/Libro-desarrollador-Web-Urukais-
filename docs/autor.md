@@ -10,7 +10,7 @@
 <div class="autor-hero" markdown>
 
 <div class="autor-hero__avatar" markdown>
-![Manuel Casimiro Carrasco (Urukais)](/assets/autor-avatar.png)
+![Manuel Casimiro Carrasco (Urukais)](img/1.jpg)
 </div>
 
 <div class="autor-hero__bio" markdown>
