@@ -20,7 +20,7 @@ CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería Jav
 
 ## 🔤 Variables CSS
 
-\`\`\`css
+```css
 :root {
   --primario: #6a5acd;
   --acento: #00bcd4;
@@ -33,7 +33,7 @@ CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería Jav
   padding: var(--espaciado);
   border-radius: var(--radio);
 }
-\`\`\`
+```
 
 ### Ventajas
 
@@ -41,12 +41,12 @@ CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería Jav
 - **Modo oscuro**: redefine las variables en \`[data-theme="dark"]\`.
 - **Legibilidad**: nombres descriptivos en lugar de valores mágicos.
 
-\`\`\`css
+```css
 [data-theme="dark"] {
   --primario: #a78bfa;
   --acento: #22d3ee;
 }
-\`\`\`
+```
 
 ---
 
@@ -54,39 +54,39 @@ CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería Jav
 
 ### calc()
 
-\`\`\`css
+```css
 .elemento {
   width: calc(100% - 2rem);
   padding: calc(var(--espaciado) * 2);
 }
-\`\`\`
+```
 
 ### clamp()
 
-\`\`\`css
+```css
 h1 {
   font-size: clamp(1.5rem, 4vw, 3rem);
 }
-\`\`\`
+```
 
 \`clamp(min, ideal, max)\` es perfecto para tipografía fluida.
 
 ### min() y max()
 
-\`\`\`css
+```css
 .contenedor {
   width: min(90%, 1200px);
   padding: max(1rem, 2vw);
 }
-\`\`\`
+```
 
 ### color-mix()
 
-\`\`\`css
+```css
 .boton {
   background: color-mix(in srgb, var(--primario) 80%, white);
 }
-\`\`\`
+```
 
 ---
 
@@ -94,27 +94,27 @@ h1 {
 
 ### :is()
 
-\`\`\`css
+```css
 :is(h1, h2, h3) {
   line-height: 1.2;
 }
-\`\`\`
+```
 
 ### :where()
 
 Igual que \`:is()\`, pero con **especificidad 0**:
 
-\`\`\`css
+```css
 :where(h1, h2, h3) {
   margin: 0;
 }
-\`\`\`
+```
 
 ### :has()
 
 Selecciona un elemento que **contiene** otro:
 
-\`\`\`css
+```css
 .card:has(img) {
   grid-template-columns: 200px 1fr;
 }
@@ -122,18 +122,18 @@ Selecciona un elemento que **contiene** otro:
 .form:has(input:invalid) {
   border-color: red;
 }
-\`\`\`
+```
 
 !!! tip ":has() es un cambio de juego"
     Antes necesitabas JavaScript para aplicar estilos a un padre según sus hijos. Con \`:has()\` es CSS puro. Ya está soportado en todos los navegadores modernos.
 
 ### :not()
 
-\`\`\`css
+```css
 .boton:not(.boton--disabled) {
   cursor: pointer;
 }
-\`\`\`
+```
 
 ---
 
@@ -141,7 +141,7 @@ Selecciona un elemento que **contiene** otro:
 
 Las **container queries** permiten aplicar estilos según el tamaño del **contenedor**, no del viewport.
 
-\`\`\`css
+```css
 .card-container {
   container-type: inline-size;
   container-name: card;
@@ -153,7 +153,7 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
     grid-template-columns: 200px 1fr;
   }
 }
-\`\`\`
+```
 
 !!! quote "El fin de los media queries para componentes"
     Los media queries siguen siendo útiles para layouts de página. Pero para componentes reutilizables, las container queries son mucho más potentes: un mismo componente puede verse distinto según el espacio que tenga.
@@ -164,7 +164,7 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
 
 ### Grid template areas
 
-\`\`\`css
+```css
 .layout {
   display: grid;
   grid-template-areas:
@@ -179,11 +179,11 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
 .sidebar { grid-area: sidebar; }
 .main { grid-area: main; }
 .footer { grid-area: footer; }
-\`\`\`
+```
 
 ### Subgrid
 
-\`\`\`css
+```css
 .padre {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -194,17 +194,17 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
   grid-column: span 2;
   grid-template-columns: subgrid;
 }
-\`\`\`
+```
 
 ### auto-fit vs auto-fill
 
-\`\`\`css
+```css
 /* auto-fit: las columnas vacías colapsan */
 .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
 /* auto-fill: las columnas vacías se mantienen */
 .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-\`\`\`
+```
 
 ---
 
@@ -212,7 +212,7 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
 
 ### Transiciones
 
-\`\`\`css
+```css
 .boton {
   transition: background-color .2s ease, transform .15s ease;
 }
@@ -221,11 +221,11 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
   background-color: var(--acento);
   transform: translateY(-2px);
 }
-\`\`\`
+```
 
 ### Animaciones con keyframes
 
-\`\`\`css
+```css
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -234,18 +234,18 @@ Las **container queries** permiten aplicar estilos según el tamaño del **conte
 .animado {
   animation: fadeIn .4s ease forwards;
 }
-\`\`\`
+```
 
 ### Respetar prefers-reduced-motion
 
-\`\`\`css
+```css
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
 }
-\`\`\`
+```
 
 !!! warning "Accesibilidad en animaciones"
     Algunas personas sufren mareos con animaciones. Respeta \`prefers-reduced-motion\` siempre que puedas.

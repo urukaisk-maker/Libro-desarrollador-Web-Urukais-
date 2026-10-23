@@ -38,14 +38,14 @@
 
 ### 1. Sube tu proyecto a GitHub
 
-\`\`\`bash
+```bash
 git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/tu-usuario/tu-repo.git
 git push -u origin main
-\`\`\`
+```
 
 ### 2. Activa GitHub Pages
 
@@ -123,7 +123,7 @@ Un **dominio** (ej. \`misitio.com\`) es la dirección de tu web. Para usarlo con
 
 ### GitHub Actions
 
-\`\`\`yaml
+```yaml
 name: Deploy
 
 on:
@@ -144,7 +144,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-\`\`\`
+```
 
 Este workflow se ejecuta en cada \`push\` a \`main\`, construye el proyecto y lo publica en GitHub Pages.
 

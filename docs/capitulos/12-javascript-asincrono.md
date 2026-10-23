@@ -13,7 +13,7 @@
 
 JavaScript es **de un solo hilo**: solo puede ejecutar una cosa a la vez. Si una operación tarda (una petición HTTP, leer un archivo, un temporizador), bloquearía todo. La asincronía permite **no bloquear** mientras se espera.
 
-\`\`\`javascript
+```javascript
 // Síncrono: bloquea
 console.log('1');
 console.log('2');
@@ -25,7 +25,7 @@ console.log('1');
 setTimeout(() => console.log('2'), 0);
 console.log('3');
 // Salida: 1, 3, 2
-\`\`\`
+```
 
 !!! quote "JavaScript no espera a nadie"
     Cuando una operación asíncrona empieza, JavaScript sigue ejecutando el resto del código. La operación termina más tarde y su resultado se maneja con callbacks, promesas o async/await.
@@ -34,7 +34,7 @@ console.log('3');
 
 ## 🕰️ Callbacks (la forma antigua)
 
-\`\`\`javascript
+```javascript
 function cargarDatos(callback) {
   setTimeout(() => {
     callback({ nombre: 'Ana' });
@@ -44,11 +44,11 @@ function cargarDatos(callback) {
 cargarDatos(function (datos) {
   console.log(datos); // { nombre: 'Ana' }
 });
-\`\`\`
+```
 
 ### El problema: callback hell
 
-\`\`\`javascript
+```javascript
 cargarUsuario(id, function (usuario) {
   cargarPosts(usuario.id, function (posts) {
     cargarComentarios(posts[0].id, function (comentarios) {
@@ -56,7 +56,7 @@ cargarUsuario(id, function (usuario) {
     });
   });
 });
-\`\`\`
+```
 
 Esto es difícil de leer y de manejar errores. Por eso nacieron las promesas.
 
@@ -70,7 +70,7 @@ Una **promesa** representa un valor que estará disponible en el futuro. Tiene t
 - **Fulfilled**: resuelta con un valor.
 - **Rejected**: rechazada con un error.
 
-\`\`\`javascript
+```javascript
 const promesa = new Promise((resolve, reject) => {
   const exito = true;
   if (exito) resolve('¡Funcionó!');
@@ -80,18 +80,18 @@ const promesa = new Promise((resolve, reject) => {
 promesa
   .then(valor => console.log(valor))
   .catch(err => console.error(err));
-\`\`\`
+```
 
 ### Encadenar promesas
 
-\`\`\`javascript
+```javascript
 fetch('/api/usuario')
   .then(res => res.json())
   .then(usuario => fetch('/api/posts/' + usuario.id))
   .then(res => res.json())
   .then(posts => console.log(posts))
   .catch(err => console.error(err));
-\`\`\`
+```
 
 Mucho más legible que los callbacks anidados.
 
@@ -101,7 +101,7 @@ Mucho más legible que los callbacks anidados.
 
 La forma moderna, **azúcar sintáctico sobre promesas**:
 
-\`\`\`javascript
+```javascript
 async function cargarDatos() {
   try {
     const res = await fetch('/api/usuario');
@@ -113,7 +113,7 @@ async function cargarDatos() {
     console.error(err);
   }
 }
-\`\`\`
+```
 
 - \`async\` marca la función como asíncrona (siempre devuelve una promesa).
 - \`await\` pausa la ejecución hasta que la promesa se resuelva.
@@ -125,7 +125,7 @@ async function cargarDatos() {
 
 ## 🧠 El event loop en profundidad
 
-\`\`\`javascript
+```javascript
 console.log('1');
 
 setTimeout(() => console.log('2'), 0);
@@ -135,7 +135,7 @@ Promise.resolve().then(() => console.log('3'));
 console.log('4');
 
 // Salida: 1, 4, 3, 2
-\`\`\`
+```
 
 ### ¿Por qué este orden?
 
@@ -160,49 +160,49 @@ console.log('4');
 
 Espera a que **todas** se resuelvan. Si una falla, todo falla.
 
-\`\`\`javascript
+```javascript
 const [usuarios, posts] = await Promise.all([
   fetch('/api/usuarios').then(r => r.json()),
   fetch('/api/posts').then(r => r.json()),
 ]);
-\`\`\`
+```
 
 ### Promise.allSettled
 
 Espera a todas, **aunque algunas fallen**. Devuelve un array con \`status\` y \`value\`/\`reason\`.
 
-\`\`\`javascript
+```javascript
 const resultados = await Promise.allSettled([p1, p2, p3]);
 resultados.forEach(r => {
   if (r.status === 'fulfilled') console.log('OK:', r.value);
   else console.error('Error:', r.reason);
 });
-\`\`\`
+```
 
 ### Promise.race
 
 Devuelve la **primera** que se resuelva o rechace.
 
-\`\`\`javascript
+```javascript
 const resultado = await Promise.race([
   fetch('/api/a'),
   new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000)),
 ]);
-\`\`\`
+```
 
 ### Promise.any
 
 Devuelve la **primera que se resuelva con éxito**. Si todas fallan, rechaza.
 
-\`\`\`javascript
+```javascript
 const primero = await Promise.any([p1, p2, p3]);
-\`\`\`
+```
 
 ---
 
 ## 🚨 Manejo de errores
 
-\`\`\`javascript
+```javascript
 async function cargar() {
   try {
     const res = await fetch('/api/datos');
@@ -215,7 +215,7 @@ async function cargar() {
     console.log('Terminado');
   }
 }
-\`\`\`
+```
 
 !!! warning "No olvides el catch"
     Si no capturas los errores de una promesa, se convierten en **unhandled rejections** y pueden romper la app. Siempre añade \`.catch()\` o \`try/catch\`.

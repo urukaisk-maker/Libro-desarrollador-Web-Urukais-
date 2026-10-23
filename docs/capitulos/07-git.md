@@ -20,12 +20,12 @@
 
 ## ⚙️ Configuración inicial
 
-\`\`\`bash
+```bash
 git config --global user.name "Tu Nombre"
 git config --global user.email "tu@email.com"
 git config --global init.defaultBranch main
 git config --global core.editor "code --wait"
-\`\`\`
+```
 
 Esto se hace **una sola vez** en cada equipo.
 
@@ -49,7 +49,7 @@ Esto se hace **una sola vez** en cada equipo.
 
 ## 🔄 El flujo básico
 
-\`\`\`bash
+```bash
 # 1. Ver qué ha cambiado
 git status
 
@@ -61,7 +61,7 @@ git commit -m "feat: añadir página de contacto"
 
 # 4. Subir al repositorio remoto
 git push origin main
-\`\`\`
+```
 
 !!! tip "Buenos mensajes de commit"
     - \`feat:\` nueva funcionalidad
@@ -77,7 +77,7 @@ git push origin main
 
 Las **ramas** permiten trabajar en paralelo sin afectar a \`main\`.
 
-\`\`\`bash
+```bash
 # Crear y cambiar a una rama nueva
 git checkout -b feature/nueva-funcionalidad
 
@@ -92,7 +92,7 @@ git merge feature/nueva-funcionalidad
 
 # Eliminar una rama (ya fusionada)
 git branch -d feature/nueva-funcionalidad
-\`\`\`
+```
 
 | Comando | Uso |
 | :--- | :--- |
@@ -109,7 +109,7 @@ git branch -d feature/nueva-funcionalidad
 
 **GitHub** es una plataforma para alojar repositorios Git y colaborar.
 
-\`\`\`bash
+```bash
 # Conectar un repo local con GitHub
 git remote add origin https://github.com/usuario/repo.git
 
@@ -121,7 +121,7 @@ git pull origin main
 
 # Ver remotos configurados
 git remote -v
-\`\`\`
+```
 
 !!! tip "Pull Requests"
     En GitHub, un **Pull Request (PR)** es una propuesta de fusionar los cambios de una rama en otra. Permite revisar el código, comentar y aprobar antes de fusionar.
@@ -132,13 +132,13 @@ git remote -v
 
 Un **conflicto** ocurre cuando dos ramas modifican la misma línea de un archivo. Git no sabe cuál elegir y te pide que decidas tú.
 
-\`\`\`
+```
 <<<<<<< HEAD
 tu versión
 =======
 versión de la otra rama
 >>>>>>> feature/otra-rama
-\`\`\`
+```
 
 Para resolverlo:
 
@@ -154,7 +154,7 @@ Para resolverlo:
 
 ## ↩️ Deshacer cambios
 
-\`\`\`bash
+```bash
 # Descartar cambios sin stage
 git restore archivo.txt
 
@@ -169,7 +169,7 @@ git reset --hard HEAD~1
 
 # Revertir un commit concreto (crea otro commit)
 git revert <hash>
-\`\`\`
+```
 
 !!! warning "Cuidado con --hard"
     \`git reset --hard\` **borra** los cambios sin posibilidad de recuperarlos. Úsalo solo cuando estés seguro.
@@ -180,13 +180,13 @@ git revert <hash>
 
 El **stash** guarda cambios temporalmente para que puedas cambiar de rama sin commitear.
 
-\`\`\`bash
+```bash
 git stash              # guardar cambios
 git stash list         # listar stashes
 git stash pop          # recuperar y eliminar
 git stash apply        # recuperar sin eliminar
 git stash drop         # eliminar un stash
-\`\`\`
+```
 
 ---
 

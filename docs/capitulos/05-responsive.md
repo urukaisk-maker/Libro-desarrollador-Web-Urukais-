@@ -13,7 +13,7 @@
 
 El **diseño responsive** (o adaptativo) es la práctica de crear webs que se vean bien en **cualquier tamaño de pantalla**: móvil, tablet, portátil, monitor grande. Ya no es opcional: más del 60% del tráfico web viene de móvil.
 
-\`\`\`css
+```css
 /* Móvil primero */
 .elemento { padding: 1rem; }
 
@@ -24,7 +24,7 @@ El **diseño responsive** (o adaptativo) es la práctica de crear webs que se ve
 @media (min-width: 1024px) {
   .elemento { padding: 3rem; }
 }
-\`\`\`
+```
 
 !!! tip "Mobile first"
     Diseña primero para móvil y luego amplía con \`min-width\`. Es más fácil añadir complejidad que quitarla.
@@ -35,9 +35,9 @@ El **diseño responsive** (o adaptativo) es la práctica de crear webs que se ve
 
 Sin la etiqueta viewport, los móviles renderizan la página como si fueran un monitor de escritorio y luego la reducen. El resultado: texto minúsculo y zoom obligatorio.
 
-\`\`\`html
+```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-\`\`\`
+```
 
 - \`width=device-width\`: el ancho del viewport es el ancho del dispositivo.
 - \`initial-scale=1.0\`: sin zoom inicial.
@@ -48,7 +48,7 @@ Sin la etiqueta viewport, los móviles renderizan la página como si fueran un m
 
 Las **media queries** permiten aplicar estilos según las características del dispositivo.
 
-\`\`\`css
+```css
 /* Por ancho */
 @media (min-width: 640px) { }
 @media (max-width: 1023px) { }
@@ -59,7 +59,7 @@ Las **media queries** permiten aplicar estilos según las características del d
 /* Por preferencias del usuario */
 @media (prefers-color-scheme: dark) { }
 @media (prefers-reduced-motion: reduce) { }
-\`\`\`
+```
 
 | Breakpoint | Dispositivo típico |
 | :--- | :--- |
@@ -88,7 +88,7 @@ Las **media queries** permiten aplicar estilos según las características del d
 
 ## 🖼️ Imágenes responsive
 
-\`\`\`html
+```html
 <img
   src="foto-800.jpg"
   srcset="foto-400.jpg 400w, foto-800.jpg 800w, foto-1600.jpg 1600w"
@@ -96,7 +96,7 @@ Las **media queries** permiten aplicar estilos según las características del d
   alt="Descripción"
   loading="lazy"
 >
-\`\`\`
+```
 
 - \`srcset\`: ofrece varias versiones de la imagen.
 - \`sizes\`: indica al navegador qué tamaño tendrá en cada caso.
@@ -111,27 +111,27 @@ Las **media queries** permiten aplicar estilos según las características del d
 
 ### Contenedor centrado
 
-\`\`\`css
+```css
 .contenedor {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
-\`\`\`
+```
 
 ### Grid responsive
 
-\`\`\`css
+```css
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
-\`\`\`
+```
 
 ### Barra lateral que colapsa
 
-\`\`\`css
+```css
 .layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -143,7 +143,7 @@ Las **media queries** permiten aplicar estilos según las características del d
     grid-template-columns: 250px 1fr;
   }
 }
-\`\`\`
+```
 
 ---
 

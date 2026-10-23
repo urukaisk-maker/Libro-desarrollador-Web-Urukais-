@@ -13,13 +13,13 @@
 
 Un **formulario** es la forma principal de recoger datos del usuario. Puede ser un login, un buscador, un checkout, un formulario de contacto, una encuesta… Todos usan las mismas etiquetas.
 
-\`\`\`html
+```html
 <form action="/enviar" method="POST">
   <label for="nombre">Nombre:</label>
   <input type="text" id="nombre" name="nombre" required>
   <button type="submit">Enviar</button>
 </form>
-\`\`\`
+```
 
 ---
 
@@ -41,7 +41,7 @@ Un **formulario** es la forma principal de recoger datos del usuario. Puede ser 
 
 ## 🔤 Tipos de input
 
-\`\`\`html
+```html
 <input type="text">        <!-- texto libre -->
 <input type="email">       <!-- email (valida formato) -->
 <input type="password">    <!-- contraseña -->
@@ -58,7 +58,7 @@ Un **formulario** es la forma principal de recoger datos del usuario. Puede ser 
 <input type="radio">       <!-- opción única -->
 <input type="hidden">      <!-- campo oculto -->
 <input type="search">      <!-- búsqueda -->
-\`\`\`
+```
 
 !!! tip "Usa el tipo correcto"
     Los móviles cambian el teclado según el tipo de input: \`email\` muestra la @, \`tel\` muestra el teclado numérico, \`date\` muestra el selector de fecha. Es una mejora gratuita de UX.
@@ -67,7 +67,7 @@ Un **formulario** es la forma principal de recoger datos del usuario. Puede ser 
 
 ## 🏷️ Label y accesibilidad
 
-\`\`\`html
+```html
 <!-- Correcto: label asociado por for/id -->
 <label for="email">Email:</label>
 <input type="email" id="email" name="email">
@@ -80,7 +80,7 @@ Un **formulario** es la forma principal de recoger datos del usuario. Puede ser 
 
 <!-- Incorrecto: sin label -->
 <input type="email" placeholder="Email">
-\`\`\`
+```
 
 !!! warning "El placeholder NO sustituye al label"
     El placeholder desaparece al escribir y no es leído por todos los lectores de pantalla. Siempre usa un \`<label>\` visible.
@@ -91,28 +91,28 @@ Un **formulario** es la forma principal de recoger datos del usuario. Puede ser 
 
 HTML5 incluye validación sin JavaScript:
 
-\`\`\`html
+```html
 <input type="email" required>                     <!-- obligatorio -->
 <input type="text" minlength="3" maxlength="20"> <!-- longitud -->
 <input type="number" min="1" max="100">         <!-- rango -->
 <input type="text" pattern="[A-Za-z]+">          <!-- regex -->
 <input type="url">                                <!-- URL válida -->
-\`\`\`
+```
 
 Cuando el usuario envía el formulario, el navegador valida y muestra un mensaje si algo falla.
 
 !!! tip "Personalizar mensajes"
     Puedes cambiar los mensajes con JavaScript usando la **Constraint Validation API**:
 
-    \`\`\`javascript
+    ```javascript
     input.setCustomValidity('Este campo no es válido');
-    \`\`\`
+    ```
 
 ---
 
 ## 📋 Ejemplo completo
 
-\`\`\`html
+```html
 <form action="/registro" method="POST">
   <fieldset>
     <legend>Datos personales</legend>
@@ -150,7 +150,7 @@ Cuando el usuario envía el formulario, el navegador valida y muestra un mensaje
   <button type="submit">Registrarse</button>
   <button type="reset">Limpiar</button>
 </form>
-\`\`\`
+```
 
 ---
 

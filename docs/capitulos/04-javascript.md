@@ -13,9 +13,9 @@
 
 **JavaScript** es el lenguaje de programación que da **comportamiento** a la web.
 
-\`\`\`javascript
+```javascript
 console.log('Hola, mundo');
-\`\`\`
+```
 
 !!! tip "JavaScript no es Java"
     Aunque se llamen parecido, **JavaScript y Java son lenguajes completamente distintos**.
@@ -24,13 +24,13 @@ console.log('Hola, mundo');
 
 ## 📦 Variables y tipos
 
-\`\`\`javascript
+```javascript
 const nombre = 'Ana';
 let edad = 30;
 const texto = 'hola';
 const numero = 42;
 const booleano = true;
-\`\`\`
+```
 
 | Tipo | Ejemplo |
 | :--- | :--- |
@@ -46,7 +46,7 @@ const booleano = true;
 
 ## 🧮 Operadores
 
-\`\`\`javascript
+```javascript
 5 + 3;   // 8
 5 - 3;   // 2
 5 * 3;   // 15
@@ -63,13 +63,13 @@ true || false;   // true
 
 const edad = 20;
 const tipo = edad >= 18 ? 'adulto' : 'menor';
-\`\`\`
+```
 
 ---
 
 ## 🔧 Funciones
 
-\`\`\`javascript
+```javascript
 function sumar(a, b) {
   return a + b;
 }
@@ -83,13 +83,13 @@ const multiplicar = (a, b) => a * b;
 function saludar(nombre = 'mundo') {
   return 'Hola, ' + nombre;
 }
-\`\`\`
+```
 
 ---
 
 ## 🔁 Estructuras de control
 
-\`\`\`javascript
+```javascript
 const edad = 20;
 if (edad >= 18) {
   console.log('Eres mayor de edad');
@@ -102,13 +102,13 @@ for (let i = 0; i < 5; i++) {
 }
 
 [1, 2, 3].forEach(n => console.log(n));
-\`\`\`
+```
 
 ---
 
 ## 🧰 Arrays
 
-\`\`\`javascript
+```javascript
 const arr = [1, 2, 3, 4, 5];
 
 arr.push(6);
@@ -121,13 +121,13 @@ const suma = arr.reduce((acc, n) => acc + n, 0);
 
 arr.find(n => n > 3);
 arr.includes(3);
-\`\`\`
+```
 
 ---
 
 ## 🏠 El DOM
 
-\`\`\`javascript
+```javascript
 const titulo = document.querySelector('h1');
 titulo.textContent = 'Nuevo título';
 titulo.classList.add('activo');
@@ -137,13 +137,13 @@ parrafo.textContent = 'Hola';
 document.body.appendChild(parrafo);
 
 parrafo.remove();
-\`\`\`
+```
 
 ---
 
 ## 🎯 Eventos
 
-\`\`\`javascript
+```javascript
 const boton = document.querySelector('button');
 
 boton.addEventListener('click', (event) => {
@@ -155,7 +155,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   console.log('Formulario enviado');
 });
-\`\`\`
+```
 
 | Evento | Cuándo se dispara |
 | :--- | :--- |

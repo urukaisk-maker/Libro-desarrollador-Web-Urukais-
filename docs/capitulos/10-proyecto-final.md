@@ -33,7 +33,7 @@ Tu portfolio debe incluir:
 
 ## 🏗️ Estructura del proyecto
 
-\`\`\`
+```
 portfolio/
 ├── index.html
 ├── styles.css
@@ -45,13 +45,13 @@ portfolio/
         ├── proyecto-1.jpg
         ├── proyecto-2.jpg
         └── proyecto-3.jpg
-\`\`\`
+```
 
 ---
 
 ## 🧱 Paso 1: HTML semántico
 
-\`\`\`html
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -122,13 +122,13 @@ portfolio/
   <script src="script.js"></script>
 </body>
 </html>
-\`\`\`
+```
 
 ---
 
 ## 🎨 Paso 2: CSS
 
-\`\`\`css
+```css
 :root {
   --bg: #f8f7fb;
   --fg: #1f1c2e;
@@ -315,13 +315,13 @@ body {
   .nav__links { display: none; }
   .hero { min-height: auto; padding-top: 3rem; }
 }
-\`\`\`
+```
 
 ---
 
 ## ⚡ Paso 3: JavaScript (modo oscuro)
 
-\`\`\`javascript
+```javascript
 const btnTema = document.getElementById('tema');
 const temaGuardado = localStorage.getItem('tema');
 
@@ -337,7 +337,7 @@ btnTema.addEventListener('click', () => {
   localStorage.setItem('tema', nuevo);
   btnTema.textContent = nuevo === 'dark' ? '☀️' : '🌙';
 });
-\`\`\`
+```
 
 ---
 

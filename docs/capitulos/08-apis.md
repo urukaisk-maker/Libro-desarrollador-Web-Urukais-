@@ -20,12 +20,12 @@ Una **API** (*Application Programming Interface*) es un conjunto de reglas que p
 
 ## 🌐 Anatomía de una petición HTTP
 
-\`\`\`
+```
 GET https://api.ejemplo.com/usuarios?limit=10
 Headers:
   Authorization: Bearer token123
   Content-Type: application/json
-\`\`\`
+```
 
 | Verbo | Uso |
 | :--- | :--- |
@@ -48,7 +48,7 @@ Headers:
 
 ## 📡 Fetch básico
 
-\`\`\`javascript
+```javascript
 fetch('https://api.ejemplo.com/usuarios')
   .then(res => {
     if (!res.ok) throw new Error('Error HTTP ' + res.status);
@@ -56,7 +56,7 @@ fetch('https://api.ejemplo.com/usuarios')
   })
   .then(data => console.log(data))
   .catch(err => console.error(err));
-\`\`\`
+```
 
 !!! tip "fetch no falla en errores HTTP"
     \`fetch\` solo rechaza la promesa si hay un error **de red**. Si el servidor devuelve un 404 o un 500, la promesa se resuelve igual. Por eso hay que comprobar \`res.ok\` manualmente.
@@ -67,7 +67,7 @@ fetch('https://api.ejemplo.com/usuarios')
 
 La forma moderna y más legible:
 
-\`\`\`javascript
+```javascript
 async function cargarUsuarios() {
   try {
     const res = await fetch('https://api.ejemplo.com/usuarios');
@@ -80,13 +80,13 @@ async function cargarUsuarios() {
 }
 
 cargarUsuarios();
-\`\`\`
+```
 
 ---
 
 ## 📤 Enviar datos (POST)
 
-\`\`\`javascript
+```javascript
 async function crearUsuario(usuario) {
   const res = await fetch('https://api.ejemplo.com/usuarios', {
     method: 'POST',
@@ -103,19 +103,19 @@ async function crearUsuario(usuario) {
 crearUsuario({ nombre: 'Ana', email: 'ana@ejemplo.com' })
   .then(data => console.log('Creado:', data))
   .catch(err => console.error(err));
-\`\`\`
+```
 
 ---
 
 ## 🔑 Autenticación con tokens
 
-\`\`\`javascript
+```javascript
 const res = await fetch('https://api.ejemplo.com/perfil', {
   headers: {
     'Authorization': 'Bearer ' + token,
   },
 });
-\`\`\`
+```
 
 !!! warning "Nunca guardes tokens en el código"
     Los tokens van en variables de entorno o en \`localStorage\` (con cuidado). **Nunca** en el código fuente que subes a GitHub.
@@ -124,22 +124,22 @@ const res = await fetch('https://api.ejemplo.com/perfil', {
 
 ## 🔄 Peticiones en paralelo
 
-\`\`\`javascript
+```javascript
 const [usuarios, posts] = await Promise.all([
   fetch('/api/usuarios').then(r => r.json()),
   fetch('/api/posts').then(r => r.json()),
 ]);
-\`\`\`
+```
 
 \`Promise.all\` espera a que **todas** terminen. Si una falla, todo falla.
 
-\`\`\`javascript
+```javascript
 const resultados = await Promise.allSettled([
   fetch('/api/a').then(r => r.json()),
   fetch('/api/b').then(r => r.json()),
 ]);
 // resultados[0].status === 'fulfilled' o 'rejected'
-\`\`\`
+```
 
 \`Promise.allSettled\` espera a todas, pero **no falla** si alguna falla.
 
@@ -147,7 +147,7 @@ const resultados = await Promise.allSettled([
 
 ## 🚨 Manejo de errores
 
-\`\`\`javascript
+```javascript
 async function cargarDatos() {
   try {
     const res = await fetch('/api/datos');
@@ -162,7 +162,7 @@ async function cargarDatos() {
     return null;
   }
 }
-\`\`\`
+```
 
 ---
 
