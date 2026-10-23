@@ -183,3 +183,40 @@ Crea un archivo llamado `index.html` con este contenido:
 ---
 
 ➡️ Siguiente capítulo: [02 — HTML básico](02-html-basico.md)
+
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-1">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Cuáles son los tres pilares del desarrollo web?</p>
+<button class="quiz-option" data-opt="a">A) HTML, Python, SQL</button>
+<button class="quiz-option" data-opt="b">B) HTML, CSS, JavaScript</button>
+<button class="quiz-option" data-opt="c">C) React, Vue, Angular</button>
+</div>
+<div class="quiz-question" data-answer="c">
+<p><strong>2.</strong> ¿Dónde se ejecuta el frontend?</p>
+<button class="quiz-option" data-opt="a">A) En el servidor</button>
+<button class="quiz-option" data-opt="b">B) En la base de datos</button>
+<button class="quiz-option" data-opt="c">C) En el navegador</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué hace el DNS?</p>
+<button class="quiz-option" data-opt="a">A) Traduce dominio a IP</button>
+<button class="quiz-option" data-opt="b">B) Guarda la base de datos</button>
+<button class="quiz-option" data-opt="c">C) Pinta la página</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%201%3A%20Introducci%C3%B3n&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F01-introduccion%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F01-introduccion%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/01-introduccion/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
