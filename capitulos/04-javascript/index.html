@@ -7107,22 +7107,20 @@
 <hr />
 <h2 id="que-es-javascript">⚡ ¿Qué es JavaScript?<a class="headerlink" href="#que-es-javascript" title="Permanent link">&para;</a></h2>
 <p><strong>JavaScript</strong> es el lenguaje de programación que da <strong>comportamiento</strong> a la web.</p>
-<p>```javascript
-console.log('Hola, mundo');
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hola, mundo'</span><span class="p">);</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">JavaScript no es Java</p>
 <p>Aunque se llamen parecido, <strong>JavaScript y Java son lenguajes completamente distintos</strong>.</p>
 </div>
 <hr />
 <h2 id="variables-y-tipos">📦 Variables y tipos<a class="headerlink" href="#variables-y-tipos" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const nombre = 'Ana';
-let edad = 30;
-const texto = 'hola';
-const numero = 42;
-const booleano = true;
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Ana'</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'hola'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">booleano</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -7163,86 +7161,95 @@ const booleano = true;
 </table>
 <hr />
 <h2 id="operadores">🧮 Operadores<a class="headerlink" href="#operadores" title="Permanent link">&para;</a></h2>
-<p>```javascript
-5 + 3;   // 8
-5 - 3;   // 2
-5 * 3;   // 15
-5 / 3;   // 1.666…
-5 % 3;   // 2
-5 ** 3;  // 125</p>
-<p>5 == '5';    // true
-5 === '5';   // false</p>
-<p>true &amp;&amp; false;   // false
-true || false;   // true
-!true;           // false</p>
-<p>const edad = 20;
-const tipo = edad &gt;= 18 ? 'adulto' : 'menor';
-```</p>
+<div class="highlight"><pre><span></span><code><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// 8</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// 2</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// 15</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// 1.666…</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// 2</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span><span class="w">  </span><span class="c1">// 125</span>
+
+<span class="mf">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'5'</span><span class="p">;</span><span class="w">    </span><span class="c1">// true</span>
+<span class="mf">5</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'5'</span><span class="p">;</span><span class="w">   </span><span class="c1">// false</span>
+
+<span class="kc">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">   </span><span class="c1">// false</span>
+<span class="kc">true</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">   </span><span class="c1">// true</span>
+<span class="o">!</span><span class="kc">true</span><span class="p">;</span><span class="w">           </span><span class="c1">// false</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'adulto'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'menor'</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h2 id="funciones">🔧 Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
-<p>```javascript
-function sumar(a, b) {
-  return a + b;
-}</p>
-<p>const restar = function(a, b) {
-  return a - b;
-};</p>
-<p>const multiplicar = (a, b) =&gt; a * b;</p>
-<p>function saludar(nombre = 'mundo') {
-  return 'Hola, ' + nombre;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">restar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">multiplicar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mundo'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">'Hola, '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nombre</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="estructuras-de-control">🔁 Estructuras de control<a class="headerlink" href="#estructuras-de-control" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const edad = 20;
-if (edad &gt;= 18) {
-  console.log('Eres mayor de edad');
-} else {
-  console.log('Eres menor');
-}</p>
-<p>for (let i = 0; i &lt; 5; i++) {
-  console.log(i);
-}</p>
-<p>[1, 2, 3].forEach(n =&gt; console.log(n));
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">edad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Eres mayor de edad'</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Eres menor'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">));</span>
+</code></pre></div>
 <hr />
 <h2 id="arrays">🧰 Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const arr = [1, 2, 3, 4, 5];</p>
-<p>arr.push(6);
-arr.pop();
-arr.length;</p>
-<p>const dobles = arr.map(n =&gt; n * 2);
-const pares = arr.filter(n =&gt; n % 2 === 0);
-const suma = arr.reduce((acc, n) =&gt; acc + n, 0);</p>
-<p>arr.find(n =&gt; n &gt; 3);
-arr.includes(3);
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mf">6</span><span class="p">);</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">dobles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="el-dom">🏠 El DOM<a class="headerlink" href="#el-dom" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const titulo = document.querySelector('h1');
-titulo.textContent = 'Nuevo título';
-titulo.classList.add('activo');</p>
-<p>const parrafo = document.createElement('p');
-parrafo.textContent = 'Hola';
-document.body.appendChild(parrafo);</p>
-<p>parrafo.remove();
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">);</span>
+<span class="nx">titulo</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Nuevo título'</span><span class="p">;</span>
+<span class="nx">titulo</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'activo'</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">parrafo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'p'</span><span class="p">);</span>
+<span class="nx">parrafo</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Hola'</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">parrafo</span><span class="p">);</span>
+
+<span class="nx">parrafo</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+</code></pre></div>
 <hr />
 <h2 id="eventos">🎯 Eventos<a class="headerlink" href="#eventos" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const boton = document.querySelector('button');</p>
-<p>boton.addEventListener('click', (event) =&gt; {
-  console.log('Se hizo clic', event.target);
-});</p>
-<p>const form = document.querySelector('form');
-form.addEventListener('submit', (e) =&gt; {
-  e.preventDefault();
-  console.log('Formulario enviado');
-});
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'button'</span><span class="p">);</span>
+
+<span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Se hizo clic'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'form'</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Formulario enviado'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>

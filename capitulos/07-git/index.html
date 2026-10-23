@@ -7113,12 +7113,11 @@
 </div>
 <hr />
 <h2 id="configuracion-inicial">⚙️ Configuración inicial<a class="headerlink" href="#configuracion-inicial" title="Permanent link">&para;</a></h2>
-<p>```bash
-git config --global user.name "Tu Nombre"
-git config --global user.email "tu@email.com"
-git config --global init.defaultBranch main
-git config --global core.editor "code --wait"
-```</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Tu Nombre"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"tu@email.com"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"code --wait"</span>
+</code></pre></div>
 <p>Esto se hace <strong>una sola vez</strong> en cada equipo.</p>
 <hr />
 <h2 id="comandos-basicos">📦 Comandos básicos<a class="headerlink" href="#comandos-basicos" title="Permanent link">&para;</a></h2>
@@ -7170,16 +7169,18 @@ git config --global core.editor "code --wait"
 </table>
 <hr />
 <h2 id="el-flujo-basico">🔄 El flujo básico<a class="headerlink" href="#el-flujo-basico" title="Permanent link">&para;</a></h2>
-<p>```bash</p>
-<h1 id="1-ver-que-ha-cambiado">1. Ver qué ha cambiado<a class="headerlink" href="#1-ver-que-ha-cambiado" title="Permanent link">&para;</a></h1>
-<p>git status</p>
-<h1 id="2-anadir-cambios-al-staging">2. Añadir cambios al staging<a class="headerlink" href="#2-anadir-cambios-al-staging" title="Permanent link">&para;</a></h1>
-<p>git add archivo.txt</p>
-<h1 id="3-crear-un-commit-con-un-mensaje-descriptivo">3. Crear un commit con un mensaje descriptivo<a class="headerlink" href="#3-crear-un-commit-con-un-mensaje-descriptivo" title="Permanent link">&para;</a></h1>
-<p>git commit -m "feat: añadir página de contacto"</p>
-<h1 id="4-subir-al-repositorio-remoto">4. Subir al repositorio remoto<a class="headerlink" href="#4-subir-al-repositorio-remoto" title="Permanent link">&para;</a></h1>
-<p>git push origin main
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Ver qué ha cambiado</span>
+git<span class="w"> </span>status
+
+<span class="c1"># 2. Añadir cambios al staging</span>
+git<span class="w"> </span>add<span class="w"> </span>archivo.txt
+
+<span class="c1"># 3. Crear un commit con un mensaje descriptivo</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: añadir página de contacto"</span>
+
+<span class="c1"># 4. Subir al repositorio remoto</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Buenos mensajes de commit</p>
 <ul>
@@ -7194,18 +7195,21 @@ git config --global core.editor "code --wait"
 <hr />
 <h2 id="ramas">🌿 Ramas<a class="headerlink" href="#ramas" title="Permanent link">&para;</a></h2>
 <p>Las <strong>ramas</strong> permiten trabajar en paralelo sin afectar a `main`.</p>
-<p>```bash</p>
-<h1 id="crear-y-cambiar-a-una-rama-nueva">Crear y cambiar a una rama nueva<a class="headerlink" href="#crear-y-cambiar-a-una-rama-nueva" title="Permanent link">&para;</a></h1>
-<p>git checkout -b feature/nueva-funcionalidad</p>
-<h1 id="ver-todas-las-ramas">Ver todas las ramas<a class="headerlink" href="#ver-todas-las-ramas" title="Permanent link">&para;</a></h1>
-<p>git branch</p>
-<h1 id="cambiar-de-rama">Cambiar de rama<a class="headerlink" href="#cambiar-de-rama" title="Permanent link">&para;</a></h1>
-<p>git checkout main</p>
-<h1 id="fusionar-una-rama-en-la-actual">Fusionar una rama en la actual<a class="headerlink" href="#fusionar-una-rama-en-la-actual" title="Permanent link">&para;</a></h1>
-<p>git merge feature/nueva-funcionalidad</p>
-<h1 id="eliminar-una-rama-ya-fusionada">Eliminar una rama (ya fusionada)<a class="headerlink" href="#eliminar-una-rama-ya-fusionada" title="Permanent link">&para;</a></h1>
-<p>git branch -d feature/nueva-funcionalidad
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear y cambiar a una rama nueva</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/nueva-funcionalidad
+
+<span class="c1"># Ver todas las ramas</span>
+git<span class="w"> </span>branch
+
+<span class="c1"># Cambiar de rama</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># Fusionar una rama en la actual</span>
+git<span class="w"> </span>merge<span class="w"> </span>feature/nueva-funcionalidad
+
+<span class="c1"># Eliminar una rama (ya fusionada)</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/nueva-funcionalidad
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -7243,16 +7247,18 @@ git config --global core.editor "code --wait"
 <hr />
 <h2 id="github">☁️ GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
 <p><strong>GitHub</strong> es una plataforma para alojar repositorios Git y colaborar.</p>
-<p>```bash</p>
-<h1 id="conectar-un-repo-local-con-github">Conectar un repo local con GitHub<a class="headerlink" href="#conectar-un-repo-local-con-github" title="Permanent link">&para;</a></h1>
-<p>git remote add origin https://github.com/usuario/repo.git</p>
-<h1 id="subir-la-rama-main-por-primera-vez">Subir la rama main por primera vez<a class="headerlink" href="#subir-la-rama-main-por-primera-vez" title="Permanent link">&para;</a></h1>
-<p>git push -u origin main</p>
-<h1 id="descargar-cambios">Descargar cambios<a class="headerlink" href="#descargar-cambios" title="Permanent link">&para;</a></h1>
-<p>git pull origin main</p>
-<h1 id="ver-remotos-configurados">Ver remotos configurados<a class="headerlink" href="#ver-remotos-configurados" title="Permanent link">&para;</a></h1>
-<p>git remote -v
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Conectar un repo local con GitHub</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/repo.git
+
+<span class="c1"># Subir la rama main por primera vez</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Descargar cambios</span>
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Ver remotos configurados</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Pull Requests</p>
 <p>En GitHub, un <strong>Pull Request (PR)</strong> es una propuesta de fusionar los cambios de una rama en otra. Permite revisar el código, comentar y aprobar antes de fusionar.</p>
@@ -7260,27 +7266,12 @@ git config --global core.editor "code --wait"
 <hr />
 <h2 id="resolver-conflictos">⚔️ Resolver conflictos<a class="headerlink" href="#resolver-conflictos" title="Permanent link">&para;</a></h2>
 <p>Un <strong>conflicto</strong> ocurre cuando dos ramas modifican la misma línea de un archivo. Git no sabe cuál elegir y te pide que decidas tú.</p>
-<p>```
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 tu versión
 =======
-versión de la otra rama</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>feature/otra-rama
-```</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+versión de la otra rama
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/otra-rama
+</code></pre></div>
 <p>Para resolverlo:</p>
 <ol>
 <li>Abre el archivo y elige la versión correcta (o combina ambas).</li>
@@ -7294,18 +7285,21 @@ versión de la otra rama</p>
 </div>
 <hr />
 <h2 id="deshacer-cambios">↩️ Deshacer cambios<a class="headerlink" href="#deshacer-cambios" title="Permanent link">&para;</a></h2>
-<p>```bash</p>
-<h1 id="descartar-cambios-sin-stage">Descartar cambios sin stage<a class="headerlink" href="#descartar-cambios-sin-stage" title="Permanent link">&para;</a></h1>
-<p>git restore archivo.txt</p>
-<h1 id="quitar-del-stage">Quitar del stage<a class="headerlink" href="#quitar-del-stage" title="Permanent link">&para;</a></h1>
-<p>git restore --staged archivo.txt</p>
-<h1 id="deshacer-el-ultimo-commit-mantiene-los-cambios">Deshacer el último commit (mantiene los cambios)<a class="headerlink" href="#deshacer-el-ultimo-commit-mantiene-los-cambios" title="Permanent link">&para;</a></h1>
-<p>git reset HEAD~1</p>
-<h1 id="deshacer-el-ultimo-commit-elimina-los-cambios">Deshacer el último commit (elimina los cambios)<a class="headerlink" href="#deshacer-el-ultimo-commit-elimina-los-cambios" title="Permanent link">&para;</a></h1>
-<p>git reset --hard HEAD~1</p>
-<h1 id="revertir-un-commit-concreto-crea-otro-commit">Revertir un commit concreto (crea otro commit)<a class="headerlink" href="#revertir-un-commit-concreto-crea-otro-commit" title="Permanent link">&para;</a></h1>
-<p>git revert <hash>
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Descartar cambios sin stage</span>
+git<span class="w"> </span>restore<span class="w"> </span>archivo.txt
+
+<span class="c1"># Quitar del stage</span>
+git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>archivo.txt
+
+<span class="c1"># Deshacer el último commit (mantiene los cambios)</span>
+git<span class="w"> </span>reset<span class="w"> </span>HEAD~1
+
+<span class="c1"># Deshacer el último commit (elimina los cambios)</span>
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1
+
+<span class="c1"># Revertir un commit concreto (crea otro commit)</span>
+git<span class="w"> </span>revert<span class="w"> </span>&lt;hash&gt;
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Cuidado con --hard</p>
 <p>`git reset --hard` <strong>borra</strong> los cambios sin posibilidad de recuperarlos. Úsalo solo cuando estés seguro.</p>
@@ -7313,13 +7307,12 @@ versión de la otra rama</p>
 <hr />
 <h2 id="stash">🧰 Stash<a class="headerlink" href="#stash" title="Permanent link">&para;</a></h2>
 <p>El <strong>stash</strong> guarda cambios temporalmente para que puedas cambiar de rama sin commitear.</p>
-<p>```bash
-git stash              # guardar cambios
-git stash list         # listar stashes
-git stash pop          # recuperar y eliminar
-git stash apply        # recuperar sin eliminar
-git stash drop         # eliminar un stash
-```</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>stash<span class="w">              </span><span class="c1"># guardar cambios</span>
+git<span class="w"> </span>stash<span class="w"> </span>list<span class="w">         </span><span class="c1"># listar stashes</span>
+git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w">          </span><span class="c1"># recuperar y eliminar</span>
+git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w">        </span><span class="c1"># recuperar sin eliminar</span>
+git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">         </span><span class="c1"># eliminar un stash</span>
+</code></pre></div>
 <hr />
 <h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
 <div class="quiz" data-quiz="capitulo-7">

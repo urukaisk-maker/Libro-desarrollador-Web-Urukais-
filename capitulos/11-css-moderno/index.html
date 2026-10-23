@@ -7113,110 +7113,102 @@
 </div>
 <hr />
 <h2 id="variables-css">🔤 Variables CSS<a class="headerlink" href="#variables-css" title="Permanent link">&para;</a></h2>
-<p>```css
-:root {
-  --primario: #6a5acd;
-  --acento: #00bcd4;
-  --espaciado: 1rem;
-  --radio: 8px;
-}</p>
-<p>.boton {
-  background: var(--primario);
-  padding: var(--espaciado);
-  border-radius: var(--radio);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--espaciado</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--radio</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primario</span><span class="p">);</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--espaciado</span><span class="p">);</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radio</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="ventajas">Ventajas<a class="headerlink" href="#ventajas" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Tematización</strong>: cambia una variable y se actualiza todo.</li>
 <li><strong>Modo oscuro</strong>: redefine las variables en `[data-theme="dark"]`.</li>
 <li><strong>Legibilidad</strong>: nombres descriptivos en lugar de valores mágicos.</li>
 </ul>
-<p>```css
-[data-theme="dark"] {
-  --primario: #a78bfa;
-  --acento: #22d3ee;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#a78bfa</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#22d3ee</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="funciones-modernas">🧮 Funciones modernas<a class="headerlink" href="#funciones-modernas" title="Permanent link">&para;</a></h2>
 <h3 id="calc">calc()<a class="headerlink" href="#calc" title="Permanent link">&para;</a></h3>
-<p>```css
-.elemento {
-  width: calc(100% - 2rem);
-  padding: calc(var(--espaciado) * 2);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">);</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="nv">--espaciado</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="clamp">clamp()<a class="headerlink" href="#clamp" title="Permanent link">&para;</a></h3>
-<p>```css
-h1 {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>`clamp(min, ideal, max)` es perfecto para tipografía fluida.</p>
 <h3 id="min-y-max">min() y max()<a class="headerlink" href="#min-y-max" title="Permanent link">&para;</a></h3>
-<p>```css
-.contenedor {
-  width: min(90%, 1200px);
-  padding: max(1rem, 2vw);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">90</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">);</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">vw</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="color-mix">color-mix()<a class="headerlink" href="#color-mix" title="Permanent link">&para;</a></h3>
-<p>```css
-.boton {
-  background: color-mix(in srgb, var(--primario) 80%, white);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">color-mix</span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="n">srgb</span><span class="p">,</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primario</span><span class="p">)</span><span class="w"> </span><span class="mi">80</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="kc">white</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="selectores-avanzados">🎯 Selectores avanzados<a class="headerlink" href="#selectores-avanzados" title="Permanent link">&para;</a></h2>
 <h3 id="is">:is()<a class="headerlink" href="#is" title="Permanent link">&para;</a></h3>
-<p>```css
-:is(h1, h2, h3) {
-  line-height: 1.2;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="where">:where()<a class="headerlink" href="#where" title="Permanent link">&para;</a></h3>
 <p>Igual que `:is()`, pero con <strong>especificidad 0</strong>:</p>
-<p>```css
-:where(h1, h2, h3) {
-  margin: 0;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="has">:has()<a class="headerlink" href="#has" title="Permanent link">&para;</a></h3>
 <p>Selecciona un elemento que <strong>contiene</strong> otro:</p>
-<p>```css
-.card:has(img) {
-  grid-template-columns: 200px 1fr;
-}</p>
-<p>.form:has(input:invalid) {
-  border-color: red;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">img</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">form</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">:has() es un cambio de juego</p>
 <p>Antes necesitabas JavaScript para aplicar estilos a un padre según sus hijos. Con `:has()` es CSS puro. Ya está soportado en todos los navegadores modernos.</p>
 </div>
 <h3 id="not">:not()<a class="headerlink" href="#not" title="Permanent link">&para;</a></h3>
-<p>```css
-.boton:not(.boton--disabled) {
-  cursor: pointer;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">.</span><span class="nc">boton--disabled</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="container-queries">📐 Container queries<a class="headerlink" href="#container-queries" title="Permanent link">&para;</a></h2>
 <p>Las <strong>container queries</strong> permiten aplicar estilos según el tamaño del <strong>contenedor</strong>, no del viewport.</p>
-<p>```css
-.card-container {
-  container-type: inline-size;
-  container-name: card;
-}</p>
-<p>@container card (min-width: 400px) {
-  .card {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-  }
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card-container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
+<span class="w">  </span><span class="k">container-name</span><span class="p">:</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">container</span><span class="w"> </span><span class="nt">card</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition quote">
 <p class="admonition-title">El fin de los media queries para componentes</p>
 <p>Los media queries siguen siendo útiles para layouts de página. Pero para componentes reutilizables, las container queries son mucho más potentes: un mismo componente puede verse distinto según el espacio que tenga.</p>
@@ -7224,71 +7216,70 @@ h1 {
 <hr />
 <h2 id="grid-avanzado">🔲 Grid avanzado<a class="headerlink" href="#grid-avanzado" title="Permanent link">&para;</a></h2>
 <h3 id="grid-template-areas">Grid template areas<a class="headerlink" href="#grid-template-areas" title="Permanent link">&para;</a></h3>
-<p>```css
-.layout {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-  grid-template-columns: 250px 1fr;
-  grid-template-rows: auto 1fr auto;
-}</p>
-<p>.header { grid-area: header; }
-.sidebar { grid-area: sidebar; }
-.main { grid-area: main; }
-.footer { grid-area: footer; }
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-areas</span><span class="p">:</span>
+<span class="w">    </span><span class="s2">"header header"</span>
+<span class="w">    </span><span class="s2">"sidebar main"</span>
+<span class="w">    </span><span class="s2">"footer footer"</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-rows</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">header</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">sidebar</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">sidebar</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">main</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">main</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">footer</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">footer</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <h3 id="subgrid">Subgrid<a class="headerlink" href="#subgrid" title="Permanent link">&para;</a></h3>
-<p>```css
-.padre {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}</p>
-<p>.hijo {
-  display: grid;
-  grid-column: span 2;
-  grid-template-columns: subgrid;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">padre</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hijo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="n">subgrid</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="auto-fit-vs-auto-fill">auto-fit vs auto-fill<a class="headerlink" href="#auto-fit-vs-auto-fill" title="Permanent link">&para;</a></h3>
-<p>```css
-/* auto-fit: las columnas vacías colapsan */
-.grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }</p>
-<p>/* auto-fill: las columnas vacías se mantienen */
-.grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c">/* auto-fit: las columnas vacías colapsan */</span>
+<span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c">/* auto-fill: las columnas vacías se mantienen */</span>
+<span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fill</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="animaciones-y-transiciones">✨ Animaciones y transiciones<a class="headerlink" href="#animaciones-y-transiciones" title="Permanent link">&para;</a></h2>
 <h3 id="transiciones">Transiciones<a class="headerlink" href="#transiciones" title="Permanent link">&para;</a></h3>
-<p>```css
-.boton {
-  transition: background-color .2s ease, transform .15s ease;
-}</p>
-<p>.boton:hover {
-  background-color: var(--acento);
-  transform: translateY(-2px);
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background-color</span><span class="w"> </span><span class="mf">.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">.15</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--acento</span><span class="p">);</span>
+<span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="animaciones-con-keyframes">Animaciones con keyframes<a class="headerlink" href="#animaciones-con-keyframes" title="Permanent link">&para;</a></h3>
-<p>```css
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}</p>
-<p>.animado {
-  animation: fadeIn .4s ease forwards;
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">fadeIn</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">to</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">animado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fadeIn</span><span class="w"> </span><span class="mf">.4</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="respetar-prefers-reduced-motion">Respetar prefers-reduced-motion<a class="headerlink" href="#respetar-prefers-reduced-motion" title="Permanent link">&para;</a></h3>
-<p>```css
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">    </span><span class="k">transition-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Accesibilidad en animaciones</p>
 <p>Algunas personas sufren mareos con animaciones. Respeta `prefers-reduced-motion` siempre que puedas.</p>

@@ -7113,12 +7113,11 @@
 </div>
 <hr />
 <h2 id="anatomia-de-una-peticion-http">🌐 Anatomía de una petición HTTP<a class="headerlink" href="#anatomia-de-una-peticion-http" title="Permanent link">&para;</a></h2>
-<p>```
-GET https://api.ejemplo.com/usuarios?limit=10
+<div class="highlight"><pre><span></span><code>GET https://api.ejemplo.com/usuarios?limit=10
 Headers:
   Authorization: Bearer token123
   Content-Type: application/json
-```</p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -7185,15 +7184,14 @@ Headers:
 </table>
 <hr />
 <h2 id="fetch-basico">📡 Fetch básico<a class="headerlink" href="#fetch-basico" title="Permanent link">&para;</a></h2>
-<p>```javascript
-fetch('https://api.ejemplo.com/usuarios')
-  .then(res =&gt; {
-    if (!res.ok) throw new Error('Error HTTP ' + res.status);
-    return res.json();
-  })
-  .then(data =&gt; console.log(data))
-  .catch(err =&gt; console.error(err));
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">fetch no falla en errores HTTP</p>
 <p>`fetch` solo rechaza la promesa si hay un error <strong>de red</strong>. Si el servidor devuelve un 404 o un 500, la promesa se resuelve igual. Por eso hay que comprobar `res.ok` manualmente.</p>
@@ -7201,85 +7199,82 @@ fetch('https://api.ejemplo.com/usuarios')
 <hr />
 <h2 id="asyncawait">⚡ async/await<a class="headerlink" href="#asyncawait" title="Permanent link">&para;</a></h2>
 <p>La forma moderna y más legible:</p>
-<p>```javascript
-async function cargarUsuarios() {
-  try {
-    const res = await fetch('https://api.ejemplo.com/usuarios');
-    if (!res.ok) throw new Error('Error HTTP ' + res.status);
-    const data = await res.json();
-    console.log(data);
-  } catch (err) {
-    console.error('Algo salió mal:', err);
-  }
-}</p>
-<p>cargarUsuarios();
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarUsuarios</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Algo salió mal:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">cargarUsuarios</span><span class="p">();</span>
+</code></pre></div>
 <hr />
 <h2 id="enviar-datos-post">📤 Enviar datos (POST)<a class="headerlink" href="#enviar-datos-post" title="Permanent link">&para;</a></h2>
-<p>```javascript
-async function crearUsuario(usuario) {
-  const res = await fetch('https://api.ejemplo.com/usuarios', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(usuario),
-  });</p>
-<p>if (!res.ok) throw new Error('Error al crear usuario');
-  return res.json();
-}</p>
-<p>crearUsuario({ nombre: 'Ana', email: 'ana@ejemplo.com' })
-  .then(data =&gt; console.log('Creado:', data))
-  .catch(err =&gt; console.error(err));
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">crearUsuario</span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'application/json'</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">usuario</span><span class="p">),</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error al crear usuario'</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">crearUsuario</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'ana@ejemplo.com'</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Creado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div>
 <hr />
 <h2 id="autenticacion-con-tokens">🔑 Autenticación con tokens<a class="headerlink" href="#autenticacion-con-tokens" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const res = await fetch('https://api.ejemplo.com/perfil', {
-  headers: {
-    'Authorization': 'Bearer ' + token,
-  },
-});
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/perfil'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">'Authorization'</span><span class="o">:</span><span class="w"> </span><span class="s1">'Bearer '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Nunca guardes tokens en el código</p>
 <p>Los tokens van en variables de entorno o en `localStorage` (con cuidado). <strong>Nunca</strong> en el código fuente que subes a GitHub.</p>
 </div>
 <hr />
 <h2 id="peticiones-en-paralelo">🔄 Peticiones en paralelo<a class="headerlink" href="#peticiones-en-paralelo" title="Permanent link">&para;</a></h2>
-<p>```javascript
-const [usuarios, posts] = await Promise.all([
-  fetch('/api/usuarios').then(r =&gt; r.json()),
-  fetch('/api/posts').then(r =&gt; r.json()),
-]);
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">usuarios</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="p">]);</span>
+</code></pre></div>
 <p>`Promise.all` espera a que <strong>todas</strong> terminen. Si una falla, todo falla.</p>
-<p>```javascript
-const resultados = await Promise.allSettled([
-  fetch('/api/a').then(r =&gt; r.json()),
-  fetch('/api/b').then(r =&gt; r.json()),
-]);
-// resultados[0].status === 'fulfilled' o 'rejected'
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">([</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/a'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/b'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="p">]);</span>
+<span class="c1">// resultados[0].status === 'fulfilled' o 'rejected'</span>
+</code></pre></div>
 <p>`Promise.allSettled` espera a todas, pero <strong>no falla</strong> si alguna falla.</p>
 <hr />
 <h2 id="manejo-de-errores">🚨 Manejo de errores<a class="headerlink" href="#manejo-de-errores" title="Permanent link">&para;</a></h2>
-<p>```javascript
-async function cargarDatos() {
-  try {
-    const res = await fetch('/api/datos');
-    if (!res.ok) {
-      if (res.status === 401) throw new Error('No autorizado');
-      if (res.status === 404) throw new Error('No encontrado');
-      throw new Error('Error HTTP ' + res.status);
-    }
-    return await res.json();
-  } catch (err) {
-    console.error(err.message);
-    return null;
-  }
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/datos'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No autorizado'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No encontrado'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
 <div class="quiz" data-quiz="capitulo-8">

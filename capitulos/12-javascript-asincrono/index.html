@@ -7107,44 +7107,43 @@
 <hr />
 <h2 id="por-que-asincronia">⏳ ¿Por qué asincronía?<a class="headerlink" href="#por-que-asincronia" title="Permanent link">&para;</a></h2>
 <p>JavaScript es <strong>de un solo hilo</strong>: solo puede ejecutar una cosa a la vez. Si una operación tarda (una petición HTTP, leer un archivo, un temporizador), bloquearía todo. La asincronía permite <strong>no bloquear</strong> mientras se espera.</p>
-<p>```javascript
-// Síncrono: bloquea
-console.log('1');
-console.log('2');
-console.log('3');
-// Salida: 1, 2, 3</p>
-<p>// Asíncrono: no bloquea
-console.log('1');
-setTimeout(() =&gt; console.log('2'), 0);
-console.log('3');
-// Salida: 1, 3, 2
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Síncrono: bloquea</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3'</span><span class="p">);</span>
+<span class="c1">// Salida: 1, 2, 3</span>
+
+<span class="c1">// Asíncrono: no bloquea</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3'</span><span class="p">);</span>
+<span class="c1">// Salida: 1, 3, 2</span>
+</code></pre></div>
 <div class="admonition quote">
 <p class="admonition-title">JavaScript no espera a nadie</p>
 <p>Cuando una operación asíncrona empieza, JavaScript sigue ejecutando el resto del código. La operación termina más tarde y su resultado se maneja con callbacks, promesas o async/await.</p>
 </div>
 <hr />
 <h2 id="callbacks-la-forma-antigua">🕰️ Callbacks (la forma antigua)<a class="headerlink" href="#callbacks-la-forma-antigua" title="Permanent link">&para;</a></h2>
-<p>```javascript
-function cargarDatos(callback) {
-  setTimeout(() =&gt; {
-    callback({ nombre: 'Ana' });
-  }, 1000);
-}</p>
-<p>cargarDatos(function (datos) {
-  console.log(datos); // { nombre: 'Ana' }
-});
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">callback</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">cargarDatos</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">datos</span><span class="p">);</span><span class="w"> </span><span class="c1">// { nombre: 'Ana' }</span>
+<span class="p">});</span>
+</code></pre></div>
 <h3 id="el-problema-callback-hell">El problema: callback hell<a class="headerlink" href="#el-problema-callback-hell" title="Permanent link">&para;</a></h3>
-<p>```javascript
-cargarUsuario(id, function (usuario) {
-  cargarPosts(usuario.id, function (posts) {
-    cargarComentarios(posts[0].id, function (comentarios) {
-      console.log(comentarios);
-    });
-  });
-});
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">cargarUsuario</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">cargarPosts</span><span class="p">(</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">posts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cargarComentarios</span><span class="p">(</span><span class="nx">posts</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">comentarios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">comentarios</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>Esto es difícil de leer y de manejar errores. Por eso nacieron las promesas.</p>
 <hr />
 <h2 id="promesas">🤝 Promesas<a class="headerlink" href="#promesas" title="Permanent link">&para;</a></h2>
@@ -7154,42 +7153,40 @@ cargarUsuario(id, function (usuario) {
 <li><strong>Fulfilled</strong>: resuelta con un valor.</li>
 <li><strong>Rejected</strong>: rechazada con un error.</li>
 </ul>
-<p>```javascript
-const promesa = new Promise((resolve, reject) =&gt; {
-  const exito = true;
-  if (exito) resolve('¡Funcionó!');
-  else reject(new Error('Algo salió mal'));
-});</p>
-<p>promesa
-  .then(valor =&gt; console.log(valor))
-  .catch(err =&gt; console.error(err));
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">promesa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">exito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exito</span><span class="p">)</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'¡Funcionó!'</span><span class="p">);</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Algo salió mal'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">promesa</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">valor</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">valor</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div>
 <h3 id="encadenar-promesas">Encadenar promesas<a class="headerlink" href="#encadenar-promesas" title="Permanent link">&para;</a></h3>
-<p>```javascript
-fetch('/api/usuario')
-  .then(res =&gt; res.json())
-  .then(usuario =&gt; fetch('/api/posts/' + usuario.id))
-  .then(res =&gt; res.json())
-  .then(posts =&gt; console.log(posts))
-  .catch(err =&gt; console.error(err));
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuario'</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">usuario</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts/'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">posts</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div>
 <p>Mucho más legible que los callbacks anidados.</p>
 <hr />
 <h2 id="asyncawait">⚡ async/await<a class="headerlink" href="#asyncawait" title="Permanent link">&para;</a></h2>
 <p>La forma moderna, <strong>azúcar sintáctico sobre promesas</strong>:</p>
-<p>```javascript
-async function cargarDatos() {
-  try {
-    const res = await fetch('/api/usuario');
-    const usuario = await res.json();
-    const res2 = await fetch('/api/posts/' + usuario.id);
-    const posts = await res2.json();
-    console.log(posts);
-  } catch (err) {
-    console.error(err);
-  }
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuario'</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts/'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>`async` marca la función como asíncrona (siempre devuelve una promesa).</li>
 <li>`await` pausa la ejecución hasta que la promesa se resuelva.</li>
@@ -7200,13 +7197,16 @@ async function cargarDatos() {
 </div>
 <hr />
 <h2 id="el-event-loop-en-profundidad">🧠 El event loop en profundidad<a class="headerlink" href="#el-event-loop-en-profundidad" title="Permanent link">&para;</a></h2>
-<p>```javascript
-console.log('1');</p>
-<p>setTimeout(() =&gt; console.log('2'), 0);</p>
-<p>Promise.resolve().then(() =&gt; console.log('3'));</p>
-<p>console.log('4');</p>
-<p>// Salida: 1, 4, 3, 2
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3'</span><span class="p">));</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4'</span><span class="p">);</span>
+
+<span class="c1">// Salida: 1, 4, 3, 2</span>
+</code></pre></div>
 <h3 id="por-que-este-orden">¿Por qué este orden?<a class="headerlink" href="#por-que-este-orden" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>1</strong> y <strong>4</strong> son síncronos → se ejecutan primero.</li>
@@ -7247,50 +7247,45 @@ console.log('1');</p>
 <h2 id="patrones-de-promesas">🎯 Patrones de promesas<a class="headerlink" href="#patrones-de-promesas" title="Permanent link">&para;</a></h2>
 <h3 id="promiseall">Promise.all<a class="headerlink" href="#promiseall" title="Permanent link">&para;</a></h3>
 <p>Espera a que <strong>todas</strong> se resuelvan. Si una falla, todo falla.</p>
-<p>```javascript
-const [usuarios, posts] = await Promise.all([
-  fetch('/api/usuarios').then(r =&gt; r.json()),
-  fetch('/api/posts').then(r =&gt; r.json()),
-]);
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">usuarios</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
+<span class="p">]);</span>
+</code></pre></div>
 <h3 id="promiseallsettled">Promise.allSettled<a class="headerlink" href="#promiseallsettled" title="Permanent link">&para;</a></h3>
 <p>Espera a todas, <strong>aunque algunas fallen</strong>. Devuelve un array con `status` y `value`/`reason`.</p>
-<p>```javascript
-const resultados = await Promise.allSettled([p1, p2, p3]);
-resultados.forEach(r =&gt; {
-  if (r.status === 'fulfilled') console.log('OK:', r.value);
-  else console.error('Error:', r.reason);
-});
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">p3</span><span class="p">]);</span>
+<span class="nx">resultados</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'fulfilled'</span><span class="p">)</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'OK:'</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">reason</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <h3 id="promiserace">Promise.race<a class="headerlink" href="#promiserace" title="Permanent link">&para;</a></h3>
 <p>Devuelve la <strong>primera</strong> que se resuelva o rechace.</p>
-<p>```javascript
-const resultado = await Promise.race([
-  fetch('/api/a'),
-  new Promise((_, reject) =&gt; setTimeout(() =&gt; reject(new Error('Timeout')), 5000)),
-]);
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/a'</span><span class="p">),</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Timeout'</span><span class="p">)),</span><span class="w"> </span><span class="mf">5000</span><span class="p">)),</span>
+<span class="p">]);</span>
+</code></pre></div>
 <h3 id="promiseany">Promise.any<a class="headerlink" href="#promiseany" title="Permanent link">&para;</a></h3>
 <p>Devuelve la <strong>primera que se resuelva con éxito</strong>. Si todas fallan, rechaza.</p>
-<p>```javascript
-const primero = await Promise.any([p1, p2, p3]);
-```</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">primero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">p3</span><span class="p">]);</span>
+</code></pre></div>
 <hr />
 <h2 id="manejo-de-errores">🚨 Manejo de errores<a class="headerlink" href="#manejo-de-errores" title="Permanent link">&para;</a></h2>
-<p>```javascript
-async function cargar() {
-  try {
-    const res = await fetch('/api/datos');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return await res.json();
-  } catch (err) {
-    console.error('Error:', err.message);
-    return null;
-  } finally {
-    console.log('Terminado');
-  }
-}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/datos'</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Terminado'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">No olvides el catch</p>
 <p>Si no capturas los errores de una promesa, se convierten en <strong>unhandled rejections</strong> y pueden romper la app. Siempre añade `.catch()` o `try/catch`.</p>

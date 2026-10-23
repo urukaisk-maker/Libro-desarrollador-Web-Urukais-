@@ -7107,13 +7107,12 @@
 <hr />
 <h2 id="que-es-un-formulario">📝 ¿Qué es un formulario?<a class="headerlink" href="#que-es-un-formulario" title="Permanent link">&para;</a></h2>
 <p>Un <strong>formulario</strong> es la forma principal de recoger datos del usuario. Puede ser un login, un buscador, un checkout, un formulario de contacto, una encuesta… Todos usan las mismas etiquetas.</p>
-<p>```html</p>
-<form action="/enviar" method="POST">
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" name="nombre" required>
-  <button type="submit">Enviar</button>
-</form>
-<p>```</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/enviar"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr />
 <h2 id="etiquetas-basicas">🏷️ Etiquetas básicas<a class="headerlink" href="#etiquetas-basicas" title="Permanent link">&para;</a></h2>
 <table>
@@ -7164,42 +7163,42 @@
 </table>
 <hr />
 <h2 id="tipos-de-input">🔤 Tipos de input<a class="headerlink" href="#tipos-de-input" title="Permanent link">&para;</a></h2>
-<p>```html
-<input type="text">        <!-- texto libre -->
-<input type="email">       <!-- email (valida formato) -->
-<input type="password">    <!-- contraseña -->
-<input type="number">      <!-- número -->
-<input type="tel">         <!-- teléfono -->
-<input type="url">         <!-- URL -->
-<input type="date">        <!-- fecha -->
-<input type="time">        <!-- hora -->
-<input type="datetime-local"> <!-- fecha y hora -->
-<input type="color">       <!-- selector de color -->
-<input type="range">       <!-- deslizador -->
-<input type="file">        <!-- subida de archivos -->
-<input type="checkbox">    <!-- casilla -->
-<input type="radio">       <!-- opción única -->
-<input type="hidden">      <!-- campo oculto -->
-<input type="search">      <!-- búsqueda -->
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span><span class="p">&gt;</span>        <span class="cm">&lt;!-- texto libre --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>       <span class="cm">&lt;!-- email (valida formato) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span><span class="p">&gt;</span>    <span class="cm">&lt;!-- contraseña --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span><span class="p">&gt;</span>      <span class="cm">&lt;!-- número --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"tel"</span><span class="p">&gt;</span>         <span class="cm">&lt;!-- teléfono --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"url"</span><span class="p">&gt;</span>         <span class="cm">&lt;!-- URL --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"date"</span><span class="p">&gt;</span>        <span class="cm">&lt;!-- fecha --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"time"</span><span class="p">&gt;</span>        <span class="cm">&lt;!-- hora --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"datetime-local"</span><span class="p">&gt;</span> <span class="cm">&lt;!-- fecha y hora --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"color"</span><span class="p">&gt;</span>       <span class="cm">&lt;!-- selector de color --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span><span class="p">&gt;</span>       <span class="cm">&lt;!-- deslizador --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span><span class="p">&gt;</span>        <span class="cm">&lt;!-- subida de archivos --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span><span class="p">&gt;</span>    <span class="cm">&lt;!-- casilla --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span><span class="p">&gt;</span>       <span class="cm">&lt;!-- opción única --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span><span class="p">&gt;</span>      <span class="cm">&lt;!-- campo oculto --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"search"</span><span class="p">&gt;</span>      <span class="cm">&lt;!-- búsqueda --&gt;</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Usa el tipo correcto</p>
 <p>Los móviles cambian el teclado según el tipo de input: `email` muestra la @, `tel` muestra el teclado numérico, `date` muestra el selector de fecha. Es una mejora gratuita de UX.</p>
 </div>
 <hr />
 <h2 id="label-y-accesibilidad">🏷️ Label y accesibilidad<a class="headerlink" href="#label-y-accesibilidad" title="Permanent link">&para;</a></h2>
-<p>```html</p>
-<!-- Correcto: label asociado por for/id -->
-<p><label for="email">Email:</label>
-<input type="email" id="email" name="email"></p>
-<!-- Correcto: label envolviendo el input -->
-<p><label>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Correcto: label asociado por for/id --&gt;</span>
+<span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Correcto: label envolviendo el input --&gt;</span>
+<span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
   Email:
-  <input type="email" name="email">
-</label></p>
-<!-- Incorrecto: sin label -->
-<p><input type="email" placeholder="Email">
-```</p>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Incorrecto: sin label --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Email"</span><span class="p">&gt;</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">El placeholder NO sustituye al label</p>
 <p>El placeholder desaparece al escribir y no es leído por todos los lectores de pantalla. Siempre usa un `<label>` visible.</p>
@@ -7207,62 +7206,59 @@
 <hr />
 <h2 id="validacion-nativa">✅ Validación nativa<a class="headerlink" href="#validacion-nativa" title="Permanent link">&para;</a></h2>
 <p>HTML5 incluye validación sin JavaScript:</p>
-<p>```html
-<input type="email" required>                     <!-- obligatorio -->
-<input type="text" minlength="3" maxlength="20"> <!-- longitud -->
-<input type="number" min="1" max="100">         <!-- rango -->
-<input type="text" pattern="[A-Za-z]+">          <!-- regex -->
-<input type="url">                                <!-- URL válida -->
-```</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>                     <span class="cm">&lt;!-- obligatorio --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"3"</span> <span class="na">maxlength</span><span class="o">=</span><span class="s">"20"</span><span class="p">&gt;</span> <span class="cm">&lt;!-- longitud --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">min</span><span class="o">=</span><span class="s">"1"</span> <span class="na">max</span><span class="o">=</span><span class="s">"100"</span><span class="p">&gt;</span>         <span class="cm">&lt;!-- rango --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">pattern</span><span class="o">=</span><span class="s">"[A-Za-z]+"</span><span class="p">&gt;</span>          <span class="cm">&lt;!-- regex --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"url"</span><span class="p">&gt;</span>                                <span class="cm">&lt;!-- URL válida --&gt;</span>
+</code></pre></div>
 <p>Cuando el usuario envía el formulario, el navegador valida y muestra un mensaje si algo falla.</p>
 <div class="admonition tip">
 <p class="admonition-title">Personalizar mensajes</p>
 <p>Puedes cambiar los mensajes con JavaScript usando la <strong>Constraint Validation API</strong>:</p>
-<p>```javascript
-input.setCustomValidity('Este campo no es válido');
-```</p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="s1">'Este campo no es válido'</span><span class="p">);</span>
+</code></pre></div>
 </div>
 <hr />
 <h2 id="ejemplo-completo">📋 Ejemplo completo<a class="headerlink" href="#ejemplo-completo" title="Permanent link">&para;</a></h2>
-<p>```html</p>
-<form action="/registro" method="POST">
-  <fieldset>
-    <legend>Datos personales</legend>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/registro"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;</span>Datos personales<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
 
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required minlength="2">
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"2"</span><span class="p">&gt;</span>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required minlength="8">
-  </fieldset>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"password"</span><span class="p">&gt;</span>Contraseña:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span> <span class="na">id</span><span class="o">=</span><span class="s">"password"</span> <span class="na">name</span><span class="o">=</span><span class="s">"password"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
 
-  <fieldset>
-    <legend>Preferencias</legend>
+  <span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;</span>Preferencias<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
 
-    <label>
-      <input type="checkbox" name="newsletter" checked>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">name</span><span class="o">=</span><span class="s">"newsletter"</span> <span class="na">checked</span><span class="p">&gt;</span>
       Recibir newsletter
-    </label>
+    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 
-    <p>Plan:</p>
-    <label><input type="radio" name="plan" value="free" checked> Gratis</label>
-    <label><input type="radio" name="plan" value="pro"> Pro</label>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Plan:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">name</span><span class="o">=</span><span class="s">"plan"</span> <span class="na">value</span><span class="o">=</span><span class="s">"free"</span> <span class="na">checked</span><span class="p">&gt;</span> Gratis<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">name</span><span class="o">=</span><span class="s">"plan"</span> <span class="na">value</span><span class="o">=</span><span class="s">"pro"</span><span class="p">&gt;</span> Pro<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 
-    <label for="pais">País:</label>
-    <select id="pais" name="pais">
-      <option value="es">España</option>
-      <option value="mx">México</option>
-      <option value="ar">Argentina</option>
-    </select>
-  </fieldset>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"pais"</span><span class="p">&gt;</span>País:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">"pais"</span> <span class="na">name</span><span class="o">=</span><span class="s">"pais"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>España<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"mx"</span><span class="p">&gt;</span>México<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"ar"</span><span class="p">&gt;</span>Argentina<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
 
-  <button type="submit">Registrarse</button>
-  <button type="reset">Limpiar</button>
-</form>
-<p>```</p>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Registrarse<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"reset"</span><span class="p">&gt;</span>Limpiar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr />
 <h2 id="buenas-practicas">🎯 Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h2>
 <ul>
