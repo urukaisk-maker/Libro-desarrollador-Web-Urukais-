@@ -42,14 +42,14 @@ Los **cuatro principios** de WCAG (POUR):
 El HTML semántico es la base de la accesibilidad. Los lectores de pantalla lo entienden.
 
 ```html
-<!-- Correcto -->
-<button onclick="enviar()">Enviar</button>
-<nav><a href="/inicio">Inicio</a></nav>
-<main><h1>Título</h1></main>
+&lt;!-- Correcto --&gt;
+&lt;button onclick="enviar()"&gt;Enviar&lt;/button&gt;
+&lt;nav&gt;&lt;a href="/inicio"&gt;Inicio&lt;/a&gt;&lt;/nav&gt;
+&lt;main&gt;&lt;h1&gt;Título&lt;/h1&gt;&lt;/main&gt;
 
-<!-- Incorrecto -->
-<div onclick="enviar()">Enviar</div>
-<div class="nav"><a href="/inicio">Inicio</a></div>
+&lt;!-- Incorrecto --&gt;
+&lt;div onclick="enviar()"&gt;Enviar&lt;/div&gt;
+&lt;div class="nav"&gt;&lt;a href="/inicio"&gt;Inicio&lt;/a&gt;&lt;/div&gt;
 ```
 
 !!! warning "Un div no es un botón"
@@ -62,9 +62,9 @@ El HTML semántico es la base de la accesibilidad. Los lectores de pantalla lo e
 **ARIA** (*Accessible Rich Internet Applications*) son atributos que añaden semántica a elementos que HTML no cubre.
 
 ```html
-<div role="alert">Error: contraseña incorrecta</div>
-<button aria-label="Cerrar menú">✕</button>
-<nav aria-label="Navegación principal">...</nav>
+&lt;div role="alert"&gt;Error: contraseña incorrecta&lt;/div&gt;
+&lt;button aria-label="Cerrar menú"&gt;✕&lt;/button&gt;
+&lt;nav aria-label="Navegación principal"&gt;...&lt;/nav&gt;
 ```
 
 !!! warning "Regla de oro de ARIA"
@@ -110,10 +110,10 @@ Herramientas para comprobarlo:
 ## 📝 Formularios accesibles
 
 ```html
-<label for="email">Email:</label>
-<input type="email" id="email" name="email" required
-       aria-describedby="email-error">
-<small id="email-error" class="error">Introduce un email válido</small>
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required
+       aria-describedby="email-error"&gt;
+&lt;small id="email-error" class="error"&gt;Introduce un email válido&lt;/small&gt;
 ```
 
 Buenas prácticas:
@@ -132,17 +132,17 @@ Buenas prácticas:
 ## 🖼️ Imágenes y multimedia
 
 ```html
-<!-- Imagen informativa -->
-<img src="grafico.png" alt="Ventas del trimestre: 40% en enero, 35% en febrero, 25% en marzo">
+&lt;!-- Imagen informativa --&gt;
+&lt;img src="grafico.png" alt="Ventas del trimestre: 40% en enero, 35% en febrero, 25% en marzo"&gt;
 
-<!-- Imagen decorativa -->
-<img src="decoracion.png" alt="">
+&lt;!-- Imagen decorativa --&gt;
+&lt;img src="decoracion.png" alt=""&gt;
 
-<!-- Vídeo con subtítulos -->
-<video controls>
-  <source src="video.mp4" type="video/mp4">
-  <track kind="captions" src="subtitulos.vtt" srclang="es" label="Español">
-</video>
+&lt;!-- Vídeo con subtítulos --&gt;
+&lt;video controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;track kind="captions" src="subtitulos.vtt" srclang="es" label="Español"&gt;
+&lt;/video&gt;
 ```
 
 !!! tip "El alt correcto"

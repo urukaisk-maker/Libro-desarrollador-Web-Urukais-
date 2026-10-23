@@ -114,15 +114,15 @@ renderer.setAnimationLoop(animar);
 **A-Frame** es un framework de Mozilla para crear experiencias VR/AR con HTML declarativo. Ideal para prototipos rápidos.
 
 ```html
-<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+&lt;script src="https://aframe.io/releases/1.5.0/aframe.min.js"&gt;&lt;/script&gt;
 
-<a-scene>
-  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#6a5acd"></a-box>
-  <a-sphere position="0 1.25 -5" radius="1.25" color="#00bcd4"></a-sphere>
-  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#ffc65d"></a-cylinder>
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7bc8a4"></a-plane>
-  <a-sky color="#1a1726"></a-sky>
-</a-scene>
+&lt;a-scene&gt;
+  &lt;a-box position="-1 0.5 -3" rotation="0 45 0" color="#6a5acd"&gt;&lt;/a-box&gt;
+  &lt;a-sphere position="0 1.25 -5" radius="1.25" color="#00bcd4"&gt;&lt;/a-sphere&gt;
+  &lt;a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#ffc65d"&gt;&lt;/a-cylinder&gt;
+  &lt;a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7bc8a4"&gt;&lt;/a-plane&gt;
+  &lt;a-sky color="#1a1726"&gt;&lt;/a-sky&gt;
+&lt;/a-scene&gt;
 ```
 
 !!! tip "A-Frame vs Three.js"

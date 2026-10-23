@@ -35,10 +35,10 @@ Una vulnerabilidad puede costar **millones de euros**, destruir la reputación d
 Ocurre cuando un atacante inyecta **JavaScript** en tu web, que se ejecuta en el navegador de otros usuarios.
 
 ```html
-<!-- Vulnerable: el input se renderiza sin escapar -->
-<div>Hola, <?php echo $_GET["nombre"]; ?></div>
+&lt;!-- Vulnerable: el input se renderiza sin escapar --&gt;
+&lt;div&gt;Hola, &lt;?php echo $_GET["nombre"]; ?&gt;&lt;/div&gt;
 
-<!-- Ataque: ?nombre=<script>alert("XSS")</script> -->
+&lt;!-- Ataque: ?nombre=&lt;script&gt;alert("XSS")&lt;/script&gt; --&gt;
 ```
 
 ### Cómo prevenirlo
@@ -69,10 +69,10 @@ Ocurre cuando un atacante hace que el navegador de un usuario autenticado ejecut
 ### Cómo prevenirlo
 
 ```html
-<form method="POST" action="/cambiar-password">
-  <input type="hidden" name="csrf_token" value="token-único">
-  <!-- ... -->
-</form>
+&lt;form method="POST" action="/cambiar-password"&gt;
+  &lt;input type="hidden" name="csrf_token" value="token-único"&gt;
+  &lt;!-- ... --&gt;
+&lt;/form&gt;
 ```
 
 ```javascript

@@ -23,7 +23,7 @@ customElements.define("mi-boton", MiBoton);
 ```
 
 ```html
-<mi-boton>Haz clic</mi-boton>
+&lt;mi-boton&gt;Haz clic&lt;/mi-boton&gt;
 ```
 
 !!! quote "Componentes sin framework"
@@ -52,8 +52,8 @@ customElements.define("user-card", UserCard);
 ```
 
 ```html
-<user-card nombre="Ana"></user-card>
-<user-card nombre="Luis"></user-card>
+&lt;user-card nombre="Ana"&gt;&lt;/user-card&gt;
+&lt;user-card nombre="Luis"&gt;&lt;/user-card&gt;
 ```
 
 ---
@@ -87,7 +87,7 @@ customElements.define("mi-tarjeta", MiTarjeta);
 ```
 
 ```html
-<mi-tarjeta>Contenido dentro del slot</mi-tarjeta>
+&lt;mi-tarjeta&gt;Contenido dentro del slot&lt;/mi-tarjeta&gt;
 ```
 
 !!! tip "Ventajas del Shadow DOM"
@@ -134,14 +134,14 @@ class MiComponente extends HTMLElement {
 Los **templates** permiten definir markup que no se renderiza hasta que se clona.
 
 ```html
-<template id="mi-template">
-  <style>
+&lt;template id="mi-template"&gt;
+  &lt;style&gt;
     .card { padding: 1rem; background: #6a5acd; color: white; }
-  </style>
-  <div class="card">
-    <h3>Tarjeta</h3>
-  </div>
-</template>
+  &lt;/style&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;Tarjeta&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 ```
 
 ```javascript
@@ -163,17 +163,17 @@ customElements.define("mi-tarjeta", MiTarjeta);
 Los **slots** permiten inyectar contenido desde fuera del componente.
 
 ```html
-<template id="card-template">
-  <div class="card">
-    <header><slot name="titulo">Título por defecto</slot></header>
-    <main><slot>Contenido por defecto</slot></main>
-  </div>
-</template>
+&lt;template id="card-template"&gt;
+  &lt;div class="card"&gt;
+    &lt;header&gt;&lt;slot name="titulo"&gt;Título por defecto&lt;/slot&gt;&lt;/header&gt;
+    &lt;main&gt;&lt;slot&gt;Contenido por defecto&lt;/slot&gt;&lt;/main&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<mi-card>
-  <span slot="titulo">Mi título</span>
-  <p>Contenido personalizado</p>
-</mi-card>
+&lt;mi-card&gt;
+  &lt;span slot="titulo"&gt;Mi título&lt;/span&gt;
+  &lt;p&gt;Contenido personalizado&lt;/p&gt;
+&lt;/mi-card&gt;
 ```
 
 ---

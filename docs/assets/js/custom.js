@@ -126,53 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// LÓGICA DE QUIZZES INTERACTIVOS
-// ============================================
-document.addEventListener('click', (e) => {
-  // Verificar si se ha hecho clic en una opción del quiz
-  if (e.target.classList.contains('quiz-option')) {
-    const btn = e.target;
-    const container = btn.closest('.quiz-container');
-    
-    // Evitar doble clic si ya se respondió
-    if (container.dataset.answered === 'true') return;
-    container.dataset.answered = 'true';
-
-    const correcta = container.getAttribute('data-correct');
-    const feedback = container.querySelector('.quiz-feedback');
-    const opciones = container.querySelectorAll('.quiz-option');
-
-    // Deshabilitar todos los botones visualmente
-    opciones.forEach(op => {
-      op.style.pointerEvents = 'none';
-      op.style.opacity = '0.7';
-    });
-
-    // Comprobar respuesta
-    const seleccionada = btn.getAttribute('data-option');
-
-    if (seleccionada === correcta) {
-      btn.classList.add('correct');
-      btn.style.opacity = '1';
-      feedback.innerHTML = '✅ ¡Respuesta correcta! Puedes marcar el capítulo como completado.';
-      feedback.style.color = '#16a34a';
-    } else {
-      btn.classList.add('incorrect');
-      btn.style.opacity = '1';
-      feedback.innerHTML = '❌ Incorrecto. Inténtalo en el siguiente capítulo.';
-      feedback.style.color = '#dc2626';
-      
-      // Mostrar cuál era la correcta
-      const btnCorrecto = container.querySelector(`[data-option="${correcta}"]`);
-      if (btnCorrecto) {
-        btnCorrecto.classList.add('correct');
-        btnCorrecto.style.opacity = '1';
-      }
-    }
-  }
-});
-
-// ============================================
 // ANIMACIONES DE SCROLL (FADE-IN)
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -202,170 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-  const calendarEl = document.getElementById('calendar');
-  if (!calendarEl || typeof FullCalendar === 'undefined') return;
-
-  // Eventos oficiales del libro
-  const eventosOficiales = [
-    { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
-    { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
-    { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
-    { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
-    { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
-    { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
-    { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
-    { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
-  ];
-
-  // Cargar eventos guardados por el usuario
-  let eventosUsuario = JSON.parse(localStorage.getItem('mis_eventos_urukais') || '[]');
-
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    locale: 'es',
-    selectable: true,
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,listWeek'
-    },
-    buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista' },
-    events: [...eventosOficiales, ...eventosUsuario],
-
-    // Añadir evento al hacer clic en un día
-    dateClick: (info) => {
-      const titulo = prompt(`📌 Añadir evento para el ${info.dateStr}:\n(Escribe el título o deja vacío para cancelar)`);
-      if (!titulo || titulo.trim() === '') return;
-
-      const nuevoEvento = {
-        id: 'user_' + Date.now(),
-        title: '📌 ' + titulo.trim(),
-        start: info.dateStr,
-        color: '#16a34a',
-        allDay: true
-      };
-
-      eventosUsuario.push(nuevoEvento);
-      localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
-      calendar.addEvent(nuevoEvento);
-    },
-
-    // Eliminar evento al hacer clic (solo los del usuario)
-    eventClick: (info) => {
-      const id = info.event.id;
-      if (id && id.startsWith('user_')) {
-        if (confirm(`¿Eliminar "${info.event.title}"?`)) {
-          info.event.remove();
-          eventosUsuario = eventosUsuario.filter(e => e.id !== id);
-          localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
-        }
-      } else {
-        alert(`${info.event.title}\n📅 ${info.event.startStr}`);
-      }
-    }
-  });
-
-  calendar.render();
-
-  // Botón para limpiar todos los eventos del usuario
-  const btnClear = document.getElementById('clearEvents');
-  if (btnClear) {
-    btnClear.addEventListener('click', () => {
-      if (confirm('¿Seguro que quieres borrar todos tus eventos?')) {
-        localStorage.removeItem('mis_eventos_urukais');
-        eventosUsuario = [];
-        calendar.getEvents().forEach(e => {
-          if (e.id && e.id.startsWith('user_')) e.remove();
-        });
-      }
-    });
-  }
-});// ============================================
-// CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-  const calendarEl = document.getElementById('calendar');
-  if (!calendarEl || typeof FullCalendar === 'undefined') return;
-
-  // Eventos oficiales del libro
-  const eventosOficiales = [
-    { title: 'Taller: Tu primer portfolio', date: '2026-11-15', color: '#a78bfa' },
-    { title: 'Directo: Entrevistas técnicas', date: '2026-12-20', color: '#22d3ee' },
-    { title: 'Charla: Introducción', date: '2026-10-01', color: '#16a34a' },
-    { title: 'Reto Semanal #1', date: '2026-10-18', color: '#f59e0b' },
-    { title: 'Reto Semanal #2', date: '2026-10-25', color: '#f59e0b' },
-    { title: 'Reto Semanal #3', date: '2026-11-01', color: '#f59e0b' },
-    { title: 'Reto Semanal #4', date: '2026-11-08', color: '#f59e0b' },
-    { title: 'Reto Semanal #5', date: '2026-11-15', color: '#f59e0b' }
-  ];
-
-  // Cargar eventos guardados por el usuario
-  let eventosUsuario = JSON.parse(localStorage.getItem('mis_eventos_urukais') || '[]');
-
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    locale: 'es',
-    selectable: true,
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,listWeek'
-    },
-    buttonText: { today: 'Hoy', month: 'Mes', week: 'Semana', list: 'Lista' },
-    events: [...eventosOficiales, ...eventosUsuario],
-
-    // Añadir evento al hacer clic en un día
-    dateClick: (info) => {
-      const titulo = prompt(`📌 Añadir evento para el ${info.dateStr}:\n(Escribe el título o deja vacío para cancelar)`);
-      if (!titulo || titulo.trim() === '') return;
-
-      const nuevoEvento = {
-        id: 'user_' + Date.now(),
-        title: '📌 ' + titulo.trim(),
-        start: info.dateStr,
-        color: '#16a34a',
-        allDay: true
-      };
-
-      eventosUsuario.push(nuevoEvento);
-      localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
-      calendar.addEvent(nuevoEvento);
-    },
-
-    // Eliminar evento al hacer clic (solo los del usuario)
-    eventClick: (info) => {
-      const id = info.event.id;
-      if (id && id.startsWith('user_')) {
-        if (confirm(`¿Eliminar "${info.event.title}"?`)) {
-          info.event.remove();
-          eventosUsuario = eventosUsuario.filter(e => e.id !== id);
-          localStorage.setItem('mis_eventos_urukais', JSON.stringify(eventosUsuario));
-        }
-      } else {
-        alert(`${info.event.title}\n📅 ${info.event.startStr}`);
-      }
-    }
-  });
-
-  calendar.render();
-
-  // Botón para limpiar todos los eventos del usuario
-  const btnClear = document.getElementById('clearEvents');
-  if (btnClear) {
-    btnClear.addEventListener('click', () => {
-      if (confirm('¿Seguro que quieres borrar todos tus eventos?')) {
-        localStorage.removeItem('mis_eventos_urukais');
-        eventosUsuario = [];
-        calendar.getEvents().forEach(e => {
-          if (e.id && e.id.startsWith('user_')) e.remove();
-        });
-      }
-    });
-  }
-});// ============================================
 // CALENDARIO (FULLCALENDAR) - CON EVENTOS LOCALES
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -631,3 +420,132 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+// ===== Quiz interactivo =====
+(function () {
+  function initQuiz() {
+    document.querySelectorAll('.quiz').forEach(function (quiz) {
+      quiz.querySelectorAll('.quiz-question').forEach(function (q) {
+        var answer = q.dataset.answer;
+        if (!answer) return;
+
+        q.querySelectorAll('.quiz-option').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            if (q.dataset.done) return;
+            var chosen = btn.dataset.opt;
+            if (chosen === answer) {
+              btn.classList.add('is-correct');
+              q.dataset.done = '1';
+            } else {
+              btn.classList.add('is-wrong');
+            }
+          });
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuiz);
+  } else {
+    initQuiz();
+  }
+})();
+
+
+// Estado global
+let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+let filtroActual = 'todas';
+
+// Guardar en localStorage
+function guardar() {
+  localStorage.setItem('tareas', JSON.stringify(tareas));
+}
+
+// Renderizar la lista según el filtro
+function render() {
+  const lista = document.getElementById('lista-tareas');
+  const contador = document.getElementById('contador');
+  lista.innerHTML = '';
+
+  const filtradas = tareas.filter(t => {
+    if (filtroActual === 'pendientes') return !t.completada;
+    if (filtroActual === 'completadas') return t.completada;
+    return true;
+  });
+
+  filtradas.forEach(tarea => {
+    const li = document.createElement('li');
+    li.className = tarea.completada ? 'tarea tarea--completada' : 'tarea';
+    li.dataset.id = tarea.id;
+
+    li.innerHTML = `
+      <input type="checkbox" ${tarea.completada ? 'checked' : ''}>
+      <span>${tarea.texto}</span>
+      <button class="btn-eliminar" aria-label="Eliminar">🗑️</button>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  const pendientes = tareas.filter(t => !t.completada).length;
+  contador.textContent = `Te quedan ${pendientes} tarea${pendientes === 1 ? '' : 's'}`;
+}
+
+// Añadir tarea
+document.getElementById('form-tarea').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('input-tarea');
+  const texto = input.value.trim();
+  if (!texto) return;
+
+  tareas.push({ id: Date.now(), texto, completada: false });
+  input.value = '';
+  guardar();
+  render();
+});
+
+// Delegación de eventos en la lista
+document.getElementById('lista-tareas').addEventListener('click', e => {
+  const li = e.target.closest('li');
+  if (!li) return;
+  const id = Number(li.dataset.id);
+
+  if (e.target.matches('input[type="checkbox"]')) {
+    const tarea = tareas.find(t => t.id === id);
+    tarea.completada = !tarea.completada;
+    guardar();
+    render();
+  }
+
+  if (e.target.matches('.btn-eliminar')) {
+    tareas = tareas.filter(t => t.id !== id);
+    guardar();
+    render();
+  }
+});
+
+// Cambiar filtro
+document.querySelectorAll('[data-filtro]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-filtro]').forEach(b => b.classList.remove('activo'));
+    btn.classList.add('activo');
+    filtroActual = btn.dataset.filtro;
+    render();
+  });
+});
+
+// Modo oscuro
+const root = document.documentElement;
+const temaGuardado = localStorage.getItem('tema') || 'light';
+root.dataset.theme = temaGuardado;
+
+document.getElementById('toggle-theme').addEventListener('click', () => {
+  const nuevo = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.dataset.theme = nuevo;
+  localStorage.setItem('tema', nuevo);
+});
+
+// Render inicial
+render();

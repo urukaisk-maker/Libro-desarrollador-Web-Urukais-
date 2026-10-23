@@ -200,6 +200,9 @@ git push origin v1.0.0
 <button class="quiz-option" data-opt="c">C) Empaqueta la app y sus dependencias en un contenedor</button>
 </div>
 </div>
+<div class="chapter-complete-wrapper">
+  <button class="chapter-complete-btn" data-chapter="N">✅ He completado este capítulo</button>
+</div>
 
 ---
 

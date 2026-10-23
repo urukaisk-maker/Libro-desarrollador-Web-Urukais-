@@ -45,7 +45,7 @@ https://pagespeed.web.dev/
 Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que más impacto tiene.
 
 ```html
-<img
+&lt;img
   src="foto-800.webp"
   srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
   sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
@@ -54,7 +54,7 @@ Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que
   decoding="async"
   width="800"
   height="600"
->
+&gt;
 ```
 
 ### Formatos modernos
@@ -100,8 +100,8 @@ Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que
 - **Evita `@import`** en CSS: bloquea la carga en cascada.
 
 ```html
-<link rel="stylesheet" href="/styles.css" media="print" onload="this.media=\x27all\x27">
-<noscript><link rel="stylesheet" href="/styles.css"></noscript>
+&lt;link rel="stylesheet" href="/styles.css" media="print" onload="this.media=\x27all\x27"&gt;
+&lt;noscript&gt;&lt;link rel="stylesheet" href="/styles.css"&gt;&lt;/noscript&gt;
 ```
 
 ---
@@ -115,7 +115,7 @@ Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que
 - **Evita librerías enormes** para cosas pequeñas (moment.js → date-fns, lodash → lodash-es).
 
 ```html
-<script src="/app.js" defer></script>
+&lt;script src="/app.js" defer&gt;&lt;/script&gt;
 ```
 
 - **`defer`**: descarga en paralelo y ejecuta después de parsear el HTML (en orden).
@@ -128,19 +128,19 @@ Las imágenes son el **60% del peso** de una web típica. Optimizarlas es lo que
 Carga recursos **solo cuando se necesitan**, no antes.
 
 ```html
-<!-- Imágenes -->
-<img src="foto.jpg" alt="Descripción" loading="lazy">
+&lt;!-- Imágenes --&gt;
+&lt;img src="foto.jpg" alt="Descripción" loading="lazy"&gt;
 
-<!-- Iframes (vídeos, mapas) -->
-<iframe src="https://youtube.com/embed/..." loading="lazy"></iframe>
+&lt;!-- Iframes (vídeos, mapas) --&gt;
+&lt;iframe src="https://youtube.com/embed/..." loading="lazy"&gt;&lt;/iframe&gt;
 
-<!-- Componentes JS -->
-<script>
-  document.getElementById("btn").addEventListener("click", async () => {
+&lt;!-- Componentes JS --&gt;
+&lt;script&gt;
+  document.getElementById("btn").addEventListener("click", async () =&gt; {
     const { abrirModal } = await import("./modal.js");
     abrirModal();
   });
-</script>
+&lt;/script&gt;
 ```
 
 ---
@@ -156,9 +156,9 @@ Carga recursos **solo cuando se necesitan**, no antes.
 | **CDN** | Sirve assets desde el servidor más cercano al usuario |
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="prefetch" href="/proxima-pagina.html">
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="prefetch" href="/proxima-pagina.html"&gt;
 ```
 
 ---

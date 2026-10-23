@@ -43,8 +43,8 @@ El **manifest** es un archivo JSON que le dice al navegador cómo instalar la ap
 ```
 
 ```html
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#6a5acd">
+&lt;link rel="manifest" href="/manifest.json"&gt;
+&lt;meta name="theme-color" content="#6a5acd"&gt;
 ```
 
 ### Propiedades clave

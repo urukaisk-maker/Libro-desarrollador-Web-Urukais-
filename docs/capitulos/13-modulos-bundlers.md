@@ -53,7 +53,7 @@ import * as modulo from "./modulo.js";
 ### En HTML
 
 ```html
-<script type="module" src="app.js"></script>
+&lt;script type="module" src="app.js"&gt;&lt;/script&gt;
 ```
 
 !!! warning "Los módulos tienen scope propio"

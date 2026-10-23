@@ -92,13 +92,13 @@ Esto genera una carpeta `pkg/` con el `.wasm` y los bindings de JavaScript.
 ## 🔗 Integrar con JavaScript
 
 ```html
-<script type="module">
+&lt;script type="module"&gt;
   import init, { sumar, fibonacci } from "./pkg/mi_wasm.js";
 
   await init();
   console.log(sumar(2, 3));      // 5
   console.log(fibonacci(40));    // 102334155 (rápido)
-</script>
+&lt;/script&gt;
 ```
 
 !!! tip "async init"

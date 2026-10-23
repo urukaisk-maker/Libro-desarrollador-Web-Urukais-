@@ -11,40 +11,35 @@
 
 ## ⚡ ¿Qué es JavaScript?
 
-**JavaScript** es el lenguaje de programación que da **comportamiento** a la web. Es el único lenguaje que entienden todos los navegadores, y hoy también se usa en el servidor (Node.js), en apps móviles (React Native) y en el escritorio (Electron).
+**JavaScript** es el lenguaje de programación que da **comportamiento** a la web.
 
 \`\`\`javascript
 console.log('Hola, mundo');
 \`\`\`
 
 !!! tip "JavaScript no es Java"
-    Aunque se llamen parecido, **JavaScript y Java son lenguajes completamente distintos**. Es una confusión histórica que se arrastra desde los años 90.
+    Aunque se llamen parecido, **JavaScript y Java son lenguajes completamente distintos**.
 
 ---
 
 ## 📦 Variables y tipos
 
 \`\`\`javascript
-// Variables
-const nombre = 'Ana';   // no se puede reasignar
-let edad = 30;          // se puede reasignar
-
-// Tipos primitivos
-const texto = 'hola';        // string
-const numero = 42;           // number
-const booleano = true;       // boolean
-const nulo = null;           // null
-const indefinido = undefined; // undefined
+const nombre = 'Ana';
+let edad = 30;
+const texto = 'hola';
+const numero = 42;
+const booleano = true;
 \`\`\`
 
 | Tipo | Ejemplo |
 | :--- | :--- |
-| string | 'hola', "mundo" |
-| number | 42, 3.14 |
-| boolean | true, false |
+| string | 'hola' |
+| number | 42 |
+| boolean | true |
 | null | null |
 | undefined | undefined |
-| object | {}, [], new Date() |
+| object | {} |
 | function | function() {} |
 
 ---
@@ -52,50 +47,39 @@ const indefinido = undefined; // undefined
 ## 🧮 Operadores
 
 \`\`\`javascript
-// Aritméticos
 5 + 3;   // 8
 5 - 3;   // 2
 5 * 3;   // 15
 5 / 3;   // 1.666…
-5 % 3;   // 2 (módulo)
-5 ** 3;  // 125 (potencia)
+5 % 3;   // 2
+5 ** 3;  // 125
 
-// Comparación
-5 == '5';    // true (coerción)
-5 === '5';   // false (estricta)
+5 == '5';    // true
+5 === '5';   // false
 
-// Lógicos
-true && false;   // false (AND)
-true || false;   // true (OR)
-!true;           // false (NOT)
+true && false;   // false
+true || false;   // true
+!true;           // false
 
-// Ternario
 const edad = 20;
 const tipo = edad >= 18 ? 'adulto' : 'menor';
 \`\`\`
-
-!!! warning "Usa === siempre"
-    == hace coerción de tipos, lo que puede dar resultados inesperados. === compara valor y tipo.
 
 ---
 
 ## 🔧 Funciones
 
 \`\`\`javascript
-// Declaración
 function sumar(a, b) {
   return a + b;
 }
 
-// Expresión
 const restar = function(a, b) {
   return a - b;
 };
 
-// Arrow function
 const multiplicar = (a, b) => a * b;
 
-// Parámetros por defecto
 function saludar(nombre = 'mundo') {
   return 'Hola, ' + nombre;
 }
@@ -106,7 +90,6 @@ function saludar(nombre = 'mundo') {
 ## 🔁 Estructuras de control
 
 \`\`\`javascript
-// if / else
 const edad = 20;
 if (edad >= 18) {
   console.log('Eres mayor de edad');
@@ -114,20 +97,11 @@ if (edad >= 18) {
   console.log('Eres menor');
 }
 
-// for
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 
-// forEach
 [1, 2, 3].forEach(n => console.log(n));
-
-// while
-let i = 0;
-while (i < 5) {
-  console.log(i);
-  i++;
-}
 \`\`\`
 
 ---
@@ -137,20 +111,14 @@ while (i < 5) {
 \`\`\`javascript
 const arr = [1, 2, 3, 4, 5];
 
-// Métodos básicos
-arr.push(6);        // añade al final
-arr.pop();          // quita el último
-arr.length;         // longitud
+arr.push(6);
+arr.pop();
+arr.length;
 
-// Iteración
-arr.forEach(n => console.log(n));
-
-// Transformación
 const dobles = arr.map(n => n * 2);
 const pares = arr.filter(n => n % 2 === 0);
 const suma = arr.reduce((acc, n) => acc + n, 0);
 
-// Búsqueda
 arr.find(n => n > 3);
 arr.includes(3);
 \`\`\`
@@ -159,32 +127,17 @@ arr.includes(3);
 
 ## 🏠 El DOM
 
-El **DOM** (*Document Object Model*) es la representación en memoria del HTML. JavaScript puede leerlo y modificarlo.
-
 \`\`\`javascript
-// Seleccionar elementos
 const titulo = document.querySelector('h1');
-const botones = document.querySelectorAll('.boton');
-
-// Modificar
 titulo.textContent = 'Nuevo título';
-titulo.innerHTML = '<strong>Nuevo</strong> título';
 titulo.classList.add('activo');
-titulo.style.color = 'red';
 
-// Crear elementos
 const parrafo = document.createElement('p');
 parrafo.textContent = 'Hola';
 document.body.appendChild(parrafo);
 
-// Eliminar
 parrafo.remove();
 \`\`\`
-
-!!! tip "textContent vs innerHTML"
-    - textContent escribe **texto plano** (seguro).
-    - innerHTML interpreta **HTML** (peligroso si viene del usuario).
-    Siempre que puedas, usa textContent.
 
 ---
 
@@ -197,10 +150,9 @@ boton.addEventListener('click', (event) => {
   console.log('Se hizo clic', event.target);
 });
 
-// Formulario
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
-  e.preventDefault(); // evita el envío
+  e.preventDefault();
   console.log('Formulario enviado');
 });
 \`\`\`
@@ -219,9 +171,54 @@ form.addEventListener('submit', (e) => {
 
 ## 🧠 Pon a prueba tus conocimientos
 
+<style>
+.quiz {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.25rem !important;
+  border: 2px solid #6a5acd !important;
+  border-radius: 10px !important;
+  background: #f8f7fb !important;
+}
+.quiz-question {
+  margin-bottom: 1.5rem !important;
+}
+.quiz-question p {
+  margin-bottom: .75rem !important;
+  font-weight: 500 !important;
+}
+.quiz-option {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  margin: .35rem 0 !important;
+  padding: .6rem .9rem !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  background: #fff !important;
+  color: #333 !important;
+  font-size: .85rem !important;
+}
+.quiz-option:hover {
+  border-color: #6a5acd !important;
+  background: #f0eef8 !important;
+}
+.quiz-option.is-correct {
+  background: #d4edda !important;
+  border-color: #28a745 !important;
+  color: #155724 !important;
+  font-weight: 600 !important;
+}
+.quiz-option.is-wrong {
+  background: #f8d7da !important;
+  border-color: #dc3545 !important;
+  color: #721c24 !important;
+}
+</style>
+
 <div class="quiz" data-quiz="capitulo-4">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué diferencia hay entre let y const?</p>
+<p><strong>1.</strong> ¿Qué diferencia hay entre <code>let</code> y <code>const</code>?</p>
 <button class="quiz-option" data-opt="a">A) let es para números, const para texto</button>
 <button class="quiz-option" data-opt="b">B) const no se puede reasignar, let sí</button>
 <button class="quiz-option" data-opt="c">C) No hay diferencia</button>
@@ -247,7 +244,6 @@ form.addEventListener('submit', (e) => {
 <div class="share-buttons">
 <a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%204%3A%20JavaScript%20esencial&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%204%3A%20JavaScript%20esencial%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F04-javascript%2F" target="_blank" rel="noopener">WhatsApp</a>
 <button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/04-javascript/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
 
