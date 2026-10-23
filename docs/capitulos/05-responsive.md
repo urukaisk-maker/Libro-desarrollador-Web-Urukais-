@@ -394,3 +394,39 @@ Crea tantas columnas como quepan (mínimo 250px). **Cero media queries**.
 ---
 
 ➡️ Siguiente capítulo: [06 — Formularios](06-formularios.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-5">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué metaetiqueta es imprescindible para el responsive?</p>
+<button class="quiz-option" data-opt="a">A) meta charset</button>
+<button class="quiz-option" data-opt="b">B) meta viewport</button>
+<button class="quiz-option" data-opt="c">C) meta description</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Qué hace clamp(1rem, 4vw, 3rem)?</p>
+<button class="quiz-option" data-opt="a">A) Fija el tamaño en 1rem</button>
+<button class="quiz-option" data-opt="b">B) Escala entre 1rem y 3rem</button>
+<button class="quiz-option" data-opt="c">C) Elimina el tamaño</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué significa mobile-first?</p>
+<button class="quiz-option" data-opt="a">A) Diseñar primero para móvil</button>
+<button class="quiz-option" data-opt="b">B) Diseñar primero para escritorio</button>
+<button class="quiz-option" data-opt="c">C) Diseñar solo para móvil</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%205%3A%20Dise%C3%B1o%20responsive&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F05-responsive%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F05-responsive%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/05-responsive/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
