@@ -7097,217 +7097,368 @@
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
-<li>Qué es Web3 y por qué genera tanto debate.</li>
-<li>Blockchain: qué es y cómo funciona.</li>
-<li>Wallets y conexión con dApps.</li>
-<li>Smart contracts con Solidity.</li>
-<li>Casos de uso reales y limitaciones.</li>
+<li>Qué es Web3 (y qué <strong>no</strong> es).</li>
+<li>La blockchain como base tecnológica.</li>
+<li>Smart contracts y su papel en las DApps.</li>
+<li>El stack típico: Ethereum, Solidity, ethers.js, IPFS.</li>
+<li>Casos de uso reales, limitaciones y críticas.</li>
 </ul>
 </div>
 <hr />
 <h2 id="que-es-web3">🌐 ¿Qué es Web3?<a class="headerlink" href="#que-es-web3" title="Permanent link">&para;</a></h2>
-<p><strong>Web3</strong> es una visión descentralizada de la web basada en <strong>blockchain</strong>. En lugar de que los datos estén en servidores de empresas (Web2), están distribuidos en una red peer-to-peer.</p>
-<div class="highlight"><pre><span></span><code>Web1 (1990s)  → solo lectura (webs estáticas)
-Web2 (2000s)  → lectura y escritura (redes sociales, apps)
-Web3 (futuro) → lectura, escritura y propiedad (blockchain)
-</code></pre></div>
+<p><strong>Web3</strong> (o Web 3.0) es un conjunto de tecnologías que buscan una web <strong>descentralizada</strong>, donde los datos y la lógica no dependen de una empresa central, sino de una red de nodos que se validan entre sí.</p>
 <div class="admonition quote">
-<p class="admonition-title">Web3 no es solo criptomonedas</p>
-<p>Aunque las criptomonedas son la aplicación más famosa, Web3 también incluye identidad descentralizada, almacenamiento distribuido y gobernanza comunitaria.</p>
+<p class="admonition-title">La analogía del registro público</p>
+<p>Imagina un <strong>libro de cuentas</strong> que no guarda un banco, sino miles de personas a la vez. Cada vez que alguien anota una transacción, todos los demás la verifican y la copian. Si alguien intenta cambiar una línea del pasado, los demás lo detectan porque no coincide con sus copias. Eso es, en esencia, una <strong>blockchain</strong>.</p>
+</div>
+<pre class="mermaid"><code>graph LR
+    U1[Usuario] --&gt; W[Wallet]
+    W --&gt; SC[Smart Contract]
+    SC --&gt; BC[(Blockchain)]
+    BC --&gt; N1[Nodo 1]
+    BC --&gt; N2[Nodo 2]
+    BC --&gt; N3[Nodo 3]</code></pre>
+<hr />
+<h2 id="la-blockchain-como-base">🔗 La blockchain como base<a class="headerlink" href="#la-blockchain-como-base" title="Permanent link">&para;</a></h2>
+<p>Una <strong>blockchain</strong> es una base de datos distribuida, append-only (solo se añade, nunca se borra) y validada por consenso. Cada bloque contiene:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Qué guarda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Transacciones</strong></td>
+<td style="text-align: left;">Las operaciones (transferencias, llamadas a contratos)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hash del bloque anterior</strong></td>
+<td style="text-align: left;">Enlaza con el bloque previo (de ahí "cadena")</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hash propio</strong></td>
+<td style="text-align: left;">Identifica el bloque</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Timestamp</strong></td>
+<td style="text-align: left;">Cuándo se minó</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nonce</strong></td>
+<td style="text-align: left;">Prueba de trabajo (en Proof of Work)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Inmutabilidad práctica</p>
+<p>Una vez que un bloque tiene suficientes confirmaciones (6 en Bitcoin, 12-64 en Ethereum según el caso), cambiarlo requeriría reescribir toda la cadena desde ese punto. Por eso se dice que es <strong>prácticamente inmutable</strong>.</p>
 </div>
 <hr />
-<h2 id="que-es-una-blockchain">⛓️ ¿Qué es una blockchain?<a class="headerlink" href="#que-es-una-blockchain" title="Permanent link">&para;</a></h2>
-<p>Una <strong>blockchain</strong> es un registro distribuido e inmutable de transacciones. Cada bloque contiene un hash del anterior, formando una cadena.</p>
-<div class="highlight"><pre><span></span><code>Bloque 1 → Bloque 2 → Bloque 3 → ...
-   hash       hash       hash
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Característica</th>
-<th style="text-align: left;">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Descentralizada</strong></td>
-<td style="text-align: left;">No hay un servidor central</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Inmutable</strong></td>
-<td style="text-align: left;">Los datos no se pueden modificar</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Transparente</strong></td>
-<td style="text-align: left;">Cualquiera puede ver las transacciones</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Pseudoanónima</strong></td>
-<td style="text-align: left;">Las direcciones no revelan identidad</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="wallets">👛 Wallets<a class="headerlink" href="#wallets" title="Permanent link">&para;</a></h2>
-<p>Una <strong>wallet</strong> es una aplicación que guarda tus claves privadas y te permite interactuar con la blockchain.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Wallet</th>
-<th style="text-align: left;">Tipo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>MetaMask</strong></td>
-<td style="text-align: left;">Extensión de navegador</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Rabby</strong></td>
-<td style="text-align: left;">Extensión de navegador</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>WalletConnect</strong></td>
-<td style="text-align: left;">Móvil, conexión con dApps</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Coinbase Wallet</strong></td>
-<td style="text-align: left;">Móvil + extensión</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Ledger</strong></td>
-<td style="text-align: left;">Hardware</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="c1">// Conectar MetaMask</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">"eth_requestAccounts"</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Conectado:"</span><span class="p">,</span><span class="w"> </span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="smart-contracts">📜 Smart contracts<a class="headerlink" href="#smart-contracts" title="Permanent link">&para;</a></h2>
-<p>Un <strong>smart contract</strong> es un programa que se ejecuta en la blockchain. Una vez desplegado, no se puede modificar.</p>
+<h2 id="smart-contracts">🏛 Smart Contracts<a class="headerlink" href="#smart-contracts" title="Permanent link">&para;</a></h2>
+<p>Un <strong>smart contract</strong> es código que se ejecuta en la blockchain. Una vez desplegado, <strong>nadie puede modificarlo</strong> (salvo que el propio contrato tenga funciones de actualización).</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// SPDX-License-Identifier: MIT</span>
 <span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.20</span><span class="p">;</span>
 
 <span class="k">contract</span><span class="w"> </span><span class="ni">Contador</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">valor</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">total</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">incrementar</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span>valor<span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">decrementar</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">require</span><span class="p">(</span>valor<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"No puede ser negativo"</span><span class="p">);</span>
-<span class="w">        </span>valor<span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
+<span class="w">        </span>total<span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>hardhat
-npx<span class="w"> </span>hardhat<span class="w"> </span>init
-npx<span class="w"> </span>hardhat<span class="w"> </span>compile
-npx<span class="w"> </span>hardhat<span class="w"> </span>run<span class="w"> </span>scripts/deploy.js<span class="w"> </span>--network<span class="w"> </span>sepolia
+<ul>
+<li><code>public total</code> → variable de estado, legible por cualquiera.</li>
+<li><code>incrementar()</code> → función que modifica el estado. Cuesta <strong>gas</strong> (comisión).</li>
+<li>Desplegarlo cuesta gas. Llamarlo también.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">El código es la ley</p>
+<p>Un bug en un smart contract puede costar millones. No hay "rollback" ni "soporte técnico". Por eso se auditan y se prueban exhaustivamente antes de desplegar. El hackeo de <strong>The DAO</strong> (2016, ~60 M$) es el ejemplo clásico.</p>
+</div>
+<hr />
+<h2 id="el-stack-tipico-de-web3">🧰 El stack típico de Web3<a class="headerlink" href="#el-stack-tipico-de-web3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Capa</th>
+<th style="text-align: left;">Tecnología</th>
+<th style="text-align: left;">Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Blockchain</strong></td>
+<td style="text-align: left;">Ethereum, Polygon, Solana, Arbitrum</td>
+<td style="text-align: left;">Ejecutar contratos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lenguaje de contratos</strong></td>
+<td style="text-align: left;">Solidity, Vyper, Rust (Solana)</td>
+<td style="text-align: left;">Escribir smart contracts</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cliente JS</strong></td>
+<td style="text-align: left;">ethers.js, viem, web3.js</td>
+<td style="text-align: left;">Hablar con la blockchain desde el frontend</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Wallet</strong></td>
+<td style="text-align: left;">MetaMask, Rainbow, WalletConnect</td>
+<td style="text-align: left;">Firmar transacciones</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Almacenamiento</strong></td>
+<td style="text-align: left;">IPFS, Arweave, Filecoin</td>
+<td style="text-align: left;">Guardar archivos descentralizados</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Indexado</strong></td>
+<td style="text-align: left;">The Graph</td>
+<td style="text-align: left;">Consultar datos on-chain eficientemente</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nodo RPC</strong></td>
+<td style="text-align: left;">Alchemy, Infura, QuickNode</td>
+<td style="text-align: left;">Acceso a la red sin correr un nodo</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Ethereum no es la única</p>
+<p>Ethereum es la más usada, pero <strong>Polygon</strong> (sidechain de Ethereum) es más barata para empezar. <strong>Solana</strong> es más rápida pero con otro modelo. <strong>Arbitrum/Optimism</strong> son L2 (layer 2) que heredan seguridad de Ethereum con comisiones más bajas.</p>
+</div>
+<hr />
+<h2 id="tu-primera-dapp-en-4-pasos">📝 Tu primera DApp en 4 pasos<a class="headerlink" href="#tu-primera-dapp-en-4-pasos" title="Permanent link">&para;</a></h2>
+<p>Una <strong>DApp</strong> (aplicación descentralizada) es un frontend web que habla con smart contracts.</p>
+<h3 id="1-conectar-la-wallet">1. Conectar la wallet<a class="headerlink" href="#1-conectar-la-wallet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"ethers"</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">conectar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s2">"Instala MetaMask"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserProvider</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">signer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">getSigner</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">signer</span><span class="p">.</span><span class="nx">getAddress</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Conectado como"</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
+<h3 id="2-leer-el-estado-del-contrato">2. Leer el estado del contrato<a class="headerlink" href="#2-leer-el-estado-del-contrato" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Contract</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"ethers"</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ABI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"function total() view returns (uint256)"</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">DIRECCION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0x..."</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">leerTotal</span><span class="p">(</span><span class="nx">provider</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contrato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Contract</span><span class="p">(</span><span class="nx">DIRECCION</span><span class="p">,</span><span class="w"> </span><span class="nx">ABI</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">contrato</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Total:"</span><span class="p">,</span><span class="w"> </span><span class="nx">total</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-escribir-transaccion">3. Escribir (transacción)<a class="headerlink" href="#3-escribir-transaccion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">incrementar</span><span class="p">(</span><span class="nx">signer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contrato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Contract</span><span class="p">(</span><span class="nx">DIRECCION</span><span class="p">,</span><span class="w"> </span><span class="nx">ABI</span><span class="p">,</span><span class="w"> </span><span class="nx">signer</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">contrato</span><span class="p">.</span><span class="nx">incrementar</span><span class="p">();</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">wait</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Hecho:"</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-escuchar-eventos">4. Escuchar eventos<a class="headerlink" href="#4-escuchar-eventos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">contrato</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"Incrementado"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">nuevoTotal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Nuevo total:"</span><span class="p">,</span><span class="w"> </span><span class="nx">nuevoTotal</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Gas y comisiones</p>
+<p>Cada escritura en la blockchain cuesta <strong>gas</strong>. En Ethereum L1 puede ser caro (dólares por transacción). En L2 (Arbitrum, Polygon) es céntimos. Lee siempre el <code>gasEstimate</code> antes de enviar.</p>
+</div>
 <hr />
 <h2 id="casos-de-uso-reales">🎯 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Caso</th>
-<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Madurez</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>DeFi</strong></td>
-<td style="text-align: left;">Finanzas descentralizadas (préstamos, exchanges)</td>
+<td style="text-align: left;"><strong>DeFi</strong> (finanzas)</td>
+<td style="text-align: left;">Uniswap, Aave, Compound</td>
+<td style="text-align: left;">🟢 Producción</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>NFTs</strong></td>
-<td style="text-align: left;">Tokens únicos (arte digital, coleccionables)</td>
+<td style="text-align: left;">OpenSea, Foundation</td>
+<td style="text-align: left;">🟢 Producción</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>DAOs</strong></td>
-<td style="text-align: left;">Organizaciones autónomas descentralizadas</td>
+<td style="text-align: left;">Snapshot, Aragon</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Identidad</strong></td>
-<td style="text-align: left;">Identidad auto-soberana (SSI)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Supply chain</strong></td>
-<td style="text-align: left;">Trazabilidad de productos</td>
+<td style="text-align: left;">ENS, Worldcoin</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Juegos</strong></td>
-<td style="text-align: left;">Play-to-earn, activos in-game</td>
+<td style="text-align: left;">Axie Infinity, Gods Unchained</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Supply chain</strong></td>
+<td style="text-align: left;">IBM Food Trust, VeChain</td>
+<td style="text-align: left;">🟠 Nicho</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Votación</strong></td>
+<td style="text-align: left;">(experimental)</td>
+<td style="text-align: left;">🔴 Madurez baja</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Redes sociales</strong></td>
+<td style="text-align: left;">Farcaster, Lens</td>
+<td style="text-align: left;">🟠 Nicho</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="limitaciones">⚠️ Limitaciones<a class="headerlink" href="#limitaciones" title="Permanent link">&para;</a></h2>
+<h2 id="limitaciones-y-criticas">⚠️ Limitaciones y críticas<a class="headerlink" href="#limitaciones-y-criticas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Limitación</th>
+<th style="text-align: left;">Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Escalabilidad</strong></td>
+<td style="text-align: left;">Ethereum L1 hace ~15 TPS; Visa hace ~24.000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coste</strong></td>
+<td style="text-align: left;">Un swap en L1 puede costar 5-50 €</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>UX</strong></td>
+<td style="text-align: left;">Gestionar wallets y gas es complejo para usuarios no técnicos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Seguridad</strong></td>
+<td style="text-align: left;">Bugs en contratos = pérdida total; phishing de wallets muy común</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Regulación</strong></td>
+<td style="text-align: left;">Cambiante según el país; afecta a tokens y DeFi</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Centralización real</strong></td>
+<td style="text-align: left;">Muchos nodos RPC son de Alchemy/Infura; muchos NFTs están en servidores centrales</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Promesas infladas</strong></td>
+<td style="text-align: left;">"Descentralizar todo" no siempre es viable ni deseable</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Web3 no es la solución a todo</p>
+<p>Para una app de gestión interna, una base de datos Postgres sigue siendo mejor. Web3 brilla cuando <strong>la confianza entre partes</strong> es el problema, no cuando el problema es la velocidad o la comodidad.</p>
+</div>
+<hr />
+<h2 id="arquitectura-de-una-dapp">🏗 Arquitectura de una DApp<a class="headerlink" href="#arquitectura-de-una-dapp" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    U[Usuario] --&gt; F[Frontend React/Next]
+    F --&gt; W[MetaMask]
+    W --&gt; SC[Smart Contract]
+    SC --&gt; BC[(Blockchain)]
+    F --&gt; IPFS[IPFS: metadata]
+    F --&gt; G[The Graph: queries]
+    G --&gt; BC</code></pre>
 <ul>
-<li><strong>Escalabilidad</strong>: las blockchains son lentas comparadas con Web2.</li>
-<li><strong>Coste</strong>: las transacciones en Ethereum pueden costar mucho (gas).</li>
-<li><strong>Experiencia de usuario</strong>: las wallets son complicadas para no expertos.</li>
-<li><strong>Regulación</strong>: el marco legal es incierto en muchos países.</li>
-<li><strong>Seguridad</strong>: los bugs en smart contracts son irreversibles.</li>
-<li><strong>Especulación</strong>: mucha gente usa Web3 para especular, no para construir.</li>
+<li>El <strong>frontend</strong> puede ser un Next.js estático.</li>
+<li>La <strong>wallet</strong> firma las transacciones.</li>
+<li>El <strong>contrato</strong> ejecuta la lógica.</li>
+<li><strong>IPFS</strong> guarda archivos (imágenes, metadata de NFTs).</li>
+<li><strong>The Graph</strong> indexa eventos para consultas rápidas (evita escanear toda la cadena).</li>
 </ul>
 <hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
-<div class="quiz" data-quiz="capitulo-30">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué es Web3?</p>
-<button class="quiz-option" data-opt="a">A) Una nueva versión de HTML</button>
-<button class="quiz-option" data-opt="b">B) Una visión descentralizada de la web basada en blockchain</button>
-<button class="quiz-option" data-opt="c">C) Un framework de JavaScript</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué guarda una wallet?</p>
-<button class="quiz-option" data-opt="a">A) Claves privadas</button>
-<button class="quiz-option" data-opt="b">B) Contraseñas de email</button>
-<button class="quiz-option" data-opt="c">C) Fotos</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué lenguaje se usa para smart contracts en Ethereum?</p>
-<button class="quiz-option" data-opt="a">A) Python</button>
-<button class="quiz-option" data-opt="b">B) JavaScript</button>
-<button class="quiz-option" data-opt="c">C) Solidity</button>
-</div>
-</div>
-
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2030%3A%20Web3&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F30-web3%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F30-web3%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2030%3A%20Web3%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F30-web3%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/30-web3/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
-
-<hr />
-<h2 id="has-terminado-el-nivel-elite">🏆 ¡Has terminado el Nivel Élite!<a class="headerlink" href="#has-terminado-el-nivel-elite" title="Permanent link">&para;</a></h2>
-<p>Si has llegado hasta aquí, ya sabes:</p>
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Leer el total de un contador desplegado</p>
+<p>Tienes un contrato <code>Contador</code> desplegado en Sepolia (testnet) en la dirección <code>0x1234...</code> con la función <code>total()</code>.</p>
+<p>Escribe un script en ethers.js que:</p>
 <ul>
-<li>Seguridad web: XSS, CSRF, CSP</li>
-<li>WebAssembly: Rust en el navegador</li>
-<li>IA en el frontend: TensorFlow.js, Transformers.js</li>
-<li>WebXR: VR y AR en la web</li>
-<li>Web3: blockchain, wallets, smart contracts</li>
+<li>Se conecte a Sepolia usando un RPC público (<code>https://rpc.sepolia.org</code>).</li>
+<li>Lea <code>total()</code> del contrato.</li>
+<li>Lo imprima en consola.</li>
 </ul>
-<div class="admonition quote">
-<p class="admonition-title">Enhorabuena</p>
-<p>Has pasado de frontend a élite. Ahora toca el <strong>Nivel Vanguardia</strong>: testing E2E, Server Components, Edge Computing, Docker, GraphQL, micro-frontends, IA generativa y seguridad avanzada.</p>
 </div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">JsonRpcProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">Contract</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"ethers"</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">RPC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://rpc.sepolia.org"</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">DIRECCION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0x1234..."</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ABI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"function total() view returns (uint256)"</span><span class="p">];</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">RPC</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contrato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Contract</span><span class="p">(</span><span class="nx">DIRECCION</span><span class="p">,</span><span class="w"> </span><span class="nx">ABI</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">contrato</span><span class="p">.</span><span class="nx">total</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Total on-chain:"</span><span class="p">,</span><span class="w"> </span><span class="nx">total</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Nota:</strong> para leer no necesitas wallet ni gas, solo un RPC. Para escribir, sí.</p>
+</details>
 <hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../31-testing-e2e/">Ir al Capítulo 31 — Testing E2E con Playwright</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Qué diferencia hay entre blockchain y base de datos tradicional?</summary>
+<p>La blockchain es distribuida, append-only, validada por consenso y prácticamente inmutable. Una base de datos tradicional es centralizada, mutable y administrada por una entidad.</p>
+</details>
+<details class="success">
+<summary>2. ¿Qué es un smart contract?</summary>
+<p>Código que se ejecuta en la blockchain. Una vez desplegado, es inmutable (salvo funciones de actualización explícitas).</p>
+</details>
+<details class="success">
+<summary>3. ¿Por qué escribir en Ethereum cuesta gas y leer no?</summary>
+<p>Leer (<code>view</code>) no modifica el estado ni requiere consenso; escribir sí, y los minadores/validadores cobran por ejecutar y almacenar.</p>
+</details>
+<details class="success">
+<summary>4. ¿Qué es una DApp?</summary>
+<p>Una aplicación descentralizada: un frontend web que interactúa con smart contracts mediante una wallet (MetaMask, etc.).</p>
+</details>
+<details class="success">
+<summary>5. ¿Cuándo NO tiene sentido usar Web3?</summary>
+<p>Cuando la confianza entre partes no es el problema (ej. apps internas, CRUDs, dashboards). Una base de datos tradicional es más rápida, barata y sencilla.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://ethereum.org/es/developers/docs/">Ethereum — Documentación oficial</a></li>
+<li><a href="https://docs.soliditylang.org/">Solidity — Docs</a></li>
+<li><a href="https://docs.ethers.org/v6/">ethers.js — Docs</a></li>
+<li><a href="https://viem.sh/">viem — Docs (alternativa moderna a ethers)</a></li>
+<li><a href="https://thegraph.com/docs/">The Graph — Docs</a></li>
+<li><a href="https://docs.ipfs.tech/">IPFS — Docs</a></li>
+<li><a href="https://sepolia.etherscan.io/">Ethereum Sepolia (testnet)</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../31-testing-e2e/">31 — Testing E2E</a></p>
 
 
 
