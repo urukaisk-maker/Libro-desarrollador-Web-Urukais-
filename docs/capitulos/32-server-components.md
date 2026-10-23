@@ -301,3 +301,39 @@ graph TD
 ---
 
 ➡️ Siguiente capítulo: [33 — Edge Computing](33-edge-computing.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-32">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Los Server Components se envían al bundle del navegador?</p>
+<button class="quiz-option" data-opt="a">A) Sí</button>
+<button class="quiz-option" data-opt="b">B) No</button>
+<button class="quiz-option" data-opt="c">C) Solo si son interactivos</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>2.</strong> ¿Para qué sirve use client?</p>
+<button class="quiz-option" data-opt="a">A) Marcar un componente como cliente</button>
+<button class="quiz-option" data-opt="b">B) Marcar un componente como servidor</button>
+<button class="quiz-option" data-opt="c">C) Eliminar un componente</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>3.</strong> ¿Puede un Client Component importar un Server Component?</p>
+<button class="quiz-option" data-opt="a">A) Sí, directamente</button>
+<button class="quiz-option" data-opt="b">B) No, pero puede recibirlo como children</button>
+<button class="quiz-option" data-opt="c">C) Sí, con lazy loading</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2032%3A%20Server%20Components&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/32-server-components/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
