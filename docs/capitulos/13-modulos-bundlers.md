@@ -341,3 +341,39 @@ console.log(sumar(2, 3));
 ---
 
 ➡️ Siguiente capítulo: [14 — Accesibilidad](14-accesibilidad.md)
+
+
+---
+
+## 🧠 Pon a prueba tus conocimientos
+
+<div class="quiz" data-quiz="capitulo-13">
+<div class="quiz-question" data-answer="b">
+<p><strong>1.</strong> ¿Qué sistema de módulos usa import/export?</p>
+<button class="quiz-option" data-opt="a">A) CommonJS</button>
+<button class="quiz-option" data-opt="b">B) ES Modules</button>
+<button class="quiz-option" data-opt="c">C) AMD</button>
+</div>
+<div class="quiz-question" data-answer="b">
+<p><strong>2.</strong> ¿Qué bundler es más rápido en desarrollo?</p>
+<button class="quiz-option" data-opt="a">A) webpack</button>
+<button class="quiz-option" data-opt="b">B) Vite</button>
+<button class="quiz-option" data-opt="c">C) Rollup</button>
+</div>
+<div class="quiz-question" data-answer="a">
+<p><strong>3.</strong> ¿Qué es tree-shaking?</p>
+<button class="quiz-option" data-opt="a">A) Eliminar código no usado</button>
+<button class="quiz-option" data-opt="b">B) Minificar el código</button>
+<button class="quiz-option" data-opt="c">C) Dividir el bundle</button>
+</div>
+</div>
+
+---
+
+## 📢 Comparte este capítulo
+
+<div class="share-buttons">
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2013%3A%20M%C3%B3dulos%20y%20bundlers&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/13-modulos-bundlers/" aria-label="Copiar enlace">Copiar enlace</button>
+</div>
