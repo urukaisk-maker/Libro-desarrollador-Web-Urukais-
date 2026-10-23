@@ -200,7 +200,7 @@ chore: tareas de mantenimiento
 | **Ejercicios resueltos** | 30 |
 | **Diagramas Mermaid** | 14 |
 | **Retos semanales** | 5 |
-| **Commits** | 100+ |
+| **Commits** | ![GitHub commits since latest release](https://img.shields.io/github/commits-since/urukaisk-maker/Libro-desarrollador-Web-Urukais-/v1.0.0) |
 | **Licencia** | MIT |
 | **Coste mensual** | 0 € |
 
