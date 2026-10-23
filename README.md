@@ -143,7 +143,7 @@ source .venv/bin/activate.fish
 .venv\Scripts\activate
 
 # 4. Instala las dependencias
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # 5. Arranca el servidor de desarrollo
 mkdocs serve
