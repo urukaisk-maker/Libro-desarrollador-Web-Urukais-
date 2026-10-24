@@ -101,15 +101,15 @@ Una página de una sola columna con **6 secciones obligatorias**:
 ### 🔗 Enlaces
 
 [Ver plantilla de ejemplo](https://github.com/brayandiazc/portfolio-template-basic){ .md-button target=_blank }
-[Ver ejercicio resuelto](../ejercicios/10-proyecto-final.md){ .md-button }
+[Ver ejercicio resuelto](ejercicios/10-proyecto-final.md){ .md-button }
 
 ### 📚 Capítulos relacionados
 
-- [02 — HTML básico](../capitulos/02-html-basico.md)
-- [03 — CSS básico](../capitulos/03-css-basico.md)
-- [05 — Diseño responsive](../capitulos/05-responsive.md)
-- [09 — Despliegue y hosting](../capitulos/09-despliegue.md)
-- [10 — Proyecto final: portfolio](../capitulos/10-proyecto-final.md)
+- [02 — HTML básico](capitulos/02-html-basico.md)
+- [03 — CSS básico](capitulos/03-css-basico.md)
+- [05 — Diseño responsive](capitulos/05-responsive.md)
+- [09 — Despliegue y hosting](capitulos/09-despliegue.md)
+- [10 — Proyecto final: portfolio](capitulos/10-proyecto-final.md)
 
 ---
 
@@ -312,13 +312,13 @@ render();
 ### 🔗 Enlaces
 
 [Ver ejemplo en vivo](https://github.com/urukaisk-maker){ .md-button target=_blank }
-[Ver ejercicio resuelto](../ejercicios/04-javascript.md){ .md-button }
+[Ver ejercicio resuelto](ejercicios/04-javascript.md){ .md-button }
 
 ### 📚 Capítulos relacionados
 
-- [04 — JavaScript esencial](../capitulos/04-javascript.md)
-- [06 — Formularios HTML](../capitulos/06-formularios.md)
-- [10 — Proyecto final: portfolio](../capitulos/10-proyecto-final.md)
+- [04 — JavaScript esencial](capitulos/04-javascript.md)
+- [06 — Formularios HTML](capitulos/06-formularios.md)
+- [10 — Proyecto final: portfolio](capitulos/10-proyecto-final.md)
 
 ---
 
@@ -446,13 +446,13 @@ document.getElementById('input-busqueda').addEventListener(
 ### 🔗 Enlaces
 
 [Ver ejemplo en vivo](https://github.com/urukaisk-maker){ .md-button target=_blank }
-[Ver ejercicio resuelto](../ejercicios/08-apis.md){ .md-button }
+[Ver ejercicio resuelto](ejercicios/08-apis.md){ .md-button }
 
 ### 📚 Capítulos relacionados
 
-- [08 — Consumo de APIs con fetch](../capitulos/08-apis.md)
-- [12 — JavaScript asíncrono](../capitulos/12-javascript-asincrono.md)
-- [16 — Testing frontend](../capitulos/16-testing.md)
+- [08 — Consumo de APIs con fetch](capitulos/08-apis.md)
+- [12 — JavaScript asíncrono](capitulos/12-javascript-asincrono.md)
+- [16 — Testing frontend](capitulos/16-testing.md)
 
 ---
 
@@ -575,14 +575,14 @@ mi-blog/
 ### 🔗 Enlaces
 
 [Ver ejemplo en vivo](https://github.com/urukaisk-maker){ .md-button target=_blank }
-[Ver ejercicio resuelto](../ejercicios/09-despliegue.md){ .md-button }
+[Ver ejercicio resuelto](ejercicios/09-despliegue.md){ .md-button }
 
 ### 📚 Capítulos relacionados
 
-- [07 — Git y control de versiones](../capitulos/07-git.md)
-- [09 — Despliegue y hosting](../capitulos/09-despliegue.md)
-- [11 — CSS moderno](../capitulos/11-css-moderno.md)
-- [14 — Accesibilidad web](../capitulos/14-accesibilidad.md)
+- [07 — Git y control de versiones](capitulos/07-git.md)
+- [09 — Despliegue y hosting](capitulos/09-despliegue.md)
+- [11 — CSS moderno](capitulos/11-css-moderno.md)
+- [14 — Accesibilidad web](capitulos/14-accesibilidad.md)
 
 ---
 
@@ -714,14 +714,14 @@ export default router;
 ### 🔗 Enlaces
 
 [Ver ejemplo en vivo](https://github.com/urukaisk-maker){ .md-button target=_blank }
-[Ver ejercicio resuelto](../ejercicios/19-fullstack-node.md){ .md-button }
+[Ver ejercicio resuelto](ejercicios/19-fullstack-node.md){ .md-button }
 
 ### 📚 Capítulos relacionados
 
-- [15 — TypeScript desde cero](../capitulos/15-typescript.md)
-- [18 — Arquitectura frontend](../capitulos/18-arquitectura.md)
-- [19 — Full-stack con Node.js](../capitulos/19-fullstack-node.md)
-- [20 — DevOps para frontend](../capitulos/20-devops.md)
+- [15 — TypeScript desde cero](capitulos/15-typescript.md)
+- [18 — Arquitectura frontend](capitulos/18-arquitectura.md)
+- [19 — Full-stack con Node.js](capitulos/19-fullstack-node.md)
+- [20 — DevOps para frontend](capitulos/20-devops.md)
 
 ---
 
@@ -729,8 +729,8 @@ export default router;
 
 1. **Publícalo en GitHub** con un README claro.
 2. **Despliégalo** en Netlify, Vercel o GitHub Pages.
-3. **Compártelo** en el [Hall of Fame](../hall-of-fame.md).
-4. **Opcional:** escríbeme y lo destaco en el [Diario](../diario.md).
+3. **Compártelo** en el [Hall of Fame](hall-of-fame.md).
+4. **Opcional:** escríbeme y lo destaco en el [Diario](diario.md).
 
 !!! tip "Un proyecto terminado vale más que diez empezados"
     No esperes a tenerlo perfecto. Publica la v1, recibe feedback, mejora. Iterar es el trabajo real.
@@ -739,5 +739,5 @@ export default router;
 
 ## 🚀 Siguiente
 
-[Ir al Playground](../playground.md){ .md-button }
-[Ver ejercicios resueltos](../ejercicios/index.md){ .md-button .md-button--primary }
+[Ir al Playground](playground.md){ .md-button }
+[Ver ejercicios resueltos](ejercicios/index.md){ .md-button .md-button--primary }

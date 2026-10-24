@@ -261,9 +261,9 @@ Has terminado los capítulos 31–38. **Has completado el libro.** ¿Y ahora qu�
 
 Has completado el libro. Ahora toca:
 
-1. **Generar tu [certificado](certificado.md)** y compartirlo.
-2. **Aparecer en el [Hall of Fame](hall-of-fame.md)**.
-3. **Contribuir al proyecto** ([Contribuir](contribuir.md)).
+1. **Generar tu [certificado](../certificado.md)** y compartirlo.
+2. **Aparecer en el [Hall of Fame](../hall-of-fame.md)**.
+3. **Contribuir al proyecto** ([Contribuir](../contribuir.md)).
 4. **Enseñar a otros** lo que has aprendido.
 5. **Seguir aprendiendo**: la web nunca deja de evolucionar.
 

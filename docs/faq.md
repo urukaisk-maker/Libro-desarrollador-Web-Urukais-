@@ -209,10 +209,10 @@
     **Parcialmente.** El libro está configurado como **PWA** (Progressive Web App), así que una vez que lo has visitado, algunas páginas se guardan en caché y puedes leerlas sin conexión. Pero no todas las funcionalidades están disponibles offline.
 
 ??? question "¿Puedo leer el libro en el kindle o en un e-reader?"
-    **Sí**, con la [versión imprimible](print_page.md) puedes generar un PDF o un EPUB que puedes enviar a tu e-reader. Ten en cuenta que los quizzes y editores interactivos no funcionarán en el e-reader.
+    **Sí**, con la [versión imprimible](../print_page/) puedes generar un PDF o un EPUB que puedes enviar a tu e-reader. Ten en cuenta que los quizzes y editores interactivos no funcionarán en el e-reader.
 
 ??? question "¿Hay una versión en PDF?"
-    **Sí.** Puedes generar la versión imprimible desde el enlace [Versión imprimible](print_page.md), que incluye todos los capítulos seguidos en una sola página. Desde el navegador puedes guardarla como PDF.
+    **Sí.** Puedes generar la versión imprimible desde el enlace [Versión imprimible](../print_page/), que incluye todos los capítulos seguidos en una sola página. Desde el navegador puedes guardarla como PDF.
 
 ??? question "¿Cómo reporto un problema de la web?"
     Si ves algo raro (un enlace roto, un estilo mal, un error en consola), abre un [issue en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) con:

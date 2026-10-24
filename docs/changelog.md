@@ -23,7 +23,7 @@
 ## [Unreleased]
 
 ### 🆕 Añadido
-- Página de [Música para programar](musica.md) con playlists embebidas de YouTube.
+- Página de Música para programar con playlists embebidas de YouTube.
 - Página de [Prensa y medios](prensa.md) con kit de prensa completo.
 - Página de [Contacto](contacto.md) con formulario y canales directos.
 - Página de [Sobre el autor](autor.md) con biografía, stack y proyectos.

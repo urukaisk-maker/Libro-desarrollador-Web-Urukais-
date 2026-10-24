@@ -169,7 +169,7 @@ Después de años enseñando, he llegado a estas conclusiones:
 
 - 💻 Llevo programando desde **2015**, pero empecé a enseñar en **2021**.
 - ☕ Bebo **3–4 cafés** al día (aunque intento reducirlo).
-- 🎧 Programo con **lo-fi hip hop** o **synthwave** de fondo. Tienes una [sección de música](musica.md) en este libro con mis playlists favoritas.
+- 🎧 Programo con **lo-fi hip hop** o **synthwave** de fondo. Tienes una sección de música en este libro con mis playlists favoritas.
 - 🌙 Trabajo mejor **de noche**, cuando no hay notificaciones.
 - 📚 Prefiero leer en **papel** cuando es posible. Los libros técnicos, en digital.
 - 🎮 Me encanta la **programación creativa**: visualizaciones, arte generativo, juegos experimentales.
