@@ -239,3 +239,262 @@ npx vitest run --coverage
 
 [Ir al Capítulo 17 — Rendimiento web](17-rendimiento.md){ .md-button .md-button--primary }
 [Volver al índice](../index.md){ .md-button }
+
+
+
+---
+
+## ⚡ Testing moderno con Vitest
+
+**Vitest** es el framework de testing que se ha convertido en el estándar para proyectos con Vite. Es rápido, compatible con la API de Jest, y funciona sin configuración.
+
+### Instalación
+
+~~~bash
+npm install -D vitest @testing-library/dom @testing-library/user-event jsdom
+~~~
+
+### Configuración básica (`vite.config.js`)
+
+~~~javascript
+import { defineConfig } from "vite";
+
+export default defineConfig({
+    test: {
+        environment: "jsdom",   // simula el DOM del navegador
+        globals: true,          // describe, it, expect sin importar
+        coverage: {
+            provider: "v8",
+            reporter: ["text", "html"],
+        },
+    },
+});
+~~~
+
+### Tu primer test con Vitest
+
+~~~javascript
+// sumar.js
+export function sumar(a, b) {
+    return a + b;
+}
+
+// sumar.test.js
+import { describe, it, expect } from "vitest";
+import { sumar } from "./sumar.js";
+
+describe("sumar", () => {
+    it("suma dos números positivos", () => {
+        expect(sumar(2, 3)).toBe(5);
+    });
+
+    it("suma números negativos", () => {
+        expect(sumar(-1, -2)).toBe(-3);
+    });
+
+    it("suma cero", () => {
+        expect(sumar(0, 5)).toBe(5);
+    });
+});
+~~~
+
+Ejecuta:
+
+~~~bash
+npx vitest          # modo watch
+npx vitest run      # una sola vez (CI)
+npx vitest --ui     # interfaz gráfica
+~~~
+
+!!! tip "Vitest vs Jest"
+    Vitest es **mucho más rápido** que Jest en proyectos Vite (no transpila con Babel). La API es casi idéntica, así que migrar es trivial. Si empiezas un proyecto nuevo con Vite, usa Vitest.
+
+---
+
+## 🧪 Testing de componentes con Testing Library
+
+**Testing Library** es la librería estándar para testear componentes desde el punto de vista del usuario. No testea implementación, testea **comportamiento**.
+
+### Ejemplo con DOM puro
+
+~~~javascript
+// contador.js
+export function crearContador(container) {
+    let n = 0;
+    const boton = document.createElement("button");
+    const display = document.createElement("span");
+
+    boton.textContent = "Incrementar";
+    display.textContent = n;
+    boton.addEventListener("click", () => {
+        n++;
+        display.textContent = n;
+    });
+
+    container.appendChild(boton);
+    container.appendChild(display);
+}
+
+// contador.test.js
+import { describe, it, expect } from "vitest";
+import { screen } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
+import { crearContador } from "./contador.js";
+
+describe("contador", () => {
+    it("incrementa al hacer clic", async () => {
+        const container = document.createElement("div");
+        crearContador(container);
+        document.body.appendChild(container);
+
+        const boton = screen.getByRole("button", { name: /incrementar/i });
+        expect(screen.getByText("0")).toBeTruthy();
+
+        await userEvent.click(boton);
+        expect(screen.getByText("1")).toBeTruthy();
+    });
+});
+~~~
+
+### Selectores recomendados (por prioridad)
+
+| Selector | Cuándo usarlo |
+| :--- | :--- |
+| `getByRole` | ✅ **Primero** (botones, enlaces, headings) |
+| `getByLabelText` | Formularios con label |
+| `getByPlaceholderText` | Inputs sin label (menos accesible) |
+| `getByText` | Texto visible |
+| `getByTestId` | Cuando no hay otra opción (último recurso) |
+
+!!! warning "No testees implementación"
+    ❌ `expect(component.state.count).toBe(1)` — testea el estado interno.  
+    ✅ `expect(screen.getByText("1")).toBeTruthy()` — testea lo que ve el usuario.  
+    Si cambias el estado interno pero el comportamiento es el mismo, el test no debe romperse.
+
+---
+
+## 🎭 Mocking: simular dependencias
+
+**Mockear** es sustituir una dependencia real (API, base de datos, módulo) por una falsa controlada. Es clave para testear sin depender de servicios externos.
+
+### Mock de funciones con `vi.fn()`
+
+~~~javascript
+import { vi, describe, it, expect } from "vitest";
+
+const enviarEmail = vi.fn(() => Promise.resolve({ ok: true }));
+
+describe("registro", () => {
+    it("envía email al registrar usuario", async () => {
+        await registrarUsuario({ email: "ana@example.com" }, enviarEmail);
+
+        expect(enviarEmail).toHaveBeenCalledTimes(1);
+        expect(enviarEmail).toHaveBeenCalledWith("ana@example.com");
+    });
+});
+~~~
+
+### Mock de módulos con `vi.mock()`
+
+~~~javascript
+import { vi, describe, it, expect } from "vitest";
+
+// Mockear el módulo completo antes de importar el que lo usa
+vi.mock("./api.js", () => ({
+    obtenerUsuario: vi.fn(() => Promise.resolve({ id: 1, nombre: "Ana" })),
+}));
+
+import { obtenerUsuario } from "./api.js";
+import { cargarPerfil } from "./perfil.js";
+
+describe("perfil", () => {
+    it("carga el perfil del usuario", async () => {
+        const perfil = await cargarPerfil(1);
+        expect(perfil.nombre).toBe("Ana");
+        expect(obtenerUsuario).toHaveBeenCalledWith(1);
+    });
+});
+~~~
+
+### Mock de fetch (API real)
+
+~~~javascript
+import { vi, describe, it, expect, beforeEach } from "vitest";
+
+beforeEach(() => {
+    global.fetch = vi.fn(() =>
+        Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve({ id: 1, nombre: "Ana" }),
+        })
+    );
+});
+
+it("obtiene el usuario de la API", async () => {
+    const user = await fetchUsuario(1);
+    expect(user.nombre).toBe("Ana");
+    expect(fetch).toHaveBeenCalledWith("/api/usuarios/1");
+});
+~~~
+
+!!! tip "Mockea lo mínimo necesario"
+    Mockear todo hace tests frágiles. Mockea solo lo que sea **lento**, **caro** o **no determinista** (APIs, fechas, `Math.random`, `localStorage`).
+
+---
+
+## 📊 Cobertura de tests
+
+La **cobertura** mide qué porcentaje del código ejecutan tus tests. No es una métrica perfecta (100% cobertura no significa 0 bugs), pero ayuda a detectar zonas sin testear.
+
+~~~bash
+npx vitest run --coverage
+~~~
+
+Salida típica:
+
+
+
+### Umbrales recomendados
+
+| Proyecto | Cobertura mínima |
+| :--- | :--- |
+| Prototipo | 30-50% |
+| Proyecto personal | 60-70% |
+| Producción | 80%+ |
+| Librería | 90%+ |
+
+!!! warning "La cobertura no lo es todo"
+    Un test puede ejecutar una línea y no comprobar nada. La cobertura mide **ejecución**, no **calidad**. Combínala con tests que verifiquen comportamiento real.
+
+---
+
+## 🧠 Quiz de repaso
+
+!!! question "Comprueba lo aprendido"
+
+??? success "1. ¿Qué ventaja tiene Vitest sobre Jest?"
+    Es **mucho más rápido** en proyectos con Vite (no transpila con Babel) y su API es casi idéntica a Jest, así que migrar es trivial.
+
+??? success "2. ¿Por qué `getByRole` es el selector recomendado?"
+    Porque testea desde el punto de vista del usuario y verifica **accesibilidad**. Si un botón tiene `role="button"` y nombre accesible, es usable por lectores de pantalla.
+
+??? success "3. ¿Qué es mockear y cuándo hacerlo?"
+    Sustituir una dependencia real por una falsa controlada. Se hace con dependencias **lentas** (APIs), **caras** (servicios de pago) o **no deterministas** (fechas, `Math.random`).
+
+??? success "4. ¿Qué significa 100% de cobertura?"
+    Que tus tests **ejecutan** todas las líneas del código. No significa que no haya bugs: un test puede ejecutar una línea sin comprobar su resultado.
+
+---
+
+## 📚 Recursos
+
+- [Vitest — Docs oficiales](https://vitest.dev/)
+- [Testing Library — Docs](https://testing-library.com/docs/)
+- [Testing Library — Prioridad de selectores](https://testing-library.com/docs/queries/about/#priority)
+- [Vitest — Mocking](https://vitest.dev/guide/mocking.html)
+- [Kent C. Dodds — Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications)
+- [web.dev — Learn Testing](https://web.dev/learn/testing)
+
+---
+
+➡️ Siguiente capítulo: [17 — Rendimiento web](17-rendimiento.md)
