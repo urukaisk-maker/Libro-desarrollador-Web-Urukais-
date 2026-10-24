@@ -278,3 +278,288 @@ mi-api/
 
 [Ir al Capítulo 20 — DevOps para frontend](20-devops.md){ .md-button .md-button--primary }
 [Volver al índice](../index.md){ .md-button }
+
+
+---
+
+## 🔐 Autenticación con JWT
+
+**JWT** (JSON Web Token) es el estándar para autenticar usuarios en APIs. El servidor firma un token que el cliente envía en cada petición.
+
+### Instalación
+
+~~~bash
+npm install jsonwebtoken bcrypt
+~~~
+
+### Registrar usuario (hash de contraseña)
+
+~~~javascript
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const SECRET = process.env.JWT_SECRET; // nunca en el código
+
+app.post("/api/registro", async (req, res) => {
+    const { email, password } = req.body;
+
+    // Validar que no exista
+    const existe = await db.usuarios.findOne({ email });
+    if (existe) return res.status(409).json({ error: "Email ya registrado" });
+
+    // Hash de la contraseña (10 rondas)
+    const hash = await bcrypt.hash(password, 10);
+
+    const usuario = await db.usuarios.create({ email, password: hash });
+
+    // Crear token (expira en 7 días)
+    const token = jwt.sign({ id: usuario.id, email }, SECRET, { expiresIn: "7d" });
+
+    res.status(201).json({ token, usuario: { id: usuario.id, email } });
+});
+~~~
+
+### Login
+
+~~~javascript
+app.post("/api/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    const usuario = await db.usuarios.findOne({ email });
+    if (!usuario) return res.status(401).json({ error: "Credenciales inválidas" });
+
+    const valida = await bcrypt.compare(password, usuario.password);
+    if (!valida) return res.status(401).json({ error: "Credenciales inválidas" });
+
+    const token = jwt.sign({ id: usuario.id, email }, SECRET, { expiresIn: "7d" });
+    res.json({ token });
+});
+~~~
+
+### Middleware de autenticación
+
+~~~javascript
+function autenticar(req, res, next) {
+    const auth = req.headers.authorization || "";
+    const token = auth.replace("Bearer ", "");
+
+    if (!token) return res.status(401).json({ error: "Token requerido" });
+
+    try {
+        req.usuario = jwt.verify(token, SECRET);
+        next();
+    } catch (err) {
+        res.status(401).json({ error: "Token inválido o expirado" });
+    }
+}
+
+// Ruta protegida
+app.get("/api/perfil", autenticar, (req, res) => {
+    res.json({ usuario: req.usuario });
+});
+~~~
+
+!!! warning "Nunca guardes contraseñas en texto plano"
+    Siempre **hash** con `bcrypt` (o `argon2`). Nunca guardes la contraseña original. Y nunca devuelvas el hash en la respuesta de la API.
+
+!!! tip "El secreto JWT va en variable de entorno"
+    `JWT_SECRET` debe ser una cadena larga y aleatoria, guardada en `.env` (nunca en el código). Si se filtra, cualquiera puede firmar tokens válidos.
+
+---
+
+## ✅ Validación con Zod
+
+**Zod** valida datos de entrada con un esquema declarativo. Ideal para APIs: nunca confíes en lo que llega del cliente.
+
+### Instalación
+
+~~~bash
+npm install zod
+~~~
+
+### Esquema de registro
+
+~~~javascript
+import { z } from "zod";
+
+const registroSchema = z.object({
+    email: z.string().email("Email inválido"),
+    password: z.string().min(8, "Mínimo 8 caracteres").max(100),
+    nombre: z.string().min(2, "Mínimo 2 caracteres").optional(),
+});
+
+app.post("/api/registro", async (req, res) => {
+    const resultado = registroSchema.safeParse(req.body);
+
+    if (!resultado.success) {
+        return res.status(400).json({ errores: resultado.error.errors });
+    }
+
+    const { email, password, nombre } = resultado.data;
+    // ... continuar con el registro
+});
+~~~
+
+### Validación de query params
+
+~~~javascript
+const listadoSchema = z.object({
+    page: z.coerce.number().int().min(1).default(1),
+    limit: z.coerce.number().int().min(1).max(100).default(20),
+    q: z.string().optional(),
+});
+
+app.get("/api/usuarios", (req, res) => {
+    const { page, limit, q } = listadoSchema.parse(req.query);
+    // page y limit son números, q es string o undefined
+});
+~~~
+
+!!! tip "Valida en el borde de la aplicación"
+    Valida **en el controlador** (al recibir la petición), no dentro de la lógica de negocio. Así el resto del código puede asumir datos válidos y no llenarse de `if`.
+
+---
+
+## 🏗 Estructura de proyecto escalable
+
+Un proyecto fullstack que crece necesita una estructura clara. Esta es la que uso:
+
+~~~text
+mi-app/
+├── src/
+│   ├── config/
+│   │   └── env.js            # variables de entorno validadas
+│   ├── db/
+│   │   ├── schema.js         # tablas / modelos
+│   │   └── index.js          # conexión a la BD
+│   ├── middlewares/
+│   │   ├── auth.js           # autenticación JWT
+│   │   └── error.js          # manejo de errores
+│   ├── routes/
+│   │   ├── auth.routes.js
+│   │   └── usuarios.routes.js
+│   ├── controllers/
+│   │   └── usuarios.controller.js
+│   ├── services/
+│   │   └── usuarios.service.js
+│   ├── schemas/
+│   │   └── usuarios.schema.js # Zod
+│   └── app.js                # configuración de Express
+├── tests/
+├── .env
+├── package.json
+└── server.js
+~~~
+
+### Separación de responsabilidades
+
+| Capa | Responsabilidad |
+| :--- | :--- |
+| **routes** | Definir URLs y métodos |
+| **controllers** | Validar entrada, llamar a services, devolver respuesta |
+| **services** | Lógica de negocio (reutilizable, testeable) |
+| **db** | Acceso a datos (queries, ORM) |
+
+~~~javascript
+// routes/usuarios.routes.js
+import { Router } from "express";
+import { autenticar } from "../middlewares/auth.js";
+import * as ctrl from "../controllers/usuarios.controller.js";
+
+const router = Router();
+router.get("/", autenticar, ctrl.listar);
+router.get("/:id", autenticar, ctrl.obtener);
+router.post("/", ctrl.crear);
+
+export default router;
+~~~
+
+~~~javascript
+// controllers/usuarios.controller.js
+import * as service from "../services/usuarios.service.js";
+import { registroSchema } from "../schemas/usuarios.schema.js";
+
+export async function listar(req, res, next) {
+    try {
+        const usuarios = await service.listar();
+        res.json(usuarios);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function crear(req, res, next) {
+    try {
+        const datos = registroSchema.parse(req.body);
+        const usuario = await service.crear(datos);
+        res.status(201).json(usuario);
+    } catch (err) {
+        next(err);
+    }
+}
+~~~
+
+!!! tip "Los servicios no saben de HTTP"
+    Un `service` recibe datos, hace su trabajo y devuelve el resultado. No toca `req` ni `res`. Así puedes reutilizarlo desde una CLI, un job, o un test sin levantar el servidor.
+
+---
+
+## 🚨 Manejo de errores centralizado
+
+~~~javascript
+// middlewares/error.js
+export function errorHandler(err, req, res, next) {
+    console.error(err);
+
+    if (err.name === "ZodError") {
+        return res.status(400).json({ errores: err.errors });
+    }
+
+    if (err.code === "P2002") {
+        return res.status(409).json({ error: "Recurso duplicado" });
+    }
+
+    res.status(err.status || 500).json({
+        error: err.message || "Error interno del servidor",
+    });
+}
+
+// app.js
+app.use(errorHandler); // siempre al final
+~~~
+
+!!! warning "Nunca devuelvas el stack trace en producción"
+    En desarrollo está bien para depurar, pero en producción expone información sensible (rutas, versiones, lógica interna). Devuelve un mensaje genérico y loguea el detalle en el servidor.
+
+---
+
+## 🧠 Quiz de repaso
+
+!!! question "Comprueba lo aprendido"
+
+??? success "1. ¿Por qué hashear la contraseña con bcrypt en lugar de guardarla tal cual?"
+    Porque si la base de datos se filtra, las contraseñas no quedan expuestas. `bcrypt` añade una **sal** única por contraseña y es lento a propósito, lo que dificulta ataques de fuerza bruta.
+
+??? success "2. ¿Dónde debe guardarse el secreto JWT?"
+    En una **variable de entorno** (`.env`), nunca en el código. Si se filtra, cualquiera puede firmar tokens válidos y hacerse pasar por cualquier usuario.
+
+??? success "3. ¿Qué ventaja tiene validar con Zod en el controlador?"
+    Que el resto de la aplicación puede **asumir datos válidos**. Si validas en el borde (el controlador), los services y la lógica de negocio no necesitan llenarse de `if` comprobando tipos.
+
+??? success "4. ¿Por qué los servicios no deben tocar `req` ni `res`?"
+    Porque así son **reutilizables** desde cualquier sitio (tests, CLI, jobs) sin depender de HTTP. La lógica de negocio queda aislada de Express.
+
+---
+
+## 📚 Recursos
+
+- [jsonwebtoken — Docs](https://github.com/auth0/node-jsonwebtoken)
+- [bcrypt — Docs](https://github.com/kelektiv/node.bcrypt.js)
+- [Zod — Docs](https://zod.dev/)
+- [Express — Middleware](https://expressjs.com/en/guide/using-middleware.html)
+- [OWASP — Autenticación](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
+- [Prisma — Docs (ORM moderno)](https://www.prisma.io/docs)
+
+---
+
+➡️ Siguiente capítulo: [20 — DevOps para frontend](20-devops.md)
