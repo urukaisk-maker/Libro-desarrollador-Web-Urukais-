@@ -7424,7 +7424,7 @@
 <div class="quiz-question" data-answer="b">
 <p><strong>1.</strong> ¿Qué permite WebXR?</p>
 <button class="quiz-option" data-opt="a">A) Crear apps nativas de VR</button>
-<button class="quiz-option" data-opt="b">B">Crear experiencias VR/AR en el navegador</button>
+<button class="quiz-option" data-opt="b">B) Crear experiencias VR/AR en el navegador</button>
 <button class="quiz-option" data-opt="c">C) Editar vídeos 360</button>
 </div>
 <div class="quiz-question" data-answer="a">
@@ -7454,6 +7454,348 @@
 <h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
 <p><a class="md-button md-button--primary" href="../30-web3/">Ir al Capítulo 30 — Web3</a>
 <a class="md-button" href="../../">Volver al índice</a></p>
+<hr />
+<h2 id="webxr-vs-webvr-vs-arjs">🥽 WebXR vs WebVR vs AR.js<a class="headerlink" href="#webxr-vs-webvr-vs-arjs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tecnología</th>
+<th style="text-align: left;">Qué hace</th>
+<th style="text-align: left;">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>WebVR</strong> (antiguo)</td>
+<td style="text-align: left;">Realidad virtual en el navegador</td>
+<td style="text-align: left;">❌ Obsoleto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WebXR</strong> (moderno)</td>
+<td style="text-align: left;">VR <strong>y</strong> AR en el navegador</td>
+<td style="text-align: left;">✅ Estándar actual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AR.js</strong></td>
+<td style="text-align: left;">AR ligera (marcadores, GPS)</td>
+<td style="text-align: left;">✅ Activo (complementario)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>WebXR</strong> es la API estándar del W3C para experiencias inmersivas en el navegador. Sustituyó a WebVR en 2019 y añadió soporte para AR.</p>
+<h3 id="soporte-2026">Soporte (2026)<a class="headerlink" href="#soporte-2026" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Navegador</th>
+<th style="text-align: left;">VR</th>
+<th style="text-align: left;">AR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Chrome (Android)</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Chrome (PC + gafas)</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+</tr>
+<tr>
+<td style="text-align: left;">Safari (iOS)</td>
+<td style="text-align: left;">✅ (visionOS)</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Meta Quest Browser</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+</tr>
+<tr>
+<td style="text-align: left;">Firefox</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">❌</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Firefox no soporta WebXR</p>
+<p>A día de hoy, Firefox no implementa WebXR. Si tu experiencia es solo VR/AR, avisa al usuario con un mensaje claro.</p>
+</div>
+<hr />
+<h2 id="tu-primera-escena-vr-con-threejs">🚀 Tu primera escena VR con Three.js<a class="headerlink" href="#tu-primera-escena-vr-con-threejs" title="Permanent link">&para;</a></h2>
+<p><strong>Three.js</strong> es la librería 3D más usada para WebXR. Abstrae la API y permite crear escenas complejas con poco código.</p>
+<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>three
+</code></pre></div>
+<h3 id="escena-minima-con-vr">Escena mínima con VR<a class="headerlink" href="#escena-minima-con-vr" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VRButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three/addons/webxr/VRButton.js"</span><span class="p">;</span>
+
+<span class="c1">// 1. Escena, cámara y renderer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// activar WebXR</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+<span class="c1">// 2. Botón "Entrar en VR"</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">VRButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">));</span>
+
+<span class="c1">// 3. Un cubo giratorio</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">geometria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometria</span><span class="p">,</span><span class="w"> </span><span class="nx">material</span><span class="p">);</span>
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
+
+<span class="c1">// 4. Luz</span>
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AmbientLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+
+<span class="c1">// 5. Cámara</span>
+<span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+
+<span class="c1">// 6. Bucle de render</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title"><code>setAnimationLoop</code> en lugar de <code>requestAnimationFrame</code></p>
+<p>Con WebXR, <code>renderer.setAnimationLoop()</code> es <strong>obligatorio</strong>. <code>requestAnimationFrame</code> no funciona en modo VR porque el navegador controla el refresco de las gafas.</p>
+</div>
+<hr />
+<h2 id="ar-en-el-navegador-con-webxr">📱 AR en el navegador con WebXR<a class="headerlink" href="#ar-en-el-navegador-con-webxr" title="Permanent link">&para;</a></h2>
+<p>La realidad aumentada en el navegador funciona en <strong>móviles compatibles</strong> (Android con ARCore, iOS con ARKit a través de Safari).</p>
+<h3 id="escena-ar-minima">Escena AR mínima<a class="headerlink" href="#escena-ar-minima" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ARButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three/addons/webxr/ARButton.js"</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+<span class="c1">// Botón "Ver en AR"</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ARButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">requiredFeatures</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"hit-test"</span><span class="p">]</span><span class="w"> </span><span class="p">});</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">boton</span><span class="p">);</span>
+
+<span class="c1">// Un cubo flotante</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">),</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x00bcd4</span><span class="w"> </span><span class="p">})</span>
+<span class="p">);</span>
+<span class="nx">cubo</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
+
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AmbientLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+<span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">HTTPS obligatorio</p>
+<p>WebXR <strong>solo funciona en HTTPS</strong> (o <code>localhost</code>). En <code>http://</code> el navegador bloquea la cámara y las APIs de AR.</p>
+</div>
+<hr />
+<h2 id="casos-de-uso-reales_1">🎮 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Caso</th>
+<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Madurez</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>E-commerce AR</strong></td>
+<td style="text-align: left;">Ver un mueble en tu salón antes de comprarlo</td>
+<td style="text-align: left;">🟢 Producción</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Educación</strong></td>
+<td style="text-align: left;">Anatomía 3D, museos virtuales</td>
+<td style="text-align: left;">🟢 Producción</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Turismo</strong></td>
+<td style="text-align: left;">Guías AR en museos y ciudades</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Formación industrial</strong></td>
+<td style="text-align: left;">Simulacros de maquinaria en VR</td>
+<td style="text-align: left;">🟢 Producción</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inmobiliaria</strong></td>
+<td style="text-align: left;">Tour virtual de pisos</td>
+<td style="text-align: left;">🟢 Producción</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Juegos</strong></td>
+<td style="text-align: left;">Experiencias inmersivas en el navegador</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Eventos</strong></td>
+<td style="text-align: left;">Conciertos y exposiciones VR</td>
+<td style="text-align: left;">🟡 Crecimiento</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplos-reales">Ejemplos reales<a class="headerlink" href="#ejemplos-reales" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>IKEA Place</strong> — ver muebles en AR</li>
+<li><strong>Google Arts &amp; Culture</strong> — museos en VR</li>
+<li><strong>Sketchfab</strong> — modelos 3D en AR</li>
+<li><strong>Amazon View in Your Room</strong> — AR en e-commerce</li>
+</ul>
+<hr />
+<h2 id="rendimiento-en-vr">⚡ Rendimiento en VR<a class="headerlink" href="#rendimiento-en-vr" title="Permanent link">&para;</a></h2>
+<p>La VR es <strong>mucho más exigente</strong> que una web normal: 90 fps constantes, estereoscopía (dos renders por frame), y tracking de cabeza.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Requisito</th>
+<th style="text-align: left;">VR</th>
+<th style="text-align: left;">Web normal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>FPS</strong></td>
+<td style="text-align: left;">90+ (72 en Quest)</td>
+<td style="text-align: left;">30-60</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Renders por frame</strong></td>
+<td style="text-align: left;">2 (uno por ojo)</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Latencia</strong></td>
+<td style="text-align: left;">&lt; 20 ms (mareo)</td>
+<td style="text-align: left;">&lt; 100 ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Triángulos</strong></td>
+<td style="text-align: left;">&lt; 100k por ojo</td>
+<td style="text-align: left;">Millones posibles</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optimizaciones-clave">Optimizaciones clave<a class="headerlink" href="#optimizaciones-clave" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Pixel ratio limitado (no renderizar a 4K)</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setPixelRatio</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">devicePixelRatio</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
+
+<span class="c1">// 2. Sombras desactivadas o simples</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">shadowMap</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// o THREE.PCFSoftShadowMap</span>
+
+<span class="c1">// 3. Geometrías con LOD</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">lod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">LOD</span><span class="p">();</span>
+<span class="nx">lod</span><span class="p">.</span><span class="nx">addLevel</span><span class="p">(</span><span class="nx">meshDetallado</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">lod</span><span class="p">.</span><span class="nx">addLevel</span><span class="p">(</span><span class="nx">meshSimple</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+
+<span class="c1">// 4. Frustum culling (Three.js lo hace por defecto)</span>
+<span class="c1">// 5. InstancedMesh para muchos objetos iguales</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">instancias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">InstancedMesh</span><span class="p">(</span><span class="nx">geometria</span><span class="p">,</span><span class="w"> </span><span class="nx">material</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El mareo es real</p>
+<p>Si la latencia supera los 20 ms, el usuario nota <strong>motion sickness</strong> (mareo, náuseas). Es el motivo por el que la VR no es para todo el mundo. Prioriza siempre los FPS sobre la calidad visual.</p>
+</div>
+<hr />
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Escena VR con un cubo interactivo</p>
+<p>Crea una escena VR con Three.js que:</p>
+<ul>
+<li>Tenga un cubo girando en el centro.</li>
+<li>Al hacer clic en el cubo (con el mando VR), cambie de color.</li>
+<li>Tenga un botón "Entrar en VR" que oculte en móviles sin soporte.</li>
+</ul>
+</div>
+<details class="success">
+<summary>Solución</summary>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">THREE</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">VRButton</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"three/addons/webxr/VRButton.js"</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">camara</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span><span class="mf">75</span><span class="p">,</span><span class="w"> </span><span class="nx">innerWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="w"> </span><span class="nx">antialias</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nx">innerWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">innerHeight</span><span class="p">);</span>
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">xr</span><span class="p">.</span><span class="nx">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">VRButton</span><span class="p">.</span><span class="nx">createButton</span><span class="p">(</span><span class="nx">renderer</span><span class="p">));</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cubo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">),</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="mh">0x6a5acd</span><span class="w"> </span><span class="p">})</span>
+<span class="p">);</span>
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cubo</span><span class="p">);</span>
+<span class="nx">escena</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">THREE</span><span class="p">.</span><span class="nx">AmbientLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+<span class="nx">camara</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+
+<span class="c1">// Cambiar color al hacer clic (con mando VR)</span>
+<span class="nx">cubo</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"select"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">material</span><span class="p">.</span><span class="nx">color</span><span class="p">.</span><span class="nx">setHex</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mh">0xffffff</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">renderer</span><span class="p">.</span><span class="nx">setAnimationLoop</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cubo</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">escena</span><span class="p">,</span><span class="w"> </span><span class="nx">camara</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="quiz-de-repaso">🧠 Quiz de repaso<a class="headerlink" href="#quiz-de-repaso" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Comprueba lo aprendido</p>
+</div>
+<details class="success">
+<summary>1. ¿Qué diferencia hay entre WebVR y WebXR?</summary>
+<p>WebVR era la API antigua (solo VR). <strong>WebXR</strong> es la API moderna que soporta <strong>VR y AR</strong> en el navegador. Sustituyó a WebVR en 2019.</p>
+</details>
+<details class="success">
+<summary>2. ¿Por qué <code>renderer.setAnimationLoop</code> es obligatorio en VR?</summary>
+<p>Porque el navegador controla el <strong>refresco de las gafas</strong> (90 Hz). <code>requestAnimationFrame</code> no funciona en modo VR: el navegador necesita decidir cuándo renderizar cada ojo.</p>
+</details>
+<details class="success">
+<summary>3. ¿Cuántos FPS necesita la VR?</summary>
+<p><strong>90 FPS</strong> (72 en Meta Quest). Es el doble que una web normal, porque el cerebro humano detecta el movimiento con mucha precisión y los FPS bajos provocan mareo.</p>
+</details>
+<details class="success">
+<summary>4. ¿Qué es el motion sickness en VR?</summary>
+<p>El <strong>mareo</strong> que produce la VR cuando la latencia supera los 20 ms o los FPS bajan. El cerebro espera que el movimiento visual coincida con el del cuerpo, y si no coincide, se marea.</p>
+</details>
+<details class="success">
+<summary>5. ¿Qué caso de uso real usa WebXR en producción?</summary>
+<p>IKEA Place (muebles en AR), Amazon View in Your Room (e-commerce AR), Google Arts &amp; Culture (museos VR), Sketchfab (modelos 3D en AR), formación industrial en VR.</p>
+</details>
+<hr />
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/API/WebXR_Device_API">MDN — WebXR</a></li>
+<li><a href="https://threejs.org/docs/">Three.js — Docs</a></li>
+<li><a href="https://threejs.org/examples/?q=webxr">Three.js — WebXR examples</a></li>
+<li><a href="https://web.dev/explore/webxr">web.dev — WebXR</a></li>
+<li><a href="https://immersive-web.github.io/">Immersive Web — Spec</a></li>
+<li><a href="https://ar-js-org.github.io/AR.js-Docs/">AR.js — Docs</a></li>
+</ul>
+<hr />
+<p>➡️ Siguiente capítulo: <a href="../30-web3/">30 — Web3</a></p>
 
 
 
