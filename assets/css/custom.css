@@ -613,28 +613,6 @@ body {
   perspective: 1000px;
 }
 
-.book-cover-img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 4px 12px 12px 4px;
-  box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.4), inset 4px 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-  border-left: 5px solid rgba(255, 255, 255, 0.2);
-}
-
-.book-cover-img:hover {
-  transform: translateY(-10px) rotateY(-5deg);
-  box-shadow: -25px 25px 60px rgba(0, 0, 0, 0.5);
-}
-/* ============================================
-   BANNER DE COOKIES (ANCLADO AL VIEWPORT)
-   ============================================ */
-.cookie-banner {
-  position: fixed !important; /* Fuerza a que flote sobre el contenido */
-  bottom: 1rem !important;    /* Distancia desde el borde inferior */
-  left: 1rem !important;      /* Distancia desde el borde izquierdo */
-  right: 1rem !important;     /* Distancia desde el borde derecho */
-  max-width: 480px;
   background: var(--md-default-bg-color);
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 12px;
@@ -804,17 +782,6 @@ body {
   margin: 3rem 0 2rem;
   perspective: 1000px;
 }
-.book-cover-img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 4px 12px 12px 4px;
-  box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.4), inset 4px 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-  border-left: 5px solid rgba(255, 255, 255, 0.2);
-}
-.book-cover-img:hover {
-  transform: translateY(-10px) rotateY(-5deg);
-  box-shadow: -25px 25px 60px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================
@@ -826,15 +793,6 @@ body {
 .newsletter-modal-overlay.active { display: flex; opacity: 1; }
 .newsletter-modal { background: #1e293b; border-radius: 20px; padding: 2.5rem; max-width: 480px; width: 90%; border: 1px solid rgba(167, 139, 250, 0.3); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); position: relative; transform: scale(0.9); transition: transform 300ms ease; font-family: 'Inter', sans-serif; }
 .newsletter-modal-overlay.active .newsletter-modal { transform: scale(1); }
-.newsletter-modal__close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
-.newsletter-modal__close:hover { color: white; }
-.newsletter-modal__icon { font-size: 3rem; margin-bottom: 1rem; }
-.newsletter-modal__title { color: #fff; margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 800; }
-.newsletter-modal__text { color: #cbd5e1; margin: 0 0 1.5rem; line-height: 1.6; }
-.newsletter-modal__cta { display: block; background: linear-gradient(90deg, #a78bfa, #22d3ee); color: #0f172a; padding: 0.9rem; border-radius: 12px; font-weight: 700; text-decoration: none; text-align: center; }
-.newsletter-modal__skip { display: block; text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.85rem; text-decoration: none; }
-
-.cookie-banner { display: none; position: fixed !important; bottom: 1rem !important; left: 1rem !important; right: 1rem !important; max-width: 480px; background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25); padding: 1.25rem; flex-direction: column; gap: 1rem; z-index: 99998 !important; font-family: 'Inter', sans-serif; }
 .cookie-banner p { margin: 0; font-size: 0.85rem; color: var(--md-default-fg-color); line-height: 1.5; }
 .cookie-banner__actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
 .cookie-banner__btn { background: #6a5acd; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
@@ -1992,7 +1950,8 @@ body {
 }
 
 @media screen and (max-width: 640px) {
-  .logros-progreso__stats { grid-template-columns:
+  .logros-progreso__stats { grid-template-columns: repeat(2, 1fr); }
+}
 
 
 /* ===== Playground ===== */
@@ -2126,4 +2085,293 @@ body {
 [data-md-color-scheme="slate"] .quiz-option.is-wrong {
   background: #4d1e24 !important;
   color: #f5a3ab !important;
+}
+
+/* ============================================
+ M *EJORAS DE PORTADA (2026-10-24)
+ ============================================ */
+
+/* Imagen de portada: tamaño controlado, sombra suave */
+.book-cover-container {
+  max-width: 900px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.book-hero__stat-label {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+/* Botón CTA: más grande y con hover */
+.book-hero__cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6a5acd, #22d3ee);
+  color: #fff !important;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(106, 90, 205, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(106, 90, 205, 0.4);
+  color: #fff !important;
+}
+
+/* Tarjetas de nivel: hover más visible */
+.md-typeset .grid > * {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset .grid > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Stack: iconos más grandes y separados */
+.stack-icons span {
+  font-size: 3rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.stack-icons span:hover {
+  transform: scale(1.2) translateY(-4px);
+}
+
+/* Espaciado entre secciones de la portada */
+.md-typeset h2 {
+  margin-top: 3rem;
+}
+
+/* En móvil, ajustar tamaños */
+@media (max-width: 768px) {
+  .book-cover-container {
+    margin: 1rem auto 2rem;
+  }
+
+  .book-hero__stat-number {
+    font-size: 2rem;
+  }
+
+  .book-hero__cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .stack-icons span {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================================
+MEJORAS DE PORTADA (2026-10-24)
+============================================ */
+
+.book-cover-container {
+    max-width: 900px;
+    margin: 2rem auto 3rem;
+    padding: 0 1rem;
+}
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+}
+
+.book-hero__stat-label {
+    font-size: 0.85rem;
+    color: var(--md-default-fg-color--light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+}
+
+.book-hero__cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6a5acd, #22d3ee);
+    color: #fff !important;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(106, 90, 205, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(106, 90, 205, 0.4);
+    color: #fff !important;
+}
+
+.md-typeset .grid > * {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.md-typeset .grid > *:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.stack-icons span {
+    font-size: 3rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.stack-icons span:hover {
+    transform: scale(1.2) translateY(-4px);
+}
+
+.md-typeset h2 {
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .book-cover-container {
+        margin: 1rem auto 2rem;
+    }
+
+    .book-hero__stat-number {
+        font-size: 2rem;
+    }
+
+    .book-hero__cta {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .stack-icons span {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================
+EFECTOS HOVER VISIBLES (2026-10-24 v2)
+============================================ */
+
+/* Imagen de portada: hover MUY evidente */
+.book-cover-img {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.book-cover-img:hover {
+    transform: scale(1.03) translateY(-8px) !important;
+    box-shadow: 0 24px 64px rgba(106, 90, 205, 0.4) !important;
+}
+
+/* Botón CTA: hover muy visible */
+.book-hero__cta {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+}
+
+.book-hero__cta:hover {
+    transform: scale(1.08) translateY(-4px) !important;
+    box-shadow: 0 16px 48px rgba(106, 90, 205, 0.6) !important;
+}
+
+/* Stats: hover que agranda el número */
+.book-hero__stat {
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.book-hero__stat:hover {
+    transform: scale(1.15);
+}
+
+.book-hero__stat:hover .book-hero__stat-number {
+    background: linear-gradient(135deg, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Tarjetas de nivel: hover muy visible */
+.md-typeset .grid > div {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+}
+
+.md-typeset .grid > div:hover {
+    transform: scale(1.03) translateY(-6px) !important;
+    box-shadow: 0 16px 48px rgba(106, 90, 205, 0.25) !important;
+}
+
+.md-typeset .grid > div:hover img {
+    transform: scale(1.05);
+}
+
+.md-typeset .grid > div img {
+    transition: transform 0.4s ease;
+}
+
+/* Emojis del stack: hover grande */
+.stack-icons span {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    cursor: default;
+}
+
+.stack-icons span:hover {
+    transform: scale(1.4) translateY(-8px) !important;
+}
+
+/* Enlaces de listas: hover con color */
+.md-typeset ul li a {
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.md-typeset ul li a:hover {
+    color: #a78bfa;
+    padding-left: 4px;
+}
+
+
+/* ============================================
+HOVER PORTADA - BLOQUE FINAL
+============================================ */
+.book-cover-img {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+}
+
+.book-cover-img:hover {
+    transform: translateY(-12px) rotateY(-5deg) scale(1.05) !important;
+    box-shadow: 0 30px 80px rgba(106, 90, 205, 0.5) !important;
+    cursor: pointer !important;
+}
+
+/* ============================================
+   HOVER PARA TARJETAS DE NIVEL Y "POR QUÉ ESTE LIBRO"
+   ============================================ */
+div[style*="border: 1px solid #ddd"] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    background: var(--md-default-bg-color);
+}
+
+div[style*="border: 1px solid #ddd"]:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px rgba(106, 90, 205, 0.25) !important;
+    border-color: #a78bfa !important;
+}
+
+div[style*="border: 1px solid #ddd"]:hover img {
+    filter: brightness(1.08);
+    transition: filter 0.3s ease;
 }
