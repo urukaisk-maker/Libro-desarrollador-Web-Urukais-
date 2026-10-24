@@ -219,3 +219,302 @@ npx asc modulo.ts -o modulo.wasm
 
 [Ir al Capítulo 28 — IA en el frontend](28-ia-frontend.md){ .md-button .md-button--primary }
 [Volver al índice](../index.md){ .md-button }
+
+
+---
+
+## 🦀 Rust → WebAssembly con `wasm-pack`
+
+Rust es el lenguaje más popular para escribir WebAssembly. Su sistema de tipos y su gestión de memoria sin GC lo hacen ideal para código de alto rendimiento.
+
+### Instalación
+
+~~~bash
+# Instalar wasm-pack
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+# Crear proyecto
+cargo new --lib mi-wasm
+cd mi-wasm
+~~~
+
+### Configurar `Cargo.toml`
+
+~~~toml
+[package]
+name = "mi-wasm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+~~~
+
+### Escribir la función en Rust
+
+~~~rust
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn sumar(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+#[wasm_bindgen]
+pub fn fib(n: u32) -> u64 {
+    if n < 2 { n as u64 } else { fib(n - 1) + fib(n - 2) }
+}
+~~~
+
+### Compilar
+
+~~~bash
+wasm-pack build --target web
+~~~
+
+Genera `pkg/` con:
+- `mi_wasm_bg.wasm` — el binario
+- `mi_wasm.js` — el "pegamento" para llamarlo desde JS
+- `mi_wasm.d.ts` — tipos TypeScript
+
+### Usar desde JavaScript
+
+~~~javascript
+import init, { sumar, fib } from "./pkg/mi_wasm.js";
+
+await init();
+
+console.log(sumar(2, 3));   // 5
+console.log(fib(30));       // 832040
+~~~
+
+!!! tip "El `init()` es obligatorio"
+    La primera vez hay que llamar a `init()` para cargar el `.wasm`. Es asíncrono porque descarga y compila el binario. Después, las funciones son síncronas.
+
+---
+
+## 🖥️ WASI: WebAssembly fuera del navegador
+
+**WASI** (WebAssembly System Interface) permite ejecutar Wasm **fuera del navegador**, con acceso controlado a archivos, red, reloj, etc. Es la base de los "contenedores Wasm".
+
+### Ejemplo con Wasmtime (runtime de WASI)
+
+~~~bash
+# Instalar wasmtime
+curl https://wasmtime.dev/install.sh -sSf | bash
+
+# Ejecutar un .wasm con WASI
+wasmtime mi-programa.wasm
+~~~
+
+### Compilar Rust a WASI
+
+~~~bash
+rustup target add wasm32-wasi
+cargo build --target wasm32-wasi --release
+~~~
+
+### ¿Por qué WASI es importante?
+
+| Ventaja | Detalle |
+| :--- | :--- |
+| **Portabilidad** | El mismo `.wasm` corre en cualquier SO con un runtime WASI |
+| **Seguridad** | El código está aislado por defecto (sin acceso al sistema salvo que lo pidas) |
+| **Arranque rápido** | Milisegundos, frente a segundos de un contenedor Docker |
+| **Tamaño** | Un `.wasm` puede ser de pocos KB frente a MB de una imagen Docker |
+
+!!! warning "WASI vs Docker"
+    WASI **no** sustituye a Docker en todos los casos. Es ideal para funciones pequeñas, plugins y edge computing. Para apps complejas con dependencias del sistema, Docker sigue siendo mejor.
+
+---
+
+## 🎯 Casos de uso reales
+
+WebAssembly no es una promesa de futuro: ya se usa en producción.
+
+| Empresa | Uso |
+| :--- | :--- |
+| **Figma** | Renderizado vectorial y edición colaborativa en tiempo real |
+| **Photoshop (web)** | Procesamiento de imágenes en el navegador |
+| **Google Earth** | Visualización 3D del planeta |
+| **AutoCAD (web)** | Renderizado CAD en el navegador |
+| **Unity / Unreal** | Juegos 3D exportados a WebAssembly |
+| **Cloudflare Workers** | Ejecuta Wasm en el edge |
+| **1Password** | Criptografía y generación de contraseñas |
+| **Zoom (web)** | Procesamiento de audio y vídeo |
+
+!!! tip "¿Cuándo merece la pena Wasm?"
+    Cuando necesitas **rendimiento cercano al nativo** o **reutilizar código** de C/C++/Rust en la web. Para todo lo demás, JavaScript sigue siendo la mejor opción.
+
+---
+
+## 🔗 Integración con JavaScript
+
+WebAssembly **no es un reemplazo** de JavaScript: se complementan. La integración es bidireccional.
+
+### Paso de strings (memoria compartida)
+
+Los strings son lo más complicado: Wasm no entiende de UTF-8, solo de bytes.
+
+~~~rust
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn saludar(nombre: &str) -> String {
+    format!("Hola, {}!", nombre)
+}
+~~~
+
+~~~javascript
+import init, { saludar } from "./pkg/mi_wasm.js";
+await init();
+
+console.log(saludar("Urukais"));  // "Hola, Urukais!"
+~~~
+
+`wasm-bindgen` se encarga de la conversión automáticamente. Sin él, tendrías que gestionar la memoria a mano.
+
+### Paso de arrays
+
+~~~rust
+#[wasm_bindgen]
+pub fn sumar_array(numeros: &[i32]) -> i32 {
+    numeros.iter().sum()
+}
+~~~
+
+~~~javascript
+const numeros = new Int32Array([1, 2, 3, 4, 5]);
+console.log(sumar_array(numeros));  // 15
+~~~
+
+### Llamar a JavaScript desde Rust
+
+~~~rust
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+extern "C" {
+    fn alert(s: &str);
+    #[wasm_bindgen(js_name = consoleLog)]
+    fn console_log(s: &str);
+}
+
+#[wasm_bindgen]
+pub fn saludar_usuario() {
+    alert("¡Hola desde Rust!");
+}
+~~~
+
+---
+
+## ⚡ Rendimiento: cuándo Wasm gana (y cuándo no)
+
+Wasm no siempre es más rápido que JavaScript. Depende del tipo de tarea.
+
+| Tarea | Ganador | Por qué |
+| :--- | :--- | :--- |
+| **Bucles numéricos pesados** | ⚡ Wasm | Sin GC, sin tipos dinámicos |
+| **Criptografía** | ⚡ Wasm | Operaciones con enteros grandes |
+| **Procesamiento de imágenes** | ⚡ Wasm | SIMD, operaciones por píxel |
+| **Manipulación del DOM** | 🟡 JavaScript | Acceso directo a las APIs del navegador |
+| **Lógica de negocio simple** | 🟡 JavaScript | Evitas la sobrecarga de puente JS↔Wasm |
+| **Operaciones con strings** | 🟡 JavaScript | Sin conversión de memoria |
+
+### El coste del puente JS ↔ Wasm
+
+Cada llamada de JS a Wasm (y viceversa) tiene un coste. Si haces miles de llamadas pequeñas, el coste supera la ganancia.
+
+~~~javascript
+// ❌ Mal: 10.000 llamadas al puente
+for (let i = 0; i < 10000; i++) {
+    sumar(1, 1);  // cada llamada cruza el puente
+}
+
+// ✅ Bien: una sola llamada, el bucle dentro de Wasm
+sumar_muchas_veces(10000);
+~~~
+
+!!! warning "Mide antes de optimizar"
+    No asumas que Wasm es más rápido. **Benchmarkea** tu caso concreto. A veces JavaScript bien escrito es igual de rápido y mucho más sencillo.
+
+---
+
+## 🧪 Ejercicio práctico
+
+!!! example "Fibonacci en Rust + WebAssembly"
+    Crea una función en Rust que calcule el n-ésimo número de Fibonacci, compílala a Wasm y llámala desde JavaScript.
+
+    - Rust: función `fib(n: u32) -> u64` recursiva.
+    - JavaScript: llamar a `fib(30)` y medir el tiempo.
+    - Comparar con la misma función en JavaScript puro.
+
+??? success "Solución"
+    ~~~rust
+    // Rust
+    use wasm_bindgen::prelude::*;
+
+    #[wasm_bindgen]
+    pub fn fib(n: u32) -> u64 {
+        if n < 2 { n as u64 } else { fib(n - 1) + fib(n - 2) }
+    }
+    ~~~
+
+    ~~~javascript
+    // JavaScript
+    import init, { fib } from "./pkg/mi_wasm.js";
+    await init();
+
+    console.time("wasm");
+    console.log(fib(30));  // 832040
+    console.timeEnd("wasm");
+
+    function fibJS(n) {
+        return n < 2 ? n : fibJS(n - 1) + fibJS(n - 2);
+    }
+    console.time("js");
+    console.log(fibJS(30));
+    console.timeEnd("js");
+    ~~~
+
+    **Resultado típico:** Wasm es 2-5x más rápido en este tipo de bucles numéricos.
+
+---
+
+## 🧠 Quiz de repaso
+
+!!! question "Comprueba lo aprendido"
+
+??? success "1. ¿Qué diferencia hay entre WebAssembly y JavaScript?"
+    WebAssembly es un **formato binario** de bajo nivel que se ejecuta en la VM del navegador. JavaScript es un lenguaje de alto nivel. Wasm está pensado para rendimiento y reutilización de código (C/C++/Rust); JS para la lógica y el DOM.
+
+??? success "2. ¿Para qué sirve `wasm-bindgen`?"
+    Para generar el "pegamento" entre Rust y JavaScript: convierte strings, arrays y estructuras complejas automáticamente. Sin él, tendrías que gestionar la memoria lineal a mano.
+
+??? success "3. ¿Qué es WASI?"
+    La **WebAssembly System Interface**. Permite ejecutar Wasm fuera del navegador (servidores, CLIs, edge) con acceso controlado a archivos, red, etc. Es la base de los "contenedores Wasm".
+
+??? success "4. ¿Cuándo NO merece la pena usar Wasm?"
+    Cuando la tarea es manipulación del DOM, lógica simple, o strings. El coste del puente JS↔Wasm supera la ganancia. También cuando el equipo no tiene experiencia en C/C++/Rust.
+
+??? success "5. ¿Qué caso de uso real usa WebAssembly en producción?"
+    Figma (renderizado vectorial), Photoshop web, Google Earth, AutoCAD web, Unity/Unreal, Cloudflare Workers, 1Password, Zoom web. Todos usan Wasm para rendimiento o reutilización de código.
+
+---
+
+## 📚 Recursos
+
+- [MDN — WebAssembly](https://developer.mozilla.org/es/docs/WebAssembly)
+- [Rust — wasm-pack](https://rustwasm.github.io/wasm-pack/)
+- [Rust — wasm-bindgen](https://rustwasm.github.io/wasm-bindgen/)
+- [WASI — Docs](https://wasi.dev/)
+- [Wasmtime — Runtime](https://wasmtime.dev/)
+- [web.dev — WebAssembly](https://web.dev/explore/webassembly)
+- [Awesome Wasm — Lista de recursos](https://github.com/mbasso/awesome-wasm)
+
+---
+
+➡️ Siguiente capítulo: [28 — IA en el frontend](28-ia-frontend.md)
