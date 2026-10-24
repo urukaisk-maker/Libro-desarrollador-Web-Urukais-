@@ -209,9 +209,9 @@ Si has llegado hasta aquí, has terminado los **38 capítulos** del Libro del De
 
 ### ¿Y ahora qué?
 
-- 🎓 **Genera tu certificado** en la página de [Certificado](certificado.md).
-- 🏅 **Aparece en el Hall of Fame** ([Hall of Fame](hall-of-fame.md)).
-- 🤝 **Contribuye al proyecto** ([Contribuir](contribuir.md)).
+- 🎓 **Genera tu certificado** en la página de [Certificado](../certificado.md).
+- 🏅 **Aparece en el Hall of Fame** ([Hall of Fame](../hall-of-fame.md)).
+- 🤝 **Contribuye al proyecto** ([Contribuir](../contribuir.md)).
 - 📣 **Comparte tu logro** en redes sociales.
 - 🚀 **Sigue aprendiendo**: la web nunca deja de evolucionar.
 
@@ -219,7 +219,7 @@ Si has llegado hasta aquí, has terminado los **38 capítulos** del Libro del De
 
 ## ➡️ Siguientes pasos
 
-[🎓 Generar mi certificado](certificado.md){ .md-button .md-button--primary }
-[🏅 Ver el Hall of Fame](hall-of-fame.md){ .md-button }
-[🤝 Contribuir al proyecto](contribuir.md){ .md-button }
+[🎓 Generar mi certificado](../certificado.md){ .md-button .md-button--primary }
+[🏅 Ver el Hall of Fame](../hall-of-fame.md){ .md-button }
+[🤝 Contribuir al proyecto](../contribuir.md){ .md-button }
 [📖 Volver al índice](../index.md){ .md-button }
