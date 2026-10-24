@@ -64,9 +64,10 @@ nav:
       - 🚀 Lo que viene: /agenda/#lo-que-esta-por-venir
 
   - 📰 Diario:
+      - 📝 Últimas entradas: /diario/
+
   - 🎵 Música:
       - 🎧 Playlists: /musica/
-      - 📝 Últimas entradas: /diario/
 
   - 🎯 Retos:
       - 📋 Índice: /retos/
