@@ -104,9 +104,33 @@
 
 ## 💡 ¿Por qué este libro?
 
-- **100% Interactivo** — Quizzes, editores en vivo, retos con validación.
-- **Progresivo y Estructurado** — 7 niveles para no perderte.
-- **Open Source y Gratuito** — Sin anuncios, sin suscripciones.
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+<div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+<img src="/img/card-interactivo.jpg" alt="Interactivo" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+<div style="padding: 0.75rem;">
+<strong>100% Interactivo</strong>
+<p style="margin: 0.5rem 0; font-size: 0.9rem;">Quizzes, editores en vivo, retos con validación automática y sistema de logros.</p>
+</div>
+</div>
+
+<div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+<img src="/img/card-progresivo.jpg" alt="Progresivo" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+<div style="padding: 0.75rem;">
+<strong>Progresivo y Estructurado</strong>
+<p style="margin: 0.5rem 0; font-size: 0.9rem;">7 niveles diseñados para que no te pierdas en el camino.</p>
+</div>
+</div>
+
+<div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+<img src="/img/card-opensource.jpg" alt="Open Source" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+<div style="padding: 0.75rem;">
+<strong>Open Source y Gratuito</strong>
+<p style="margin: 0.5rem 0; font-size: 0.9rem;">Sin anuncios, sin suscripciones, sin muros de pago. Todo en GitHub bajo licencia MIT.</p>
+</div>
+</div>
+
+</div>
 
 ## 📄 Llévate el libro contigo
 
