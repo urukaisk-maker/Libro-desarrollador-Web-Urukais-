@@ -1,7 +1,10 @@
-# 📘 Libro del Desarrollador Web — Urukais
 
-<div style="text-align: center; margin: 1rem 0;">
-<img src="assets/portada.png" alt="Portada" style="max-width: 100%; height: auto; border-radius: 12px;">
+---
+title: Libro del Desarrollador Web — Urukais
+---
+
+<div class="book-cover-container">
+<img src="assets/portada.png" alt="Portada" class="book-cover-img">
 </div>
 
 <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; text-align: center;">

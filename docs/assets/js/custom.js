@@ -492,7 +492,8 @@ function render() {
   const pendientes = tareas.filter(t => !t.completada).length;
   contador.textContent = `Te quedan ${pendientes} tarea${pendientes === 1 ? '' : 's'}`;
 }
-
+const formTarea = document.getElementById('form-tarea');
+if (formTarea) {
 // Añadir tarea
 document.getElementById('form-tarea').addEventListener('submit', e => {
   e.preventDefault();
@@ -541,11 +542,15 @@ const root = document.documentElement;
 const temaGuardado = localStorage.getItem('tema') || 'light';
 root.dataset.theme = temaGuardado;
 
-document.getElementById('toggle-theme').addEventListener('click', () => {
-  const nuevo = root.dataset.theme === 'light' ? 'dark' : 'light';
-  root.dataset.theme = nuevo;
-  localStorage.setItem('tema', nuevo);
-});
+const toggleTheme = document.getElementById('toggle-theme');
+if (toggleTheme) {
+  toggleTheme.addEventListener('click', () => {
+    const nuevo = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = nuevo;
+    localStorage.setItem('tema', nuevo);
+  });
+}
 
 // Render inicial
 render();
+}
