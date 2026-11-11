@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Crear el contenedor del botón
     const wrapper = document.createElement('div');
     wrapper.className = 'chapter-complete-wrapper';
-    
+
     const btn = document.createElement('button');
     btn.className = 'chapter-complete-btn';
-    
+
     // Comprobar si ya está completado en localStorage
     const completedChapters = JSON.parse(localStorage.getItem('completed_chapters') || '[]');
     const isCompleted = completedChapters.includes(path);
@@ -64,11 +64,11 @@ function mostrarToastInsignia(total) {
   const toast = document.createElement('div');
   toast.className = 'badge-toast';
   toast.innerHTML = `
-    <div class="badge-toast__icon">🏆</div>
-    <div>
-      <div style="font-weight: 700;">¡Logro desbloqueado!</div>
-      <div style="font-size: 0.85rem; color: #cbd5e1;">Has completado ${total} capítulo${total > 1 ? 's' : ''}</div>
-    </div>
+  <div class="badge-toast__icon">🏆</div>
+  <div>
+  <div style="font-weight: 700;">¡Logro desbloqueado!</div>
+  <div style="font-size: 0.85rem; color: #cbd5e1;">Has completado ${total} capítulo${total > 1 ? 's' : ''}</div>
+  </div>
   `;
   document.body.appendChild(toast);
 
@@ -92,16 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Generar HTML del dashboard
   let html = `
-    <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 16px; border: 1px solid var(--md-default-fg-color--lightest); margin-bottom: 2rem;">
-      <h3 style="margin-top: 0; color: var(--md-primary-fg-color);">Tu Progreso</h3>
-      <div style="background: #e2e8f0; height: 20px; border-radius: 10px; overflow: hidden; margin: 1rem 0;">
-        <div style="background: linear-gradient(90deg, #a78bfa, #22d3ee); height: 100%; width: ${progress}%; transition: width 1s ease-out;"></div>
-      </div>
-      <p style="margin: 0; font-weight: 600; text-align: right;">${progress}% completado (${completedChapters.length}/${totalChapters} capítulos)</p>
-    </div>
+  <div style="background: var(--md-default-bg-color); padding: 2rem; border-radius: 16px; border: 1px solid var(--md-default-fg-color--lightest); margin-bottom: 2rem;">
+  <h3 style="margin-top: 0; color: var(--md-primary-fg-color);">Tu Progreso</h3>
+  <div style="background: #e2e8f0; height: 20px; border-radius: 10px; overflow: hidden; margin: 1rem 0;">
+  <div style="background: linear-gradient(90deg, #a78bfa, #22d3ee); height: 100%; width: ${progress}%; transition: width 1s ease-out;"></div>
+  </div>
+  <p style="margin: 0; font-weight: 600; text-align: right;">${progress}% completado (${completedChapters.length}/${totalChapters} capítulos)</p>
+  </div>
 
-    <h3>Capítulos Completados</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+  <h3>Capítulos Completados</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
   `;
 
   if (completedChapters.length === 0) {
@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const parts = path.split('/');
       const slug = parts[parts.length - 2] || parts[parts.length - 1];
       const nombre = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      
+
       html += `
-        <div style="background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; border: 1px solid #bbf7d0; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 1.2rem;">✅</span> ${nombre}
-        </div>
+      <div style="background: #dcfce7; color: #166534; padding: 1rem; border-radius: 8px; border: 1px solid #bbf7d0; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+      <span style="font-size: 1.2rem;">✅</span> ${nombre}
+      </div>
       `;
     });
   }
@@ -195,10 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nuevoEvento = {
         id: 'user_' + Date.now(),
-        title: '📌 ' + titulo.trim(),
-        start: info.dateStr,
-        color: '#16a34a',
-        allDay: true
+                                             title: '📌 ' + titulo.trim(),
+                                             start: info.dateStr,
+                                             color: '#16a34a',
+                                             allDay: true
       };
 
       eventosUsuario.push(nuevoEvento);
@@ -249,21 +249,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const comandos = [
     { nombre: 'Ir al Inicio', icono: '🏠', accion: () => window.location.href = '/' },
-    { nombre: 'Empezar a leer (Capítulo 1)', icono: '📖', accion: () => window.location.href = '/capitulos/01-introduccion/' },
-    { nombre: 'Ir al Playground', icono: '🧪', accion: () => window.location.href = '/playground/' },
-    { nombre: 'Ir a los Retos', icono: '🔥', accion: () => window.location.href = '/ejercicios-playground/' },
-    { nombre: 'Ir a Mis Logros', icono: '🏆', accion: () => window.location.href = '/logros/' },
-    { nombre: 'Ir al Certificado', icono: '🎓', accion: () => window.location.href = '/certificado/' },
-    { nombre: 'Ir a Mis Proyectos', icono: '🚀', accion: () => window.location.href = '/proyectos-lectores/' },
-    { nombre: 'Ir a Preguntas de Entrevista', icono: '💼', accion: () => window.location.href = '/entrevistas/' },
-    { nombre: 'Cambiar Tema (Claro/Oscuro)', icono: '🌓', accion: () => {
-      const current = document.body.getAttribute('data-md-color-scheme') || 'default';
-      const newTheme = current === 'slate' ? 'default' : 'slate';
-      document.body.setAttribute('data-md-color-scheme', newTheme);
-      localStorage.setItem('__palette', newTheme);
-    }},
-    { nombre: 'Ver el GitHub del Proyecto', icono: '💻', accion: () => window.open('https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-', '_blank') },
-    { nombre: 'Apoyar el Proyecto', icono: '☕', accion: () => window.location.href = '/apoya/' },
+                          { nombre: 'Empezar a leer (Capítulo 1)', icono: '📖', accion: () => window.location.href = '/capitulos/01-introduccion/' },
+                          { nombre: 'Ir al Playground', icono: '🧪', accion: () => window.location.href = '/playground/' },
+                          { nombre: 'Ir a los Retos', icono: '🔥', accion: () => window.location.href = '/ejercicios-playground/' },
+                          { nombre: 'Ir a Mis Logros', icono: '🏆', accion: () => window.location.href = '/logros/' },
+                          { nombre: 'Ir al Certificado', icono: '🎓', accion: () => window.location.href = '/certificado/' },
+                          { nombre: 'Ir a Mis Proyectos', icono: '🚀', accion: () => window.location.href = '/proyectos-lectores/' },
+                          { nombre: 'Ir a Preguntas de Entrevista', icono: '💼', accion: () => window.location.href = '/entrevistas/' },
+                          { nombre: 'Cambiar Tema (Claro/Oscuro)', icono: '🌓', accion: () => {
+                            const current = document.body.getAttribute('data-md-color-scheme') || 'default';
+                            const newTheme = current === 'slate' ? 'default' : 'slate';
+                            document.body.setAttribute('data-md-color-scheme', newTheme);
+                            localStorage.setItem('__palette', newTheme);
+                          }},
+                          { nombre: 'Ver el GitHub del Proyecto', icono: '💻', accion: () => window.open('https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-', '_blank') },
+                          { nombre: 'Apoyar el Proyecto', icono: '☕', accion: () => window.location.href = '/apoya/' },
   ];
 
   let filtered = [...comandos];
@@ -271,10 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function render() {
     list.innerHTML = filtered.map((cmd, i) => `
-      <li class="command-item ${i === selectedIndex ? 'selected' : ''}" data-index="${i}">
-        <span class="icon">${cmd.icono}</span>
-        <span>${cmd.nombre}</span>
-      </li>
+    <li class="command-item ${i === selectedIndex ? 'selected' : ''}" data-index="${i}">
+    <span class="icon">${cmd.icono}</span>
+    <span>${cmd.nombre}</span>
+    </li>
     `).join('');
   }
 
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// EXPLICACIÓN DE CÓDIGO CON IA
+// EXPLICACIÓN DE CÓDIGO CON IA (Cloudflare Workers AI - GRATIS)
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   // Solo en páginas de capítulos
@@ -363,20 +363,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.createElement('button');
     btn.className = 'ai-explain-btn';
     btn.textContent = '✨ Explícame';
-    btn.title = 'Explicar este código con IA';
+    btn.title = 'Explicar este código con IA (gratis)';
     btn.style.cssText = 'position: absolute; top: 0.5rem; right: 0.5rem; background: linear-gradient(135deg, #a78bfa, #22d3ee); color: #0f172a; border: none; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; z-index: 10; opacity: 0.9;';
     block.style.position = 'relative';
     block.appendChild(btn);
 
     btn.addEventListener('click', async () => {
-      // Pedir API Key si no está guardada
-      let apiKey = localStorage.getItem('openai_api_key');
-      if (!apiKey) {
-        apiKey = prompt('Para usar la IA, pega tu API Key de OpenAI (sk-...). Se guardará solo en tu navegador:');
-        if (!apiKey) return;
-        localStorage.setItem('openai_api_key', apiKey);
-      }
-
       const codigo = block.querySelector('code')?.textContent || '';
       if (!codigo.trim()) return;
 
@@ -384,29 +376,20 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
 
       try {
-        const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        const res = await fetch('https://urukais-ai-proxy.urukaisk.workers.dev', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: 'gpt-4o-mini',
-            messages: [
-              { role: 'system', content: 'Eres un profesor de desarrollo web. Explica el código de forma clara, breve y en español. Usa analogías si ayuda.' },
-              { role: 'user', content: `Explica este código:\n\n${codigo}` }
-            ],
-            max_tokens: 400
+            prompt: `Explica este código de forma clara y breve en español:\n\n${codigo}`
           })
         });
 
         if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error?.message || 'Error en la API');
+          throw new Error('Error en el proxy de IA');
         }
 
         const data = await res.json();
-        const explicacion = data.choices[0].message.content;
+        const explicacion = data.respuesta || 'No se recibió respuesta de la IA.';
 
         alert('✨ Explicación:\n\n' + explicacion);
         btn.textContent = '✨ Explícame';
@@ -481,9 +464,9 @@ function render() {
     li.dataset.id = tarea.id;
 
     li.innerHTML = `
-      <input type="checkbox" ${tarea.completada ? 'checked' : ''}>
-      <span>${tarea.texto}</span>
-      <button class="btn-eliminar" aria-label="Eliminar">🗑️</button>
+    <input type="checkbox" ${tarea.completada ? 'checked' : ''}>
+    <span>${tarea.texto}</span>
+    <button class="btn-eliminar" aria-label="Eliminar">🗑️</button>
     `;
 
     lista.appendChild(li);
@@ -494,63 +477,63 @@ function render() {
 }
 const formTarea = document.getElementById('form-tarea');
 if (formTarea) {
-// Añadir tarea
-document.getElementById('form-tarea').addEventListener('submit', e => {
-  e.preventDefault();
-  const input = document.getElementById('input-tarea');
-  const texto = input.value.trim();
-  if (!texto) return;
+  // Añadir tarea
+  document.getElementById('form-tarea').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('input-tarea');
+    const texto = input.value.trim();
+    if (!texto) return;
 
-  tareas.push({ id: Date.now(), texto, completada: false });
-  input.value = '';
-  guardar();
+    tareas.push({ id: Date.now(), texto, completada: false });
+    input.value = '';
+    guardar();
+    render();
+  });
+
+  // Delegación de eventos en la lista
+  document.getElementById('lista-tareas').addEventListener('click', e => {
+    const li = e.target.closest('li');
+    if (!li) return;
+    const id = Number(li.dataset.id);
+
+    if (e.target.matches('input[type="checkbox"]')) {
+      const tarea = tareas.find(t => t.id === id);
+      tarea.completada = !tarea.completada;
+      guardar();
+      render();
+    }
+
+    if (e.target.matches('.btn-eliminar')) {
+      tareas = tareas.filter(t => t.id !== id);
+      guardar();
+      render();
+    }
+  });
+
+  // Cambiar filtro
+  document.querySelectorAll('[data-filtro]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filtro]').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      filtroActual = btn.dataset.filtro;
+      render();
+    });
+  });
+
+  // Modo oscuro
+  const root = document.documentElement;
+  const temaGuardado = localStorage.getItem('tema') || 'light';
+  root.dataset.theme = temaGuardado;
+
+  const toggleTheme = document.getElementById('toggle-theme');
+  if (toggleTheme) {
+    toggleTheme.addEventListener('click', () => {
+      const nuevo = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = nuevo;
+      localStorage.setItem('tema', nuevo);
+    });
+  }
+
+  // Render inicial
   render();
-});
-
-// Delegación de eventos en la lista
-document.getElementById('lista-tareas').addEventListener('click', e => {
-  const li = e.target.closest('li');
-  if (!li) return;
-  const id = Number(li.dataset.id);
-
-  if (e.target.matches('input[type="checkbox"]')) {
-    const tarea = tareas.find(t => t.id === id);
-    tarea.completada = !tarea.completada;
-    guardar();
-    render();
-  }
-
-  if (e.target.matches('.btn-eliminar')) {
-    tareas = tareas.filter(t => t.id !== id);
-    guardar();
-    render();
-  }
-});
-
-// Cambiar filtro
-document.querySelectorAll('[data-filtro]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-filtro]').forEach(b => b.classList.remove('activo'));
-    btn.classList.add('activo');
-    filtroActual = btn.dataset.filtro;
-    render();
-  });
-});
-
-// Modo oscuro
-const root = document.documentElement;
-const temaGuardado = localStorage.getItem('tema') || 'light';
-root.dataset.theme = temaGuardado;
-
-const toggleTheme = document.getElementById('toggle-theme');
-if (toggleTheme) {
-  toggleTheme.addEventListener('click', () => {
-    const nuevo = root.dataset.theme === 'light' ? 'dark' : 'light';
-    root.dataset.theme = nuevo;
-    localStorage.setItem('tema', nuevo);
-  });
-}
-
-// Render inicial
-render();
 }
