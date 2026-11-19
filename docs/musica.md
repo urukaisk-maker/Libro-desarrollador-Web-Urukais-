@@ -5,31 +5,41 @@
 
 ---
 
+## 🔍 Buscar música (preview 30s)
+
+<div id="music-search-widget">
+  <input type="text" id="music-search-input" placeholder="Busca una canción o artista…" style="width:100%; padding:0.7rem 1rem; border-radius:10px; border:1px solid var(--md-default-fg-color--lightest); font-size:1rem;">
+  <div id="music-search-results" style="margin-top:1rem;"></div>
+  <audio id="music-search-player" controls style="width:100%; margin-top:1rem;"></audio>
+</div>
+
+---
+
 ## 🎧 Mis playlists favoritas
 
 ### Lo-fi hip hop
 
 El clásico para programar. Ritmo constante, sin voces que distraigan, perfecto para sesiones largas de código.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="Lofi Girl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![type:video](https://www.youtube.com/embed/jfKfPfyJRdk)
 
 ### Synthwave / Retrowave
 
 Para cuando necesitas energía y un toque nostálgico de los 80. Ideal para refactorizaciones largas o sesiones nocturnas.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/4xDzrJKXOOY" title="Synthwave Radio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![type:video](https://www.youtube.com/embed/4xDzrJKXOOY)
 
 ### Jazz para concentrarse
 
 El jazz tiene algo especial: es lo bastante complejo para no aburrir, pero lo bastante fluido para no distraer.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/Dx5qFachd3A" title="Jazz para programar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![type:video](https://www.youtube.com/embed/Dx5qFachd3A)
 
 ### Bandas sonoras de videojuegos
 
 Las bandas sonoras de videojuegos están **diseñadas para no distraer** mientras haces otra cosa. Son perfectas para programar.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/4qB0m2P6a3w" title="Video Game Soundtracks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![type:video](https://www.youtube.com/embed/4qB0m2P6a3w)
 
 ---
 
@@ -51,7 +61,7 @@ Las bandas sonoras de videojuegos están **diseñadas para no distraer** mientra
 
 ## 🎧 Playlists de la comunidad
 
-¿Tienes una playlist que te funciona? Compártela en los [Retos de la comunidad](retos-comunidad.md) o abre un [issue en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues).
+¿Tienes una playlist que te funciona? Compártela en los [Retos de la comunidad](../retos-comunidad.md) o abre un [issue en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues).
 
 ---
 
@@ -79,4 +89,4 @@ Las bandas sonoras de videojuegos están **diseñadas para no distraer** mientra
 
 ---
 
-➡️ Volver a la [portada](index.md)
+➡️ Volver a la [portada](../index.md)

@@ -16,6 +16,8 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.footer
+    - navigation.path
+    - navigation.tracking
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -36,18 +38,18 @@ theme:
 
 nav:
   - 🏠 Inicio:
-      - 🏡 Portada: /
-      - 🚀 El Viaje del Desarrollador: /#el-viaje-del-desarrollador
-      - 🛠️ Tu Caja de Herramientas: /#tu-caja-de-herramientas
-      - 📅 Agenda y Novedades: /#agenda-y-novedades
-      - 💖 Comunidad y Apoyo: /#comunidad-y-apoyo
-      - 📄 Llévate el libro: /#llevate-el-libro-contigo
-      - 💡 ¿Por qué este libro?: /#por-que-este-libro
-      - 🧰 El Stack que dominarás: /#el-stack-que-dominaras
-      - 📌 El Proyecto: /#el-proyecto
-      - 📬 Únete a la Comunidad: /#unete-a-la-comunidad
-      - 👤 Sobre el Autor: /#sobre-el-autor
-      - 📜 Licencia: /#licencia
+      - 🏡 Portada: index.md
+      - 🚀 El Viaje del Desarrollador: index.md#el-viaje-del-desarrollador
+      - 🛠️ Tu Caja de Herramientas: index.md#tu-caja-de-herramientas
+      - 📅 Agenda y Novedades: index.md#agenda-y-novedades
+      - 💖 Comunidad y Apoyo: index.md#comunidad-y-apoyo
+      - 📄 Llévate el libro: index.md#llevate-el-libro-contigo
+      - 💡 ¿Por qué este libro?: index.md#por-que-este-libro
+      - 🧰 El Stack que dominarás: index.md#el-stack-que-dominaras
+      - 📌 El Proyecto: index.md#el-proyecto
+      - 📬 Únete a la Comunidad: index.md#unete-a-la-comunidad
+      - 👤 Sobre el Autor: index.md#sobre-el-autor
+      - 📜 Licencia: index.md#licencia
 
   - 🏆 Mis Logros:
       - 📊 Resumen: /logros/
@@ -252,6 +254,30 @@ nav:
 
 plugins:
   - search
+
+  - i18n:
+      languages:
+        - locale: es
+          name: Español
+          default: true
+        - locale: en
+          name: English
+
+  - mkdocs-video                    # ← NUEVO
+
+  - optimize:
+      enabled: !ENV [CI, false]
+
+  - social:
+      enabled: !ENV [CI, false]
+      cards: true
+      cards_layout_options:
+        background_color: "#1a1a2e"
+        color: "#ffffff"
+
+  - meta
+
+  # ⚠️ print-site debe ser SIEMPRE el último plugin
   - print-site:
       add_to_navigation: true
       print_page_title: 'Versión imprimible'
@@ -288,6 +314,7 @@ extra_javascript:
   - javascripts/quiz.js
   - javascripts/logros.js
   - javascripts/external-links.js
+  - javascripts/music-search.js      # ← NUEVO
 
 extra:
   generator: false
