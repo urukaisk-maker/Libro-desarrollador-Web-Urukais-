@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 09: 09 — Despliegue. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 09 — Despliegue
 
 !!! quote "Ejercicio resuelto"

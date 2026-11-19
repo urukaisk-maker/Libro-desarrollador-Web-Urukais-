@@ -1,3 +1,6 @@
+---
+description: "Capítulo 08 del Libro del Desarrollador Web: 08 — Consumo de APIs con fetch. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 08 — Consumo de APIs con fetch
 
 !!! abstract "Qué vas a aprender"

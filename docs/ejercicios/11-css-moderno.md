@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 11: 11 — CSS moderno. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 11 — CSS moderno
 
 !!! quote "Ejercicio resuelto"

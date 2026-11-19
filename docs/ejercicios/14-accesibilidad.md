@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 14: 14 — Accesibilidad. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 14 — Accesibilidad
 
 !!! quote "Ejercicio resuelto"

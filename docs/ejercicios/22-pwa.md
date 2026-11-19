@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 22: 22 — PWA. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 22 — PWA
 
 !!! quote "Ejercicio resuelto"

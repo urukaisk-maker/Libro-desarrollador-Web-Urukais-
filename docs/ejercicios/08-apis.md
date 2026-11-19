@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 08: 08 — APIs. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 08 — APIs
 
 !!! quote "Ejercicio resuelto"

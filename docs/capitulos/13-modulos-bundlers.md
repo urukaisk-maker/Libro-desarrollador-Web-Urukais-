@@ -1,3 +1,6 @@
+---
+description: "Capítulo 13 del Libro del Desarrollador Web: 13 — Módulos y Bundlers. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 13 — Módulos y Bundlers
 
 !!! abstract "Qué vas a aprender"

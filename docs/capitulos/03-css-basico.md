@@ -1,3 +1,6 @@
+---
+description: "Capítulo 03 del Libro del Desarrollador Web: 03 — CSS básico. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 03 — CSS básico
 
 !!! abstract "Qué vas a aprender"

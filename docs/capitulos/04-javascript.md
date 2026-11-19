@@ -1,3 +1,6 @@
+---
+description: "Capítulo 04 del Libro del Desarrollador Web: 04 — JavaScript esencial. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 04 — JavaScript esencial
 
 !!! abstract "Qué vas a aprender"

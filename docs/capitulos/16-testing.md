@@ -1,3 +1,6 @@
+---
+description: "Capítulo 16 del Libro del Desarrollador Web: 16 — Testing frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 16 — Testing frontend
 
 !!! abstract "Qué vas a aprender"

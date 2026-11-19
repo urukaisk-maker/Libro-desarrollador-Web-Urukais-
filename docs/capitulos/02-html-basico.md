@@ -1,3 +1,6 @@
+---
+description: "Capítulo 02 del Libro del Desarrollador Web: 02 — HTML básico. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 02 — HTML básico
 
 !!! abstract "Qué vas a aprender"

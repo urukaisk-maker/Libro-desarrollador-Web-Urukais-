@@ -1,3 +1,6 @@
+---
+description: "Capítulo 06 del Libro del Desarrollador Web: 06 — Formularios HTML. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 06 — Formularios HTML
 
 !!! abstract "Qué vas a aprender"

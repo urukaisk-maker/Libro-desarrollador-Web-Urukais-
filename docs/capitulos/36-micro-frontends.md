@@ -1,3 +1,6 @@
+---
+description: "Capítulo 36 del Libro del Desarrollador Web: 36 — Micro-frontends. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 36 — Micro-frontends
 
 !!! abstract "Qué vas a aprender"

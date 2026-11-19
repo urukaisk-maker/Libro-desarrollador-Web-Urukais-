@@ -1,3 +1,6 @@
+---
+description: "Capítulo 01 del Libro del Desarrollador Web: 01 — Introducción al desarrollo web. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 01 — Introducción al desarrollo web
 
 !!! abstract "Qué vas a aprender"

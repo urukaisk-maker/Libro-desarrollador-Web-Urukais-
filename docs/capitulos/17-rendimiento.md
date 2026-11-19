@@ -1,3 +1,6 @@
+---
+description: "Capítulo 17 del Libro del Desarrollador Web: 17 — Rendimiento web. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 17 — Rendimiento web
 
 !!! abstract "Qué vas a aprender"

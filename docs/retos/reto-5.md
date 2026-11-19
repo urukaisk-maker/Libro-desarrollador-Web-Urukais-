@@ -1,3 +1,6 @@
+---
+description: "Reto 5: Validador de formulario. Practica tus habilidades de desarrollo web con este desafío del Libro del Desarrollador Web."
+---
 # 🎯 Reto #5: Validador de formulario
 
 !!! quote "Reto de nivel intermedio"

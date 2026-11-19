@@ -1,3 +1,6 @@
+---
+description: "Capítulo 27 del Libro del Desarrollador Web: 27 — WebAssembly. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 27 — WebAssembly
 
 !!! abstract "Qué vas a aprender"

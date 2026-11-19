@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 03: 03 — CSS básico. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 03 — CSS básico
 
 !!! quote "Ejercicio resuelto"

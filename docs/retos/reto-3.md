@@ -1,3 +1,6 @@
+---
+description: "Reto 3: Contador de clics. Practica tus habilidades de desarrollo web con este desafío del Libro del Desarrollador Web."
+---
 # 🎯 Reto #3: Contador de clics
 
 !!! quote "Reto de nivel principiante"

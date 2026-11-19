@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 04: 04 — JavaScript. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 04 — JavaScript
 
 !!! quote "Ejercicio resuelto"

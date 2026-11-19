@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 25: 25 — Design systems. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 25 — Design systems
 
 !!! quote "Ejercicio resuelto"

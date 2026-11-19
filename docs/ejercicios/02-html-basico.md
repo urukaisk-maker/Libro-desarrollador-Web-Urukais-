@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 02: 02 — HTML básico. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 02 — HTML básico
 
 !!! quote "Ejercicio resuelto"

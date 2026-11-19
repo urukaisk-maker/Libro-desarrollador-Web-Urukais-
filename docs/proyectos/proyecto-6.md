@@ -1,3 +1,6 @@
+---
+description: "Proyecto 6: Los Guardianes Silenciosos. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 👾 Los Guardianes Silenciosos
 
 !!! abstract "⚡ Ecosistema Urukais Klick"

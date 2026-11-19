@@ -1,3 +1,6 @@
+---
+description: "Proyecto 3: Felices Fiestas 2025/26. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 🎄 Felices Fiestas 2025/26
 
 !!! abstract "✨ Landing navideña"

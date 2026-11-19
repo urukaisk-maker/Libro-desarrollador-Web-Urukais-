@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 17: 17 — Rendimiento. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 17 — Rendimiento
 
 !!! quote "Ejercicio resuelto"

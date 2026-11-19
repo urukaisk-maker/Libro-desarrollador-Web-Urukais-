@@ -1,3 +1,6 @@
+---
+description: "Apéndice: Recursos Por Nivel. Recurso de referencia del Libro del Desarrollador Web."
+---
 cd ~/Libro-desarrollador-Web-Urukais-
 python3 -c "
 contenido = '''# 🗺️ Recursos por nivel

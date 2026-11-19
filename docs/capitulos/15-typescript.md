@@ -1,3 +1,6 @@
+---
+description: "Capítulo 15 del Libro del Desarrollador Web: 15 — TypeScript desde cero. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 15 — TypeScript desde cero
 
 !!! abstract "Qué vas a aprender"

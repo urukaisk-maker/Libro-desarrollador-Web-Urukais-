@@ -1,3 +1,6 @@
+---
+description: "Capítulo 29 del Libro del Desarrollador Web: 29 — WebXR. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 29 — WebXR
 
 !!! abstract "Qué vas a aprender"

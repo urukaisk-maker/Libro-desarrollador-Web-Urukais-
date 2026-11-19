@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 21: 21 — Web Components. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 21 — Web Components
 
 !!! quote "Ejercicio resuelto"

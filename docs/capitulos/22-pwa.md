@@ -1,3 +1,6 @@
+---
+description: "Capítulo 22 del Libro del Desarrollador Web: 22 — Progressive Web Apps (PWA). Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 22 — Progressive Web Apps (PWA)
 
 !!! abstract "Qué vas a aprender"

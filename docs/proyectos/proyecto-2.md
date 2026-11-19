@@ -1,3 +1,6 @@
+---
+description: "Proyecto 2: Remedios Naturales — Urukais Klick. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 🌿 Remedios Naturales — Urukais Klick
 
 !!! abstract "🌱 Guía de remedios caseros"

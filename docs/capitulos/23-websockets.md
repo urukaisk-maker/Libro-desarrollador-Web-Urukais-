@@ -1,3 +1,6 @@
+---
+description: "Capítulo 23 del Libro del Desarrollador Web: 23 — WebSockets y tiempo real. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 23 — WebSockets y tiempo real
 
 !!! abstract "Qué vas a aprender"

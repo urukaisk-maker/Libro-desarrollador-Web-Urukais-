@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 28: 28 — IA en el frontend. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 28 — IA en el frontend
 
 !!! quote "Ejercicio resuelto"

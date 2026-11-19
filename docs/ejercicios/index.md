@@ -1,3 +1,6 @@
+---
+description: "Ejercicios resueltos del Libro del Desarrollador Web: 30 soluciones comentadas paso a paso para practicar HTML, CSS, JavaScript y más."
+---
 # Ejercicios resueltos
 
 Soluciones comentadas a **todos los ejercicios** de los 30 capítulos del libro.

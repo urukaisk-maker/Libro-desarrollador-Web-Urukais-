@@ -1,3 +1,6 @@
+---
+description: "Apéndices del Libro del Desarrollador Web: glosario, chuletas rápidas y recursos por nivel."
+---
 # 📎 Apéndices
 
 !!! quote "Material de consulta rápida"

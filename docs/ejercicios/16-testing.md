@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 16: 16 — Testing. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 16 — Testing
 
 !!! quote "Ejercicio resuelto"

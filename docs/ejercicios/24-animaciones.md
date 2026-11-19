@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 24: 24 — Animaciones. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 24 — Animaciones
 
 !!! quote "Ejercicio resuelto"

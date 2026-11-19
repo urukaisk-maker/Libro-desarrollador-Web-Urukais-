@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 12: 12 — JavaScript asíncrono. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 12 — JavaScript asíncrono
 
 !!! quote "Ejercicio resuelto"

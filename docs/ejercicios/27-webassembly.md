@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 27: 27 — WebAssembly. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 27 — WebAssembly
 
 !!! quote "Ejercicio resuelto"

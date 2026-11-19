@@ -1,3 +1,6 @@
+---
+description: "Reto 4: Galería responsive. Practica tus habilidades de desarrollo web con este desafío del Libro del Desarrollador Web."
+---
 # 🎯 Reto #4: Galería responsive
 
 !!! quote "Reto de nivel intermedio"

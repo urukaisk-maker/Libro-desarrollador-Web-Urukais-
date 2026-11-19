@@ -1,3 +1,6 @@
+---
+description: "Capítulo 26 del Libro del Desarrollador Web: 26 — Seguridad web. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 26 — Seguridad web
 
 !!! abstract "Qué vas a aprender"

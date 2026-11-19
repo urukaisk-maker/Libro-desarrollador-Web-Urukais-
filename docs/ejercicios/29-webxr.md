@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 29: 29 — WebXR. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 29 — WebXR
 
 !!! quote "Ejercicio resuelto"

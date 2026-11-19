@@ -1,3 +1,6 @@
+---
+description: "Capítulo 05 del Libro del Desarrollador Web: 05 — Diseño Responsive. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 05 — Diseño Responsive
 
 !!! abstract "Qué vas a aprender"

@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 05: 05 — Responsive. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 05 — Responsive
 
 !!! quote "Ejercicio resuelto"

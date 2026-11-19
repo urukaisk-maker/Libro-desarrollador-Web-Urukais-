@@ -1,3 +1,6 @@
+---
+description: "Capítulo 21 del Libro del Desarrollador Web: 21 — Web Components. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 21 — Web Components
 
 !!! abstract "Qué vas a aprender"

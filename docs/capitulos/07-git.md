@@ -1,3 +1,6 @@
+---
+description: "Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 07 — Git y control de versiones
 
 !!! abstract "Qué vas a aprender"

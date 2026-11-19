@@ -1,3 +1,6 @@
+---
+description: "Reto 2: Tarjeta de presentación. Practica tus habilidades de desarrollo web con este desafío del Libro del Desarrollador Web."
+---
 # 🎯 Reto #2: Tarjeta de presentación
 
 !!! quote "Reto de nivel principiante"

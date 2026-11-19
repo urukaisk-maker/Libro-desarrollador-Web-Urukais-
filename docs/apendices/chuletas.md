@@ -1,3 +1,6 @@
+---
+description: "Apéndice: Chuletas rápidas. Recurso de referencia del Libro del Desarrollador Web."
+---
 # Chuletas rápidas
 
 Referencia condensada para tener a mano.

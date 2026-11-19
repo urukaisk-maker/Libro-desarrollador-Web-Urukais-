@@ -1,3 +1,6 @@
+---
+description: "Capítulo 18 del Libro del Desarrollador Web: 18 — Arquitectura frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 18 — Arquitectura frontend
 
 !!! abstract "Qué vas a aprender"

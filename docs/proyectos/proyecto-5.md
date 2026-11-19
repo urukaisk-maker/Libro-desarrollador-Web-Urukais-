@@ -1,3 +1,6 @@
+---
+description: "Proyecto 5: Pardo Agenda — calendario interactivo. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 📅 Pardo Agenda
 
 !!! abstract "🐕 Tu agenda personal gamificada"

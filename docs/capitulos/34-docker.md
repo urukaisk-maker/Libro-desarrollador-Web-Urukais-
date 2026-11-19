@@ -1,3 +1,6 @@
+---
+description: "Capítulo 34 del Libro del Desarrollador Web: 34 — Docker para frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 34 — Docker para frontend
 
 !!! abstract "Qué vas a aprender"

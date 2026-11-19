@@ -1,3 +1,6 @@
+---
+description: "Capítulo 20 del Libro del Desarrollador Web: 20 — DevOps para frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 20 — DevOps para frontend
 
 !!! abstract "Qué vas a aprender"

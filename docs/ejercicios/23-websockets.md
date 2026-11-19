@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 23: 23 — WebSockets. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 23 — WebSockets
 
 !!! quote "Ejercicio resuelto"

@@ -1,3 +1,6 @@
+---
+description: "Capítulo 31 del Libro del Desarrollador Web: 31 — Testing E2E. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 31 — Testing E2E
 
 !!! abstract "Qué vas a aprender"

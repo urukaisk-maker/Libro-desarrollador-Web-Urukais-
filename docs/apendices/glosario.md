@@ -1,3 +1,6 @@
+---
+description: "Apéndice: 📖 Glosario. Recurso de referencia del Libro del Desarrollador Web."
+---
 # 📖 Glosario
 
 !!! quote "Términos esenciales del desarrollo web"

@@ -1,3 +1,6 @@
+---
+description: "Reto 1: El botón camaleón. Practica tus habilidades de desarrollo web con este desafío del Libro del Desarrollador Web."
+---
 # 🎯 Reto #1: El botón camaleón
 
 !!! quote "Reto de nivel principiante"

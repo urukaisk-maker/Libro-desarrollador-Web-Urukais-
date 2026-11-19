@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 07: 07 — Git. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 07 — Git
 
 !!! quote "Ejercicio resuelto"

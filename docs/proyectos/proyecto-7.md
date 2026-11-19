@@ -1,3 +1,6 @@
+---
+description: "Proyecto 7: Urukais Klick — Metal & Tech. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 🤘 Urukais Klick — Metal & Tech
 
 !!! abstract "🐸 Heavy metal + tecnología"

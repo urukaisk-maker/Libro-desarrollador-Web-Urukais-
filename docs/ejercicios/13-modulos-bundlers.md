@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 13: 13 — Módulos y bundlers. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 13 — Módulos y bundlers
 
 !!! quote "Ejercicio resuelto"

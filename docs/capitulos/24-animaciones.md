@@ -1,3 +1,6 @@
+---
+description: "Capítulo 24 del Libro del Desarrollador Web: 24 — Animaciones avanzadas. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 24 — Animaciones avanzadas
 
 !!! abstract "Qué vas a aprender"

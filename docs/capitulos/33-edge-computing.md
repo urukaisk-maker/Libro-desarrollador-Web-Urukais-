@@ -1,3 +1,6 @@
+---
+description: "Capítulo 33 del Libro del Desarrollador Web: 33 — Edge Computing. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 33 — Edge Computing
 
 !!! abstract "Qué vas a aprender"

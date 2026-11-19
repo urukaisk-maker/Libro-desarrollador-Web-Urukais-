@@ -1,3 +1,6 @@
+---
+description: "Capítulo 38 del Libro del Desarrollador Web: 38 — Seguridad Web Avanzada. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 38 — Seguridad Web Avanzada
 
 !!! abstract "Qué vas a aprender"

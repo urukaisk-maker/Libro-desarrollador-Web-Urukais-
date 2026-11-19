@@ -1,3 +1,6 @@
+---
+description: "Capítulo 12 del Libro del Desarrollador Web: 12 — JavaScript asíncrono. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 12 — JavaScript asíncrono
 
 !!! abstract "Qué vas a aprender"

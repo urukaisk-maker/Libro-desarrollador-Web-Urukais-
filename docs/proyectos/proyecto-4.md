@@ -1,3 +1,6 @@
+---
+description: "Proyecto 4: Git & GitHub — Experiencia Inmersiva. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 🔀 Git & GitHub — Experiencia Inmersiva
 
 !!! abstract "🖥️ Del principiante al maestro"

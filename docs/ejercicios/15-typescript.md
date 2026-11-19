@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 15: 15 — TypeScript. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 15 — TypeScript
 
 !!! quote "Ejercicio resuelto"

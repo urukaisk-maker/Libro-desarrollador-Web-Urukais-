@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 20: 20 — DevOps. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 20 — DevOps
 
 !!! quote "Ejercicio resuelto"

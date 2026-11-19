@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 19: 19 — Full-stack con Node.js. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 19 — Full-stack con Node.js
 
 !!! quote "Ejercicio resuelto"

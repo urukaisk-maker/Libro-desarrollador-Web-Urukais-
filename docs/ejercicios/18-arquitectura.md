@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 18: 18 — Arquitectura. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 18 — Arquitectura
 
 !!! quote "Ejercicio resuelto"

@@ -1,3 +1,6 @@
+---
+description: "Capítulo 28 del Libro del Desarrollador Web: 28 — IA en el frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 28 — IA en el frontend
 
 !!! abstract "Qué vas a aprender"

@@ -1,3 +1,6 @@
+---
+description: "Capítulo 32 del Libro del Desarrollador Web: 32 — Server Components. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 32 — Server Components
 
 !!! abstract "Qué vas a aprender"

@@ -1,3 +1,6 @@
+---
+description: "Capítulo 09 del Libro del Desarrollador Web: 09 — Despliegue. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 09 — Despliegue
 
 !!! abstract "Qué vas a aprender"

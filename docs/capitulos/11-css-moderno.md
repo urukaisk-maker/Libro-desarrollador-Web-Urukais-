@@ -1,3 +1,6 @@
+---
+description: "Capítulo 11 del Libro del Desarrollador Web: 11 — CSS moderno. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 11 — CSS moderno
 
 !!! abstract "Qué vas a aprender"

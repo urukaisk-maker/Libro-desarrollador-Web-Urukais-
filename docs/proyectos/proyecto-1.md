@@ -1,3 +1,6 @@
+---
+description: "Proyecto 1: Urukais Music — plataforma musical con +150 APIs. Tutorial paso a paso del Libro del Desarrollador Web."
+---
 # 🎵 Urukais Music — Vive la Mejor Música
 
 !!! abstract "🎧 Plataforma musical"

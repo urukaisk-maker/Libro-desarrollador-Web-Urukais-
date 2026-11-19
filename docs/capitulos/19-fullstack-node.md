@@ -1,3 +1,6 @@
+---
+description: "Capítulo 19 del Libro del Desarrollador Web: 19 — Full-stack con Node.js. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 19 — Full-stack con Node.js
 
 !!! abstract "Qué vas a aprender"

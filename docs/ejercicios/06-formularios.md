@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 06: 06 — Formularios. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 06 — Formularios
 
 !!! quote "Ejercicio resuelto"

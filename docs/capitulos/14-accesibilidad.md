@@ -1,3 +1,6 @@
+---
+description: "Capítulo 14 del Libro del Desarrollador Web: 14 — Accesibilidad web. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 14 — Accesibilidad web
 
 !!! abstract "Qué vas a aprender"

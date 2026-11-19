@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 10: 10 — Portfolio. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 10 — Portfolio
 
 !!! quote "Ejercicio resuelto"

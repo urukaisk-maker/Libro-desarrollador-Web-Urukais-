@@ -1,3 +1,6 @@
+---
+description: "Capítulo 35 del Libro del Desarrollador Web: 35 — GraphQL. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 35 — GraphQL
 
 !!! abstract "Qué vas a aprender"

@@ -1,3 +1,6 @@
+---
+description: "Capítulo 25 del Libro del Desarrollador Web: 25 — Design systems. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 25 — Design systems
 
 !!! abstract "Qué vas a aprender"

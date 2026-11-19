@@ -1,3 +1,6 @@
+---
+description: "Capítulo 37 del Libro del Desarrollador Web: 37 — Introducción a la IA Generativa. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 37 — Introducción a la IA Generativa
 
 !!! abstract "Qué vas a aprender"

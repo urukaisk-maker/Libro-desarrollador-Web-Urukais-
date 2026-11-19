@@ -1,3 +1,6 @@
+---
+description: "Ejercicio resuelto 01: 01 — Introducción. Solución comentada paso a paso del Libro del Desarrollador Web."
+---
 # 01 — Introducción
 
 !!! quote "Ejercicio resuelto"

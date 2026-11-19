@@ -1,3 +1,6 @@
+---
+description: "Capítulo 10 del Libro del Desarrollador Web: 10 — Proyecto final: portfolio. Aprende paso a paso con ejemplos, ejercicios y quizzes."
+---
 # 10 — Proyecto final: portfolio
 
 !!! abstract "Qué vas a aprender"
