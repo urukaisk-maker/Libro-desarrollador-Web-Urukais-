@@ -7,16 +7,16 @@
 
 ## 📬 Formulario de contacto
 
-La forma más directa. Rellena el formulario y te responderé lo antes posible.
+Rellena los campos y se abrirá tu aplicación o gestor de correo con el mensaje preparado para `urukaisk@gmail.com`.
 
-<form class="contact-form" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+<form id="mailto-contact-form" class="contact-form">
   <div class="contact-field">
     <label for="nombre">Nombre <span class="required">*</span></label>
     <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
   </div>
 
   <div class="contact-field">
-    <label for="email">Email <span class="required">*</span></label>
+    <label for="email">Tu email <span class="required">*</span></label>
     <input type="email" id="email" name="email" required placeholder="tu@email.com">
   </div>
 
@@ -24,13 +24,13 @@ La forma más directa. Rellena el formulario y te responderé lo antes posible.
     <label for="asunto">Asunto <span class="required">*</span></label>
     <select id="asunto" name="asunto" required>
       <option value="">— Selecciona un asunto —</option>
-      <option value="duda">Duda sobre el contenido</option>
-      <option value="error">Reportar un error</option>
-      <option value="sugerencia">Sugerencia o mejora</option>
-      <option value="colaboracion">Propuesta de colaboración</option>
-      <option value="prensa">Prensa o medios</option>
-      <option value="charla">Charla o taller</option>
-      <option value="otro">Otro</option>
+      <option value="Duda sobre el contenido">Duda sobre el contenido</option>
+      <option value="Reportar un error">Reportar un error</option>
+      <option value="Sugerencia o mejora">Sugerencia o mejora</option>
+      <option value="Propuesta de colaboración">Propuesta de colaboración</option>
+      <option value="Prensa o medios">Prensa o medios</option>
+      <option value="Charla o taller">Charla o taller</option>
+      <option value="Otro">Otro</option>
     </select>
   </div>
 
@@ -44,27 +44,53 @@ La forma más directa. Rellena el formulario y te responderé lo antes posible.
     <label for="privacidad">He leído y acepto la <a href="index.md#licencia">política de privacidad</a>.</label>
   </div>
 
-  <button type="submit" class="md-button md-button--primary">📨 Enviar mensaje</button>
+  <button type="submit" class="md-button md-button--primary">✉️ Abrir en mi correo</button>
 </form>
 
-!!! note "¿No funciona el formulario?"
-    Si el formulario no responde (porque Formspree está caído o el ID no es válido), escríbeme directamente a [contacto@urukais.com](mailto:contacto@urukais.com).
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("mailto-contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const asunto = document.getElementById("asunto").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    const subject = encodeURIComponent(`[Libro Web] ${asunto} — ${nombre}`);
+    const body = encodeURIComponent(
+      `Nombre: ${nombre}\n` +
+      `Email: ${email}\n` +
+      `Asunto: ${asunto}\n\n` +
+      `Mensaje:\n${mensaje}`
+    );
+
+    window.location.href = `mailto:urukaisk@gmail.com?subject=${subject}&body=${body}`;
+  });
+});
+</script>
+
+!!! note "¿No se abre tu gestor de correo?"
+    Si no tienes un cliente de correo configurado o prefieres escribir directamente desde tu webmail, envía tu mensaje a [urukaisk@gmail.com](mailto:urukaisk@gmail.com).
 
 ---
 
 ## 📮 Canales directos
 
-Si prefieres contactar por otra vía, aquí tienes todos los canales:
+Si prefieres contactar por otra vía, aquí tienes todos los canales disponibles:
 
 | Canal | Uso recomendado | Enlace |
 | :--- | :--- | :--- |
-| **📧 Email** | Consultas generales, prensa, colaboraciones | [contacto@urukais.com](mailto:contacto@urukais.com) |
-| **🐛 GitHub Issues** | Errores, erratas, sugerencias técnicas | [Abrir issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) |
-| **💬 GitHub Discussions** | Preguntas, debates, ideas | [Ir a Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions) |
-| **🐦 Twitter / X** | Menciones públicas, compartir | [@urukaisk](https://twitter.com/urukaisk) |
+| **📧 Email** | Consultas generales, prensa y colaboraciones | [urukaisk@gmail.com](mailto:urukaisk@gmail.com) |
+| **🐛 GitHub Issues** | Errores, erratas y sugerencias técnicas | [Abrir issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) |
+| **💬 GitHub Discussions** | Preguntas, debates e ideas | [Ir a Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions) |
+| **🐦 Twitter / X** | Menciones públicas y compartir contenido | [@urukaisk](https://x.com/urukaisk) |
 | **💼 LinkedIn** | Contacto profesional | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |
-| **📰 Substack** | Newsletter, novedades | [urukaisklick.substack.com](https://urukaisklick.substack.com) |
-| **🐙 GitHub** | Código, contribuciones | [@urukaisk-maker](https://github.com/urukaisk-maker) |
+| **📰 Substack** | Newsletter y novedades | [urukaisklick.substack.com](https://urukaisklick.substack.com) |
+| **🐙 GitHub** | Código y contribuciones | [@urukaisk-maker](https://github.com/urukaisk-maker) |
 
 ---
 
@@ -83,7 +109,7 @@ Si prefieres contactar por otra vía, aquí tienes todos los canales:
 
 ### ❌ No, mejor no me escribas si…
 
-- Es un **tema de soporte técnico personal** (mi tiempo es limitado, y para eso está Stack Overflow).
+- Es un **tema de soporte técnico personal** (mi tiempo es limitado y para eso está Stack Overflow).
 - Es para **vender algo** (servicios, productos, SEO, marketing…).
 - Es **spam** o mensajes automáticos.
 - Es para **pedir que haga tu tarea** (no hago deberes, pero puedo orientarte).
@@ -110,20 +136,20 @@ Soy una persona, no una empresa. Estos son los tiempos orientativos:
 
 ## ❓ Antes de escribirme: ¿está tu duda en la FAQ?
 
-Muchas de las preguntas que recibo ya están respondidas en la página de [Preguntas frecuentes](faq.md). Antes de escribirme, échale un vistazo:
+Muchas de las preguntas habituales ya tienen respuesta en la página de [Preguntas frecuentes](faq.md). Antes de escribirme, échale un vistazo:
 
 - [¿Es gratis? ¿Cómo se financia?](faq.md#sobre-el-proyecto)
 - [¿Para quién es el libro?](faq.md#sobre-el-contenido)
 - [¿Cómo contribuyo?](faq.md#sobre-contribuir)
 - [¿Cómo obtengo el certificado?](faq.md#sobre-los-logros-y-el-certificado)
 
-Si tu duda no está en la FAQ, entonces sí: escríbeme.
+Si tu duda no aparece en la FAQ, entonces sí: escríbeme.
 
 ---
 
 ## 🤝 Colaboraciones
 
-Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocinio, charla…), indícamelo en el asunto del formulario o en el email. Cuéntame:
+Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocinio, charla…), indícamelo en el asunto del formulario o por email. Cuéntame:
 
 - **Quién eres** y a qué te dedicas.
 - **Qué propones** concretamente.
@@ -131,13 +157,13 @@ Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocini
 - **Qué necesitarías** de mi parte.
 
 !!! tip "Respuesta a colaboraciones"
-    Si tu propuesta encaja con los valores del proyecto (open source, gratuito, sin publicidad), te responderé con mucho gusto. Si no encaja, también te lo diré con honestidad.
+    Si tu propuesta encaja con los valores del proyecto (open source, gratuito y sin publicidad), te responderé con mucho gusto. Si no encaja, también te lo diré con honestidad.
 
 ---
 
 ## 🗺️ Dónde estoy
 
-Soy de España 🇪🇸, pero trabajo con gente de todo el mundo. Mi zona horaria es **CET (UTC+1)** o **CEST (UTC+2)** según la época del año. Si me escribes desde otro continente, tenlo en cuenta para calcular cuándo te responderé.
+Soy de España 🇪🇸, pero colaboro con gente de todo el mundo. Tenlo en cuenta si me escribes desde otra franja horaria.
 
 ---
 
@@ -153,12 +179,14 @@ Para más información, consulta la [política de privacidad](index.md#licencia)
 
 > *"Un email bien escrito ahorra 10 mensajes."*
 
-Si me escribes, ayúdame a ayudarte: sé concreto, cuéntame qué necesitas y, si es un error técnico, adjunta capturas, logs o el código que falla. Con esa información, responderé mucho más rápido y mejor.
+Si me escribes, ayúdame a ayudarte: sé concreto, cuéntame qué necesitas y, si es un error técnico, adjunta capturas, logs o el código que falla. Con esa información podré responderte mucho más rápido y mejor.
 
 ---
 
 ## ➡️ Siguientes pasos
 
 [🐛 Reportar un error](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new){ .md-button .md-button--primary }
+
 [💬 Ir a Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions){ .md-button }
+
 [📖 Leer las FAQ](faq.md){ .md-button }
