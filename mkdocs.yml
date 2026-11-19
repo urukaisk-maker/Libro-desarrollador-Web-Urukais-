@@ -303,7 +303,9 @@ extra_javascript:
   - javascripts/quiz.js
   - javascripts/logros.js
   - javascripts/external-links.js
-  - javascripts/music-search.js      # ← NUEVO
+  - javascripts/music-search.js
+  - javascripts/landing.js
+  - javascripts/command-palette.js
 
 extra:
   generator: false
@@ -319,4 +321,4 @@ extra:
     provider: google
     property: G-61PDYH5BZN
 
-copyright: © 2026 Manuel Casimiro Carrasco — Urukais
+copyright: © 2026-27  Manuel Casimiro Carrasco — Urukais

@@ -6,20 +6,41 @@ hide:
   - path
 ---
 
-<div class="book-cover-container" style="text-align: center; margin: 2rem 0 1rem;">
-<img src="/assets/portada.png" alt="Portada del Libro del Desarrollador Web" class="book-cover-img">
-</div>
+<div class="landing-hero" markdown>
 
-<div style="text-align: center;" markdown>
+<img src="/assets/portada.png" alt="Portada del Libro del Desarrollador Web" class="book-cover-img animate-in">
 
 # Libro del Desarrollador Web
 
-**El manual definitivo para aprender desarrollo web en español.**
-Desde los cimientos hasta la vanguardia tecnológica.
+**El manual definitivo para aprender desarrollo web en español.** Desde los cimientos hasta la vanguardia tecnológica.
 
 [🚀 Empezar el Nivel 1](capitulos/01-introduccion.md){ .md-button .md-button--primary }
 [📖 Ver el temario](introduccion.md){ .md-button }
 [🏆 Mis logros](logros.md){ .md-button }
+
+</div>
+
+<div class="landing-stats animate-in animate-delay-3">
+
+<div class="landing-stat">
+<span class="landing-stat__num" data-count="38">0</span>
+<span class="landing-stat__label">Capítulos</span>
+</div>
+
+<div class="landing-stat">
+<span class="landing-stat__num" data-count="7">0</span>
+<span class="landing-stat__label">Niveles</span>
+</div>
+
+<div class="landing-stat">
+<span class="landing-stat__num" data-count="30">0</span>
+<span class="landing-stat__label">Ejercicios</span>
+</div>
+
+<div class="landing-stat">
+<span class="landing-stat__num" data-count="14">0</span>
+<span class="landing-stat__label">Diagramas</span>
+</div>
 
 </div>
 
@@ -55,7 +76,7 @@ Desde los cimientos hasta la vanguardia tecnológica.
 
 ## 🚀 El Viaje del Desarrollador
 
-<div class="grid cards" markdown>
+<div class="grid cards tilt-cards" markdown>
 
 -   ![Nivel 1](img/1.jpg)
 
@@ -137,7 +158,9 @@ Desde los cimientos hasta la vanguardia tecnológica.
 
 ## 🛠 El Stack que dominarás
 
+<div class="stack-icons">
 🌐 HTML · 🎨 CSS · ⚡ JavaScript · 🔷 TypeScript · ⚛ React · 🟢 Node.js · 🔀 Git · 🐳 Docker
+</div>
 
 ---
 
@@ -170,6 +193,17 @@ Desde los cimientos hasta la vanguardia tecnológica.
 ## 📄 Llévate el libro contigo
 
 [Descargar versión imprimible (PDF)](print_page/){ .md-button }
+
+---
+
+<div class="landing-cta" markdown>
+
+## ¿Te está sirviendo el libro?
+
+[⭐ Dale una estrella en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-){ .md-button .md-button--primary target=_blank }
+[📬 Suscríbete a la newsletter](https://urukaisklick.substack.com/){ .md-button target=_blank }
+
+</div>
 
 ---
 
