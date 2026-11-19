@@ -7,39 +7,13 @@
 
 ## 🔍 Buscar música (preview 30s)
 
+Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reproducir un preview de 30 segundos.
+
 <div id="music-search-widget">
   <input type="text" id="music-search-input" placeholder="Busca una canción o artista…" style="width:100%; padding:0.7rem 1rem; border-radius:10px; border:1px solid var(--md-default-fg-color--lightest); font-size:1rem;">
   <div id="music-search-results" style="margin-top:1rem;"></div>
   <audio id="music-search-player" controls style="width:100%; margin-top:1rem;"></audio>
 </div>
-
----
-
-## 🎧 Mis playlists favoritas
-
-### Lo-fi hip hop
-
-El clásico para programar. Ritmo constante, sin voces que distraigan, perfecto para sesiones largas de código.
-
-![type:video](https://www.youtube.com/embed/jfKfPfyJRdk)
-
-### Synthwave / Retrowave
-
-Para cuando necesitas energía y un toque nostálgico de los 80. Ideal para refactorizaciones largas o sesiones nocturnas.
-
-![type:video](https://www.youtube.com/embed/4xDzrJKXOOY)
-
-### Jazz para concentrarse
-
-El jazz tiene algo especial: es lo bastante complejo para no aburrir, pero lo bastante fluido para no distraer.
-
-![type:video](https://www.youtube.com/embed/Dx5qFachd3A)
-
-### Bandas sonoras de videojuegos
-
-Las bandas sonoras de videojuegos están **diseñadas para no distraer** mientras haces otra cosa. Son perfectas para programar.
-
-![type:video](https://www.youtube.com/embed/4qB0m2P6a3w)
 
 ---
 
@@ -67,10 +41,10 @@ Las bandas sonoras de videojuegos están **diseñadas para no distraer** mientra
 
 ## 📚 Recursos
 
-- [Lofi Girl (YouTube)](https://www.youtube.com/@LofiGirl)
-- [Synthwave Radio (YouTube)](https://www.youtube.com/@ThePrimeThanatos)
 - [Music for Programming (web)](https://musicforprogramming.net/)
 - [Focus at Will (ciencia del focus)](https://www.focusatwill.com/)
+- [Lofi Girl (YouTube)](https://www.youtube.com/@LofiGirl)
+- [Synthwave Radio (YouTube)](https://www.youtube.com/@ThePrimeThanatos)
 
 ---
 
