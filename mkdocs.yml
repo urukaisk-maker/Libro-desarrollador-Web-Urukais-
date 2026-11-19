@@ -39,17 +39,6 @@ theme:
 nav:
   - 🏠 Inicio:
       - 🏡 Portada: index.md
-      - 🚀 El Viaje del Desarrollador: index.md#el-viaje-del-desarrollador
-      - 🛠️ Tu Caja de Herramientas: index.md#tu-caja-de-herramientas
-      - 📅 Agenda y Novedades: index.md#agenda-y-novedades
-      - 💖 Comunidad y Apoyo: index.md#comunidad-y-apoyo
-      - 📄 Llévate el libro: index.md#llevate-el-libro-contigo
-      - 💡 ¿Por qué este libro?: index.md#por-que-este-libro
-      - 🧰 El Stack que dominarás: index.md#el-stack-que-dominaras
-      - 📌 El Proyecto: index.md#el-proyecto
-      - 📬 Únete a la Comunidad: index.md#unete-a-la-comunidad
-      - 👤 Sobre el Autor: index.md#sobre-el-autor
-      - 📜 Licencia: index.md#licencia
 
   - 🏆 Mis Logros:
       - 📊 Resumen: /logros/
