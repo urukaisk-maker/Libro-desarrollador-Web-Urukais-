@@ -1743,3 +1743,138 @@ body {
     transform: none;
   }
 }
+
+/* ============================================================
+   FASE A — PALETA ÍNDIGO + ÁMBAR
+   Sobrescribe los colores morado+cian anteriores
+   ============================================================ */
+
+:root {
+  --uru-primary: #4f46e5;
+  --uru-primary-light: #6366f1;
+  --uru-primary-dark: #4338ca;
+  --uru-accent: #f59e0b;
+  --uru-accent-light: #fbbf24;
+  --uru-accent-dark: #d97706;
+  --uru-gradient: linear-gradient(90deg, #6366f1, #f59e0b);
+  --uru-gradient-dark: linear-gradient(135deg, #818cf8 0%, #fbbf24 100%);
+  --uru-gradient-light: linear-gradient(135deg, #4f46e5 0%, #d97706 100%);
+}
+
+/* ---------- Títulos con gradiente ---------- */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  background: var(--uru-gradient-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-md-color-scheme="default"] .md-typeset h1 {
+  background: var(--uru-gradient-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.md-typeset h2 {
+  border-image: var(--uru-gradient) 1;
+}
+
+/* ---------- Accesibilidad WCAG AA en dark mode ---------- */
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #a5b4fc;  /* indigo-300: contraste ~7:1 sobre #0f172a */
+}
+
+/* ---------- Grid cards (landing + niveles) ---------- */
+.md-typeset .grid.cards > ul > li::before {
+  background: var(--uru-gradient);
+}
+.md-typeset .grid.cards > ul > li:hover {
+  box-shadow: 0 16px 40px rgba(79, 70, 229, 0.25);
+  border-color: #6366f1;
+}
+
+/* ---------- Hero de la landing ---------- */
+.book-hero__title {
+  background: var(--uru-gradient);
+}
+.book-hero__badge {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+.book-hero__cta {
+  background: var(--uru-gradient);
+  color: #0f172a;
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+}
+.book-hero__cta:hover {
+  box-shadow: 0 16px 48px rgba(245, 158, 11, 0.6);
+}
+.book-hero__stat-number {
+  background: var(--uru-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Header y tabs ---------- */
+.md-tabs__link:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+}
+.md-tabs__link--active {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+/* ---------- Sidebar nav ---------- */
+.md-nav__link:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+}
+.md-nav__link--active {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+/* ---------- Footer links ---------- */
+.md-footer__direction {
+  color: #fbbf24;
+}
+
+/* ---------- Tablas ---------- */
+.md-typeset table:not([class]) th {
+  background: linear-gradient(90deg, #4f46e5, #4338ca);
+}
+
+/* ---------- Bloques de código ---------- */
+.md-typeset .highlight:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* ---------- Barra de progreso ---------- */
+.reading-progress {
+  background: var(--uru-gradient);
+}
+
+/* ---------- Stack icons (home) ---------- */
+.stack-icons span:hover {
+  filter: drop-shadow(0 0 10px #f59e0b);
+}
+
+/* ---------- Botones Material ---------- */
+.md-button--primary {
+  background: var(--uru-gradient);
+  border-color: transparent;
+  color: #0f172a;
+}
+.md-button--primary:hover {
+  background: var(--uru-gradient);
+  opacity: 0.9;
+  color: #0f172a;
+}

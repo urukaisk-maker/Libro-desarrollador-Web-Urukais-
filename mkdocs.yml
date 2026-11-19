@@ -24,14 +24,14 @@ theme:
     - toc.integrate
   palette:
     - scheme: default
-      primary: deep purple
-      accent: cyan
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/weather-night
         name: Cambiar a modo oscuro
     - scheme: slate
-      primary: deep purple
-      accent: cyan
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/weather-sunny
         name: Cambiar a modo claro
