@@ -134,6 +134,8 @@ Artículos sobre desarrollo web, accesibilidad y buenas prácticas.
 - **Rol**: autor y editor
 - **Estado**: activo
 
+- **Estado**: terminado (disponible en [mi portfolio](https://soloist.ai/urukaisklick))
+
 ---
 
 ## 🎤 Charlas y talleres
@@ -145,7 +147,7 @@ He dado charlas y talleres sobre desarrollo web en:
 - **Talleres online** para principiantes
 - **Mentorías** uno a uno
 
-Si te interesa que dé una charla o un taller, escríbeme a [contacto@urukais.com](mailto:contacto@urukais.com) con los detalles.
+Si te interesa que dé una charla o un taller, escríbeme a [urukaisk@gmail.com](mailto:contacto@urukais.com) con los detalles.
 
 ---
 
@@ -167,9 +169,9 @@ Después de años enseñando, he llegado a estas conclusiones:
 
 ## 📊 Algunos datos curiosos
 
-- 💻 Llevo programando desde **2015**, pero empecé a enseñar en **2021**.
-- ☕ Bebo **3–4 cafés** al día (aunque intento reducirlo).
-- 🎧 Programo con **lo-fi hip hop** o **synthwave** de fondo. Tienes una sección de música en este libro con mis playlists favoritas.
+- 💻 Llevo programando desde **2015**, pero empecé a enseñar en **2025**.
+- ☕ Bebo **0–2 cafés** al día (aunque intento reducirlo).
+- 🎧 Programo con **Heavy Metal** o **Clásica** de fondo. Tienes una sección de música en este libro con mis playlists favoritas.
 - 🌙 Trabajo mejor **de noche**, cuando no hay notificaciones.
 - 📚 Prefiero leer en **papel** cuando es posible. Los libros técnicos, en digital.
 - 🎮 Me encanta la **programación creativa**: visualizaciones, arte generativo, juegos experimentales.
@@ -180,7 +182,7 @@ Después de años enseñando, he llegado a estas conclusiones:
 
 | Canal | Enlace |
 | :--- | :--- |
-| **Email** | [contacto@urukais.com](mailto:contacto@urukais.com) |
+| **Email** | [urukaisk@gmail.com](mailto:urukaisk@gmail.com) |
 | **GitHub** | [@urukaisk-maker](https://github.com/urukaisk-maker) |
 | **Twitter / X** | [@urukaisk](https://twitter.com/urukaisk) |
 | **LinkedIn** | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |

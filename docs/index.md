@@ -22,24 +22,23 @@ hide:
 
 <div class="landing-stats animate-in animate-delay-3">
 
-<div class="landing-stat">
-<span class="landing-stat__num" data-count="38">0</span>
-<span class="landing-stat__label">Capítulos</span>
-</div>
-
-<div class="landing-stat">
-<span class="landing-stat__num" data-count="7">0</span>
-<span class="landing-stat__label">Niveles</span>
-</div>
-
-<div class="landing-stat">
-<span class="landing-stat__num" data-count="30">0</span>
-<span class="landing-stat__label">Ejercicios</span>
-</div>
-
-<div class="landing-stat">
-<span class="landing-stat__num" data-count="14">0</span>
-<span class="landing-stat__label">Diagramas</span>
+<div class="book-stats">
+  <div class="book-stat">
+    <span class="book-stat__number">38</span>
+    <span class="book-stat__label">Capítulos</span>
+  </div>
+  <div class="book-stat">
+    <span class="book-stat__number">7</span>
+    <span class="book-stat__label">Niveles</span>
+  </div>
+  <div class="book-stat">
+    <span class="book-stat__number">30</span>
+    <span class="book-stat__label">Ejercicios</span>
+  </div>
+  <div class="book-stat">
+    <span class="book-stat__number">14</span>
+    <span class="book-stat__label">Diagramas</span>
+  </div>
 </div>
 
 </div>

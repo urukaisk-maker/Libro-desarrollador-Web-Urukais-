@@ -11,7 +11,9 @@ theme:
   custom_dir: overrides
   logo: assets/logo.svg
   favicon: assets/favicon.svg
+  theme:
   features:
+    - header.autohide
     - navigation.tabs
     - navigation.sections
     - navigation.top
@@ -39,207 +41,142 @@ theme:
 nav:
   - 🏠 Inicio:
       - 🏡 Portada: index.md
+      - 📘 Introducción: introduccion.md
+      - 🧭 Filosofía: filosofia.md
+      - 🗺 Roadmap: roadmap.md
+      - 📋 Changelog: changelog.md
 
-  - 🏆 Mis Logros:
-      - 📊 Resumen: /logros/
-      - 🏅 Insignias: /logros/#logros-desbloqueables
-      - 🌟 Logros especiales: /logros/#logros-especiales
-      - 📈 Estadísticas: /logros/#estadisticas-de-tu-progreso
-      - ⚙️ Gestionar: /logros/#gestionar-mis-logros
-      - 🏅 Hall of Fame: /logros/#hall-of-fame
-      - ❓ FAQ: /logros/#preguntas-frecuentes
+  - 📚 Capítulos (01–38):
+      - 📖 Índice de capítulos: introduccion.md
+      - 🟢 Nivel 1 — Principiante:
+          - "01 — Introducción al desarrollo web": capitulos/01-introduccion.md
+          - "02 — HTML básico": capitulos/02-html-basico.md
+          - "03 — CSS básico": capitulos/03-css-basico.md
+          - "04 — JavaScript esencial": capitulos/04-javascript.md
+          - "05 — Diseño responsive": capitulos/05-responsive.md
+          - "06 — Formularios HTML": capitulos/06-formularios.md
+      - 🟡 Nivel 2 — Intermedio:
+          - "07 — Git y control de versiones": capitulos/07-git.md
+          - "08 — Consumo de APIs con fetch": capitulos/08-apis.md
+          - "09 — Despliegue y hosting": capitulos/09-despliegue.md
+          - "10 — Proyecto final: portfolio": capitulos/10-proyecto-final.md
+      - 🟠 Nivel 3 — Avanzado:
+          - "11 — CSS moderno": capitulos/11-css-moderno.md
+          - "12 — JavaScript asíncrono": capitulos/12-javascript-asincrono.md
+          - "13 — Módulos y bundlers": capitulos/13-modulos-bundlers.md
+          - "14 — Accesibilidad web": capitulos/14-accesibilidad.md
+          - "15 — TypeScript desde cero": capitulos/15-typescript.md
+      - 🔵 Nivel 4 — Testing y Arquitectura:
+          - "16 — Testing": capitulos/16-testing.md
+          - "17 — Rendimiento": capitulos/17-rendimiento.md
+          - "18 — Arquitectura": capitulos/18-arquitectura.md
+          - "19 — Fullstack con Node": capitulos/19-fullstack-node.md
+          - "20 — DevOps": capitulos/20-devops.md
+      - 🟣 Nivel 5 — Frontend Moderno e IA:
+          - "21 — Web Components": capitulos/21-web-components.md
+          - "22 — PWA": capitulos/22-pwa.md
+          - "23 — WebSockets": capitulos/23-websockets.md
+          - "24 — Animaciones": capitulos/24-animaciones.md
+          - "25 — Design Systems": capitulos/25-design-systems.md
+          - "26 — Seguridad": capitulos/26-seguridad.md
+          - "27 — WebAssembly": capitulos/27-webassembly.md
+          - "28 — IA en Frontend": capitulos/28-ia-frontend.md
+      - 🔴 Nivel 6 — Fronteras Web (WebXR y Web3):
+          - "29 — WebXR": capitulos/29-webxr.md
+          - "30 — Web3": capitulos/30-web3.md
+      - ⚡ Nivel 7 — Sistemas, Edge y Producción:
+          - "31 — Testing E2E": capitulos/31-testing-e2e.md
+          - "32 — Server Components": capitulos/32-server-components.md
+          - "33 — Edge Computing": capitulos/33-edge-computing.md
+          - "34 — Docker": capitulos/34-docker.md
+          - "35 — GraphQL": capitulos/35-graphql.md
+          - "36 — Micro-frontends": capitulos/36-micro-frontends.md
+          - "37 — IA Generativa": capitulos/37-ia-generativa.md
+          - "38 — Seguridad avanzada": capitulos/38-seguridad-avanzada.md
 
-  - 📅 Agenda:
-      - 🗓️ Próximos eventos: /agenda/
-      - 📆 Calendario: /agenda/#calendario
-      - 🚀 Lo que viene: /agenda/#lo-que-esta-por-venir
+  - 🏋 Ejercicios (01–30):
+      - 📋 Índice de ejercicios: ejercicios/index.md
+      - 🎮 Ejercicios Playground: ejercicios-playground.md
+      - 💻 Editor Playground: playground.md
+      - 🟢 Bloque 1 (01–06):
+          - "Ejercicio 01 — Introducción": ejercicios/01-introduccion.md
+          - "Ejercicio 02 — HTML básico": ejercicios/02-html-basico.md
+          - "Ejercicio 03 — CSS básico": ejercicios/03-css-basico.md
+          - "Ejercicio 04 — JavaScript": ejercicios/04-javascript.md
+          - "Ejercicio 05 — Responsive": ejercicios/05-responsive.md
+          - "Ejercicio 06 — Formularios": ejercicios/06-formularios.md
+      - 🟡 Bloque 2 (07–10):
+          - "Ejercicio 07 — Git": ejercicios/07-git.md
+          - "Ejercicio 08 — APIs": ejercicios/08-apis.md
+          - "Ejercicio 09 — Despliegue": ejercicios/09-despliegue.md
+          - "Ejercicio 10 — Proyecto final": ejercicios/10-proyecto-final.md
+      - 🟠 Bloque 3 (11–15):
+          - "Ejercicio 11 — CSS moderno": ejercicios/11-css-moderno.md
+          - "Ejercicio 12 — JS asíncrono": ejercicios/12-javascript-asincrono.md
+          - "Ejercicio 13 — Módulos y bundlers": ejercicios/13-modulos-bundlers.md
+          - "Ejercicio 14 — Accesibilidad": ejercicios/14-accesibilidad.md
+          - "Ejercicio 15 — TypeScript": ejercicios/15-typescript.md
+      - 🔵 Bloque 4 (16–20):
+          - "Ejercicio 16 — Testing": ejercicios/16-testing.md
+          - "Ejercicio 17 — Rendimiento": ejercicios/17-rendimiento.md
+          - "Ejercicio 18 — Arquitectura": ejercicios/18-arquitectura.md
+          - "Ejercicio 19 — Fullstack Node": ejercicios/19-fullstack-node.md
+          - "Ejercicio 20 — DevOps": ejercicios/20-devops.md
+      - 🟣 Bloque 5 (21–28):
+          - "Ejercicio 21 — Web Components": ejercicios/21-web-components.md
+          - "Ejercicio 22 — PWA": ejercicios/22-pwa.md
+          - "Ejercicio 23 — WebSockets": ejercicios/23-websockets.md
+          - "Ejercicio 24 — Animaciones": ejercicios/24-animaciones.md
+          - "Ejercicio 25 — Design Systems": ejercicios/25-design-systems.md
+          - "Ejercicio 26 — Seguridad": ejercicios/26-seguridad.md
+          - "Ejercicio 27 — WebAssembly": ejercicios/27-webassembly.md
+          - "Ejercicio 28 — IA Frontend": ejercicios/28-ia-frontend.md
+      - 🔴 Bloque 6 (29–30):
+          - "Ejercicio 29 — WebXR": ejercicios/29-webxr.md
+          - "Ejercicio 30 — Web3": ejercicios/30-web3.md
 
-  - 📰 Diario:
-      - 📝 Últimas entradas: /diario/
+  - 🛠 Proyectos y Retos:
+      - 🧭 Proyectos guiados: proyectos-guiados.md
+      - 📁 Proyectos de lectores: proyectos-lectores.md
+      - "🎵 Proyecto 1 — Urukais Music": proyectos/proyecto-1.md
+      - "🌿 Proyecto 2 — Remedios Naturales": proyectos/proyecto-2.md
+      - "🎄 Proyecto 3 — Felices Fiestas 2025/26": proyectos/proyecto-3.md
+      - "🔀 Proyecto 4 — Git & GitHub": proyectos/proyecto-4.md
+      - "📅 Proyecto 5 — Pardo Agenda": proyectos/proyecto-5.md
+      - "👾 Proyecto 6 — Los Guardianes Silenciosos": proyectos/proyecto-6.md
+      - "🤘 Proyecto 7 — Urukais Klick": proyectos/proyecto-7.md
+      - 🎯 Retos: retos.md
+      - "🦎 Reto #1: El botón camaleón": retos/reto-1.md
+      - "🪪 Reto #2: Tarjeta de presentación": retos/reto-2.md
+      - "👆 Reto #3: Contador de clics": retos/reto-3.md
+      - "🖼 Reto #4: Galería responsive": retos/reto-4.md
+      - "✅ Reto #5: Validador de formulario": retos/reto-5.md
+      - 👥 Retos de la comunidad: retos-comunidad.md
 
-  - 🎵 Música:
-      - 🎧 Playlists: /musica/
+  - 📖 Apéndices y Material:
+      - 📚 Índice de apéndices: apendices/index.md
+      - 📋 Chuletas: apendices/chuletas.md
+      - 📖 Glosario: apendices/glosario.md
+      - 🎯 Recursos por nivel: apendices/recursos-por-nivel.md
+      - 📊 Diagramas: diagramas.md
+      - 💡 Ejemplos: ejemplos/index.md
+      - 🔗 Recursos: recursos.md
+      - 💼 Entrevistas: entrevistas.md
+      - ❓ FAQ: faq.md
 
-  - 🎯 Retos:
-      - 📋 Índice: /retos/
-      - "🦎 Reto #1: El botón camaleón": /retos/reto-1/
-      - "🪪 Reto #2: Tarjeta de presentación": /retos/reto-2/
-      - "👆 Reto #3: Contador de clics": /retos/reto-3/
-      - "🖼️ Reto #4: Galería responsive": /retos/reto-4/
-      - "✅ Reto #5: Validador de formulario": /retos/reto-5/
-      - 👥 Retos de la Comunidad: /retos-comunidad/
-
-  - 📁 Mis Proyectos:
-      - 📖 Índice: /proyectos-lectores/
-      - "🎵 Urukais Music — Vive la Mejor Música": /proyectos/proyecto-1/
-      - "🌿 Remedios Naturales — Urukais Klick": /proyectos/proyecto-2/
-      - "🎄 Felices Fiestas 2025/26": /proyectos/proyecto-3/
-      - "🔀 Git & GitHub — Experiencia Inmersiva": /proyectos/proyecto-4/
-      - "📅 Pardo Agenda": /proyectos/proyecto-5/
-      - "👾 Los Guardianes Silenciosos": /proyectos/proyecto-6/
-      - "🤘 Urukais Klick — Metal & Tech": /proyectos/proyecto-7/
-
-  - 🧭 Proyectos Guiados:
-      - 🎨 Portfolio personal: /proyectos-guiados/#portfolio
-      - ✅ Lista de tareas: /proyectos-guiados/#tareas
-      - 🎬 Buscador de películas: /proyectos-guiados/#peliculas
-      - ✍️ Blog estático: /proyectos-guiados/#blog
-      - 🛠️ App full-stack: /proyectos-guiados/#fullstack
-
-  - 🎮 Playground:
-      - 💻 Editor: /playground/
-
-  - 🏋️ Ejercicios Playground:
-      - 📋 Índice: /ejercicios-playground/
-
-  - 🎓 Certificado:
-      - ✅ Requisitos: /certificado/
-      - 🖨️ Generar: /certificado/#genera-tu-certificado
-      - 🖼️ Vista previa: /certificado/#vista-previa
-      - ❓ FAQ: /certificado/#preguntas-frecuentes
-
-  - 💼 Preguntas de Entrevista:
-      - 🟢 Nivel junior: /entrevistas/#nivel-junior
-      - 🟡 Nivel intermedio: /entrevistas/#nivel-intermedio
-      - 🟠 Nivel avanzado: /entrevistas/#nivel-avanzado
-      - 🔴 Nivel senior: /entrevistas/#nivel-senior
-
-  - ❤️ Apoya el Proyecto:
-      - 🤝 Cómo apoyar: /apoya/
-
-  - 🏅 Hall of Fame:
-      - 👑 Leyendas: /hall-of-fame/#leyendas
-      - 🏆 Completaron el libro: /hall-of-fame/#completaron-el-libro
-      - 🎖️ Menciones especiales: /hall-of-fame/#menciones-especiales
-
-  - 💭 Filosofía:
-      - 🧭 Principios: /filosofia/
-
-  - 📖 Introducción:
-      - 📘 Qué es este libro: /introduccion/
-
-  - 🟢 Nivel principiante:
-      - "📄 01 — Introducción al desarrollo web": /capitulos/01-introduccion/
-      - "📄 02 — HTML básico": /capitulos/02-html-basico/
-      - "🎨 03 — CSS básico": /capitulos/03-css-basico/
-      - "⚡ 04 — JavaScript esencial": /capitulos/04-javascript/
-      - "📱 05 — Diseño responsive": /capitulos/05-responsive/
-      - "📝 06 — Formularios HTML": /capitulos/06-formularios/
-
-  - 🟡 Nivel intermedio:
-      - "🌿 07 — Git y control de versiones": /capitulos/07-git/
-      - "🔌 08 — Consumo de APIs con fetch": /capitulos/08-apis/
-      - "🚀 09 — Despliegue y hosting": /capitulos/09-despliegue/
-      - "🎨 10 — Proyecto final: portfolio": /capitulos/10-proyecto-final/
-
-  - 🟠 Nivel avanzado:
-      - "🎨 11 — CSS moderno": /capitulos/11-css-moderno/
-      - "⏳ 12 — JavaScript asíncrono": /capitulos/12-javascript-asincrono/
-      - "📦 13 — Módulos y bundlers": /capitulos/13-modulos-bundlers/
-      - "♿ 14 — Accesibilidad web": /capitulos/14-accesibilidad/
-      - "🔷 15 — TypeScript desde cero": /capitulos/15-typescript/
-      - "🧪 16 — Testing frontend": /capitulos/16-testing/
-      - "⚡ 17 — Rendimiento web": /capitulos/17-rendimiento/
-      - "🏗️ 18 — Arquitectura frontend": /capitulos/18-arquitectura/
-
-  - 🔴 Nivel profesional:
-      - "🛠️ 19 — Full-stack con Node.js": /capitulos/19-fullstack-node/
-      - "⚙️ 20 — DevOps para frontend": /capitulos/20-devops/
-
-  - 🟣 Nivel experto:
-      - "🧩 21 — Web Components": /capitulos/21-web-components/
-      - "📱 22 — Progressive Web Apps (PWA)": /capitulos/22-pwa/
-      - "🔌 23 — WebSockets y tiempo real": /capitulos/23-websockets/
-      - "🎬 24 — Animaciones avanzadas": /capitulos/24-animaciones/
-      - "🎨 25 — Design systems": /capitulos/25-design-systems/
-
-  - 🔵 Nivel élite:
-      - "🔒 26 — Seguridad web": /capitulos/26-seguridad/
-      - "⚡ 27 — WebAssembly": /capitulos/27-webassembly/
-      - "🤖 28 — IA en el frontend": /capitulos/28-ia-frontend/
-      - "🥽 29 — WebXR": /capitulos/29-webxr/
-      - "🌐 30 — Web3": /capitulos/30-web3/
-
-  - 🚀 Nivel vanguardia:
-      - "🎭 31 — Testing E2E con Playwright": /capitulos/31-testing-e2e/
-      - "🧩 32 — Server Components": /capitulos/32-server-components/
-      - "☁️ 33 — Edge Computing": /capitulos/33-edge-computing/
-      - "🐳 34 — Docker para frontend": /capitulos/34-docker/
-      - "🔗 35 — GraphQL": /capitulos/35-graphql/
-      - "🧱 36 — Micro-frontends": /capitulos/36-micro-frontends/
-      - "✨ 37 — Introducción a la IA Generativa": /capitulos/37-ia-generativa/
-      - "🛡️ 38 — Seguridad Web Avanzada": /capitulos/38-seguridad-avanzada/
-
-  - 📊 Diagramas:
-      - 📈 Índice: /diagramas/
-
-  - ✅ Ejercicios resueltos:
-      - 📋 Índice: /ejercicios/
-      - "📄 01 — Introducción": /ejercicios/01-introduccion/
-      - "📄 02 — HTML básico": /ejercicios/02-html-basico/
-      - "🎨 03 — CSS básico": /ejercicios/03-css-basico/
-      - "⚡ 04 — JavaScript": /ejercicios/04-javascript/
-      - "📱 05 — Responsive": /ejercicios/05-responsive/
-      - "📝 06 — Formularios": /ejercicios/06-formularios/
-      - "🌿 07 — Git": /ejercicios/07-git/
-      - "🔌 08 — APIs": /ejercicios/08-apis/
-      - "🚀 09 — Despliegue": /ejercicios/09-despliegue/
-      - "🎨 10 — Portfolio": /ejercicios/10-proyecto-final/
-      - "🎨 11 — CSS moderno": /ejercicios/11-css-moderno/
-      - "⏳ 12 — JS asíncrono": /ejercicios/12-javascript-asincrono/
-      - "📦 13 — Módulos y bundlers": /ejercicios/13-modulos-bundlers/
-      - "♿ 14 — Accesibilidad": /ejercicios/14-accesibilidad/
-      - "🔷 15 — TypeScript": /ejercicios/15-typescript/
-      - "🧪 16 — Testing": /ejercicios/16-testing/
-      - "⚡ 17 — Rendimiento": /ejercicios/17-rendimiento/
-      - "🏗️ 18 — Arquitectura": /ejercicios/18-arquitectura/
-      - "🛠️ 19 — Full-stack": /ejercicios/19-fullstack-node/
-      - "⚙️ 20 — DevOps": /ejercicios/20-devops/
-      - "🧩 21 — Web Components": /ejercicios/21-web-components/
-      - "📱 22 — PWA": /ejercicios/22-pwa/
-      - "🔌 23 — WebSockets": /ejercicios/23-websockets/
-      - "🎬 24 — Animaciones": /ejercicios/24-animaciones/
-      - "🎨 25 — Design systems": /ejercicios/25-design-systems/
-      - "🔒 26 — Seguridad": /ejercicios/26-seguridad/
-      - "⚡ 27 — WebAssembly": /ejercicios/27-webassembly/
-      - "🤖 28 — IA frontend": /ejercicios/28-ia-frontend/
-      - "🥽 29 — WebXR": /ejercicios/29-webxr/
-      - "🌐 30 — Web3": /ejercicios/30-web3/
-
-  - 📚 Recursos:
-      - 📖 Índice: /recursos/
-      - 🗺️ Roadmap: /roadmap/
-      - 📝 Changelog: /changelog/
-
-  - 🗺️ Roadmap:
-      - 🛤️ Fases: /roadmap/#fases
-
-  - 📝 Changelog:
-      - 📌 Versiones: /changelog/
-
-  - 🤝 Contribuir:
-      - 💡 Cómo contribuir: /contribuir/
-
-  - 👤 Sobre el autor:
-      - 📖 Biografía: /autor/
-
-  - ✉️ Contacto:
-      - 📬 Formulario: /contacto/
-
-  - ❓ FAQ:
-      - 💬 Preguntas: /faq/
-
-  - 🙏 Agradecimientos:
-      - 🌟 Créditos: /agradecimientos/
-
-  - 📢 Prensa:
-      - 📰 Kit de prensa: /prensa/
-
-  - 📎 Apéndices:
-      - 📖 Índice: /apendices/
-      - ⚡ Chuletas rápidas: /apendices/chuletas/
-      - 📚 Glosario: /apendices/glosario/
-      - 🎯 Recursos por nivel: /apendices/recursos-por-nivel/
+  - 🏆 Progreso y Comunidad:
+      - 📊 Mis logros: logros.md
+      - 🏅 Hall of Fame: hall-of-fame.md
+      - 🎓 Certificado: certificado.md
+      - 📅 Agenda: agenda.md
+      - 📝 Diario: diario.md
+      - 🎧 Música: musica/index.md
+      - 🤝 Contribuir: contribuir.md
+      - ❤ Apoya el proyecto: apoya.md
+      - 📰 Prensa: prensa.md
+      - 💬 Contacto: contacto.md
+      - 🎤 Entrevistas / Agradecimientos: agradecimientos.md
+      - 📄 Licencia: licencia.md
 
 plugins:
   - search
