@@ -11,12 +11,33 @@
 Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reproducir un preview de 30 segundos.
 
 <div id="music-search-widget">
-  <input type="text" id="music-search-input" placeholder="Busca una canción o artista…" style="width:100%; padding:0.7rem 1rem; border-radius:10px; border:1px solid var(--md-default-fg-color--lightest); font-size:1rem;">
-  <div id="music-search-results" style="margin-top:1rem;"></div>
-  <audio id="music-search-player" controls style="width:100%; margin-top:1rem;"></audio>
+
+<input type="text" id="music-search-input" placeholder="Busca una canción o artista…" class="music-search-input">
+
+<div id="music-search-results" class="music-results"></div>
+
+<div class="music-player" id="music-player">
+  <div class="music-player__artwork">
+    <img id="player-artwork" src="" alt="" width="56" height="56">
+  </div>
+  <div class="music-player__info">
+    <strong id="player-title">Sin reproducción</strong>
+    <span id="player-artist">Busca una canción para empezar</span>
+  </div>
+  <div class="music-player__controls">
+    <button id="player-prev" class="music-player__btn" aria-label="Anterior">⏮</button>
+    <button id="player-play" class="music-player__btn music-player__btn--play" aria-label="Reproducir">▶</button>
+    <button id="player-next" class="music-player__btn" aria-label="Siguiente">⏭</button>
+  </div>
+  <div class="music-player__progress">
+    <span id="player-current">0:00</span>
+    <input type="range" id="player-seek" min="0" max="100" value="0" step="0.1">
+    <span id="player-duration">0:00</span>
+  </div>
+  <audio id="music-search-player" crossorigin="anonymous" preload="metadata"></audio>
 </div>
 
----
+</div>
 
 ## 🎯 ¿Qué música elegir según la tarea?
 
