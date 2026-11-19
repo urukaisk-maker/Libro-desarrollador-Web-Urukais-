@@ -1,2 +1,4 @@
-mkdocs-material[imaging]>=9.5.0
-mkdocs-print-site-pluginmkdocs-video
+mkdocs-material[imaging]
+mkdocs-static-i18n
+mkdocs-video
+mkdocs-print-site-plugin
