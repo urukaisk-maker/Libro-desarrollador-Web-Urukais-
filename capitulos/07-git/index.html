@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
+        <meta name="description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -17,6 +17,10 @@
       
       
       
+        
+          <link rel="alternate" href="./" hreflang="es">
+        
+          <link rel="alternate" href="../../en/capitulos/07-git/" hreflang="en">
         
       
       
@@ -98,12 +102,25 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
+  <meta name="description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/capitulos/07-git/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
 
-  </head>
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="07 — Git y control de versiones - Libro del Desarrollador Web — Urukais" />
+<meta property="og:description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:image" content="https://libro.urukais.com/assets/images/social/capitulos/07-git.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://libro.urukais.com/capitulos/07-git/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="07 — Git y control de versiones - Libro del Desarrollador Web — Urukais" />
+<meta property="twitter:description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/capitulos/07-git.png" />
+</head>
   
   
     
@@ -113,7 +130,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -168,7 +185,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
@@ -178,7 +195,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
@@ -191,6 +208,32 @@
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/capitulos/07-git/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -270,7 +313,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/" class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -1086,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -1094,314 +1137,6 @@
     
   
     🏡 Portada
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-viaje-del-desarrollador" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🚀 El Viaje del Desarrollador
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#tu-caja-de-herramientas" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🛠️ Tu Caja de Herramientas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#agenda-y-novedades" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📅 Agenda y Novedades
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#comunidad-y-apoyo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💖 Comunidad y Apoyo
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#llevate-el-libro-contigo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📄 Llévate el libro
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#por-que-este-libro" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💡 ¿Por qué este libro?
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-stack-que-dominaras" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🧰 El Stack que dominarás
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-proyecto" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📌 El Proyecto
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#unete-a-la-comunidad" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📬 Únete a la Comunidad
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#sobre-el-autor" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    👤 Sobre el Autor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#licencia" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📜 Licencia
   
 
     
@@ -7190,6 +6925,14 @@
           
             <div class="md-content" data-md-component="content">
               
+                
+
+
+
+  
+
+
+              
               <article class="md-content__inner md-typeset">
                 
   
@@ -7200,7 +6943,7 @@
   
 
 
-<h1 id="07-git-y-control-de-versiones">07 — Git y control de versiones<a class="headerlink" href="#07-git-y-control-de-versiones" title="Permanent link">&para;</a></h1>
+<div><h1 id="07-git-y-control-de-versiones">07 — Git y control de versiones<a class="headerlink" href="#07-git-y-control-de-versiones" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
@@ -7211,23 +6954,23 @@
 <li>Resolver conflictos.</li>
 </ul>
 </div>
-<hr />
-<h2 id="que-es-git">🌳 ¿Qué es Git?<a class="headerlink" href="#que-es-git" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="que-es-git">🌳 ¿Qué es Git?<a class="headerlink" href="#que-es-git" title="Permanent link">¶</a></h2>
 <p><strong>Git</strong> es un sistema de control de versiones distribuido. Guarda un historial de todos los cambios de un proyecto, permite volver atrás, trabajar en paralelo con otras personas y fusionar cambios sin perder nada.</p>
 <div class="admonition quote">
 <p class="admonition-title">Sin Git, estás perdido</p>
 <p>Si alguna vez has tenido archivos como `proyecto-final-v2-ahora-si-que-si.docx`, Git es la solución. Un solo historial, todos los cambios, sin duplicados.</p>
 </div>
-<hr />
-<h2 id="configuracion-inicial">⚙️ Configuración inicial<a class="headerlink" href="#configuracion-inicial" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="configuracion-inicial">⚙️ Configuración inicial<a class="headerlink" href="#configuracion-inicial" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Tu Nombre"</span>
 git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"tu@email.com"</span>
 git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
 git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"code --wait"</span>
 </code></pre></div>
 <p>Esto se hace <strong>una sola vez</strong> en cada equipo.</p>
-<hr />
-<h2 id="comandos-basicos">📦 Comandos básicos<a class="headerlink" href="#comandos-basicos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="comandos-basicos">📦 Comandos básicos<a class="headerlink" href="#comandos-basicos" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -7241,7 +6984,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <td style="text-align: left;">Inicializar un repositorio</td>
 </tr>
 <tr>
-<td style="text-align: left;">`git clone <url>`</td>
+<td style="text-align: left;">`git clone <url>`</url></td>
 <td style="text-align: left;">Clonar un repositorio remoto</td>
 </tr>
 <tr>
@@ -7249,7 +6992,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <td style="text-align: left;">Ver el estado de los archivos</td>
 </tr>
 <tr>
-<td style="text-align: left;">`git add <file>`</td>
+<td style="text-align: left;">`git add <file>`</file></td>
 <td style="text-align: left;">Añadir al staging</td>
 </tr>
 <tr>
@@ -7274,8 +7017,8 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="el-flujo-basico">🔄 El flujo básico<a class="headerlink" href="#el-flujo-basico" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="el-flujo-basico">🔄 El flujo básico<a class="headerlink" href="#el-flujo-basico" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. Ver qué ha cambiado</span>
 git<span class="w"> </span>status
 
@@ -7299,8 +7042,8 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li>`test:` añadir o modificar tests</li>
 </ul>
 </div>
-<hr />
-<h2 id="ramas">🌿 Ramas<a class="headerlink" href="#ramas" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="ramas">🌿 Ramas<a class="headerlink" href="#ramas" title="Permanent link">¶</a></h2>
 <p>Las <strong>ramas</strong> permiten trabajar en paralelo sin afectar a `main`.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Crear y cambiar a una rama nueva</span>
 git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/nueva-funcionalidad
@@ -7351,8 +7094,8 @@ git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </sp
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="github">☁️ GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="github">☁️ GitHub<a class="headerlink" href="#github" title="Permanent link">¶</a></h2>
 <p><strong>GitHub</strong> es una plataforma para alojar repositorios Git y colaborar.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Conectar un repo local con GitHub</span>
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/repo.git
@@ -7370,8 +7113,8 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
 <p class="admonition-title">Pull Requests</p>
 <p>En GitHub, un <strong>Pull Request (PR)</strong> es una propuesta de fusionar los cambios de una rama en otra. Permite revisar el código, comentar y aprobar antes de fusionar.</p>
 </div>
-<hr />
-<h2 id="resolver-conflictos">⚔️ Resolver conflictos<a class="headerlink" href="#resolver-conflictos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="resolver-conflictos">⚔️ Resolver conflictos<a class="headerlink" href="#resolver-conflictos" title="Permanent link">¶</a></h2>
 <p>Un <strong>conflicto</strong> ocurre cuando dos ramas modifican la misma línea de un archivo. Git no sabe cuál elegir y te pide que decidas tú.</p>
 <div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 tu versión
@@ -7390,8 +7133,8 @@ versión de la otra rama
 <p class="admonition-title">No entres en pánico</p>
 <p>Los conflictos son normales. Léelos con calma, entiende qué cambió cada rama y decide. Git nunca pierde información: si algo sale mal, puedes volver atrás con `git merge --abort`.</p>
 </div>
-<hr />
-<h2 id="deshacer-cambios">↩️ Deshacer cambios<a class="headerlink" href="#deshacer-cambios" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="deshacer-cambios">↩️ Deshacer cambios<a class="headerlink" href="#deshacer-cambios" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Descartar cambios sin stage</span>
 git<span class="w"> </span>restore<span class="w"> </span>archivo.txt
 
@@ -7411,8 +7154,8 @@ git<span class="w"> </span>revert<span class="w"> </span>&lt;hash&gt;
 <p class="admonition-title">Cuidado con --hard</p>
 <p>`git reset --hard` <strong>borra</strong> los cambios sin posibilidad de recuperarlos. Úsalo solo cuando estés seguro.</p>
 </div>
-<hr />
-<h2 id="stash">🧰 Stash<a class="headerlink" href="#stash" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="stash">🧰 Stash<a class="headerlink" href="#stash" title="Permanent link">¶</a></h2>
 <p>El <strong>stash</strong> guarda cambios temporalmente para que puedas cambiar de rama sin commitear.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>stash<span class="w">              </span><span class="c1"># guardar cambios</span>
 git<span class="w"> </span>stash<span class="w"> </span>list<span class="w">         </span><span class="c1"># listar stashes</span>
@@ -7420,8 +7163,8 @@ git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w">     
 git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w">        </span><span class="c1"># recuperar sin eliminar</span>
 git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">         </span><span class="c1"># eliminar un stash</span>
 </code></pre></div>
-<hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-7">
 <div class="quiz-question" data-answer="b">
 <p><strong>1.</strong> ¿Qué comando crea un commit?</p>
@@ -7443,25 +7186,28 @@ git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">    
 </div>
 </div>
 
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">LinkedIn</a>
 <a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">WhatsApp</a>
 <button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/07-git/" aria-label="Copiar enlace">Copiar enlace</button>
 </div>
 
-<hr />
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="../08-apis/">Ir al Capítulo 8 — Consumo de APIs con fetch</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<a class="md-button" href="../../">Volver al índice</a></p></div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -7787,7 +7533,7 @@ git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">    
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
   
@@ -7802,6 +7548,12 @@ git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">    
         <script src="../../javascripts/logros.js"></script>
       
         <script src="../../javascripts/external-links.js"></script>
+      
+        <script src="../../javascripts/music-search.js"></script>
+      
+        <script src="../../javascripts/landing.js"></script>
+      
+        <script src="../../javascripts/command-palette.js"></script>
       
     
   <script src="../../assets/js/share.js" defer></script>

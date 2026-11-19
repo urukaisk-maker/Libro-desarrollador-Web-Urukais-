@@ -18,6 +18,10 @@
       
       
         
+          <link rel="alternate" href="./" hreflang="es">
+        
+          <link rel="alternate" href="../en/playground/" hreflang="en">
+        
       
       
       <link rel="icon" href="../assets/favicon.svg">
@@ -103,7 +107,20 @@
   <link rel="canonical" href="https://libro.urukais.com/playground/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
 
-  </head>
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Playground - Libro del Desarrollador Web — Urukais" />
+<meta property="og:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más." />
+<meta property="og:image" content="https://libro.urukais.com/assets/images/social/playground.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://libro.urukais.com/playground/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Playground - Libro del Desarrollador Web — Urukais" />
+<meta property="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más." />
+<meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/playground.png" />
+</head>
   
   
     
@@ -113,7 +130,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -168,7 +185,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
@@ -178,7 +195,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
@@ -191,6 +208,32 @@
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/playground/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -270,7 +313,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/" class="md-tabs__link">
+        <a href=".." class="md-tabs__link">
           
   
   
@@ -1086,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -1094,314 +1137,6 @@
     
   
     🏡 Portada
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-viaje-del-desarrollador" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🚀 El Viaje del Desarrollador
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#tu-caja-de-herramientas" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🛠️ Tu Caja de Herramientas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#agenda-y-novedades" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📅 Agenda y Novedades
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#comunidad-y-apoyo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💖 Comunidad y Apoyo
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#llevate-el-libro-contigo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📄 Llévate el libro
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#por-que-este-libro" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💡 ¿Por qué este libro?
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-stack-que-dominaras" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🧰 El Stack que dominarás
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-proyecto" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📌 El Proyecto
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#unete-a-la-comunidad" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📬 Únete a la Comunidad
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#sobre-el-autor" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    👤 Sobre el Autor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#licencia" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📜 Licencia
   
 
     
@@ -7190,6 +6925,14 @@
           
             <div class="md-content" data-md-component="content">
               
+                
+
+
+
+  
+
+
+              
               <article class="md-content__inner md-typeset">
                 
   
@@ -7200,24 +6943,26 @@
   
 
 
-<p>cd ~/Libro-desarrollador-Web-Urukais-
+  <h1>Playground</h1>
+
+<div><p>cd ~/Libro-desarrollador-Web-Urukais-
 python3 -c "
 contenido = '''# 🎮 Playground</p>
 <p>!!! quote \"Programa, prueba, aprende\"
     Un entorno interactivo para escribir HTML, CSS y JavaScript directamente en el navegador. Sin instalar nada, sin configurar nada. Escribe código, pulsa Ejecutar y ve el resultado al instante.</p>
-<hr />
-<h2 id="editor-en-vivo">🧪 Editor en vivo<a class="headerlink" href="#editor-en-vivo" title="Permanent link">&para;</a></h2>
-<div class=\"playground\">
-<div class=\"playground__editor\">
-<div class=\"playground__tabs\">
-<button class=\"playground__tab is-active\" data-lang=\"html\">HTML</button>
-<button class=\"playground__tab\" data-lang=\"css\">CSS</button>
-<button class=\"playground__tab\" data-lang=\"js\">JS</button>
+<hr>
+<h2 id="editor-en-vivo">🧪 Editor en vivo<a class="headerlink" href="#editor-en-vivo" title="Permanent link">¶</a></h2>
+<div class='\"playground\"'>
+<div class='\"playground__editor\"'>
+<div class='\"playground__tabs\"'>
+<button class='\"playground__tab' is-active\" data-lang='\"html\"'>HTML</button>
+<button class='\"playground__tab\"' data-lang='\"css\"'>CSS</button>
+<button class='\"playground__tab\"' data-lang='\"js\"'>JS</button>
 </div>
-<textarea class=\"playground__textarea\" id=\"pg-html\" spellcheck=\"false\"><h1>Hola, mundo 🌍</h1>
-<p>Este es mi primer playground.</p>
-<button id=\"btn\">Haz clic</button></textarea>
-<textarea class=\"playground__textarea is-hidden\" id=\"pg-css\" spellcheck=\"false\">body {
+<textarea class='\"playground__textarea\"' id='\"pg-html\"' spellcheck='\"false\"'>&lt;h1&gt;Hola, mundo 🌍&lt;/h1&gt;
+&lt;p&gt;Este es mi primer playground.&lt;/p&gt;
+&lt;button id=\"btn\"&gt;Haz clic&lt;/button&gt;</textarea>
+<textarea class='\"playground__textarea' is-hidden\" id='\"pg-css\"' spellcheck='\"false\"'>body {
   font-family: system-ui, sans-serif;
   padding: 1.5rem;
   background: #f8f7fb;
@@ -7232,16 +6977,16 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }</textarea>
-<textarea class=\"playground__textarea is-hidden\" id=\"pg-js\" spellcheck=\"false\">document.getElementById('btn').addEventListener('click', () => {
+<textarea class='\"playground__textarea' is-hidden\" id='\"pg-js\"' spellcheck='\"false\"'>document.getElementById('btn').addEventListener('click', () =&gt; {
   alert('¡Hola desde el Playground! 👋');
 });</textarea>
-<div class=\"playground__actions\">
-<button class=\"md-button md-button--primary\" id=\"pg-run\">▶ Ejecutar</button>
-<button class=\"md-button\" id=\"pg-reset\">↺ Reiniciar</button>
+<div class='\"playground__actions\"'>
+<button class='\"md-button' md-button--primary\" id='\"pg-run\"'>▶ Ejecutar</button>
+<button class='\"md-button\"' id='\"pg-reset\"'>↺ Reiniciar</button>
 </div>
 </div>
-<div class=\"playground__output\">
-<iframe id=\"pg-output\" sandbox=\"allow-scripts allow-modals\"></iframe>
+<div class='\"playground__output\"'>
+<iframe id='\"pg-output\"' sandbox='\"allow-scripts' allow-modals\"></iframe>
 </div>
 </div>
 
@@ -7250,17 +6995,17 @@ button {
     2. <strong>Pulsa Ejecutar</strong> (o Ctrl+Enter) para ver el resultado.
     3. <strong>Pulsa Reiniciar</strong> para volver al ejemplo original.
     4. <strong>Copia el código</strong> y llévalo a tu editor para trabajar en local.</p>
-<hr />
-<h2 id="retos-del-playground">🎯 Retos del Playground<a class="headerlink" href="#retos-del-playground" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="retos-del-playground">🎯 Retos del Playground<a class="headerlink" href="#retos-del-playground" title="Permanent link">¶</a></h2>
 <p>Prueba a resolver estos retos usando el editor de arriba. Cada uno tiene un objetivo y una pista.</p>
-<h3 id="reto-1-saludo-personalizado">🟢 Reto 1: Saludo personalizado<a class="headerlink" href="#reto-1-saludo-personalizado" title="Permanent link">&para;</a></h3>
+<h3 id="reto-1-saludo-personalizado">🟢 Reto 1: Saludo personalizado<a class="headerlink" href="#reto-1-saludo-personalizado" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Crear un input donde el usuario escriba su nombre y, al pulsar un botón, se muestre un saludo personalizado.</p>
 <p>??? success \"Solución\"
     ```html
     &lt;input type=\"text\" id=\"nombre\" placeholder=\"Tu nombre\"&gt;
-    &lt;button id=\"saludar\"&gt;Saludar</button>
+    &lt;button id=\"saludar\"&gt;Saludar
     &lt;p id=\"resultado\"&gt;</p>
-    ```</p>
+    ```
 <div class="highlight"><pre><span></span><code>\`\`\`javascript
 document.getElementById('saludar').addEventListener('click', () =&gt; {
   const nombre = document.getElementById('nombre').value || 'mundo';
@@ -7268,11 +7013,11 @@ document.getElementById('saludar').addEventListener('click', () =&gt; {
 });
 \`\`\`
 </code></pre></div>
-<h3 id="reto-2-contador-de-clics">🟡 Reto 2: Contador de clics<a class="headerlink" href="#reto-2-contador-de-clics" title="Permanent link">&para;</a></h3>
+<h3 id="reto-2-contador-de-clics">🟡 Reto 2: Contador de clics<a class="headerlink" href="#reto-2-contador-de-clics" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Un botón que incrementa un contador cada vez que se pulsa.</p>
 <p>??? success \"Solución\"
     ```html
-    &lt;button id=\"btn\"&gt;Clics: 0</button>
+    &lt;button id=\"btn\"&gt;Clics: 0
     ```</p>
 <div class="highlight"><pre><span></span><code>\`\`\`javascript
 let clicks = 0;
@@ -7283,7 +7028,7 @@ btn.addEventListener('click', () =&gt; {
 });
 \`\`\`
 </code></pre></div>
-<h3 id="reto-3-cambiar-color-de-fondo">🟡 Reto 3: Cambiar color de fondo<a class="headerlink" href="#reto-3-cambiar-color-de-fondo" title="Permanent link">&para;</a></h3>
+<h3 id="reto-3-cambiar-color-de-fondo">🟡 Reto 3: Cambiar color de fondo<a class="headerlink" href="#reto-3-cambiar-color-de-fondo" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Un botón que cambia el color de fondo de la página a un color aleatorio.</p>
 <p>??? success \"Solución\"
     ```javascript
@@ -7292,7 +7037,7 @@ btn.addEventListener('click', () =&gt; {
       document.body.style.background = color;
     });
     ```</p>
-<h3 id="reto-4-lista-de-tareas-simple">🟠 Reto 4: Lista de tareas simple<a class="headerlink" href="#reto-4-lista-de-tareas-simple" title="Permanent link">&para;</a></h3>
+<h3 id="reto-4-lista-de-tareas-simple">🟠 Reto 4: Lista de tareas simple<a class="headerlink" href="#reto-4-lista-de-tareas-simple" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Un input y un botón que añadan tareas a una lista. Cada tarea debe poder eliminarse.</p>
 <p>??? success \"Solución\"
     ```javascript
@@ -7300,7 +7045,7 @@ btn.addEventListener('click', () =&gt; {
       const texto = document.getElementById('tarea').value.trim();
       if (!texto) return;
       const li = document.createElement('li');
-      li.innerHTML = texto + ' &lt;button class=\"del\"&gt;❌</button>';
+      li.innerHTML = texto + ' &lt;button class=\"del\"&gt;❌';
       document.getElementById('lista').appendChild(li);
       document.getElementById('tarea').value = '';
     });</p>
@@ -7311,7 +7056,7 @@ btn.addEventListener('click', () =&gt; {
 });
 \`\`\`
 </code></pre></div>
-<h3 id="reto-5-reloj-en-tiempo-real">🟠 Reto 5: Reloj en tiempo real<a class="headerlink" href="#reto-5-reloj-en-tiempo-real" title="Permanent link">&para;</a></h3>
+<h3 id="reto-5-reloj-en-tiempo-real">🟠 Reto 5: Reloj en tiempo real<a class="headerlink" href="#reto-5-reloj-en-tiempo-real" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Mostrar la hora actual en pantalla, actualizándose cada segundo.</p>
 <p>??? success \"Solución\"
     ```javascript
@@ -7322,7 +7067,7 @@ btn.addEventListener('click', () =&gt; {
     setInterval(actualizar, 1000);
     actualizar();
     ```</p>
-<h3 id="reto-6-calculadora-basica">🔴 Reto 6: Calculadora básica<a class="headerlink" href="#reto-6-calculadora-basica" title="Permanent link">&para;</a></h3>
+<h3 id="reto-6-calculadora-basica">🔴 Reto 6: Calculadora básica<a class="headerlink" href="#reto-6-calculadora-basica" title="Permanent link">¶</a></h3>
 <p><strong>Objetivo</strong>: Una calculadora que sume, reste, multiplique y divida dos números.</p>
 <p>??? success \"Solución\"
     ```javascript
@@ -7340,14 +7085,14 @@ btn.addEventListener('click', () =&gt; {
       document.getElementById('resultado').textContent = r;
     });
     ```</p>
-<hr />
-<h2 id="ejemplos-para-inspirarte">🎨 Ejemplos para inspirarte<a class="headerlink" href="#ejemplos-para-inspirarte" title="Permanent link">&para;</a></h2>
-<h3 id="ejemplo-1-tarjeta-de-presentacion">Ejemplo 1: Tarjeta de presentación<a class="headerlink" href="#ejemplo-1-tarjeta-de-presentacion" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="ejemplos-para-inspirarte">🎨 Ejemplos para inspirarte<a class="headerlink" href="#ejemplos-para-inspirarte" title="Permanent link">¶</a></h2>
+<h3 id="ejemplo-1-tarjeta-de-presentacion">Ejemplo 1: Tarjeta de presentación<a class="headerlink" href="#ejemplo-1-tarjeta-de-presentacion" title="Permanent link">¶</a></h3>
 <p>```html</p>
-<div class=\"card\">
+<div class='\"card\"'>
   <h2>Ana García</h2>
   <p>Desarrolladora frontend</p>
-  <a href=\"#\">Contactar</a>
+  <a href='\"#\"'>Contactar</a>
 </div>
 <p>```</p>
 <p>```css
@@ -7370,7 +7115,7 @@ btn.addEventListener('click', () =&gt; {
   font-weight: 600;
 }
 ```</p>
-<h3 id="ejemplo-2-spinner-de-carga">Ejemplo 2: Spinner de carga<a class="headerlink" href="#ejemplo-2-spinner-de-carga" title="Permanent link">&para;</a></h3>
+<h3 id="ejemplo-2-spinner-de-carga">Ejemplo 2: Spinner de carga<a class="headerlink" href="#ejemplo-2-spinner-de-carga" title="Permanent link">¶</a></h3>
 <p>```css
 .spinner {
   width: 48px;
@@ -7385,7 +7130,7 @@ btn.addEventListener('click', () =&gt; {
   to { transform: rotate(360deg); }
 }
 ```</p>
-<h3 id="ejemplo-3-modo-oscuro-con-un-boton">Ejemplo 3: Modo oscuro con un botón<a class="headerlink" href="#ejemplo-3-modo-oscuro-con-un-boton" title="Permanent link">&para;</a></h3>
+<h3 id="ejemplo-3-modo-oscuro-con-un-boton">Ejemplo 3: Modo oscuro con un botón<a class="headerlink" href="#ejemplo-3-modo-oscuro-con-un-boton" title="Permanent link">¶</a></h3>
 <p>```javascript
 document.getElementById('tema').addEventListener('click', () =&gt; {
   document.body.classList.toggle('dark');
@@ -7397,8 +7142,8 @@ body.dark {
   color: #e8e5f5;
 }
 ```</p>
-<hr />
-<h2 id="seguridad-del-playground">🔒 Seguridad del Playground<a class="headerlink" href="#seguridad-del-playground" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="seguridad-del-playground">🔒 Seguridad del Playground<a class="headerlink" href="#seguridad-del-playground" title="Permanent link">¶</a></h2>
 <p>El editor ejecuta el código en un <strong>iframe aislado</strong> con sandbox. Esto significa que:</p>
 <ul>
 <li>✅ Puedes usar HTML, CSS y JavaScript con normalidad.</li>
@@ -7407,15 +7152,15 @@ body.dark {
 <li>❌ <strong>No</strong> puedes hacer peticiones a otros dominios sin CORS.</li>
 <li>❌ <strong>No</strong> puedes acceder a localStorage de la página principal.</li>
 </ul>
-<hr />
-<h2 id="siguientes-pasos">🚀 Siguientes pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="siguientes-pasos">🚀 Siguientes pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="../ejercicios-playground/">🧪 Ir a los ejercicios del Playground</a>
 <a class="md-button" href="../retos/">🎯 Ver los retos semanales</a>
 <a class="md-button" href="../entrevistas/">💼 Practicar preguntas de entrevista</a>
 '''
 open('docs/playground.md', 'w', encoding='utf-8').write(contenido)
 print('OK:', len(contenido.splitlines()), 'líneas escritas')
-"</p>
+"</p></div>
 
 
 
@@ -7747,7 +7492,7 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
   
@@ -7762,6 +7507,12 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
         <script src="../javascripts/logros.js"></script>
       
         <script src="../javascripts/external-links.js"></script>
+      
+        <script src="../javascripts/music-search.js"></script>
+      
+        <script src="../javascripts/landing.js"></script>
+      
+        <script src="../javascripts/command-palette.js"></script>
       
     
   <script src="../assets/js/share.js" defer></script>

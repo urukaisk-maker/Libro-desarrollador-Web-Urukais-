@@ -1,463 +1,1613 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>https://libro.urukais.com/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/404/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/404/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/404/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/404/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/agenda/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/agenda/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/agenda/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/agenda/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/agradecimientos/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/agradecimientos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/agradecimientos/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/agradecimientos/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/apoya/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/apoya/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apoya/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apoya/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/autor/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/autor/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/autor/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/autor/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/certificado/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/certificado/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/certificado/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/certificado/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/changelog/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/changelog/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/changelog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/changelog/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/contacto/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/contacto/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/contacto/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/contacto/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/contribuir/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/contribuir/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/contribuir/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/contribuir/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/diagramas/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/diagramas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/diagramas/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/diagramas/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/diario/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/diario/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/diario/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/diario/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios-playground/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios-playground/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios-playground/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios-playground/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/entrevistas/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/entrevistas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/entrevistas/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/entrevistas/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/faq/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/faq/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/faq/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/faq/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/filosofia/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/filosofia/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/filosofia/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/filosofia/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/hall-of-fame/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/hall-of-fame/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/hall-of-fame/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/hall-of-fame/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/introduccion/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/introduccion/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/licencia/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/licencia/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/licencia/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/licencia/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/logros/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/logros/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/logros/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/logros/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/musica/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/playground/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/playground/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/playground/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/playground/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/prensa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/prensa/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/prensa/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/prensa/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos-guiados/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos-guiados/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos-guiados/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos-guiados/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos-lectores/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos-lectores/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos-lectores/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos-lectores/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/recursos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/recursos/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/recursos/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/recursos/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos-comunidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos-comunidad/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos-comunidad/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos-comunidad/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/roadmap/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/roadmap/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/roadmap/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/roadmap/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/apendices/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/apendices/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/apendices/chuletas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/chuletas/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/chuletas/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/apendices/chuletas/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/apendices/glosario/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/glosario/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/glosario/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/apendices/glosario/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/apendices/recursos-por-nivel/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/recursos-por-nivel/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/recursos-por-nivel/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/apendices/recursos-por-nivel/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/01-introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/01-introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/01-introduccion/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/01-introduccion/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/02-html-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/02-html-basico/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/02-html-basico/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/02-html-basico/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/03-css-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/03-css-basico/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/03-css-basico/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/03-css-basico/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/04-javascript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/04-javascript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/04-javascript/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/04-javascript/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/05-responsive/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/05-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/05-responsive/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/05-responsive/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/06-formularios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/06-formularios/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/06-formularios/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/06-formularios/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/07-git/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/07-git/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/07-git/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/07-git/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/08-apis/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/08-apis/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/08-apis/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/08-apis/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/09-despliegue/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/09-despliegue/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/09-despliegue/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/09-despliegue/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/10-proyecto-final/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/10-proyecto-final/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/10-proyecto-final/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/10-proyecto-final/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/11-css-moderno/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/11-css-moderno/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/11-css-moderno/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/11-css-moderno/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/12-javascript-asincrono/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/12-javascript-asincrono/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/12-javascript-asincrono/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/12-javascript-asincrono/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/13-modulos-bundlers/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/13-modulos-bundlers/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/13-modulos-bundlers/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/13-modulos-bundlers/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/14-accesibilidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/14-accesibilidad/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/14-accesibilidad/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/14-accesibilidad/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/15-typescript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/15-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/15-typescript/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/15-typescript/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/16-testing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/16-testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/16-testing/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/16-testing/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/17-rendimiento/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/17-rendimiento/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/17-rendimiento/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/17-rendimiento/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/18-arquitectura/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/18-arquitectura/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/18-arquitectura/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/18-arquitectura/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/19-fullstack-node/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/19-fullstack-node/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/19-fullstack-node/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/19-fullstack-node/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/20-devops/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/20-devops/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/20-devops/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/20-devops/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/21-web-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/21-web-components/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/21-web-components/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/21-web-components/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/22-pwa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/22-pwa/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/22-pwa/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/22-pwa/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/23-websockets/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/23-websockets/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/23-websockets/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/23-websockets/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/24-animaciones/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/24-animaciones/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/24-animaciones/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/24-animaciones/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/25-design-systems/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/25-design-systems/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/25-design-systems/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/25-design-systems/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/26-seguridad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/26-seguridad/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/26-seguridad/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/26-seguridad/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/27-webassembly/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/27-webassembly/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/27-webassembly/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/27-webassembly/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/28-ia-frontend/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/28-ia-frontend/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/28-ia-frontend/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/28-ia-frontend/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/29-webxr/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/29-webxr/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/29-webxr/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/29-webxr/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/30-web3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/30-web3/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/30-web3/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/30-web3/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/31-testing-e2e/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/31-testing-e2e/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/31-testing-e2e/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/31-testing-e2e/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/32-server-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/32-server-components/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/32-server-components/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/32-server-components/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/33-edge-computing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/33-edge-computing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/33-edge-computing/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/33-edge-computing/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/34-docker/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/34-docker/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/34-docker/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/34-docker/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/35-graphql/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/35-graphql/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/35-graphql/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/35-graphql/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/36-micro-frontends/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/36-micro-frontends/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/36-micro-frontends/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/36-micro-frontends/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/37-ia-generativa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/37-ia-generativa/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/37-ia-generativa/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/37-ia-generativa/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/capitulos/38-seguridad-avanzada/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/38-seguridad-avanzada/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/38-seguridad-avanzada/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/capitulos/38-seguridad-avanzada/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejemplos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejemplos/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejemplos/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejemplos/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/01-introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/01-introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/01-introduccion/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/01-introduccion/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/02-html-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/02-html-basico/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/02-html-basico/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/02-html-basico/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/03-css-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/03-css-basico/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/03-css-basico/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/03-css-basico/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/04-javascript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/04-javascript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/04-javascript/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/04-javascript/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/05-responsive/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/05-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/05-responsive/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/05-responsive/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/06-formularios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/06-formularios/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/06-formularios/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/06-formularios/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/07-git/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/07-git/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/07-git/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/07-git/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/08-apis/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/08-apis/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/08-apis/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/08-apis/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/09-despliegue/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/09-despliegue/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/09-despliegue/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/09-despliegue/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/10-proyecto-final/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/10-proyecto-final/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/10-proyecto-final/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/10-proyecto-final/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/11-css-moderno/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/11-css-moderno/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/11-css-moderno/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/11-css-moderno/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/12-javascript-asincrono/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/12-javascript-asincrono/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/12-javascript-asincrono/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/12-javascript-asincrono/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/13-modulos-bundlers/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/13-modulos-bundlers/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/13-modulos-bundlers/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/13-modulos-bundlers/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/14-accesibilidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/14-accesibilidad/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/14-accesibilidad/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/14-accesibilidad/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/15-typescript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/15-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/15-typescript/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/15-typescript/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/16-testing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/16-testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/16-testing/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/16-testing/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/17-rendimiento/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/17-rendimiento/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/17-rendimiento/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/17-rendimiento/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/18-arquitectura/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/18-arquitectura/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/18-arquitectura/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/18-arquitectura/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/19-fullstack-node/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/19-fullstack-node/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/19-fullstack-node/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/19-fullstack-node/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/20-devops/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/20-devops/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/20-devops/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/20-devops/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/21-web-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/21-web-components/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/21-web-components/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/21-web-components/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/22-pwa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/22-pwa/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/22-pwa/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/22-pwa/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/23-websockets/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/23-websockets/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/23-websockets/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/23-websockets/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/24-animaciones/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/24-animaciones/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/24-animaciones/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/24-animaciones/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/25-design-systems/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/25-design-systems/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/25-design-systems/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/25-design-systems/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/26-seguridad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/26-seguridad/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/26-seguridad/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/26-seguridad/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/27-webassembly/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/27-webassembly/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/27-webassembly/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/27-webassembly/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/28-ia-frontend/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/28-ia-frontend/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/28-ia-frontend/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/28-ia-frontend/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/29-webxr/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/29-webxr/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/29-webxr/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/29-webxr/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/ejercicios/30-web3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/30-web3/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/30-web3/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/ejercicios/30-web3/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/musica/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/musica/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/musica/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-1/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-1/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-1/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-2/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-2/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-2/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-3/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-3/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-3/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-4/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-4/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-4/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-4/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-5/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-5/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-5/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-5/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-6/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-6/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-6/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-6/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/proyectos/proyecto-7/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/proyectos/proyecto-7/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-7/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-7/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/reto-1/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/reto-1/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-1/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/reto-2/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/reto-2/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-2/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/reto-3/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/reto-3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-3/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-3/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/reto-4/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/reto-4/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-4/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-4/"/>
     </url>
     <url>
-         <loc>https://libro.urukais.com/retos/reto-5/</loc>
-         <lastmod>2026-11-11</lastmod>
+        <loc>https://libro.urukais.com/retos/reto-5/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-5/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-5/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/404/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/404/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/404/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/agenda/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/agenda/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/agenda/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/agradecimientos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/agradecimientos/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/agradecimientos/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/apoya/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apoya/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apoya/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/autor/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/autor/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/autor/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/certificado/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/certificado/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/certificado/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/changelog/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/changelog/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/changelog/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/contacto/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/contacto/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/contacto/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/contribuir/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/contribuir/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/contribuir/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/diagramas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/diagramas/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/diagramas/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/diario/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/diario/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/diario/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios-playground/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios-playground/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios-playground/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/entrevistas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/entrevistas/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/entrevistas/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/faq/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/faq/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/faq/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/filosofia/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/filosofia/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/filosofia/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/hall-of-fame/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/hall-of-fame/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/hall-of-fame/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/introduccion/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/licencia/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/licencia/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/licencia/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/logros/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/logros/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/logros/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/playground/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/playground/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/playground/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/prensa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/prensa/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/prensa/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos-guiados/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos-guiados/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos-guiados/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos-lectores/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos-lectores/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos-lectores/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/recursos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/recursos/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/recursos/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos-comunidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos-comunidad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos-comunidad/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/roadmap/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/roadmap/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/roadmap/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/apendices/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/apendices/chuletas/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/chuletas/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/chuletas/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/apendices/glosario/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/glosario/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/glosario/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/apendices/recursos-por-nivel/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/apendices/recursos-por-nivel/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/apendices/recursos-por-nivel/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/01-introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/01-introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/01-introduccion/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/02-html-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/02-html-basico/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/02-html-basico/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/03-css-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/03-css-basico/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/03-css-basico/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/04-javascript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/04-javascript/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/04-javascript/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/05-responsive/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/05-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/05-responsive/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/06-formularios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/06-formularios/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/06-formularios/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/07-git/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/07-git/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/07-git/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/08-apis/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/08-apis/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/08-apis/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/09-despliegue/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/09-despliegue/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/09-despliegue/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/10-proyecto-final/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/10-proyecto-final/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/10-proyecto-final/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/11-css-moderno/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/11-css-moderno/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/11-css-moderno/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/12-javascript-asincrono/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/12-javascript-asincrono/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/12-javascript-asincrono/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/13-modulos-bundlers/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/13-modulos-bundlers/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/13-modulos-bundlers/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/14-accesibilidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/14-accesibilidad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/14-accesibilidad/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/15-typescript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/15-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/15-typescript/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/16-testing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/16-testing/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/16-testing/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/17-rendimiento/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/17-rendimiento/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/17-rendimiento/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/18-arquitectura/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/18-arquitectura/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/18-arquitectura/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/19-fullstack-node/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/19-fullstack-node/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/19-fullstack-node/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/20-devops/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/20-devops/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/20-devops/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/21-web-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/21-web-components/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/21-web-components/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/22-pwa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/22-pwa/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/22-pwa/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/23-websockets/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/23-websockets/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/23-websockets/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/24-animaciones/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/24-animaciones/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/24-animaciones/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/25-design-systems/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/25-design-systems/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/25-design-systems/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/26-seguridad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/26-seguridad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/26-seguridad/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/27-webassembly/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/27-webassembly/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/27-webassembly/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/28-ia-frontend/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/28-ia-frontend/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/28-ia-frontend/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/29-webxr/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/29-webxr/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/29-webxr/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/30-web3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/30-web3/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/30-web3/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/31-testing-e2e/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/31-testing-e2e/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/31-testing-e2e/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/32-server-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/32-server-components/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/32-server-components/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/33-edge-computing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/33-edge-computing/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/33-edge-computing/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/34-docker/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/34-docker/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/34-docker/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/35-graphql/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/35-graphql/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/35-graphql/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/36-micro-frontends/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/36-micro-frontends/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/36-micro-frontends/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/37-ia-generativa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/37-ia-generativa/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/37-ia-generativa/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/capitulos/38-seguridad-avanzada/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/capitulos/38-seguridad-avanzada/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/capitulos/38-seguridad-avanzada/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejemplos/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejemplos/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejemplos/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/01-introduccion/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/01-introduccion/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/01-introduccion/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/02-html-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/02-html-basico/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/02-html-basico/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/03-css-basico/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/03-css-basico/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/03-css-basico/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/04-javascript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/04-javascript/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/04-javascript/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/05-responsive/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/05-responsive/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/05-responsive/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/06-formularios/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/06-formularios/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/06-formularios/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/07-git/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/07-git/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/07-git/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/08-apis/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/08-apis/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/08-apis/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/09-despliegue/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/09-despliegue/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/09-despliegue/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/10-proyecto-final/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/10-proyecto-final/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/10-proyecto-final/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/11-css-moderno/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/11-css-moderno/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/11-css-moderno/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/12-javascript-asincrono/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/12-javascript-asincrono/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/12-javascript-asincrono/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/13-modulos-bundlers/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/13-modulos-bundlers/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/13-modulos-bundlers/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/14-accesibilidad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/14-accesibilidad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/14-accesibilidad/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/15-typescript/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/15-typescript/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/15-typescript/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/16-testing/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/16-testing/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/16-testing/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/17-rendimiento/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/17-rendimiento/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/17-rendimiento/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/18-arquitectura/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/18-arquitectura/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/18-arquitectura/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/19-fullstack-node/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/19-fullstack-node/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/19-fullstack-node/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/20-devops/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/20-devops/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/20-devops/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/21-web-components/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/21-web-components/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/21-web-components/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/22-pwa/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/22-pwa/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/22-pwa/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/23-websockets/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/23-websockets/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/23-websockets/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/24-animaciones/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/24-animaciones/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/24-animaciones/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/25-design-systems/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/25-design-systems/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/25-design-systems/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/26-seguridad/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/26-seguridad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/26-seguridad/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/27-webassembly/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/27-webassembly/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/27-webassembly/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/28-ia-frontend/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/28-ia-frontend/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/28-ia-frontend/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/29-webxr/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/29-webxr/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/29-webxr/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/ejercicios/30-web3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/ejercicios/30-web3/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/ejercicios/30-web3/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/musica/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/musica/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/musica/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-1/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-1/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-1/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-2/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-2/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-2/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-3/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-3/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-4/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-4/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-4/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-5/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-5/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-5/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-6/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-6/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-6/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/proyectos/proyecto-7/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/proyectos/proyecto-7/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/proyectos/proyecto-7/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/reto-1/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-1/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-1/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/reto-2/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-2/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-2/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/reto-3/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-3/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-3/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/reto-4/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-4/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-4/"/>
+    </url>
+    <url>
+        <loc>https://libro.urukais.com/en/retos/reto-5/</loc>
+        <lastmod>2026-11-19</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://libro.urukais.com/en/retos/reto-5/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://libro.urukais.com/retos/reto-5/"/>
     </url>
 </urlset>

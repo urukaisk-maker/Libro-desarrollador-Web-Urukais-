@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
+        <meta name="description" content="Capítulo 32 del Libro del Desarrollador Web: 32 — Server Components. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -17,6 +17,10 @@
       
       
       
+        
+          <link rel="alternate" href="./" hreflang="es">
+        
+          <link rel="alternate" href="../../en/capitulos/32-server-components/" hreflang="en">
         
       
       
@@ -98,12 +102,25 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
+  <meta name="description" content="Capítulo 32 del Libro del Desarrollador Web: 32 — Server Components. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/capitulos/32-server-components/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
 
-  </head>
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="32 — Server Components - Libro del Desarrollador Web — Urukais" />
+<meta property="og:description" content="Capítulo 32 del Libro del Desarrollador Web: 32 — Server Components. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:image" content="https://libro.urukais.com/assets/images/social/capitulos/32-server-components.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://libro.urukais.com/capitulos/32-server-components/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="32 — Server Components - Libro del Desarrollador Web — Urukais" />
+<meta property="twitter:description" content="Capítulo 32 del Libro del Desarrollador Web: 32 — Server Components. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/capitulos/32-server-components.png" />
+</head>
   
   
     
@@ -113,7 +130,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -168,7 +185,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
@@ -178,7 +195,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
@@ -191,6 +208,32 @@
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/capitulos/32-server-components/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -270,7 +313,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/" class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -1086,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -1094,314 +1137,6 @@
     
   
     🏡 Portada
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-viaje-del-desarrollador" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🚀 El Viaje del Desarrollador
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#tu-caja-de-herramientas" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🛠️ Tu Caja de Herramientas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#agenda-y-novedades" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📅 Agenda y Novedades
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#comunidad-y-apoyo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💖 Comunidad y Apoyo
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#llevate-el-libro-contigo" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📄 Llévate el libro
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#por-que-este-libro" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💡 ¿Por qué este libro?
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-stack-que-dominaras" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🧰 El Stack que dominarás
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#el-proyecto" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📌 El Proyecto
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#unete-a-la-comunidad" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📬 Únete a la Comunidad
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#sobre-el-autor" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    👤 Sobre el Autor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="/#licencia" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    📜 Licencia
   
 
     
@@ -7190,6 +6925,14 @@
           
             <div class="md-content" data-md-component="content">
               
+                
+
+
+
+  
+
+
+              
               <article class="md-content__inner md-typeset">
                 
   
@@ -7200,7 +6943,7 @@
   
 
 
-<h1 id="32-server-components">32 — Server Components<a class="headerlink" href="#32-server-components" title="Permanent link">&para;</a></h1>
+<div><h1 id="32-server-components">32 — Server Components<a class="headerlink" href="#32-server-components" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
@@ -7211,8 +6954,8 @@
 <li>Errores comunes y buenas prácticas.</li>
 </ul>
 </div>
-<hr />
-<h2 id="que-son-los-server-components">🌐 ¿Qué son los Server Components?<a class="headerlink" href="#que-son-los-server-components" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="que-son-los-server-components">🌐 ¿Qué son los Server Components?<a class="headerlink" href="#que-son-los-server-components" title="Permanent link">¶</a></h2>
 <p>Los <strong>React Server Components (RSC)</strong> son componentes que se ejecutan <strong>en el servidor</strong> y envían al cliente un árbol de React ya serializado, sin incluir el código JavaScript de esos componentes en el bundle del navegador.</p>
 <div class="admonition quote">
 <p class="admonition-title">La analogía del restaurante</p>
@@ -7226,8 +6969,8 @@
     D --&gt; F[Envía JS al bundle]
     E --&gt; G[Renderiza en navegador]
     F --&gt; G</code></pre>
-<hr />
-<h2 id="server-vs-client-components">🏛 Server vs Client Components<a class="headerlink" href="#server-vs-client-components" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="server-vs-client-components">🏛 Server vs Client Components<a class="headerlink" href="#server-vs-client-components" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -7288,8 +7031,8 @@
 <p class="admonition-title">Regla mental</p>
 <p><strong>Server Component por defecto</strong>. Solo añade <code>"use client"</code> cuando necesites interactividad (hooks, eventos, APIs del navegador).</p>
 </div>
-<hr />
-<h2 id="el-modelo-hibrido">🔄 El modelo híbrido<a class="headerlink" href="#el-modelo-hibrido" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="el-modelo-hibrido">🔄 El modelo híbrido<a class="headerlink" href="#el-modelo-hibrido" title="Permanent link">¶</a></h2>
 <p>En Next.js App Router (y frameworks similares), los componentes son <strong>Server por defecto</strong>. La comunicación fluye así:</p>
 <pre class="mermaid"><code>sequenceDiagram
     participant C as Cliente (navegador)
@@ -7309,8 +7052,8 @@
    - El <strong>RSC Payload</strong> (estructura de componentes para hidratar).
    - El <strong>JS de los Client Components</strong> (para la interactividad).
 4. El navegador <strong>hidrata</strong> los Client Components.</p>
-<hr />
-<h2 id="la-directiva-use-client">🏷 La directiva <code>"use client"</code><a class="headerlink" href="#la-directiva-use-client" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="la-directiva-use-client">🏷 La directiva <code>"use client"</code><a class="headerlink" href="#la-directiva-use-client" title="Permanent link">¶</a></h2>
 <p>Es una <strong>cadena de texto</strong> al inicio del archivo (antes de cualquier import) que marca el punto de entrada del código cliente:</p>
 <div class="highlight"><pre><span></span><code><span class="s2">"use client"</span><span class="p">;</span>
 
@@ -7346,9 +7089,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"click"</span><span class="p">)}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
 <span class="p">}</span>
 </code></pre></div>
-<hr />
-<h2 id="cuando-usar-cada-uno">🎯 Cuándo usar cada uno<a class="headerlink" href="#cuando-usar-cada-uno" title="Permanent link">&para;</a></h2>
-<h3 id="server-component-por-defecto">Server Component (por defecto)<a class="headerlink" href="#server-component-por-defecto" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="cuando-usar-cada-uno">🎯 Cuándo usar cada uno<a class="headerlink" href="#cuando-usar-cada-uno" title="Permanent link">¶</a></h2>
+<h3 id="server-component-por-defecto">Server Component (por defecto)<a class="headerlink" href="#server-component-por-defecto" title="Permanent link">¶</a></h3>
 <ul>
 <li>✅ Fetching de datos (DB, APIs externas, FS).</li>
 <li>✅ Acceso a variables de entorno y secrets.</li>
@@ -7356,7 +7099,7 @@
 <li>✅ Componentes grandes sin interactividad (listas, layouts, páginas).</li>
 <li>✅ Reducir el bundle JS del cliente.</li>
 </ul>
-<h3 id="client-component-use-client">Client Component (<code>"use client"</code>)<a class="headerlink" href="#client-component-use-client" title="Permanent link">&para;</a></h3>
+<h3 id="client-component-use-client">Client Component (<code>"use client"</code>)<a class="headerlink" href="#client-component-use-client" title="Permanent link">¶</a></h3>
 <ul>
 <li>✅ <code>useState</code>, <code>useEffect</code>, <code>useReducer</code>, <code>useContext</code>.</li>
 <li>✅ Event handlers (<code>onClick</code>, <code>onChange</code>, <code>onSubmit</code>).</li>
@@ -7367,8 +7110,8 @@
 <p class="admonition-title">Aísla la interactividad</p>
 <p>Un buen patrón es tener <strong>páginas server</strong> con <strong>islas client</strong>: la página renderiza en el servidor, y solo los componentes interactivos (botones, formularios, modales) llevan <code>"use client"</code>. Así el bundle JS se mantiene pequeño.</p>
 </div>
-<hr />
-<h2 id="ejemplo-completo-dashboard">📝 Ejemplo completo: dashboard<a class="headerlink" href="#ejemplo-completo-dashboard" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="ejemplo-completo-dashboard">📝 Ejemplo completo: dashboard<a class="headerlink" href="#ejemplo-completo-dashboard" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/dashboard/page.js  (Server Component)</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@/lib/db"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">BotonRefrescar</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./boton-refrescar"</span><span class="p">;</span>
@@ -7404,8 +7147,8 @@
 - La query a la DB se ejecuta <strong>en el servidor</strong> (el cliente nunca ve las credenciales).
 - El bundle JS del navegador <strong>no incluye</strong> el código del dashboard, solo el del botón.
 - El botón sí es interactivo (Client Component).</p>
-<hr />
-<h2 id="errores-comunes">⚠️ Errores comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="errores-comunes">⚠️ Errores comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -7446,8 +7189,8 @@
 <p class="admonition-title">El error más común</p>
 <p><code>Event handlers cannot be passed to Client Component props</code>. Ocurre cuando intentas pasar una función (como <code>onClick</code>) desde un Server Component a un Client Component. Las props que pasan de Server a Client deben ser <strong>serializables</strong> (números, strings, arrays, objetos planos). No funciones.</p>
 </div>
-<hr />
-<h2 id="arquitectura-recomendada">🏗 Arquitectura recomendada<a class="headerlink" href="#arquitectura-recomendada" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="arquitectura-recomendada">🏗 Arquitectura recomendada<a class="headerlink" href="#arquitectura-recomendada" title="Permanent link">¶</a></h2>
 <pre class="mermaid"><code>graph TD
     A[app/layout.js] --&gt;|Server| B[app/page.js]
     B --&gt;|Server| C[Lista de productos]
@@ -7457,8 +7200,8 @@
     E --&gt; G[Cart context]
     F --&gt; G</code></pre>
 <p><strong>Regla:</strong> Server arriba, Client en las hojas (islas).</p>
-<hr />
-<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">¶</a></h2>
 <div class="admonition example">
 <p class="admonition-title">Convertir un componente interactivo en híbrido</p>
 <p>Tienes este componente con un contador. Divídelo en:</p>
@@ -7503,8 +7246,8 @@
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<hr />
-<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
 <p class="admonition-title">Comprueba lo aprendido</p>
 </div>
@@ -7528,8 +7271,8 @@
 <summary>5. ¿Cuál es el patrón recomendado de arquitectura?</summary>
 <p><strong>Server arriba, Client en las hojas</strong>: páginas y layouts en el servidor, islas interactivas (botones, formularios, modales) como Client Components.</p>
 </details>
-<hr />
-<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://react.dev/reference/rsc/server-components">React — Server Components (docs oficiales)</a></li>
 <li><a href="https://nextjs.org/docs/app/building-your-application/rendering/server-components">Next.js — Server Components</a></li>
@@ -7537,10 +7280,10 @@
 <li><a href="https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md">RFC original de React Server Components</a></li>
 <li><a href="https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns">Patrones de composición Server/Client</a></li>
 </ul>
-<hr />
+<hr>
 <p>➡️ Siguiente capítulo: <a href="../33-edge-computing/">33 — Edge Computing</a></p>
-<hr />
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-32">
 <div class="quiz-question" data-answer="b">
 <p><strong>1.</strong> ¿Los Server Components se envían al bundle del navegador?</p>
@@ -7562,19 +7305,22 @@
 </div>
 </div>
 
-<hr />
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2032%3A%20Server%20Components&url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2032%3A%20Server%20Components&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F32-server-components%2F" target="_blank" rel="noopener">LinkedIn</a>
 <button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/32-server-components/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
+</div></div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -7900,7 +7646,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
   
@@ -7915,6 +7661,12 @@
         <script src="../../javascripts/logros.js"></script>
       
         <script src="../../javascripts/external-links.js"></script>
+      
+        <script src="../../javascripts/music-search.js"></script>
+      
+        <script src="../../javascripts/landing.js"></script>
+      
+        <script src="../../javascripts/command-palette.js"></script>
       
     
   <script src="../../assets/js/share.js" defer></script>
