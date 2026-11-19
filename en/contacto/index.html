@@ -159,7 +159,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../" title="Libro del Desarrollador Web — Urukais" class="md-header__button md-logo" aria-label="Libro del Desarrollador Web — Urukais" data-md-component="logo">
       
-  <img src="../../assets/favicon.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -1054,7 +1054,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../" title="Libro del Desarrollador Web — Urukais" class="md-nav__button md-logo" aria-label="Libro del Desarrollador Web — Urukais" data-md-component="logo">
       
-  <img src="../../assets/favicon.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     Libro del Desarrollador Web — Urukais
@@ -6954,15 +6954,15 @@
 </div>
 <hr>
 <h2 id="formulario-de-contacto">📬 Formulario de contacto<a class="headerlink" href="#formulario-de-contacto" title="Permanent link">¶</a></h2>
-<p>La forma más directa. Rellena el formulario y te responderé lo antes posible.</p>
-<form class="contact-form" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+<p>Rellena los campos y se abrirá tu aplicación o gestor de correo con el mensaje preparado para <code>urukaisk@gmail.com</code>.</p>
+<form id="mailto-contact-form" class="contact-form">
   <div class="contact-field">
     <label for="nombre">Nombre <span class="required">*</span></label>
     <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
   </div>
 
   <div class="contact-field">
-    <label for="email">Email <span class="required">*</span></label>
+    <label for="email">Tu email <span class="required">*</span></label>
     <input type="email" id="email" name="email" required placeholder="tu@email.com">
   </div>
 
@@ -6970,13 +6970,13 @@
     <label for="asunto">Asunto <span class="required">*</span></label>
     <select id="asunto" name="asunto" required>
       <option value="">— Selecciona un asunto —</option>
-      <option value="duda">Duda sobre el contenido</option>
-      <option value="error">Reportar un error</option>
-      <option value="sugerencia">Sugerencia o mejora</option>
-      <option value="colaboracion">Propuesta de colaboración</option>
-      <option value="prensa">Prensa o medios</option>
-      <option value="charla">Charla o taller</option>
-      <option value="otro">Otro</option>
+      <option value="Duda sobre el contenido">Duda sobre el contenido</option>
+      <option value="Reportar un error">Reportar un error</option>
+      <option value="Sugerencia o mejora">Sugerencia o mejora</option>
+      <option value="Propuesta de colaboración">Propuesta de colaboración</option>
+      <option value="Prensa o medios">Prensa o medios</option>
+      <option value="Charla o taller">Charla o taller</option>
+      <option value="Otro">Otro</option>
     </select>
   </div>
 
@@ -6990,16 +6990,42 @@
     <label for="privacidad">He leído y acepto la <a href="index.md#licencia">política de privacidad</a>.</label>
   </div>
 
-  <button type="submit" class="md-button md-button--primary">📨 Enviar mensaje</button>
+  <button type="submit" class="md-button md-button--primary">✉️ Abrir en mi correo</button>
 </form>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("mailto-contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const asunto = document.getElementById("asunto").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    const subject = encodeURIComponent(`[Libro Web] ${asunto} — ${nombre}`);
+    const body = encodeURIComponent(
+      `Nombre: ${nombre}\n` +
+      `Email: ${email}\n` +
+      `Asunto: ${asunto}\n\n` +
+      `Mensaje:\n${mensaje}`
+    );
+
+    window.location.href = `mailto:urukaisk@gmail.com?subject=${subject}&body=${body}`;
+  });
+});
+</script>
+
 <div class="admonition note">
-<p class="admonition-title">¿No funciona el formulario?</p>
-<p>Si el formulario no responde (porque Formspree está caído o el ID no es válido), escríbeme directamente a <a href="mailto:contacto@urukais.com">contacto@urukais.com</a>.</p>
+<p class="admonition-title">¿No se abre tu gestor de correo?</p>
+<p>Si no tienes un cliente de correo configurado o prefieres escribir directamente desde tu webmail, envía tu mensaje a <a href="mailto:urukaisk@gmail.com">urukaisk@gmail.com</a>.</p>
 </div>
 <hr>
 <h2 id="canales-directos">📮 Canales directos<a class="headerlink" href="#canales-directos" title="Permanent link">¶</a></h2>
-<p>Si prefieres contactar por otra vía, aquí tienes todos los canales:</p>
+<p>Si prefieres contactar por otra vía, aquí tienes todos los canales disponibles:</p>
 <table>
 <thead>
 <tr>
@@ -7011,23 +7037,23 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>📧 Email</strong></td>
-<td style="text-align: left;">Consultas generales, prensa, colaboraciones</td>
-<td style="text-align: left;"><a href="mailto:contacto@urukais.com">contacto@urukais.com</a></td>
+<td style="text-align: left;">Consultas generales, prensa y colaboraciones</td>
+<td style="text-align: left;"><a href="mailto:urukaisk@gmail.com">urukaisk@gmail.com</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐛 GitHub Issues</strong></td>
-<td style="text-align: left;">Errores, erratas, sugerencias técnicas</td>
+<td style="text-align: left;">Errores, erratas y sugerencias técnicas</td>
 <td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">Abrir issue</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>💬 GitHub Discussions</strong></td>
-<td style="text-align: left;">Preguntas, debates, ideas</td>
+<td style="text-align: left;">Preguntas, debates e ideas</td>
 <td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">Ir a Discussions</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐦 Twitter / X</strong></td>
-<td style="text-align: left;">Menciones públicas, compartir</td>
-<td style="text-align: left;"><a href="https://twitter.com/urukaisk">@urukaisk</a></td>
+<td style="text-align: left;">Menciones públicas y compartir contenido</td>
+<td style="text-align: left;"><a href="https://x.com/urukaisk">@urukaisk</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>💼 LinkedIn</strong></td>
@@ -7036,12 +7062,12 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>📰 Substack</strong></td>
-<td style="text-align: left;">Newsletter, novedades</td>
+<td style="text-align: left;">Newsletter y novedades</td>
 <td style="text-align: left;"><a href="https://urukaisklick.substack.com">urukaisklick.substack.com</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐙 GitHub</strong></td>
-<td style="text-align: left;">Código, contribuciones</td>
+<td style="text-align: left;">Código y contribuciones</td>
 <td style="text-align: left;"><a href="https://github.com/urukaisk-maker">@urukaisk-maker</a></td>
 </tr>
 </tbody>
@@ -7061,7 +7087,7 @@
 </ul>
 <h3 id="no-mejor-no-me-escribas-si">❌ No, mejor no me escribas si…<a class="headerlink" href="#no-mejor-no-me-escribas-si" title="Permanent link">¶</a></h3>
 <ul>
-<li>Es un <strong>tema de soporte técnico personal</strong> (mi tiempo es limitado, y para eso está Stack Overflow).</li>
+<li>Es un <strong>tema de soporte técnico personal</strong> (mi tiempo es limitado y para eso está Stack Overflow).</li>
 <li>Es para <strong>vender algo</strong> (servicios, productos, SEO, marketing…).</li>
 <li>Es <strong>spam</strong> o mensajes automáticos.</li>
 <li>Es para <strong>pedir que haga tu tarea</strong> (no hago deberes, pero puedo orientarte).</li>
@@ -7109,17 +7135,17 @@
 </div>
 <hr>
 <h2 id="antes-de-escribirme-esta-tu-duda-en-la-faq">❓ Antes de escribirme: ¿está tu duda en la FAQ?<a class="headerlink" href="#antes-de-escribirme-esta-tu-duda-en-la-faq" title="Permanent link">¶</a></h2>
-<p>Muchas de las preguntas que recibo ya están respondidas en la página de <a href="../faq/">Preguntas frecuentes</a>. Antes de escribirme, échale un vistazo:</p>
+<p>Muchas de las preguntas habituales ya tienen respuesta en la página de <a href="../faq/">Preguntas frecuentes</a>. Antes de escribirme, échale un vistazo:</p>
 <ul>
 <li><a href="../faq/#sobre-el-proyecto">¿Es gratis? ¿Cómo se financia?</a></li>
 <li><a href="../faq/#sobre-el-contenido">¿Para quién es el libro?</a></li>
 <li><a href="../faq/#sobre-contribuir">¿Cómo contribuyo?</a></li>
 <li><a href="../faq/#sobre-los-logros-y-el-certificado">¿Cómo obtengo el certificado?</a></li>
 </ul>
-<p>Si tu duda no está en la FAQ, entonces sí: escríbeme.</p>
+<p>Si tu duda no aparece en la FAQ, entonces sí: escríbeme.</p>
 <hr>
 <h2 id="colaboraciones">🤝 Colaboraciones<a class="headerlink" href="#colaboraciones" title="Permanent link">¶</a></h2>
-<p>Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocinio, charla…), indícamelo en el asunto del formulario o en el email. Cuéntame:</p>
+<p>Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocinio, charla…), indícamelo en el asunto del formulario o por email. Cuéntame:</p>
 <ul>
 <li><strong>Quién eres</strong> y a qué te dedicas.</li>
 <li><strong>Qué propones</strong> concretamente.</li>
@@ -7128,11 +7154,11 @@
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Respuesta a colaboraciones</p>
-<p>Si tu propuesta encaja con los valores del proyecto (open source, gratuito, sin publicidad), te responderé con mucho gusto. Si no encaja, también te lo diré con honestidad.</p>
+<p>Si tu propuesta encaja con los valores del proyecto (open source, gratuito y sin publicidad), te responderé con mucho gusto. Si no encaja, también te lo diré con honestidad.</p>
 </div>
 <hr>
 <h2 id="donde-estoy">🗺️ Dónde estoy<a class="headerlink" href="#donde-estoy" title="Permanent link">¶</a></h2>
-<p>Soy de España 🇪🇸, pero trabajo con gente de todo el mundo. Mi zona horaria es <strong>CET (UTC+1)</strong> o <strong>CEST (UTC+2)</strong> según la época del año. Si me escribes desde otro continente, tenlo en cuenta para calcular cuándo te responderé.</p>
+<p>Soy de España 🇪🇸, pero colaboro con gente de todo el mundo. Tenlo en cuenta si me escribes desde otra franja horaria.</p>
 <hr>
 <h2 id="privacidad">🔐 Privacidad<a class="headerlink" href="#privacidad" title="Permanent link">¶</a></h2>
 <p>Tus datos <strong>solo se usan para responderte</strong>. No se venden, ni se comparten con terceros, ni se usan para spam. Si quieres que elimine tu mensaje después de responderte, solo tienes que pedírmelo.</p>
@@ -7142,12 +7168,12 @@
 <blockquote>
 <p><em>"Un email bien escrito ahorra 10 mensajes."</em></p>
 </blockquote>
-<p>Si me escribes, ayúdame a ayudarte: sé concreto, cuéntame qué necesitas y, si es un error técnico, adjunta capturas, logs o el código que falla. Con esa información, responderé mucho más rápido y mejor.</p>
+<p>Si me escribes, ayúdame a ayudarte: sé concreto, cuéntame qué necesitas y, si es un error técnico, adjunta capturas, logs o el código que falla. Con esa información podré responderte mucho más rápido y mejor.</p>
 <hr>
 <h2 id="siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">🐛 Reportar un error</a>
-<a class="md-button" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">💬 Ir a Discussions</a>
-<a class="md-button" href="../faq/">📖 Leer las FAQ</a></p></div>
+<p><a class="md-button md-button--primary" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">🐛 Reportar un error</a></p>
+<p><a class="md-button" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">💬 Ir a Discussions</a></p>
+<p><a class="md-button" href="../faq/">📖 Leer las FAQ</a></p></div>
 
 
 
