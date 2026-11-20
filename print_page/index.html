@@ -11803,70 +11803,70 @@ npx<span class="w"> </span>tsx<span class="w"> </span>src/index.ts
                     <section class='print-page md-section' id='section-2-5' heading-number='2.5'>
                         <h1>🔵 Nivel 4 — Testing y Arquitectura<a class='headerlink' href='#section-2-5' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="en-capitulos-16-testing" heading-number="2.5.1"><div><h1 id="16-testing-frontend">16 — Testing frontend<a class="headerlink" href="#en-capitulos-16-testing-16-testing-frontend" title="Permanent link">¶</a></h1>
+                    <section class="print-page" id="en-capitulos-16-testing" heading-number="2.5.1"><div><h1 id="16-frontend-testing">16 — Frontend Testing<a class="headerlink" href="#en-capitulos-16-testing-16-frontend-testing" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Por qué testear es importante.</li>
-<li>Tipos de tests: unitarios, integración, E2E.</li>
-<li>Vitest: el framework de testing moderno.</li>
-<li>Testing Library: testear como un usuario.</li>
-<li>Buenas prácticas de testing.</li>
+<li>Why testing matters.</li>
+<li>Test types: unit, integration, E2E.</li>
+<li>Vitest: the modern testing framework.</li>
+<li>Testing Library: testing like a user.</li>
+<li>Testing best practices.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-por-que-testear">🧪 ¿Por qué testear?<a class="headerlink" href="#en-capitulos-16-testing-por-que-testear" title="Permanent link">¶</a></h2>
-<p>Los tests automáticos te permiten <strong>cambiar código sin miedo</strong>. Si algo se rompe, el test te avisa antes de que llegue a producción.</p>
+<h2 id="en-capitulos-16-testing-why-test">🧪 Why Test?<a class="headerlink" href="#en-capitulos-16-testing-why-test" title="Permanent link">¶</a></h2>
+<p>Automated tests let you <strong>change code without fear</strong>. If something breaks, the test warns you before it reaches production.</p>
 <div class="admonition quote">
-<p class="admonition-title">Los tests son tu red de seguridad</p>
-<p>Sin tests, cada cambio es una apuesta. Con tests, cada cambio es una verificación.</p>
+<p class="admonition-title">Tests are your safety net</p>
+<p>Without tests, every change is a gamble. With tests, every change is a verification.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-la-piramide-de-testing">📊 La pirámide de testing<a class="headerlink" href="#en-capitulos-16-testing-la-piramide-de-testing" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-the-testing-pyramid">📊 The Testing Pyramid<a class="headerlink" href="#en-capitulos-16-testing-the-testing-pyramid" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>        /\
-       /E2E\      &lt;- pocos, lentos, frágiles
+       /E2E\      &lt;- few, slow, brittle
       /------\
-     /Integración\  &lt;- algunos, más rápidos
-    /--------------\
-   /   Unitarios    \ &lt;- muchos, rápidos, aislados
-  /------------------\
+     /Integrat.\  &lt;- some, faster
+    /------------\
+   /     Unit     \ &lt;- many, fast, isolated
+  /----------------\
 </code></pre></div>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Qué prueba</th>
-<th style="text-align: left;">Velocidad</th>
-<th style="text-align: left;">Cantidad</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">What it tests</th>
+<th style="text-align: left;">Speed</th>
+<th style="text-align: left;">Volume</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Unitario</strong></td>
-<td style="text-align: left;">Una función o componente aislado</td>
-<td style="text-align: left;">⚡ Muy rápido</td>
-<td style="text-align: left;">Muchos</td>
+<td style="text-align: left;"><strong>Unit</strong></td>
+<td style="text-align: left;">A single function or isolated component</td>
+<td style="text-align: left;">⚡ Very fast</td>
+<td style="text-align: left;">Many</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Integración</strong></td>
-<td style="text-align: left;">Varios módulos juntos</td>
-<td style="text-align: left;">🚀 Rápido</td>
-<td style="text-align: left;">Algunos</td>
+<td style="text-align: left;"><strong>Integration</strong></td>
+<td style="text-align: left;">Multiple modules working together</td>
+<td style="text-align: left;">🚀 Fast</td>
+<td style="text-align: left;">Some</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>E2E</strong></td>
-<td style="text-align: left;">La app completa en un navegador</td>
-<td style="text-align: left;">🐢 Lento</td>
-<td style="text-align: left;">Pocos</td>
+<td style="text-align: left;">The full app in a real browser</td>
+<td style="text-align: left;">🐢 Slow</td>
+<td style="text-align: left;">Few</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h2 id="en-capitulos-16-testing-vitest">⚡ Vitest<a class="headerlink" href="#en-capitulos-16-testing-vitest" title="Permanent link">¶</a></h2>
-<p><strong>Vitest</strong> es el framework de testing moderno, basado en Vite. Es ultrarrápido y compatible con la API de Jest.</p>
+<p><strong>Vitest</strong> is the modern testing framework built on Vite. It is blazing fast and compatible with the Jest API.</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vitest
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-tu-primer-test">Tu primer test<a class="headerlink" href="#en-capitulos-16-testing-tu-primer-test" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-your-first-test">Your First Test<a class="headerlink" href="#en-capitulos-16-testing-your-first-test" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// sumar.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
@@ -11877,79 +11877,79 @@ npx<span class="w"> </span>tsx<span class="w"> </span>src/index.ts
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./sumar.js"</span><span class="p">;</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"sumar"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma dos números positivos"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds two positive numbers"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma números negativos"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds negative numbers"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="o">-</span><span class="mf">5</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma cero"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds zero"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-ejecutar-los-tests">Ejecutar los tests<a class="headerlink" href="#en-capitulos-16-testing-ejecutar-los-tests" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w">          </span><span class="c1"># modo watch</span>
-npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w">      </span><span class="c1"># una vez</span>
-npx<span class="w"> </span>vitest<span class="w"> </span>--coverage<span class="w"> </span><span class="c1"># con cobertura</span>
+<h3 id="en-capitulos-16-testing-running-tests">Running Tests<a class="headerlink" href="#en-capitulos-16-testing-running-tests" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w">          </span><span class="c1"># watch mode</span>
+npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w">      </span><span class="c1"># single run</span>
+npx<span class="w"> </span>vitest<span class="w"> </span>--coverage<span class="w"> </span><span class="c1"># with coverage</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-16-testing-matchers-mas-usados">🎯 Matchers más usados<a class="headerlink" href="#en-capitulos-16-testing-matchers-mas-usados" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-most-used-matchers">🎯 Most Used Matchers<a class="headerlink" href="#en-capitulos-16-testing-most-used-matchers" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Matcher</th>
-<th style="text-align: left;">Qué comprueba</th>
+<th style="text-align: left;">What it checks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>toBe(valor)</code></td>
-<td style="text-align: left;">Igualdad estricta (===)</td>
+<td style="text-align: left;"><code>toBe(value)</code></td>
+<td style="text-align: left;">Strict equality (===)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>toEqual(valor)</code></td>
-<td style="text-align: left;">Igualdad profunda (objetos, arrays)</td>
+<td style="text-align: left;"><code>toEqual(value)</code></td>
+<td style="text-align: left;">Deep equality (objects, arrays)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toBeTruthy()</code></td>
-<td style="text-align: left;">Valor truthy</td>
+<td style="text-align: left;">Truthy value</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toBeFalsy()</code></td>
-<td style="text-align: left;">Valor falsy</td>
+<td style="text-align: left;">Falsy value</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toContain(item)</code></td>
-<td style="text-align: left;">Array o string contiene</td>
+<td style="text-align: left;">Array or string contains item</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toThrow()</code></td>
-<td style="text-align: left;">Función lanza error</td>
+<td style="text-align: left;">Function throws an error</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toHaveLength(n)</code></td>
-<td style="text-align: left;">Longitud</td>
+<td style="text-align: left;">Length</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toMatch(regex)</code></td>
-<td style="text-align: left;">Coincide con regex</td>
+<td style="text-align: left;">Matches regex</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h2 id="en-capitulos-16-testing-testing-library">🧩 Testing Library<a class="headerlink" href="#en-capitulos-16-testing-testing-library" title="Permanent link">¶</a></h2>
-<p><strong>Testing Library</strong> te ayuda a testear componentes <strong>como un usuario real</strong>, no como un programador.</p>
+<p><strong>Testing Library</strong> helps you test components <strong>like a real user</strong>, not like a programmer.</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@testing-library/dom<span class="w"> </span>@testing-library/user-event
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@testing-library/dom"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">userEvent</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@testing-library/user-event"</span><span class="p">;</span>
 
-<span class="c1">// El HTML de tu componente</span>
+<span class="c1">// Your component HTML</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">  &lt;button id="btn"&gt;Haz clic&lt;/button&gt;</span>
+<span class="sb">  &lt;button id="btn"&gt;Click me&lt;/button&gt;</span>
 <span class="sb">  &lt;p id="resultado"&gt;0&lt;/p&gt;</span>
 <span class="sb">`</span><span class="p">;</span>
 
@@ -11960,103 +11960,103 @@ npx<span class="w"> </span>vitest<span class="w"> </span>--coverage<span class="
 <span class="p">});</span>
 
 <span class="c1">// Test</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Haz clic"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Click me"</span><span class="p">);</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">btn</span><span class="p">);</span>
 <span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"1"</span><span class="p">)).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Testea como un usuario</p>
-<p>No testees detalles de implementación (nombres de variables, estructura del DOM). Testea lo que el usuario ve y hace: textos, roles, clics.</p>
+<p class="admonition-title">Test like a user</p>
+<p>Don't test implementation details (variable names, DOM structure). Test what the user sees and does: text, roles, clicks.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-testing-e2e-con-playwright">🎭 Testing E2E con Playwright<a class="headerlink" href="#en-capitulos-16-testing-testing-e2e-con-playwright" title="Permanent link">¶</a></h2>
-<p><strong>Playwright</strong> permite automatizar un navegador real: abrir páginas, hacer clic, rellenar formularios, comprobar resultados.</p>
+<h2 id="en-capitulos-16-testing-e2e-testing-with-playwright">🎭 E2E Testing with Playwright<a class="headerlink" href="#en-capitulos-16-testing-e2e-testing-with-playwright" title="Permanent link">¶</a></h2>
+<p><strong>Playwright</strong> lets you automate a real browser: open pages, click, fill forms, and verify results.</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>@playwright/test
 npx<span class="w"> </span>playwright<span class="w"> </span>install
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// tests/ejemplo.spec.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 
-<span class="nx">test</span><span class="p">(</span><span class="s2">"flujo de login"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"https://mi-app.com/login"</span><span class="p">);</span>
+<span class="nx">test</span><span class="p">(</span><span class="s2">"login flow"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"[https://mi-app.com/login](https://mi-app.com/login)"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#email"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ana@ejemplo.com"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"#password"</span><span class="p">,</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s2">"button[type=submit]"</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">"https://mi-app.com/dashboard"</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toContainText</span><span class="p">(</span><span class="s2">"Bienvenida"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">"[https://mi-app.com/dashboard](https://mi-app.com/dashboard)"</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toContainText</span><span class="p">(</span><span class="s2">"Welcome"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-ejecutar-los-tests_1">Ejecutar los tests<a class="headerlink" href="#en-capitulos-16-testing-ejecutar-los-tests_1" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-running-tests_1">Running Tests<a class="headerlink" href="#en-capitulos-16-testing-running-tests_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
 npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui
 npx<span class="w"> </span>playwright<span class="w"> </span>show-report
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Playwright vs Cypress</p>
-<p>Ambos son geniales. Playwright soporta más navegadores (Chromium, Firefox, WebKit), es más rápido y tiene mejor API para testing paralelo. Cypress tiene mejor DX para debugging visual.</p>
+<p class="admonition-title">Playwright vs. Cypress</p>
+<p>Both are great. Playwright supports more browsers (Chromium, Firefox, WebKit), is faster, and has a better API for parallel testing. Cypress has a nicer DX for visual debugging.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-buenas-practicas-de-testing">✅ Buenas prácticas de testing<a class="headerlink" href="#en-capitulos-16-testing-buenas-practicas-de-testing" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-testing-best-practices">✅ Testing Best Practices<a class="headerlink" href="#en-capitulos-16-testing-testing-best-practices" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ <strong>Testea comportamiento, no implementación</strong>. Si refactorizas y los tests fallan, están mal escritos.</li>
-<li>✅ <strong>Un test, una cosa</strong>. Si un test comprueba 5 cosas, cuando falla no sabes qué se rompió.</li>
-<li>✅ <strong>Nombres descriptivos</strong>. <code>"debería sumar dos números positivos"</code> mejor que <code>"test 1"</code>.</li>
-<li>✅ <strong>Sigue el patrón AAA</strong>: Arrange (preparar), Act (actuar), Assert (comprobar).</li>
-<li>✅ <strong>Testea los casos límite</strong>: vacío, null, undefined, negativos, muy grandes.</li>
-<li>✅ <strong>No testees la librería</strong>. No testees que <code>Array.push</code> funciona.</li>
-<li>❌ <strong>No persigas el 100% de cobertura</strong>. El 80% bien hecho vale más que el 100% mal hecho.</li>
+<li>✅ <strong>Test behavior, not implementation</strong>. If you refactor and tests fail, they are poorly written.</li>
+<li>✅ <strong>One test, one thing</strong>. If a test checks 5 things, when it fails you won't know what broke.</li>
+<li>✅ <strong>Descriptive names</strong>. <code>"should add two positive numbers"</code> is better than <code>"test 1"</code>.</li>
+<li>✅ <strong>Follow the AAA pattern</strong>: Arrange, Act, Assert.</li>
+<li>✅ <strong>Test edge cases</strong>: empty, null, undefined, negative, very large.</li>
+<li>✅ <strong>Don't test the library</strong>. Don't test that <code>Array.push</code> works.</li>
+<li>❌ <strong>Don't chase 100% coverage</strong>. 80% done well is worth more than 100% done poorly.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-16-testing-cobertura-de-tests">📊 Cobertura de tests<a class="headerlink" href="#en-capitulos-16-testing-cobertura-de-tests" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-test-coverage">📊 Test Coverage<a class="headerlink" href="#en-capitulos-16-testing-test-coverage" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w"> </span>--coverage
 </code></pre></div>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Métrica</th>
-<th style="text-align: left;">Qué mide</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">What it measures</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Statements</strong></td>
-<td style="text-align: left;">Líneas ejecutadas</td>
+<td style="text-align: left;">Executed statements</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Branches</strong></td>
-<td style="text-align: left;">Ramas if/else cubiertas</td>
+<td style="text-align: left;">Covered if/else branches</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Functions</strong></td>
-<td style="text-align: left;">Funciones llamadas</td>
+<td style="text-align: left;">Called functions</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Lines</strong></td>
-<td style="text-align: left;">Líneas cubiertas</td>
+<td style="text-align: left;">Covered lines</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">La cobertura no lo es todo</p>
-<p>Un 100% de cobertura no significa que los tests sean buenos. Puedes tener un test que ejecute una línea sin comprobar su resultado.</p>
+<p class="admonition-title">Coverage isn't everything</p>
+<p>100% coverage does not mean good tests. You can have a test that runs a line without asserting its result.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-16-testing-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-16-testing-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-16">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué tipo de test es más rápido?</p>
+<p><strong>1.</strong> Which type of test is fastest?</p>
 <button class="quiz-option" data-opt="a">A) E2E</button>
-<button class="quiz-option" data-opt="b">B) Unitario</button>
-<button class="quiz-option" data-opt="c">C) Integración</button>
+<button class="quiz-option" data-opt="b">B) Unit</button>
+<button class="quiz-option" data-opt="c">C) Integration</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué framework de testing está basado en Vite?</p>
+<p><strong>2.</strong> Which testing framework is built on Vite?</p>
 <button class="quiz-option" data-opt="a">A) Vitest</button>
 <button class="quiz-option" data-opt="b">B) Jest</button>
 <button class="quiz-option" data-opt="c">C) Mocha</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué herramienta se usa para testing E2E?</p>
+<p><strong>3.</strong> Which tool is used for E2E testing?</p>
 <button class="quiz-option" data-opt="a">A) Vitest</button>
 <button class="quiz-option" data-opt="b">B) Testing Library</button>
 <button class="quiz-option" data-opt="c">C) Playwright</button>
@@ -12064,31 +12064,31 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report
 </div>
 
 <hr>
-<h2 id="en-capitulos-16-testing-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-16-testing-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-16-testing-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2016%3A%20Testing%20frontend&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2016%3A%20Testing%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/16-testing/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2016%3A%20Frontend%20Testing&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2016%3A%20Frontend%20Testing%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F16-testing%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/16-testing/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-16-testing-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-16-testing-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-17-rendimiento">Ir al Capítulo 17 — Rendimiento web</a>
-<a class="md-button" href="#en">Volver al índice</a></p>
+<h2 id="en-capitulos-16-testing-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-16-testing-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-17-rendimiento">Go to Chapter 17 — Rendimiento web</a>
+<a class="md-button" href="#en">Back to index</a></p>
 <hr>
-<h2 id="en-capitulos-16-testing-testing-moderno-con-vitest">⚡ Testing moderno con Vitest<a class="headerlink" href="#en-capitulos-16-testing-testing-moderno-con-vitest" title="Permanent link">¶</a></h2>
-<p><strong>Vitest</strong> es el framework de testing que se ha convertido en el estándar para proyectos con Vite. Es rápido, compatible con la API de Jest, y funciona sin configuración.</p>
-<h3 id="en-capitulos-16-testing-instalacion">Instalación<a class="headerlink" href="#en-capitulos-16-testing-instalacion" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-16-testing-modern-testing-with-vitest">⚡ Modern Testing with Vitest<a class="headerlink" href="#en-capitulos-16-testing-modern-testing-with-vitest" title="Permanent link">¶</a></h2>
+<p><strong>Vitest</strong> is the testing framework that has become the standard for Vite projects. It is fast, compatible with the Jest API, and works with zero configuration.</p>
+<h3 id="en-capitulos-16-testing-installation">Installation<a class="headerlink" href="#en-capitulos-16-testing-installation" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>vitest<span class="w"> </span>@testing-library/dom<span class="w"> </span>@testing-library/user-event<span class="w"> </span>jsdom
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-configuracion-basica-viteconfigjs">Configuración básica (<code>vite.config.js</code>)<a class="headerlink" href="#en-capitulos-16-testing-configuracion-basica-viteconfigjs" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-basic-configuration-viteconfigjs">Basic Configuration (<code>vite.config.js</code>)<a class="headerlink" href="#en-capitulos-16-testing-basic-configuration-viteconfigjs" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">environment</span><span class="o">:</span><span class="w"> </span><span class="s2">"jsdom"</span><span class="p">,</span><span class="w">   </span><span class="c1">// simula el DOM del navegador</span>
-<span class="w">        </span><span class="nx">globals</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">          </span><span class="c1">// describe, it, expect sin importar</span>
+<span class="w">        </span><span class="nx">environment</span><span class="o">:</span><span class="w"> </span><span class="s2">"jsdom"</span><span class="p">,</span><span class="w">   </span><span class="c1">// simulates browser DOM</span>
+<span class="w">        </span><span class="nx">globals</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">          </span><span class="c1">// describe, it, expect without importing</span>
 <span class="w">        </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s2">"v8"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">reporter</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="s2">"html"</span><span class="p">],</span>
@@ -12096,7 +12096,7 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report
 <span class="w">    </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-tu-primer-test-con-vitest">Tu primer test con Vitest<a class="headerlink" href="#en-capitulos-16-testing-tu-primer-test-con-vitest" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-your-first-test-with-vitest">Your First Test with Vitest<a class="headerlink" href="#en-capitulos-16-testing-your-first-test-with-vitest" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// sumar.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
@@ -12107,39 +12107,39 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./sumar.js"</span><span class="p">;</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"sumar"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma dos números positivos"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds two positive numbers"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma números negativos"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds negative numbers"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="o">-</span><span class="mf">3</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"suma cero"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"adds zero"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Ejecuta:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w">          </span><span class="c1"># modo watch</span>
-npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w">      </span><span class="c1"># una sola vez (CI)</span>
-npx<span class="w"> </span>vitest<span class="w"> </span>--ui<span class="w">     </span><span class="c1"># interfaz gráfica</span>
+<p>Run it:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w">          </span><span class="c1"># watch mode</span>
+npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w">      </span><span class="c1"># single run (CI)</span>
+npx<span class="w"> </span>vitest<span class="w"> </span>--ui<span class="w">     </span><span class="c1"># graphical UI</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Vitest vs Jest</p>
-<p>Vitest es <strong>mucho más rápido</strong> que Jest en proyectos Vite (no transpila con Babel). La API es casi idéntica, así que migrar es trivial. Si empiezas un proyecto nuevo con Vite, usa Vitest.</p>
+<p class="admonition-title">Vitest vs. Jest</p>
+<p>Vitest is <strong>much faster</strong> than Jest in Vite projects (it doesn't transpile with Babel). The API is nearly identical, so migrating is trivial. If you start a new project with Vite, use Vitest.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-testing-de-componentes-con-testing-library">🧪 Testing de componentes con Testing Library<a class="headerlink" href="#en-capitulos-16-testing-testing-de-componentes-con-testing-library" title="Permanent link">¶</a></h2>
-<p><strong>Testing Library</strong> es la librería estándar para testear componentes desde el punto de vista del usuario. No testea implementación, testea <strong>comportamiento</strong>.</p>
-<h3 id="en-capitulos-16-testing-ejemplo-con-dom-puro">Ejemplo con DOM puro<a class="headerlink" href="#en-capitulos-16-testing-ejemplo-con-dom-puro" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-16-testing-component-testing-with-testing-library">🧪 Component Testing with Testing Library<a class="headerlink" href="#en-capitulos-16-testing-component-testing-with-testing-library" title="Permanent link">¶</a></h2>
+<p><strong>Testing Library</strong> is the standard library for testing components from the user's perspective. It doesn't test implementation, it tests <strong>behavior</strong>.</p>
+<h3 id="en-capitulos-16-testing-plain-dom-example">Plain DOM Example<a class="headerlink" href="#en-capitulos-16-testing-plain-dom-example" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// contador.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">crearContador</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"button"</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"span"</span><span class="p">);</span>
 
-<span class="w">    </span><span class="nx">boton</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Incrementar"</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">boton</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Increment"</span><span class="p">;</span>
 <span class="w">    </span><span class="nx">display</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
 <span class="w">    </span><span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">n</span><span class="o">++</span><span class="p">;</span>
@@ -12157,12 +12157,12 @@ npx<span class="w"> </span>vitest<span class="w"> </span>--ui<span class="w">   
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">crearContador</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./contador.js"</span><span class="p">;</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"contador"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"incrementa al hacer clic"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"increments on click"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">);</span>
 <span class="w">        </span><span class="nx">crearContador</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span>
 <span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span>
 
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="sr">/incrementar/i</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="sr">/increment/i</span><span class="w"> </span><span class="p">});</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"0"</span><span class="p">)).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
 
 <span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">boton</span><span class="p">);</span>
@@ -12170,53 +12170,53 @@ npx<span class="w"> </span>vitest<span class="w"> </span>--ui<span class="w">   
 <span class="w">    </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-selectores-recomendados-por-prioridad">Selectores recomendados (por prioridad)<a class="headerlink" href="#en-capitulos-16-testing-selectores-recomendados-por-prioridad" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-recommended-queries-by-priority">Recommended Queries (By Priority)<a class="headerlink" href="#en-capitulos-16-testing-recommended-queries-by-priority" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Selector</th>
-<th style="text-align: left;">Cuándo usarlo</th>
+<th style="text-align: left;">Query</th>
+<th style="text-align: left;">When to use it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>getByRole</code></td>
-<td style="text-align: left;">✅ <strong>Primero</strong> (botones, enlaces, headings)</td>
+<td style="text-align: left;">✅ <strong>First</strong> (buttons, links, headings)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByLabelText</code></td>
-<td style="text-align: left;">Formularios con label</td>
+<td style="text-align: left;">Forms with labels</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByPlaceholderText</code></td>
-<td style="text-align: left;">Inputs sin label (menos accesible)</td>
+<td style="text-align: left;">Inputs without labels (less accessible)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByText</code></td>
-<td style="text-align: left;">Texto visible</td>
+<td style="text-align: left;">Visible text</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByTestId</code></td>
-<td style="text-align: left;">Cuando no hay otra opción (último recurso)</td>
+<td style="text-align: left;">When there is no other option (last resort)</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">No testees implementación</p>
-<p>❌ <code>expect(component.state.count).toBe(1)</code> — testea el estado interno.<br>
-✅ <code>expect(screen.getByText("1")).toBeTruthy()</code> — testea lo que ve el usuario.<br>
-Si cambias el estado interno pero el comportamiento es el mismo, el test no debe romperse.</p>
+<p class="admonition-title">Don't test implementation</p>
+<p>❌ <code>expect(component.state.count).toBe(1)</code> — tests internal state.
+✅ <code>expect(screen.getByText("1")).toBeTruthy()</code> — tests what the user sees.
+If you change internal state but behavior stays the same, the test shouldn't break.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-mocking-simular-dependencias">🎭 Mocking: simular dependencias<a class="headerlink" href="#en-capitulos-16-testing-mocking-simular-dependencias" title="Permanent link">¶</a></h2>
-<p><strong>Mockear</strong> es sustituir una dependencia real (API, base de datos, módulo) por una falsa controlada. Es clave para testear sin depender de servicios externos.</p>
-<h3 id="en-capitulos-16-testing-mock-de-funciones-con-vifn">Mock de funciones con <code>vi.fn()</code><a class="headerlink" href="#en-capitulos-16-testing-mock-de-funciones-con-vifn" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-16-testing-mocking-simulating-dependencies">🎭 Mocking: Simulating Dependencies<a class="headerlink" href="#en-capitulos-16-testing-mocking-simulating-dependencies" title="Permanent link">¶</a></h2>
+<p><strong>Mocking</strong> means replacing a real dependency (API, database, module) with a controlled fake. It is key for testing without relying on external services.</p>
+<h3 id="en-capitulos-16-testing-mocking-functions-with-vifn">Mocking Functions with <code>vi.fn()</code><a class="headerlink" href="#en-capitulos-16-testing-mocking-functions-with-vifn" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">vi</span><span class="p">,</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vitest"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">enviarEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}));</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"registro"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"envía email al registrar usuario"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"sends email when registering a user"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">registrarUsuario</span><span class="p">({</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"ana@example.com"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">enviarEmail</span><span class="p">);</span>
 
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">enviarEmail</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
@@ -12224,10 +12224,10 @@ Si cambias el estado interno pero el comportamiento es el mismo, el test no debe
 <span class="w">    </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-mock-de-modulos-con-vimock">Mock de módulos con <code>vi.mock()</code><a class="headerlink" href="#en-capitulos-16-testing-mock-de-modulos-con-vimock" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-mocking-modules-with-vimock">Mocking Modules with <code>vi.mock()</code><a class="headerlink" href="#en-capitulos-16-testing-mocking-modules-with-vimock" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">vi</span><span class="p">,</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vitest"</span><span class="p">;</span>
 
-<span class="c1">// Mockear el módulo completo antes de importar el que lo usa</span>
+<span class="c1">// Mock the full module before importing the consumer</span>
 <span class="nx">vi</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s2">"./api.js"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
 <span class="w">    </span><span class="nx">obtenerUsuario</span><span class="o">:</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="w"> </span><span class="p">})),</span>
 <span class="p">}));</span>
@@ -12236,14 +12236,14 @@ Si cambias el estado interno pero el comportamiento es el mismo, el test no debe
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cargarPerfil</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./perfil.js"</span><span class="p">;</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"perfil"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"carga el perfil del usuario"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">"loads user profile"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">perfil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">cargarPerfil</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">perfil</span><span class="p">.</span><span class="nx">nombre</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">"Ana"</span><span class="p">);</span>
 <span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">obtenerUsuario</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-16-testing-mock-de-fetch-api-real">Mock de fetch (API real)<a class="headerlink" href="#en-capitulos-16-testing-mock-de-fetch-api-real" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-16-testing-mocking-fetch-real-api">Mocking fetch (Real API)<a class="headerlink" href="#en-capitulos-16-testing-mocking-fetch-real-api" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">vi</span><span class="p">,</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">beforeEach</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vitest"</span><span class="p">;</span>
 
 <span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -12255,86 +12255,86 @@ Si cambias el estado interno pero el comportamiento es el mismo, el test no debe
 <span class="w">    </span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">it</span><span class="p">(</span><span class="s2">"obtiene el usuario de la API"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">it</span><span class="p">(</span><span class="s2">"fetches user from API"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUsuario</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">nombre</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">"Ana"</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">fetch</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s2">"/api/usuarios/1"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Mockea lo mínimo necesario</p>
-<p>Mockear todo hace tests frágiles. Mockea solo lo que sea <strong>lento</strong>, <strong>caro</strong> o <strong>no determinista</strong> (APIs, fechas, <code>Math.random</code>, <code>localStorage</code>).</p>
+<p class="admonition-title">Mock the minimum necessary</p>
+<p>Mocking everything makes tests brittle. Mock only what is <strong>slow</strong>, <strong>expensive</strong>, or <strong>non-deterministic</strong> (APIs, dates, <code>Math.random</code>, <code>localStorage</code>).</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-cobertura-de-tests_1">📊 Cobertura de tests<a class="headerlink" href="#en-capitulos-16-testing-cobertura-de-tests_1" title="Permanent link">¶</a></h2>
-<p>La <strong>cobertura</strong> mide qué porcentaje del código ejecutan tus tests. No es una métrica perfecta (100% cobertura no significa 0 bugs), pero ayuda a detectar zonas sin testear.</p>
+<h2 id="en-capitulos-16-testing-test-coverage_1">📊 Test Coverage<a class="headerlink" href="#en-capitulos-16-testing-test-coverage_1" title="Permanent link">¶</a></h2>
+<p><strong>Coverage</strong> measures what percentage of code your tests execute. It isn't a perfect metric (100% coverage doesn't mean 0 bugs), but it helps spot untested areas.</p>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w"> </span>run<span class="w"> </span>--coverage
 </code></pre></div>
-<p>Salida típica:</p>
-<h3 id="en-capitulos-16-testing-umbrales-recomendados">Umbrales recomendados<a class="headerlink" href="#en-capitulos-16-testing-umbrales-recomendados" title="Permanent link">¶</a></h3>
+<p>Typical output:</p>
+<h3 id="en-capitulos-16-testing-recommended-thresholds">Recommended Thresholds<a class="headerlink" href="#en-capitulos-16-testing-recommended-thresholds" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Proyecto</th>
-<th style="text-align: left;">Cobertura mínima</th>
+<th style="text-align: left;">Project</th>
+<th style="text-align: left;">Minimum coverage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Prototipo</td>
+<td style="text-align: left;">Prototype</td>
 <td style="text-align: left;">30-50%</td>
 </tr>
 <tr>
-<td style="text-align: left;">Proyecto personal</td>
+<td style="text-align: left;">Personal project</td>
 <td style="text-align: left;">60-70%</td>
 </tr>
 <tr>
-<td style="text-align: left;">Producción</td>
+<td style="text-align: left;">Production</td>
 <td style="text-align: left;">80%+</td>
 </tr>
 <tr>
-<td style="text-align: left;">Librería</td>
+<td style="text-align: left;">Library</td>
 <td style="text-align: left;">90%+</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">La cobertura no lo es todo</p>
-<p>Un test puede ejecutar una línea y no comprobar nada. La cobertura mide <strong>ejecución</strong>, no <strong>calidad</strong>. Combínala con tests que verifiquen comportamiento real.</p>
+<p class="admonition-title">Coverage isn't everything</p>
+<p>A test can run a line without asserting anything. Coverage measures <strong>execution</strong>, not <strong>quality</strong>. Combine it with tests that verify real behavior.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-16-testing-quiz-de-repaso">🧠 Quiz de repaso<a class="headerlink" href="#en-capitulos-16-testing-quiz-de-repaso" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-review-quiz">🧠 Review Quiz<a class="headerlink" href="#en-capitulos-16-testing-review-quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Qué ventaja tiene Vitest sobre Jest?</summary>
-<p>Es <strong>mucho más rápido</strong> en proyectos con Vite (no transpila con Babel) y su API es casi idéntica a Jest, así que migrar es trivial.</p>
+<summary>1. What advantage does Vitest have over Jest?</summary>
+<p>It is <strong>much faster</strong> in Vite projects (no Babel transpilation) and its API is nearly identical to Jest, so migrating is trivial.</p>
 </details>
 <details class="success">
-<summary>2. ¿Por qué <code>getByRole</code> es el selector recomendado?</summary>
-<p>Porque testea desde el punto de vista del usuario y verifica <strong>accesibilidad</strong>. Si un botón tiene <code>role="button"</code> y nombre accesible, es usable por lectores de pantalla.</p>
+<summary>2. Why is <code>getByRole</code> the recommended query?</summary>
+<p>Because it tests from the user's perspective and verifies <strong>accessibility</strong>. If a button has <code>role="button"</code> and an accessible name, screen readers can use it.</p>
 </details>
 <details class="success">
-<summary>3. ¿Qué es mockear y cuándo hacerlo?</summary>
-<p>Sustituir una dependencia real por una falsa controlada. Se hace con dependencias <strong>lentas</strong> (APIs), <strong>caras</strong> (servicios de pago) o <strong>no deterministas</strong> (fechas, <code>Math.random</code>).</p>
+<summary>3. What is mocking and when should you do it?</summary>
+<p>Replacing a real dependency with a controlled fake. Use it for <strong>slow</strong> dependencies (APIs), <strong>expensive</strong> ones (payment services), or <strong>non-deterministic</strong> ones (dates, <code>Math.random</code>).</p>
 </details>
 <details class="success">
-<summary>4. ¿Qué significa 100% de cobertura?</summary>
-<p>Que tus tests <strong>ejecutan</strong> todas las líneas del código. No significa que no haya bugs: un test puede ejecutar una línea sin comprobar su resultado.</p>
+<summary>4. What does 100% coverage mean?</summary>
+<p>That your tests <strong>execute</strong> every line of code. It doesn't mean there are no bugs: a test can execute a line without checking its result.</p>
 </details>
 <hr>
-<h2 id="en-capitulos-16-testing-recursos">📚 Recursos<a class="headerlink" href="#en-capitulos-16-testing-recursos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-16-testing-resources">📚 Resources<a class="headerlink" href="#en-capitulos-16-testing-resources" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://vitest.dev/">Vitest — Docs oficiales</a></li>
+<li><a href="https://vitest.dev/">Vitest — Official Docs</a></li>
 <li><a href="https://testing-library.com/docs/">Testing Library — Docs</a></li>
-<li><a href="https://testing-library.com/docs/queries/about/#priority">Testing Library — Prioridad de selectores</a></li>
+<li><a href="https://testing-library.com/docs/queries/about/#priority">Testing Library — Query Priority</a></li>
 <li><a href="https://vitest.dev/guide/mocking.html">Vitest — Mocking</a></li>
 <li><a href="https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications">Kent C. Dodds — Testing Trophy</a></li>
 <li><a href="https://web.dev/learn/testing">web.dev — Learn Testing</a></li>
 </ul>
 <hr>
-<p>➡️ Siguiente capítulo: <a href="#en-capitulos-17-rendimiento">17 — Rendimiento web</a></p></div></section><section class="print-page" id="en-capitulos-17-rendimiento" heading-number="2.5.2"><div><h1 id="17-rendimiento-web">17 — Rendimiento web<a class="headerlink" href="#en-capitulos-17-rendimiento-17-rendimiento-web" title="Permanent link">¶</a></h1>
+<p>➡ Next chapter: <a href="#en-capitulos-17-rendimiento">17 — Rendimiento web</a></p></div></section><section class="print-page" id="en-capitulos-17-rendimiento" heading-number="2.5.2"><div><h1 id="17-rendimiento-web">17 — Rendimiento web<a class="headerlink" href="#en-capitulos-17-rendimiento-17-rendimiento-web" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
