@@ -19344,23 +19344,23 @@ Micro-frontends:    N small apps, N teams, N deployments
 <hr>
 <h2 id="en-capitulos-37-ia-generativa-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-37-ia-generativa-next-step" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-capitulos-38-seguridad-avanzada">Go to Chapter 38 — Advanced Web Security</a>
-<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-38-seguridad-avanzada" heading-number="2.8.8"><div><h1 id="38-seguridad-web-avanzada">38 — Seguridad Web Avanzada<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-38-seguridad-web-avanzada" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-38-seguridad-avanzada" heading-number="2.8.8"><div><h1 id="38-advanced-web-security">38 — Advanced Web Security<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-38-advanced-web-security" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>El OWASP Top 10 en profundidad.</li>
-<li>Ataques avanzados: SSRF, XXE, prototype pollution.</li>
-<li>Content Security Policy (CSP) en producción.</li>
-<li>Gestión de secretos.</li>
-<li>Auditoría y respuesta a incidentes.</li>
+<li>The OWASP Top 10 in depth.</li>
+<li>Advanced attacks: SSRF, XXE, prototype pollution.</li>
+<li>Content Security Policy (CSP) in production.</li>
+<li>Secrets management.</li>
+<li>Auditing and incident response.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-por-que-seguridad-avanzada">🛡️ ¿Por qué seguridad avanzada?<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-por-que-seguridad-avanzada" title="Permanent link">¶</a></h2>
-<p>La seguridad básica (HTTPS, validación, hashing) cubre el 80% de los ataques. Pero los atacantes profesionales buscan el 20% restante: configuraciones mal hechas, dependencias vulnerables, lógica de negocio rota.</p>
+<h2 id="en-capitulos-38-seguridad-avanzada-why-advanced-security">🛡 Why Advanced Security?<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-why-advanced-security" title="Permanent link">¶</a></h2>
+<p>Basic security (HTTPS, validation, hashing) covers 80% of attacks. Yet skilled attackers look for the remaining 20%: misconfigurations, vulnerable dependencies, broken business logic.</p>
 <div class="admonition quote">
-<p class="admonition-title">La seguridad es una carrera armamentística</p>
-<p>Los atacantes evolucionan constantemente. Lo que hoy es seguro, mañana puede no serlo. La seguridad no es un estado, es un proceso continuo.</p>
+<p class="admonition-title">Security is an arms race</p>
+<p>Attackers evolve constantly. What is safe today may not be tomorrow. Security isn't a state; it's an ongoing process.</p>
 </div>
 <hr>
 <h2 id="en-capitulos-38-seguridad-avanzada-owasp-top-10-2021">📋 OWASP Top 10 (2021)<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-owasp-top-10-2021" title="Permanent link">¶</a></h2>
@@ -19368,20 +19368,20 @@ Micro-frontends:    N small apps, N teams, N deployments
 <thead>
 <tr>
 <th style="text-align: left;">#</th>
-<th style="text-align: left;">Vulnerabilidad</th>
-<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Vulnerability</th>
+<th style="text-align: left;">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">1</td>
 <td style="text-align: left;"><strong>Broken Access Control</strong></td>
-<td style="text-align: left;">Acceder a /admin sin ser admin</td>
+<td style="text-align: left;">Accessing /admin without being an admin</td>
 </tr>
 <tr>
 <td style="text-align: left;">2</td>
 <td style="text-align: left;"><strong>Cryptographic Failures</strong></td>
-<td style="text-align: left;">Guardar contraseñas en texto plano</td>
+<td style="text-align: left;">Storing passwords in plain text</td>
 </tr>
 <tr>
 <td style="text-align: left;">3</td>
@@ -19391,32 +19391,32 @@ Micro-frontends:    N small apps, N teams, N deployments
 <tr>
 <td style="text-align: left;">4</td>
 <td style="text-align: left;"><strong>Insecure Design</strong></td>
-<td style="text-align: left;">Lógica de negocio sin validar</td>
+<td style="text-align: left;">Unvalidated business logic</td>
 </tr>
 <tr>
 <td style="text-align: left;">5</td>
 <td style="text-align: left;"><strong>Security Misconfiguration</strong></td>
-<td style="text-align: left;">Debug activo en producción</td>
+<td style="text-align: left;">Debug mode enabled in production</td>
 </tr>
 <tr>
 <td style="text-align: left;">6</td>
 <td style="text-align: left;"><strong>Vulnerable Components</strong></td>
-<td style="text-align: left;">Dependencias con CVEs</td>
+<td style="text-align: left;">Dependencies with CVEs</td>
 </tr>
 <tr>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;"><strong>Authentication Failures</strong></td>
-<td style="text-align: left;">Contraseñas débiles, sin rate limit</td>
+<td style="text-align: left;">Weak passwords, missing rate limit</td>
 </tr>
 <tr>
 <td style="text-align: left;">8</td>
 <td style="text-align: left;"><strong>Data Integrity Failures</strong></td>
-<td style="text-align: left;">Deserialización insegura</td>
+<td style="text-align: left;">Insecure deserialization</td>
 </tr>
 <tr>
 <td style="text-align: left;">9</td>
 <td style="text-align: left;"><strong>Logging Failures</strong></td>
-<td style="text-align: left;">No registrar ataques</td>
+<td style="text-align: left;">Failing to log attacks</td>
 </tr>
 <tr>
 <td style="text-align: left;">10</td>
@@ -19426,24 +19426,24 @@ Micro-frontends:    N small apps, N teams, N deployments
 </tbody>
 </table>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-ataques-avanzados">🎯 Ataques avanzados<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-ataques-avanzados" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-38-seguridad-avanzada-advanced-attacks">🎯 Advanced Attacks<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-advanced-attacks" title="Permanent link">¶</a></h2>
 <h3 id="en-capitulos-38-seguridad-avanzada-ssrf-server-side-request-forgery">SSRF (Server-Side Request Forgery)<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-ssrf-server-side-request-forgery" title="Permanent link">¶</a></h3>
-<p>El atacante hace que <strong>el servidor</strong> haga peticiones a recursos internos.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Vulnerable: fetch de una URL del usuario</span>
+<p>The attacker tricks <strong>the server</strong> into making requests to internal resources.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Vulnerable: fetching a user-supplied URL</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/proxy"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">text</span><span class="p">());</span>
 <span class="p">});</span>
-<span class="c1">// Ataque: /proxy?url=http://localhost:6379</span>
+<span class="c1">// Attack: /proxy?url=http://localhost:6379</span>
 
-<span class="c1">// ✅ Seguro: validar contra una allowlist</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">ALLOWED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://api.ejemplo.com"</span><span class="p">];</span>
+<span class="c1">// ✅ Safe: validate against an allowlist</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ALLOWED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"[https://api.ejemplo.com](https://api.ejemplo.com)"</span><span class="p">];</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ALLOWED</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">origin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s2">"URL no permitida"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="en-capitulos-38-seguridad-avanzada-prototype-pollution">Prototype Pollution<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-prototype-pollution" title="Permanent link">¶</a></h3>
-<p>El atacante inyecta propiedades en <code>Object.prototype</code>.</p>
+<p>The attacker injects properties into <code>Object.prototype</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ❌ Vulnerable</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">merge</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -19451,73 +19451,73 @@ Micro-frontends:    N small apps, N teams, N deployments
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">target</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">merge</span><span class="p">({},</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="err">\</span><span class="nx">x27</span><span class="p">{</span><span class="s2">"__proto__"</span><span class="o">:</span><span class="p">{</span><span class="s2">"isAdmin"</span><span class="o">:</span><span class="kc">true</span><span class="p">}}</span><span class="err">\</span><span class="nx">x27</span><span class="p">));</span>
-<span class="c1">// Ahora TODOS los objetos tienen isAdmin=true</span>
+<span class="nx">merge</span><span class="p">({},</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">'{"__proto__":{"isAdmin":true}}'</span><span class="p">));</span>
+<span class="c1">// Now ALL objects have isAdmin=true</span>
 
-<span class="c1">// ✅ Seguro: usar Object.create(null) o filtrar __proto__</span>
+<span class="c1">// ✅ Safe: use Object.create(null) or filter __proto__</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">safe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="en-capitulos-38-seguridad-avanzada-xxe-xml-external-entity">XXE (XML External Entity)<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-xxe-xml-external-entity" title="Permanent link">¶</a></h3>
-<p>Si parseas XML sin protección, el atacante puede leer archivos del servidor.</p>
-<div class="highlight"><pre><span></span><code>&lt;!-- Payload malicioso --&gt;
+<p>If you parse XML without protection, an attacker can read files from the server.</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- Malicious payload --&gt;
 &lt;?xml version="1.0"?&gt;
 &lt;!DOCTYPE foo [&lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;]&gt;
 &lt;foo&gt;&amp;xxe;&lt;/foo&gt;
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Nunca parsees XML sin protección</p>
-<p>Usa librerías con <code>resolveEntities: false</code> o, mejor, no uses XML: usa JSON.</p>
+<p class="admonition-title">Never parse XML without protection</p>
+<p>Use parsers with <code>resolveEntities: false</code> or, better yet, don't use XML: use JSON.</p>
 </div>
 <hr>
 <h2 id="en-capitulos-38-seguridad-avanzada-content-security-policy-csp">🔒 Content Security Policy (CSP)<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-content-security-policy-csp" title="Permanent link">¶</a></h2>
-<p>CSP es una cabecera HTTP que restringe qué recursos puede cargar una página.</p>
+<p>CSP is an HTTP header that restricts which resources a page can load.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Content-Security-Policy:</span>
-<span class="err">  default-src \x27self\x27;</span>
-<span class="err">  script-src \x27self\x27 https://trusted.cdn.com;</span>
-<span class="err">  style-src \x27self\x27 \x27unsafe-inline\x27;</span>
-<span class="err">  img-src \x27self\x27 data: https:;</span>
-<span class="err">  connect-src \x27self\x27 https://api.miapp.com;</span>
-<span class="err">  frame-ancestors \x27none\x27;</span>
-<span class="err">  base-uri \x27self\x27;</span>
-<span class="err">  form-action \x27self\x27;</span>
+<span class="err">  default-src 'self';</span>
+<span class="err">  script-src 'self' [https://trusted.cdn.com](https://trusted.cdn.com);</span>
+<span class="err">  style-src 'self' 'unsafe-inline';</span>
+<span class="err">  img-src 'self' data: https:;</span>
+<span class="err">  connect-src 'self' [https://api.miapp.com](https://api.miapp.com);</span>
+<span class="err">  frame-ancestors 'none';</span>
+<span class="err">  base-uri 'self';</span>
+<span class="err">  form-action 'self';</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Empieza en modo report</p>
-<p>Usa <code>Content-Security-Policy-Report-Only</code> al principio para ver qué se rompe sin bloquear nada. Cuando esté limpio, cámbialo a <code>Content-Security-Policy</code>.</p>
+<p class="admonition-title">Start in report mode</p>
+<p>Use <code>Content-Security-Policy-Report-Only</code> at first to see what breaks without blocking anything. Once it's clean, switch it to <code>Content-Security-Policy</code>.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-gestion-de-secretos">🔑 Gestión de secretos<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-gestion-de-secretos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-38-seguridad-avanzada-secrets-management">🔑 Secrets Management<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-secrets-management" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Práctica</th>
-<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Practice</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Nunca en el código</strong></td>
-<td style="text-align: left;">Ni en el frontend ni en el repo</td>
+<td style="text-align: left;"><strong>Never in code</strong></td>
+<td style="text-align: left;">Not in frontend or repo</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Variables de entorno</strong></td>
-<td style="text-align: left;"><code>.env</code> en local, secrets en CI/CD</td>
+<td style="text-align: left;"><strong>Environment variables</strong></td>
+<td style="text-align: left;"><code>.env</code> locally, secrets in CI/CD</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Rotación periódica</strong></td>
-<td style="text-align: left;">Cambia claves cada 90 días</td>
+<td style="text-align: left;"><strong>Periodic rotation</strong></td>
+<td style="text-align: left;">Rotate keys every 90 days</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Principio de menor privilegio</strong></td>
-<td style="text-align: left;">Cada servicio solo los permisos que necesita</td>
+<td style="text-align: left;"><strong>Principle of least privilege</strong></td>
+<td style="text-align: left;">Each service gets only the permissions it needs</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Cifrado en reposo</strong></td>
+<td style="text-align: left;"><strong>Encryption at rest</strong></td>
 <td style="text-align: left;">Secrets manager (Vault, AWS Secrets Manager)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Auditoría</strong></td>
-<td style="text-align: left;">Registra quién accede a cada secreto</td>
+<td style="text-align: left;"><strong>Auditing</strong></td>
+<td style="text-align: left;">Log who accesses each secret</td>
 </tr>
 </tbody>
 </table>
@@ -19528,42 +19528,42 @@ Micro-frontends:    N small apps, N teams, N deployments
 *.key
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Si subes un secreto a GitHub</p>
-<p>Considéralo comprometido. Rótalo inmediatamente, aunque lo borres en el siguiente commit (queda en el historial).</p>
+<p class="admonition-title">If you push a secret to GitHub</p>
+<p>Treat it as compromised. Rotate it immediately, even if you delete it in the next commit (it stays in git history).</p>
 </div>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-auditoria-y-monitorizacion">🔍 Auditoría y monitorización<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-auditoria-y-monitorizacion" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-38-seguridad-avanzada-auditing-and-monitoring">🔍 Auditing and Monitoring<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-auditing-and-monitoring" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Snyk</strong></td>
-<td style="text-align: left;">Vulnerabilidades en dependencias</td>
+<td style="text-align: left;">Dependency vulnerabilities</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>npm audit</strong></td>
-<td style="text-align: left;">Vulnerabilidades en npm</td>
+<td style="text-align: left;">npm vulnerabilities</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>OWASP ZAP</strong></td>
-<td style="text-align: left;">Escáner de vulnerabilidades web</td>
+<td style="text-align: left;">Web vulnerability scanner</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Dependabot</strong></td>
-<td style="text-align: left;">Actualizaciones automáticas de dependencias</td>
+<td style="text-align: left;">Automated dependency updates</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Sentry</strong></td>
-<td style="text-align: left;">Errores en producción</td>
+<td style="text-align: left;">Production errors</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Security Headers</strong></td>
-<td style="text-align: left;">Analiza cabeceras de seguridad</td>
+<td style="text-align: left;">Analyzes security headers</td>
 </tr>
 </tbody>
 </table>
@@ -19571,96 +19571,96 @@ Micro-frontends:    N small apps, N teams, N deployments
 npm<span class="w"> </span>audit<span class="w"> </span>fix
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-38-seguridad-avanzada-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-38">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué ataque hace que el servidor haga peticiones internas?</p>
+<p><strong>1.</strong> Which attack makes the server send internal requests?</p>
 <button class="quiz-option" data-opt="a">A) XSS</button>
 <button class="quiz-option" data-opt="b">B) SSRF</button>
 <button class="quiz-option" data-opt="c">C) CSRF</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué cabecera restringe qué recursos puede cargar una página?</p>
+<p><strong>2.</strong> Which header restricts which resources a page can load?</p>
 <button class="quiz-option" data-opt="a">A) Content-Security-Policy</button>
 <button class="quiz-option" data-opt="b">B) Access-Control-Allow-Origin</button>
 <button class="quiz-option" data-opt="c">C) X-Frame-Options</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Dónde NO debes guardar secretos?</p>
-<button class="quiz-option" data-opt="a">A) En variables de entorno</button>
-<button class="quiz-option" data-opt="b">B) En un secrets manager</button>
-<button class="quiz-option" data-opt="c">C"&gt;En el código del frontend</button>
+<p><strong>3.</strong> Where should you NOT store secrets?</p>
+<button class="quiz-option" data-opt="a">A) In environment variables</button>
+<button class="quiz-option" data-opt="b">B) In a secrets manager</button>
+<button class="quiz-option" data-opt="c">C) In frontend code</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-38-seguridad-avanzada-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2038%3A%20Seguridad%20Web%20Avanzada&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2038%3A%20Advanced%20Web%20Security&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2038%3A%20Seguridad%20Web%20Avanzada%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/38-seguridad-avanzada/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2038%3A%20Advanced%20Web%20Security%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F38-seguridad-avanzada%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/38-seguridad-avanzada/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-has-completado-el-libro">🏆 ¡HAS COMPLETADO EL LIBRO!<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-has-completado-el-libro" title="Permanent link">¶</a></h2>
-<p>Si has llegado hasta aquí, has terminado los <strong>38 capítulos</strong> del Libro del Desarrollador Web. Eso es un logro enorme. 🎉</p>
+<h2 id="en-capitulos-38-seguridad-avanzada-you-have-completed-the-book">🏆 YOU HAVE COMPLETED THE BOOK!<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-you-have-completed-the-book" title="Permanent link">¶</a></h2>
+<p>If you made it this far, you have finished all <strong>38 chapters</strong> of the Web Developer's Book. That is a huge achievement. 🎉</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Nivel</th>
-<th style="text-align: left;">Capítulos</th>
+<th style="text-align: left;">Level</th>
+<th style="text-align: left;">Chapters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">🟢 Principiante</td>
+<td style="text-align: left;">🟢 Beginner</td>
 <td style="text-align: left;">01–06</td>
 </tr>
 <tr>
-<td style="text-align: left;">🟡 Intermedio</td>
+<td style="text-align: left;">🟡 Intermediate</td>
 <td style="text-align: left;">07–10</td>
 </tr>
 <tr>
-<td style="text-align: left;">🟠 Avanzado</td>
+<td style="text-align: left;">🟠 Advanced</td>
 <td style="text-align: left;">11–18</td>
 </tr>
 <tr>
-<td style="text-align: left;">🔴 Profesional</td>
+<td style="text-align: left;">🔴 Professional</td>
 <td style="text-align: left;">19–20</td>
 </tr>
 <tr>
-<td style="text-align: left;">🟣 Experto</td>
+<td style="text-align: left;">🟣 Expert</td>
 <td style="text-align: left;">21–25</td>
 </tr>
 <tr>
-<td style="text-align: left;">🔵 Élite</td>
+<td style="text-align: left;">🔵 Elite</td>
 <td style="text-align: left;">26–30</td>
 </tr>
 <tr>
-<td style="text-align: left;">🚀 Vanguardia</td>
+<td style="text-align: left;">🚀 Cutting-Edge</td>
 <td style="text-align: left;">31–38</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition quote">
-<p class="admonition-title">Enhorabuena</p>
-<p>Has pasado de no saber qué era HTML a dominar seguridad avanzada, WebAssembly, IA generativa y micro-frontends. Ahora toca <strong>construir</strong>, <strong>compartir</strong> y <strong>enseñar</strong>.</p>
+<p class="admonition-title">Congratulations</p>
+<p>You've gone from not knowing what HTML was to mastering advanced security, WebAssembly, generative AI, and micro-frontends. Now it's time to <strong>build</strong>, <strong>share</strong>, and <strong>teach</strong>.</p>
 </div>
-<h3 id="en-capitulos-38-seguridad-avanzada-y-ahora-que">¿Y ahora qué?<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-y-ahora-que" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-38-seguridad-avanzada-what-now">What Now?<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-what-now" title="Permanent link">¶</a></h3>
 <ul>
-<li>🎓 <strong>Genera tu certificado</strong> en la página de <a href="#en-certificado">Certificado</a>.</li>
-<li>🏅 <strong>Aparece en el Hall of Fame</strong> (<a href="#en-hall-of-fame">Hall of Fame</a>).</li>
-<li>🤝 <strong>Contribuye al proyecto</strong> (<a href="#en-contribuir">Contribuir</a>).</li>
-<li>📣 <strong>Comparte tu logro</strong> en redes sociales.</li>
-<li>🚀 <strong>Sigue aprendiendo</strong>: la web nunca deja de evolucionar.</li>
+<li>🎓 <strong>Generate your certificate</strong> on the <a href="#en-certificado">Certificate</a> page.</li>
+<li>🏅 <strong>Appear in the Hall of Fame</strong> (<a href="#en-hall-of-fame">Hall of Fame</a>).</li>
+<li>🤝 <strong>Contribute to the project</strong> (<a href="#en-contribuir">Contribute</a>).</li>
+<li>📣 <strong>Share your achievement</strong> on social media.</li>
+<li>🚀 <strong>Keep learning</strong>: the web never stops evolving.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-38-seguridad-avanzada-siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-siguientes-pasos" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-certificado">🎓 Generar mi certificado</a>
-<a class="md-button" href="#en-hall-of-fame">🏅 Ver el Hall of Fame</a>
-<a class="md-button" href="#en-contribuir">🤝 Contribuir al proyecto</a>
-<a class="md-button" href="#en">📖 Volver al índice</a></p></div></section></section></section>
+<h2 id="en-capitulos-38-seguridad-avanzada-next-steps">➡ Next Steps<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-next-steps" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-certificado">🎓 Generate my certificate</a>
+<a class="md-button" href="#en-hall-of-fame">🏅 View Hall of Fame</a>
+<a class="md-button" href="#en-contribuir">🤝 Contribute to the project</a>
+<a class="md-button" href="#en">📖 Back to index</a></p></div></section></section></section>
                     <section class='print-page md-section' id='section-3' heading-number='3'>
                         <h1>🏋 Ejercicios (01–30)<a class='headerlink' href='#section-3' title='Permanent link'></a>
                         </h1>
