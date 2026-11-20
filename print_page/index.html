@@ -13552,18 +13552,18 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
                         </h1>
                     <section class="print-page" id="en-capitulos-21-web-components" heading-number="2.6.1"><div><h1 id="21-web-components">21 — Web Components<a class="headerlink" href="#en-capitulos-21-web-components-21-web-components" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué son los Web Components y por qué existen.</li>
-<li>Custom Elements: crear etiquetas propias.</li>
-<li>Shadow DOM: encapsular estilos y markup.</li>
-<li>Templates y slots.</li>
-<li>Ciclo de vida de un componente.</li>
+<li>What Web Components are and why they exist.</li>
+<li>Custom Elements: creating your own tags.</li>
+<li>Shadow DOM: encapsulating styles and markup.</li>
+<li>Templates and slots.</li>
+<li>Component lifecycle.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-21-web-components-que-son-los-web-components">🧩 ¿Qué son los Web Components?<a class="headerlink" href="#en-capitulos-21-web-components-que-son-los-web-components" title="Permanent link">¶</a></h2>
-<p>Los <strong>Web Components</strong> son un conjunto de estándares nativos del navegador que permiten crear <strong>componentes reutilizables</strong> sin necesidad de frameworks. Funcionan en todos los navegadores modernos.</p>
+<h2 id="en-capitulos-21-web-components-what-are-web-components">🧩 What are Web Components?<a class="headerlink" href="#en-capitulos-21-web-components-what-are-web-components" title="Permanent link">¶</a></h2>
+<p><strong>Web Components</strong> are a set of native browser standards that let you create <strong>reusable components</strong> without needing frameworks. They work in all modern browsers.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiBoton</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;button&gt;</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">textContent</span><span class="si">}</span><span class="sb">&lt;/button&gt;`</span><span class="p">;</span>
@@ -13571,15 +13571,15 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <span class="p">}</span>
 <span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">"mi-boton"</span><span class="p">,</span><span class="w"> </span><span class="nx">MiBoton</span><span class="p">);</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>mi-boton<span class="ni">&amp;gt;</span>Haz clic<span class="ni">&amp;lt;</span>/mi-boton<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-boton</span><span class="p">&gt;</span>Haz clic<span class="p">&lt;/</span><span class="nt">mi-boton</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">Componentes sin framework</p>
-<p>Los Web Components son la base de lo que hacen React, Vue o Svelte, pero nativos. No necesitan build, ni dependencias, ni actualizaciones.</p>
+<p class="admonition-title">Components without a framework</p>
+<p>Web Components are the foundation of what React, Vue, or Svelte do, but native. They don't need a build step, dependencies, or updates.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-21-web-components-custom-elements">🏷️ Custom Elements<a class="headerlink" href="#en-capitulos-21-web-components-custom-elements" title="Permanent link">¶</a></h2>
-<p>Los <strong>Custom Elements</strong> permiten definir etiquetas HTML propias. El nombre debe llevar un guion (<code>mi-componente</code>, <code>mi-boton</code>, <code>user-card</code>).</p>
+<h2 id="en-capitulos-21-web-components-custom-elements">🏷 Custom Elements<a class="headerlink" href="#en-capitulos-21-web-components-custom-elements" title="Permanent link">¶</a></h2>
+<p><strong>Custom Elements</strong> let you define custom HTML tags. The name must include a hyphen (<code>mi-componente</code>, <code>mi-boton</code>, <code>user-card</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">UserCard</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">connectedCallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">"nombre"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"Anónimo"</span><span class="p">;</span>
@@ -13594,12 +13594,12 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 
 <span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">"user-card"</span><span class="p">,</span><span class="w"> </span><span class="nx">UserCard</span><span class="p">);</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>user-card nombre="Ana"<span class="ni">&amp;gt;&amp;lt;</span>/user-card<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>user-card nombre="Luis"<span class="ni">&amp;gt;&amp;lt;</span>/user-card<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">user-card</span> <span class="na">nombre</span><span class="o">=</span><span class="s">"Ana"</span><span class="p">&gt;&lt;/</span><span class="nt">user-card</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">user-card</span> <span class="na">nombre</span><span class="o">=</span><span class="s">"Luis"</span><span class="p">&gt;&lt;/</span><span class="nt">user-card</span><span class="p">&gt;</span>
 </code></pre></div>
 <hr>
 <h2 id="en-capitulos-21-web-components-shadow-dom">🌑 Shadow DOM<a class="headerlink" href="#en-capitulos-21-web-components-shadow-dom" title="Permanent link">¶</a></h2>
-<p>El <strong>Shadow DOM</strong> encapsula el markup y los estilos de un componente. Lo que pasa dentro no afecta fuera, y viceversa.</p>
+<p><strong>Shadow DOM</strong> encapsulates a component's markup and styles. What happens inside doesn't affect outside, and vice versa.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">super</span><span class="p">();</span>
@@ -13622,45 +13622,45 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 
 <span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">"mi-tarjeta"</span><span class="p">,</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="p">);</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>mi-tarjeta<span class="ni">&amp;gt;</span>Contenido dentro del slot<span class="ni">&amp;lt;</span>/mi-tarjeta<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-tarjeta</span><span class="p">&gt;</span>Contenido dentro del slot<span class="p">&lt;/</span><span class="nt">mi-tarjeta</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Ventajas del Shadow DOM</p>
+<p class="admonition-title">Benefits of Shadow DOM</p>
 <ul>
-<li>Los estilos no se filtran fuera.</li>
-<li>Los estilos de fuera no afectan dentro.</li>
-<li>El componente es completamente encapsulado y reutilizable.</li>
+<li>Styles don't leak out.</li>
+<li>Outside styles don't affect the inside.</li>
+<li>The component is completely encapsulated and reusable.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-21-web-components-ciclo-de-vida">🔄 Ciclo de vida<a class="headerlink" href="#en-capitulos-21-web-components-ciclo-de-vida" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-21-web-components-lifecycle">🔄 Lifecycle<a class="headerlink" href="#en-capitulos-21-web-components-lifecycle" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Método</th>
-<th style="text-align: left;">Cuándo se ejecuta</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">When it runs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>constructor()</code></td>
-<td style="text-align: left;">Al crear el elemento</td>
+<td style="text-align: left;">When the element is created</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>connectedCallback()</code></td>
-<td style="text-align: left;">Al añadirse al DOM</td>
+<td style="text-align: left;">When added to the DOM</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>disconnectedCallback()</code></td>
-<td style="text-align: left;">Al quitarse del DOM</td>
+<td style="text-align: left;">When removed from the DOM</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>attributeChangedCallback()</code></td>
-<td style="text-align: left;">Al cambiar un atributo</td>
+<td style="text-align: left;">When an attribute changes</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>adoptedCallback()</code></td>
-<td style="text-align: left;">Al moverse a otro documento</td>
+<td style="text-align: left;">When moved to another document</td>
 </tr>
 </tbody>
 </table>
@@ -13684,15 +13684,15 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </code></pre></div>
 <hr>
 <h2 id="en-capitulos-21-web-components-templates">📄 Templates<a class="headerlink" href="#en-capitulos-21-web-components-templates" title="Permanent link">¶</a></h2>
-<p>Los <strong>templates</strong> permiten definir markup que no se renderiza hasta que se clona.</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>template id="mi-template"<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>style<span class="ni">&amp;gt;</span>
-    .card { padding: 1rem; background: #6a5acd; color: white; }
-  <span class="ni">&amp;lt;</span>/style<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>div class="card"<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>h3<span class="ni">&amp;gt;</span>Tarjeta<span class="ni">&amp;lt;</span>/h3<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/template<span class="ni">&amp;gt;</span>
+<p><strong>Templates</strong> let you define markup that is not rendered until cloned.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">"mi-template"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Tarjeta<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -13705,47 +13705,47 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">"mi-tarjeta"</span><span class="p">,</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="p">);</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-21-web-components-slots">🕳️ Slots<a class="headerlink" href="#en-capitulos-21-web-components-slots" title="Permanent link">¶</a></h2>
-<p>Los <strong>slots</strong> permiten inyectar contenido desde fuera del componente.</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>template id="card-template"<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>div class="card"<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>header<span class="ni">&amp;gt;&amp;lt;</span>slot name="titulo"<span class="ni">&amp;gt;</span>Título por defecto<span class="ni">&amp;lt;</span>/slot<span class="ni">&amp;gt;&amp;lt;</span>/header<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>main<span class="ni">&amp;gt;&amp;lt;</span>slot<span class="ni">&amp;gt;</span>Contenido por defecto<span class="ni">&amp;lt;</span>/slot<span class="ni">&amp;gt;&amp;lt;</span>/main<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/template<span class="ni">&amp;gt;</span>
+<h2 id="en-capitulos-21-web-components-slots">🕳 Slots<a class="headerlink" href="#en-capitulos-21-web-components-slots" title="Permanent link">¶</a></h2>
+<p><strong>Slots</strong> let you inject content from outside the component.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">"card-template"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">"titulo"</span><span class="p">&gt;</span>Título por defecto<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;&lt;</span><span class="nt">slot</span><span class="p">&gt;</span>Contenido por defecto<span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>mi-card<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>span slot="titulo"<span class="ni">&amp;gt;</span>Mi título<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>Contenido personalizado<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/mi-card<span class="ni">&amp;gt;</span>
+<span class="p">&lt;</span><span class="nt">mi-card</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">slot</span><span class="o">=</span><span class="s">"titulo"</span><span class="p">&gt;</span>Mi título<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contenido personalizado<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">mi-card</span><span class="p">&gt;</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-21-web-components-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#en-capitulos-21-web-components-buenas-practicas" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-21-web-components-best-practices">✅ Best Practices<a class="headerlink" href="#en-capitulos-21-web-components-best-practices" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ Usa <strong>Shadow DOM</strong> para encapsular estilos.</li>
-<li>✅ Define <strong>atributos observados</strong> solo para los que necesites.</li>
-<li>✅ Usa <strong>slots</strong> para permitir personalización.</li>
-<li>✅ Documenta los atributos y eventos del componente.</li>
-<li>✅ Prueba el componente en aislamiento.</li>
-<li>❌ No abuses de Web Components para todo: si es simple, HTML nativo.</li>
+<li>✅ Use <strong>Shadow DOM</strong> to encapsulate styles.</li>
+<li>✅ Define <strong>observed attributes</strong> only for the ones you need.</li>
+<li>✅ Use <strong>slots</strong> to allow customization.</li>
+<li>✅ Document the component's attributes and events.</li>
+<li>✅ Test the component in isolation.</li>
+<li>❌ Don't overuse Web Components for everything: if it's simple, use native HTML.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-21-web-components-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-21-web-components-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-21-web-components-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-21-web-components-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-21">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué nombre debe tener un Custom Element?</p>
-<button class="quiz-option" data-opt="a">A) Debe empezar por mayúscula</button>
-<button class="quiz-option" data-opt="b">B) Debe contener un guion</button>
-<button class="quiz-option" data-opt="c">C) Debe terminar en -element</button>
+<p><strong>1.</strong> What must a Custom Element name include?</p>
+<button class="quiz-option" data-opt="a">A) It must start with an uppercase letter</button>
+<button class="quiz-option" data-opt="b">B) It must contain a hyphen</button>
+<button class="quiz-option" data-opt="c">C) It must end with -element</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué encapsula el Shadow DOM?</p>
-<button class="quiz-option" data-opt="a">A) Estilos y markup del componente</button>
-<button class="quiz-option" data-opt="b">B) Solo los estilos</button>
-<button class="quiz-option" data-opt="c">C) Solo los scripts</button>
+<p><strong>2.</strong> What does Shadow DOM encapsulate?</p>
+<button class="quiz-option" data-opt="a">A) The component's styles and markup</button>
+<button class="quiz-option" data-opt="b">B) Only the styles</button>
+<button class="quiz-option" data-opt="c">C) Only the scripts</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué elemento permite inyectar contenido externo?</p>
+<p><strong>3.</strong> Which element lets you inject external content?</p>
 <button class="quiz-option" data-opt="a">A) &lt;inject&gt;</button>
 <button class="quiz-option" data-opt="b">B) &lt;content&gt;</button>
 <button class="quiz-option" data-opt="c">C) &lt;slot&gt;</button>
@@ -13753,18 +13753,18 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </div>
 
 <hr>
-<h2 id="en-capitulos-21-web-components-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-21-web-components-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-21-web-components-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-21-web-components-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2021%3A%20Web%20Components&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F21-web-components%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2021%3A%20Web%20Components&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F21-web-components%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F21-web-components%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2021%3A%20Web%20Components%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F21-web-components%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/21-web-components/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2021%3A%20Web%20Components%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F21-web-components%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/21-web-components/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-21-web-components-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-21-web-components-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-22-pwa">Ir al Capítulo 22 — Progressive Web Apps (PWA)</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-22-pwa" heading-number="2.6.2"><div><h1 id="22-progressive-web-apps-pwa">22 — Progressive Web Apps (PWA)<a class="headerlink" href="#en-capitulos-22-pwa-22-progressive-web-apps-pwa" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-21-web-components-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-21-web-components-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-22-pwa">Go to Chapter 22 — Progressive Web Apps (PWA)</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-22-pwa" heading-number="2.6.2"><div><h1 id="22-progressive-web-apps-pwa">22 — Progressive Web Apps (PWA)<a class="headerlink" href="#en-capitulos-22-pwa-22-progressive-web-apps-pwa" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
