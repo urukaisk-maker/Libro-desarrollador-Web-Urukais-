@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 07 of the Web Developer's Book: 07 — Git and Version Control. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 07 of the Web Developer's Book: 07 — Git and Version Control. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/07-git/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="07 — Git y control de versiones - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 07 of the Web Developer's Book: 07 — Git and Version Control. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/07-git.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/07-git/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="07 — Git y control de versiones - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 07 del Libro del Desarrollador Web: 07 — Git y control de versiones. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 07 of the Web Developer's Book: 07 — Git and Version Control. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/07-git.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#07-git-y-control-de-versiones" class="md-skip">
+        <a href="#07-git-and-version-control" class="md-skip">
           Skip to content
         </a>
       
@@ -1137,10 +1137,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-git" class="md-nav__link">
+  <a href="#what-is-git" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🌳 ¿Qué es Git?
+        🌳 What is Git?
       
     </span>
   </a>
@@ -1148,120 +1148,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracion-inicial" class="md-nav__link">
+  <a href="#initial-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚙️ Configuración inicial
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comandos-basicos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📦 Comandos básicos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#el-flujo-basico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 El flujo básico
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ramas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌿 Ramas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ☁️ GitHub
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resolver-conflictos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚔️ Resolver conflictos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deshacer-cambios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ↩️ Deshacer cambios
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🧰 Stash
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🧠 Pon a prueba tus conocimientos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📢 Comparte este capítulo
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#siguiente-paso" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ➡️ Siguiente paso
+        ⚙ Initial Setup
       
     </span>
   </a>
@@ -5145,262 +5035,31 @@
   
 
 
-<div><h1 id="07-git-y-control-de-versiones">07 — Git y control de versiones<a class="headerlink" href="#07-git-y-control-de-versiones" title="Permanent link">¶</a></h1>
+<div><h1 id="07-git-and-version-control">07 — Git and Version Control<a class="headerlink" href="#07-git-and-version-control" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es el control de versiones y por qué es imprescindible.</li>
-<li>Los comandos básicos de Git.</li>
-<li>Cómo trabajar con ramas.</li>
-<li>Cómo conectar con GitHub.</li>
-<li>Resolver conflictos.</li>
+<li>What version control is and why it is essential.</li>
+<li>Basic Git commands.</li>
+<li>How to work with branches.</li>
+<li>How to connect with GitHub.</li>
+<li>Resolving merge conflicts.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-git">🌳 ¿Qué es Git?<a class="headerlink" href="#que-es-git" title="Permanent link">¶</a></h2>
-<p><strong>Git</strong> es un sistema de control de versiones distribuido. Guarda un historial de todos los cambios de un proyecto, permite volver atrás, trabajar en paralelo con otras personas y fusionar cambios sin perder nada.</p>
+<h2 id="what-is-git">🌳 What is Git?<a class="headerlink" href="#what-is-git" title="Permanent link">¶</a></h2>
+<p><strong>Git</strong> is a distributed version control system. It keeps a history of all changes in a project, lets you go back in time, work in parallel with others, and merge changes without losing anything.</p>
 <div class="admonition quote">
-<p class="admonition-title">Sin Git, estás perdido</p>
-<p>Si alguna vez has tenido archivos como `proyecto-final-v2-ahora-si-que-si.docx`, Git es la solución. Un solo historial, todos los cambios, sin duplicados.</p>
+<p class="admonition-title">Without Git, you're lost</p>
+<p>If you've ever had files like <code>final-project-v2-for-real-this-time.docx</code>, Git is the solution. One single history, every change tracked, no duplicates.</p>
 </div>
 <hr>
-<h2 id="configuracion-inicial">⚙️ Configuración inicial<a class="headerlink" href="#configuracion-inicial" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Tu Nombre"</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"tu@email.com"</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"code --wait"</span>
-</code></pre></div>
-<p>Esto se hace <strong>una sola vez</strong> en cada equipo.</p>
-<hr>
-<h2 id="comandos-basicos">📦 Comandos básicos<a class="headerlink" href="#comandos-basicos" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Comando</th>
-<th style="text-align: left;">Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">`git init`</td>
-<td style="text-align: left;">Inicializar un repositorio</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git clone <url>`</url></td>
-<td style="text-align: left;">Clonar un repositorio remoto</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git status`</td>
-<td style="text-align: left;">Ver el estado de los archivos</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git add <file>`</file></td>
-<td style="text-align: left;">Añadir al staging</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git add .`</td>
-<td style="text-align: left;">Añadir todo</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git commit -m "mensaje"`</td>
-<td style="text-align: left;">Crear un commit</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git log --oneline`</td>
-<td style="text-align: left;">Ver el historial compacto</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git diff`</td>
-<td style="text-align: left;">Ver cambios sin stage</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git diff --staged`</td>
-<td style="text-align: left;">Ver cambios en stage</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="el-flujo-basico">🔄 El flujo básico<a class="headerlink" href="#el-flujo-basico" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. Ver qué ha cambiado</span>
-git<span class="w"> </span>status
-
-<span class="c1"># 2. Añadir cambios al staging</span>
-git<span class="w"> </span>add<span class="w"> </span>archivo.txt
-
-<span class="c1"># 3. Crear un commit con un mensaje descriptivo</span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: añadir página de contacto"</span>
-
-<span class="c1"># 4. Subir al repositorio remoto</span>
-git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Buenos mensajes de commit</p>
-<ul>
-<li>`feat:` nueva funcionalidad</li>
-<li>`fix:` corrección de bug</li>
-<li>`docs:` cambios en documentación</li>
-<li>`style:` cambios de formato (no afectan al comportamiento)</li>
-<li>`refactor:` reestructuración sin cambiar comportamiento</li>
-<li>`test:` añadir o modificar tests</li>
-</ul>
-</div>
-<hr>
-<h2 id="ramas">🌿 Ramas<a class="headerlink" href="#ramas" title="Permanent link">¶</a></h2>
-<p>Las <strong>ramas</strong> permiten trabajar en paralelo sin afectar a `main`.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Crear y cambiar a una rama nueva</span>
-git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/nueva-funcionalidad
-
-<span class="c1"># Ver todas las ramas</span>
-git<span class="w"> </span>branch
-
-<span class="c1"># Cambiar de rama</span>
-git<span class="w"> </span>checkout<span class="w"> </span>main
-
-<span class="c1"># Fusionar una rama en la actual</span>
-git<span class="w"> </span>merge<span class="w"> </span>feature/nueva-funcionalidad
-
-<span class="c1"># Eliminar una rama (ya fusionada)</span>
-git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/nueva-funcionalidad
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Comando</th>
-<th style="text-align: left;">Uso</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">`git branch`</td>
-<td style="text-align: left;">Listar ramas</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git branch nombre`</td>
-<td style="text-align: left;">Crear rama</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git checkout nombre`</td>
-<td style="text-align: left;">Cambiar de rama</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git checkout -b nombre`</td>
-<td style="text-align: left;">Crear y cambiar</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git merge rama`</td>
-<td style="text-align: left;">Fusionar rama en la actual</td>
-</tr>
-<tr>
-<td style="text-align: left;">`git branch -d rama`</td>
-<td style="text-align: left;">Eliminar rama</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="github">☁️ GitHub<a class="headerlink" href="#github" title="Permanent link">¶</a></h2>
-<p><strong>GitHub</strong> es una plataforma para alojar repositorios Git y colaborar.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Conectar un repo local con GitHub</span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/repo.git
-
-<span class="c1"># Subir la rama main por primera vez</span>
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-
-<span class="c1"># Descargar cambios</span>
-git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-
-<span class="c1"># Ver remotos configurados</span>
-git<span class="w"> </span>remote<span class="w"> </span>-v
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Pull Requests</p>
-<p>En GitHub, un <strong>Pull Request (PR)</strong> es una propuesta de fusionar los cambios de una rama en otra. Permite revisar el código, comentar y aprobar antes de fusionar.</p>
-</div>
-<hr>
-<h2 id="resolver-conflictos">⚔️ Resolver conflictos<a class="headerlink" href="#resolver-conflictos" title="Permanent link">¶</a></h2>
-<p>Un <strong>conflicto</strong> ocurre cuando dos ramas modifican la misma línea de un archivo. Git no sabe cuál elegir y te pide que decidas tú.</p>
-<div class="highlight"><pre><span></span><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-tu versión
-=======
-versión de la otra rama
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/otra-rama
-</code></pre></div>
-<p>Para resolverlo:</p>
-<ol>
-<li>Abre el archivo y elige la versión correcta (o combina ambas).</li>
-<li>Elimina las marcas `&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `=======`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`.</li>
-<li>`git add archivo`</li>
-<li>`git commit`</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">No entres en pánico</p>
-<p>Los conflictos son normales. Léelos con calma, entiende qué cambió cada rama y decide. Git nunca pierde información: si algo sale mal, puedes volver atrás con `git merge --abort`.</p>
-</div>
-<hr>
-<h2 id="deshacer-cambios">↩️ Deshacer cambios<a class="headerlink" href="#deshacer-cambios" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Descartar cambios sin stage</span>
-git<span class="w"> </span>restore<span class="w"> </span>archivo.txt
-
-<span class="c1"># Quitar del stage</span>
-git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>archivo.txt
-
-<span class="c1"># Deshacer el último commit (mantiene los cambios)</span>
-git<span class="w"> </span>reset<span class="w"> </span>HEAD~1
-
-<span class="c1"># Deshacer el último commit (elimina los cambios)</span>
-git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1
-
-<span class="c1"># Revertir un commit concreto (crea otro commit)</span>
-git<span class="w"> </span>revert<span class="w"> </span>&lt;hash&gt;
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Cuidado con --hard</p>
-<p>`git reset --hard` <strong>borra</strong> los cambios sin posibilidad de recuperarlos. Úsalo solo cuando estés seguro.</p>
-</div>
-<hr>
-<h2 id="stash">🧰 Stash<a class="headerlink" href="#stash" title="Permanent link">¶</a></h2>
-<p>El <strong>stash</strong> guarda cambios temporalmente para que puedas cambiar de rama sin commitear.</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>stash<span class="w">              </span><span class="c1"># guardar cambios</span>
-git<span class="w"> </span>stash<span class="w"> </span>list<span class="w">         </span><span class="c1"># listar stashes</span>
-git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w">          </span><span class="c1"># recuperar y eliminar</span>
-git<span class="w"> </span>stash<span class="w"> </span>apply<span class="w">        </span><span class="c1"># recuperar sin eliminar</span>
-git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w">         </span><span class="c1"># eliminar un stash</span>
-</code></pre></div>
-<hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
-<div class="quiz" data-quiz="capitulo-7">
-<div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué comando crea un commit?</p>
-<button class="quiz-option" data-opt="a">A) git add</button>
-<button class="quiz-option" data-opt="b">B) git commit -m "mensaje"</button>
-<button class="quiz-option" data-opt="c">C) git push</button>
-</div>
-<div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué comando crea y cambia a una rama nueva?</p>
-<button class="quiz-option" data-opt="a">A) git checkout -b nombre</button>
-<button class="quiz-option" data-opt="b">B) git branch nombre</button>
-<button class="quiz-option" data-opt="c">C) git merge nombre</button>
-</div>
-<div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué comando sube los cambios al repositorio remoto?</p>
-<button class="quiz-option" data-opt="a">A) git pull</button>
-<button class="quiz-option" data-opt="b">B) git commit</button>
-<button class="quiz-option" data-opt="c">C) git push</button>
-</div>
-</div>
-
-<hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
-<div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%207%3A%20Git%20y%20control%20de%20versiones%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F07-git%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/07-git/" aria-label="Copiar enlace">Copiar enlace</button>
-</div>
-
-<hr>
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="../08-apis/">Ir al Capítulo 8 — Consumo de APIs con fetch</a>
-<a class="md-button" href="../../">Volver al índice</a></p></div>
+<h2 id="initial-setup">⚙ Initial Setup<a class="headerlink" href="#initial-setup" title="Permanent link">¶</a></h2>
+<p>```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@email.com"
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"</p></div>
 
 
 
