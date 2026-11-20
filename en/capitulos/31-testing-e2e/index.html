@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 31 del Libro del Desarrollador Web: 31 — Testing E2E. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 31 of the Web Developer's Book: 31 — E2E Testing. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 31 del Libro del Desarrollador Web: 31 — Testing E2E. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 31 of the Web Developer's Book: 31 — E2E Testing. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/31-testing-e2e/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="31 — Testing E2E - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 31 del Libro del Desarrollador Web: 31 — Testing E2E. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 31 of the Web Developer's Book: 31 — E2E Testing. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/31-testing-e2e.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/31-testing-e2e/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="31 — Testing E2E - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 31 del Libro del Desarrollador Web: 31 — Testing E2E. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 31 of the Web Developer's Book: 31 — E2E Testing. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/31-testing-e2e.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#31-testing-e2e" class="md-skip">
+        <a href="#31-e2e-testing" class="md-skip">
           Skip to content
         </a>
       
@@ -2124,10 +2124,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-un-test-e2e" class="md-nav__link">
+  <a href="#what-is-an-e2e-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 ¿Qué es un test E2E?
+        🎯 What is an E2E Test?
       
     </span>
   </a>
@@ -2135,10 +2135,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#e2e-vs-unitario-vs-integracion" class="md-nav__link">
+  <a href="#e2e-vs-unit-vs-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏛 E2E vs Unitario vs Integración
+        🏛 E2E vs. Unit vs. Integration
       
     </span>
   </a>
@@ -2146,10 +2146,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#herramientas-principales" class="md-nav__link">
+  <a href="#main-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 Herramientas principales
+        🛠 Main Tools
       
     </span>
   </a>
@@ -2157,22 +2157,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tu-primer-test-con-playwright" class="md-nav__link">
+  <a href="#your-first-test-with-playwright" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 Tu primer test con Playwright
+        📝 Your First Test with Playwright
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📝 Tu primer test con Playwright">
+    <nav class="md-nav" aria-label="📝 Your First Test with Playwright">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#instalacion" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Instalación
+        Installation
       
     </span>
   </a>
@@ -2180,10 +2180,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#test-basico" class="md-nav__link">
+  <a href="#basic-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test básico
+        Basic Test
       
     </span>
   </a>
@@ -2191,10 +2191,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecutar" class="md-nav__link">
+  <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejecutar
+        Running Tests
       
     </span>
   </a>
@@ -2207,15 +2207,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#patrones-clave" class="md-nav__link">
+  <a href="#key-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧩 Patrones clave
+        🧩 Key Patterns
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🧩 Patrones clave">
+    <nav class="md-nav" aria-label="🧩 Key Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2241,10 +2241,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-esperas-automaticas" class="md-nav__link">
+  <a href="#3-auto-waits" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Esperas automáticas
+        3. Auto-Waits
       
     </span>
   </a>
@@ -2252,10 +2252,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-selectores-recomendados" class="md-nav__link">
+  <a href="#4-recommended-selectors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Selectores recomendados
+        4. Recommended Selectors
       
     </span>
   </a>
@@ -2268,10 +2268,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejemplo-flujo-de-checkout" class="md-nav__link">
+  <a href="#example-checkout-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗 Ejemplo: flujo de checkout
+        🏗 Example: Checkout Flow
       
     </span>
   </a>
@@ -2279,10 +2279,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cuando-no-usar-e2e" class="md-nav__link">
+  <a href="#when-not-to-use-e2e" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚠️ Cuándo NO usar E2E
+        ⚠ When NOT to Use E2E
       
     </span>
   </a>
@@ -2290,10 +2290,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#e2e-en-ci" class="md-nav__link">
+  <a href="#e2e-in-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 E2E en CI
+        🚀 E2E in CI
       
     </span>
   </a>
@@ -2301,10 +2301,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-practico" class="md-nav__link">
+  <a href="#hands-on-exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 Ejercicio práctico
+        🧪 Hands-On Exercise
       
     </span>
   </a>
@@ -2323,10 +2323,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 Recursos
+        📚 Resources
       
     </span>
   </a>
@@ -2334,10 +2334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -2345,10 +2345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -5245,131 +5245,131 @@
   
 
 
-<div><h1 id="31-testing-e2e">31 — Testing E2E<a class="headerlink" href="#31-testing-e2e" title="Permanent link">¶</a></h1>
+<div><h1 id="31-e2e-testing">31 — E2E Testing<a class="headerlink" href="#31-e2e-testing" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es un test End-to-End y en qué se diferencia del unitario y del de integración.</li>
-<li>Las herramientas principales: Playwright, Cypress, Selenium.</li>
-<li>Cómo escribir tu primer test E2E.</li>
-<li>Patrones: Page Object Model, fixtures, esperas.</li>
-<li>Cuándo usar E2E y cuándo NO.</li>
+<li>What an End-to-End test is and how it differs from unit and integration tests.</li>
+<li>Main tools: Playwright, Cypress, Selenium.</li>
+<li>How to write your first E2E test.</li>
+<li>Patterns: Page Object Model, fixtures, waits.</li>
+<li>When to use E2E and when NOT to.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-un-test-e2e">🎯 ¿Qué es un test E2E?<a class="headerlink" href="#que-es-un-test-e2e" title="Permanent link">¶</a></h2>
-<p>Un test <strong>End-to-End</strong> (E2E) simula a un <strong>usuario real</strong> interactuando con tu aplicación: abre el navegador, hace clic, escribe, navega, y verifica que el resultado es el esperado.</p>
+<h2 id="what-is-an-e2e-test">🎯 What is an E2E Test?<a class="headerlink" href="#what-is-an-e2e-test" title="Permanent link">¶</a></h2>
+<p>An <strong>End-to-End</strong> (E2E) test simulates a <strong>real user</strong> interacting with your application: it opens the browser, clicks, types, navigates, and verifies that the outcome matches expectations.</p>
 <div class="admonition quote">
-<p class="admonition-title">La analogía del piloto de pruebas</p>
-<p>Un test unitario es como revisar cada pieza de un coche por separado. Un test E2E es como <strong>subir a un piloto de pruebas</strong> y dar una vuelta completa por carretera: comprueba que todo funciona junto, en condiciones reales.</p>
+<p class="admonition-title">The test driver analogy</p>
+<p>A unit test is like inspecting every car part in isolation. An E2E test is like <strong>putting a test driver behind the wheel</strong> for a full road lap: it verifies everything works together under real conditions.</p>
 </div>
 <pre class="mermaid"><code>graph LR
-    A[Test E2E] --&gt; B[Abre navegador]
-    B --&gt; C[Navega a la app]
-    C --&gt; D[Interactúa: clic, teclado, scroll]
-    D --&gt; E[Verifica resultados]
-    E --&gt; F[✅ Pasa / ❌ Falla]</code></pre>
+    A[E2E Test] --&gt; B[Opens browser]
+    B --&gt; C[Navigates to app]
+    C --&gt; D[Interacts: click, keyboard, scroll]
+    D --&gt; E[Verifies results]
+    E --&gt; F[✅ Passes / ❌ Fails]</code></pre>
 <hr>
-<h2 id="e2e-vs-unitario-vs-integracion">🏛 E2E vs Unitario vs Integración<a class="headerlink" href="#e2e-vs-unitario-vs-integracion" title="Permanent link">¶</a></h2>
+<h2 id="e2e-vs-unit-vs-integration">🏛 E2E vs. Unit vs. Integration<a class="headerlink" href="#e2e-vs-unit-vs-integration" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Qué prueba</th>
-<th style="text-align: left;">Velocidad</th>
-<th style="text-align: left;">Coste</th>
-<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">What It Tests</th>
+<th style="text-align: left;">Speed</th>
+<th style="text-align: left;">Cost</th>
+<th style="text-align: left;">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Unitario</strong></td>
-<td style="text-align: left;">Una función o componente aislado</td>
-<td style="text-align: left;">⚡ Muy rápido (ms)</td>
-<td style="text-align: left;">Bajo</td>
+<td style="text-align: left;"><strong>Unit</strong></td>
+<td style="text-align: left;">A single function or isolated component</td>
+<td style="text-align: left;">⚡ Very fast (ms)</td>
+<td style="text-align: left;">Low</td>
 <td style="text-align: left;"><code>sum(2,2) === 4</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Integración</strong></td>
-<td style="text-align: left;">Varios módulos juntos</td>
-<td style="text-align: left;">🚀 Rápido (100ms)</td>
-<td style="text-align: left;">Medio</td>
-<td style="text-align: left;">API + DB + servicio</td>
+<td style="text-align: left;"><strong>Integration</strong></td>
+<td style="text-align: left;">Multiple modules working together</td>
+<td style="text-align: left;">🚀 Fast (100ms)</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">API + DB + service</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>E2E</strong></td>
-<td style="text-align: left;">La app <strong>completa</strong> desde el navegador</td>
-<td style="text-align: left;">🐢 Lento (segundos)</td>
-<td style="text-align: left;">Alto</td>
-<td style="text-align: left;">Login → carrito → pago</td>
+<td style="text-align: left;">The <strong>full</strong> app from the browser</td>
+<td style="text-align: left;">🐢 Slow (seconds)</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Login → cart → checkout</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">La pirámide de tests</p>
-<p><strong>Muchos unitarios, algunos de integración, pocos E2E</strong>. Los E2E son lentos y frágiles; reservarlos para los <strong>flujos críticos</strong>: login, checkout, registro, pago.</p>
+<p class="admonition-title">The testing pyramid</p>
+<p><strong>Many unit tests, some integration tests, few E2E tests</strong>. E2E tests are slow and fragile; reserve them for <strong>critical flows</strong>: login, checkout, signup, payment.</p>
 </div>
 <hr>
-<h2 id="herramientas-principales">🛠 Herramientas principales<a class="headerlink" href="#herramientas-principales" title="Permanent link">¶</a></h2>
+<h2 id="main-tools">🛠 Main Tools<a class="headerlink" href="#main-tools" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Lenguaje</th>
-<th style="text-align: left;">Velocidad</th>
-<th style="text-align: left;">Multi-navegador</th>
-<th style="text-align: left;">Notas</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Speed</th>
+<th style="text-align: left;">Cross-Browser</th>
+<th style="text-align: left;">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Playwright</strong></td>
 <td style="text-align: left;">JS/TS, Python, C#, Java</td>
-<td style="text-align: left;">⚡ Muy rápido</td>
+<td style="text-align: left;">⚡ Very fast</td>
 <td style="text-align: left;">✅ Chromium, Firefox, WebKit</td>
-<td style="text-align: left;">Microsoft, muy activo</td>
+<td style="text-align: left;">Microsoft, very active</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Cypress</strong></td>
 <td style="text-align: left;">JS/TS</td>
-<td style="text-align: left;">🚀 Rápido</td>
-<td style="text-align: left;">⚠️ Solo Chromium (y Firefox experimental)</td>
-<td style="text-align: left;">DX excelente, popular</td>
+<td style="text-align: left;">🚀 Fast</td>
+<td style="text-align: left;">⚠ Chromium only (Firefox experimental)</td>
+<td style="text-align: left;">Great DX, popular</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Selenium</strong></td>
-<td style="text-align: left;">Múltiples</td>
-<td style="text-align: left;">🐢 Lento</td>
-<td style="text-align: left;">✅ Todos</td>
-<td style="text-align: left;">El clásico, más verboso</td>
+<td style="text-align: left;">Multiple</td>
+<td style="text-align: left;">🐢 Slow</td>
+<td style="text-align: left;">✅ All</td>
+<td style="text-align: left;">The classic, more verbose</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Puppeteer</strong></td>
 <td style="text-align: left;">JS/TS</td>
-<td style="text-align: left;">🚀 Rápido</td>
-<td style="text-align: left;">⚠️ Solo Chromium</td>
-<td style="text-align: left;">Solo Chrome/Edge</td>
+<td style="text-align: left;">🚀 Fast</td>
+<td style="text-align: left;">⚠ Chromium only</td>
+<td style="text-align: left;">Chrome/Edge only</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>WebdriverIO</strong></td>
 <td style="text-align: left;">JS/TS</td>
-<td style="text-align: left;">🐢 Medio</td>
-<td style="text-align: left;">✅ Todos</td>
-<td style="text-align: left;">Sobre WebDriver</td>
+<td style="text-align: left;">🐢 Medium</td>
+<td style="text-align: left;">✅ All</td>
+<td style="text-align: left;">Built on WebDriver</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Recomendación 2026</p>
-<p><strong>Playwright</strong> si necesitas multi-navegador o tests rápidos en CI. <strong>Cypress</strong> si priorizas DX y solo te importa Chromium. <strong>Selenium</strong> solo si tienes legacy o necesitas navegadores muy antiguos.</p>
+<p class="admonition-title">2026 Recommendation</p>
+<p><strong>Playwright</strong> if you need cross-browser support or fast CI runs. <strong>Cypress</strong> if you prioritize DX and only care about Chromium. <strong>Selenium</strong> only for legacy systems or very old browsers.</p>
 </div>
 <hr>
-<h2 id="tu-primer-test-con-playwright">📝 Tu primer test con Playwright<a class="headerlink" href="#tu-primer-test-con-playwright" title="Permanent link">¶</a></h2>
-<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">¶</a></h3>
+<h2 id="your-first-test-with-playwright">📝 Your First Test with Playwright<a class="headerlink" href="#your-first-test-with-playwright" title="Permanent link">¶</a></h2>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
 </code></pre></div>
-<p>Elige TypeScript, carpeta <code>tests/</code>, y GitHub Actions si quieres CI.</p>
-<h3 id="test-basico">Test básico<a class="headerlink" href="#test-basico" title="Permanent link">¶</a></h3>
+<p>Choose TypeScript, <code>tests/</code> folder, and GitHub Actions if you want CI.</p>
+<h3 id="basic-test">Basic Test<a class="headerlink" href="#basic-test" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// tests/login.spec.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 
@@ -5382,16 +5382,16 @@
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s2">"Bienvenido"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="ejecutar">Ejecutar<a class="headerlink" href="#ejecutar" title="Permanent link">¶</a></h3>
+<h3 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span>
-npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--headed<span class="w">        </span><span class="c1"># ver el navegador</span>
-npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui<span class="w">             </span><span class="c1"># modo interactivo</span>
-npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span class="w">           </span><span class="c1"># ver el informe HTML</span>
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--headed<span class="w">        </span><span class="c1"># show the browser</span>
+npx<span class="w"> </span>playwright<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--ui<span class="w">             </span><span class="c1"># interactive mode</span>
+npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span class="w">           </span><span class="c1"># view HTML report</span>
 </code></pre></div>
 <hr>
-<h2 id="patrones-clave">🧩 Patrones clave<a class="headerlink" href="#patrones-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-patterns">🧩 Key Patterns<a class="headerlink" href="#key-patterns" title="Permanent link">¶</a></h2>
 <h3 id="1-page-object-model-pom">1. Page Object Model (POM)<a class="headerlink" href="#1-page-object-model-pom" title="Permanent link">¶</a></h3>
-<p>Encapsula las interacciones con una página en una clase. Evita duplicar selectores en cada test.</p>
+<p>Encapsulates interactions with a page inside a class. Avoids duplicating selectors across tests.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// pages/LoginPage.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoginPage</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">page</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -5424,7 +5424,7 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="2-fixtures">2. Fixtures<a class="headerlink" href="#2-fixtures" title="Permanent link">¶</a></h3>
-<p>Playwright inyecta <code>page</code>, <code>context</code>, <code>browser</code> automáticamente. Puedes crear fixtures propias:</p>
+<p>Playwright injects <code>page</code>, <code>context</code>, and <code>browser</code> automatically. You can define custom fixtures:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// fixtures.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">base</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoginPage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./pages/LoginPage"</span><span class="p">;</span>
@@ -5444,51 +5444,51 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="sr">/dashboard/</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="3-esperas-automaticas">3. Esperas automáticas<a class="headerlink" href="#3-esperas-automaticas" title="Permanent link">¶</a></h3>
-<p>Playwright <strong>espera automáticamente</strong> a que los elementos estén visibles, habilitados y estables. <strong>No uses <code>sleep()</code></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ Playwright espera solo</span>
+<h3 id="3-auto-waits">3. Auto-Waits<a class="headerlink" href="#3-auto-waits" title="Permanent link">¶</a></h3>
+<p>Playwright <strong>automatically waits</strong> for elements to be visible, enabled, and actionable. <strong>Never use <code>sleep()</code></strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ Playwright waits on its own</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">'button[type="submit"]'</span><span class="p">);</span>
 
-<span class="c1">// ❌ No hagas esto</span>
+<span class="c1">// ❌ Don't do this</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">waitForTimeout</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="4-selectores-recomendados">4. Selectores recomendados<a class="headerlink" href="#4-selectores-recomendados" title="Permanent link">¶</a></h3>
+<h3 id="4-recommended-selectors">4. Recommended Selectors<a class="headerlink" href="#4-recommended-selectors" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Selector</th>
-<th style="text-align: left;">Cuándo usarlo</th>
+<th style="text-align: left;">When to Use It</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>getByRole('button', { name: 'Enviar' })</code></td>
-<td style="text-align: left;">✅ <strong>Recomendado</strong> (accesible y robusto)</td>
+<td style="text-align: left;">✅ <strong>Recommended</strong> (accessible and resilient)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByLabel('Email')</code></td>
-<td style="text-align: left;">Formularios con label</td>
+<td style="text-align: left;">Form inputs with a label</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByText('Bienvenido')</code></td>
-<td style="text-align: left;">Texto visible</td>
+<td style="text-align: left;">Visible text</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>getByTestId('login-btn')</code></td>
-<td style="text-align: left;">Cuando no hay rol/label claro</td>
+<td style="text-align: left;">When there's no clear role/label</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>locator('css=.btn-primary')</code></td>
-<td style="text-align: left;">CSS (más frágil)</td>
+<td style="text-align: left;">CSS (more brittle)</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Usa <code>getByRole</code> primero</p>
-<p>Los selectores basados en <strong>rol accesible</strong> (<code>getByRole</code>) son los más robustos: sobreviven a cambios de clase, ID o estructura. Y de paso verifican accesibilidad.</p>
+<p class="admonition-title">Use <code>getByRole</code> first</p>
+<p>Selectors based on <strong>accessible role</strong> (<code>getByRole</code>) are the most resilient: they survive class, ID, or markup changes, while also checking accessibility.</p>
 </div>
 <hr>
-<h2 id="ejemplo-flujo-de-checkout">🏗 Ejemplo: flujo de checkout<a class="headerlink" href="#ejemplo-flujo-de-checkout" title="Permanent link">¶</a></h2>
+<h2 id="example-checkout-flow">🏗 Example: Checkout Flow<a class="headerlink" href="#example-checkout-flow" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 
 <span class="nx">test</span><span class="p">(</span><span class="s2">"checkout completo"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -5498,11 +5498,11 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"Contraseña"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"secreto123"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Entrar"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// 2. Añadir al carrito</span>
+<span class="w">    </span><span class="c1">// 2. Add to cart</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">"/productos"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Añadir al carrito"</span><span class="w"> </span><span class="p">}).</span><span class="nx">first</span><span class="p">().</span><span class="nx">click</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// 3. Ir al carrito</span>
+<span class="w">    </span><span class="c1">// 3. Go to cart</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"link"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Carrito"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Teclado mecánico"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
 
@@ -5513,48 +5513,48 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByLabel</span><span class="p">(</span><span class="s2">"CVC"</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s2">"123"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">"button"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Confirmar pago"</span><span class="w"> </span><span class="p">}).</span><span class="nx">click</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// 5. Verificar</span>
+<span class="w">    </span><span class="c1">// 5. Verify</span>
 <span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">"Pago exitoso"</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
 <hr>
-<h2 id="cuando-no-usar-e2e">⚠️ Cuándo NO usar E2E<a class="headerlink" href="#cuando-no-usar-e2e" title="Permanent link">¶</a></h2>
+<h2 id="when-not-to-use-e2e">⚠ When NOT to Use E2E<a class="headerlink" href="#when-not-to-use-e2e" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Caso</th>
-<th style="text-align: left;">Por qué</th>
+<th style="text-align: left;">Case</th>
+<th style="text-align: left;">Why</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Lógica de negocio compleja</td>
-<td style="text-align: left;">Mejor cubrirla con unitarios rápidos</td>
+<td style="text-align: left;">Complex business logic</td>
+<td style="text-align: left;">Better covered by fast unit tests</td>
 </tr>
 <tr>
-<td style="text-align: left;">Validaciones de formulario</td>
-<td style="text-align: left;">Unitarios de validadores</td>
+<td style="text-align: left;">Form validations</td>
+<td style="text-align: left;">Validator unit tests</td>
 </tr>
 <tr>
-<td style="text-align: left;">Componentes aislados</td>
-<td style="text-align: left;">Storybook + tests de componente</td>
+<td style="text-align: left;">Isolated components</td>
+<td style="text-align: left;">Storybook + component tests</td>
 </tr>
 <tr>
-<td style="text-align: left;">Rendimiento</td>
-<td style="text-align: left;">Usa Lighthouse o k6, no E2E</td>
+<td style="text-align: left;">Performance</td>
+<td style="text-align: left;">Use Lighthouse or k6, not E2E</td>
 </tr>
 <tr>
-<td style="text-align: left;">Cada commit</td>
-<td style="text-align: left;">E2E es lento; en CI corre en paralelo o solo en PRs</td>
+<td style="text-align: left;">Every commit</td>
+<td style="text-align: left;">E2E is slow; in CI run in parallel or on PRs only</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">E2E frágil = E2E que se ignora</p>
-<p>Un test E2E que falla aleatoriamente (flaky) es <strong>peor que no tener test</strong>: el equipo aprende a ignorar los fallos. Invierte en estabilidad: selectores robustos, esperas automáticas, datos de test aislados.</p>
+<p class="admonition-title">Fragile E2E = ignored E2E</p>
+<p>An E2E test that fails randomly (flaky) is <strong>worse than having no test</strong>: the team learns to ignore failures. Invest in stability: resilient selectors, auto-waits, isolated test data.</p>
 </div>
 <hr>
-<h2 id="e2e-en-ci">🚀 E2E en CI<a class="headerlink" href="#e2e-en-ci" title="Permanent link">¶</a></h2>
+<h2 id="e2e-in-ci">🚀 E2E in CI<a class="headerlink" href="#e2e-in-ci" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/e2e.yml</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E2E</span>
 <span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
@@ -5575,24 +5575,24 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report/</span>
 </code></pre></div>
-<p><strong>Buenas prácticas en CI:</strong>
-- Ejecutar en <strong>paralelo</strong> (<code>--workers=4</code>).
-- <strong>Reintentar</strong> fallos sospechosos (<code>--retries=2</code>).
-- Subir el <strong>informe HTML</strong> como artefacto cuando falla.
-- Cachear dependencias de Playwright.</p>
+<p><strong>CI best practices:</strong>
+- Run in <strong>parallel</strong> (<code>--workers=4</code>).
+- <strong>Retry</strong> suspicious failures (<code>--retries=2</code>).
+- Upload the <strong>HTML report</strong> as an artifact on failure.
+- Cache Playwright dependencies.</p>
 <hr>
-<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">¶</a></h2>
+<h2 id="hands-on-exercise">🧪 Hands-On Exercise<a class="headerlink" href="#hands-on-exercise" title="Permanent link">¶</a></h2>
 <div class="admonition example">
-<p class="admonition-title">Test de login con 3 casos</p>
-<p>Escribe tests E2E para el login de una app con:</p>
+<p class="admonition-title">Login test with 3 cases</p>
+<p>Write E2E tests for an app's login flow covering:</p>
 <ul>
-<li><strong>Caso 1:</strong> credenciales válidas → redirige a <code>/dashboard</code>.</li>
-<li><strong>Caso 2:</strong> contraseña incorrecta → muestra "Credenciales inválidas".</li>
-<li><strong>Caso 3:</strong> email vacío → el botón está deshabilitado o muestra error.</li>
+<li><strong>Case 1:</strong> valid credentials → redirects to <code>/dashboard</code>.</li>
+<li><strong>Case 2:</strong> wrong password → shows "Credenciales inválidas".</li>
+<li><strong>Case 3:</strong> empty email → button is disabled or shows an error.</li>
 </ul>
 </div>
 <details class="success">
-<summary>Solución</summary>
+<summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@playwright/test"</span><span class="p">;</span>
 
 <span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s2">"Login"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -5626,30 +5626,30 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <hr>
 <h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Qué diferencia hay entre un test unitario y un E2E?</summary>
-<p>Unitario: prueba una función o componente aislado, milisegundos. E2E: prueba la app completa desde el navegador, segundos o minutos.</p>
+<summary>1. What is the difference between a unit test and an E2E test?</summary>
+<p>Unit: tests an isolated function or component, milliseconds. E2E: tests the full app from the browser, seconds or minutes.</p>
 </details>
 <details class="success">
-<summary>2. ¿Cuál es la recomendación general (pirámide de tests)?</summary>
-<p>Muchos unitarios, algunos de integración, pocos E2E. Los E2E solo para flujos críticos.</p>
+<summary>2. What is the general recommendation (testing pyramid)?</summary>
+<p>Many unit tests, some integration tests, few E2E tests. E2E only for critical flows.</p>
 </details>
 <details class="success">
-<summary>3. ¿Qué es el Page Object Model?</summary>
-<p>Un patrón que encapsula las interacciones con una página en una clase, evitando duplicar selectores y facilitando el mantenimiento.</p>
+<summary>3. What is the Page Object Model?</summary>
+<p>A pattern that encapsulates page interactions in a class, avoiding duplicate selectors and making maintenance easier.</p>
 </details>
 <details class="success">
-<summary>4. ¿Por qué no usar <code>sleep()</code> o <code>waitForTimeout()</code> en Playwright?</summary>
-<p>Porque Playwright ya espera automáticamente a que los elementos estén listos. Los <code>sleep</code> fijos hacen los tests lentos y frágiles.</p>
+<summary>4. Why shouldn't you use <code>sleep()</code> or <code>waitForTimeout()</code> in Playwright?</summary>
+<p>Because Playwright already waits automatically for elements to be ready. Fixed sleeps make tests slow and brittle.</p>
 </details>
 <details class="success">
-<summary>5. ¿Qué es un test "flaky"?</summary>
-<p>Un test que a veces pasa y a veces falla sin cambios en el código. Es peor que no tener test, porque enseña al equipo a ignorar los fallos.</p>
+<summary>5. What is a "flaky" test?</summary>
+<p>A test that sometimes passes and sometimes fails with no code changes. Worse than no test, because it teaches the team to ignore failures.</p>
 </details>
 <hr>
-<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
+<h2 id="resources">📚 Resources<a class="headerlink" href="#resources" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://playwright.dev/">Playwright — Docs oficiales</a></li>
 <li><a href="https://docs.cypress.io/">Cypress — Docs oficiales</a></li>
@@ -5659,36 +5659,36 @@ npx<span class="w"> </span>playwright<span class="w"> </span>show-report<span cl
 <li><a href="https://martinfowler.com/articles/practical-test-pyramid.html">Test Pyramid — Martin Fowler</a></li>
 </ul>
 <hr>
-<p>➡️ Siguiente capítulo: <a href="../32-server-components/">32 — Server Components</a></p>
+<p>➡ Next chapter: <a href="../32-server-components/">32 — Server Components</a></p>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-31">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué prueba un test E2E?</p>
-<button class="quiz-option" data-opt="a">A) Una función aislada</button>
-<button class="quiz-option" data-opt="b">B) La app completa desde el navegador</button>
-<button class="quiz-option" data-opt="c">C) Un componente</button>
+<p><strong>1.</strong> What does an E2E test verify?</p>
+<button class="quiz-option" data-opt="a">A) An isolated function</button>
+<button class="quiz-option" data-opt="b">B) The full app from the browser</button>
+<button class="quiz-option" data-opt="c">C) A single component</button>
 </div>
 <div class="quiz-question" data-answer="b">
-<p><strong>2.</strong> ¿Qué herramienta es recomendada en 2026 para E2E?</p>
+<p><strong>2.</strong> Which tool is recommended in 2026 for E2E?</p>
 <button class="quiz-option" data-opt="a">A) Selenium</button>
 <button class="quiz-option" data-opt="b">B) Playwright</button>
 <button class="quiz-option" data-opt="c">C) Puppeteer</button>
 </div>
 <div class="quiz-question" data-answer="b">
-<p><strong>3.</strong> ¿Qué es un test flaky?</p>
-<button class="quiz-option" data-opt="a">A) Un test que falla siempre</button>
-<button class="quiz-option" data-opt="b">B) Un test que a veces pasa y a veces falla</button>
-<button class="quiz-option" data-opt="c">C) Un test que no se ejecuta</button>
+<p><strong>3.</strong> What is a flaky test?</p>
+<button class="quiz-option" data-opt="a">A) A test that always fails</button>
+<button class="quiz-option" data-opt="b">B) A test that sometimes passes and sometimes fails</button>
+<button class="quiz-option" data-opt="c">C) A test that never runs</button>
 </div>
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2031%3A%20Testing%20E2E&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2031%3A%20E2E%20Testing&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F31-testing-e2e%2F" target="_blank" rel="noopener">LinkedIn</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/31-testing-e2e/" aria-label="Copiar enlace">Copiar enlace</button>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/31-testing-e2e/" aria-label="Copy link">Copy link</button>
 </div></div>
 
 
