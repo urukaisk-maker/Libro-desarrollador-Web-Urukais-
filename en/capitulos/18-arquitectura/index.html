@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 18 del Libro del Desarrollador Web: 18 — Arquitectura frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 18 of the Web Developer's Book: 18 — Frontend Architecture. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 18 del Libro del Desarrollador Web: 18 — Arquitectura frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 18 of the Web Developer's Book: 18 — Frontend Architecture. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/18-arquitectura/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="18 — Arquitectura - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 18 del Libro del Desarrollador Web: 18 — Arquitectura frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 18 of the Web Developer's Book: 18 — Frontend Architecture. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/18-arquitectura.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/18-arquitectura/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="18 — Arquitectura - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 18 del Libro del Desarrollador Web: 18 — Arquitectura frontend. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 18 of the Web Developer's Book: 18 — Frontend Architecture. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/18-arquitectura.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#18-arquitectura-frontend" class="md-skip">
+        <a href="#18-frontend-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -1571,10 +1571,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-la-arquitectura-frontend" class="md-nav__link">
+  <a href="#what-is-frontend-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗️ ¿Qué es la arquitectura frontend?
+        🏗 What is Frontend Architecture?
       
     </span>
   </a>
@@ -1582,22 +1582,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#estructura-de-carpetas" class="md-nav__link">
+  <a href="#folder-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📁 Estructura de carpetas
+        📁 Folder Structure
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📁 Estructura de carpetas">
+    <nav class="md-nav" aria-label="📁 Folder Structure">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#layer-first-por-capas" class="md-nav__link">
+  <a href="#layer-first-by-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Layer-first (por capas)
+        Layer-first (By Layer)
       
     </span>
   </a>
@@ -1605,10 +1605,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#feature-first-por-funcionalidad" class="md-nav__link">
+  <a href="#feature-first-by-feature" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Feature-first (por funcionalidad)
+        Feature-first (By Feature)
       
     </span>
   </a>
@@ -1621,22 +1621,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#patrones-de-componentes" class="md-nav__link">
+  <a href="#component-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧩 Patrones de componentes
+        🧩 Component Patterns
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🧩 Patrones de componentes">
+    <nav class="md-nav" aria-label="🧩 Component Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#componentes-de-presentacion" class="md-nav__link">
+  <a href="#presentational-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Componentes de presentación
+        Presentational Components
       
     </span>
   </a>
@@ -1644,10 +1644,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#componentes-contenedor" class="md-nav__link">
+  <a href="#container-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Componentes contenedor
+        Container Components
       
     </span>
   </a>
@@ -1660,22 +1660,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gestion-de-estado" class="md-nav__link">
+  <a href="#state-management" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗃️ Gestión de estado
+        🗃 State Management
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🗃️ Gestión de estado">
+    <nav class="md-nav" aria-label="🗃 State Management">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#estado-local" class="md-nav__link">
+  <a href="#local-state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estado local
+        Local State
       
     </span>
   </a>
@@ -1683,10 +1683,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#estado-compartido" class="md-nav__link">
+  <a href="#shared-state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estado compartido
+        Shared State
       
     </span>
   </a>
@@ -1694,10 +1694,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#estado-global" class="md-nav__link">
+  <a href="#global-state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Estado global
+        Global State
       
     </span>
   </a>
@@ -1710,10 +1710,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buenas-practicas-de-arquitectura" class="md-nav__link">
+  <a href="#architecture-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Buenas prácticas de arquitectura
+        ✅ Architecture Best Practices
       
     </span>
   </a>
@@ -1721,10 +1721,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejemplo-de-arquitectura-completa" class="md-nav__link">
+  <a href="#complete-architecture-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧱 Ejemplo de arquitectura completa
+        🧱 Complete Architecture Example
       
     </span>
   </a>
@@ -1732,10 +1732,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -1743,10 +1743,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -1754,10 +1754,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#has-terminado-el-nivel-avanzado" class="md-nav__link">
+  <a href="#you-finished-the-advanced-level" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏆 ¡Has terminado el Nivel Avanzado!
+        🏆 You Finished the Advanced Level!
       
     </span>
   </a>
@@ -1765,10 +1765,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#siguiente-paso" class="md-nav__link">
+  <a href="#next-step" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ➡️ Siguiente paso
+        ➡ Next Step
       
     </span>
   </a>
@@ -5218,27 +5218,27 @@
   
 
 
-<div><h1 id="18-arquitectura-frontend">18 — Arquitectura frontend<a class="headerlink" href="#18-arquitectura-frontend" title="Permanent link">¶</a></h1>
+<div><h1 id="18-frontend-architecture">18 — Frontend Architecture<a class="headerlink" href="#18-frontend-architecture" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es la arquitectura frontend y por qué importa.</li>
-<li>Estructura de carpetas: feature-first vs layer-first.</li>
-<li>Patrones de componentes.</li>
-<li>Gestión de estado.</li>
-<li>Buenas prácticas para proyectos escalables.</li>
+<li>What frontend architecture is and why it matters.</li>
+<li>Folder structures: feature-first vs. layer-first.</li>
+<li>Component patterns.</li>
+<li>State management.</li>
+<li>Best practices for scalable projects.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-la-arquitectura-frontend">🏗️ ¿Qué es la arquitectura frontend?<a class="headerlink" href="#que-es-la-arquitectura-frontend" title="Permanent link">¶</a></h2>
-<p>La <strong>arquitectura frontend</strong> es la forma de organizar el código de una aplicación para que sea <strong>mantenible, escalable y comprensible</strong>. No se trata de usar más librerías, sino de tomar decisiones que permitan crecer sin que todo se derrumbe.</p>
+<h2 id="what-is-frontend-architecture">🏗 What is Frontend Architecture?<a class="headerlink" href="#what-is-frontend-architecture" title="Permanent link">¶</a></h2>
+<p><strong>Frontend architecture</strong> is how you organize an application's code so it stays <strong>maintainable, scalable, and easy to understand</strong>. It isn't about adding more libraries—it's about making decisions that let the project grow without collapsing.</p>
 <div class="admonition quote">
-<p class="admonition-title">El código se lee muchas más veces de las que se escribe</p>
-<p>Una buena arquitectura hace que el código sea fácil de leer, cambiar y testear. Una mala arquitectura hace que cada cambio sea un infierno.</p>
+<p class="admonition-title">Code is read many more times than it is written</p>
+<p>Good architecture makes code easy to read, change, and test. Bad architecture makes every change a nightmare.</p>
 </div>
 <hr>
-<h2 id="estructura-de-carpetas">📁 Estructura de carpetas<a class="headerlink" href="#estructura-de-carpetas" title="Permanent link">¶</a></h2>
-<h3 id="layer-first-por-capas">Layer-first (por capas)<a class="headerlink" href="#layer-first-por-capas" title="Permanent link">¶</a></h3>
+<h2 id="folder-structure">📁 Folder Structure<a class="headerlink" href="#folder-structure" title="Permanent link">¶</a></h2>
+<h3 id="layer-first-by-layer">Layer-first (By Layer)<a class="headerlink" href="#layer-first-by-layer" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>src/
 ├── components/
 ├── hooks/
@@ -5247,8 +5247,8 @@
 ├── pages/
 └── styles/
 </code></pre></div>
-<p><strong>Ventaja</strong>: fácil de encontrar cosas por tipo. <strong>Desventaja</strong>: cada feature está repartida por 5 carpetas.</p>
-<h3 id="feature-first-por-funcionalidad">Feature-first (por funcionalidad)<a class="headerlink" href="#feature-first-por-funcionalidad" title="Permanent link">¶</a></h3>
+<p><strong>Pros</strong>: easy to find things by type. <strong>Cons</strong>: each feature is spread across 5 folders.</p>
+<h3 id="feature-first-by-feature">Feature-first (By Feature)<a class="headerlink" href="#feature-first-by-feature" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>src/
 ├── features/
 │   ├── auth/
@@ -5265,21 +5265,21 @@
     ├── routes.js
     └── layout.js
 </code></pre></div>
-<p><strong>Ventaja</strong>: cada feature vive junta. <strong>Desventaja</strong>: más carpetas al principio.</p>
+<p><strong>Pros</strong>: each feature lives together. <strong>Cons</strong>: more folders at the start.</p>
 <div class="admonition tip">
-<p class="admonition-title">Feature-first para proyectos grandes</p>
-<p>Si el proyecto va a crecer, usa feature-first. Si es pequeño, layer-first es suficiente. Puedes empezar con layer-first y migrar cuando el proyecto crezca.</p>
+<p class="admonition-title">Feature-first for large projects</p>
+<p>If the project will grow, use feature-first. If it's small, layer-first is enough. You can start with layer-first and migrate as the project grows.</p>
 </div>
 <hr>
-<h2 id="patrones-de-componentes">🧩 Patrones de componentes<a class="headerlink" href="#patrones-de-componentes" title="Permanent link">¶</a></h2>
-<h3 id="componentes-de-presentacion">Componentes de presentación<a class="headerlink" href="#componentes-de-presentacion" title="Permanent link">¶</a></h3>
-<p>Solo reciben props y renderizan UI. No tienen lógica de negocio.</p>
+<h2 id="component-patterns">🧩 Component Patterns<a class="headerlink" href="#component-patterns" title="Permanent link">¶</a></h2>
+<h3 id="presentational-components">Presentational Components<a class="headerlink" href="#presentational-components" title="Permanent link">¶</a></h3>
+<p>Only receive props and render UI. They have no business logic.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">Boton</span><span class="p">({</span><span class="w"> </span><span class="nx">texto</span><span class="p">,</span><span class="w"> </span><span class="nx">onClick</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}&gt;{</span><span class="nx">texto</span><span class="p">}&lt;/</span><span class="nt">button</span><span class="p">&gt;;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="componentes-contenedor">Componentes contenedor<a class="headerlink" href="#componentes-contenedor" title="Permanent link">¶</a></h3>
-<p>Manejan el estado y la lógica, y pasan props a los de presentación.</p>
+<h3 id="container-components">Container Components<a class="headerlink" href="#container-components" title="Permanent link">¶</a></h3>
+<p>Manage state and logic, and pass props to presentational components.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">ListaTareas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">tareas</span><span class="p">,</span><span class="w"> </span><span class="nx">setTareas</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">([]);</span>
 
@@ -5287,64 +5287,64 @@
 <span class="w">    </span><span class="nx">setTareas</span><span class="p">([...</span><span class="nx">tareas</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="p">}]);</span>
 <span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">ListaTareasUI</span><span class="w"> </span><span class="na">tareas</span><span class="o">=</span><span class="p">{</span><span class="nx">tareas</span><span class="p">}</span><span class="w"> </span><span class="na">onAñadir</span><span class="o">=</span><span class="p">{</span><span class="nx">añadir</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">ListaTareasUI</span><span class="w"> </span><span class="na">onAñadir</span><span class="o">=</span><span class="s">"{añadir}"</span><span class="w"> </span><span class="na">tareas</span><span class="o">=</span><span class="s">"{tareas}"</span><span class="p">/&gt;;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">Separar lógica y presentación</p>
-<p>Separar presentación y lógica hace que los componentes sean más fáciles de testear, reutilizar y entender.</p>
+<p class="admonition-title">Separate logic and presentation</p>
+<p>Separating presentation and logic makes components easier to test, reuse, and understand.</p>
 </div>
 <hr>
-<h2 id="gestion-de-estado">🗃️ Gestión de estado<a class="headerlink" href="#gestion-de-estado" title="Permanent link">¶</a></h2>
-<h3 id="estado-local">Estado local<a class="headerlink" href="#estado-local" title="Permanent link">¶</a></h3>
-<p>Para cosas que solo afectan a un componente (un input, un toggle).</p>
+<h2 id="state-management">🗃 State Management<a class="headerlink" href="#state-management" title="Permanent link">¶</a></h2>
+<h3 id="local-state">Local State<a class="headerlink" href="#local-state" title="Permanent link">¶</a></h3>
+<p>For things that only affect one component (an input, a toggle).</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">abierto</span><span class="p">,</span><span class="w"> </span><span class="nx">setAbierto</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="estado-compartido">Estado compartido<a class="headerlink" href="#estado-compartido" title="Permanent link">¶</a></h3>
-<p>Para cosas que afectan a varios componentes cercanos: se sube al padre común.</p>
-<h3 id="estado-global">Estado global<a class="headerlink" href="#estado-global" title="Permanent link">¶</a></h3>
-<p>Para cosas que afectan a toda la app: tema, usuario autenticado, carrito.</p>
+<h3 id="shared-state">Shared State<a class="headerlink" href="#shared-state" title="Permanent link">¶</a></h3>
+<p>For things that affect several nearby components: lift state up to their common parent.</p>
+<h3 id="global-state">Global State<a class="headerlink" href="#global-state" title="Permanent link">¶</a></h3>
+<p>For things that affect the whole app: theme, authenticated user, cart.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Cuándo usarla</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">When to use it</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Context API</strong></td>
-<td style="text-align: left;">Estado simple, poca frecuencia de cambio</td>
+<td style="text-align: left;">Simple state, low update frequency</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Zustand</strong></td>
-<td style="text-align: left;">Estado global sencillo sin boilerplate</td>
+<td style="text-align: left;">Simple global state without boilerplate</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Redux Toolkit</strong></td>
-<td style="text-align: left;">Estado complejo con muchas acciones</td>
+<td style="text-align: left;">Complex state with many actions</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>TanStack Query</strong></td>
-<td style="text-align: left;">Estado del servidor (fetch, caché, refetch)</td>
+<td style="text-align: left;">Server state (fetch, cache, refetch)</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="buenas-practicas-de-arquitectura">✅ Buenas prácticas de arquitectura<a class="headerlink" href="#buenas-practicas-de-arquitectura" title="Permanent link">¶</a></h2>
+<h2 id="architecture-best-practices">✅ Architecture Best Practices<a class="headerlink" href="#architecture-best-practices" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ <strong>Componentes pequeños</strong>: si un componente supera las 200 líneas, divídelo.</li>
-<li>✅ <strong>Una responsabilidad por archivo</strong>: un componente, un hook, una función.</li>
-<li>✅ <strong>Nombres descriptivos</strong>: <code>BotonPrimario</code> mejor que <code>Btn1</code>.</li>
-<li>✅ <strong>Evita la lógica en el JSX</strong>: extrae funciones auxiliares.</li>
-<li>✅ <strong>Usa TypeScript</strong>: los tipos documentan la arquitectura.</li>
-<li>✅ <strong>Tests cerca del código</strong>: <code>Boton.test.jsx</code> junto a <code>Boton.jsx</code>.</li>
-<li>✅ <strong>Barrel files con moderación</strong>: los <code>index.js</code> que reexportan pueden ralentizar el build.</li>
-<li>❌ <strong>No abuses del estado global</strong>: si solo lo usa un componente, es local.</li>
-<li>❌ <strong>No mezcles lógica de negocio con UI</strong>: usa hooks o servicios.</li>
+<li>✅ <strong>Small components</strong>: if a component exceeds 200 lines, split it up.</li>
+<li>✅ <strong>One responsibility per file</strong>: one component, one hook, one function.</li>
+<li>✅ <strong>Descriptive names</strong>: <code>BotonPrimario</code> is better than <code>Btn1</code>.</li>
+<li>✅ <strong>Avoid logic inside JSX</strong>: extract helper functions.</li>
+<li>✅ <strong>Use TypeScript</strong>: types document the architecture.</li>
+<li>✅ <strong>Tests near the code</strong>: <code>Boton.test.jsx</code> right next to <code>Boton.jsx</code>.</li>
+<li>✅ <strong>Use barrel files sparingly</strong>: <code>index.js</code> re-exports can slow down builds.</li>
+<li>❌ <strong>Don't overuse global state</strong>: if only one component uses it, keep it local.</li>
+<li>❌ <strong>Don't mix business logic with UI</strong>: use hooks or services.</li>
 </ul>
 <hr>
-<h2 id="ejemplo-de-arquitectura-completa">🧱 Ejemplo de arquitectura completa<a class="headerlink" href="#ejemplo-de-arquitectura-completa" title="Permanent link">¶</a></h2>
+<h2 id="complete-architecture-example">🧱 Complete Architecture Example<a class="headerlink" href="#complete-architecture-example" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>src/
 ├── app/
 │   ├── App.jsx
@@ -5373,22 +5373,22 @@
     └── global.css
 </code></pre></div>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-18">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué estructura de carpetas agrupa por funcionalidad?</p>
+<p><strong>1.</strong> Which folder structure groups code by feature?</p>
 <button class="quiz-option" data-opt="a">A) Layer-first</button>
 <button class="quiz-option" data-opt="b">B) Feature-first</button>
 <button class="quiz-option" data-opt="c">C) Flat</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué componente solo recibe props y renderiza UI?</p>
-<button class="quiz-option" data-opt="a">A) Componente de presentación</button>
-<button class="quiz-option" data-opt="b">B) Componente contenedor</button>
-<button class="quiz-option" data-opt="c">C) Componente de orden superior</button>
+<p><strong>2.</strong> Which component only receives props and renders UI?</p>
+<button class="quiz-option" data-opt="a">A) Presentational component</button>
+<button class="quiz-option" data-opt="b">B) Container component</button>
+<button class="quiz-option" data-opt="c">C) Higher-order component</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué herramienta es ideal para estado del servidor?</p>
+<p><strong>3.</strong> Which tool is ideal for server state?</p>
 <button class="quiz-option" data-opt="a">A) Redux</button>
 <button class="quiz-option" data-opt="b">B) Context API</button>
 <button class="quiz-option" data-opt="c">C) TanStack Query</button>
@@ -5396,35 +5396,35 @@
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2018%3A%20Arquitectura%20frontend&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2018%3A%20Arquitectura%20frontend%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/18-arquitectura/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2018%3A%20Frontend%20Architecture&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2018%3A%20Frontend%20Architecture%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F18-arquitectura%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/18-arquitectura/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="has-terminado-el-nivel-avanzado">🏆 ¡Has terminado el Nivel Avanzado!<a class="headerlink" href="#has-terminado-el-nivel-avanzado" title="Permanent link">¶</a></h2>
-<p>Si has llegado hasta aquí, ya sabes:</p>
+<h2 id="you-finished-the-advanced-level">🏆 You Finished the Advanced Level!<a class="headerlink" href="#you-finished-the-advanced-level" title="Permanent link">¶</a></h2>
+<p>If you made it this far, you already know:</p>
 <ul>
-<li>CSS moderno: variables, container queries, :has()</li>
-<li>JavaScript asíncrono: promesas, async/await, event loop</li>
-<li>Módulos y bundlers: Vite, Webpack, esbuild</li>
-<li>Accesibilidad web: WCAG, ARIA, teclado</li>
-<li>TypeScript: tipos, interfaces, genéricos</li>
+<li>Modern CSS: variables, container queries, :has()</li>
+<li>Asynchronous JavaScript: promises, async/await, event loop</li>
+<li>Modules and bundlers: Vite, Webpack, esbuild</li>
+<li>Web accessibility: WCAG, ARIA, keyboard</li>
+<li>TypeScript: types, interfaces, generics</li>
 <li>Testing: Vitest, Testing Library, Playwright</li>
-<li>Rendimiento web: Core Web Vitals, lazy loading, optimización</li>
-<li>Arquitectura frontend: estructura, patrones, estado</li>
+<li>Web performance: Core Web Vitals, lazy loading, optimization</li>
+<li>Frontend architecture: structure, patterns, state</li>
 </ul>
 <div class="admonition quote">
-<p class="admonition-title">Enhorabuena</p>
-<p>Has pasado de saber HTML, CSS y JS a dominar el ecosistema frontend moderno. Ahora toca el <strong>Nivel Profesional</strong>: Full-stack con Node.js y DevOps.</p>
+<p class="admonition-title">Congratulations</p>
+<p>You went from knowing HTML, CSS, and JS to mastering the modern frontend ecosystem. Now comes the <strong>Professional Level</strong>: Full-stack with Node.js and DevOps.</p>
 </div>
 <hr>
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="../19-fullstack-node/">Ir al Capítulo 19 — Full-stack con Node.js</a>
-<a class="md-button" href="../../">Volver al índice</a></p></div>
+<h2 id="next-step">➡ Next Step<a class="headerlink" href="#next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="../19-fullstack-node/">Go to Chapter 19 — Full-stack con Node.js</a>
+<a class="md-button" href="../../">Back to index</a></p></div>
 
 
 
