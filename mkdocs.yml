@@ -253,6 +253,7 @@ extra_javascript:
   - javascripts/command-palette.js
   - javascripts/reading-progress.js
   - javascripts/theme-toggle.js
+  - javascripts/logros-page.js
 
 extra:
   generator: false
