@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 08 del Libro del Desarrollador Web: 08 — Consumo de APIs con fetch. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 08 of the Web Developer's Book: 08 — Consuming APIs with fetch. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 08 del Libro del Desarrollador Web: 08 — Consumo de APIs con fetch. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 08 of the Web Developer's Book: 08 — Consuming APIs with fetch. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/08-apis/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="08 — Consumo de APIs con fetch - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 08 del Libro del Desarrollador Web: 08 — Consumo de APIs con fetch. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 08 of the Web Developer's Book: 08 — Consuming APIs with fetch. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/08-apis.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/08-apis/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="08 — Consumo de APIs con fetch - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 08 del Libro del Desarrollador Web: 08 — Consumo de APIs con fetch. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 08 of the Web Developer's Book: 08 — Consuming APIs with fetch. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/08-apis.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#08-consumo-de-apis-con-fetch" class="md-skip">
+        <a href="#08-consuming-apis-with-fetch" class="md-skip">
           Skip to content
         </a>
       
@@ -1165,10 +1165,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-una-api" class="md-nav__link">
+  <a href="#what-is-an-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔌 ¿Qué es una API?
+        🔌 What is an API?
       
     </span>
   </a>
@@ -1176,10 +1176,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#anatomia-de-una-peticion-http" class="md-nav__link">
+  <a href="#anatomy-of-an-http" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🌐 Anatomía de una petición HTTP
+        🌐 Anatomy of an HTTP
       
     </span>
   </a>
@@ -1187,10 +1187,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fetch-basico" class="md-nav__link">
+  <a href="#basic-fetch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📡 Fetch básico
+        📡 Basic fetch
       
     </span>
   </a>
@@ -1209,10 +1209,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enviar-datos-post" class="md-nav__link">
+  <a href="#sending-data-post" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📤 Enviar datos (POST)
+        📤 Sending Data (POST)
       
     </span>
   </a>
@@ -1220,10 +1220,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#autenticacion-con-tokens" class="md-nav__link">
+  <a href="#token-authentication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔑 Autenticación con tokens
+        🔑 Token Authentication
       
     </span>
   </a>
@@ -1231,10 +1231,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#peticiones-en-paralelo" class="md-nav__link">
+  <a href="#parallel-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔄 Peticiones en paralelo
+        🔄 Parallel Requests
       
     </span>
   </a>
@@ -1242,10 +1242,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#manejo-de-errores" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚨 Manejo de errores
+        🚨 Error Handling
       
     </span>
   </a>
@@ -1253,10 +1253,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -1264,10 +1264,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -1275,10 +1275,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#siguiente-paso" class="md-nav__link">
+  <a href="#next-step" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ➡️ Siguiente paso
+        ➡ Next Step
       
     </span>
   </a>
@@ -5134,26 +5134,26 @@
   
 
 
-<div><h1 id="08-consumo-de-apis-con-fetch">08 — Consumo de APIs con fetch<a class="headerlink" href="#08-consumo-de-apis-con-fetch" title="Permanent link">¶</a></h1>
+<div><h1 id="08-consuming-apis-with-fetch">08 — Consuming APIs with fetch<a class="headerlink" href="#08-consuming-apis-with-fetch" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es una API y para qué sirve.</li>
-<li>Cómo hacer peticiones HTTP con fetch.</li>
-<li>Manejar respuestas JSON.</li>
-<li>async/await y manejo de errores.</li>
-<li>Buenas prácticas al consumir APIs.</li>
+<li>What an API is and what it is used for.</li>
+<li>How to make HTTP requests with fetch.</li>
+<li>Handling JSON responses.</li>
+<li>async/await and error handling.</li>
+<li>Best practices when consuming APIs.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-una-api">🔌 ¿Qué es una API?<a class="headerlink" href="#que-es-una-api" title="Permanent link">¶</a></h2>
-<p>Una <strong>API</strong> (<em>Application Programming Interface</em>) es un conjunto de reglas que permite que dos programas se comuniquen. En desarrollo web, casi siempre se refiere a una <strong>API REST</strong> que devuelve datos en formato <strong>JSON</strong>.</p>
+<h2 id="what-is-an-api">🔌 What is an API?<a class="headerlink" href="#what-is-an-api" title="Permanent link">¶</a></h2>
+<p>An <strong>API</strong> (<em>Application Programming Interface</em>) is a set of rules that allows two programs to communicate. In web development, it almost always refers to a <strong>REST API</strong> that returns data in <strong>JSON</strong> format.</p>
 <div class="admonition quote">
-<p class="admonition-title">Una API es como un camarero</p>
-<p>Tú (el cliente) pides algo del menú (la petición). El camarero (la API) va a la cocina (el servidor), recoge tu pedido y te lo trae (la respuesta). No necesitas saber cómo funciona la cocina.</p>
+<p class="admonition-title">An API is like a waiter</p>
+<p>You (the client) order something from the menu (the request). The waiter (the API) goes to the kitchen (the server), picks up your order, and brings it to you (the response). You don't need to know how the kitchen works.</p>
 </div>
 <hr>
-<h2 id="anatomia-de-una-peticion-http">🌐 Anatomía de una petición HTTP<a class="headerlink" href="#anatomia-de-una-peticion-http" title="Permanent link">¶</a></h2>
+<h2 id="anatomy-of-an-http">🌐 Anatomy of an HTTP<a class="headerlink" href="#anatomy-of-an-http" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>GET https://api.ejemplo.com/usuarios?limit=10
 Headers:
   Authorization: Bearer token123
@@ -5162,34 +5162,34 @@ Headers:
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Verbo</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Verb</th>
+<th style="text-align: left;">Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">`GET`</td>
-<td style="text-align: left;">Obtener datos</td>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;">Fetch data</td>
 </tr>
 <tr>
-<td style="text-align: left;">`POST`</td>
-<td style="text-align: left;">Crear un recurso</td>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;">Create a resource</td>
 </tr>
 <tr>
-<td style="text-align: left;">`PUT` / `PATCH`</td>
-<td style="text-align: left;">Actualizar un recurso</td>
+<td style="text-align: left;"><code>PUT</code> / <code>PATCH</code></td>
+<td style="text-align: left;">Update a resource</td>
 </tr>
 <tr>
-<td style="text-align: left;">`DELETE`</td>
-<td style="text-align: left;">Eliminar un recurso</td>
+<td style="text-align: left;"><code>DELETE</code></td>
+<td style="text-align: left;">Delete a resource</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Código</th>
-<th style="text-align: left;">Significado</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Meaning</th>
 </tr>
 </thead>
 <tbody>
@@ -5199,62 +5199,62 @@ Headers:
 </tr>
 <tr>
 <td style="text-align: left;">201</td>
-<td style="text-align: left;">Creado</td>
+<td style="text-align: left;">Created</td>
 </tr>
 <tr>
 <td style="text-align: left;">400</td>
-<td style="text-align: left;">Petición incorrecta</td>
+<td style="text-align: left;">Bad Request</td>
 </tr>
 <tr>
 <td style="text-align: left;">401</td>
-<td style="text-align: left;">No autorizado</td>
+<td style="text-align: left;">Unauthorized</td>
 </tr>
 <tr>
 <td style="text-align: left;">403</td>
-<td style="text-align: left;">Prohibido</td>
+<td style="text-align: left;">Forbidden</td>
 </tr>
 <tr>
 <td style="text-align: left;">404</td>
-<td style="text-align: left;">No encontrado</td>
+<td style="text-align: left;">Not Found</td>
 </tr>
 <tr>
 <td style="text-align: left;">500</td>
-<td style="text-align: left;">Error del servidor</td>
+<td style="text-align: left;">Internal Server Error</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="fetch-basico">📡 Fetch básico<a class="headerlink" href="#fetch-basico" title="Permanent link">¶</a></h2>
+<h2 id="basic-fetch">📡 Basic fetch<a class="headerlink" href="#basic-fetch" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'HTTP Error '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">fetch no falla en errores HTTP</p>
-<p>`fetch` solo rechaza la promesa si hay un error <strong>de red</strong>. Si el servidor devuelve un 404 o un 500, la promesa se resuelve igual. Por eso hay que comprobar `res.ok` manualmente.</p>
+<p class="admonition-title">fetch does not reject on HTTP errors</p>
+<p><code>fetch</code> only rejects the promise if there is a <strong>network</strong> error. If the server returns 404 or 500, the promise still resolves. That's why you must check <code>res.ok</code> manually.</p>
 </div>
 <hr>
 <h2 id="asyncawait">⚡ async/await<a class="headerlink" href="#asyncawait" title="Permanent link">¶</a></h2>
-<p>La forma moderna y más legible:</p>
+<p>The modern and more readable way:</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarUsuarios</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'HTTP Error '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Algo salió mal:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Something went wrong:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nx">cargarUsuarios</span><span class="p">();</span>
 </code></pre></div>
 <hr>
-<h2 id="enviar-datos-post">📤 Enviar datos (POST)<a class="headerlink" href="#enviar-datos-post" title="Permanent link">¶</a></h2>
+<h2 id="sending-data-post">📤 Sending Data (POST)<a class="headerlink" href="#sending-data-post" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">crearUsuario</span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/usuarios'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
@@ -5264,16 +5264,16 @@ Headers:
 <span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">usuario</span><span class="p">),</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error al crear usuario'</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Failed to create user'</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="nx">crearUsuario</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'ana@ejemplo.com'</span><span class="w"> </span><span class="p">})</span>
-<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Creado:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Created:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
 </code></pre></div>
 <hr>
-<h2 id="autenticacion-con-tokens">🔑 Autenticación con tokens<a class="headerlink" href="#autenticacion-con-tokens" title="Permanent link">¶</a></h2>
+<h2 id="token-authentication">🔑 Token Authentication<a class="headerlink" href="#token-authentication" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.ejemplo.com/perfil'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="s1">'Authorization'</span><span class="o">:</span><span class="w"> </span><span class="s1">'Bearer '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span>
@@ -5281,33 +5281,33 @@ Headers:
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Nunca guardes tokens en el código</p>
-<p>Los tokens van en variables de entorno o en `localStorage` (con cuidado). <strong>Nunca</strong> en el código fuente que subes a GitHub.</p>
+<p class="admonition-title">Never store tokens in source code</p>
+<p>Tokens belong in environment variables or in <code>localStorage</code> (with care). <strong>Never</strong> in the source code you push to GitHub.</p>
 </div>
 <hr>
-<h2 id="peticiones-en-paralelo">🔄 Peticiones en paralelo<a class="headerlink" href="#peticiones-en-paralelo" title="Permanent link">¶</a></h2>
+<h2 id="parallel-requests">🔄 Parallel Requests<a class="headerlink" href="#parallel-requests" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">usuarios</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="p">]);</span>
 </code></pre></div>
-<p>`Promise.all` espera a que <strong>todas</strong> terminen. Si una falla, todo falla.</p>
+<p><code>Promise.all</code> waits for <strong>all</strong> promises to settle. If one fails, the whole thing fails.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">([</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/a'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/b'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="p">]);</span>
-<span class="c1">// resultados[0].status === 'fulfilled' o 'rejected'</span>
+<span class="c1">// resultados[0].status === 'fulfilled' or 'rejected'</span>
 </code></pre></div>
-<p>`Promise.allSettled` espera a todas, pero <strong>no falla</strong> si alguna falla.</p>
+<p><code>Promise.allSettled</code> waits for all of them, but <strong>does not fail</strong> if any one rejects.</p>
 <hr>
-<h2 id="manejo-de-errores">🚨 Manejo de errores<a class="headerlink" href="#manejo-de-errores" title="Permanent link">¶</a></h2>
+<h2 id="error-handling">🚨 Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/datos'</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No autorizado'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'No encontrado'</span><span class="p">);</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Error HTTP '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Unauthorized'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Not found'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'HTTP Error '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -5317,22 +5317,22 @@ Headers:
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-8">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué verbo HTTP se usa para obtener datos?</p>
+<p><strong>1.</strong> Which HTTP verb is used to fetch data?</p>
 <button class="quiz-option" data-opt="a">A) POST</button>
 <button class="quiz-option" data-opt="b">B) GET</button>
 <button class="quiz-option" data-opt="c">C) DELETE</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué hay que comprobar después de un fetch para saber si hubo error HTTP?</p>
+<p><strong>2.</strong> What must you check after a fetch to know if an HTTP error occurred?</p>
 <button class="quiz-option" data-opt="a">A) res.ok</button>
 <button class="quiz-option" data-opt="b">B) res.error</button>
 <button class="quiz-option" data-opt="c">C) res.status === 0</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué método espera a que todas las promesas terminen?</p>
+<p><strong>3.</strong> Which method waits for all promises to complete?</p>
 <button class="quiz-option" data-opt="a">A) Promise.race</button>
 <button class="quiz-option" data-opt="b">B) Promise.any</button>
 <button class="quiz-option" data-opt="c">C) Promise.all</button>
@@ -5340,18 +5340,18 @@ Headers:
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%208%3A%20Consumo%20de%20APIs%20con%20fetch&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%208%3A%20Consumo%20de%20APIs%20con%20fetch%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F08-apis%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/08-apis/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="[https://twitter.com/intent/tweet?text=Chapter%208%3A%20Consuming%20APIs%20with%20fetch&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F](https://twitter.com/intent/tweet?text=Chapter%208%3A%20Consuming%20APIs%20with%20fetch&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F)" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="[https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F)" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="[https://wa.me/?text=Chapter%208%3A%20Consuming%20APIs%20with%20fetch%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F](https://wa.me/?text=Chapter%208%3A%20Consuming%20APIs%20with%20fetch%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F08-apis%2F)" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="[https://libro.urukais.com/en/capitulos/08-apis/](https://libro.urukais.com/en/capitulos/08-apis/)" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="../09-despliegue/">Ir al Capítulo 9 — Despliegue y hosting</a>
-<a class="md-button" href="../../">Volver al índice</a></p></div>
+<h2 id="next-step">➡ Next Step<a class="headerlink" href="#next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="../09-despliegue/">Go to Chapter 9 — Despliegue y hosting</a>
+<a class="md-button" href="../../">Back to index</a></p></div>
 
 
 
