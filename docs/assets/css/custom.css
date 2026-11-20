@@ -241,21 +241,6 @@ body {
   perspective: 1000px;
 }
 
-.book-cover-img {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: var(--uru-shadow-lg);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-}
-
-.book-cover-img:hover {
-  transform: translateY(-12px) rotateY(-5deg) scale(1.05);
-  box-shadow: 0 30px 80px rgba(106, 90, 205, 0.5);
-  cursor: pointer;
-}
-
 /* ============================================
 7. HERO (por si lo usas en otras páginas)
    ============================================ */
@@ -397,51 +382,14 @@ body {
   height: 3px;
   width: 0%;
   background: var(--uru-gradient);
-  z-index: 99999;
+  z-index: 100000;
   transition: width 100ms ease-out;
   box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
   pointer-events: none;
 }
 
-/* ============================================
-9. BOTONES ANTERIOR / SIGUIENTE
-   ============================================ */
-.md-footer__inner {
-  max-width: 100%;
-  padding: 1.5rem 0;
-}
 
-.md-footer__link {
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s ease;
-  max-width: 48%;
-}
 
-.md-footer__link:hover {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(34, 211, 238, 0.2));
-  border-color: #a78bfa;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.3);
-}
-
-.md-footer__direction {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: #a78bfa;
-}
-
-.md-footer__title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #e2e8f0;
-}
-
-/* ============================================
 /* ============================================
 10. SIDEBAR Y FOOTER
    ============================================ */
@@ -1314,133 +1262,6 @@ body {
   opacity: 0.6;
 }
 
-/* ============================================
-19. LOGROS Y PROGRESO
-   ============================================ */
-.logros-progreso {
-  padding: 1.5rem;
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 12px;
-  margin: 1.5rem 0;
-}
-
-.logros-progreso__bar {
-  width: 100%;
-  height: 14px;
-  background: var(--md-default-fg-color--lightest);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.logros-progreso__fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
-  border-radius: 999px;
-  transition: width 0.5s ease;
-}
-
-.logros-progreso__stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  text-align: center;
-}
-
-.logros-progreso__stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.logros-progreso__num {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--md-primary-fg-color);
-}
-
-.logros-progreso__label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--md-default-fg-color--light);
-}
-
-.logros-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.85rem;
-  margin: 1rem 0 2rem;
-}
-
-.logro-card {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 1rem;
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 10px;
-  opacity: 0.65;
-  transition: all 0.2s;
-}
-
-.logro-card--unlocked {
-  opacity: 1;
-  border-color: var(--md-primary-fg-color);
-  background: color-mix(in srgb, var(--md-primary-fg-color) 6%, var(--md-default-bg-color));
-  box-shadow: 0 4px 16px rgba(106, 90, 205, 0.15);
-}
-
-.logro-card__icon {
-  font-size: 2rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.logro-card__info {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.logro-card__info h3 {
-  margin: 0 0 0.15rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--md-default-fg-color);
-}
-
-.logro-card__info p {
-  margin: 0;
-  font-size: 0.72rem;
-  color: var(--md-default-fg-color--light);
-  line-height: 1.4;
-}
-
-.logro-card__recompensa {
-  display: inline-block;
-  margin-top: 0.35rem;
-  padding: 0.1rem 0.45rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--md-primary-fg-color);
-  background: color-mix(in srgb, var(--md-primary-fg-color) 15%, transparent);
-  border-radius: 999px;
-}
-
-.logro-card__estado {
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-.logros-acciones {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1.5rem 0;
-}
-
 .md-button--danger {
   background: #dc3545;
   color: #fff;
@@ -2108,13 +1929,6 @@ label.md-header__button[for="__drawer"] {
   box-shadow: 0 12px 28px rgba(106, 90, 205, 0.32) !important;
 }
 
-/* Barra de progreso de lectura por encima del header */
-.reading-progress {
-  top: 0;
-  height: 3px;
-  z-index: 100000;
-}
-
 /* ============================================
    INSIGNIA DE VERSIÓN EN .uru-footer
    ============================================ */
@@ -2220,7 +2034,8 @@ label.md-header__button[for="__drawer"] {
   transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
-.logro-card.is-unlocked {
+.logro-card.is-unlocked,
+.logro-card--unlocked {
   opacity: 1;
   border-color: #22d3ee;
   box-shadow: 0 8px 22px rgba(34, 211, 238, 0.14);
