@@ -10671,38 +10671,38 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <hr>
 <h2 id="en-capitulos-11-css-moderno-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-11-css-moderno-siguiente-paso" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-capitulos-12-javascript-asincrono">Ir al Capítulo 12 — JavaScript asíncrono</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-12-javascript-asincrono" heading-number="2.4.2"><div><h1 id="12-javascript-asincrono">12 — JavaScript asíncrono<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-12-javascript-asincrono" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-12-javascript-asincrono" heading-number="2.4.2"><div><h1 id="12-asynchronous-javascript">12 — Asynchronous JavaScript<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-12-asynchronous-javascript" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Por qué existe la asincronía en JavaScript.</li>
-<li>Callbacks, promesas y async/await.</li>
-<li>El event loop en profundidad.</li>
-<li>Manejo de errores asíncronos.</li>
-<li>Patrones: Promise.all, Promise.race, Promise.allSettled.</li>
+<li>Why asynchrony exists in JavaScript.</li>
+<li>Callbacks, promises, and async/await.</li>
+<li>The event loop in depth.</li>
+<li>Asynchronous error handling.</li>
+<li>Patterns: Promise.all, Promise.race, Promise.allSettled.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-por-que-asincronia">⏳ ¿Por qué asincronía?<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-por-que-asincronia" title="Permanent link">¶</a></h2>
-<p>JavaScript es <strong>de un solo hilo</strong>: solo puede ejecutar una cosa a la vez. Si una operación tarda (una petición HTTP, leer un archivo, un temporizador), bloquearía todo. La asincronía permite <strong>no bloquear</strong> mientras se espera.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Síncrono: bloquea</span>
+<h2 id="en-capitulos-12-javascript-asincrono-why-asynchrony">⏳ Why Asynchrony?<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-why-asynchrony" title="Permanent link">¶</a></h2>
+<p>JavaScript is <strong>single-threaded</strong>: it can only execute one thing at a time. If an operation takes time (an HTTP request, reading a file, a timer), it would block everything. Asynchrony lets you <strong>avoid blocking</strong> while waiting.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Synchronous: blocks</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3'</span><span class="p">);</span>
-<span class="c1">// Salida: 1, 2, 3</span>
+<span class="c1">// Output: 1, 2, 3</span>
 
-<span class="c1">// Asíncrono: no bloquea</span>
+<span class="c1">// Asynchronous: non-blocking</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
 <span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3'</span><span class="p">);</span>
-<span class="c1">// Salida: 1, 3, 2</span>
+<span class="c1">// Output: 1, 3, 2</span>
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">JavaScript no espera a nadie</p>
-<p>Cuando una operación asíncrona empieza, JavaScript sigue ejecutando el resto del código. La operación termina más tarde y su resultado se maneja con callbacks, promesas o async/await.</p>
+<p class="admonition-title">JavaScript waits for no one</p>
+<p>When an asynchronous operation starts, JavaScript keeps running the rest of the code. The operation finishes later and its result is handled with callbacks, promises, or async/await.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-callbacks-la-forma-antigua">🕰️ Callbacks (la forma antigua)<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-callbacks-la-forma-antigua" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-callbacks-the-old-way">🕰 Callbacks (The Old Way)<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-callbacks-the-old-way" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">callback</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="w"> </span><span class="p">});</span>
@@ -10713,7 +10713,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">datos</span><span class="p">);</span><span class="w"> </span><span class="c1">// { nombre: 'Ana' }</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="en-capitulos-12-javascript-asincrono-el-problema-callback-hell">El problema: callback hell<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-el-problema-callback-hell" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-12-javascript-asincrono-the-problem-callback-hell">The Problem: Callback Hell<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-the-problem-callback-hell" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">cargarUsuario</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">cargarPosts</span><span class="p">(</span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">posts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">cargarComentarios</span><span class="p">(</span><span class="nx">posts</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">comentarios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -10722,14 +10722,14 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Esto es difícil de leer y de manejar errores. Por eso nacieron las promesas.</p>
+<p>This is hard to read and hard to handle errors in. That is why promises were created.</p>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-promesas">🤝 Promesas<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promesas" title="Permanent link">¶</a></h2>
-<p>Una <strong>promesa</strong> representa un valor que estará disponible en el futuro. Tiene tres estados:</p>
+<h2 id="en-capitulos-12-javascript-asincrono-promises">🤝 Promises<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promises" title="Permanent link">¶</a></h2>
+<p>A <strong>promise</strong> represents a value that will be available in the future. It has three states:</p>
 <ul>
-<li><strong>Pending</strong>: pendiente.</li>
-<li><strong>Fulfilled</strong>: resuelta con un valor.</li>
-<li><strong>Rejected</strong>: rechazada con un error.</li>
+<li><strong>Pending</strong>: still in progress.</li>
+<li><strong>Fulfilled</strong>: resolved with a value.</li>
+<li><strong>Rejected</strong>: rejected with an error.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">promesa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">exito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
@@ -10741,7 +10741,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">valor</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">valor</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
 </code></pre></div>
-<h3 id="en-capitulos-12-javascript-asincrono-encadenar-promesas">Encadenar promesas<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-encadenar-promesas" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-12-javascript-asincrono-chaining-promises">Chaining Promises<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-chaining-promises" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuario'</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">usuario</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts/'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span>
@@ -10749,10 +10749,10 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">posts</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
 </code></pre></div>
-<p>Mucho más legible que los callbacks anidados.</p>
+<p>Much easier to read than nested callbacks.</p>
 <hr>
 <h2 id="en-capitulos-12-javascript-asincrono-asyncawait">⚡ async/await<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-asyncawait" title="Permanent link">¶</a></h2>
-<p>La forma moderna, <strong>azúcar sintáctico sobre promesas</strong>:</p>
+<p>The modern way, <strong>syntactic sugar over promises</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuario'</span><span class="p">);</span>
@@ -10766,15 +10766,15 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>`async` marca la función como asíncrona (siempre devuelve una promesa).</li>
-<li>`await` pausa la ejecución hasta que la promesa se resuelva.</li>
+<li><code>async</code> marks the function as asynchronous (it always returns a promise).</li>
+<li><code>await</code> pauses execution until the promise resolves.</li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">async/await no bloquea</p>
-<p>Aunque parezca que `await` bloquea, no lo hace: solo pausa <strong>esa función</strong>. El resto del programa sigue ejecutándose.</p>
+<p class="admonition-title">async/await does not block</p>
+<p>Even though <code>await</code> looks like it blocks, it doesn't: it only pauses <strong>that function</strong>. The rest of the program keeps running.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-el-event-loop-en-profundidad">🧠 El event loop en profundidad<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-el-event-loop-en-profundidad" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-the-event-loop-in-depth">🧠 The Event Loop in Depth<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-the-event-loop-in-depth" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
 
 <span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
@@ -10783,55 +10783,55 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4'</span><span class="p">);</span>
 
-<span class="c1">// Salida: 1, 4, 3, 2</span>
+<span class="c1">// Output: 1, 4, 3, 2</span>
 </code></pre></div>
-<h3 id="en-capitulos-12-javascript-asincrono-por-que-este-orden">¿Por qué este orden?<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-por-que-este-orden" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-12-javascript-asincrono-why-this-order">Why This Order?<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-why-this-order" title="Permanent link">¶</a></h3>
 <ol>
-<li><strong>1</strong> y <strong>4</strong> son síncronos → se ejecutan primero.</li>
-<li><strong>3</strong> es una microtarea (promesa) → se ejecuta antes que las macrotareas.</li>
-<li><strong>2</strong> es una macrotarea (`setTimeout`) → se ejecuta al final.</li>
+<li><strong>1</strong> and <strong>4</strong> are synchronous → they run first.</li>
+<li><strong>3</strong> is a microtask (promise) → it runs before macrotasks.</li>
+<li><strong>2</strong> is a macrotask (<code>setTimeout</code>) → it runs at the end.</li>
 </ol>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Ejemplos</th>
-<th style="text-align: left;">Prioridad</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Examples</th>
+<th style="text-align: left;">Priority</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Call stack</strong></td>
-<td style="text-align: left;">Código síncrono</td>
+<td style="text-align: left;">Synchronous code</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Microtareas</strong></td>
-<td style="text-align: left;">Promesas, `queueMicrotask`</td>
+<td style="text-align: left;"><strong>Microtasks</strong></td>
+<td style="text-align: left;">Promises, <code>queueMicrotask</code></td>
 <td style="text-align: left;">2</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Macrotareas</strong></td>
-<td style="text-align: left;">`setTimeout`, `setInterval`, eventos</td>
+<td style="text-align: left;"><strong>Macrotasks</strong></td>
+<td style="text-align: left;"><code>setTimeout</code>, <code>setInterval</code>, events</td>
 <td style="text-align: left;">3</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition quote">
-<p class="admonition-title">El event loop en una frase</p>
-<p>El event loop vacía la pila, luego todas las microtareas, luego una macrotarea. Y vuelve a empezar.</p>
+<p class="admonition-title">The event loop in one sentence</p>
+<p>The event loop drains the call stack, then all microtasks, then one macrotask. And repeats.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-patrones-de-promesas">🎯 Patrones de promesas<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-patrones-de-promesas" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-promise-patterns">🎯 Promise Patterns<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promise-patterns" title="Permanent link">¶</a></h2>
 <h3 id="en-capitulos-12-javascript-asincrono-promiseall">Promise.all<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promiseall" title="Permanent link">¶</a></h3>
-<p>Espera a que <strong>todas</strong> se resuelvan. Si una falla, todo falla.</p>
+<p>Waits for <strong>all</strong> promises to resolve. If one fails, everything fails.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">usuarios</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/usuarios'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()),</span>
 <span class="p">]);</span>
 </code></pre></div>
 <h3 id="en-capitulos-12-javascript-asincrono-promiseallsettled">Promise.allSettled<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promiseallsettled" title="Permanent link">¶</a></h3>
-<p>Espera a todas, <strong>aunque algunas fallen</strong>. Devuelve un array con `status` y `value`/`reason`.</p>
+<p>Waits for all promises, <strong>even if some fail</strong>. Returns an array with <code>status</code> and <code>value</code>/<code>reason</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">p3</span><span class="p">]);</span>
 <span class="nx">resultados</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'fulfilled'</span><span class="p">)</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'OK:'</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
@@ -10839,18 +10839,18 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">});</span>
 </code></pre></div>
 <h3 id="en-capitulos-12-javascript-asincrono-promiserace">Promise.race<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promiserace" title="Permanent link">¶</a></h3>
-<p>Devuelve la <strong>primera</strong> que se resuelva o rechace.</p>
+<p>Returns the <strong>first</strong> promise to settle (resolve or reject).</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span>
 <span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/a'</span><span class="p">),</span>
 <span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'Timeout'</span><span class="p">)),</span><span class="w"> </span><span class="mf">5000</span><span class="p">)),</span>
 <span class="p">]);</span>
 </code></pre></div>
 <h3 id="en-capitulos-12-javascript-asincrono-promiseany">Promise.any<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-promiseany" title="Permanent link">¶</a></h3>
-<p>Devuelve la <strong>primera que se resuelva con éxito</strong>. Si todas fallan, rechaza.</p>
+<p>Returns the <strong>first promise that fulfills</strong>. If all reject, it rejects.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">primero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">p3</span><span class="p">]);</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-manejo-de-errores">🚨 Manejo de errores<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-manejo-de-errores" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-error-handling">🚨 Error Handling<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-error-handling" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/datos'</span><span class="p">);</span>
@@ -10865,45 +10865,45 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">No olvides el catch</p>
-<p>Si no capturas los errores de una promesa, se convierten en <strong>unhandled rejections</strong> y pueden romper la app. Siempre añade `.catch()` o `try/catch`.</p>
+<p class="admonition-title">Don't forget catch</p>
+<p>If you don't catch promise errors, they become <strong>unhandled rejections</strong> and can crash the app. Always add <code>.catch()</code> or <code>try/catch</code>.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-12">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué palabra clave marca una función como asíncrona?</p>
+<p><strong>1.</strong> Which keyword marks a function as asynchronous?</p>
 <button class="quiz-option" data-opt="a">A) await</button>
 <button class="quiz-option" data-opt="b">B) async</button>
 <button class="quiz-option" data-opt="c">C) promise</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>2.</strong> ¿Qué método espera a que todas las promesas terminen, aunque algunas fallen?</p>
+<p><strong>2.</strong> Which method waits for all promises to finish, even if some fail?</p>
 <button class="quiz-option" data-opt="a">A) Promise.all</button>
 <button class="quiz-option" data-opt="b">B) Promise.race</button>
 <button class="quiz-option" data-opt="c">C) Promise.allSettled</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Qué se ejecuta primero: una promesa o un setTimeout?</p>
-<button class="quiz-option" data-opt="a">A) La promesa (microtarea)</button>
-<button class="quiz-option" data-opt="b">B) El setTimeout (macrotarea)</button>
-<button class="quiz-option" data-opt="c">C) Depende del navegador</button>
+<p><strong>3.</strong> What runs first: a promise or a setTimeout?</p>
+<button class="quiz-option" data-opt="a">A) The promise (microtask)</button>
+<button class="quiz-option" data-opt="b">B) The setTimeout (macrotask)</button>
+<button class="quiz-option" data-opt="c">C) It depends on the browser</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-12-javascript-asincrono-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2012%3A%20JavaScript%20as%C3%ADncrono&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2012%3A%20JavaScript%20as%C3%ADncrono%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/12-javascript-asincrono/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2012%3A%20Asynchronous%20JavaScript&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2012%3A%20Asynchronous%20JavaScript%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F12-javascript-asincrono%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/12-javascript-asincrono/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-12-javascript-asincrono-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-13-modulos-bundlers">Ir al Capítulo 13 — Módulos y bundlers</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-13-modulos-bundlers" heading-number="2.4.3"><div><h1 id="13-modulos-y-bundlers">13 — Módulos y Bundlers<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-13-modulos-y-bundlers" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-12-javascript-asincrono-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-13-modulos-bundlers">Go to Chapter 13 — Módulos y bundlers</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-13-modulos-bundlers" heading-number="2.4.3"><div><h1 id="13-modulos-y-bundlers">13 — Módulos y Bundlers<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-13-modulos-y-bundlers" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
