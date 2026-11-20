@@ -1,13 +1,14 @@
+{% set is_en = config.theme.language == 'en' %}
 <div class="md-copyright">
   <div class="md-copyright__highlight">
-    © 2026 Manuel Casimiro Carrasco — Urukais
+    © 2026-27  Manuel Casimiro Carrasco — Urukais
   </div>
   <div class="md-copyright__links">
     <a href="https://github.com/urukaisk-maker" target="_blank" rel="noopener">GitHub</a>
     ·
-    <a href="{{ base_url }}/contacto/">Contacto</a>
+    <a href="{{ 'contacto/' | url }}">{{ 'Contact' if is_en else 'Contacto' }}</a>
     ·
-    <a href="{{ base_url }}/autor/">Sobre el autor</a>
+    <a href="{{ 'autor/' | url }}">{{ 'About the author' if is_en else 'Sobre el autor' }}</a>
     ·
     <a href="https://plataforma-el-ni-o.vercel.app/" target="_blank" rel="noopener">🎮 El Niño</a>
   </div>

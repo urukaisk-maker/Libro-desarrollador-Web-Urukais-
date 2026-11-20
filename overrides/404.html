@@ -2,7 +2,8 @@
 
 {% block content %}
   {{ super() }}
+  {% set is_en = config.theme.language == 'en' %}
   <p style="text-align:center;margin-top:2rem;">
-    <a href="{{ base_url }}/">← Volver al inicio</a>
+    <a href="{{ nav.homepage.url | url }}">{{ '← Back to home' if is_en else '← Volver al inicio' }}</a>
   </p>
 {% endblock %}

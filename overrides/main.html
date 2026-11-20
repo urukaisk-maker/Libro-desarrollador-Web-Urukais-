@@ -35,35 +35,46 @@
 
 {% block content %}
   {{ super() }}
+  {% set is_en = config.theme.language == 'en' %}
 
   <div class="reading-progress" id="readingProgress"></div>
 
   <div id="commandPalette" class="command-palette-overlay">
     <div class="command-palette">
-      <input type="text" id="commandInput" class="command-input" placeholder="Escribe un comando o busca..." autocomplete="off">
+      <input type="text" id="commandInput" class="command-input" placeholder="{{ 'Type a command or search...' if is_en else 'Escribe un comando o busca...' }}" autocomplete="off">
       <ul id="commandList" class="command-list"></ul>
     </div>
   </div>
 
   <div class="newsletter-modal-overlay" id="newsletterModal">
     <div class="newsletter-modal">
-      <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
+      <button class="newsletter-modal__close" id="closeModal" aria-label="{{ 'Close' if is_en else 'Cerrar' }}">×</button>
       <div class="newsletter-modal__icon">📬</div>
-      <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
+      <h2 class="newsletter-modal__title">{{ 'Enjoying the book?' if is_en else '¿Te está gustando el libro?' }}</h2>
       <p class="newsletter-modal__text">
+        {% if is_en %}
+        Subscribe to the newsletter and get an email when new chapters, examples, or resources are published. No spam, unsubscribe anytime.
+        {% else %}
         Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+        {% endif %}
       </p>
       <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
-        Suscribirme gratis
+        {{ 'Subscribe for free' if is_en else 'Suscribirme gratis' }}
       </a>
-      <a href="#" class="newsletter-modal__skip" id="skipModal">No, gracias</a>
+      <a href="#" class="newsletter-modal__skip" id="skipModal">{{ 'No, thanks' if is_en else 'No, gracias' }}</a>
     </div>
   </div>
 
   <div id="cookieBanner" class="cookie-banner">
-    <p>🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.</p>
+    <p>
+      {% if is_en %}
+      🍪 This site uses cookies for analytics (Google Analytics) and comments (Giscus). By continuing to browse, you accept their use.
+      {% else %}
+      🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.
+      {% endif %}
+    </p>
     <div class="cookie-banner__actions">
-      <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
+      <button id="acceptCookies" class="cookie-banner__btn">{{ 'Accept' if is_en else 'Aceptar' }}</button>
     </div>
   </div>
 {% endblock %}
