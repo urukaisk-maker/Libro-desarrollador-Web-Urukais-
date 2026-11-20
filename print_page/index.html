@@ -29114,50 +29114,50 @@ Copy link
 </div>
 
 <hr>
-<p><strong>Última actualización:</strong> Octubre 2026 · <strong>Contacto de prensa:</strong> <a href="mailto:contacto@urukais.com">contacto@urukais.com</a></p></div></section><section class="print-page" id="en-contacto" heading-number="6.10"><div><h1 id="contacto">✉️ Contacto<a class="headerlink" href="#en-contacto-contacto" title="Permanent link">¶</a></h1>
+<p><strong>Última actualización:</strong> Octubre 2026 · <strong>Contacto de prensa:</strong> <a href="mailto:contacto@urukais.com">contacto@urukais.com</a></p></div></section><section class="print-page" id="en-contacto" heading-number="6.10"><div><h1 id="contact">✉ Contact<a class="headerlink" href="#en-contacto-contact" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Hablemos</p>
-<p>¿Tienes una duda, una sugerencia, una propuesta de colaboración o simplemente quieres decir hola? Aquí tienes todas las formas de contactar conmigo. Elige la que mejor se adapte a lo que necesitas.</p>
+<p class="admonition-title">Let's Talk</p>
+<p>Have a question, a suggestion, a collaboration idea, or just want to say hi? Here are all the ways to get in touch. Pick whichever works best for what you need.</p>
 </div>
 <hr>
-<h2 id="en-contacto-formulario-de-contacto">📬 Formulario de contacto<a class="headerlink" href="#en-contacto-formulario-de-contacto" title="Permanent link">¶</a></h2>
-<p>Rellena los campos y se abrirá tu aplicación o gestor de correo con el mensaje preparado para <code>urukaisk@gmail.com</code>.</p>
+<h2 id="en-contacto-contact-form">📬 Contact Form<a class="headerlink" href="#en-contacto-contact-form" title="Permanent link">¶</a></h2>
+<p>Fill out the fields below and your email app or client will open with the message pre-filled for <code>urukaisk@gmail.com</code>.</p>
 <form id="mailto-contact-form" class="contact-form">
   <div class="contact-field">
-    <label for="en-contacto-nombre">Nombre <span class="required">*</span></label>
-    <input type="text" id="en-contacto-nombre" name="en-contacto-nombre" required placeholder="Tu nombre">
+    <label for="en-contacto-nombre">Name <span class="required">*</span></label>
+    <input type="text" id="en-contacto-nombre" name="en-contacto-nombre" required placeholder="Your name">
   </div>
 
   <div class="contact-field">
-    <label for="en-contacto-email">Tu email <span class="required">*</span></label>
-    <input type="email" id="en-contacto-email" name="en-contacto-email" required placeholder="tu@email.com">
+    <label for="en-contacto-email">Your email <span class="required">*</span></label>
+    <input type="email" id="en-contacto-email" name="en-contacto-email" required placeholder="you@email.com">
   </div>
 
   <div class="contact-field">
-    <label for="en-contacto-asunto">Asunto <span class="required">*</span></label>
+    <label for="en-contacto-asunto">Subject <span class="required">*</span></label>
     <select id="asunto" name="asunto" required>
-      <option value="">— Selecciona un asunto —</option>
-      <option value="Duda sobre el contenido">Duda sobre el contenido</option>
-      <option value="Reportar un error">Reportar un error</option>
-      <option value="Sugerencia o mejora">Sugerencia o mejora</option>
-      <option value="Propuesta de colaboración">Propuesta de colaboración</option>
-      <option value="Prensa o medios">Prensa o medios</option>
-      <option value="Charla o taller">Charla o taller</option>
-      <option value="Otro">Otro</option>
+      <option value="">— Select a subject —</option>
+      <option value="Question about the content">Question about the content</option>
+      <option value="Report an issue">Report an issue</option>
+      <option value="Suggestion or improvement">Suggestion or improvement</option>
+      <option value="Collaboration proposal">Collaboration proposal</option>
+      <option value="Press or media">Press or media</option>
+      <option value="Talk or workshop">Talk or workshop</option>
+      <option value="Other">Other</option>
     </select>
   </div>
 
   <div class="contact-field">
-    <label for="en-contacto-mensaje">Mensaje <span class="required">*</span></label>
-    <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Cuéntame qué necesitas…"></textarea>
+    <label for="en-contacto-mensaje">Message <span class="required">*</span></label>
+    <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Tell me what you need…"></textarea>
   </div>
 
   <div class="contact-field contact-checkbox">
     <input type="checkbox" id="en-contacto-privacidad" name="en-contacto-privacidad" required>
-    <label for="en-contacto-privacidad">He leído y acepto la <a href="#en-contacto-index.md-licencia">política de privacidad</a>.</label>
+    <label for="en-contacto-privacidad">I have read and accept the <a href="#en-contacto-index.md-licencia">privacy policy</a>.</label>
   </div>
 
-  <button type="submit" class="md-button md-button--primary">✉️ Abrir en mi correo</button>
+  <button type="submit" class="md-button md-button--primary">✉ Open in my email client</button>
 </form>
 
 <script>
@@ -29173,12 +29173,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const asunto = document.getElementById("asunto").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
 
-    const subject = encodeURIComponent(`[Libro Web] ${asunto} — ${nombre}`);
+    const subject = encodeURIComponent(`[Web Dev Book] ${asunto} — ${nombre}`);
     const body = encodeURIComponent(
-      `Nombre: ${nombre}\n` +
-      `Email: ${email}\n` +
-      `Asunto: ${asunto}\n\n` +
-      `Mensaje:\n${mensaje}`
+      `Name: ${nombre}
+` +
+      `Email: ${email}
+` +
+      `Subject: ${asunto}
+
+` +
+      `Message:
+${mensaje}`
     );
 
     window.location.href = `mailto:urukaisk@gmail.com?subject=${subject}&body=${body}`;
@@ -29187,160 +29192,160 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <div class="admonition note">
-<p class="admonition-title">¿No se abre tu gestor de correo?</p>
-<p>Si no tienes un cliente de correo configurado o prefieres escribir directamente desde tu webmail, envía tu mensaje a <a href="mailto:urukaisk@gmail.com">urukaisk@gmail.com</a>.</p>
+<p class="admonition-title">Email client didn't open?</p>
+<p>If you don't have a desktop email client set up or prefer writing directly from webmail, send your message to <a href="mailto:urukaisk@gmail.com">urukaisk@gmail.com</a>.</p>
 </div>
 <hr>
-<h2 id="en-contacto-canales-directos">📮 Canales directos<a class="headerlink" href="#en-contacto-canales-directos" title="Permanent link">¶</a></h2>
-<p>Si prefieres contactar por otra vía, aquí tienes todos los canales disponibles:</p>
+<h2 id="en-contacto-direct-channels">📮 Direct Channels<a class="headerlink" href="#en-contacto-direct-channels" title="Permanent link">¶</a></h2>
+<p>If you prefer to reach out another way, here are all available channels:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Canal</th>
-<th style="text-align: left;">Uso recomendado</th>
-<th style="text-align: left;">Enlace</th>
+<th style="text-align: left;">Channel</th>
+<th style="text-align: left;">Recommended Use</th>
+<th style="text-align: left;">Link</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>📧 Email</strong></td>
-<td style="text-align: left;">Consultas generales, prensa y colaboraciones</td>
+<td style="text-align: left;">General inquiries, press, and collaborations</td>
 <td style="text-align: left;"><a href="mailto:urukaisk@gmail.com">urukaisk@gmail.com</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐛 GitHub Issues</strong></td>
-<td style="text-align: left;">Errores, erratas y sugerencias técnicas</td>
-<td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">Abrir issue</a></td>
+<td style="text-align: left;">Bugs, typos, and technical suggestions</td>
+<td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">Open an issue</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>💬 GitHub Discussions</strong></td>
-<td style="text-align: left;">Preguntas, debates e ideas</td>
-<td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">Ir a Discussions</a></td>
+<td style="text-align: left;">Questions, discussions, and ideas</td>
+<td style="text-align: left;"><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">Go to Discussions</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐦 Twitter / X</strong></td>
-<td style="text-align: left;">Menciones públicas y compartir contenido</td>
-<td style="text-align: left;"><a href="https://x.com/urukaisk">@urukaisk</a></td>
+<td style="text-align: left;">Public mentions and sharing content</td>
+<td style="text-align: left;"><a href="https://x.com/urukais">@urukaisk</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>💼 LinkedIn</strong></td>
-<td style="text-align: left;">Contacto profesional</td>
+<td style="text-align: left;">Professional contact</td>
 <td style="text-align: left;"><a href="https://www.linkedin.com/in/urukais/">Manuel Casimiro Carrasco</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>📰 Substack</strong></td>
-<td style="text-align: left;">Newsletter y novedades</td>
+<td style="text-align: left;">Newsletter and updates</td>
 <td style="text-align: left;"><a href="https://urukaisklick.substack.com">urukaisklick.substack.com</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>🐙 GitHub</strong></td>
-<td style="text-align: left;">Código y contribuciones</td>
+<td style="text-align: left;">Code and contributions</td>
 <td style="text-align: left;"><a href="https://github.com/urukaisk-maker">@urukaisk-maker</a></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="en-contacto-sobre-que-puedes-escribirme">🎯 ¿Sobre qué puedes escribirme?<a class="headerlink" href="#en-contacto-sobre-que-puedes-escribirme" title="Permanent link">¶</a></h2>
-<h3 id="en-contacto-si-escribeme-si">✅ Sí, escríbeme si…<a class="headerlink" href="#en-contacto-si-escribeme-si" title="Permanent link">¶</a></h3>
+<h2 id="en-contacto-what-can-you-write-about">🎯 What Can You Write About?<a class="headerlink" href="#en-contacto-what-can-you-write-about" title="Permanent link">¶</a></h2>
+<h3 id="en-contacto-yes-write-to-me-if">✅ Yes, write to me if…<a class="headerlink" href="#en-contacto-yes-write-to-me-if" title="Permanent link">¶</a></h3>
 <ul>
-<li>Tienes una <strong>duda sobre el contenido</strong> del libro.</li>
-<li>Has encontrado un <strong>error, errata o enlace roto</strong>.</li>
-<li>Quieres <strong>sugerir una mejora</strong> o un tema nuevo.</li>
-<li>Quieres <strong>proponer una colaboración</strong> (traducción, capítulo invitado, etc.).</li>
-<li>Eres <strong>prensa o medio</strong> y quieres hablar del proyecto.</li>
-<li>Quieres que dé una <strong>charla o taller</strong>.</li>
-<li>Has construido algo con el libro y quieres <strong>compartirlo</strong>.</li>
-<li>Simplemente quieres <strong>saludar</strong> o dar las gracias.</li>
+<li>You have a <strong>question about the book's content</strong>.</li>
+<li>You found a <strong>bug, typo, or broken link</strong>.</li>
+<li>You want to <strong>suggest an improvement</strong> or a new topic.</li>
+<li>You want to <strong>propose a collaboration</strong> (translation, guest chapter, etc.).</li>
+<li>You're <strong>press or media</strong> and want to cover the project.</li>
+<li>You'd like me to host a <strong>talk or workshop</strong>.</li>
+<li>You built something using the book and want to <strong>share it</strong>.</li>
+<li>You simply want to <strong>say hello</strong> or thank the project.</li>
 </ul>
-<h3 id="en-contacto-no-mejor-no-me-escribas-si">❌ No, mejor no me escribas si…<a class="headerlink" href="#en-contacto-no-mejor-no-me-escribas-si" title="Permanent link">¶</a></h3>
+<h3 id="en-contacto-no-please-dont-write-if">❌ No, please don't write if…<a class="headerlink" href="#en-contacto-no-please-dont-write-if" title="Permanent link">¶</a></h3>
 <ul>
-<li>Es un <strong>tema de soporte técnico personal</strong> (mi tiempo es limitado y para eso está Stack Overflow).</li>
-<li>Es para <strong>vender algo</strong> (servicios, productos, SEO, marketing…).</li>
-<li>Es <strong>spam</strong> o mensajes automáticos.</li>
-<li>Es para <strong>pedir que haga tu tarea</strong> (no hago deberes, pero puedo orientarte).</li>
+<li>It's for <strong>personal tech support</strong> (my time is limited and Stack Overflow is built for that).</li>
+<li>It's to <strong>pitch or sell</strong> something (services, products, SEO, marketing…).</li>
+<li>It's <strong>spam</strong> or automated messages.</li>
+<li>You're asking me to <strong>do your homework</strong> (I don't do assignments, though I can point you in the right direction).</li>
 </ul>
 <hr>
-<h2 id="en-contacto-tiempos-de-respuesta">⏱️ Tiempos de respuesta<a class="headerlink" href="#en-contacto-tiempos-de-respuesta" title="Permanent link">¶</a></h2>
-<p>Soy una persona, no una empresa. Estos son los tiempos orientativos:</p>
+<h2 id="en-contacto-response-times">⏱ Response Times<a class="headerlink" href="#en-contacto-response-times" title="Permanent link">¶</a></h2>
+<p>I'm one person, not a company. Here are rough response times:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Canal</th>
-<th style="text-align: left;">Tiempo de respuesta</th>
+<th style="text-align: left;">Channel</th>
+<th style="text-align: left;">Response Time</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>GitHub Issues</strong></td>
-<td style="text-align: left;">24–72 h (laborables)</td>
+<td style="text-align: left;">24–72 h (business days)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>GitHub Discussions</strong></td>
-<td style="text-align: left;">24–72 h (laborables)</td>
+<td style="text-align: left;">24–72 h (business days)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Email</strong></td>
-<td style="text-align: left;">2–5 días laborables</td>
+<td style="text-align: left;">2–5 business days</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Formulario</strong></td>
-<td style="text-align: left;">2–5 días laborables</td>
+<td style="text-align: left;"><strong>Form</strong></td>
+<td style="text-align: left;">2–5 business days</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Twitter / X</strong></td>
-<td style="text-align: left;">Variable (no lo reviso a diario)</td>
+<td style="text-align: left;">Variable (not checked daily)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>LinkedIn</strong></td>
-<td style="text-align: left;">3–7 días laborables</td>
+<td style="text-align: left;">3–7 business days</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">No garantizo respuesta inmediata</p>
-<p>El libro es un proyecto personal que mantengo en mi tiempo libre. Si necesito más tiempo del indicado para responderte, no significa que no me importe: significa que estoy ocupado con el trabajo, la vida o el propio libro.</p>
+<p class="admonition-title">No immediate reply guaranteed</p>
+<p>This book is a personal project I maintain in my free time. If it takes longer than listed to reply, it doesn't mean I don't care—it just means I'm busy with work, life, or the book itself.</p>
 </div>
 <hr>
-<h2 id="en-contacto-antes-de-escribirme-esta-tu-duda-en-la-faq">❓ Antes de escribirme: ¿está tu duda en la FAQ?<a class="headerlink" href="#en-contacto-antes-de-escribirme-esta-tu-duda-en-la-faq" title="Permanent link">¶</a></h2>
-<p>Muchas de las preguntas habituales ya tienen respuesta en la página de <a href="#en-faq">Preguntas frecuentes</a>. Antes de escribirme, échale un vistazo:</p>
+<h2 id="en-contacto-before-writing-is-your-question-in-the-faq">❓ Before Writing: Is Your Question in the FAQ?<a class="headerlink" href="#en-contacto-before-writing-is-your-question-in-the-faq" title="Permanent link">¶</a></h2>
+<p>Many common questions are already answered on the <a href="#en-faq">Frequently Asked Questions</a> page. Before messaging me, take a look:</p>
 <ul>
-<li><a href="#en-faq-sobre-el-proyecto">¿Es gratis? ¿Cómo se financia?</a></li>
-<li><a href="#en-faq-sobre-el-contenido">¿Para quién es el libro?</a></li>
-<li><a href="#en-faq-sobre-contribuir">¿Cómo contribuyo?</a></li>
-<li><a href="#en-faq-sobre-los-logros-y-el-certificado">¿Cómo obtengo el certificado?</a></li>
+<li><a href="#en-faq-about-the-project">Is it free? How is it funded?</a></li>
+<li><a href="#en-faq-about-the-content">Who is the book for?</a></li>
+<li><a href="#en-faq-about-contributing">How do I contribute?</a></li>
+<li><a href="#en-faq-about-achievements-certificate">How do I get the certificate?</a></li>
 </ul>
-<p>Si tu duda no aparece en la FAQ, entonces sí: escríbeme.</p>
+<p>If your question isn't in the FAQ, then by all means reach out.</p>
 <hr>
-<h2 id="en-contacto-colaboraciones">🤝 Colaboraciones<a class="headerlink" href="#en-contacto-colaboraciones" title="Permanent link">¶</a></h2>
-<p>Si quieres colaborar con el proyecto (traducción, capítulo invitado, patrocinio, charla…), indícamelo en el asunto del formulario o por email. Cuéntame:</p>
+<h2 id="en-contacto-collaborations">🤝 Collaborations<a class="headerlink" href="#en-contacto-collaborations" title="Permanent link">¶</a></h2>
+<p>If you want to collaborate on the project (translation, guest chapter, sponsorship, talk…), mention it in the form subject or by email. Tell me:</p>
 <ul>
-<li><strong>Quién eres</strong> y a qué te dedicas.</li>
-<li><strong>Qué propones</strong> concretamente.</li>
-<li><strong>Por qué</strong> crees que encaja con el proyecto.</li>
-<li><strong>Qué necesitarías</strong> de mi parte.</li>
+<li><strong>Who you are</strong> and what you do.</li>
+<li><strong>What you're proposing</strong> specifically.</li>
+<li><strong>Why</strong> you think it fits the project.</li>
+<li><strong>What you'd need</strong> from me.</li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">Respuesta a colaboraciones</p>
-<p>Si tu propuesta encaja con los valores del proyecto (open source, gratuito y sin publicidad), te responderé con mucho gusto. Si no encaja, también te lo diré con honestidad.</p>
+<p class="admonition-title">Collaboration Replies</p>
+<p>If your proposal aligns with the project's values (open source, free, and ad-free), I'll gladly get back to you. If it doesn't fit, I'll tell you honestly too.</p>
 </div>
 <hr>
-<h2 id="en-contacto-donde-estoy">🗺️ Dónde estoy<a class="headerlink" href="#en-contacto-donde-estoy" title="Permanent link">¶</a></h2>
-<p>Soy de España 🇪🇸, pero colaboro con gente de todo el mundo. Tenlo en cuenta si me escribes desde otra franja horaria.</p>
+<h2 id="en-contacto-where-im-based">🗺 Where I'm Based<a class="headerlink" href="#en-contacto-where-im-based" title="Permanent link">¶</a></h2>
+<p>I'm from Spain 🇪🇸, though I collaborate with people around the world. Keep that in mind if you're writing from another time zone.</p>
 <hr>
-<h2 id="en-contacto-privacidad">🔐 Privacidad<a class="headerlink" href="#en-contacto-privacidad" title="Permanent link">¶</a></h2>
-<p>Tus datos <strong>solo se usan para responderte</strong>. No se venden, ni se comparten con terceros, ni se usan para spam. Si quieres que elimine tu mensaje después de responderte, solo tienes que pedírmelo.</p>
-<p>Para más información, consulta la <a href="#en-licencia">política de privacidad</a>.</p>
+<h2 id="en-contacto-privacy">🔐 Privacy<a class="headerlink" href="#en-contacto-privacy" title="Permanent link">¶</a></h2>
+<p>Your details are <strong>only used to reply to you</strong>. They aren't sold, shared with third parties, or used for spam. If you want me to delete your message after replying, just ask.</p>
+<p>For more details, see the <a href="#en-licencia">privacy policy</a>.</p>
 <hr>
-<h2 id="en-contacto-ultima-reflexion">💬 Última reflexión<a class="headerlink" href="#en-contacto-ultima-reflexion" title="Permanent link">¶</a></h2>
+<h2 id="en-contacto-one-final-thought">💬 One Final Thought<a class="headerlink" href="#en-contacto-one-final-thought" title="Permanent link">¶</a></h2>
 <blockquote>
-<p><em>"Un email bien escrito ahorra 10 mensajes."</em></p>
+<p><em>"A well-written email saves 10 messages."</em></p>
 </blockquote>
-<p>Si me escribes, ayúdame a ayudarte: sé concreto, cuéntame qué necesitas y, si es un error técnico, adjunta capturas, logs o el código que falla. Con esa información podré responderte mucho más rápido y mejor.</p>
+<p>If you write to me, help me help you: be specific, explain what you need, and if it's a technical issue, attach screenshots, logs, or failing code. That makes it much easier to give you a fast, useful answer.</p>
 <hr>
-<h2 id="en-contacto-siguientes-pasos">➡️ Siguientes pasos<a class="headerlink" href="#en-contacto-siguientes-pasos" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">🐛 Reportar un error</a></p>
-<p><a class="md-button" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">💬 Ir a Discussions</a></p>
-<p><a class="md-button" href="#en-faq">📖 Leer las FAQ</a></p></div></section><section class="print-page" id="en-agradecimientos" heading-number="6.11"><div><h1 id="agradecimientos">🙏 Agradecimientos<a class="headerlink" href="#en-agradecimientos-agradecimientos" title="Permanent link">¶</a></h1>
+<h2 id="en-contacto-next-steps">➡ Next Steps<a class="headerlink" href="#en-contacto-next-steps" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">🐛 Report an issue</a></p>
+<p><a class="md-button" href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions">💬 Go to Discussions</a></p>
+<p><a class="md-button" href="#en-faq">📖 Read the FAQ</a></p></div></section><section class="print-page" id="en-agradecimientos" heading-number="6.11"><div><h1 id="agradecimientos">🙏 Agradecimientos<a class="headerlink" href="#en-agradecimientos-agradecimientos" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Nada de esto es solo mío</p>
 <p>Este libro no sería posible sin el trabajo de <strong>miles de personas</strong> que comparten su conocimiento libremente en internet. Detrás de cada línea de código hay una comunidad que lleva décadas construyendo la web abierta. A todas ellas, gracias.</p>
