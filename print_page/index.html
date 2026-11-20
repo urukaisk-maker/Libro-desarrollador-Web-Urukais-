@@ -20829,60 +20829,59 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 </ul>
 <hr>
 <p><a class="md-button" href="#en-ejercicios-04-javascript">← Exercise 04</a>
-<a class="md-button md-button--primary" href="#en-ejercicios">Back to index</a></p></div></section><section class="print-page" id="en-ejercicios-06-formularios" heading-number="3.4.6"><div><h1 id="06-formularios">06 — Formularios<a class="headerlink" href="#en-ejercicios-06-formularios-06-formularios" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios">Back to index</a></p></div></section><section class="print-page" id="en-ejercicios-06-formularios" heading-number="3.4.6"><div><h1 id="06-forms">06 — Forms<a class="headerlink" href="#en-ejercicios-06-formularios-06-forms" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica la creación de formularios accesibles.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice creating accessible forms.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-06-formularios-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-06-formularios-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un formulario de registro con:</p>
+<h2 id="en-ejercicios-06-formularios-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-06-formularios-goal" title="Permanent link">¶</a></h2>
+<p>Create a registration form with:</p>
 <ol>
-<li>Campo de nombre.</li>
-<li>Campo de email.</li>
-<li>Campo de contraseña.</li>
-<li>Checkbox de términos.</li>
-<li>Botón de envío.</li>
+<li>Name field.</li>
+<li>Email field.</li>
+<li>Password field.</li>
+<li>Terms checkbox.</li>
+<li>Submit button.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-06-formularios-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-06-formularios-solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<form action="/registro" method="POST">
-  <label for="en-ejercicios-06-formularios-nombre">Nombre:</label>
-  <input type="text" id="en-ejercicios-06-formularios-nombre" name="en-ejercicios-06-formularios-nombre" required minlength="2">
+<h2 id="en-ejercicios-06-formularios-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-06-formularios-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"/registro"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Name:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"2"</span><span class="p">&gt;</span>
 
-  <label for="en-ejercicios-06-formularios-email">Email:</label>
-  <input type="email" id="en-ejercicios-06-formularios-email" name="en-ejercicios-06-formularios-email" required>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
 
-  <label for="en-ejercicios-06-formularios-password">Contraseña:</label>
-  <input type="password" id="en-ejercicios-06-formularios-password" name="en-ejercicios-06-formularios-password" required minlength="8">
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"password"</span><span class="p">&gt;</span>Password:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span> <span class="na">id</span><span class="o">=</span><span class="s">"password"</span> <span class="na">name</span><span class="o">=</span><span class="s">"password"</span> <span class="na">required</span> <span class="na">minlength</span><span class="o">=</span><span class="s">"8"</span><span class="p">&gt;</span>
 
-  <label>
-    <input type="checkbox" name="en-ejercicios-06-formularios-terminos" required>
-    Acepto los términos
-  </label>
+  <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">name</span><span class="o">=</span><span class="s">"terminos"</span> <span class="na">required</span><span class="p">&gt;</span>
+    I accept the terms
+  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 
-  <button type="submit">Registrarse</button>
-</form>
-<p>```</p>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Sign up<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-06-formularios-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-06-formularios-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-06-formularios-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-06-formularios-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>Cada input debe tener un `<label>` con `for` igual al `id` del input.</label></li>
-<li>`required`: obligatorio.</li>
-<li>`minlength`: longitud mínima.</li>
-<li>`type="email"`: valida formato de email.</li>
+<li>Every input must have a <code>&lt;label&gt;</code> with <code>for</code> matching the input's <code>id</code>.</li>
+<li><code>required</code>: mandatory field.</li>
+<li><code>minlength</code>: minimum length.</li>
+<li><code>type="email"</code>: validates email format.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-06-formularios-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-06-formularios-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-06-formularios-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-06-formularios-extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un campo de teléfono con `type="tel"`.</li>
-<li>[ ] Añade un select de país.</li>
-<li>[ ] Valida la contraseña con JS en tiempo real.</li>
+<li>[ ] Add a phone field with <code>type="tel"</code>.</li>
+<li>[ ] Add a country <code>&lt;select&gt;</code>.</li>
+<li>[ ] Validate the password with JS in real time.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-05-responsive">← Ejercicio 05</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-07-git">Ir al ejercicio 07 →</a></p></div></section></section>
+<p><a class="md-button" href="#en-ejercicios-05-responsive">← Exercise 05</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-07-git">Go to exercise 07 →</a></p></div></section></section>
                     <section class='print-page md-section' id='section-3-5' heading-number='3.5'>
                         <h1>🟡 Bloque 2 (07–10)<a class='headerlink' href='#section-3-5' title='Permanent link'></a>
                         </h1>
