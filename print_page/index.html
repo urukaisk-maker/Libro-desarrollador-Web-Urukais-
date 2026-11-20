@@ -19072,74 +19072,74 @@ Micro-frontends:    N small apps, N teams, N deployments
 <hr>
 <h2 id="en-capitulos-36-micro-frontends-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-36-micro-frontends-next-step" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-capitulos-37-ia-generativa">Go to Chapter 37 — Introduction to Generative AI</a>
-<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-37-ia-generativa" heading-number="2.8.7"><div><h1 id="37-introduccion-a-la-ia-generativa">37 — Introducción a la IA Generativa<a class="headerlink" href="#en-capitulos-37-ia-generativa-37-introduccion-a-la-ia-generativa" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-37-ia-generativa" heading-number="2.8.7"><div><h1 id="37-introduction-to-generative-ai">37 — Introduction to Generative AI<a class="headerlink" href="#en-capitulos-37-ia-generativa-37-introduction-to-generative-ai" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es la IA generativa y cómo funciona.</li>
+<li>What generative AI is and how it works.</li>
 <li>LLMs: GPT, Claude, Gemini, Llama.</li>
-<li>Integrar IA en una app web.</li>
+<li>Integrating AI into a web app.</li>
 <li>Prompt engineering.</li>
-<li>Riesgos y buenas prácticas.</li>
+<li>Risks and best practices.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-que-es-la-ia-generativa">🤖 ¿Qué es la IA generativa?<a class="headerlink" href="#en-capitulos-37-ia-generativa-que-es-la-ia-generativa" title="Permanent link">¶</a></h2>
-<p>La <strong>IA generativa</strong> es un tipo de inteligencia artificial que <strong>crea contenido nuevo</strong>: texto, imágenes, código, audio o vídeo. Los <strong>LLMs</strong> (<em>Large Language Models</em>) son los modelos que generan texto.</p>
-<div class="highlight"><pre><span></span><code>Prompt  →  Modelo  →  Respuesta generada
+<h2 id="en-capitulos-37-ia-generativa-what-is-generative-ai">🤖 What is Generative AI?<a class="headerlink" href="#en-capitulos-37-ia-generativa-what-is-generative-ai" title="Permanent link">¶</a></h2>
+<p><strong>Generative AI</strong> is a type of artificial intelligence that <strong>creates new content</strong>: text, images, code, audio, or video. <strong>LLMs</strong> (<em>Large Language Models</em>) are models that generate text.</p>
+<div class="highlight"><pre><span></span><code>Prompt  →  Model  →  Generated response
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">La IA no es magia, es estadística</p>
-<p>Un LLM predice la siguiente palabra más probable. Lo hace tan bien que parece que "entiende", pero no razona como un humano.</p>
+<p class="admonition-title">AI isn't magic, it's statistics</p>
+<p>An LLM predicts the next most probable word. It does it well enough to look like it "understands", yet it doesn't reason like a human.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-llms-mas-populares">🧠 LLMs más populares<a class="headerlink" href="#en-capitulos-37-ia-generativa-llms-mas-populares" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-37-ia-generativa-popular-llms">🧠 Popular LLMs<a class="headerlink" href="#en-capitulos-37-ia-generativa-popular-llms" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Modelo</th>
-<th style="text-align: left;">Empresa</th>
-<th style="text-align: left;">Ventaja</th>
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Company</th>
+<th style="text-align: left;">Strength</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>GPT-4</strong></td>
 <td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;">El más usado, ecosistema enorme</td>
+<td style="text-align: left;">Widely used, huge ecosystem</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Claude</strong></td>
 <td style="text-align: left;">Anthropic</td>
-<td style="text-align: left;">Contexto largo, bueno con documentos</td>
+<td style="text-align: left;">Long context, strong with documents</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Gemini</strong></td>
 <td style="text-align: left;">Google</td>
-<td style="text-align: left;">Multimodal (texto, imagen, audio)</td>
+<td style="text-align: left;">Multimodal (text, image, audio)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Llama</strong></td>
 <td style="text-align: left;">Meta</td>
-<td style="text-align: left;">Open source, ejecutable en local</td>
+<td style="text-align: left;">Open source, runnable locally</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Mistral</strong></td>
 <td style="text-align: left;">Mistral AI</td>
-<td style="text-align: left;">Open source, eficiente</td>
+<td style="text-align: left;">Open source, efficient</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>DeepSeek</strong></td>
 <td style="text-align: left;">DeepSeek</td>
-<td style="text-align: left;">Muy competitivo en código</td>
+<td style="text-align: left;">Very competitive in code</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-integrar-ia-en-una-app-web">🔌 Integrar IA en una app web<a class="headerlink" href="#en-capitulos-37-ia-generativa-integrar-ia-en-una-app-web" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// Llamada a la API de OpenAI</span>
+<h2 id="en-capitulos-37-ia-generativa-integrating-ai-into-a-web-app">🔌 Integrating AI into a Web App<a class="headerlink" href="#en-capitulos-37-ia-generativa-integrating-ai-into-a-web-app" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Call to the OpenAI API</span>
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">preguntar</span><span class="p">(</span><span class="nx">prompt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://api.openai.com/v1/chat/completions"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"[https://api.openai.com/v1/chat/completions](https://api.openai.com/v1/chat/completions)"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">,</span>
@@ -19160,61 +19160,61 @@ Micro-frontends:    N small apps, N teams, N deployments
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Nunca expongas la API key en el frontend</p>
-<p>El código anterior va en el <strong>backend</strong>. En el frontend, haz una petición a tu propio backend, que añade la key y controla el rate limiting.</p>
+<p class="admonition-title">Never expose the API key in the frontend</p>
+<p>The code above belongs in the <strong>backend</strong>. In the frontend, send a request to your own backend, which attaches the key and enforces rate limiting.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-prompt-engineering">🎯 Prompt engineering<a class="headerlink" href="#en-capitulos-37-ia-generativa-prompt-engineering" title="Permanent link">¶</a></h2>
-<p>La diferencia entre una buena y una mala respuesta está en el prompt.</p>
-<div class="highlight"><pre><span></span><code>❌ Malo: "Hazme una web"
-✅ Bueno: "Crea una landing page para una app de finanzas personales,
-   con hero, features y CTA. Usa React, Tailwind y un diseño
-   minimalista con colores azules. Incluye código completo."
+<h2 id="en-capitulos-37-ia-generativa-prompt-engineering">🎯 Prompt Engineering<a class="headerlink" href="#en-capitulos-37-ia-generativa-prompt-engineering" title="Permanent link">¶</a></h2>
+<p>The difference between a good response and a bad one lies in the prompt.</p>
+<div class="highlight"><pre><span></span><code>❌ Bad:  "Make me a website"
+✅ Good: "Create a landing page for a personal finance app,
+   with hero, features, and CTA. Use React, Tailwind, and a minimalist
+   design with blue tones. Include full code."
 </code></pre></div>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Técnica</th>
-<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Technique</th>
+<th style="text-align: left;">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Rol</strong></td>
-<td style="text-align: left;">"Eres un desarrollador senior..."</td>
+<td style="text-align: left;"><strong>Role</strong></td>
+<td style="text-align: left;">"You are a senior developer..."</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Contexto</strong></td>
-<td style="text-align: left;">"Estoy usando React 18 y TypeScript..."</td>
+<td style="text-align: left;"><strong>Context</strong></td>
+<td style="text-align: left;">"I'm using React 18 and TypeScript..."</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Ejemplos</strong></td>
-<td style="text-align: left;">"Aquí tienes un ejemplo de lo que quiero..."</td>
+<td style="text-align: left;"><strong>Examples</strong></td>
+<td style="text-align: left;">"Here is an example of what I want..."</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Formato</strong></td>
-<td style="text-align: left;">"Responde en JSON con los campos..."</td>
+<td style="text-align: left;"><strong>Format</strong></td>
+<td style="text-align: left;">"Respond in JSON with the fields..."</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Paso a paso</strong></td>
-<td style="text-align: left;">"Piensa paso a paso antes de responder"</td>
+<td style="text-align: left;"><strong>Step by step</strong></td>
+<td style="text-align: left;">"Think step by step before answering"</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Restricciones</strong></td>
-<td style="text-align: left;">"No uses librerías externas"</td>
+<td style="text-align: left;"><strong>Constraints</strong></td>
+<td style="text-align: left;">"Do not use external libraries"</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h2 id="en-capitulos-37-ia-generativa-rag-retrieval-augmented-generation">📚 RAG (Retrieval-Augmented Generation)<a class="headerlink" href="#en-capitulos-37-ia-generativa-rag-retrieval-augmented-generation" title="Permanent link">¶</a></h2>
-<p><strong>RAG</strong> combina un LLM con una base de conocimiento propia. El modelo busca información relevante y la usa para responder.</p>
-<div class="highlight"><pre><span></span><code>Pregunta → Buscar en tu base de datos → LLM con contexto → Respuesta precisa
+<p><strong>RAG</strong> combines an LLM with your own knowledge base. The model retrieves relevant information and uses it to answer.</p>
+<div class="highlight"><pre><span></span><code>Question → Search your database → LLM with context → Accurate answer
 </code></pre></div>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Paso</th>
-<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Tool</th>
 </tr>
 </thead>
 <tbody>
@@ -19223,7 +19223,7 @@ Micro-frontends:    N small apps, N teams, N deployments
 <td style="text-align: left;">OpenAI, Cohere, Hugging Face</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Base vectorial</strong></td>
+<td style="text-align: left;"><strong>Vector database</strong></td>
 <td style="text-align: left;">Pinecone, Weaviate, Qdrant, pgvector</td>
 </tr>
 <tr>
@@ -19232,19 +19232,19 @@ Micro-frontends:    N small apps, N teams, N deployments
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="c1">// 1. Convertir la pregunta en embedding</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Turn the question into an embedding</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">embedding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">openai</span><span class="p">.</span><span class="nx">embeddings</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"text-embedding-3-small"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">pregunta</span>
 <span class="p">});</span>
 
-<span class="c1">// 2. Buscar documentos similares</span>
+<span class="c1">// 2. Search similar documents</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
 <span class="w">  </span><span class="s2">"SELECT * FROM documentos ORDER BY embedding &lt;=&gt; $1 LIMIT 5"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">[</span><span class="nx">embedding</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">embedding</span><span class="p">]</span>
 <span class="p">);</span>
 
-<span class="c1">// 3. Pasar los docs al LLM como contexto</span>
+<span class="c1">// 3. Pass docs to the LLM as context</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">respuesta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">openai</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">completions</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"gpt-4"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -19254,97 +19254,97 @@ Micro-frontends:    N small apps, N teams, N deployments
 <span class="p">});</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-riesgos-y-limitaciones">⚠️ Riesgos y limitaciones<a class="headerlink" href="#en-capitulos-37-ia-generativa-riesgos-y-limitaciones" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-37-ia-generativa-risks-and-limitations">⚠ Risks and Limitations<a class="headerlink" href="#en-capitulos-37-ia-generativa-risks-and-limitations" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Riesgo</th>
-<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Risk</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Alucinaciones</strong></td>
-<td style="text-align: left;">El modelo inventa datos que suenan plausibles</td>
+<td style="text-align: left;"><strong>Hallucinations</strong></td>
+<td style="text-align: left;">The model invents plausible-sounding facts</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Sesgos</strong></td>
-<td style="text-align: left;">Refleja los sesgos de los datos de entrenamiento</td>
+<td style="text-align: left;"><strong>Bias</strong></td>
+<td style="text-align: left;">Reflects biases present in training data</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Privacidad</strong></td>
-<td style="text-align: left;">No envíes datos sensibles a APIs externas</td>
+<td style="text-align: left;"><strong>Privacy</strong></td>
+<td style="text-align: left;">Never send sensitive data to external APIs</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Coste</strong></td>
-<td style="text-align: left;">Las APIs cobran por token</td>
+<td style="text-align: left;"><strong>Cost</strong></td>
+<td style="text-align: left;">APIs charge per token</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Latencia</strong></td>
-<td style="text-align: left;">Las respuestas pueden tardar segundos</td>
+<td style="text-align: left;"><strong>Latency</strong></td>
+<td style="text-align: left;">Responses can take seconds</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Dependencia</strong></td>
-<td style="text-align: left;">Si la API cae, tu app deja de funcionar</td>
+<td style="text-align: left;"><strong>Dependency</strong></td>
+<td style="text-align: left;">If the API goes down, your app stops working</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Seguridad</strong></td>
+<td style="text-align: left;"><strong>Security</strong></td>
 <td style="text-align: left;">Prompt injection, jailbreaks</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Nunca confíes ciegamente</p>
-<p>Un LLM puede inventarse una función que no existe, un paquete que no existe o una cita falsa. <strong>Verifica siempre</strong> lo que genera antes de usarlo.</p>
+<p class="admonition-title">Never trust blindly</p>
+<p>An LLM can invent a non-existent function, a non-existent package, or a fake citation. <strong>Always verify</strong> what it generates before using it.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#en-capitulos-37-ia-generativa-buenas-practicas" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-37-ia-generativa-best-practices">✅ Best Practices<a class="headerlink" href="#en-capitulos-37-ia-generativa-best-practices" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ <strong>Valida y verifica</strong> las respuestas del modelo.</li>
-<li>✅ <strong>No envíes datos sensibles</strong> a APIs externas.</li>
-<li>✅ <strong>Usa RAG</strong> para dar contexto específico de tu dominio.</li>
-<li>✅ <strong>Limita el rate</strong> y los costes.</li>
-<li>✅ <strong>Proporciona un fallback</strong> si la IA falla.</li>
-<li>✅ <strong>Indica al usuario</strong> que está hablando con una IA.</li>
-<li>✅ <strong>Registra las interacciones</strong> para mejorar el sistema.</li>
-<li>❌ <strong>No uses la IA para decisiones críticas</strong> sin supervisión humana.</li>
+<li>✅ <strong>Validate and verify</strong> model outputs.</li>
+<li>✅ <strong>Don't send sensitive data</strong> to external APIs.</li>
+<li>✅ <strong>Use RAG</strong> to supply domain-specific context.</li>
+<li>✅ <strong>Rate-limit</strong> and cap costs.</li>
+<li>✅ <strong>Provide a fallback</strong> if AI fails.</li>
+<li>✅ <strong>Let the user know</strong> they are interacting with AI.</li>
+<li>✅ <strong>Log interactions</strong> to improve the system.</li>
+<li>❌ <strong>Don't use AI for critical decisions</strong> without human oversight.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-37-ia-generativa-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-37-ia-generativa-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-37-ia-generativa-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-37">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué es un LLM?</p>
-<button class="quiz-option" data-opt="a">A) Un tipo de base de datos</button>
-<button class="quiz-option" data-opt="b">B) Un modelo de lenguaje grande</button>
-<button class="quiz-option" data-opt="c">C) Un framework de UI</button>
+<p><strong>1.</strong> What is an LLM?</p>
+<button class="quiz-option" data-opt="a">A) A type of database</button>
+<button class="quiz-option" data-opt="b">B) A Large Language Model</button>
+<button class="quiz-option" data-opt="c">C) A UI framework</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Dónde debes poner la API key?</p>
-<button class="quiz-option" data-opt="a">A) En el backend</button>
-<button class="quiz-option" data-opt="b">B) En el frontend</button>
-<button class="quiz-option" data-opt="c">C) En el HTML</button>
+<p><strong>2.</strong> Where should you store the API key?</p>
+<button class="quiz-option" data-opt="a">A) On the backend</button>
+<button class="quiz-option" data-opt="b">B) On the frontend</button>
+<button class="quiz-option" data-opt="c">C) In HTML</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué es una alucinación de IA?</p>
-<button class="quiz-option" data-opt="a">A) Un error de red</button>
-<button class="quiz-option" data-opt="b">B) Un fallo de CSS</button>
-<button class="quiz-option" data-opt="c">C"&gt;Información inventada que suena plausible</button>
+<p><strong>3.</strong> What is an AI hallucination?</p>
+<button class="quiz-option" data-opt="a">A) A network error</button>
+<button class="quiz-option" data-opt="b">B) A CSS bug</button>
+<button class="quiz-option" data-opt="c">C) Invented information that sounds plausible</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-37-ia-generativa-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-37-ia-generativa-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-37-ia-generativa-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2037%3A%20IA%20Generativa&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2037%3A%20Generative%20AI&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2037%3A%20IA%20Generativa%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/37-ia-generativa/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2037%3A%20Generative%20AI%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F37-ia-generativa%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/37-ia-generativa/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-37-ia-generativa-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-37-ia-generativa-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-38-seguridad-avanzada">Ir al Capítulo 38 — Seguridad Web Avanzada</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-38-seguridad-avanzada" heading-number="2.8.8"><div><h1 id="38-seguridad-web-avanzada">38 — Seguridad Web Avanzada<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-38-seguridad-web-avanzada" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-37-ia-generativa-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-37-ia-generativa-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-38-seguridad-avanzada">Go to Chapter 38 — Advanced Web Security</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-38-seguridad-avanzada" heading-number="2.8.8"><div><h1 id="38-seguridad-web-avanzada">38 — Seguridad Web Avanzada<a class="headerlink" href="#en-capitulos-38-seguridad-avanzada-38-seguridad-web-avanzada" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
