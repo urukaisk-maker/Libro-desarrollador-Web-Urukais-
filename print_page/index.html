@@ -18832,70 +18832,70 @@ GraphQL:  query { usuario(id: 1) { nombre } } → only the name
 <p><a class="md-button md-button--primary" href="#en-capitulos-36-micro-frontends">Go to Chapter 36 — Micro-frontends</a>
 <a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-36-micro-frontends" heading-number="2.8.6"><div><h1 id="36-micro-frontends">36 — Micro-frontends<a class="headerlink" href="#en-capitulos-36-micro-frontends-36-micro-frontends" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué son los micro-frontends y cuándo usarlos.</li>
-<li>Module Federation con Vite.</li>
-<li>Composición en tiempo de ejecución.</li>
-<li>Comunicación entre micro-frontends.</li>
-<li>Ventajas y desventajas.</li>
+<li>What micro-frontends are and when to use them.</li>
+<li>Module Federation with Vite.</li>
+<li>Runtime composition.</li>
+<li>Communication between micro-frontends.</li>
+<li>Pros and cons.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-que-son-los-micro-frontends">🧩 ¿Qué son los micro-frontends?<a class="headerlink" href="#en-capitulos-36-micro-frontends-que-son-los-micro-frontends" title="Permanent link">¶</a></h2>
-<p>Los <strong>micro-frontends</strong> dividen una aplicación frontend grande en <strong>aplicaciones más pequeñas e independientes</strong>, que se pueden desarrollar, desplegar y escalar por separado. Es el equivalente frontend de los microservicios.</p>
-<div class="highlight"><pre><span></span><code>Monolito frontend:  1 app gigante, 1 equipo, 1 despliegue
-Micro-frontends:    N apps pequeñas, N equipos, N despliegues
+<h2 id="en-capitulos-36-micro-frontends-what-are-micro-frontends">🧩 What Are Micro-Frontends?<a class="headerlink" href="#en-capitulos-36-micro-frontends-what-are-micro-frontends" title="Permanent link">¶</a></h2>
+<p><strong>Micro-frontends</strong> split a large frontend application into <strong>smaller, independent applications</strong> that can be built, deployed, and scaled separately. They are the frontend equivalent of microservices.</p>
+<div class="highlight"><pre><span></span><code>Frontend monolith:  1 giant app, 1 team, 1 deployment
+Micro-frontends:    N small apps, N teams, N deployments
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">Divide y vencerás (también en frontend)</p>
-<p>Si tienes 50 desarrolladores trabajando en el mismo repositorio, los conflictos son constantes. Los micro-frontends permiten que cada equipo sea dueño de su parte.</p>
+<p class="admonition-title">Divide and conquer (on the frontend too)</p>
+<p>When 50 developers work in the same repository, conflicts are constant. Micro-frontends let each team own its slice.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-cuando-usar-micro-frontends">🎯 ¿Cuándo usar micro-frontends?<a class="headerlink" href="#en-capitulos-36-micro-frontends-cuando-usar-micro-frontends" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-36-micro-frontends-when-to-use-micro-frontends">🎯 When to Use Micro-Frontends?<a class="headerlink" href="#en-capitulos-36-micro-frontends-when-to-use-micro-frontends" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Caso</th>
-<th style="text-align: left;">¿Micro-frontends?</th>
+<th style="text-align: left;">Scenario</th>
+<th style="text-align: left;">Micro-Frontends?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Equipos grandes (10+ devs)</td>
+<td style="text-align: left;">Large teams (10+ devs)</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Múltiples equipos independientes</td>
+<td style="text-align: left;">Multiple independent teams</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Migración incremental de Angular a React</td>
+<td style="text-align: left;">Incremental migration from Angular to React</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Múltiples productos en una plataforma</td>
+<td style="text-align: left;">Multiple products inside one platform</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Proyecto pequeño (1-3 devs)</td>
+<td style="text-align: left;">Small project (1-3 devs)</td>
 <td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td style="text-align: left;">MVP o prototipo</td>
+<td style="text-align: left;">MVP or prototype</td>
 <td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td style="text-align: left;">App con mucha interacción entre partes</td>
+<td style="text-align: left;">App with heavy cross-slice interaction</td>
 <td style="text-align: left;">❌</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h2 id="en-capitulos-36-micro-frontends-module-federation">⚡ Module Federation<a class="headerlink" href="#en-capitulos-36-micro-frontends-module-federation" title="Permanent link">¶</a></h2>
-<p><strong>Module Federation</strong> (Webpack 5, Vite 5+) permite que una app cargue código de otra en <strong>tiempo de ejecución</strong>, sin duplicar dependencias.</p>
-<h3 id="en-capitulos-36-micro-frontends-host-contenedor">Host (contenedor)<a class="headerlink" href="#en-capitulos-36-micro-frontends-host-contenedor" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// vite.config.js del host</span>
+<p><strong>Module Federation</strong> (Webpack 5, Vite 5+) lets one app load code from another at <strong>runtime</strong>, without duplicating dependencies.</p>
+<h3 id="en-capitulos-36-micro-frontends-host-container">Host (Container)<a class="headerlink" href="#en-capitulos-36-micro-frontends-host-container" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// host vite.config.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">federation</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@originjs/vite-plugin-federation"</span><span class="p">;</span>
 
@@ -18918,14 +18918,14 @@ Micro-frontends:    N apps pequeñas, N equipos, N despliegues
 <span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Productos</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">      </span><span class="p">&lt;</span><span class="nt">Carrito</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Productos</span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Carrito</span><span class="p">/&gt;</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="en-capitulos-36-micro-frontends-remote-remoto">Remote (remoto)<a class="headerlink" href="#en-capitulos-36-micro-frontends-remote-remoto" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// vite.config.js del remote</span>
+<h3 id="en-capitulos-36-micro-frontends-remote">Remote<a class="headerlink" href="#en-capitulos-36-micro-frontends-remote" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// remote vite.config.js</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nx">federation</span><span class="p">({</span>
@@ -18940,139 +18940,139 @@ Micro-frontends:    N apps pequeñas, N equipos, N despliegues
 <span class="p">});</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-composicion-en-tiempo-de-ejecucion">🔗 Composición en tiempo de ejecución<a class="headerlink" href="#en-capitulos-36-micro-frontends-composicion-en-tiempo-de-ejecucion" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-36-micro-frontends-runtime-composition">🔗 Runtime Composition<a class="headerlink" href="#en-capitulos-36-micro-frontends-runtime-composition" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Estrategia</th>
-<th style="text-align: left;">Cuándo se compone</th>
+<th style="text-align: left;">Strategy</th>
+<th style="text-align: left;">When It Composes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Build time</strong></td>
-<td style="text-align: left;">Al construir la app (npm packages)</td>
+<td style="text-align: left;">When building the app (npm packages)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Run time</strong></td>
-<td style="text-align: left;">Al cargar la app (Module Federation)</td>
+<td style="text-align: left;">When loading the app (Module Federation)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Iframes</strong></td>
-<td style="text-align: left;">Aislamiento total (pero limitado)</td>
+<td style="text-align: left;">Full isolation (but limited)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Web Components</strong></td>
-<td style="text-align: left;">Composición nativa</td>
+<td style="text-align: left;">Native composition</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Empieza simple</p>
-<p>Si nunca has hecho micro-frontends, empieza con <strong>Web Components</strong> o <strong>iframes</strong>. Module Federation es potente pero complejo.</p>
+<p class="admonition-title">Start simple</p>
+<p>If you've never built micro-frontends, start with <strong>Web Components</strong> or <strong>iframes</strong>. Module Federation is powerful, but complex.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-comunicacion-entre-micro-frontends">📡 Comunicación entre micro-frontends<a class="headerlink" href="#en-capitulos-36-micro-frontends-comunicacion-entre-micro-frontends" title="Permanent link">¶</a></h2>
-<p>Los micro-frontends deben comunicarse sin acoplarse. Opciones:</p>
+<h2 id="en-capitulos-36-micro-frontends-communication-between-micro-frontends">📡 Communication Between Micro-Frontends<a class="headerlink" href="#en-capitulos-36-micro-frontends-communication-between-micro-frontends" title="Permanent link">¶</a></h2>
+<p>Micro-frontends should communicate without tight coupling. Options:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Estrategia</th>
-<th style="text-align: left;">Cuándo usarla</th>
+<th style="text-align: left;">Strategy</th>
+<th style="text-align: left;">When to Use It</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Custom Events</strong></td>
-<td style="text-align: left;">Comunicación simple entre apps</td>
+<td style="text-align: left;">Simple communication between apps</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Estado global compartido</strong></td>
-<td style="text-align: left;">Estado pequeño (usuario, tema)</td>
+<td style="text-align: left;"><strong>Shared global state</strong></td>
+<td style="text-align: left;">Small state (user, theme)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL / query params</strong></td>
-<td style="text-align: left;">Navegación entre apps</td>
+<td style="text-align: left;">Navigation between apps</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Web Components</strong></td>
-<td style="text-align: left;">Componentes nativos compartidos</td>
+<td style="text-align: left;">Shared native components</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Bus de eventos</strong></td>
-<td style="text-align: left;">Comunicación compleja (EventEmitter)</td>
+<td style="text-align: left;"><strong>Event bus</strong></td>
+<td style="text-align: left;">Complex communication (EventEmitter)</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="c1">// App A emite un evento</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// App A dispatches an event</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span><span class="s2">"carrito:add"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">productoId</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}));</span>
 
-<span class="c1">// App B lo escucha</span>
+<span class="c1">// App B listens to it</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"carrito:add"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Añadido:"</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">productoId</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Cuidado con el acoplamiento</p>
-<p>Si dos micro-frontends se comunican mucho, quizá no deberían ser micro-frontends separados. La comunicación excesiva es señal de que el dominio está mal dividido.</p>
+<p class="admonition-title">Watch out for coupling</p>
+<p>If two micro-frontends talk to each other constantly, they probably shouldn't be separate micro-frontends. Excessive communication is a sign of poor domain boundaries.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-ventajas-y-desventajas">⚖️ Ventajas y desventajas<a class="headerlink" href="#en-capitulos-36-micro-frontends-ventajas-y-desventajas" title="Permanent link">¶</a></h2>
-<h3 id="en-capitulos-36-micro-frontends-ventajas">Ventajas<a class="headerlink" href="#en-capitulos-36-micro-frontends-ventajas" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-36-micro-frontends-pros-and-cons">⚖ Pros and Cons<a class="headerlink" href="#en-capitulos-36-micro-frontends-pros-and-cons" title="Permanent link">¶</a></h2>
+<h3 id="en-capitulos-36-micro-frontends-pros">Pros<a class="headerlink" href="#en-capitulos-36-micro-frontends-pros" title="Permanent link">¶</a></h3>
 <ul>
-<li>✅ <strong>Equipos independientes</strong>: cada equipo despliega cuando quiere.</li>
-<li>✅ <strong>Escalabilidad organizacional</strong>: añadir equipos sin conflictos.</li>
-<li>✅ <strong>Aislamiento de fallos</strong>: si un micro-frontend cae, los demás siguen.</li>
-<li>✅ <strong>Migración incremental</strong>: puedes migrar una parte sin reescribir todo.</li>
-<li>✅ <strong>Tecnologías distintas</strong>: un equipo puede usar React, otro Vue.</li>
+<li>✅ <strong>Independent teams</strong>: each team deploys on its own schedule.</li>
+<li>✅ <strong>Organizational scalability</strong>: add teams without stepping on toes.</li>
+<li>✅ <strong>Fault isolation</strong>: if one micro-frontend goes down, the others keep running.</li>
+<li>✅ <strong>Incremental migration</strong>: migrate one piece without rewriting everything.</li>
+<li>✅ <strong>Different tech stacks</strong>: one team can use React, another Vue.</li>
 </ul>
-<h3 id="en-capitulos-36-micro-frontends-desventajas">Desventajas<a class="headerlink" href="#en-capitulos-36-micro-frontends-desventajas" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-36-micro-frontends-cons">Cons<a class="headerlink" href="#en-capitulos-36-micro-frontends-cons" title="Permanent link">¶</a></h3>
 <ul>
-<li>❌ <strong>Complejidad</strong>: más repos, más pipelines, más despliegues.</li>
-<li>❌ <strong>Duplicación</strong>: cada app carga sus dependencias.</li>
-<li>❌ <strong>Consistencia visual</strong>: hay que compartir el design system.</li>
-<li>❌ <strong>Rendimiento</strong>: más peticiones, más JS.</li>
-<li>❌ <strong>Debugging</strong>: más difícil seguir un flujo entre apps.</li>
-<li>❌ <strong>Testing E2E</strong>: más complejo de automatizar.</li>
+<li>❌ <strong>Complexity</strong>: more repos, more pipelines, more deployments.</li>
+<li>❌ <strong>Duplication</strong>: each app loads its own dependencies.</li>
+<li>❌ <strong>Visual consistency</strong>: you must share a design system.</li>
+<li>❌ <strong>Performance</strong>: more requests, more JS.</li>
+<li>❌ <strong>Debugging</strong>: harder to trace a flow across apps.</li>
+<li>❌ <strong>E2E testing</strong>: harder to automate.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-36-micro-frontends-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-36-micro-frontends-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-36-micro-frontends-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-36">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué son los micro-frontends?</p>
-<button class="quiz-option" data-opt="a">A) Pequeños componentes de React</button>
-<button class="quiz-option" data-opt="b">B) Apps frontend independientes que se componen</button>
-<button class="quiz-option" data-opt="c">C) Microservicios en el backend</button>
+<p><strong>1.</strong> What are micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) Small React components</button>
+<button class="quiz-option" data-opt="b">B) Independent frontend apps composed together</button>
+<button class="quiz-option" data-opt="c">C) Backend microservices</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué herramienta permite compartir código en runtime?</p>
+<p><strong>2.</strong> Which tool lets you share code at runtime?</p>
 <button class="quiz-option" data-opt="a">A) Module Federation</button>
 <button class="quiz-option" data-opt="b">B) Webpack</button>
 <button class="quiz-option" data-opt="c">C) npm</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Cuándo NO usar micro-frontends?</p>
-<button class="quiz-option" data-opt="a">A) En equipos grandes</button>
-<button class="quiz-option" data-opt="b">B) En migraciones incrementales</button>
-<button class="quiz-option" data-opt="c">C"&gt;En proyectos pequeños con 1-3 devs</button>
+<p><strong>3.</strong> When should you NOT use micro-frontends?</p>
+<button class="quiz-option" data-opt="a">A) With large teams</button>
+<button class="quiz-option" data-opt="b">B) During incremental migrations</button>
+<button class="quiz-option" data-opt="c">C) In small projects with 1-3 devs</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-36-micro-frontends-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-36-micro-frontends-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-36-micro-frontends-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2036%3A%20Micro-frontends&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2036%3A%20Micro-frontends%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/36-micro-frontends/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2036%3A%20Micro-frontends%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F36-micro-frontends%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/36-micro-frontends/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-36-micro-frontends-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-36-micro-frontends-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-37-ia-generativa">Ir al Capítulo 37 — Introducción a la IA Generativa</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-37-ia-generativa" heading-number="2.8.7"><div><h1 id="37-introduccion-a-la-ia-generativa">37 — Introducción a la IA Generativa<a class="headerlink" href="#en-capitulos-37-ia-generativa-37-introduccion-a-la-ia-generativa" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-36-micro-frontends-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-36-micro-frontends-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-37-ia-generativa">Go to Chapter 37 — Introduction to Generative AI</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-37-ia-generativa" heading-number="2.8.7"><div><h1 id="37-introduccion-a-la-ia-generativa">37 — Introducción a la IA Generativa<a class="headerlink" href="#en-capitulos-37-ia-generativa-37-introduccion-a-la-ia-generativa" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
