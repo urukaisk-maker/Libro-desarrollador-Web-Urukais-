@@ -2236,3 +2236,277 @@ label.md-header__button[for="__drawer"] {
   height: 3px;
   z-index: 100000;
 }
+
+/* ============================================
+   INSIGNIA DE VERSIÓN EN .uru-footer
+   ============================================ */
+.uru-footer__version {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--md-code-font, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--uru-footer-hover);
+  background: var(--uru-footer-social-bg);
+  border: 1px solid var(--uru-footer-border);
+  white-space: nowrap;
+}
+
+[data-md-color-scheme="slate"] .uru-footer__version {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.3);
+  color: #22d3ee;
+}
+
+[data-md-color-scheme="default"] .uru-footer__version {
+  background: rgba(106, 90, 205, 0.1);
+  border-color: rgba(106, 90, 205, 0.25);
+  color: #5b4bc4;
+}
+
+/* ============================================
+   PÁGINA MIS LOGROS (.logros-progreso / .logro-card)
+   ============================================ */
+.logros-progreso {
+  margin: 1.25rem 0 1.75rem;
+  padding: 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(148, 163, 184, 0.25));
+  background: var(--md-code-bg-color, rgba(148, 163, 184, 0.08));
+}
+
+.logros-progreso__bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+}
+
+.logros-progreso__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  transition: width 0.35s ease;
+}
+
+.logros-progreso__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.85rem;
+}
+
+.logros-progreso__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem;
+  border-radius: 10px;
+  background: var(--md-default-bg-color);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.logros-progreso__num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.logros-progreso__label {
+  font-size: 0.78rem;
+  opacity: 0.78;
+}
+
+.logros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.logro-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: var(--md-default-bg-color);
+  opacity: 0.72;
+  transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logro-card.is-unlocked {
+  opacity: 1;
+  border-color: #22d3ee;
+  box-shadow: 0 8px 22px rgba(34, 211, 238, 0.14);
+}
+
+[data-md-color-scheme="default"] .logro-card.is-unlocked {
+  border-color: #6a5acd;
+  box-shadow: 0 8px 20px rgba(106, 90, 205, 0.14);
+}
+
+.logro-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.logro-card__info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.logro-card__info h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.98rem;
+}
+
+.logro-card__info p {
+  margin: 0 0 0.45rem;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+.logro-card__recompensa {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(167, 139, 250, 0.16);
+  color: #a78bfa;
+}
+
+[data-md-color-scheme="default"] .logro-card__recompensa {
+  background: rgba(106, 90, 205, 0.12);
+  color: #5b4bc4;
+}
+
+.logro-card__estado {
+  font-size: 1.15rem;
+  flex: 0 0 auto;
+}
+
+/* ============================================
+   CONTROLES DE CAPÍTULO, FILTROS Y TOAST LOGROS
+   ============================================ */
+.uru-cap-completar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  background: var(--md-code-bg-color, rgba(148, 163, 184, 0.08));
+}
+
+.uru-cap-completar__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.uru-cap-completar__texto span {
+  font-size: 0.85rem;
+  opacity: 0.82;
+}
+
+.uru-logros-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.5rem;
+}
+
+.uru-logros-filtros,
+.uru-logros-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.uru-filtro-btn {
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: transparent;
+  color: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.uru-filtro-btn.is-active {
+  background: var(--uru-primary, #6a5acd);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.uru-logro-toast {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 100001;
+  padding: 0.8rem 1.15rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6a5acd, #0891b2);
+  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.35);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.uru-logro-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   AJUSTES FINOS PORTADA (IMÁGENES Y STACK)
+   ============================================ */
+.book-cover-img {
+  border-radius: 14px;
+  box-shadow: 0 14px 32px rgba(2, 6, 23, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-cover-img:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child > img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.35rem;
+}
+
+.stack-icons {
+  padding: 0.9rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: var(--md-code-bg-color, rgba(148, 163, 184, 0.08));
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.7;
+}

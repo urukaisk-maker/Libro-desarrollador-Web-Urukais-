@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 📊 Galería de diagramas
+# 📊 Galería de diagramas
 
 !!! quote \"Visualiza lo que aprendes\"
     Todos los diagramas visuales del libro, recopilados en una sola página. Cada uno acompaña a un capítulo y te ayuda a entender conceptos complejos de un vistazo.

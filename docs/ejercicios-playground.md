@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🏋️ Ejercicios Playground
+# 🎮 Ejercicios Playground
 
 !!! quote \"Aprende practicando\"
     Una colección de ejercicios interactivos para practicar HTML, CSS y JavaScript directamente en el navegador. Cada ejercicio tiene un objetivo, un editor en vivo y una solución comentada.

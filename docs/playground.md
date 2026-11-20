@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🎮 Playground
+# 💻 Editor Playground
 
 !!! quote \"Programa, prueba, aprende\"
     Un entorno interactivo para escribir HTML, CSS y JavaScript directamente en el navegador. Sin instalar nada, sin configurar nada. Escribe código, pulsa Ejecutar y ve el resultado al instante.

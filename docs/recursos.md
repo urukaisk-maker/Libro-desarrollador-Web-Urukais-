@@ -276,10 +276,10 @@ Si acabas de terminar un nivel y no sabes por dónde seguir, esta es la recomend
 !!! tip "No te disperses"
     Con tantos recursos, es fácil caer en la parálisis por análisis. Mi consejo:
 
-    1. **Elige un recurso por categoría** (un libro, un canal, una documentación).
-    2. **Termínalo** antes de empezar otro.
-    3. **Practica** con proyectos propios, no solo consumas contenido.
-    4. **No acumules cursos**: es mejor terminar uno que empezar diez.
+1. **Elige un recurso por categoría** (un libro, un canal, una documentación).
+2. **Termínalo** antes de empezar otro.
+3. **Practica** con proyectos propios, no solo consumas contenido.
+4. **No acumules cursos**: es mejor terminar uno que empezar diez.
 
 !!! note "¿Falta algún recurso?"
     Si conoces un recurso que debería estar aquí, abre un [issue en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) o envía un PR. Los recursos se revisan cada semana.

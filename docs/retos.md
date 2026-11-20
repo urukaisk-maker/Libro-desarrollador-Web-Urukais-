@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🎯 Retos Semanales
+# 🎯 Retos 
 
 !!! quote \"Aprende resolviendo problemas reales\"
     Cada semana se publica un reto de código corto para poner a prueba lo que has aprendido. Puedes resolverlo a tu ritmo, compartir tu solución y comparar con otras personas de la comunidad.

@@ -2,7 +2,7 @@
 
 # 📘 Libro del Desarrollador Web — Urukais
 
-**El manual definitivo para aprender desarrollo web en español. Desde los cimientos hasta la vanguardia tecnológica.**
+**El manual definitivo para aprender desarrollo web en español.** Desde los cimientos hasta la vanguardia tecnológica.
 
 [![MkDocs](https://img.shields.io/badge/MkDocs-1.6-blue?logo=markdown&logoColor=white)](https://www.mkdocs.org/)
 [![Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-9.7-6a5acd?logo=materialdesign&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
@@ -28,9 +28,14 @@
 | **Diagramas Mermaid** | 14 ✅ |
 | **Páginas principales** | 25+ ✅ |
 | **Apéndices** | 4 ✅ |
+| **Commits desde v1.0.0** | ![GitHub commits since latest release](https://img.shields.io/github/commits-since/urukaisk-maker/Libro-desarrollador-Web-Urukais-/v1.0.0) |
+| **Licencia** | MIT |
+| **Coste mensual** | 0 € |
 | **Versión** | 1.0.0 🎉 |
 
 > *"Aprender a programar es como aprender a tocar un instrumento: hace falta practicar, equivocarse y volver a intentarlo."*
+
+Consulta el [Roadmap](https://libro.urukais.com/roadmap/) para ver qué viene a continuación y el [Changelog](https://libro.urukais.com/changelog/) para ver el historial de versiones.
 
 ---
 
@@ -53,7 +58,7 @@ No es solo un libro de texto; es un **entorno de aprendizaje interactivo** con q
 - **📁 Proyectos guiados**: tutoriales paso a paso (Lista de Tareas, Portfolio, El Niño…).
 - **📊 14 diagramas de arquitectura**: creados con Mermaid.js.
 - **💬 Comentarios (Giscus)**: debate en cada capítulo usando GitHub Discussions.
-- **🌙 Modo oscuro/claro**: con diseño Ultra-Premium (glassmorphism, gradientes).
+- **🌙 Modo oscuro/claro**: con diseño adaptativo en ambos esquemas.
 - **📱 PWA**: instalable y funcional sin conexión.
 - **🌍 Comunidad activa**: Diario, Agenda, Retos Semanales y Hall of Fame.
 
@@ -77,7 +82,7 @@ No es solo un libro de texto; es un **entorno de aprendizaje interactivo** con q
 
 | Tecnología | Uso |
 | :--- | :--- |
-| **MkDocs + Material for MkDocs** | Generación del sitio estático y diseño premium. |
+| **MkDocs + Material for MkDocs** | Generación del sitio estático y diseño de la interfaz. |
 | **Python 3.12** | Motor de construcción y scripts de automatización. |
 | **HTML/CSS/JS** | Personalización de la UI, lógica de quizzes, sandbox y gamificación. |
 | **GitHub Actions** | CI/CD automatizado para despliegues. |
@@ -91,12 +96,12 @@ No es solo un libro de texto; es un **entorno de aprendizaje interactivo** con q
 
 ## 📂 Estructura del proyecto
 
-\`\`\`
+```text
 Libro-desarrollador-Web-Urukais-/
 ├── docs/                          # Contenido en Markdown
 │   ├── assets/                    # CSS, JS, imágenes y fuentes
 │   │   ├── css/                   # Estilos personalizados
-│   │   ├── js/                    # Lógica de quizzes, mega-menú, etc.
+│   │   ├── js/                    # Lógica de quizzes, mega-menú, logros, etc.
 │   │   └── favicon.svg            # Logo del sitio
 │   ├── apendices/                 # Glosario, chuletas, recursos por nivel
 │   ├── capitulos/                 # Los 38 capítulos del libro
@@ -105,30 +110,17 @@ Libro-desarrollador-Web-Urukais-/
 │   └── index.md                   # Portada del libro
 ├── overrides/                     # Personalización del tema Material
 │   ├── main.html                  # Plantilla principal
-│   └── partials/                  # Parciales (footer, etc.)
+│   └── partials/                  # Parciales (footer, copyright, etc.)
 ├── .github/workflows/             # CI/CD (GitHub Actions)
 │   └── deploy.yml                 # Workflow de despliegue
 ├── mkdocs.yml                     # Configuración del sitio
 ├── requirements.txt               # Dependencias de Python
 ├── README.md                      # Este archivo
 └── LICENSE                        # Licencia MIT
-\`\`\`
 
----
 
-## 🚀 Cómo ejecutar el libro en local
-
-### Requisitos previos
-
-- **Python 3.12+** (recomendado, aunque funciona con 3.10+)
-- **Git**
-- Un editor de código (recomendado: [VS Code](https://code.visualstudio.com/))
-
-### Instalación
-
-\`\`\`bash
-# 1. Clona el repositorio
-git clone https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git
+🚀 Cómo ejecutar el libro en localRequisitos previosPython 3.12+ (recomendado, aunque funciona con 3.10+)GitUn editor de código (recomendado: VS Code)InstalaciónBash# 1. Clona el repositorio
+git clone [https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git)
 cd Libro-desarrollador-Web-Urukais-
 
 # 2. Crea un entorno virtual
@@ -147,108 +139,11 @@ python -m pip install -r requirements.txt
 
 # 5. Arranca el servidor de desarrollo
 mkdocs serve
-\`\`\`
-
-Abre tu navegador en **[http://127.0.0.1:8000](http://127.0.0.1:8000)**.
-
-### Comandos útiles
-
-| Comando | Uso |
-| :--- | :--- |
-| \`mkdocs serve\` | Servidor de desarrollo con live-reload |
-| \`mkdocs build\` | Construir el sitio estático en \`site/\` |
-| \`mkdocs gh-deploy\` | Desplegar a GitHub Pages manualmente |
-| \`mkdocs build --clean\` | Limpiar y reconstruir el sitio |
-
----
-
-## 🤝 Cómo contribuir
-
-¡Las contribuciones son bienvenidas! Hay muchas formas de ayudar, incluso sin saber programar:
-
-- 🐛 **Reportar errores**: abre un [issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new).
-- 💡 **Sugerir mejoras**: abre un issue con la etiqueta \`enhancement\`.
-- 🔧 **Enviar correcciones**: haz un fork, crea una rama y abre un PR.
-- 🌍 **Traducir**: estamos trabajando en la traducción al inglés.
-- 📣 **Compartir**: comparte el libro en redes sociales o con quien esté aprendiendo.
-- ⭐ **Dar una estrella**: es gratis y ayuda a que más gente lo descubra.
-
-Para más detalles, consulta la guía de [Contribuir](https://libro.urukais.com/contribuir/).
-
-### Convención de commits
-
-Usamos [Conventional Commits](https://www.conventionalcommits.org/es/):
-
-\`\`\`
-feat: nueva funcionalidad o capítulo
+Abre tu navegador en http://127.0.0.1:8000.Comandos útilesComandoUsomkdocs serveServidor de desarrollo con live-reloadmkdocs buildConstruir el sitio estático en site/mkdocs gh-deployDesplegar a GitHub Pages manualmentemkdocs build --cleanLimpiar y reconstruir el sitio🤝 Cómo contribuir¡Las contribuciones son bienvenidas! Hay muchas formas de ayudar, incluso sin saber programar:🐛 Reportar errores: abre un issue.💡 Sugerir mejoras: abre un issue con la etiqueta enhancement.🔧 Enviar correcciones: haz un fork, crea una rama y abre un PR.🌍 Traducir: estamos trabajando en la traducción al inglés.📣 Compartir: comparte el libro en redes sociales o con quien esté aprendiendo.⭐ Dar una estrella: es gratis y ayuda a que más gente lo descubra.Para más detalles, consulta la guía de Contribuir.Convención de commitsUsamos Conventional Commits:Plaintextfeat: nueva funcionalidad o capítulo
 fix: corrección de errores
 docs: cambios en documentación
 style: cambios de diseño (CSS)
 perf: mejoras de rendimiento
 refactor: reestructuración sin cambiar comportamiento
 chore: tareas de mantenimiento
-\`\`\`
-
----
-
-## 📊 Estado del proyecto
-
-| Métrica | Valor |
-| :--- | :--- |
-| **Capítulos** | 38 |
-| **Niveles** | 7 |
-| **Ejercicios resueltos** | 30 |
-| **Diagramas Mermaid** | 14 |
-| **Retos semanales** | 5 |
-| **Commits** | ![GitHub commits since latest release](https://img.shields.io/github/commits-since/urukaisk-maker/Libro-desarrollador-Web-Urukais-/v1.0.0) |
-| **Licencia** | MIT |
-| **Coste mensual** | 0 € |
-
-Consulta el [Roadmap](https://libro.urukais.com/roadmap/) para ver qué viene a continuación y el [Changelog](https://libro.urukais.com/changelog/) para ver el historial de versiones.
-
----
-
-## 📸 Capturas
-
-> *Próximamente: capturas del modo claro, oscuro y móvil.*
-
----
-
-## 📜 Licencia
-
-Este proyecto está bajo la **Licencia MIT**. Puedes usar, copiar, modificar y distribuir el contenido libremente, siempre que mantengas la atribución.
-
-Consulta el archivo [LICENSE](./LICENSE) para más detalles.
-
----
-
-## 🙏 Agradecimientos
-
-Este libro no sería posible sin el trabajo de miles de personas que comparten su conocimiento libremente en internet. Un agradecimiento especial a:
-
-- **[MDN Web Docs](https://developer.mozilla.org/es/)** — la referencia más completa del desarrollo web.
-- **[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)** — el mejor tema de documentación que existe.
-- **[javascript.info](https://es.javascript.info/)** — el mejor tutorial de JavaScript.
-- **La comunidad hispanohablante** que comparte, corrige y difunde.
-
-Consulta la página completa de [Agradecimientos](https://libro.urukais.com/agradecimientos/).
-
----
-
-## 📬 Contacto
-
-- **Web**: [libro.urukais.com](https://libro.urukais.com)
-- **Email**: [contacto@urukais.com](mailto:contacto@urukais.com)
-- **GitHub**: [@urukaisk-maker](https://github.com/urukaisk-maker)
-- **Twitter / X**: [@urukaisk](https://twitter.com/urukaisk)
-- **Newsletter**: [urukaisklick.substack.com](https://urukaisklick.substack.com)
-
----
-
-<div align="center">
-
-**Hecho con ❤️ y mucho ☕ por [Manuel Casimiro Carrasco (Urukais)](https://libro.urukais.com/autor/)**
-
-⭐ Si este proyecto te resulta útil, dale una estrella en GitHub. Ayuda a que más personas lo descubran.
-
-</div>
+📸 CapturasPróximamente: capturas del modo claro, oscuro y móvil.📜 LicenciaEste proyecto está bajo la Licencia MIT. Puedes usar, copiar, modificar y distribuir el contenido libremente, siempre que mantengas la atribución.Consulta el archivo LICENSE para más detalles.🙏 AgradecimientosEste libro no sería posible sin el trabajo de miles de personas que comparten su conocimiento libremente en internet. Un agradecimiento especial a:MDN Web Docs — la referencia más completa del desarrollo web.Material for MkDocs — el mejor tema de documentación que existe.javascript.info — el mejor tutorial de JavaScript.La comunidad hispanohablante que comparte, corrige y difunde.Consulta la página completa de Agradecimientos.📬 ContactoWeb: libro.urukais.comEmail: contacto@urukais.comGitHub: @urukaisk-makerTwitter / X: @urukaiskNewsletter: urukaisklick.substack.comHecho con ❤️ y mucho ☕ por Manuel Casimiro Carrasco (Urukais)⭐ Si este proyecto te resulta útil, dale una estrella en GitHub. Ayuda a que más personas lo descubran.

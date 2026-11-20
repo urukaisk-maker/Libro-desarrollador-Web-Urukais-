@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🤝 Retos de la Comunidad
+# 🤝 Retos de la Comunidad
 
 !!! quote \"Los retos que propone la comunidad\"
     Además de los retos semanales oficiales, la comunidad propone sus propios desafíos. Algunos son más fáciles, otros más difíciles, pero todos tienen algo en común: los ha propuesto alguien que está aprendiendo, igual que tú.

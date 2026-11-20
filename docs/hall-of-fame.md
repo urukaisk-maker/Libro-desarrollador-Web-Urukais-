@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🏅 Hall of Fame
+# 🏅 Hall of Fame
 
 !!! quote \"Reconocimiento a quienes lo lograron\"
     Aquí aparecen las personas que han completado el **Libro del Desarrollador Web**. Un reconocimiento simbólico a su constancia y dedicación. ¿Serás el próximo?

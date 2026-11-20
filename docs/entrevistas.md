@@ -1,6 +1,4 @@
-cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 💼 Preguntas de Entrevista
+# 💼 Preguntas de Entrevista
 
 !!! quote \"Prepárate para tu próxima oportunidad\"
     Una colección de las preguntas más comunes en entrevistas técnicas para desarrolladores frontend, con respuestas detalladas y ejemplos de código. Organizadas por nivel para que puedas practicar según tu experiencia.

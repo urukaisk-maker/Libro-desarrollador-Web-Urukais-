@@ -8,7 +8,7 @@ hide:
 
 <div class="landing-hero" markdown>
 
-<img src="/assets/portada.png" alt="Portada del Libro del Desarrollador Web" class="book-cover-img animate-in">
+<img src="assets/portada.png" alt="Portada del Libro del Desarrollador Web" class="book-cover-img animate-in">
 
 # Libro del Desarrollador Web
 
@@ -63,11 +63,11 @@ hide:
 
     Genera tu certificado en PDF al completar el libro.
 
--   [:material-github:{ .lg .middle } **Open Source**](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-){ target=_blank }
+-   [:material-github:{ .lg .middle } **Open Source**](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-){ target=_blank rel=noopener }
 
     ---
 
-    Sin anuncios, sin suscripciones, sin muros de pago. MIT.
+    Sin anuncios, sin suscripciones, sin muros de pago. Licencia MIT.
 
 </div>
 
@@ -97,7 +97,7 @@ hide:
 
     **Nivel 3: Avanzado**
 
-    CSS moderno, JS asíncrono, TypeScript, testing.
+    CSS moderno, JS asíncrono, TypeScript y testing.
 
     [:octicons-arrow-right-24: Explorar la técnica](capitulos/11-css-moderno.md)
 
@@ -113,7 +113,7 @@ hide:
 
     **Nivel 5: Experto**
 
-    Web Components, PWA, WebSockets, design systems.
+    Web Components, PWA, WebSockets y design systems.
 
     [:octicons-arrow-right-24: Crear experiencias](capitulos/21-web-components.md)
 
@@ -121,7 +121,7 @@ hide:
 
     **Nivel 6: Élite**
 
-    Seguridad, WebAssembly, IA, WebXR, Web3.
+    Seguridad, WebAssembly, IA, WebXR y Web3.
 
     [:octicons-arrow-right-24: Romper límites](capitulos/26-seguridad.md)
 
@@ -129,7 +129,7 @@ hide:
 
     **Nivel 7: Vanguardia**
 
-    Testing E2E, Server Components, Edge, Docker, GraphQL.
+    Testing E2E, Server Components, Edge, Docker y GraphQL.
 
     [:octicons-arrow-right-24: Ir al futuro](capitulos/31-testing-e2e.md)
 
@@ -199,8 +199,8 @@ hide:
 
 ## ¿Te está sirviendo el libro?
 
-[⭐ Dale una estrella en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-){ .md-button .md-button--primary target=_blank }
-[📬 Suscríbete a la newsletter](https://urukaisklick.substack.com/){ .md-button target=_blank }
+[⭐ Dale una estrella en GitHub](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-){ .md-button .md-button--primary target=_blank rel=noopener }
+[📬 Suscríbete a la newsletter](https://urukaisklick.substack.com/){ .md-button target=_blank rel=noopener }
 
 </div>
 
