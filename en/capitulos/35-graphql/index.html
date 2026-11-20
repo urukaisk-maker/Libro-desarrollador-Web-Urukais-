@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 35 del Libro del Desarrollador Web: 35 — GraphQL. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 35 of the Web Developer's Book: 35 — GraphQL. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 35 del Libro del Desarrollador Web: 35 — GraphQL. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 35 of the Web Developer's Book: 35 — GraphQL. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/35-graphql/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="35 — GraphQL - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 35 del Libro del Desarrollador Web: 35 — GraphQL. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 35 of the Web Developer's Book: 35 — GraphQL. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/35-graphql.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/35-graphql/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="35 — GraphQL - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 35 del Libro del Desarrollador Web: 35 — GraphQL. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 35 of the Web Developer's Book: 35 — GraphQL. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/35-graphql.png" />
 </head>
   
@@ -2236,10 +2236,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-graphql" class="md-nav__link">
+  <a href="#what-is-graphql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔷 ¿Qué es GraphQL?
+        🔷 What is GraphQL?
       
     </span>
   </a>
@@ -2272,7 +2272,7 @@
   <a href="#mutations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✏️ Mutations
+        ✏ Mutations
       
     </span>
   </a>
@@ -2291,10 +2291,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cliente-apollo" class="md-nav__link">
+  <a href="#apollo-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚛️ Cliente Apollo
+        ⚛ Apollo Client
       
     </span>
   </a>
@@ -2302,10 +2302,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#servidor-graphql-con-nodejs" class="md-nav__link">
+  <a href="#graphql-server-with-nodejs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🖥️ Servidor GraphQL con Node.js
+        🖥 GraphQL Server with Node.js
       
     </span>
   </a>
@@ -2316,7 +2316,7 @@
   <a href="#graphql-vs-rest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ GraphQL vs REST
+        ✅ GraphQL vs. REST
       
     </span>
   </a>
@@ -2324,10 +2324,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -2335,10 +2335,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -2346,10 +2346,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#siguiente-paso" class="md-nav__link">
+  <a href="#next-step" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ➡️ Siguiente paso
+        ➡ Next Step
       
     </span>
   </a>
@@ -5136,28 +5136,28 @@
 
 <div><h1 id="35-graphql">35 — GraphQL<a class="headerlink" href="#35-graphql" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es GraphQL y en qué se diferencia de REST.</li>
-<li>Schema y tipos.</li>
-<li>Queries, mutations y subscriptions.</li>
-<li>Cliente Apollo.</li>
-<li>Cuándo usar GraphQL y cuándo no.</li>
+<li>What GraphQL is and how it differs from REST.</li>
+<li>Schema and types.</li>
+<li>Queries, mutations, and subscriptions.</li>
+<li>Apollo Client.</li>
+<li>When to use GraphQL and when not to.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-graphql">🔷 ¿Qué es GraphQL?<a class="headerlink" href="#que-es-graphql" title="Permanent link">¶</a></h2>
-<p><strong>GraphQL</strong> es un lenguaje de consulta para APIs creado por Facebook. A diferencia de REST, el cliente pide <strong>exactamente los datos que necesita</strong>, ni más ni menos.</p>
-<div class="highlight"><pre><span></span><code>REST:     GET /usuarios/1 → devuelve TODO el usuario
-GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
+<h2 id="what-is-graphql">🔷 What is GraphQL?<a class="headerlink" href="#what-is-graphql" title="Permanent link">¶</a></h2>
+<p><strong>GraphQL</strong> is a query language for APIs created by Facebook. Unlike REST, the client asks for <strong>the exact data it needs</strong>, nothing more and nothing less.</p>
+<div class="highlight"><pre><span></span><code>REST:     GET /usuarios/1 → returns the ENTIRE user
+GraphQL:  query { usuario(id: 1) { nombre } } → only the name
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">Pide lo que necesitas, ni más ni menos</p>
-<p>Con REST, a veces recibes 50 campos cuando solo necesitas 2. Con GraphQL, pides exactamente esos 2. Eso ahorra ancho de banda, especialmente en móvil.</p>
+<p class="admonition-title">Ask for what you need, nothing more</p>
+<p>With REST, you sometimes get 50 fields when you only need 2. With GraphQL, you ask for those exact 2. That saves bandwidth, especially on mobile.</p>
 </div>
 <hr>
 <h2 id="schema">📜 Schema<a class="headerlink" href="#schema" title="Permanent link">¶</a></h2>
-<p>El <strong>schema</strong> define los tipos y operaciones disponibles. Es el contrato entre cliente y servidor.</p>
+<p>The <strong>schema</strong> defines the available types and operations. It is the contract between client and server.</p>
 <div class="highlight"><pre><span></span><code><span class="k">type</span><span class="w"> </span><span class="err">Usuario</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nl">id</span><span class="p">:</span><span class="w"> </span><span class="n">ID</span><span class="err">!</span>
 <span class="w">  </span><span class="nl">nombre</span><span class="p">:</span><span class="w"> </span><span class="n">String</span><span class="err">!</span>
@@ -5185,7 +5185,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 </code></pre></div>
 <hr>
 <h2 id="queries">🔍 Queries<a class="headerlink" href="#queries" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c"># Obtener todos los usuarios con su nombre</span>
+<div class="highlight"><pre><span></span><code><span class="c"># Get all users with their name</span>
 <span class="k">query</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">usuarios</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span>
@@ -5193,7 +5193,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c"># Obtener un usuario con sus posts</span>
+<span class="c"># Get a user with their posts</span>
 <span class="k">query</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">usuario</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">nombre</span>
@@ -5203,7 +5203,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c"># Con variables</span>
+<span class="c"># With variables</span>
 <span class="k">query</span><span class="w"> </span><span class="nf">GetUsuario</span><span class="p">(</span><span class="nv">$id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">usuario</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nv">$id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">nombre</span>
@@ -5212,7 +5212,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="mutations">✏️ Mutations<a class="headerlink" href="#mutations" title="Permanent link">¶</a></h2>
+<h2 id="mutations">✏ Mutations<a class="headerlink" href="#mutations" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">mutation</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">crearUsuario</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="w"> </span><span class="s">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="s">"ana@ejemplo.com"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span>
@@ -5222,7 +5222,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 </code></pre></div>
 <hr>
 <h2 id="subscriptions">📡 Subscriptions<a class="headerlink" href="#subscriptions" title="Permanent link">¶</a></h2>
-<p>Las <strong>subscriptions</strong> permiten recibir datos en tiempo real (como WebSockets, pero con GraphQL).</p>
+<p><strong>Subscriptions</strong> let you receive real-time data (like WebSockets, but with GraphQL).</p>
 <div class="highlight"><pre><span></span><code><span class="k">subscription</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">nuevoPost</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span>
@@ -5234,14 +5234,14 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="cliente-apollo">⚛️ Cliente Apollo<a class="headerlink" href="#cliente-apollo" title="Permanent link">¶</a></h2>
-<p><strong>Apollo Client</strong> es la librería más popular para consumir GraphQL desde React, Vue, Svelte o vanilla.</p>
+<h2 id="apollo-client">⚛ Apollo Client<a class="headerlink" href="#apollo-client" title="Permanent link">¶</a></h2>
+<p><strong>Apollo Client</strong> is the most popular library for consuming GraphQL from React, Vue, Svelte, or vanilla JS.</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@apollo/client<span class="w"> </span>graphql
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApolloClient</span><span class="p">,</span><span class="w"> </span><span class="nx">InMemoryCache</span><span class="p">,</span><span class="w"> </span><span class="nx">gql</span><span class="p">,</span><span class="w"> </span><span class="nx">useQuery</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@apollo/client"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ApolloClient</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://api.ejemplo.com/graphql"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">"[https://api.ejemplo.com/graphql](https://api.ejemplo.com/graphql)"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">InMemoryCache</span><span class="p">()</span>
 <span class="p">});</span>
 
@@ -5267,7 +5267,7 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="servidor-graphql-con-nodejs">🖥️ Servidor GraphQL con Node.js<a class="headerlink" href="#servidor-graphql-con-nodejs" title="Permanent link">¶</a></h2>
+<h2 id="graphql-server-with-nodejs">🖥 GraphQL Server with Node.js<a class="headerlink" href="#graphql-server-with-nodejs" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@apollo/server<span class="w"> </span>graphql
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApolloServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@apollo/server"</span><span class="p">;</span>
@@ -5298,49 +5298,82 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Servidor en "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
 </code></pre></div>
 <hr>
-<h2 id="graphql-vs-rest">✅ GraphQL vs REST<a class="headerlink" href="#graphql-vs-rest" title="Permanent link">¶</a></h2>
-<p>| Aspecto | REST | GraphQL |
-| :--- | :--- |
-| Peticiones | Múltiples endpoints | Un solo endpoint |
-| Datos | Overfetching / underfetching | Solo lo que pides |
-| Versionado | v1, v2... | Evolución del schema |
-| Curva | Baja | Media |
-| Caching | HTTP caching | Más complejo |
-| Subidas de archivos | Nativo | Requiere multipart |</p>
+<h2 id="graphql-vs-rest">✅ GraphQL vs. REST<a class="headerlink" href="#graphql-vs-rest" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Aspect</th>
+<th style="text-align: left;">REST</th>
+<th style="text-align: left;">GraphQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Requests</td>
+<td style="text-align: left;">Multiple endpoints</td>
+<td style="text-align: left;">Single endpoint</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data</td>
+<td style="text-align: left;">Overfetching / underfetching</td>
+<td style="text-align: left;">Only what you ask for</td>
+</tr>
+<tr>
+<td style="text-align: left;">Versioning</td>
+<td style="text-align: left;">v1, v2...</td>
+<td style="text-align: left;">Schema evolution</td>
+</tr>
+<tr>
+<td style="text-align: left;">Learning curve</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Medium</td>
+</tr>
+<tr>
+<td style="text-align: left;">Caching</td>
+<td style="text-align: left;">HTTP caching</td>
+<td style="text-align: left;">More complex</td>
+</tr>
+<tr>
+<td style="text-align: left;">File uploads</td>
+<td style="text-align: left;">Native</td>
+<td style="text-align: left;">Requires multipart</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition tip">
-<p class="admonition-title">Cuándo usar GraphQL</p>
+<p class="admonition-title">When to use GraphQL</p>
 <ul>
-<li>Muchas entidades relacionadas.</li>
-<li>Móvil con ancho de banda limitado.</li>
-<li>Múltiples clientes (web, iOS, Android).</li>
-<li>Evitar overfetching en APIs grandes.</li>
+<li>Many related entities.</li>
+<li>Mobile with limited bandwidth.</li>
+<li>Multiple clients (web, iOS, Android).</li>
+<li>Avoiding overfetching on large APIs.</li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Cuándo NO usar GraphQL</p>
+<p class="admonition-title">When NOT to use GraphQL</p>
 <ul>
-<li>APIs simples con pocos recursos.</li>
-<li>Equipos pequeños sin experiencia.</li>
-<li>Cuando HTTP caching es crítico.</li>
+<li>Simple APIs with few resources.</li>
+<li>Small teams without prior experience.</li>
+<li>When HTTP caching is critical.</li>
 </ul>
 </div>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-35">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué ventaja principal tiene GraphQL sobre REST?</p>
-<button class="quiz-option" data-opt="a">A) Es más rápido</button>
-<button class="quiz-option" data-opt="b">B) El cliente pide solo los datos que necesita</button>
-<button class="quiz-option" data-opt="c">C"&gt;Usa menos servidores</button>
+<p><strong>1.</strong> What is the main advantage of GraphQL over REST?</p>
+<button class="quiz-option" data-opt="a">A) It is faster</button>
+<button class="quiz-option" data-opt="b">B) The client asks only for the data it needs</button>
+<button class="quiz-option" data-opt="c">C) It uses fewer servers</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué operación se usa para modificar datos?</p>
+<p><strong>2.</strong> Which operation is used to modify data?</p>
 <button class="quiz-option" data-opt="a">A) Mutation</button>
 <button class="quiz-option" data-opt="b">B) Query</button>
 <button class="quiz-option" data-opt="c">C) Subscription</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué librería es la más popular para GraphQL?</p>
+<p><strong>3.</strong> Which library is most popular for GraphQL?</p>
 <button class="quiz-option" data-opt="a">A) Axios</button>
 <button class="quiz-option" data-opt="b">B) Fetch</button>
 <button class="quiz-option" data-opt="c">C) Apollo</button>
@@ -5348,18 +5381,18 @@ GraphQL:  query { usuario(id: 1) { nombre } } → solo el nombre
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2035%3A%20GraphQL&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2035%3A%20GraphQL&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2035%3A%20GraphQL%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/35-graphql/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2035%3A%20GraphQL%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F35-graphql%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/35-graphql/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="../36-micro-frontends/">Ir al Capítulo 36 — Micro-frontends</a>
-<a class="md-button" href="../../">Volver al índice</a></p></div>
+<h2 id="next-step">➡ Next Step<a class="headerlink" href="#next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="../36-micro-frontends/">Go to Chapter 36 — Micro-frontends</a>
+<a class="md-button" href="../../">Back to index</a></p></div>
 
 
 
