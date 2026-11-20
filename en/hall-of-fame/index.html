@@ -147,7 +147,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#que-es-el-hall-of-fame" class="md-skip">
+        <a href="#hall-of-fame" class="md-skip">
           Skip to content
         </a>
       
@@ -4529,6 +4529,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -4570,6 +4572,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -5069,11 +5073,7 @@
   
 
 
-  <h1>🏅 Hall of Fame</h1>
-
-<div><p>cd ~/Libro-desarrollador-Web-Urukais-
-python3 -c "
-contenido = '''# 🏅 Hall of Fame</p>
+<div><h1 id="hall-of-fame">🏅 Hall of Fame<a class="headerlink" href="#hall-of-fame" title="Permanent link">¶</a></h1>
 <p>!!! quote \"Reconocimiento a quienes lo lograron\"
     Aquí aparecen las personas que han completado el <strong>Libro del Desarrollador Web</strong>. Un reconocimiento simbólico a su constancia y dedicación. ¿Serás el próximo?</p>
 <hr>
@@ -5510,10 +5510,13 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 
       
       <div class="uru-footer__brand">
-        <a class="uru-footer__logo" href="../">
-          <img src="../../assets/favicon.svg" alt="" width="32" height="32">
-          <span class="uru-footer__logo-text">Libro del Desarrollador Web</span>
-        </a>
+        <div class="uru-footer__brand-row">
+          <a class="uru-footer__logo" href="../">
+            <img src="../../assets/favicon.svg" alt="" width="32" height="32">
+            <span class="uru-footer__logo-text">Libro del Desarrollador Web</span>
+          </a>
+          <span class="uru-footer__version">v1.0.0</span>
+        </div>
         <p class="uru-footer__tagline">
           De Reus Tarragona Urukais KLick<br>
           38 capítulos · 7 niveles · 100% open source.
@@ -5601,9 +5604,11 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
   
   <div class="uru-footer__bottom">
     <div class="uru-footer__bottom-inner">
-      <p class="uru-footer__copyright">
-        © 2026 , 27<strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
-      </p>
+      <div class="uru-footer__bottom-meta">
+        <p class="uru-footer__copyright">
+          © 2026–2027 ---<strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
+        </p>
+      </div>
       <ul class="uru-footer__legal">
         <li><a href="../#licencia">Licencia</a></li>
         <li><a href="../../contacto/">Contacto</a></li>
