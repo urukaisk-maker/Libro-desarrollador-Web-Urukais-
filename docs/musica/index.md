@@ -1,4 +1,3 @@
----INICIO---
 # 🎵 Música para programar
 
 !!! quote "La banda sonora del desarrollador"
@@ -12,7 +11,9 @@ Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reprod
 
 <div id="music-search-widget">
 
-<input type="text" id="music-search-input" placeholder="Busca una canción o artista…" class="music-search-input">
+<input type="text" id="music-search-input" placeholder="Busca una canción o artista…" class="music-search-input" autocomplete="off">
+
+<div id="music-history" class="music-history"></div>
 
 <div id="music-search-results" class="music-results"></div>
 
@@ -23,6 +24,9 @@ Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reprod
   <div class="music-player__info">
     <strong id="player-title">Sin reproducción</strong>
     <span id="player-artist">Busca una canción para empezar</span>
+  </div>
+  <div class="music-player__equalizer" id="player-equalizer">
+    <span></span><span></span><span></span><span></span><span></span>
   </div>
   <div class="music-player__controls">
     <button id="player-prev" class="music-player__btn" aria-label="Anterior">⏮</button>
@@ -38,6 +42,8 @@ Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reprod
 </div>
 
 </div>
+
+---
 
 ## 🎯 ¿Qué música elegir según la tarea?
 
@@ -86,4 +92,3 @@ Escribe el nombre de una canción o artista y pulsa **▶ Escuchar** para reprod
 ---
 
 ➡️ Volver a la [portada](../index.md)
----FIN---

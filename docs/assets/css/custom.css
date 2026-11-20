@@ -2347,3 +2347,391 @@ label.md-header__button[for="__drawer"] {
     text-align: center;
   }
 }
+
+/* ============================================================
+   PÁGINA DE MÚSICA PREMIUM — Ecualizador + historial
+   ============================================================ */
+
+/* ---------- Ecualizador animado ---------- */
+.music-player__equalizer {
+  display: none;
+  gap: 2px;
+  align-items: flex-end;
+  height: 20px;
+  flex-shrink: 0;
+  padding: 0 0.5rem;
+}
+
+.music-player.is-playing .music-player__equalizer {
+  display: flex;
+}
+
+.music-player__equalizer span {
+  width: 3px;
+  height: 100%;
+  background: var(--uru-gradient);
+  border-radius: 2px;
+  animation: equalize 1.2s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.music-player__equalizer span:nth-child(1) { animation-delay: -0.4s; animation-duration: 0.9s; }
+.music-player__equalizer span:nth-child(2) { animation-delay: -0.8s; animation-duration: 1.1s; }
+.music-player__equalizer span:nth-child(3) { animation-delay: -0.2s; animation-duration: 1.0s; }
+.music-player__equalizer span:nth-child(4) { animation-delay: -0.6s; animation-duration: 0.8s; }
+.music-player__equalizer span:nth-child(5) { animation-delay: -0.3s; animation-duration: 1.3s; }
+
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.4); }
+  50%      { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-player__equalizer span { animation: none; }
+  .music-player__equalizer span { transform: scaleY(0.8); }
+}
+
+/* ---------- Historial de búsquedas ---------- */
+.music-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  min-height: 0;
+}
+
+.music-history:empty {
+  display: none;
+}
+
+.music-history__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md-default-fg-color--light);
+  font-weight: 600;
+  margin-right: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.music-history__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.music-history__chip:hover {
+  border-color: var(--uru-primary-light);
+  color: var(--uru-primary-light);
+  background: color-mix(in srgb, var(--uru-primary) 8%, transparent);
+  transform: translateY(-1px);
+}
+
+.music-history__chip::before {
+  content: '🕐';
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.music-history__clear {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.music-history__clear:hover {
+  color: var(--md-typeset-a-color);
+  text-decoration: underline;
+}
+
+/* ---------- Responsive del reproductor ---------- */
+@media (max-width: 600px) {
+  .music-player__equalizer {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   AJUSTE: Anillo de progreso más compacto
+   ============================================================ */
+
+/* Reducir el tamaño del anillo */
+.progress-ring {
+  width: 130px;
+  height: 130px;
+}
+
+.progress-ring__percent {
+  font-size: 1.6rem;
+}
+
+.progress-ring__caption {
+  font-size: 0.65rem;
+}
+
+.progress-ring__track,
+.progress-ring__fill {
+  stroke-width: 10;  /* más fino para que se vea elegante */
+}
+
+/* Reducir padding del hero para que no ocupe tanto */
+.logros-hero {
+  padding: 1.5rem 1rem;
+  gap: 1rem;
+}
+
+/* Stats más compactas */
+.logros-stats-grid {
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+  max-width: 520px;
+  gap: 0.75rem;
+}
+
+.logros-stat {
+  padding: 0.75rem 0.5rem;
+}
+
+.logros-stat__num {
+  font-size: 1.35rem;
+}
+
+.logros-stat__label {
+  font-size: 0.65rem;
+}
+
+@media (max-width: 640px) {
+  .progress-ring {
+    width: 110px;
+    height: 110px;
+  }
+  .progress-ring__percent {
+    font-size: 1.35rem;
+  }
+  .logros-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   LOGROS — AJUSTE FINAL (anillo compacto + stats + filtros + botones)
+   ============================================================ */
+
+/* ---------- Hero compacto ---------- */
+.logros-hero {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.25rem 2rem;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  margin: 1.25rem 0 2rem;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.1), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.1), transparent 55%),
+    var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 18px;
+  text-align: left;
+}
+
+/* ---------- Anillo más pequeño ---------- */
+.progress-ring {
+  width: 120px;
+  height: 120px;
+  justify-self: center;
+}
+
+.progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring__track,
+.progress-ring__fill {
+  stroke-width: 11;
+}
+
+.progress-ring__percent {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.progress-ring__caption {
+  font-size: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+/* ---------- Stats en grid 2x2 ---------- */
+.logros-stats-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.logros-stat {
+  padding: 0.7rem 0.5rem !important;
+  text-align: center;
+  border-radius: 10px !important;
+}
+
+.logros-stat__num {
+  font-size: 1.4rem !important;
+  line-height: 1 !important;
+}
+
+.logros-stat__label {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.06em !important;
+  margin-top: 0.2rem !important;
+}
+
+/* ---------- Filtros (Todos / Desbloqueados / Bloqueados) ---------- */
+.logros-filtros,
+.logros-filters,
+div[class*="filtro"] {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0 1.25rem;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.logros-filtros button,
+.logros-filters button,
+div[class*="filtro"] button,
+button[data-filtro],
+button[data-filter] {
+  padding: 0.4rem 0.9rem !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--md-default-fg-color--lightest) !important;
+  background: var(--md-default-bg-color) !important;
+  color: var(--md-default-fg-color) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.logros-filtros button:hover,
+.logros-filters button:hover,
+button[data-filtro]:hover,
+button[data-filter]:hover {
+  border-color: var(--uru-primary-light) !important;
+  color: var(--uru-primary-light) !important;
+  background: color-mix(in srgb, var(--uru-primary) 8%, transparent) !important;
+}
+
+.logros-filtros button.active,
+.logros-filters button.active,
+button[data-filtro].active,
+button[data-filter].active,
+.logros-filtros button.is-active,
+.logros-filters button.is-active {
+  background: var(--uru-gradient) !important;
+  color: #0f172a !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* ---------- Botones de acción (Exportar JSON / Reiniciar) ---------- */
+.logros-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+}
+
+.logros-acciones .md-button,
+.logros-acciones button {
+  padding: 0.55rem 1.1rem !important;
+  border-radius: 10px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--md-default-fg-color--lightest) !important;
+  background: var(--md-default-bg-color) !important;
+  color: var(--md-default-fg-color) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+  box-shadow: none !important;
+}
+
+.logros-acciones .md-button:hover,
+.logros-acciones button:hover {
+  transform: translateY(-1px) !important;
+  border-color: var(--uru-primary-light) !important;
+  color: var(--uru-primary-light) !important;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Botón Reiniciar (danger) */
+.logros-acciones button[id*="reset"],
+.logros-acciones button[id*="reiniciar"],
+.logros-acciones .md-button--danger,
+.logros-acciones button[class*="danger"] {
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  color: #ef4444 !important;
+}
+
+.logros-acciones button[id*="reset"]:hover,
+.logros-acciones button[id*="reiniciar"]:hover,
+.logros-acciones .md-button--danger:hover,
+.logros-acciones button[class*="danger"]:hover {
+  background: #ef4444 !important;
+  color: #fff !important;
+  border-color: #ef4444 !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .logros-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.25rem 1rem;
+  }
+  .progress-ring {
+    width: 110px;
+    height: 110px;
+    justify-self: center;
+  }
+  .logros-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .logros-filtros,
+  .logros-filters,
+  div[class*="filtro"] {
+    justify-content: center;
+  }
+}
