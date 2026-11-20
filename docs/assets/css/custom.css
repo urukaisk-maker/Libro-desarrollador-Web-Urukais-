@@ -2533,53 +2533,98 @@ label.md-header__button[for="__drawer"] {
 /* ============================================================
    LOGROS — AJUSTE FINAL (anillo compacto + stats + filtros + botones)
    ============================================================ */
+/* ---------- Anillo compacto (120px) + hitos alineados ---------- */
+  .progress-ring-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+  }
 
-/* ---------- Hero compacto ---------- */
-.logros-hero {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 1.25rem 2rem;
-  align-items: center;
-  padding: 1.5rem 1.75rem;
-  margin: 1.25rem 0 2rem;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.1), transparent 55%),
-    radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.1), transparent 55%),
-    var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 18px;
-  text-align: left;
-}
+  .progress-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+  }
 
-/* ---------- Anillo más pequeño ---------- */
-.progress-ring {
-  width: 120px;
-  height: 120px;
-  justify-self: center;
-}
+  .progress-ring svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+  }
 
-.progress-ring svg {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
+  .progress-ring__track,
+  .progress-ring__fill {
+    fill: none;
+    stroke-width: 11;
+  }
 
-.progress-ring__track,
-.progress-ring__fill {
-  stroke-width: 11;
-}
+  .progress-ring__fill {
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-.progress-ring__percent {
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1;
-}
+  .progress-ring__label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+  }
 
-.progress-ring__caption {
-  font-size: 0.6rem;
-  margin-top: 0.2rem;
-}
+  .progress-ring__percent {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
 
+  .progress-ring__caption {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.75;
+    margin-top: 0.2rem;
+  }
+
+  .progress-ring .milestone {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--md-default-bg-color, #ffffff);
+    border: 2px solid var(--md-default-fg-color--lighter, #94a3b8);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* r=70 en viewBox 160x160 escalado a 120x120: centro en 60px, radio efectivo en 52.5px */
+  .progress-ring .milestone[data-milestone="25"] {
+    top: 60px;
+    left: 112.5px;
+  }
+
+  .progress-ring .milestone[data-milestone="50"] {
+    top: 112.5px;
+    left: 60px;
+  }
+
+  .progress-ring .milestone[data-milestone="75"] {
+    top: 60px;
+    left: 7.5px;
+  }
 /* ---------- Stats en grid 2x2 ---------- */
 .logros-stats-grid {
   display: grid !important;
