@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 09 del Libro del Desarrollador Web: 09 — Despliegue. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 09 of the Web Developer's Book: 09 — Deployment. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 09 del Libro del Desarrollador Web: 09 — Despliegue. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 09 of the Web Developer's Book: 09 — Deployment. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/09-despliegue/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="09 — Despliegue y hosting - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 09 del Libro del Desarrollador Web: 09 — Despliegue. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 09 of the Web Developer's Book: 09 — Deployment. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/09-despliegue.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/09-despliegue/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="09 — Despliegue y hosting - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 09 del Libro del Desarrollador Web: 09 — Despliegue. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 09 of the Web Developer's Book: 09 — Deployment. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/09-despliegue.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#09-despliegue" class="md-skip">
+        <a href="#09-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -1193,10 +1193,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-desplegar" class="md-nav__link">
+  <a href="#what-is-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 ¿Qué es desplegar?
+        🚀 What is Deployment?
       
     </span>
   </a>
@@ -1204,10 +1204,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tipos-de-hosting" class="md-nav__link">
+  <a href="#hosting-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏛 Tipos de hosting
+        🏛 Hosting Types
       
     </span>
   </a>
@@ -1215,22 +1215,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plataformas-recomendadas" class="md-nav__link">
+  <a href="#recommended-platforms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Plataformas recomendadas
+        🎯 Recommended Platforms
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🎯 Plataformas recomendadas">
+    <nav class="md-nav" aria-label="🎯 Recommended Platforms">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#github-pages-estatico-gratis" class="md-nav__link">
+  <a href="#github-pages-static-free" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitHub Pages (estático, gratis)
+        GitHub Pages (static, free)
       
     </span>
   </a>
@@ -1238,10 +1238,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vercel-nextjs-react-estatico-funciones" class="md-nav__link">
+  <a href="#vercel-nextjs-react-static-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vercel (Next.js, React, estático + funciones)
+        Vercel (Next.js, React, static + functions)
       
     </span>
   </a>
@@ -1249,10 +1249,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#netlify-estatico-funciones" class="md-nav__link">
+  <a href="#netlify-static-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Netlify (estático + funciones)
+        Netlify (static + functions)
       
     </span>
   </a>
@@ -1287,10 +1287,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cicd-con-github-actions" class="md-nav__link">
+  <a href="#cicd-with-github-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔁 CI/CD con GitHub Actions
+        🔁 CI/CD with GitHub Actions
       
     </span>
   </a>
@@ -1298,22 +1298,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variables-de-entorno-y-secretos" class="md-nav__link">
+  <a href="#environment-variables-and-secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔐 Variables de entorno y secretos
+        🔐 Environment Variables and Secrets
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔐 Variables de entorno y secretos">
+    <nav class="md-nav" aria-label="🔐 Environment Variables and Secrets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#en-github-actions" class="md-nav__link">
+  <a href="#in-github-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        En GitHub Actions
+        In GitHub Actions
       
     </span>
   </a>
@@ -1321,10 +1321,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#en-vercel-netlify" class="md-nav__link">
+  <a href="#in-vercel-netlify" class="md-nav__link">
     <span class="md-ellipsis">
       
-        En Vercel / Netlify
+        In Vercel / Netlify
       
     </span>
   </a>
@@ -1337,22 +1337,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dominio-y-https" class="md-nav__link">
+  <a href="#custom-domain-and-https" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🌐 Dominio y HTTPS
+        🌐 Custom Domain and HTTPS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🌐 Dominio y HTTPS">
+    <nav class="md-nav" aria-label="🌐 Custom Domain and HTTPS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dominio-personalizado" class="md-nav__link">
+  <a href="#custom-domain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dominio personalizado
+        Custom Domain
       
     </span>
   </a>
@@ -1376,22 +1376,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitorizacion-basica" class="md-nav__link">
+  <a href="#basic-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Monitorización básica
+        📊 Basic Monitoring
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📊 Monitorización básica">
+    <nav class="md-nav" aria-label="📊 Basic Monitoring">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#que-medir" class="md-nav__link">
+  <a href="#what-to-measure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Qué medir?
+        What to Measure?
       
     </span>
   </a>
@@ -1399,10 +1399,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-con-sentry-errores-en-produccion" class="md-nav__link">
+  <a href="#example-with-sentry-production-errors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo con Sentry (errores en producción)
+        Example with Sentry (production errors)
       
     </span>
   </a>
@@ -1426,10 +1426,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipeline-completo-tipico" class="md-nav__link">
+  <a href="#typical-full-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏗 Pipeline completo típico
+        🏗 Typical Full Pipeline
       
     </span>
   </a>
@@ -1437,10 +1437,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-practico" class="md-nav__link">
+  <a href="#practical-exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 Ejercicio práctico
+        🧪 Practical Exercise
       
     </span>
   </a>
@@ -1459,10 +1459,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 Recursos
+        📚 Resources
       
     </span>
   </a>
@@ -1470,10 +1470,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -1481,10 +1481,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -5312,82 +5312,82 @@
   
 
 
-<div><h1 id="09-despliegue">09 — Despliegue<a class="headerlink" href="#09-despliegue" title="Permanent link">¶</a></h1>
+<div><h1 id="09-deployment">09 — Deployment<a class="headerlink" href="#09-deployment" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué significa "desplegar" una aplicación web.</li>
-<li>Hosting estático vs hosting dinámico.</li>
-<li>Plataformas recomendadas: Vercel, Netlify, GitHub Pages, Cloudflare Pages.</li>
-<li>CI/CD con GitHub Actions.</li>
-<li>Variables de entorno, dominios y HTTPS.</li>
-<li>Rollback y monitorización básica.</li>
+<li>What it means to "deploy" a web application.</li>
+<li>Static hosting vs. dynamic hosting.</li>
+<li>Recommended platforms: Vercel, Netlify, GitHub Pages, Cloudflare Pages.</li>
+<li>CI/CD with GitHub Actions.</li>
+<li>Environment variables, custom domains, and HTTPS.</li>
+<li>Rollbacks and basic monitoring.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-desplegar">🚀 ¿Qué es desplegar?<a class="headerlink" href="#que-es-desplegar" title="Permanent link">¶</a></h2>
-<p><strong>Desplegar</strong> (deploy) es publicar tu aplicación en un servidor accesible desde internet. Hasta ese momento, tu web solo existe en tu ordenador (<code>localhost</code>). Al desplegar, obtiene una URL pública y cualquier persona puede visitarla.</p>
+<h2 id="what-is-deployment">🚀 What is Deployment?<a class="headerlink" href="#what-is-deployment" title="Permanent link">¶</a></h2>
+<p><strong>Deploying</strong> means publishing your application to a server accessible from the internet. Until then, your site only exists on your computer (<code>localhost</code>). When you deploy, it gets a public URL and anyone can visit it.</p>
 <div class="admonition quote">
-<p class="admonition-title">La analogía del escaparate</p>
-<p>Tu proyecto en local es el <strong>taller</strong> donde construyes el escaparate. Desplegar es <strong>abrir la tienda al público</strong>: montar el escaparate en la calle, encender las luces y colgar el cartel.</p>
+<p class="admonition-title">The storefront analogy</p>
+<p>Your local project is the <strong>workshop</strong> where you build the display. Deploying is <strong>opening the shop to the public</strong>: setting up the window display on the street, turning on the lights, and hanging the sign.</p>
 </div>
 <pre class="mermaid"><code>graph LR
-    A[Tu código] --&gt; B[Repositorio Git]
+    A[Your code] --&gt; B[Git repository]
     B --&gt; C[CI/CD]
-    C --&gt; D[Servidor]
-    D --&gt; E[URL pública]</code></pre>
+    C --&gt; D[Server]
+    D --&gt; E[Public URL]</code></pre>
 <hr>
-<h2 id="tipos-de-hosting">🏛 Tipos de hosting<a class="headerlink" href="#tipos-de-hosting" title="Permanent link">¶</a></h2>
+<h2 id="hosting-types">🏛 Hosting Types<a class="headerlink" href="#hosting-types" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Qué sirve</th>
-<th style="text-align: left;">Ejemplos</th>
-<th style="text-align: left;">Coste típico</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">What it serves</th>
+<th style="text-align: left;">Examples</th>
+<th style="text-align: left;">Typical cost</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Estático</strong></td>
-<td style="text-align: left;">HTML, CSS, JS, imágenes (sin backend)</td>
+<td style="text-align: left;"><strong>Static</strong></td>
+<td style="text-align: left;">HTML, CSS, JS, images (no backend)</td>
 <td style="text-align: left;">GitHub Pages, Netlify, Cloudflare Pages</td>
-<td style="text-align: left;">Gratis</td>
+<td style="text-align: left;">Free</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Serverless / JAMstack</strong></td>
-<td style="text-align: left;">Estático + funciones bajo demanda</td>
+<td style="text-align: left;">Static + on-demand functions</td>
 <td style="text-align: left;">Vercel, Netlify Functions</td>
-<td style="text-align: left;">Gratis con límites</td>
+<td style="text-align: left;">Free within limits</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>PaaS</strong></td>
-<td style="text-align: left;">Node.js, Python, etc. con servidor gestionado</td>
+<td style="text-align: left;">Node.js, Python, etc. with managed server</td>
 <td style="text-align: left;">Railway, Render, Fly.io</td>
-<td style="text-align: left;">0–5 €/mes</td>
+<td style="text-align: left;">€0–5/month</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>IaaS / VPS</strong></td>
-<td style="text-align: left;">Servidor completo (tú gestionas todo)</td>
+<td style="text-align: left;">Full server (you manage everything)</td>
 <td style="text-align: left;">DigitalOcean, Hetzner, AWS EC2</td>
-<td style="text-align: left;">5–20 €/mes</td>
+<td style="text-align: left;">€5–20/month</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Contenedores</strong></td>
-<td style="text-align: left;">Docker orquestado</td>
+<td style="text-align: left;"><strong>Containers</strong></td>
+<td style="text-align: left;">Orchestrated Docker</td>
 <td style="text-align: left;">AWS ECS, Google Cloud Run, Fly.io</td>
-<td style="text-align: left;">Pago por uso</td>
+<td style="text-align: left;">Pay as you go</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Empieza con estático</p>
-<p>Si tu proyecto es HTML + CSS + JS, un hosting estático es <strong>gratis, rápido y con HTTPS automático</strong>. Sube el listón solo cuando necesites backend.</p>
+<p class="admonition-title">Start with static</p>
+<p>If your project is HTML + CSS + JS, static hosting is <strong>free, fast, and includes automatic HTTPS</strong>. Step up only when you need a backend.</p>
 </div>
 <hr>
-<h2 id="plataformas-recomendadas">🎯 Plataformas recomendadas<a class="headerlink" href="#plataformas-recomendadas" title="Permanent link">¶</a></h2>
-<h3 id="github-pages-estatico-gratis">GitHub Pages (estático, gratis)<a class="headerlink" href="#github-pages-estatico-gratis" title="Permanent link">¶</a></h3>
-<p>Perfecto para documentación, portfolios y proyectos personales.</p>
+<h2 id="recommended-platforms">🎯 Recommended Platforms<a class="headerlink" href="#recommended-platforms" title="Permanent link">¶</a></h2>
+<h3 id="github-pages-static-free">GitHub Pages (static, free)<a class="headerlink" href="#github-pages-static-free" title="Permanent link">¶</a></h3>
+<p>Great for documentation, portfolios, and personal projects.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/deploy.yml</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
 <span class="nt">on</span><span class="p">:</span>
@@ -5413,50 +5413,50 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v4</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Sin backend</p>
-<p>GitHub Pages solo sirve archivos estáticos. No ejecuta Node.js, Python ni bases de datos.</p>
+<p class="admonition-title">No backend</p>
+<p>GitHub Pages only serves static files. It does not run Node.js, Python, or databases.</p>
 </div>
-<h3 id="vercel-nextjs-react-estatico-funciones">Vercel (Next.js, React, estático + funciones)<a class="headerlink" href="#vercel-nextjs-react-estatico-funciones" title="Permanent link">¶</a></h3>
+<h3 id="vercel-nextjs-react-static-functions">Vercel (Next.js, React, static + functions)<a class="headerlink" href="#vercel-nextjs-react-static-functions" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>i<span class="w"> </span>-g<span class="w"> </span>vercel
 vercel
 </code></pre></div>
 <ul>
-<li>Detección automática de framework (Next.js, Vite, Astro…).</li>
-<li><strong>Preview deployments</strong> por cada PR (URL temporal).</li>
-<li>Funciones serverless incluidas.</li>
-<li>HTTPS y dominio gratis.</li>
-<li>Free tier generoso para proyectos personales.</li>
+<li>Automatic framework detection (Next.js, Vite, Astro…).</li>
+<li><strong>Preview deployments</strong> for every PR (temporary URL).</li>
+<li>Serverless functions included.</li>
+<li>Free HTTPS and domain.</li>
+<li>Generous free tier for personal projects.</li>
 </ul>
-<h3 id="netlify-estatico-funciones">Netlify (estático + funciones)<a class="headerlink" href="#netlify-estatico-funciones" title="Permanent link">¶</a></h3>
+<h3 id="netlify-static-functions">Netlify (static + functions)<a class="headerlink" href="#netlify-static-functions" title="Permanent link">¶</a></h3>
 <ul>
-<li>Similar a Vercel, muy popular para JAMstack.</li>
-<li>Formularios integrados (<code>&lt;form netlify&gt;</code>).</li>
-<li>Funciones serverless en <code>netlify/functions/</code>.</li>
-<li>Split testing A/B integrado.</li>
+<li>Similar to Vercel, very popular for JAMstack.</li>
+<li>Built-in forms (<code>&lt;form netlify&gt;</code>).</li>
+<li>Serverless functions in <code>netlify/functions/</code>.</li>
+<li>Built-in A/B split testing.</li>
 </ul>
 <h3 id="cloudflare-pages-workers">Cloudflare Pages + Workers<a class="headerlink" href="#cloudflare-pages-workers" title="Permanent link">¶</a></h3>
 <ul>
-<li>CDN global (300+ PoPs).</li>
-<li>Free tier muy generoso.</li>
-<li><strong>Workers</strong> para lógica en el edge (ver capítulo 33).</li>
-<li>Ideal si combinas estático + edge functions.</li>
+<li>Global CDN (300+ PoPs).</li>
+<li>Very generous free tier.</li>
+<li><strong>Workers</strong> for edge logic (see Chapter 33).</li>
+<li>Ideal when combining static assets + edge functions.</li>
 </ul>
 <h3 id="railway-render-flyio-backend">Railway / Render / Fly.io (backend)<a class="headerlink" href="#railway-render-flyio-backend" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Railway</strong>: deploy desde Git, PostgreSQL incluido.</li>
-<li><strong>Render</strong>: similar, free tier con sleep.</li>
-<li><strong>Fly.io</strong>: contenedores Docker globales, muy rápido.</li>
+<li><strong>Railway</strong>: deploy from Git, PostgreSQL included.</li>
+<li><strong>Render</strong>: similar, free tier spins down when idle.</li>
+<li><strong>Fly.io</strong>: global Docker containers, very fast.</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Necesito…</th>
-<th style="text-align: left;">Plataforma</th>
+<th style="text-align: left;">I need…</th>
+<th style="text-align: left;">Platform</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Solo HTML/CSS/JS</td>
+<td style="text-align: left;">Just HTML/CSS/JS</td>
 <td style="text-align: left;">GitHub Pages / Netlify</td>
 </tr>
 <tr>
@@ -5468,18 +5468,18 @@ vercel
 <td style="text-align: left;">Cloudflare Pages</td>
 </tr>
 <tr>
-<td style="text-align: left;">Backend Node/Python</td>
+<td style="text-align: left;">Node/Python backend</td>
 <td style="text-align: left;">Railway / Render / Fly.io</td>
 </tr>
 <tr>
-<td style="text-align: left;">Base de datos + API</td>
+<td style="text-align: left;">Database + API</td>
 <td style="text-align: left;">Railway / Supabase / Neon</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="cicd-con-github-actions">🔁 CI/CD con GitHub Actions<a class="headerlink" href="#cicd-con-github-actions" title="Permanent link">¶</a></h2>
-<p><strong>CI/CD</strong> (Integración Continua / Despliegue Continuo) automatiza el proceso: cada <code>git push</code> compila, testea y despliega.</p>
+<h2 id="cicd-with-github-actions">🔁 CI/CD with GitHub Actions<a class="headerlink" href="#cicd-with-github-actions" title="Permanent link">¶</a></h2>
+<p><strong>CI/CD</strong> (Continuous Integration / Continuous Deployment) automates the workflow: every <code>git push</code> builds, tests, and deploys.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/ci.yml</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
 <span class="nt">on</span><span class="p">:</span>
@@ -5501,69 +5501,69 @@ vercel
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Un workflow por responsabilidad</p>
-<p>Un workflow para <strong>tests</strong> (<code>ci.yml</code>), otro para <strong>deploy</strong> (<code>deploy.yml</code>). Así puedes ver de un vistazo qué falla: código o despliegue.</p>
+<p class="admonition-title">One workflow per responsibility</p>
+<p>Keep one workflow for <strong>tests</strong> (<code>ci.yml</code>) and another for <strong>deploy</strong> (<code>deploy.yml</code>). That way you can tell at a glance whether code or deployment failed.</p>
 </div>
 <hr>
-<h2 id="variables-de-entorno-y-secretos">🔐 Variables de entorno y secretos<a class="headerlink" href="#variables-de-entorno-y-secretos" title="Permanent link">¶</a></h2>
-<p><strong>Nunca</strong> subas claves al repositorio. Usa variables de entorno:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Mal</span>
+<h2 id="environment-variables-and-secrets">🔐 Environment Variables and Secrets<a class="headerlink" href="#environment-variables-and-secrets" title="Permanent link">¶</a></h2>
+<p><strong>Never</strong> commit keys to the repository. Use environment variables:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Bad</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">API_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"sk-abc123..."</span><span class="p">;</span>
 
-<span class="c1">// ✅ Bien</span>
+<span class="c1">// ✅ Good</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">API_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">API_KEY</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="en-github-actions">En GitHub Actions<a class="headerlink" href="#en-github-actions" title="Permanent link">¶</a></h3>
+<h3 id="in-github-actions">In GitHub Actions<a class="headerlink" href="#in-github-actions" title="Permanent link">¶</a></h3>
 <ol>
 <li>Repo → Settings → Secrets and variables → Actions.</li>
-<li>Añade <code>API_KEY</code> con su valor.</li>
-<li>Úsalo en el workflow:</li>
+<li>Add <code>API_KEY</code> with its value.</li>
+<li>Use it in the workflow:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
 <span class="w">  </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_KEY }}</span>
 </code></pre></div>
-<h3 id="en-vercel-netlify">En Vercel / Netlify<a class="headerlink" href="#en-vercel-netlify" title="Permanent link">¶</a></h3>
-<p>Se configuran en el panel web (Settings → Environment Variables). Se inyectan en build y en runtime.</p>
+<h3 id="in-vercel-netlify">In Vercel / Netlify<a class="headerlink" href="#in-vercel-netlify" title="Permanent link">¶</a></h3>
+<p>Configure them in the web dashboard (Settings → Environment Variables). They are injected at build time and runtime.</p>
 <div class="admonition warning">
-<p class="admonition-title">.env nunca al repo</p>
-<p>Añade <code>.env</code>, <code>.env.local</code>, <code>.env.*.local</code> a <code>.gitignore</code>. Si has subido uno por error, <strong>rota las claves</strong> inmediatamente: aunque borres el commit, quedan en el historial.</p>
+<p class="admonition-title">.env never goes into the repo</p>
+<p>Add <code>.env</code>, <code>.env.local</code>, <code>.env.*.local</code> to <code>.gitignore</code>. If you accidentally push one, <strong>rotate the keys</strong> right away: even if you delete the commit, they remain in Git history.</p>
 </div>
 <hr>
-<h2 id="dominio-y-https">🌐 Dominio y HTTPS<a class="headerlink" href="#dominio-y-https" title="Permanent link">¶</a></h2>
-<h3 id="dominio-personalizado">Dominio personalizado<a class="headerlink" href="#dominio-personalizado" title="Permanent link">¶</a></h3>
+<h2 id="custom-domain-and-https">🌐 Custom Domain and HTTPS<a class="headerlink" href="#custom-domain-and-https" title="Permanent link">¶</a></h2>
+<h3 id="custom-domain">Custom Domain<a class="headerlink" href="#custom-domain" title="Permanent link">¶</a></h3>
 <ol>
-<li>Compra el dominio (Namecheap, Cloudflare Registrar, etc.).</li>
-<li>En tu plataforma (Vercel/Netlify), añade el dominio.</li>
-<li>Configura los registros DNS:</li>
-<li><strong>A record</strong> → IP del servidor (o <code>ALIAS</code>/<code>ANAME</code> en algunos proveedores).</li>
-<li><strong>CNAME</strong> → <code>www.tudominio.com</code> apuntando al host de la plataforma.</li>
+<li>Buy the domain (Namecheap, Cloudflare Registrar, etc.).</li>
+<li>In your platform (Vercel/Netlify), add the domain.</li>
+<li>Configure DNS records:</li>
+<li><strong>A record</strong> → server IP (or <code>ALIAS</code>/<code>ANAME</code> with some providers).</li>
+<li><strong>CNAME</strong> → <code>www.tudominio.com</code> pointing to the platform host.</li>
 </ol>
 <h3 id="https">HTTPS<a class="headerlink" href="#https" title="Permanent link">¶</a></h3>
-<p>Todas las plataformas modernas (Vercel, Netlify, Cloudflare, GitHub Pages) <strong>emiten certificados Let's Encrypt automáticamente</strong>. No tienes que hacer nada.</p>
-<p>Si gestionas tu propio servidor:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Instalar certbot</span>
+<p>All modern platforms (Vercel, Netlify, Cloudflare, GitHub Pages) <strong>issue Let's Encrypt certificates automatically</strong>. You don't have to do anything.</p>
+<p>If you manage your own server:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install certbot</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx
 
-<span class="c1"># Emitir certificado</span>
+<span class="c1"># Issue certificate</span>
 sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>tudominio.com<span class="w"> </span>-d<span class="w"> </span>www.tudominio.com
 
-<span class="c1"># Renovación automática (cron)</span>
+<span class="c1"># Automatic renewal test (cron)</span>
 sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">HTTPS es obligatorio</p>
-<p>Además de seguridad, <strong>Google penaliza sitios sin HTTPS</strong> en el ranking. Y los navegadores modernos los marcan como "No seguro".</p>
+<p class="admonition-title">HTTPS is mandatory</p>
+<p>Beyond security, <strong>Google penalizes sites without HTTPS</strong> in search rankings. Modern browsers also flag them as "Not secure".</p>
 </div>
 <hr>
-<h2 id="monitorizacion-basica">📊 Monitorización básica<a class="headerlink" href="#monitorizacion-basica" title="Permanent link">¶</a></h2>
-<h3 id="que-medir">¿Qué medir?<a class="headerlink" href="#que-medir" title="Permanent link">¶</a></h3>
+<h2 id="basic-monitoring">📊 Basic Monitoring<a class="headerlink" href="#basic-monitoring" title="Permanent link">¶</a></h2>
+<h3 id="what-to-measure">What to Measure?<a class="headerlink" href="#what-to-measure" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Métrica</th>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Umbral</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Threshold</th>
 </tr>
 </thead>
 <tbody>
@@ -5573,28 +5573,28 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <td style="text-align: left;">&gt;99.9%</td>
 </tr>
 <tr>
-<td style="text-align: left;">Errores JS</td>
+<td style="text-align: left;">JS Errors</td>
 <td style="text-align: left;">Sentry</td>
-<td style="text-align: left;">&lt;0.1% sesiones</td>
+<td style="text-align: left;">&lt;0.1% sessions</td>
 </tr>
 <tr>
-<td style="text-align: left;">Rendimiento</td>
+<td style="text-align: left;">Performance</td>
 <td style="text-align: left;">Lighthouse, WebPageTest</td>
 <td style="text-align: left;">LCP &lt;2.5s</td>
 </tr>
 <tr>
-<td style="text-align: left;">Tráfico</td>
+<td style="text-align: left;">Traffic</td>
 <td style="text-align: left;">Google Analytics, Plausible</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;">Logs</td>
-<td style="text-align: left;">Plataforma (Vercel Logs, etc.)</td>
+<td style="text-align: left;">Platform (Vercel Logs, etc.)</td>
 <td style="text-align: left;">—</td>
 </tr>
 </tbody>
 </table>
-<h3 id="ejemplo-con-sentry-errores-en-produccion">Ejemplo con Sentry (errores en producción)<a class="headerlink" href="#ejemplo-con-sentry-errores-en-produccion" title="Permanent link">¶</a></h3>
+<h3 id="example-with-sentry-production-errors">Example with Sentry (production errors)<a class="headerlink" href="#example-with-sentry-production-errors" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Sentry</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@sentry/browser"</span><span class="p">;</span>
 
 <span class="nx">Sentry</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
@@ -5602,21 +5602,21 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">    </span><span class="nx">tracesSampleRate</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Captura automáticamente errores JS en el navegador y te avisa por email/Slack.</p>
+<p>Automatically captures JS errors in the browser and alerts you via email/Slack.</p>
 <hr>
 <h2 id="rollback">🔄 Rollback<a class="headerlink" href="#rollback" title="Permanent link">¶</a></h2>
-<p>Si un deploy rompe producción, necesitas <strong>volver a la versión anterior</strong> en segundos.</p>
+<p>If a deploy breaks production, you need to <strong>revert to the previous version</strong> in seconds.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Plataforma</th>
+<th style="text-align: left;">Platform</th>
 <th style="text-align: left;">Rollback</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Vercel</strong></td>
-<td style="text-align: left;">Dashboard → Deployments → Promote anterior</td>
+<td style="text-align: left;">Dashboard → Deployments → Promote previous</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Netlify</strong></td>
@@ -5632,49 +5632,49 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 </tr>
 <tr>
 <td style="text-align: left;"><strong>VPS</strong></td>
-<td style="text-align: left;">Tag de Docker / <code>git checkout &lt;tag&gt;</code></td>
+<td style="text-align: left;">Docker tag / <code>git checkout &lt;tag&gt;</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Versiona con tags</p>
-<p>Antes de cada deploy importante: <code>git tag v1.2.0 &amp;&amp; git push --tags</code>. Si algo falla, <code>git checkout v1.2.0</code> y redeploy. Te salvará más de una vez.</p>
+<p class="admonition-title">Version with tags</p>
+<p>Before each major deploy: <code>git tag v1.2.0 &amp;&amp; git push --tags</code>. If something breaks, <code>git checkout v1.2.0</code> and redeploy. It will save you more than once.</p>
 </div>
 <hr>
-<h2 id="pipeline-completo-tipico">🏗 Pipeline completo típico<a class="headerlink" href="#pipeline-completo-tipico" title="Permanent link">¶</a></h2>
+<h2 id="typical-full-pipeline">🏗 Typical Full Pipeline<a class="headerlink" href="#typical-full-pipeline" title="Permanent link">¶</a></h2>
 <pre class="mermaid"><code>graph LR
     A[git push] --&gt; B[GitHub Actions]
     B --&gt; C[npm test]
     C --&gt; D[npm run build]
     D --&gt; E[Deploy Vercel]
     E --&gt; F[Preview URL]
-    F --&gt; G{¿OK?}
-    G --&gt;|Sí| H[Merge a main]
-    G --&gt;|No| I[Corregir]
-    H --&gt; J[Deploy producción]</code></pre>
+    F --&gt; G{OK?}
+    G --&gt;|Yes| H[Merge to main]
+    G --&gt;|No| I[Fix]
+    H --&gt; J[Production deploy]</code></pre>
 <ol>
-<li>Desarrollas en una rama.</li>
-<li><code>git push</code> → se dispara CI.</li>
-<li>Si pasa, se genera una <strong>preview URL</strong>.</li>
-<li>Revisas la preview.</li>
-<li>Merge a <code>main</code> → deploy a producción.</li>
+<li>Develop on a branch.</li>
+<li><code>git push</code> → triggers CI.</li>
+<li>If it passes, a <strong>preview URL</strong> is generated.</li>
+<li>Review the preview.</li>
+<li>Merge into <code>main</code> → deploy to production.</li>
 </ol>
 <hr>
-<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">¶</a></h2>
+<h2 id="practical-exercise">🧪 Practical Exercise<a class="headerlink" href="#practical-exercise" title="Permanent link">¶</a></h2>
 <div class="admonition example">
-<p class="admonition-title">Desplegar un sitio estático en GitHub Pages</p>
-<p>Despliega una web estática (HTML + CSS) en GitHub Pages usando GitHub Actions.</p>
-<p><strong>Pasos:</strong>
-1. Crea un repo con <code>index.html</code> y <code>styles.css</code>.
-2. Crea <code>.github/workflows/deploy.yml</code> que:
-   - Se dispare en push a <code>main</code>.
-   - Use <code>actions/upload-pages-artifact</code> para subir la carpeta del sitio.
-   - Use <code>actions/deploy-pages</code> para publicar.
-3. Activa GitHub Pages en Settings → Pages → Source: GitHub Actions.
-4. Push y verifica la URL <code>https://tu-usuario.github.io/tu-repo/</code>.</p>
+<p class="admonition-title">Deploy a static site to GitHub Pages</p>
+<p>Deploy a static site (HTML + CSS) to GitHub Pages using GitHub Actions.</p>
+<p><strong>Steps:</strong>
+1. Create a repo with <code>index.html</code> and <code>styles.css</code>.
+2. Create <code>.github/workflows/deploy.yml</code> that:
+   - Runs on push to <code>main</code>.
+   - Uses <code>actions/upload-pages-artifact</code> to upload the site folder.
+   - Uses <code>actions/deploy-pages</code> to publish.
+3. Enable GitHub Pages in Settings → Pages → Source: GitHub Actions.
+4. Push and verify the URL <code>https://tu-usuario.github.io/tu-repo/</code>.</p>
 </div>
 <details class="success">
-<summary>Solución</summary>
+<summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy Pages</span>
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
@@ -5698,33 +5698,35 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v4</span>
 </code></pre></div>
-<p><strong>Nota:</strong> si tu sitio está en la raíz del repo, <code>path: "."</code>. Si está compilado en <code>dist/</code>, <code>path: "dist"</code>.</p>
+<p><strong>Note:</strong> if your site is at the root of the repo, use <code>path: "."</code>. If it is built into <code>dist/</code>, use <code>path: "dist"</code>.</p>
 </details>
 <hr>
 <h2 id="quiz">🧠 Quiz<a class="headerlink" href="#quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Qué diferencia hay entre hosting estático y dinámico?</summary>
-<p>El estático solo sirve archivos (HTML, CSS, JS, imágenes). El dinámico ejecuta código en el servidor (Node, Python, etc.) y accede a bases de datos.</p>
+<summary>1. What is the difference between static and dynamic hosting?</summary>
+<p>Static hosting only serves files (HTML, CSS, JS, images). Dynamic hosting runs server-side code (Node, Python, etc.) and accesses databases.</p>
 </details>
 <details class="success">
-<summary>2. ¿Qué es CI/CD?</summary>
-<p>Integración Continua / Despliegue Continuo. CI: cada push compila y testea automáticamente. CD: si pasa, se despliega solo.</p>
+<summary>2. What is CI/CD?</summary>
+<p>Continuous Integration / Continuous Deployment. CI: every push builds and tests automatically. CD: if it passes, it deploys automatically.</p>
 </details>
 <details class="success">
-<summary>3. ¿Por qué no debes subir <code>.env</code> al repositorio?</summary>
-<p>Porque contiene secretos (API keys, contraseñas). En el historial de Git quedan para siempre. Usa variables de entorno en la plataforma y <code>.gitignore</code>.</p>
+<summary>3. Why shouldn't you commit <code>.env</code> to the repository?</summary>
+<p>Because it contains secrets (API keys, passwords). In Git history they stay forever. Use environment variables on the platform and <code>.gitignore</code>.</p>
 </details>
-<p>??? success "4. ¿Cómo funciona el HTTPS automático en Vercel/Netlify?**
-    La plataforma emite certificados Let's Encrypt automáticamente al añadir el dominio. No tienes que gestionar nada.</p>
 <details class="success">
-<summary>5. ¿Qué es un rollback y cuándo lo necesitas?</summary>
-<p>Volver a la versión anterior desplegada. Lo necesitas cuando un deploy rompe producción y no puedes arreglarlo en minutos.</p>
+<summary>4. How does automatic HTTPS work on Vercel/Netlify?</summary>
+<p>The platform issues Let's Encrypt certificates automatically when you add the domain. You don't have to manage anything.</p>
+</details>
+<details class="success">
+<summary>5. What is a rollback and when do you need it?</summary>
+<p>Reverting to the previously deployed version. You need it when a deploy breaks production and you can't fix it in minutes.</p>
 </details>
 <hr>
-<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
+<h2 id="resources">📚 Resources<a class="headerlink" href="#resources" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://docs.github.com/en/pages">GitHub Pages — Docs</a></li>
 <li><a href="https://vercel.com/docs">Vercel — Docs</a></li>
@@ -5735,36 +5737,36 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <li><a href="https://web.dev/learn/pwa/deployment">web.dev — Deploy</a></li>
 </ul>
 <hr>
-<p>➡️ Siguiente capítulo: <a href="../10-proyecto-final/">10 — Proyecto final</a></p>
+<p>➡ Next chapter: <a href="../10-proyecto-final/">10 — Proyecto final</a></p>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-9">
 <div class="quiz-question" data-answer="a">
-<p><strong>1.</strong> ¿Qué es CI/CD?</p>
-<button class="quiz-option" data-opt="a">A) Integración y despliegue continuo</button>
-<button class="quiz-option" data-opt="b">B) Un lenguaje de programación</button>
-<button class="quiz-option" data-opt="c">C) Un tipo de servidor</button>
+<p><strong>1.</strong> What is CI/CD?</p>
+<button class="quiz-option" data-opt="a">A) Continuous integration and continuous deployment</button>
+<button class="quiz-option" data-opt="b">B) A programming language</button>
+<button class="quiz-option" data-opt="c">C) A type of server</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué plataforma es ideal para un sitio estático?</p>
+<p><strong>2.</strong> Which platform is ideal for a static site?</p>
 <button class="quiz-option" data-opt="a">A) GitHub Pages</button>
 <button class="quiz-option" data-opt="b">B) AWS EC2</button>
 <button class="quiz-option" data-opt="c">C) Heroku</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Por qué no subir .env al repositorio?</p>
-<button class="quiz-option" data-opt="a">A) Porque contiene secretos</button>
-<button class="quiz-option" data-opt="b">B) Porque pesa mucho</button>
-<button class="quiz-option" data-opt="c">C) Porque no es un archivo de texto</button>
+<p><strong>3.</strong> Why not commit .env to the repository?</p>
+<button class="quiz-option" data-opt="a">A) Because it contains secrets</button>
+<button class="quiz-option" data-opt="b">B) Because it is too large</button>
+<button class="quiz-option" data-opt="c">C) Because it is not a text file</button>
 </div>
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%209%3A%20Despliegue&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">LinkedIn</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/09-despliegue/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%209%3A%20Deployment&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F09-despliegue%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/09-despliegue/" aria-label="Copy link">Copy link</button>
 </div></div>
 
 
