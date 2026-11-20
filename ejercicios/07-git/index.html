@@ -5101,6 +5101,7 @@ git merge feature
 
 
 
+
 <div class="share-buttons">
   <p class="share-buttons__title">📢 Comparte este capítulo</p>
   <div class="share-buttons__list">
@@ -5117,6 +5118,8 @@ git merge feature
 
 <script>
 (function () {
+  var isEn = false;
+
   function initShare() {
     var box = document.querySelector('.share-buttons');
     if (!box || box.dataset.init === 'true') return;
@@ -5124,7 +5127,10 @@ git merge feature
 
     var url = encodeURIComponent(window.location.href);
     var title = encodeURIComponent(document.title);
-    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
+    var prefix = isEn
+      ? 'Check out this chapter from the Web Developer Book: '
+      : 'Mira este capítulo del Libro del Desarrollador Web: ';
+    var text = encodeURIComponent(prefix + document.title);
 
     var links = {
       '.share-twitter':  'https://twitter.com/intent/tweet?text=' + text + '&url=' + url,
@@ -5143,11 +5149,15 @@ git merge feature
 
     var copy = box.querySelector('.share-copy');
     if (copy) copy.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) return;
       navigator.clipboard.writeText(window.location.href).then(function () {
         var orig = copy.textContent;
-        copy.textContent = '✅ Copiado';
+        copy.textContent = isEn ? '✅ Copied' : '✅ Copiado';
         copy.classList.add('copied');
-        setTimeout(function () { copy.textContent = orig; copy.classList.remove('copied'); }, 2000);
+        setTimeout(function () {
+          copy.textContent = orig;
+          copy.classList.remove('copied');
+        }, 2000);
       });
     });
   }
@@ -5169,7 +5179,7 @@ git merge feature
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', 'preferred_color_scheme');
-    script.setAttribute('data-lang', 'es');
+    script.setAttribute('data-lang', isEn ? 'en' : 'es');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
     container.appendChild(script);
@@ -5241,6 +5251,7 @@ git merge feature
 </style>
 
                 
+  
 
   <div class="reading-progress" id="readingProgress"></div>
 
@@ -5257,7 +5268,9 @@ git merge feature
       <div class="newsletter-modal__icon">📬</div>
       <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
       <p class="newsletter-modal__text">
+        
         Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+        
       </p>
       <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
         Suscribirme gratis
@@ -5267,7 +5280,11 @@ git merge feature
   </div>
 
   <div id="cookieBanner" class="cookie-banner">
-    <p>🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.</p>
+    <p>
+      
+      🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.
+      
+    </p>
     <div class="cookie-banner__actions">
       <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
     </div>

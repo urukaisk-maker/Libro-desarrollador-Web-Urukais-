@@ -4844,15 +4844,16 @@
 
 
 
+
 <div class="share-buttons">
-  <p class="share-buttons__title">📢 Comparte este capítulo</p>
+  <p class="share-buttons__title">📢 Share this chapter</p>
   <div class="share-buttons__list">
     <button class="share-btn share-twitter" type="button">𝕏 Twitter</button>
     <button class="share-btn share-linkedin" type="button">💼 LinkedIn</button>
     <button class="share-btn share-whatsapp" type="button">💬 WhatsApp</button>
     <button class="share-btn share-reddit" type="button">👽 Reddit</button>
     <button class="share-btn share-email" type="button">📧 Email</button>
-    <button class="share-btn share-copy" type="button">🔗 Copiar enlace</button>
+    <button class="share-btn share-copy" type="button">🔗 Copy link</button>
   </div>
 </div>
 
@@ -4860,6 +4861,8 @@
 
 <script>
 (function () {
+  var isEn = true;
+
   function initShare() {
     var box = document.querySelector('.share-buttons');
     if (!box || box.dataset.init === 'true') return;
@@ -4867,7 +4870,10 @@
 
     var url = encodeURIComponent(window.location.href);
     var title = encodeURIComponent(document.title);
-    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
+    var prefix = isEn
+      ? 'Check out this chapter from the Web Developer Book: '
+      : 'Mira este capítulo del Libro del Desarrollador Web: ';
+    var text = encodeURIComponent(prefix + document.title);
 
     var links = {
       '.share-twitter':  'https://twitter.com/intent/tweet?text=' + text + '&url=' + url,
@@ -4886,11 +4892,15 @@
 
     var copy = box.querySelector('.share-copy');
     if (copy) copy.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) return;
       navigator.clipboard.writeText(window.location.href).then(function () {
         var orig = copy.textContent;
-        copy.textContent = '✅ Copiado';
+        copy.textContent = isEn ? '✅ Copied' : '✅ Copiado';
         copy.classList.add('copied');
-        setTimeout(function () { copy.textContent = orig; copy.classList.remove('copied'); }, 2000);
+        setTimeout(function () {
+          copy.textContent = orig;
+          copy.classList.remove('copied');
+        }, 2000);
       });
     });
   }
@@ -4912,7 +4922,7 @@
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', 'preferred_color_scheme');
-    script.setAttribute('data-lang', 'es');
+    script.setAttribute('data-lang', isEn ? 'en' : 'es');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
     container.appendChild(script);
@@ -4984,8 +4994,9 @@
 </style>
 
                 
+  
   <p style="text-align:center;margin-top:2rem;">
-    <a href="//">← Volver al inicio</a>
+    <a href="/en/">← Back to home</a>
   </p>
 
               </article>

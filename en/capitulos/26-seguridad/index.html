@@ -5420,15 +5420,16 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 
 
 
+
 <div class="share-buttons">
-  <p class="share-buttons__title">📢 Comparte este capítulo</p>
+  <p class="share-buttons__title">📢 Share this chapter</p>
   <div class="share-buttons__list">
     <button class="share-btn share-twitter" type="button">𝕏 Twitter</button>
     <button class="share-btn share-linkedin" type="button">💼 LinkedIn</button>
     <button class="share-btn share-whatsapp" type="button">💬 WhatsApp</button>
     <button class="share-btn share-reddit" type="button">👽 Reddit</button>
     <button class="share-btn share-email" type="button">📧 Email</button>
-    <button class="share-btn share-copy" type="button">🔗 Copiar enlace</button>
+    <button class="share-btn share-copy" type="button">🔗 Copy link</button>
   </div>
 </div>
 
@@ -5436,6 +5437,8 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 
 <script>
 (function () {
+  var isEn = true;
+
   function initShare() {
     var box = document.querySelector('.share-buttons');
     if (!box || box.dataset.init === 'true') return;
@@ -5443,7 +5446,10 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 
     var url = encodeURIComponent(window.location.href);
     var title = encodeURIComponent(document.title);
-    var text = encodeURIComponent('Mira este capítulo del Libro del Desarrollador Web: ' + document.title);
+    var prefix = isEn
+      ? 'Check out this chapter from the Web Developer Book: '
+      : 'Mira este capítulo del Libro del Desarrollador Web: ';
+    var text = encodeURIComponent(prefix + document.title);
 
     var links = {
       '.share-twitter':  'https://twitter.com/intent/tweet?text=' + text + '&url=' + url,
@@ -5462,11 +5468,15 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 
     var copy = box.querySelector('.share-copy');
     if (copy) copy.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) return;
       navigator.clipboard.writeText(window.location.href).then(function () {
         var orig = copy.textContent;
-        copy.textContent = '✅ Copiado';
+        copy.textContent = isEn ? '✅ Copied' : '✅ Copiado';
         copy.classList.add('copied');
-        setTimeout(function () { copy.textContent = orig; copy.classList.remove('copied'); }, 2000);
+        setTimeout(function () {
+          copy.textContent = orig;
+          copy.classList.remove('copied');
+        }, 2000);
       });
     });
   }
@@ -5488,7 +5498,7 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', 'preferred_color_scheme');
-    script.setAttribute('data-lang', 'es');
+    script.setAttribute('data-lang', isEn ? 'en' : 'es');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
     container.appendChild(script);
@@ -5560,35 +5570,42 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 </style>
 
                 
+  
 
   <div class="reading-progress" id="readingProgress"></div>
 
   <div id="commandPalette" class="command-palette-overlay">
     <div class="command-palette">
-      <input type="text" id="commandInput" class="command-input" placeholder="Escribe un comando o busca..." autocomplete="off">
+      <input type="text" id="commandInput" class="command-input" placeholder="Type a command or search..." autocomplete="off">
       <ul id="commandList" class="command-list"></ul>
     </div>
   </div>
 
   <div class="newsletter-modal-overlay" id="newsletterModal">
     <div class="newsletter-modal">
-      <button class="newsletter-modal__close" id="closeModal" aria-label="Cerrar">×</button>
+      <button class="newsletter-modal__close" id="closeModal" aria-label="Close">×</button>
       <div class="newsletter-modal__icon">📬</div>
-      <h2 class="newsletter-modal__title">¿Te está gustando el libro?</h2>
+      <h2 class="newsletter-modal__title">Enjoying the book?</h2>
       <p class="newsletter-modal__text">
-        Suscríbete a la newsletter y recibe un email cuando publique nuevos capítulos, ejemplos o recursos. Sin spam, cancela cuando quieras.
+        
+        Subscribe to the newsletter and get an email when new chapters, examples, or resources are published. No spam, unsubscribe anytime.
+        
       </p>
       <a href="https://urukaisklick.substack.com/subscribe" target="_blank" rel="noopener" class="newsletter-modal__cta">
-        Suscribirme gratis
+        Subscribe for free
       </a>
-      <a href="#" class="newsletter-modal__skip" id="skipModal">No, gracias</a>
+      <a href="#" class="newsletter-modal__skip" id="skipModal">No, thanks</a>
     </div>
   </div>
 
   <div id="cookieBanner" class="cookie-banner">
-    <p>🍪 Este sitio usa cookies para analíticas (Google Analytics) y comentarios (Giscus). Al continuar navegando, aceptas su uso.</p>
+    <p>
+      
+      🍪 This site uses cookies for analytics (Google Analytics) and comments (Giscus). By continuing to browse, you accept their use.
+      
+    </p>
     <div class="cookie-banner__actions">
-      <button id="acceptCookies" class="cookie-banner__btn">Aceptar</button>
+      <button id="acceptCookies" class="cookie-banner__btn">Accept</button>
     </div>
   </div>
 
