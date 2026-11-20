@@ -8195,26 +8195,26 @@ C --&gt; C3[img]</code></pre>
   <a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%202%3A%20Basic%20HTML&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">Twitter</a>
   <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F02-html-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
   <button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/02-html-basico/" aria-label="Copy link">Copy link</button>
-</div></div></section><section class="print-page" id="en-capitulos-03-css-basico" heading-number="2.2.3"><div><h1 id="03-css-basico">03 — CSS básico<a class="headerlink" href="#en-capitulos-03-css-basico-03-css-basico" title="Permanent link">¶</a></h1>
+</div></div></section><section class="print-page" id="en-capitulos-03-css-basico" heading-number="2.2.3"><div><h1 id="03-basic-css">03 — Basic CSS<a class="headerlink" href="#en-capitulos-03-css-basico-03-basic-css" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es CSS y cómo se aplica.</li>
-<li>Selectores, especificidad y cascada.</li>
-<li>El modelo de caja y <code>box-sizing</code>.</li>
-<li><code>display</code>, <code>position</code> y <code>z-index</code>.</li>
-<li>Flexbox y Grid en profundidad.</li>
-<li>Variables, funciones modernas y <code>clamp()</code>.</li>
-<li>Transitions, transforms y <code>prefers-reduced-motion</code>.</li>
-<li>Media queries y accesibilidad.</li>
+<li>What CSS is and how it is applied.</li>
+<li>Selectors, specificity, and the cascade.</li>
+<li>The box model and <code>box-sizing</code>.</li>
+<li><code>display</code>, <code>position</code>, and <code>z-index</code>.</li>
+<li>Flexbox and Grid in depth.</li>
+<li>CSS variables, modern functions, and <code>clamp()</code>.</li>
+<li>Transitions, transforms, and <code>prefers-reduced-motion</code>.</li>
+<li>Media queries and accessibility.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-que-es-css">🎨 ¿Qué es CSS?<a class="headerlink" href="#en-capitulos-03-css-basico-que-es-css" title="Permanent link">¶</a></h2>
-<p><strong>CSS</strong> (<em>Cascading Style Sheets</em>) es el lenguaje que define la <strong>presentación</strong> de una página web: colores, tipografía, layout, animaciones.</p>
+<h2 id="en-capitulos-03-css-basico-what-is-css">🎨 What is CSS?<a class="headerlink" href="#en-capitulos-03-css-basico-what-is-css" title="Permanent link">¶</a></h2>
+<p><strong>CSS</strong> (<em>Cascading Style Sheets</em>) is the language that defines the <strong>presentation</strong> of a web page: colors, typography, layout, and animations.</p>
 <div class="admonition quote">
-<p class="admonition-title">La analogía del cuerpo humano</p>
-<p>Si HTML es el <strong>esqueleto</strong>, CSS es la <strong>piel, la ropa y el maquillaje</strong>. Define cómo se ve, se siente y se mueve todo lo que el HTML estructura.</p>
+<p class="admonition-title">The human body analogy</p>
+<p>If HTML is the <strong>skeleton</strong>, CSS is the <strong>skin, clothes, and makeup</strong>. It defines how everything structured by HTML looks, feels, and moves.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
@@ -8223,25 +8223,25 @@ C --&gt; C3[img]</code></pre>
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-como-aplicar-css">🔗 Cómo aplicar CSS<a class="headerlink" href="#en-capitulos-03-css-basico-como-aplicar-css" title="Permanent link">¶</a></h2>
-<p>Hay tres formas:</p>
-<h3 id="en-capitulos-03-css-basico-1-css-externo-recomendado">1. CSS externo (recomendado)<a class="headerlink" href="#en-capitulos-03-css-basico-1-css-externo-recomendado" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-03-css-basico-how-to-apply-css">🔗 How to Apply CSS<a class="headerlink" href="#en-capitulos-03-css-basico-how-to-apply-css" title="Permanent link">¶</a></h2>
+<p>There are three ways:</p>
+<h3 id="en-capitulos-03-css-basico-1-external-css-recommended">1. External CSS (recommended)<a class="headerlink" href="#en-capitulos-03-css-basico-1-external-css-recommended" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"styles.css"</span><span class="p">&gt;</span>
 </code></pre></div>
-<h3 id="en-capitulos-03-css-basico-2-css-interno">2. CSS interno<a class="headerlink" href="#en-capitulos-03-css-basico-2-css-interno" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-03-css-basico-2-internal-css">2. Internal CSS<a class="headerlink" href="#en-capitulos-03-css-basico-2-internal-css" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </code></pre></div>
-<h3 id="en-capitulos-03-css-basico-3-css-inline">3. CSS inline<a class="headerlink" href="#en-capitulos-03-css-basico-3-css-inline" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Título<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<h3 id="en-capitulos-03-css-basico-3-inline-css">3. Inline CSS<a class="headerlink" href="#en-capitulos-03-css-basico-3-inline-css" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: red;"</span><span class="p">&gt;</span>Heading<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Siempre CSS externo</p>
-<p>El CSS externo separa estructura y presentación, se cachea mejor, se reutiliza y permite trabajar en equipo sin conflictos.</p>
+<p class="admonition-title">Always prefer external CSS</p>
+<p>External CSS separates structure from presentation, caches better, is reusable, and lets teams collaborate with fewer conflicts.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-selectores">🎯 Selectores<a class="headerlink" href="#en-capitulos-03-css-basico-selectores" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-selectors">🎯 Selectors<a class="headerlink" href="#en-capitulos-03-css-basico-selectors" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">#</span><span class="nn">header</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -8254,70 +8254,70 @@ C --&gt; C3[img]</code></pre>
 <thead>
 <tr>
 <th style="text-align: left;">Selector</th>
-<th style="text-align: left;">Ejemplo</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;">Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Etiqueta</td>
+<td style="text-align: left;">Tag</td>
 <td style="text-align: left;"><code>p</code></td>
-<td style="text-align: left;">Todos los párrafos</td>
+<td style="text-align: left;">All paragraphs</td>
 </tr>
 <tr>
-<td style="text-align: left;">Clase</td>
+<td style="text-align: left;">Class</td>
 <td style="text-align: left;"><code>.boton</code></td>
-<td style="text-align: left;">Elementos con <code>class="boton"</code></td>
+<td style="text-align: left;">Elements with <code>class="boton"</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">ID</td>
 <td style="text-align: left;"><code>#header</code></td>
-<td style="text-align: left;">Elemento con <code>id="header"</code></td>
+<td style="text-align: left;">Element with <code>id="header"</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Descendiente</td>
+<td style="text-align: left;">Descendant</td>
 <td style="text-align: left;"><code>nav a</code></td>
-<td style="text-align: left;">Enlaces dentro de <code>nav</code></td>
+<td style="text-align: left;">Links inside <code>nav</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Hijo directo</td>
+<td style="text-align: left;">Direct child</td>
 <td style="text-align: left;"><code>ul &gt; li</code></td>
-<td style="text-align: left;"><code>li</code> hijos directos de <code>ul</code></td>
+<td style="text-align: left;"><code>li</code> direct children of <code>ul</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Hermano adyacente</td>
+<td style="text-align: left;">Adjacent sibling</td>
 <td style="text-align: left;"><code>h2 + p</code></td>
-<td style="text-align: left;">Primer <code>p</code> tras un <code>h2</code></td>
+<td style="text-align: left;">First <code>p</code> right after an <code>h2</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Pseudo-clase</td>
+<td style="text-align: left;">Pseudo-class</td>
 <td style="text-align: left;"><code>a:hover</code></td>
-<td style="text-align: left;">Enlace al pasar el ratón</td>
+<td style="text-align: left;">Link on mouse hover</td>
 </tr>
 <tr>
-<td style="text-align: left;">Atributo</td>
+<td style="text-align: left;">Attribute</td>
 <td style="text-align: left;"><code>input[type="email"]</code></td>
-<td style="text-align: left;">Solo inputs de tipo email</td>
+<td style="text-align: left;">Only email inputs</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title"><code>:focus-visible</code> es accesibilidad</p>
-<p>Nunca elimines el <code>outline</code> sin reemplazarlo. <code>:focus-visible</code> aplica el anillo solo cuando el usuario navega con teclado, no al hacer clic.</p>
+<p class="admonition-title"><code>:focus-visible</code> is accessibility</p>
+<p>Never remove <code>outline</code> without replacing it. <code>:focus-visible</code> shows the focus ring only during keyboard navigation, not on mouse click.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-especificidad-y-cascada">⚖️ Especificidad y cascada<a class="headerlink" href="#en-capitulos-03-css-basico-especificidad-y-cascada" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-specificity-and-cascade">⚖ Specificity and Cascade<a class="headerlink" href="#en-capitulos-03-css-basico-specificity-and-cascade" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Peso</th>
-<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Weight</th>
+<th style="text-align: left;">Example</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Estilos inline</td>
+<td style="text-align: left;">Inline styles</td>
 <td style="text-align: left;"><code>1000</code></td>
 <td style="text-align: left;"><code>style="..."</code></td>
 </tr>
@@ -8327,23 +8327,23 @@ C --&gt; C3[img]</code></pre>
 <td style="text-align: left;"><code>#header</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Clases / atributos / pseudo-clases</td>
+<td style="text-align: left;">Classes / attributes / pseudo-classes</td>
 <td style="text-align: left;"><code>10</code></td>
 <td style="text-align: left;"><code>.boton</code>, <code>:hover</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Etiquetas / pseudo-elementos</td>
+<td style="text-align: left;">Tags / pseudo-elements</td>
 <td style="text-align: left;"><code>1</code></td>
 <td style="text-align: left;"><code>p</code>, <code>::before</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Evita <code>!important</code></p>
-<p><code>!important</code> rompe la cascada y hace el CSS impredecible.</p>
+<p class="admonition-title">Avoid `!important</p>
+<p><code>!important</code> breaks the cascade and makes CSS unpredictable.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-el-modelo-de-caja">📦 El modelo de caja<a class="headerlink" href="#en-capitulos-03-css-basico-el-modelo-de-caja" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-the-box-model">📦 The Box Model<a class="headerlink" href="#en-capitulos-03-css-basico-the-box-model" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">caja</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
 <span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
@@ -8355,14 +8355,14 @@ C --&gt; C3[img]</code></pre>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">box-sizing: border-box</p>
-<p>Por defecto, width no incluye padding ni border. Con box-sizing: border-box, sí.</p>
+<p>By default, width does not include padding or border. With box-sizing: border-box, it does.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-display-y-position">🧱 <code>display</code> y <code>position</code><a class="headerlink" href="#en-capitulos-03-css-basico-display-y-position" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-display-and-position">🧱 <code>display</code> and <code>position</code><a class="headerlink" href="#en-capitulos-03-css-basico-display-and-position" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Valor</th>
+<th style="text-align: left;">Value</th>
 <th style="text-align: left;"><code>display</code></th>
 <th style="text-align: left;"><code>position</code></th>
 </tr>
@@ -8370,53 +8370,53 @@ C --&gt; C3[img]</code></pre>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>block</code></td>
-<td style="text-align: left;">Ocupa todo el ancho</td>
+<td style="text-align: left;">Takes full width</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>inline</code></td>
-<td style="text-align: left;">Solo lo necesario</td>
+<td style="text-align: left;">Only what is needed</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>flex</code></td>
-<td style="text-align: left;">Contenedor Flexbox</td>
+<td style="text-align: left;">Flexbox container</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>grid</code></td>
-<td style="text-align: left;">Contenedor Grid</td>
+<td style="text-align: left;">Grid container</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>none</code></td>
-<td style="text-align: left;">No se renderiza</td>
+<td style="text-align: left;">Not rendered</td>
 <td style="text-align: left;">—</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>static</code></td>
 <td style="text-align: left;">—</td>
-<td style="text-align: left;">Flujo normal</td>
+<td style="text-align: left;">Normal flow</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>relative</code></td>
 <td style="text-align: left;">—</td>
-<td style="text-align: left;">Su posición original</td>
+<td style="text-align: left;">Its original position</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>absolute</code></td>
 <td style="text-align: left;">—</td>
-<td style="text-align: left;">El ancestro posicionado más cercano</td>
+<td style="text-align: left;">Nearest positioned ancestor</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fixed</code></td>
 <td style="text-align: left;">—</td>
-<td style="text-align: left;">El viewport</td>
+<td style="text-align: left;">The viewport</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sticky</code></td>
 <td style="text-align: left;">—</td>
-<td style="text-align: left;">El scroll, hasta un límite</td>
+<td style="text-align: left;">Scroll, up to a threshold</td>
 </tr>
 </tbody>
 </table>
@@ -8426,8 +8426,8 @@ C --&gt; C3[img]</code></pre>
 <span class="p">.</span><span class="nc">sidebar</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">sticky</span><span class="p">;</span><span class="w"> </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title"><code>z-index</code> solo funciona con <code>position</code></p>
-<p>No tiene efecto en elementos <code>static</code>.</p>
+<p class="admonition-title"><code>z-index</code> only works with `position</p>
+<p>It has no effect on <code>static</code> elements.</p>
 </div>
 <hr>
 <h2 id="en-capitulos-03-css-basico-flexbox">🧩 Flexbox<a class="headerlink" href="#en-capitulos-03-css-basico-flexbox" title="Permanent link">¶</a></h2>
@@ -8448,7 +8448,7 @@ C --&gt; C3[img]</code></pre>
 <span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="en-capitulos-03-css-basico-grid-con-areas-con-nombre">Grid con áreas con nombre<a class="headerlink" href="#en-capitulos-03-css-basico-grid-con-areas-con-nombre" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-03-css-basico-named-grid-areas">Named Grid Areas<a class="headerlink" href="#en-capitulos-03-css-basico-named-grid-areas" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
 <span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
@@ -8462,7 +8462,7 @@ C --&gt; C3[img]</code></pre>
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-variables-css">🎨 Variables CSS<a class="headerlink" href="#en-capitulos-03-css-basico-variables-css" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-css-variables">🎨 CSS Variables<a class="headerlink" href="#en-capitulos-03-css-basico-css-variables" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
 <span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span>
@@ -8471,15 +8471,14 @@ C --&gt; C3[img]</code></pre>
 <span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--primario</span><span class="p">);</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radio</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-funciones-modernas">⚡ Funciones modernas<a class="headerlink" href="#en-capitulos-03-css-basico-funciones-modernas" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<h2 id="en-capitulos-03-css-basico-modern-functions">⚡ Modern Functions<a class="headerlink" href="#en-capitulos-03-css-basico-modern-functions" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-h1-font-size-clamp15rem-5vw-3rem-contenedor-width-min90-1200px-layout-height-calc100vh-80px-video-aspect-ratio-16-9-avatar-object-fit-cover-border-radius-50"><div class="highlight"><pre><span></span><code><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">90</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="mi">100</span><span class="kt">vh</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">video</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">aspect-ratio</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">avatar</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">object-fit</span><span class="p">:</span><span class="w"> </span><span class="kc">cover</span><span class="p">;</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<hr>
-<h2 id="en-capitulos-03-css-basico-transitions-y-transforms">🎬 Transitions y transforms<a class="headerlink" href="#en-capitulos-03-css-basico-transitions-y-transforms" title="Permanent link">¶</a></h2>
+</code></pre></div><a class="headerlink" href="#en-capitulos-03-css-basico-h1-font-size-clamp15rem-5vw-3rem-contenedor-width-min90-1200px-layout-height-calc100vh-80px-video-aspect-ratio-16-9-avatar-object-fit-cover-border-radius-50" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-transitions-and-transforms">🎬 Transitions and Transforms<a class="headerlink" href="#en-capitulos-03-css-basico-transitions-and-transforms" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">0.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
 <span class="p">}</span>
@@ -8489,7 +8488,7 @@ C --&gt; C3[img]</code></pre>
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-media-queries-y-preferencias">📱 Media queries y preferencias<a class="headerlink" href="#en-capitulos-03-css-basico-media-queries-y-preferencias" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-media-queries-and-preferences">📱 Media Queries and Preferences<a class="headerlink" href="#en-capitulos-03-css-basico-media-queries-and-preferences" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">640px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
@@ -8501,33 +8500,33 @@ C --&gt; C3[img]</code></pre>
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-accesibilidad-css">♿ Accesibilidad CSS<a class="headerlink" href="#en-capitulos-03-css-basico-accesibilidad-css" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-css-accessibility">♿ CSS Accessibility<a class="headerlink" href="#en-capitulos-03-css-basico-css-accessibility" title="Permanent link">¶</a></h2>
 <ul>
-<li>Nunca quites el <code>outline</code> sin reemplazarlo. Usa <code>:focus-visible</code>.</li>
-<li>Contraste mínimo 4.5:1 (WCAG AA).</li>
-<li>Respeta <code>prefers-reduced-motion</code>.</li>
-<li>Tamaño mínimo táctil: 44×44 px.</li>
+<li>Never remove <code>outline</code> without replacing it. Use <code>:focus-visible</code>.</li>
+<li>Minimum contrast 4.5:1 (WCAG AA).</li>
+<li>Respect <code>prefers-reduced-motion</code>.</li>
+<li>Minimum touch target size: 44×44 px.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color-scheme</span><span class="p">:</span><span class="w"> </span><span class="n">light</span><span class="w"> </span><span class="n">dark</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="nt">button</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span><span class="w"> </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-03-css-basico-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-03-css-basico-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-03-css-basico-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-3">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué propiedad activa Flexbox en un contenedor?</p>
+<p><strong>1.</strong> Which property enables Flexbox on a container?</p>
 <button class="quiz-option" data-opt="a">A) display: grid</button>
 <button class="quiz-option" data-opt="b">B) display: flex</button>
 <button class="quiz-option" data-opt="c">C) flex: 1</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>2.</strong> ¿Qué hace box-sizing: border-box?</p>
-<button class="quiz-option" data-opt="a">A) Añade un borde</button>
-<button class="quiz-option" data-opt="b">B) Elimina el padding</button>
-<button class="quiz-option" data-opt="c">C) El width incluye padding y border</button>
+<p><strong>2.</strong> What does box-sizing: border-box do?</p>
+<button class="quiz-option" data-opt="a">A) Adds a border</button>
+<button class="quiz-option" data-opt="b">B) Removes padding</button>
+<button class="quiz-option" data-opt="c">C) Width includes padding and border</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Qué modelo de layout es bidimensional?</p>
+<p><strong>3.</strong> Which layout model is two-dimensional?</p>
 <button class="quiz-option" data-opt="a">A) Grid</button>
 <button class="quiz-option" data-opt="b">B) Flexbox</button>
 <button class="quiz-option" data-opt="c">C) Float</button>
@@ -8535,13 +8534,13 @@ C --&gt; C3[img]</code></pre>
 </div>
 
 <hr>
-<h2 id="en-capitulos-03-css-basico-ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#en-capitulos-03-css-basico-ejercicio-practico" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-practical-exercise">🧪 Practical Exercise<a class="headerlink" href="#en-capitulos-03-css-basico-practical-exercise" title="Permanent link">¶</a></h2>
 <div class="admonition example">
-<p class="admonition-title">Tarjeta de perfil con Flexbox</p>
-<p>Crea una tarjeta con avatar circular, nombre, descripción y botón "Seguir". Usa Flexbox columna, <code>gap: 12px</code>, y <code>transition</code> al hover del botón.</p>
+<p class="admonition-title">Profile card with Flexbox</p>
+<p>Create a card with a circular avatar, name, description, and a "Follow" button. Use column Flexbox, <code>gap: 12px</code>, and a <code>transition</code> on button hover.</p>
 </div>
 <details class="success">
-<summary>Solución</summary>
+<summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 <span class="w">  </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
@@ -8575,53 +8574,53 @@ C --&gt; C3[img]</code></pre>
 </code></pre></div>
 </details>
 <hr>
-<h2 id="en-capitulos-03-css-basico-quiz-de-repaso">🧠 Quiz de repaso<a class="headerlink" href="#en-capitulos-03-css-basico-quiz-de-repaso" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-review-quiz">🧠 Review Quiz<a class="headerlink" href="#en-capitulos-03-css-basico-review-quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Diferencia entre <code>padding</code> y <code>margin</code>?</summary>
-<p><code>padding</code> es el espacio interno. <code>margin</code> es el espacio externo.</p>
+<summary>1. Difference between <code>padding</code> and <code>margin</code>?</summary>
+<p><code>padding</code> is inner space. <code>margin</code> is outer space.</p>
 </details>
 <details class="success">
-<summary>2. ¿Qué hace <code>position: absolute</code> sin ancestro posicionado?</summary>
-<p>Se posiciona respecto al viewport.</p>
+<summary>2. What does <code>position: absolute</code> do without a positioned ancestor?</summary>
+<p>It positions relative to the viewport.</p>
 </details>
 <details class="success">
-<summary>3. ¿Diferencia entre <code>:is()</code> y <code>:where()</code>?</summary>
-<p><code>:is()</code> hereda especificidad. <code>:where()</code> siempre tiene especificidad 0.</p>
+<summary>3. Difference between <code>:is()</code> and <code>:where()</code>?</summary>
+<p><code>:is()</code> inherits specificity. <code>:where()</code> always has 0 specificity.</p>
 </details>
 <details class="success">
-<summary>4. ¿Por qué usar <code>transform</code> en lugar de <code>top</code>/<code>left</code> para animar?</summary>
-<p>Se anima en la GPU y no provoca reflow.</p>
+<summary>4. Why use <code>transform</code> instead of <code>top</code>/<code>left</code> for animations?</summary>
+<p>It animates on the GPU and avoids layout reflow.</p>
 </details>
 <details class="success">
-<summary>5. ¿Qué hace <code>repeat(auto-fit, minmax(240px, 1fr))</code>?</summary>
-<p>Columnas de mínimo 240px, reparto equitativo.</p>
+<summary>5. What does <code>repeat(auto-fit, minmax(240px, 1fr))</code> do?</summary>
+<p>Columns of at least 240px with equal distribution.</p>
 </details>
 <hr>
-<h2 id="en-capitulos-03-css-basico-recursos">📚 Recursos<a class="headerlink" href="#en-capitulos-03-css-basico-recursos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-resources">📚 Resources<a class="headerlink" href="#en-capitulos-03-css-basico-resources" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://developer.mozilla.org/es/docs/Web/CSS">MDN — CSS</a></li>
-<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout">MDN — Flexbox</a></li>
-<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout">MDN — Grid</a></li>
-<li><a href="https://flexboxfroggy.com/#es">Flexbox Froggy (juego)</a></li>
-<li><a href="https://cssgridgarden.com/#es">Grid Garden (juego)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN — CSS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">MDN — Flexbox</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">MDN — Grid</a></li>
+<li><a href="https://flexboxfroggy.com/">Flexbox Froggy (game)</a></li>
+<li><a href="https://cssgridgarden.com/">Grid Garden (game)</a></li>
 <li><a href="https://web.dev/learn/css">web.dev — Learn CSS</a></li>
 </ul>
 <hr>
-<h2 id="en-capitulos-03-css-basico-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-03-css-basico-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-03-css-basico-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-03-css-basico-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%203%3A%20CSS%20b%C3%A1sico%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/03-css-basico/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%203%3A%20Basic%20CSS&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%203%3A%20Basic%20CSS%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F03-css-basico%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/03-css-basico/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-03-css-basico-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-03-css-basico-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-04-javascript">Ir al Capítulo 4 — JavaScript esencial</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-04-javascript" heading-number="2.2.4"><div><h1 id="04-javascript-esencial">04 — JavaScript esencial<a class="headerlink" href="#en-capitulos-04-javascript-04-javascript-esencial" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-03-css-basico-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-03-css-basico-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-04-javascript">Go to Chapter 4 — JavaScript esencial</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-04-javascript" heading-number="2.2.4"><div><h1 id="04-javascript-esencial">04 — JavaScript esencial<a class="headerlink" href="#en-capitulos-04-javascript-04-javascript-esencial" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
