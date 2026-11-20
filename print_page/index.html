@@ -10903,45 +10903,45 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <hr>
 <h2 id="en-capitulos-12-javascript-asincrono-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-next-step" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-capitulos-13-modulos-bundlers">Go to Chapter 13 — Módulos y bundlers</a>
-<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-13-modulos-bundlers" heading-number="2.4.3"><div><h1 id="13-modulos-y-bundlers">13 — Módulos y Bundlers<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-13-modulos-y-bundlers" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-13-modulos-bundlers" heading-number="2.4.3"><div><h1 id="13-modules-and-bundlers">13 — Modules and Bundlers<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-13-modules-and-bundlers" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Por qué existen los módulos en JavaScript.</li>
-<li>Diferencias entre CommonJS, ESM, UMD y AMD.</li>
-<li>Qué es un bundler y qué problema resuelve.</li>
-<li>Los bundlers modernos: Vite, esbuild, Rollup, webpack.</li>
-<li>Cuándo usar bundler y cuándo no.</li>
+<li>Why modules exist in JavaScript.</li>
+<li>Differences between CommonJS, ESM, UMD, and AMD.</li>
+<li>What a bundler is and what problem it solves.</li>
+<li>Modern bundlers: Vite, esbuild, Rollup, webpack.</li>
+<li>When to use a bundler and when not to.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-el-problema-de-los-modulos">📦 El problema de los módulos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-el-problema-de-los-modulos" title="Permanent link">¶</a></h2>
-<p>En 1995, JavaScript no tenía módulos. Todo el código vivía en el <strong>scope global</strong>, y cualquier variable podía chocar con otra.</p>
+<h2 id="en-capitulos-13-modulos-bundlers-the-module-problem">📦 The Module Problem<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-the-module-problem" title="Permanent link">¶</a></h2>
+<p>In 1995, JavaScript didn't have modules. All code lived in the <strong>global scope</strong>, and any variable could collide with another.</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"a.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"b.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="cm">&lt;!-- Si a.js y b.js definen "contador", se pisan --&gt;</span>
+<span class="cm">&lt;!-- If a.js and b.js both define "contador", they overwrite each other --&gt;</span>
 </code></pre></div>
-<p>Los <strong>módulos</strong> resuelven esto: cada archivo tiene su propio scope, exporta lo que quiere y otro archivo lo importa explícitamente.</p>
+<p><strong>Modules</strong> solve this: each file has its own scope, exports what it chooses, and another file explicitly imports it.</p>
 <div class="admonition quote">
-<p class="admonition-title">La analogía de las cajas</p>
-<p>Sin módulos, todo tu código está <strong>tirado en el suelo</strong> del salón: cualquiera puede pisarlo, moverlo o confundirlo. Con módulos, cada cosa tiene su <strong>caja etiquetada</strong>, y solo abres la caja que necesitas.</p>
+<p class="admonition-title">The labeled boxes analogy</p>
+<p>Without modules, all your code is <strong>scattered on the living room floor</strong>: anyone can step on it, move it, or mix it up. With modules, each piece has its own <strong>labeled box</strong>, and you only open the box you need.</p>
 </div>
 <pre class="mermaid"><code>graph LR
-    A[main.js] --&gt;|importa| B[math.js]
-    A --&gt;|importa| C[ui.js]
-    C --&gt;|importa| D[api.js]
-    B -.exporta.-&gt; A
-    C -.exporta.-&gt; A
-    D -.exporta.-&gt; C</code></pre>
+    A[main.js] --&gt;|imports| B[math.js]
+    A --&gt;|imports| C[ui.js]
+    C --&gt;|imports| D[api.js]
+    B -.exports.-&gt; A
+    C -.exports.-&gt; A
+    D -.exports.-&gt; C</code></pre>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-sistemas-de-modulos">🏛 Sistemas de módulos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-sistemas-de-modulos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-module-systems">🏛 Module Systems<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-module-systems" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Sistema</th>
-<th style="text-align: left;">Cuándo</th>
-<th style="text-align: left;">Sintaxis</th>
-<th style="text-align: left;">Entorno</th>
+<th style="text-align: left;">System</th>
+<th style="text-align: left;">When</th>
+<th style="text-align: left;">Syntax</th>
+<th style="text-align: left;">Environment</th>
 </tr>
 </thead>
 <tbody>
@@ -10949,19 +10949,19 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <td style="text-align: left;"><strong>CommonJS (CJS)</strong></td>
 <td style="text-align: left;">2009</td>
 <td style="text-align: left;"><code>require</code> / <code>module.exports</code></td>
-<td style="text-align: left;">Node.js clásico</td>
+<td style="text-align: left;">Classic Node.js</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>ES Modules (ESM)</strong></td>
 <td style="text-align: left;">2015 (ES6)</td>
 <td style="text-align: left;"><code>import</code> / <code>export</code></td>
-<td style="text-align: left;">Node.js moderno, navegadores</td>
+<td style="text-align: left;">Modern Node.js, browsers</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>UMD</strong></td>
 <td style="text-align: left;">2011</td>
-<td style="text-align: left;"><code>define(...)</code> o global</td>
-<td style="text-align: left;">Librerías universales</td>
+<td style="text-align: left;"><code>define(...)</code> or global</td>
+<td style="text-align: left;">Universal libraries</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AMD</strong></td>
@@ -10971,7 +10971,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 </tr>
 </tbody>
 </table>
-<h3 id="en-capitulos-13-modulos-bundlers-commonjs-node-clasico">CommonJS (Node clásico)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-commonjs-node-clasico" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-13-modulos-bundlers-commonjs-classic-node">CommonJS (Classic Node)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-commonjs-classic-node" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// math.js</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
@@ -10982,7 +10982,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./math.js"</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
 </code></pre></div>
-<h3 id="en-capitulos-13-modulos-bundlers-es-modules-estandar-moderno">ES Modules (estándar moderno)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-es-modules-estandar-moderno" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-13-modulos-bundlers-es-modules-modern-standard">ES Modules (Modern Standard)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-es-modules-modern-standard" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// math.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
@@ -10994,62 +10994,62 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">),</span><span class="w"> </span><span class="nx">PI</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">ESM es el futuro (y el presente)</p>
-<p>Todos los navegadores modernos soportan ESM nativamente (<code>&lt;script type="module"&gt;</code>). Node.js también desde v12+. Usa ESM en proyectos nuevos.</p>
+<p class="admonition-title">ESM is the future (and the present)</p>
+<p>All modern browsers support ESM natively (<code>&lt;script type="module"&gt;</code>). Node.js does too since v12+. Use ESM in new projects.</p>
 </div>
-<h3 id="en-capitulos-13-modulos-bundlers-diferencias-clave">Diferencias clave<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-diferencias-clave" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-13-modulos-bundlers-key-differences">Key Differences<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-key-differences" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Aspecto</th>
+<th style="text-align: left;">Aspect</th>
 <th style="text-align: left;">CommonJS</th>
 <th style="text-align: left;">ESM</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Carga</td>
-<td style="text-align: left;">Síncrona</td>
-<td style="text-align: left;">Asíncrona</td>
+<td style="text-align: left;">Loading</td>
+<td style="text-align: left;">Synchronous</td>
+<td style="text-align: left;">Asynchronous</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>import</code></td>
-<td style="text-align: left;">Se evalúa al ejecutar <code>require</code></td>
-<td style="text-align: left;">Se <strong>hoistea</strong> (se resuelve antes)</td>
+<td style="text-align: left;">Evaluated when <code>require</code> runs</td>
+<td style="text-align: left;"><strong>Hoisted</strong> (resolved beforehand)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>this</code> en top-level</td>
+<td style="text-align: left;">Top-level <code>this</code></td>
 <td style="text-align: left;"><code>module.exports</code></td>
 <td style="text-align: left;"><code>undefined</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Top-level await</td>
 <td style="text-align: left;">❌ No</td>
-<td style="text-align: left;">✅ Sí (Node 14+, navegadores)</td>
+<td style="text-align: left;">✅ Yes (Node 14+, browsers)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>__dirname</code></td>
-<td style="text-align: left;">✅ Sí</td>
-<td style="text-align: left;">❌ No (usar <code>import.meta.url</code>)</td>
+<td style="text-align: left;">✅ Yes</td>
+<td style="text-align: left;">❌ No (use <code>import.meta.url</code>)</td>
 </tr>
 <tr>
 <td style="text-align: left;">Tree-shaking</td>
-<td style="text-align: left;">❌ Difícil</td>
-<td style="text-align: left;">✅ Sí (estático)</td>
+<td style="text-align: left;">❌ Hard</td>
+<td style="text-align: left;">✅ Yes (static)</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-que-es-un-bundler">🛠 ¿Qué es un bundler?<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-que-es-un-bundler" title="Permanent link">¶</a></h2>
-<p>Un <strong>bundler</strong> toma todos tus módulos y dependencias, y los <strong>empaqueta</strong> en uno o pocos archivos que el navegador pueda cargar.</p>
-<h3 id="en-capitulos-13-modulos-bundlers-que-hace-exactamente">¿Qué hace exactamente?<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-que-hace-exactamente" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-13-modulos-bundlers-what-is-a-bundler">🛠 What is a Bundler?<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-what-is-a-bundler" title="Permanent link">¶</a></h2>
+<p>A <strong>bundler</strong> takes all your modules and dependencies and <strong>packages</strong> them into one or a few files that the browser can load.</p>
+<h3 id="en-capitulos-13-modulos-bundlers-what-does-it-do-exactly">What Does It Do Exactly?<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-what-does-it-do-exactly" title="Permanent link">¶</a></h3>
 <ol>
-<li><strong>Resuelve imports</strong>: sabe dónde está <code>./utils</code> o <code>react</code>.</li>
-<li><strong>Transpila</strong>: convierte TS, JSX, SCSS a JS/CSS.</li>
-<li><strong>Optimiza</strong>: minifica, elimina código muerto (tree-shaking).</li>
-<li><strong>Empaqueta</strong>: genera <code>dist/main.js</code> listo para producción.</li>
-<li><strong>Genera assets</strong>: copia imágenes, fuentes, etc.</li>
-<li><strong>HMR</strong> (opcional): recarga en caliente al guardar.</li>
+<li><strong>Resolves imports</strong>: knows where <code>./utils</code> or <code>react</code> lives.</li>
+<li><strong>Transpiles</strong>: converts TS, JSX, SCSS into JS/CSS.</li>
+<li><strong>Optimizes</strong>: minifies, removes dead code (tree-shaking).</li>
+<li><strong>Bundles</strong>: generates <code>dist/main.js</code> ready for production.</li>
+<li><strong>Emits assets</strong>: copies images, fonts, etc.</li>
+<li><strong>HMR</strong> (optional): hot module replacement on save.</li>
 </ol>
 <pre class="mermaid"><code>graph LR
     A[main.js] --&gt; B[Bundler]
@@ -11060,79 +11060,79 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
     B --&gt; G[dist/style.hash.css]
     B --&gt; H[dist/imagen.hash.png]</code></pre>
 <div class="admonition warning">
-<p class="admonition-title">¿Y sin bundler?</p>
-<p>Puedes usar ESM nativo con <code>&lt;script type="module"&gt;</code> y no tener bundler. Pero entonces:
-- Cada archivo es una petición HTTP extra.
-- No hay tree-shaking.
-- No puedes usar TypeScript, JSX ni SCSS sin transpilar.
-- No hay minificación.</p>
-<p>Para proyectos pequeños es viable. Para apps grandes, un bundler es casi obligatorio.</p>
+<p class="admonition-title">What about no bundler?</p>
+<p>You can use native ESM with <code>&lt;script type="module"&gt;</code> and skip a bundler. However:
+- Every file is an extra HTTP request.
+- No tree-shaking.
+- You can't use TypeScript, JSX, or SCSS without transpiling.
+- No minification.</p>
+<p>For small projects it works fine. For large apps, a bundler is almost mandatory.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-bundlers-modernos">🚀 Bundlers modernos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-bundlers-modernos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-modern-bundlers">🚀 Modern Bundlers<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-modern-bundlers" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Bundler</th>
-<th style="text-align: left;">Velocidad</th>
-<th style="text-align: left;">Configuración</th>
-<th style="text-align: left;">Ideal para</th>
+<th style="text-align: left;">Speed</th>
+<th style="text-align: left;">Config</th>
+<th style="text-align: left;">Best for</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Vite</strong></td>
-<td style="text-align: left;">⚡ Muy rápido (esbuild + Rollup)</td>
-<td style="text-align: left;">Mínima</td>
+<td style="text-align: left;">⚡ Very fast (esbuild + Rollup)</td>
+<td style="text-align: left;">Minimal</td>
 <td style="text-align: left;">SPAs, React, Vue, Svelte, Vanilla</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>esbuild</strong></td>
-<td style="text-align: left;">⚡ El más rápido (Go)</td>
-<td style="text-align: left;">Mínima</td>
-<td style="text-align: left;">Librerías, CLIs, builds rápidos</td>
+<td style="text-align: left;">⚡ Fastest (Go)</td>
+<td style="text-align: left;">Minimal</td>
+<td style="text-align: left;">Libraries, CLIs, fast builds</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rollup</strong></td>
-<td style="text-align: left;">🚀 Rápido</td>
-<td style="text-align: left;">Media</td>
-<td style="text-align: left;">Librerías (mejor tree-shaking)</td>
+<td style="text-align: left;">🚀 Fast</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Libraries (best tree-shaking)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>webpack</strong></td>
-<td style="text-align: left;">🐢 Lento</td>
-<td style="text-align: left;">Alta</td>
-<td style="text-align: left;">Legacy, casos muy específicos</td>
+<td style="text-align: left;">🐢 Slow</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Legacy, very specific cases</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Parcel</strong></td>
-<td style="text-align: left;">🚀 Rápido</td>
-<td style="text-align: left;">Cero config</td>
-<td style="text-align: left;">Prototipos, proyectos simples</td>
+<td style="text-align: left;">🚀 Fast</td>
+<td style="text-align: left;">Zero config</td>
+<td style="text-align: left;">Prototypes, simple projects</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Rspack / Turbopack</strong></td>
-<td style="text-align: left;">⚡ Muy rápido</td>
-<td style="text-align: left;">Baja</td>
-<td style="text-align: left;">Alternativas modernas a webpack</td>
+<td style="text-align: left;">⚡ Very fast</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Modern webpack alternatives</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Recomendación 2026</p>
+<p class="admonition-title">2026 Recommendation</p>
 <ul>
-<li><strong>App nueva</strong> → <strong>Vite</strong> (o el bundler que traiga tu framework).</li>
-<li><strong>Librería</strong> → <strong>Rollup</strong> o <strong>tsup</strong> (basado en esbuild).</li>
-<li><strong>Legacy webpack</strong> → solo si lo exige el proyecto.</li>
+<li><strong>New app</strong> → <strong>Vite</strong> (or whichever bundler your framework ships with).</li>
+<li><strong>Library</strong> → <strong>Rollup</strong> or <strong>tsup</strong> (powered by esbuild).</li>
+<li><strong>Legacy webpack</strong> → only if required by the project.</li>
 </ul>
 </div>
-<h3 id="en-capitulos-13-modulos-bundlers-vite-en-30-segundos">Vite en 30 segundos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-vite-en-30-segundos" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-13-modulos-bundlers-vite-in-30-seconds">Vite in 30 Seconds<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-vite-in-30-seconds" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>mi-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react
 <span class="nb">cd</span><span class="w"> </span>mi-app
 npm<span class="w"> </span>install
 npm<span class="w"> </span>run<span class="w"> </span>dev
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># vite.config.js — mínimo</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># vite.config.js — minimal</span>
 <span class="l l-Scalar l-Scalar-Plain">import { defineConfig } from "vite";</span>
 <span class="l l-Scalar l-Scalar-Plain">import react from "@vitejs/plugin-react";</span>
 
@@ -11140,13 +11140,13 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">plugins</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">react()</span><span class="p p-Indicator">]</span><span class="err">,</span>
 <span class="err">}</span><span class="l l-Scalar l-Scalar-Plain">);</span>
 </code></pre></div>
-<p><strong>Por qué Vite es rápido:</strong>
-- <strong>Dev</strong>: sirve los módulos sin empaquetar (usando ESM nativo del navegador). Arranque en milisegundos.
-- <strong>Build</strong>: usa Rollup para producción (óptimo tree-shaking).
-- <strong>HMR</strong>: solo recarga el módulo cambiado, no la página entera.</p>
+<p><strong>Why Vite is fast:</strong>
+- <strong>Dev</strong>: serves modules unbundled (using native browser ESM). Millisecond startup.
+- <strong>Build</strong>: uses Rollup for production (optimal tree-shaking).
+- <strong>HMR</strong>: only reloads the changed module, not the whole page.</p>
 <hr>
 <h2 id="en-capitulos-13-modulos-bundlers-tree-shaking">📦 Tree-shaking<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-tree-shaking" title="Permanent link">¶</a></h2>
-<p><strong>Tree-shaking</strong> = eliminar el código que no se usa. El bundler analiza qué imports se usan realmente y descarta el resto.</p>
+<p><strong>Tree-shaking</strong> = removing unused code. The bundler analyzes which imports are actually used and drops the rest.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// utils.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">restar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -11155,34 +11155,34 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <span class="c1">// main.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./utils.js"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
-<span class="c1">// restar y multiplicar se eliminan del bundle</span>
+<span class="c1">// restar and multiplicar are removed from the bundle</span>
 </code></pre></div>
-<p><strong>Requisitos:</strong>
-- ESM (los bundlers no pueden hacer tree-shaking de CommonJS).
-- Sin efectos secundarios (<code>sideEffects: false</code> en <code>package.json</code>).
-- Funciones puras (sin modificar estado global).</p>
+<p><strong>Requirements:</strong>
+- ESM (bundlers cannot tree-shake CommonJS).
+- No side effects (<code>sideEffects: false</code> in <code>package.json</code>).
+- Pure functions (without mutating global state).</p>
 <div class="admonition warning">
-<p class="admonition-title">El enemigo del tree-shaking</p>
-<p><code>import * as utils from "./utils"</code> impide el tree-shaking (importa todo). Usa <code>import { sumar } from "./utils"</code>. Y evita los efectos secundarios ocultos (como modificar <code>window</code> al importar).</p>
+<p class="admonition-title">The enemy of tree-shaking</p>
+<p><code>import * as utils from "./utils"</code> prevents tree-shaking (it imports everything). Use <code>import { sumar } from "./utils"</code>. And avoid hidden side effects (such as modifying <code>window</code> on import).</p>
 </div>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-code-splitting">🧩 Code splitting<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-code-splitting" title="Permanent link">¶</a></h2>
-<p><strong>Code splitting</strong> = dividir el bundle en trozos que se cargan <strong>bajo demanda</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Todo en el bundle principal</span>
+<h2 id="en-capitulos-13-modulos-bundlers-code-splitting">🧩 Code Splitting<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-code-splitting" title="Permanent link">¶</a></h2>
+<p><strong>Code splitting</strong> = splitting the bundle into chunks loaded <strong>on demand</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Everything in the main bundle</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Chart</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"chart.js"</span><span class="p">;</span>
 
-<span class="c1">// ✅ Carga solo cuando se necesita</span>
+<span class="c1">// ✅ Load only when needed</span>
 <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Chart</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s2">"chart.js"</span><span class="p">);</span>
 <span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">Chart</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<p><strong>Cuándo dividir:</strong>
-- Rutas (lazy loading por página).
-- Modales y componentes pesados.
-- Librerías grandes (chart.js, monaco, mapbox).
-- Funcionalidades que no todos los usuarios usan.</p>
-<p><strong>Vite/Rollup</strong> lo hace automáticamente con <code>import()</code> dinámico y genera chunks separados.</p>
+<p><strong>When to split:</strong>
+- Routes (lazy loading per page).
+- Heavy modals and components.
+- Large libraries (chart.js, monaco, mapbox).
+- Features not every user uses.</p>
+<p><strong>Vite/Rollup</strong> does this automatically with dynamic <code>import()</code> and generates separate chunks.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// React.lazy (React)</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">lazy</span><span class="p">,</span><span class="w"> </span><span class="nx">Suspense</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
 
@@ -11197,72 +11197,72 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-esm-en-el-navegador-sin-bundler">🌐 ESM en el navegador (sin bundler)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-esm-en-el-navegador-sin-bundler" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-esm-in-the-browser-no-bundler">🌐 ESM in the Browser (No Bundler)<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-esm-in-the-browser-no-bundler" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span> <span class="na">src</span><span class="o">=</span><span class="s">"/main.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// main.js</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./utils.js"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
 </code></pre></div>
-<p><strong>Ventajas:</strong>
-- Cero configuración.
-- Funciona en todos los navegadores modernos.
-- Ideal para proyectos pequeños o prototipos.</p>
-<p><strong>Desventajas:</strong>
-- Cada archivo = 1 petición HTTP.
-- Sin tree-shaking ni minificación.
-- Sin transpilación (TS, JSX no funcionan directamente).</p>
+<p><strong>Pros:</strong>
+- Zero configuration.
+- Works in all modern browsers.
+- Great for small projects or prototypes.</p>
+<p><strong>Cons:</strong>
+- Each file = 1 HTTP request.
+- No tree-shaking or minification.
+- No transpilation (TS, JSX don't run directly).</p>
 <div class="admonition tip">
-<p class="admonition-title">El punto medio</p>
-<p>Para una web de 3 páginas, ESM nativo es suficiente. Para una SPA con 50 componentes y TypeScript, necesitas bundler.</p>
+<p class="admonition-title">The middle ground</p>
+<p>For a 3-page site, native ESM is enough. For an SPA with 50 components and TypeScript, you need a bundler.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-ejemplo-comparar-bundles">🏗 Ejemplo: comparar bundles<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-ejemplo-comparar-bundles" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-example-comparing-bundles">🏗 Example: Comparing Bundles<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-example-comparing-bundles" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Proyecto</th>
-<th style="text-align: left;">Sin bundler</th>
-<th style="text-align: left;">Con Vite (build)</th>
+<th style="text-align: left;">Project</th>
+<th style="text-align: left;">Without bundler</th>
+<th style="text-align: left;">With Vite (build)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">10 archivos JS, 50 KB total</td>
-<td style="text-align: left;">10 peticiones, sin minificar</td>
-<td style="text-align: left;">1 archivo, ~20 KB minificado</td>
+<td style="text-align: left;">10 JS files, 50 KB total</td>
+<td style="text-align: left;">10 requests, unminified</td>
+<td style="text-align: left;">1 file, ~20 KB minified</td>
 </tr>
 <tr>
-<td style="text-align: left;">50 componentes React</td>
-<td style="text-align: left;">Imposible sin transpilar</td>
+<td style="text-align: left;">50 React components</td>
+<td style="text-align: left;">Impossible without transpiling</td>
 <td style="text-align: left;">1 bundle + chunks, tree-shaking</td>
 </tr>
 <tr>
-<td style="text-align: left;">100 librerías npm</td>
-<td style="text-align: left;">Imposible (no hay <code>node_modules</code> en navegador)</td>
-<td style="text-align: left;">1 bundle con todo resuelto</td>
+<td style="text-align: left;">100 npm libraries</td>
+<td style="text-align: left;">Impossible (no <code>node_modules</code> in browser)</td>
+<td style="text-align: left;">1 bundle with everything resolved</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-ejercicio-practico" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-practical-exercise">🧪 Practical Exercise<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-practical-exercise" title="Permanent link">¶</a></h2>
 <div class="admonition example">
-<p class="admonition-title">Crear un proyecto con Vite</p>
-<p>Crea un proyecto vanilla con Vite que:</p>
+<p class="admonition-title">Create a project with Vite</p>
+<p>Create a vanilla project with Vite that:</p>
 <ul>
-<li>Muestre "Hola, Vite" en el DOM.</li>
-<li>Importe una función <code>saludar(nombre)</code> desde <code>./saludar.js</code>.</li>
-<li>Tenga HMR funcionando (al cambiar el texto, se recarga).</li>
+<li>Displays "Hola, Vite" in the DOM.</li>
+<li>Imports a <code>saludar(nombre)</code> function from <code>./saludar.js</code>.</li>
+<li>Has HMR working (when you change the text, it updates).</li>
 </ul>
-<p>Sigue estos pasos:
+<p>Follow these steps:
 1. <code>npm create vite@latest mi-vite -- --template vanilla</code>
 2. <code>cd mi-vite &amp;&amp; npm install</code>
-3. Crea <code>saludar.js</code> con <code>export function saludar(n) { return "Hola, " + n; }</code>
-4. Importa en <code>main.js</code> y muestra el resultado.
-5. <code>npm run dev</code> y comprueba HMR.</p>
+3. Create <code>saludar.js</code> with <code>export function saludar(n) { return "Hola, " + n; }</code>
+4. Import it in <code>main.js</code> and display the result.
+5. Run <code>npm run dev</code> and test HMR.</p>
 </div>
 <details class="success">
-<summary>Solución</summary>
+<summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="c1">// saludar.js</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola, </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
@@ -11276,37 +11276,37 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <span class="sb">    &lt;h1&gt;</span><span class="si">${</span><span class="nx">saludar</span><span class="p">(</span><span class="s2">"Vite"</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/h1&gt;</span>
 <span class="sb">`</span><span class="p">;</span>
 </code></pre></div>
-<p><strong>HMR:</strong> con <code>npm run dev</code>, al editar <code>saludar.js</code> o <code>main.js</code>, el navegador actualiza sin recargar la página.</p>
+<p><strong>HMR:</strong> with <code>npm run dev</code>, when you edit <code>saludar.js</code> or <code>main.js</code>, the browser updates without reloading the page.</p>
 </details>
 <hr>
 <h2 id="en-capitulos-13-modulos-bundlers-quiz">🧠 Quiz<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Qué diferencia hay entre CommonJS y ESM?</summary>
-<p>CommonJS usa <code>require</code> y <code>module.exports</code>, es síncrono, de Node.js clásico. ESM usa <code>import</code> y <code>export</code>, es asíncrono, hoistea imports, permite top-level await y tree-shaking.</p>
+<summary>1. What is the difference between CommonJS and ESM?</summary>
+<p>CommonJS uses <code>require</code> and <code>module.exports</code>, is synchronous, and belongs to classic Node.js. ESM uses <code>import</code> and <code>export</code>, is asynchronous, hoists imports, and supports top-level await and tree-shaking.</p>
 </details>
 <details class="success">
-<summary>2. ¿Qué hace un bundler?</summary>
-<p>Resuelve imports, transpila (TS, JSX, SCSS), minifica, hace tree-shaking, empaqueta en uno o pocos archivos y copia assets.</p>
+<summary>2. What does a bundler do?</summary>
+<p>Resolves imports, transpiles (TS, JSX, SCSS), minifies, performs tree-shaking, bundles into one or a few files, and copies assets.</p>
 </details>
 <details class="success">
-<summary>3. ¿Por qué Vite es tan rápido en desarrollo?</summary>
-<p>Porque sirve los módulos sin empaquetar, usando ESM nativo del navegador. Solo empaqueta en build de producción (con Rollup).</p>
+<summary>3. Why is Vite so fast in development?</summary>
+<p>Because it serves modules unbundled using native browser ESM. It only bundles for production builds (with Rollup).</p>
 </details>
 <details class="success">
-<summary>4. ¿Qué es tree-shaking?</summary>
-<p>Eliminar el código que no se usa del bundle final. Requiere ESM y funciones puras sin efectos secundarios.</p>
+<summary>4. What is tree-shaking?</summary>
+<p>Removing unused code from the final bundle. It requires ESM and pure functions without side effects.</p>
 </details>
 <details class="success">
-<summary>5. ¿Qué es code splitting?</summary>
-<p>Dividir el bundle en chunks que se cargan bajo demanda (con <code>import()</code> dinámico), reduciendo el tiempo de carga inicial.</p>
+<summary>5. What is code splitting?</summary>
+<p>Splitting the bundle into chunks loaded on demand (via dynamic <code>import()</code>), reducing initial load time.</p>
 </details>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-recursos">📚 Recursos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-recursos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-resources">📚 Resources<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-resources" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules">MDN — JavaScript modules</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">MDN — JavaScript modules</a></li>
 <li><a href="https://vite.dev/">Vite — Docs</a></li>
 <li><a href="https://rollupjs.org/">Rollup — Docs</a></li>
 <li><a href="https://esbuild.github.io/">esbuild — Docs</a></li>
@@ -11315,36 +11315,36 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <li><a href="https://web.dev/reduce-javascript-payloads-with-code-splitting/">web.dev — Reduce JavaScript payloads</a></li>
 </ul>
 <hr>
-<p>➡️ Siguiente capítulo: <a href="#en-capitulos-14-accesibilidad">14 — Accesibilidad</a></p>
+<p>➡ Next chapter: <a href="#en-capitulos-14-accesibilidad">14 — Accesibilidad</a></p>
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-13">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué sistema de módulos usa import/export?</p>
+<p><strong>1.</strong> Which module system uses import/export?</p>
 <button class="quiz-option" data-opt="a">A) CommonJS</button>
 <button class="quiz-option" data-opt="b">B) ES Modules</button>
 <button class="quiz-option" data-opt="c">C) AMD</button>
 </div>
 <div class="quiz-question" data-answer="b">
-<p><strong>2.</strong> ¿Qué bundler es más rápido en desarrollo?</p>
+<p><strong>2.</strong> Which bundler is fastest in development?</p>
 <button class="quiz-option" data-opt="a">A) webpack</button>
 <button class="quiz-option" data-opt="b">B) Vite</button>
 <button class="quiz-option" data-opt="c">C) Rollup</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Qué es tree-shaking?</p>
-<button class="quiz-option" data-opt="a">A) Eliminar código no usado</button>
-<button class="quiz-option" data-opt="b">B) Minificar el código</button>
-<button class="quiz-option" data-opt="c">C) Dividir el bundle</button>
+<p><strong>3.</strong> What is tree-shaking?</p>
+<button class="quiz-option" data-opt="a">A) Removing unused code</button>
+<button class="quiz-option" data-opt="b">B) Minifying the code</button>
+<button class="quiz-option" data-opt="c">C) Splitting the bundle</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-13-modulos-bundlers-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-13-modulos-bundlers-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-13-modulos-bundlers-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2013%3A%20M%C3%B3dulos%20y%20bundlers&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">LinkedIn</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/13-modulos-bundlers/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2013%3A%20Modules%20and%20Bundlers&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">LinkedIn</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/13-modulos-bundlers/" aria-label="Copy link">Copy link</button>
 </div></div></section><section class="print-page" id="en-capitulos-14-accesibilidad" heading-number="2.4.4"><div><h1 id="14-accesibilidad-web">14 — Accesibilidad web<a class="headerlink" href="#en-capitulos-14-accesibilidad-14-accesibilidad-web" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
