@@ -11345,240 +11345,240 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2013%3A%20Modules%20and%20Bundlers&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F13-modulos-bundlers%2F" target="_blank" rel="noopener">LinkedIn</a>
 <button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/13-modulos-bundlers/" aria-label="Copy link">Copy link</button>
-</div></div></section><section class="print-page" id="en-capitulos-14-accesibilidad" heading-number="2.4.4"><div><h1 id="14-accesibilidad-web">14 — Accesibilidad web<a class="headerlink" href="#en-capitulos-14-accesibilidad-14-accesibilidad-web" title="Permanent link">¶</a></h1>
+</div></div></section><section class="print-page" id="en-capitulos-14-accesibilidad" heading-number="2.4.4"><div><h1 id="14-web-accessibility">14 — Web Accessibility<a class="headerlink" href="#en-capitulos-14-accesibilidad-14-web-accessibility" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es la accesibilidad y por qué es obligatoria.</li>
-<li>Las pautas WCAG.</li>
-<li>HTML semántico y ARIA.</li>
-<li>Navegación por teclado.</li>
-<li>Contraste y herramientas de auditoría.</li>
+<li>What accessibility is and why it is mandatory.</li>
+<li>The WCAG guidelines.</li>
+<li>Semantic HTML and ARIA.</li>
+<li>Keyboard navigation.</li>
+<li>Contrast and auditing tools.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-que-es-la-accesibilidad">♿ ¿Qué es la accesibilidad?<a class="headerlink" href="#en-capitulos-14-accesibilidad-que-es-la-accesibilidad" title="Permanent link">¶</a></h2>
-<p>La <strong>accesibilidad web</strong> (a11y) es la práctica de diseñar webs que <strong>cualquier persona pueda usar</strong>, incluyendo quienes tienen discapacidades visuales, auditivas, motoras o cognitivas.</p>
+<h2 id="en-capitulos-14-accesibilidad-what-is-accessibility">♿ What is Accessibility?<a class="headerlink" href="#en-capitulos-14-accesibilidad-what-is-accessibility" title="Permanent link">¶</a></h2>
+<p><strong>Web accessibility</strong> (a11y) is the practice of designing websites that <strong>anyone can use</strong>, including people with visual, auditory, motor, or cognitive disabilities.</p>
 <div class="admonition quote">
-<p class="admonition-title">No es un extra, es parte del trabajo</p>
-<p>La accesibilidad no es un checkbox que se marca al final. Es una forma de pensar el desarrollo desde el primer div.</p>
+<p class="admonition-title">Not an extra, it is part of the job</p>
+<p>Accessibility is not a checkbox you tick at the end. It is a way of thinking about development from the very first div.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-las-pautas-wcag">📜 Las pautas WCAG<a class="headerlink" href="#en-capitulos-14-accesibilidad-las-pautas-wcag" title="Permanent link">¶</a></h2>
-<p>Las <strong>WCAG</strong> (<em>Web Content Accessibility Guidelines</em>) son el estándar internacional. Tienen tres niveles:</p>
+<h2 id="en-capitulos-14-accesibilidad-the-wcag-guidelines">📜 The WCAG Guidelines<a class="headerlink" href="#en-capitulos-14-accesibilidad-the-wcag-guidelines" title="Permanent link">¶</a></h2>
+<p><strong>WCAG</strong> (<em>Web Content Accessibility Guidelines</em>) are the international standard. They have three levels:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Nivel</th>
-<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Level</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>A</strong></td>
-<td style="text-align: left;">Nivel mínimo. Obligatorio por ley en muchos países.</td>
+<td style="text-align: left;">Minimum level. Legally required in many countries.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AA</strong></td>
-<td style="text-align: left;">Nivel recomendado. El objetivo habitual.</td>
+<td style="text-align: left;">Recommended level. The standard target.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AAA</strong></td>
-<td style="text-align: left;">Nivel máximo. Muy difícil de cumplir al 100%.</td>
+<td style="text-align: left;">Maximum level. Very hard to meet at 100%.</td>
 </tr>
 </tbody>
 </table>
-<p>Los <strong>cuatro principios</strong> de WCAG (POUR):</p>
+<p>The <strong>four principles</strong> of WCAG (POUR):</p>
 <ol>
-<li><strong>Perceptible</strong>: la información debe ser presentada de forma que todos puedan percibirla.</li>
-<li><strong>Operable</strong>: la interfaz debe poder usarse con teclado u otros dispositivos.</li>
-<li><strong>Comprensible</strong>: el contenido y la interfaz deben ser entendibles.</li>
-<li><strong>Robusto</strong>: debe funcionar con diferentes tecnologías de asistencia.</li>
+<li><strong>Perceivable</strong>: information must be presented in ways everyone can perceive.</li>
+<li><strong>Operable</strong>: the interface must be usable with a keyboard or other devices.</li>
+<li><strong>Understandable</strong>: content and interface must be easy to understand.</li>
+<li><strong>Robust</strong>: must work reliably with different assistive technologies.</li>
 </ol>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-html-semantico">🏗️ HTML semántico<a class="headerlink" href="#en-capitulos-14-accesibilidad-html-semantico" title="Permanent link">¶</a></h2>
-<p>El HTML semántico es la base de la accesibilidad. Los lectores de pantalla lo entienden.</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!-- Correcto --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>button onclick="enviar()"<span class="ni">&amp;gt;</span>Enviar<span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>nav<span class="ni">&amp;gt;&amp;lt;</span>a href="/inicio"<span class="ni">&amp;gt;</span>Inicio<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/nav<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>main<span class="ni">&amp;gt;&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Título<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;&amp;lt;</span>/main<span class="ni">&amp;gt;</span>
+<h2 id="en-capitulos-14-accesibilidad-semantic-html">🏗 Semantic HTML<a class="headerlink" href="#en-capitulos-14-accesibilidad-semantic-html" title="Permanent link">¶</a></h2>
+<p>Semantic HTML is the foundation of accessibility. Screen readers understand it.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Correct --&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">"enviar()"</span><span class="p">&gt;</span>Send<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/inicio"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- Incorrecto --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div onclick="enviar()"<span class="ni">&amp;gt;</span>Enviar<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div class="nav"<span class="ni">&amp;gt;&amp;lt;</span>a href="/inicio"<span class="ni">&amp;gt;</span>Inicio<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- Incorrect --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">onclick</span><span class="o">=</span><span class="s">"enviar()"</span><span class="p">&gt;</span>Send<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"nav"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/inicio"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Un div no es un botón</p>
-<p>Un div con onclick no es accesible: no se puede enfocar con Tab, no se activa con Enter, no lo anuncian los lectores de pantalla. Usa button.</p>
+<p class="admonition-title">A div is not a button</p>
+<p>A div with onclick is not accessible: it cannot be focused with Tab, cannot be activated with Enter, and screen readers don't announce it as a button. Use button.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-aria-cuando-y-como-usarlo">🏷️ ARIA: cuándo y cómo usarlo<a class="headerlink" href="#en-capitulos-14-accesibilidad-aria-cuando-y-como-usarlo" title="Permanent link">¶</a></h2>
-<p><strong>ARIA</strong> (<em>Accessible Rich Internet Applications</em>) son atributos que añaden semántica a elementos que HTML no cubre.</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>div role="alert"<span class="ni">&amp;gt;</span>Error: contraseña incorrecta<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>button aria-label="Cerrar menú"<span class="ni">&amp;gt;</span>✕<span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>nav aria-label="Navegación principal"<span class="ni">&amp;gt;</span>...<span class="ni">&amp;lt;</span>/nav<span class="ni">&amp;gt;</span>
+<h2 id="en-capitulos-14-accesibilidad-aria-when-and-how-to-use-it">🏷 ARIA: When and How to Use It<a class="headerlink" href="#en-capitulos-14-accesibilidad-aria-when-and-how-to-use-it" title="Permanent link">¶</a></h2>
+<p><strong>ARIA</strong> (<em>Accessible Rich Internet Applications</em>) are attributes that add semantics to elements that HTML doesn't cover on its own.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">"alert"</span><span class="p">&gt;</span>Error: incorrect password<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">"Close menu"</span><span class="p">&gt;</span>✕<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">nav</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">"Main navigation"</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Regla de oro de ARIA</p>
-<p><strong>No uses ARIA si puedes usar HTML nativo.</strong> Un button ya tiene role=button implícito. ARIA solo cuando no hay otra opción.</p>
+<p class="admonition-title">Golden rule of ARIA</p>
+<p><strong>Don't use ARIA if you can use native HTML.</strong> A button already has an implicit role=button. Use ARIA only when there is no other option.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-navegacion-por-teclado">⌨️ Navegación por teclado<a class="headerlink" href="#en-capitulos-14-accesibilidad-navegacion-por-teclado" title="Permanent link">¶</a></h2>
-<p>Toda web debe poder usarse <strong>solo con el teclado</strong>. Prueba a navegar con Tab, Enter, Escape y las flechas.</p>
-<div class="highlight"><pre><span></span><code><span class="c">/* Nunca elimines el outline sin sustituirlo */</span>
+<h2 id="en-capitulos-14-accesibilidad-keyboard-navigation">⌨ Keyboard Navigation<a class="headerlink" href="#en-capitulos-14-accesibilidad-keyboard-navigation" title="Permanent link">¶</a></h2>
+<p>Every website must be usable <strong>with the keyboard alone</strong>. Test navigating with Tab, Enter, Escape, and the arrow keys.</p>
+<div class="highlight"><pre><span></span><code><span class="c">/* Never remove outline without replacing it */</span>
 <span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
 <span class="w">  </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Prueba con Tab</p>
-<p>Abre tu web y pulsa Tab repetidamente. ¿Ves dónde está el foco? ¿Puedes llegar a todos los botones y enlaces? Si no, tienes un problema de accesibilidad.</p>
+<p class="admonition-title">Test with Tab</p>
+<p>Open your site and press Tab repeatedly. Can you see where focus is? Can you reach all buttons and links? If not, you have an accessibility issue.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-contraste-de-color">🎨 Contraste de color<a class="headerlink" href="#en-capitulos-14-accesibilidad-contraste-de-color" title="Permanent link">¶</a></h2>
-<p>El contraste entre texto y fondo debe cumplir <strong>WCAG AA</strong>:</p>
+<h2 id="en-capitulos-14-accesibilidad-color-contrast">🎨 Color Contrast<a class="headerlink" href="#en-capitulos-14-accesibilidad-color-contrast" title="Permanent link">¶</a></h2>
+<p>Contrast between text and background must meet <strong>WCAG AA</strong>:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Elemento</th>
-<th style="text-align: left;">Ratio mínimo</th>
+<th style="text-align: left;">Element</th>
+<th style="text-align: left;">Minimum ratio</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Texto normal</td>
+<td style="text-align: left;">Normal text</td>
 <td style="text-align: left;">4.5:1</td>
 </tr>
 <tr>
-<td style="text-align: left;">Texto grande (18pt+ o 14pt+ bold)</td>
+<td style="text-align: left;">Large text (18pt+ or 14pt+ bold)</td>
 <td style="text-align: left;">3:1</td>
 </tr>
 <tr>
-<td style="text-align: left;">Componentes de UI (bordes, iconos)</td>
+<td style="text-align: left;">UI components (borders, icons)</td>
 <td style="text-align: left;">3:1</td>
 </tr>
 </tbody>
 </table>
-<p>Herramientas para comprobarlo:</p>
+<p>Tools to check it:</p>
 <ul>
 <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
 <li><a href="https://coolors.co/contrast-checker">Coolors Contrast Checker</a></li>
-<li>Lighthouse (en Chrome DevTools)</li>
+<li>Lighthouse (in Chrome DevTools)</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-formularios-accesibles">📝 Formularios accesibles<a class="headerlink" href="#en-capitulos-14-accesibilidad-formularios-accesibles" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>label for="email"<span class="ni">&amp;gt;</span>Email:<span class="ni">&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>input type="email" id="email" name="email" required
-       aria-describedby="email-error"<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>small id="email-error" class="error"<span class="ni">&amp;gt;</span>Introduce un email válido<span class="ni">&amp;lt;</span>/small<span class="ni">&amp;gt;</span>
+<h2 id="en-capitulos-14-accesibilidad-accessible-forms">📝 Accessible Forms<a class="headerlink" href="#en-capitulos-14-accesibilidad-accessible-forms" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span>
+       <span class="na">aria-describedby</span><span class="o">=</span><span class="s">"email-error"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">small</span> <span class="na">id</span><span class="o">=</span><span class="s">"email-error"</span> <span class="na">class</span><span class="o">=</span><span class="s">"error"</span><span class="p">&gt;</span>Enter a valid email<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Buenas prácticas:</p>
+<p>Best practices:</p>
 <ul>
-<li>✅ Asocia cada input con un <code>&lt;label&gt;</code>.</li>
-<li>✅ Usa <code>aria-describedby</code> para mensajes de error.</li>
-<li>✅ Marca los campos obligatorios con <code>required</code>.</li>
-<li>✅ Agrupa campos relacionados con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>.</li>
-<li>✅ Da feedback claro cuando algo falla.</li>
+<li>✅ Associate every input with a <code>&lt;label&gt;</code>.</li>
+<li>✅ Use <code>aria-describedby</code> for error messages.</li>
+<li>✅ Mark required fields with <code>required</code>.</li>
+<li>✅ Group related fields with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+<li>✅ Give clear feedback when something fails.</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">El placeholder no es un label</p>
-<p>El placeholder desaparece al escribir y no lo leen todos los lectores de pantalla. Siempre usa un label visible.</p>
+<p class="admonition-title">Placeholder is not a label</p>
+<p>Placeholders disappear when typing and aren't read by all screen readers. Always use a visible label.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-imagenes-y-multimedia">🖼️ Imágenes y multimedia<a class="headerlink" href="#en-capitulos-14-accesibilidad-imagenes-y-multimedia" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!-- Imagen informativa --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>img src="grafico.png" alt="Ventas del trimestre: 40% en enero, 35% en febrero, 25% en marzo"<span class="ni">&amp;gt;</span>
+<h2 id="en-capitulos-14-accesibilidad-images-and-media">🖼 Images and Media<a class="headerlink" href="#en-capitulos-14-accesibilidad-images-and-media" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Informative image --&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"grafico.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Quarterly sales: 40% in January, 35% in February, 25% in March"</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- Imagen decorativa --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>img src="decoracion.png" alt=""<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- Decorative image --&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"decoracion.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- Vídeo con subtítulos --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>video controls<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>source src="video.mp4" type="video/mp4"<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>track kind="captions" src="subtitulos.vtt" srclang="es" label="Español"<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/video<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- Video with captions --&gt;</span>
+<span class="p">&lt;</span><span class="nt">video</span> <span class="na">controls</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">"video.mp4"</span> <span class="na">type</span><span class="o">=</span><span class="s">"video/mp4"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">track</span> <span class="na">kind</span><span class="o">=</span><span class="s">"captions"</span> <span class="na">src</span><span class="o">=</span><span class="s">"subtitulos.vtt"</span> <span class="na">srclang</span><span class="o">=</span><span class="s">"es"</span> <span class="na">label</span><span class="o">=</span><span class="s">"Español"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">El alt correcto</p>
+<p class="admonition-title">The right alt</p>
 <ul>
-<li>Si la imagen aporta información, describe <strong>qué información aporta</strong>.</li>
-<li>Si es decorativa, usa <code>alt=""</code> (vacío).</li>
-<li>No empieces con "Imagen de..." (los lectores ya lo dicen).</li>
+<li>If the image conveys information, describe <strong>what information it conveys</strong>.</li>
+<li>If it is decorative, use <code>alt=""</code> (empty).</li>
+<li>Don't start with "Image of..." (screen readers already announce it).</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-herramientas-de-auditoria">🔍 Herramientas de auditoría<a class="headerlink" href="#en-capitulos-14-accesibilidad-herramientas-de-auditoria" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-14-accesibilidad-auditing-tools">🔍 Auditing Tools<a class="headerlink" href="#en-capitulos-14-accesibilidad-auditing-tools" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Qué mide</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">What it measures</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Lighthouse</strong> (Chrome DevTools)</td>
-<td style="text-align: left;">Accesibilidad, rendimiento, SEO, PWA</td>
+<td style="text-align: left;">Accessibility, performance, SEO, PWA</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>axe DevTools</strong></td>
-<td style="text-align: left;">Errores de accesibilidad detallados</td>
+<td style="text-align: left;">Detailed accessibility errors</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>WAVE</strong></td>
-<td style="text-align: left;">Evaluación visual de accesibilidad</td>
+<td style="text-align: left;">Visual accessibility evaluation</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pa11y</strong></td>
-<td style="text-align: left;">Auditoría por línea de comandos</td>
+<td style="text-align: left;">Command-line auditing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Screen Reader</strong> (NVDA, VoiceOver)</td>
-<td style="text-align: left;">Cómo lo percibe una persona ciega</td>
+<td style="text-align: left;">How a blind person perceives it</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">Prueba con un lector de pantalla</p>
-<p>Nada sustituye a probar tu web con un lector de pantalla real. En Linux puedes usar <strong>Orca</strong>, en Windows <strong>NVDA</strong> (gratis), en macOS <strong>VoiceOver</strong> (integrado).</p>
+<p class="admonition-title">Test with a screen reader</p>
+<p>Nothing replaces testing your site with a real screen reader. On Linux you can use <strong>Orca</strong>, on Windows <strong>NVDA</strong> (free), and on macOS <strong>VoiceOver</strong> (built-in).</p>
 </div>
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-14-accesibilidad-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-14-accesibilidad-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-14-accesibilidad-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-14">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué significa WCAG?</p>
+<p><strong>1.</strong> What does WCAG stand for?</p>
 <button class="quiz-option" data-opt="a">A) Web Code Accessibility Guide</button>
 <button class="quiz-option" data-opt="b">B) Web Content Accessibility Guidelines</button>
 <button class="quiz-option" data-opt="c">C) World Consortium Access Group</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué ratio de contraste mínimo exige WCAG AA para texto normal?</p>
+<p><strong>2.</strong> What minimum contrast ratio does WCAG AA require for normal text?</p>
 <button class="quiz-option" data-opt="a">A) 4.5:1</button>
 <button class="quiz-option" data-opt="b">B) 2:1</button>
 <button class="quiz-option" data-opt="c">C) 10:1</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Cuándo se usa aria-label?</p>
-<button class="quiz-option" data-opt="a">A) Siempre, en todos los elementos</button>
-<button class="quiz-option" data-opt="b">B) Nunca</button>
-<button class="quiz-option" data-opt="c">C) Cuando no hay texto visible que describa el elemento</button>
+<p><strong>3.</strong> When should you use aria-label?</p>
+<button class="quiz-option" data-opt="a">A) Always, on every element</button>
+<button class="quiz-option" data-opt="b">B) Never</button>
+<button class="quiz-option" data-opt="c">C) When there is no visible text describing the element</button>
 </div>
 </div>
 
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-14-accesibilidad-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-14-accesibilidad-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-14-accesibilidad-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2014%3A%20Accesibilidad%20web&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2014%3A%20Accesibilidad%20web%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/14-accesibilidad/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2014%3A%20Web%20Accessibility&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2014%3A%20Web%20Accessibility%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F14-accesibilidad%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/14-accesibilidad/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-14-accesibilidad-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-14-accesibilidad-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-15-typescript">Ir al Capítulo 15 — TypeScript desde cero</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-15-typescript" heading-number="2.4.5"><div><h1 id="15-typescript-desde-cero">15 — TypeScript desde cero<a class="headerlink" href="#en-capitulos-15-typescript-15-typescript-desde-cero" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-14-accesibilidad-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-14-accesibilidad-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-15-typescript">Go to Chapter 15 — TypeScript desde cero</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-15-typescript" heading-number="2.4.5"><div><h1 id="15-typescript-desde-cero">15 — TypeScript desde cero<a class="headerlink" href="#en-capitulos-15-typescript-15-typescript-desde-cero" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
