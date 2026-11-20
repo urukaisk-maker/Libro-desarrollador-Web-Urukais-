@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 02: 02 — HTML básico. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 02: 02 — Basic HTML. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 02: 02 — HTML básico. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 02: 02 — Basic HTML. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/02-html-basico/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 02 — HTML básico - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 02: 02 — HTML básico. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 02: 02 — Basic HTML. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/02-html-basico.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/02-html-basico/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 02 — HTML básico - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 02: 02 — HTML básico. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 02: 02 — Basic HTML. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/02-html-basico.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#02-html-basico" class="md-skip">
+        <a href="#02-basic-html" class="md-skip">
           Skip to content
         </a>
       
@@ -2561,10 +2561,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2572,10 +2572,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -2583,10 +2583,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -2594,10 +2594,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5054,76 +5054,75 @@
   
 
 
-<div><h1 id="02-html-basico">02 — HTML básico<a class="headerlink" href="#02-html-basico" title="Permanent link">¶</a></h1>
+<div><h1 id="02-basic-html">02 — Basic HTML<a class="headerlink" href="#02-basic-html" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica la estructura semántica de una página HTML.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice the semantic structure of an HTML page.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una página con:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a page with:</p>
 <ol>
-<li>`<header>` con un título y un `<nav>` con 3 enlaces.</nav></header></li>
-<li>`<main>` con un `<article>` y un `<aside>`.</aside></article></main></li>
-<li>`<footer>` con un copyright.</footer></li>
+<li><code>&lt;header&gt;</code> with a title and a <code>&lt;nav&gt;</code> containing 3 links.</li>
+<li><code>&lt;main&gt;</code> with an <code>&lt;article&gt;</code> and an <code>&lt;aside&gt;</code>.</li>
+<li><code>&lt;footer&gt;</code> with a copyright notice.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My blog<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My personal blog<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#inicio"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#sobre-mi"</span><span class="p">&gt;</span>About me<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#contacto"</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
 
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>My first post<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Today I learned semantic HTML.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
 
+    <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Links<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#"</span><span class="p">&gt;</span>MDN<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#"</span><span class="p">&gt;</span>CSS Tricks<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
 
-  <meta charset="UTF-8">
-  <title>Mi blog</title>
-
-
-  <header>
-    <h1>Mi blog personal</h1>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
-
-  <main>
-    <article>
-      <h2>Mi primer post</h2>
-      <p>Hoy he aprendido HTML semántico.</p>
-    </article>
-
-    <aside>
-      <h3>Enlaces</h3>
-      <ul>
-        <li><a href="#">MDN</a></li>
-        <li><a href="#">CSS Tricks</a></li>
-      </ul>
-    </aside>
-  </main>
-
-  <footer>
-    <p>© 2026 Mi blog</p>
-  </footer>
-
-
-<p>```</p>
+  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2026 My blog<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Etiquetas semánticas</strong>: describen qué es cada parte.</li>
-<li>`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`.</footer></aside></article></main></nav></header></li>
-<li>Cada una tiene un propósito y mejora accesibilidad + SEO.</li>
+<li><strong>Semantic tags</strong>: describe what each part is.</li>
+<li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+<li>Each one has a purpose and improves accessibility + SEO.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade una imagen con `<figure>` y `<figcaption>`.</figcaption></figure></li>
-<li>[ ] Añade una tabla con `<table>`.
-<li>[ ] Añade un formulario de contacto.</li>
-
+<li>[ ] Add an image with <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>.</li>
+<li>[ ] Add a table with <code>&lt;table&gt;</code>.</li>
+<li>[ ] Add a contact form.</li>
+</ul>
 <hr>
-<p><a class="md-button" href="../01-introduccion/">← Ejercicio 01</a>
-<a class="md-button md-button--primary" href="../03-css-basico/">Ir al ejercicio 03 →</a></p></table></li></ul></div>
+<p><a class="md-button" href="../01-introduccion/">← Exercise 01</a>
+<a class="md-button md-button--primary" href="../03-css-basico/">Go to exercise 03 →</a></p></div>
 
 
 
