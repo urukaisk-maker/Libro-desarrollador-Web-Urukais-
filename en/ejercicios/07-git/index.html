@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 07: 07 — Git. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 07: 07 — Git. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 07: 07 — Git. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 07: 07 — Git. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/07-git/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 07 — Git - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 07: 07 — Git. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 07: 07 — Git. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/07-git.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/07-git/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 07 — Git - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 07: 07 — Git. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 07: 07 — Git. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/07-git.png" />
 </head>
   
@@ -2769,10 +2769,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2780,10 +2780,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Key Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5034,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/07-git.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/07-git.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5044,60 +5066,63 @@
 
 <div><h1 id="07-git">07 — Git<a class="headerlink" href="#07-git" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica los comandos básicos de Git.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice basic Git commands.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Simula el flujo básico de Git:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Simulate the basic Git workflow:</p>
 <ol>
-<li>Inicializa un repositorio.</li>
-<li>Crea un archivo `index.html`.</li>
-<li>Haz un commit.</li>
-<li>Crea una rama `feature`.</li>
-<li>Añade un archivo `style.css` y haz commit.</li>
-<li>Fusiona la rama en `main`.</li>
+<li>Initialize a repository.</li>
+<li>Create an <code>index.html</code> file.</li>
+<li>Make a commit.</li>
+<li>Create a <code>feature</code> branch.</li>
+<li>Add a <code>style.css</code> file and commit it.</li>
+<li>Merge the branch into <code>main</code>.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```bash</p>
-<h1 id="1-inicializar">1. Inicializar<a class="headerlink" href="#1-inicializar" title="Permanent link">¶</a></h1>
-<p>git init
-git config user.name "Tu Nombre"
-git config user.email "tu@email.com"</p>
-<h1 id="2-crear-archivo-y-commit">2. Crear archivo y commit<a class="headerlink" href="#2-crear-archivo-y-commit" title="Permanent link">¶</a></h1>
-<p>echo "</p><h1>Hola</h1>" &gt; index.html
-git add index.html
-git commit -m "feat: añadir index.html"
-<h1 id="3-rama">3. Rama<a class="headerlink" href="#3-rama" title="Permanent link">¶</a></h1>
-<p>git checkout -b feature</p>
-<h1 id="4-anadir-css">4. Añadir CSS<a class="headerlink" href="#4-anadir-css" title="Permanent link">¶</a></h1>
-<p>echo "h1 { color: red; }" &gt; style.css
-git add style.css
-git commit -m "feat: añadir estilos"</p>
-<h1 id="5-volver-a-main-y-fusionar">5. Volver a main y fusionar<a class="headerlink" href="#5-volver-a-main-y-fusionar" title="Permanent link">¶</a></h1>
-<p>git checkout main
-git merge feature
-```</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Initialize</span>
+git<span class="w"> </span>init
+git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Your Name"</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"you@email.com"</span>
+
+<span class="c1"># 2. Create file and commit</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Hello&lt;/h1&gt;"</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+git<span class="w"> </span>add<span class="w"> </span>index.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: add index.html"</span>
+
+<span class="c1"># 3. Branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature
+
+<span class="c1"># 4. Add CSS</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"h1 { color: red; }"</span><span class="w"> </span>&gt;<span class="w"> </span>style.css
+git<span class="w"> </span>add<span class="w"> </span>style.css
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: add styles"</span>
+
+<span class="c1"># 5. Switch back to main and merge</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>feature
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`git init`: crea un repositorio vacío.</li>
-<li>`git add`: añade al staging.</li>
-<li>`git commit -m`: crea un commit.</li>
-<li>`git checkout -b`: crea y cambia a una rama.</li>
-<li>`git merge`: fusiona ramas.</li>
+<li><code>git init</code>: creates an empty repository.</li>
+<li><code>git add</code>: stages changes.</li>
+<li><code>git commit -m</code>: creates a commit.</li>
+<li><code>git checkout -b</code>: creates and switches to a branch.</li>
+<li><code>git merge</code>: merges branches.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Sube el repositorio a GitHub con `git remote add` y `git push`.</li>
-<li>[ ] Crea un conflicto y resuélvelo.</li>
-<li>[ ] Usa `git log --oneline --graph` para ver el historial.</li>
+<li>[ ] Push the repository to GitHub with <code>git remote add</code> and <code>git push</code>.</li>
+<li>[ ] Create a merge conflict and resolve it.</li>
+<li>[ ] Use <code>git log --oneline --graph</code> to inspect the history.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../06-formularios/">← Ejercicio 06</a>
-<a class="md-button md-button--primary" href="../08-apis/">Ir al ejercicio 08 →</a></p></div>
+<p><a class="md-button" href="../06-formularios/">← Exercise 06</a>
+<a class="md-button md-button--primary" href="../08-apis/">Go to exercise 08 →</a></p></div>
 
 
 
