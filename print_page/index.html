@@ -15096,188 +15096,188 @@ npm<span class="w"> </span>run<span class="w"> </span>storybook
 <hr>
 <h2 id="en-capitulos-25-design-systems-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-25-design-systems-next-step" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-capitulos-26-seguridad">Go to Chapter 26 — Seguridad web</a>
-<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-26-seguridad" heading-number="2.6.6"><div><h1 id="26-seguridad-web">26 — Seguridad web<a class="headerlink" href="#en-capitulos-26-seguridad-26-seguridad-web" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-26-seguridad" heading-number="2.6.6"><div><h1 id="26-web-security">26 — Web Security<a class="headerlink" href="#en-capitulos-26-seguridad-26-web-security" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Los ataques más comunes: XSS, CSRF, SQL Injection.</li>
-<li>Cómo prevenirlos.</li>
-<li>HTTPS, CORS y CSP.</li>
-<li>Buenas prácticas de autenticación.</li>
-<li>Auditoría de seguridad.</li>
+<li>Most common attacks: XSS, CSRF, SQL Injection.</li>
+<li>How to prevent them.</li>
+<li>HTTPS, CORS, and CSP.</li>
+<li>Authentication best practices.</li>
+<li>Security auditing.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-26-seguridad-por-que-importa-la-seguridad">🔒 ¿Por qué importa la seguridad?<a class="headerlink" href="#en-capitulos-26-seguridad-por-que-importa-la-seguridad" title="Permanent link">¶</a></h2>
-<p>Una vulnerabilidad puede costar <strong>millones de euros</strong>, destruir la reputación de una empresa y exponer datos personales de usuarios. La seguridad no es opcional: es parte del trabajo.</p>
+<h2 id="en-capitulos-26-seguridad-why-does-security-matter">🔒 Why Does Security Matter?<a class="headerlink" href="#en-capitulos-26-seguridad-why-does-security-matter" title="Permanent link">¶</a></h2>
+<p>A vulnerability can cost <strong>millions of euros</strong>, destroy a company's reputation, and expose users' personal data. Security isn't optional—it's part of the job.</p>
 <div class="admonition quote">
-<p class="admonition-title">La seguridad es un proceso, no un producto</p>
-<p>No se trata de instalar un plugin y olvidarse. Se trata de pensar en seguridad en cada decisión de diseño, código y despliegue.</p>
+<p class="admonition-title">Security is a process, not a product</p>
+<p>It's not about installing a plugin and forgetting about it. It's about thinking about security in every design, code, and deployment decision.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-26-seguridad-los-ataques-mas-comunes">🚨 Los ataques más comunes<a class="headerlink" href="#en-capitulos-26-seguridad-los-ataques-mas-comunes" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-26-seguridad-most-common-attacks">🚨 Most Common Attacks<a class="headerlink" href="#en-capitulos-26-seguridad-most-common-attacks" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Ataque</th>
-<th style="text-align: left;">Qué hace</th>
-<th style="text-align: left;">Impacto</th>
+<th style="text-align: left;">Attack</th>
+<th style="text-align: left;">What it does</th>
+<th style="text-align: left;">Impact</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>XSS</strong> (Cross-Site Scripting)</td>
-<td style="text-align: left;">Inyecta código malicioso en la web</td>
-<td style="text-align: left;">Robo de sesión, redirecciones</td>
+<td style="text-align: left;">Injects malicious code into the page</td>
+<td style="text-align: left;">Session hijacking, redirects</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CSRF</strong> (Cross-Site Request Forgery)</td>
-<td style="text-align: left;">Fuerza al usuario a ejecutar acciones</td>
-<td style="text-align: left;">Cambios de contraseña, transferencias</td>
+<td style="text-align: left;">Forces an authenticated user to run actions</td>
+<td style="text-align: left;">Password changes, transfers</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>SQL Injection</strong></td>
-<td style="text-align: left;">Inyecta SQL en inputs</td>
-<td style="text-align: left;">Robo de base de datos</td>
+<td style="text-align: left;">Injects SQL into inputs</td>
+<td style="text-align: left;">Database theft</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Clickjacking</strong></td>
-<td style="text-align: left;">Engaña al usuario para que haga clic</td>
-<td style="text-align: left;">Acciones no deseadas</td>
+<td style="text-align: left;">Tricks the user into clicking</td>
+<td style="text-align: left;">Unintended actions</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>MITM</strong> (Man-in-the-Middle)</td>
-<td style="text-align: left;">Intercepta la comunicación</td>
-<td style="text-align: left;">Robo de credenciales</td>
+<td style="text-align: left;">Intercepts communication</td>
+<td style="text-align: left;">Credential theft</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h2 id="en-capitulos-26-seguridad-xss-cross-site-scripting">💉 XSS: Cross-Site Scripting<a class="headerlink" href="#en-capitulos-26-seguridad-xss-cross-site-scripting" title="Permanent link">¶</a></h2>
-<p>Ocurre cuando un atacante inyecta <strong>JavaScript</strong> en tu web, que se ejecuta en el navegador de otros usuarios.</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!-- Vulnerable: el input se renderiza sin escapar --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div<span class="ni">&amp;gt;</span>Hola, <span class="ni">&amp;lt;</span>?php echo $_GET["nombre"]; ?<span class="ni">&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<p>Happens when an attacker injects <strong>JavaScript</strong> into your site, executing in other users' browsers.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Vulnerable: input is rendered unescaped --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Hola, <span class="cp">&lt;?php echo $_GET["nombre"]; ?&gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- Ataque: ?nombre=<span class="ni">&amp;lt;</span>script<span class="ni">&amp;gt;</span>alert("XSS")<span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span> --<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- Attack: ?nombre=&lt;script&gt;alert("XSS")&lt;/script&gt; --&gt;</span>
 </code></pre></div>
-<h3 id="en-capitulos-26-seguridad-como-prevenirlo">Cómo prevenirlo<a class="headerlink" href="#en-capitulos-26-seguridad-como-prevenirlo" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Malo: innerHTML con datos del usuario</span>
+<h3 id="en-capitulos-26-seguridad-how-to-prevent-it">How to Prevent It<a class="headerlink" href="#en-capitulos-26-seguridad-how-to-prevent-it" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Bad: innerHTML with user data</span>
 <span class="nx">elemento</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">;</span>
 
-<span class="c1">// ✅ Bueno: textContent escapa el HTML</span>
+<span class="c1">// ✅ Good: textContent escapes HTML</span>
 <span class="nx">elemento</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ Si necesitas renderizar HTML, sanitízalo con DOMPurify</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ If you need to render HTML, sanitize it with DOMPurify</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">DOMPurify</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"dompurify"</span><span class="p">;</span>
 <span class="nx">elemento</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DOMPurify</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Sanitiza siempre</p>
-<p>Cualquier dato que venga del usuario (input, URL, cookies) debe ser tratado como potencialmente malicioso. Sanitiza antes de renderizar.</p>
+<p class="admonition-title">Always sanitize</p>
+<p>Any data coming from the user (input, URL, cookies) must be treated as potentially malicious. Sanitize before rendering.</p>
 </div>
 <hr>
 <h2 id="en-capitulos-26-seguridad-csrf-cross-site-request-forgery">🎭 CSRF: Cross-Site Request Forgery<a class="headerlink" href="#en-capitulos-26-seguridad-csrf-cross-site-request-forgery" title="Permanent link">¶</a></h2>
-<p>Ocurre cuando un atacante hace que el navegador de un usuario autenticado ejecute una acción no deseada en tu web.</p>
-<h3 id="en-capitulos-26-seguridad-como-prevenirlo_1">Cómo prevenirlo<a class="headerlink" href="#en-capitulos-26-seguridad-como-prevenirlo_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>form method="POST" action="/cambiar-password"<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>input type="hidden" name="csrf_token" value="token-único"<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>!-- ... --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/form<span class="ni">&amp;gt;</span>
+<p>Happens when an attacker makes an authenticated user's browser perform an unwanted action on your site.</p>
+<h3 id="en-capitulos-26-seguridad-how-to-prevent-it_1">How to Prevent It<a class="headerlink" href="#en-capitulos-26-seguridad-how-to-prevent-it_1" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span> <span class="na">action</span><span class="o">=</span><span class="s">"/cambiar-password"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="na">name</span><span class="o">=</span><span class="s">"csrf_token"</span> <span class="na">value</span><span class="o">=</span><span class="s">"token-único"</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// En el servidor: validar que el token coincide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// On the server: validate that the token matches</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">csrf_token</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">csrf_token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"CSRF token inválido"</span><span class="w"> </span><span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>✅ Usa <strong>SameSite=Strict</strong> en cookies.</li>
-<li>✅ Valida el header <strong>Origin</strong> y <strong>Referer</strong>.</li>
-<li>✅ Usa <strong>CSRF tokens</strong> en formularios.</li>
-<li>✅ Verifica el método HTTP (POST, PUT, DELETE para mutaciones).</li>
+<li>✅ Use <strong>SameSite=Strict</strong> on cookies.</li>
+<li>✅ Validate the <strong>Origin</strong> and <strong>Referer</strong> headers.</li>
+<li>✅ Use <strong>CSRF tokens</strong> on forms.</li>
+<li>✅ Verify the HTTP method (POST, PUT, DELETE for mutations).</li>
 </ul>
 <hr>
 <h2 id="en-capitulos-26-seguridad-https">🔐 HTTPS<a class="headerlink" href="#en-capitulos-26-seguridad-https" title="Permanent link">¶</a></h2>
-<p>HTTPS cifra la comunicación entre el navegador y el servidor. Sin HTTPS, cualquier atacante en la misma red puede leer las credenciales.</p>
-<div class="highlight"><pre><span></span><code>HTTP:  navegador → texto plano → servidor  (❌ inseguro)
-HTTPS: navegador → cifrado TLS → servidor   (✅ seguro)
+<p>HTTPS encrypts communication between browser and server. Without HTTPS, anyone on the same network can read credentials.</p>
+<div class="highlight"><pre><span></span><code>HTTP:  browser → plain text → server      (❌ insecure)
+HTTPS: browser → TLS encryption → server (✅ secure)
 </code></pre></div>
 <ul>
-<li>✅ Usa <strong>Let\x27s Encrypt</strong> (gratis).</li>
-<li>✅ Redirige todo el tráfico HTTP a HTTPS.</li>
-<li>✅ Activa <strong>HSTS</strong> (Strict-Transport-Security).</li>
+<li>✅ Use <strong>Let's Encrypt</strong> (free).</li>
+<li>✅ Redirect all HTTP traffic to HTTPS.</li>
+<li>✅ Enable <strong>HSTS</strong> (Strict-Transport-Security).</li>
 </ul>
 <hr>
 <h2 id="en-capitulos-26-seguridad-cors">🌐 CORS<a class="headerlink" href="#en-capitulos-26-seguridad-cors" title="Permanent link">¶</a></h2>
-<p><strong>CORS</strong> (<em>Cross-Origin Resource Sharing</em>) es un mecanismo de seguridad que permite o bloquea peticiones entre dominios distintos.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Servidor</span>
+<p><strong>CORS</strong> (<em>Cross-Origin Resource Sharing</em>) is a security mechanism that allows or blocks requests across different origins.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Server</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Origin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://miapp.com"</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Origin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"[https://miapp.com](https://miapp.com)"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Methods"</span><span class="p">,</span><span class="w"> </span><span class="s2">"GET, POST, PUT, DELETE"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Headers"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Content-Type, Authorization"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">next</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">No uses <code>*</code> en producción</p>
-<p><code>Access-Control-Allow-Origin: *</code> permite que cualquier web haga peticiones a tu API. En producción, usa dominios específicos.</p>
+<p class="admonition-title">Don't use <code>*</code> in production</p>
+<p><code>Access-Control-Allow-Origin: *</code> lets any site make requests to your API. In production, use specific origins.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-26-seguridad-content-security-policy-csp">🛡️ Content Security Policy (CSP)<a class="headerlink" href="#en-capitulos-26-seguridad-content-security-policy-csp" title="Permanent link">¶</a></h2>
-<p><strong>CSP</strong> es una cabecera HTTP que restringe qué recursos puede cargar una página: scripts, estilos, imágenes, fuentes… Es una defensa potente contra XSS.</p>
+<h2 id="en-capitulos-26-seguridad-content-security-policy-csp">🛡 Content Security Policy (CSP)<a class="headerlink" href="#en-capitulos-26-seguridad-content-security-policy-csp" title="Permanent link">¶</a></h2>
+<p><strong>CSP</strong> is an HTTP header that restricts which resources a page can load: scripts, styles, images, fonts… It is a strong defense against XSS.</p>
 <div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Content-Security-Policy"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">"default-src \x27self\x27"</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">"script-src \x27self\x27 https://trusted.cdn.com"</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">"style-src \x27self\x27 \x27unsafe-inline\x27"</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">"img-src \x27self\x27 data: https:"</span>
+<span class="w">    </span><span class="s2">"default-src 'self'"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"script-src 'self' [https://trusted.cdn.com](https://trusted.cdn.com)"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"style-src 'self' 'unsafe-inline'"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"img-src 'self' data: https:"</span>
 <span class="w">  </span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">"; "</span><span class="p">));</span>
 <span class="w">  </span><span class="nx">next</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Empieza en modo report</p>
-<p>Usa <code>Content-Security-Policy-Report-Only</code> al principio para ver qué se rompe sin bloquear nada. Cuando esté limpio, cambia a <code>Content-Security-Policy</code>.</p>
+<p class="admonition-title">Start in report-only mode</p>
+<p>Use <code>Content-Security-Policy-Report-Only</code> at first to see what breaks without blocking anything. Once clean, switch to <code>Content-Security-Policy</code>.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-26-seguridad-autenticacion-segura">🔑 Autenticación segura<a class="headerlink" href="#en-capitulos-26-seguridad-autenticacion-segura" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-26-seguridad-secure-authentication">🔑 Secure Authentication<a class="headerlink" href="#en-capitulos-26-seguridad-secure-authentication" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ <strong>Hashea contraseñas</strong> con bcrypt, argon2 o scrypt. Nunca en texto plano.</li>
-<li>✅ <strong>Usa JWT con expiración corta</strong> (15 min) + refresh token.</li>
-<li>✅ <strong>Rota los tokens</strong> al cambiar de contraseña.</li>
-<li>✅ <strong>Rate limiting</strong> en login (5 intentos/min).</li>
-<li>✅ <strong>2FA</strong> (autenticación de dos factores) para cuentas sensibles.</li>
-<li>✅ <strong>Cookies HttpOnly + Secure + SameSite</strong>.</li>
-<li>❌ <strong>No guardes tokens en localStorage</strong> si puedes usar cookies HttpOnly.</li>
+<li>✅ <strong>Hash passwords</strong> with bcrypt, argon2, or scrypt. Never store plain text.</li>
+<li>✅ <strong>Use short-lived JWTs</strong> (15 min) + refresh token.</li>
+<li>✅ <strong>Rotate tokens</strong> when changing passwords.</li>
+<li>✅ <strong>Rate limit</strong> login endpoints (5 attempts/min).</li>
+<li>✅ <strong>2FA</strong> (two-factor authentication) for sensitive accounts.</li>
+<li>✅ <strong>HttpOnly + Secure + SameSite cookies</strong>.</li>
+<li>❌ <strong>Don't store tokens in localStorage</strong> if you can use HttpOnly cookies.</li>
 </ul>
 <hr>
-<h2 id="en-capitulos-26-seguridad-auditoria-de-seguridad">🔍 Auditoría de seguridad<a class="headerlink" href="#en-capitulos-26-seguridad-auditoria-de-seguridad" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-26-seguridad-security-auditing">🔍 Security Auditing<a class="headerlink" href="#en-capitulos-26-seguridad-security-auditing" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Qué hace</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>OWASP ZAP</strong></td>
-<td style="text-align: left;">Escáner de vulnerabilidades web</td>
+<td style="text-align: left;">Web vulnerability scanner</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Lighthouse</strong></td>
-<td style="text-align: left;">Auditoría de seguridad básica</td>
+<td style="text-align: left;">Basic security audit</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Snyk</strong></td>
-<td style="text-align: left;">Vulnerabilidades en dependencias</td>
+<td style="text-align: left;">Dependency vulnerabilities</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>npm audit</strong></td>
-<td style="text-align: left;">Vulnerabilidades en npm</td>
+<td style="text-align: left;">npm package vulnerabilities</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Security Headers</strong></td>
-<td style="text-align: left;">Analiza cabeceras de seguridad</td>
+<td style="text-align: left;">Analyzes security headers</td>
 </tr>
 </tbody>
 </table>
@@ -15285,22 +15285,22 @@ HTTPS: navegador → cifrado TLS → servidor   (✅ seguro)
 npm<span class="w"> </span>audit<span class="w"> </span>fix
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-26-seguridad-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-26-seguridad-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-26-seguridad-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-26-seguridad-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-26">
 <div class="quiz-question" data-answer="a">
-<p><strong>1.</strong> ¿Qué ataque inyecta JavaScript en la web?</p>
+<p><strong>1.</strong> Which attack injects JavaScript into a web page?</p>
 <button class="quiz-option" data-opt="a">A) XSS</button>
 <button class="quiz-option" data-opt="b">B) CSRF</button>
 <button class="quiz-option" data-opt="c">C) MITM</button>
 </div>
 <div class="quiz-question" data-answer="b">
-<p><strong>2.</strong> ¿Qué propiedad de cookie evita CSRF?</p>
-<button class="quiz-option" data-opt="a">A"&gt;HttpOnly</button>
+<p><strong>2.</strong> Which cookie attribute helps prevent CSRF?</p>
+<button class="quiz-option" data-opt="a">A) HttpOnly</button>
 <button class="quiz-option" data-opt="b">B) SameSite=Strict</button>
 <button class="quiz-option" data-opt="c">C) Secure</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Qué cabecera restringe qué recursos puede cargar una página?</p>
+<p><strong>3.</strong> Which header restricts which resources a page can load?</p>
 <button class="quiz-option" data-opt="a">A) CORS</button>
 <button class="quiz-option" data-opt="b">B) HSTS</button>
 <button class="quiz-option" data-opt="c">C) CSP</button>
@@ -15308,18 +15308,18 @@ npm<span class="w"> </span>audit<span class="w"> </span>fix
 </div>
 
 <hr>
-<h2 id="en-capitulos-26-seguridad-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-26-seguridad-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-26-seguridad-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-26-seguridad-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2026%3A%20Seguridad%20web&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2026%3A%20Web%20Security&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2026%3A%20Seguridad%20web%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/26-seguridad/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2026%3A%20Web%20Security%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F26-seguridad%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/26-seguridad/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-26-seguridad-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-26-seguridad-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-27-webassembly">Ir al Capítulo 27 — WebAssembly</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-27-webassembly" heading-number="2.6.7"><div><h1 id="27-webassembly">27 — WebAssembly<a class="headerlink" href="#en-capitulos-27-webassembly-27-webassembly" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-26-seguridad-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-26-seguridad-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-27-webassembly">Go to Chapter 27 — WebAssembly</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-27-webassembly" heading-number="2.6.7"><div><h1 id="27-webassembly">27 — WebAssembly<a class="headerlink" href="#en-capitulos-27-webassembly-27-webassembly" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Qué vas a aprender</p>
 <ul>
