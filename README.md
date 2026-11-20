@@ -106,6 +106,7 @@ Libro-desarrollador-Web-Urukais-/
 │   ├── apendices/                 # Glosario, chuletas, recursos por nivel
 │   ├── capitulos/                 # Los 38 capítulos del libro
 │   ├── ejercicios/                # 30 ejercicios resueltos
+│   ├── proyectos/                 # Proyectos guiados
 │   ├── retos/                     # 5 retos semanales
 │   └── index.md                   # Portada del libro
 ├── overrides/                     # Personalización del tema Material
@@ -117,33 +118,3 @@ Libro-desarrollador-Web-Urukais-/
 ├── requirements.txt               # Dependencias de Python
 ├── README.md                      # Este archivo
 └── LICENSE                        # Licencia MIT
-
-
-🚀 Cómo ejecutar el libro en localRequisitos previosPython 3.12+ (recomendado, aunque funciona con 3.10+)GitUn editor de código (recomendado: VS Code)InstalaciónBash# 1. Clona el repositorio
-git clone [https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-.git)
-cd Libro-desarrollador-Web-Urukais-
-
-# 2. Crea un entorno virtual
-python3 -m venv .venv
-
-# 3. Actívalo
-# En Linux/macOS:
-source .venv/bin/activate
-# En Fish shell:
-source .venv/bin/activate.fish
-# En Windows:
-.venv\Scripts\activate
-
-# 4. Instala las dependencias
-python -m pip install -r requirements.txt
-
-# 5. Arranca el servidor de desarrollo
-mkdocs serve
-Abre tu navegador en http://127.0.0.1:8000.Comandos útilesComandoUsomkdocs serveServidor de desarrollo con live-reloadmkdocs buildConstruir el sitio estático en site/mkdocs gh-deployDesplegar a GitHub Pages manualmentemkdocs build --cleanLimpiar y reconstruir el sitio🤝 Cómo contribuir¡Las contribuciones son bienvenidas! Hay muchas formas de ayudar, incluso sin saber programar:🐛 Reportar errores: abre un issue.💡 Sugerir mejoras: abre un issue con la etiqueta enhancement.🔧 Enviar correcciones: haz un fork, crea una rama y abre un PR.🌍 Traducir: estamos trabajando en la traducción al inglés.📣 Compartir: comparte el libro en redes sociales o con quien esté aprendiendo.⭐ Dar una estrella: es gratis y ayuda a que más gente lo descubra.Para más detalles, consulta la guía de Contribuir.Convención de commitsUsamos Conventional Commits:Plaintextfeat: nueva funcionalidad o capítulo
-fix: corrección de errores
-docs: cambios en documentación
-style: cambios de diseño (CSS)
-perf: mejoras de rendimiento
-refactor: reestructuración sin cambiar comportamiento
-chore: tareas de mantenimiento
-📸 CapturasPróximamente: capturas del modo claro, oscuro y móvil.📜 LicenciaEste proyecto está bajo la Licencia MIT. Puedes usar, copiar, modificar y distribuir el contenido libremente, siempre que mantengas la atribución.Consulta el archivo LICENSE para más detalles.🙏 AgradecimientosEste libro no sería posible sin el trabajo de miles de personas que comparten su conocimiento libremente en internet. Un agradecimiento especial a:MDN Web Docs — la referencia más completa del desarrollo web.Material for MkDocs — el mejor tema de documentación que existe.javascript.info — el mejor tutorial de JavaScript.La comunidad hispanohablante que comparte, corrige y difunde.Consulta la página completa de Agradecimientos.📬 ContactoWeb: libro.urukais.comEmail: contacto@urukais.comGitHub: @urukaisk-makerTwitter / X: @urukaiskNewsletter: urukaisklick.substack.comHecho con ❤️ y mucho ☕ por Manuel Casimiro Carrasco (Urukais)⭐ Si este proyecto te resulta útil, dale una estrella en GitHub. Ayuda a que más personas lo descubran.
