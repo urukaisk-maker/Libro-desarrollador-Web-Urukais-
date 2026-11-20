@@ -26571,6 +26571,8 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 <h2 id="en-logros-tu-progreso">📊 Tu progreso<a class="headerlink" href="#en-logros-tu-progreso" title="Permanent link">¶</a></h2>
 <div class="logros-hero">
 
+<div class="progress-ring-wrap">
+
 <div class="progress-ring">
 <svg viewbox="0 0 160 160">
 <defs>
@@ -26582,32 +26584,60 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 <circle class="progress-ring__track" cx="80" cy="80" r="70"></circle>
 <circle class="progress-ring__fill" id="logros-ring-fill" cx="80" cy="80" r="70"></circle>
 </svg>
+<span class="milestone" data-milestone="25" style="top: 50%; left: 100%;"></span>
+<span class="milestone" data-milestone="50" style="top: 100%; left: 50%;"></span>
+<span class="milestone" data-milestone="75" style="top: 50%; left: 0%;"></span>
 <div class="progress-ring__label">
 <span class="progress-ring__percent" id="logros-ring-percent">0%</span>
 <span class="progress-ring__caption">Completado</span>
 </div>
 </div>
 
+<div class="level-badge" id="logros-level-badge">
+<span class="level-badge__icon">🥚</span>
+<span class="level-badge__name">Novato</span>
+</div>
+
+</div>
+
+<div class="logros-hero__right">
+
+<div class="xp-bar">
+<div class="xp-bar__header">
+<span class="xp-bar__label">⚡ Experiencia</span>
+<span class="xp-bar__value"><strong id="logros-xp">0</strong> / <span id="logros-xp-max">860</span> XP</span>
+</div>
+<div class="xp-bar__track">
+<div class="xp-bar__fill" id="logros-xp-fill" style="width: 0%"></div>
+</div>
+</div>
+
 <div class="logros-stats-grid">
 <div class="logros-stat">
+<span class="logros-stat__icon">📚</span>
 <span class="logros-stat__num" id="logros-cap-completados">0</span>
 <span class="logros-stat__label">Capítulos</span>
 </div>
 <div class="logros-stat">
+<span class="logros-stat__icon">✏️</span>
 <span class="logros-stat__num" id="logros-ejercicios">0</span>
 <span class="logros-stat__label">Ejercicios</span>
 </div>
 <div class="logros-stat">
+<span class="logros-stat__icon">🎯</span>
 <span class="logros-stat__num" id="logros-retos">0</span>
 <span class="logros-stat__label">Retos</span>
 </div>
 <div class="logros-stat">
+<span class="logros-stat__icon">🏅</span>
 <span class="logros-stat__num" id="logros-total">0/23</span>
 <span class="logros-stat__label">Logros</span>
 </div>
 </div>
 
-<!-- Barra lineal legacy (oculta visualmente, pero logros.js la usa para calcular % -->
+</div>
+
+<!-- Barra legacy oculta (logros.js la usa para calcular %) -->
 <div class="logros-progreso" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
 <div class="logros-progreso__bar">
 <div class="logros-progreso__fill" id="logros-progreso-fill" style="width: 0%"></div>
@@ -26615,6 +26645,8 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 </div>
 
 </div>
+
+<div id="logros-ultimo" class="logros-ultimo" style="display:none;"></div>
 
 <hr>
 <h2 id="en-logros-como-funciona">🎯 Cómo funciona<a class="headerlink" href="#en-logros-como-funciona" title="Permanent link">¶</a></h2>
