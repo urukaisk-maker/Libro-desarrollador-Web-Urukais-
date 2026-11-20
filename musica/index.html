@@ -5043,7 +5043,9 @@
 <p>Escribe el nombre de una canción o artista y pulsa <strong>▶ Escuchar</strong> para reproducir un preview de 30 segundos.</p>
 <div id="music-search-widget">
 
-<input type="text" id="music-search-input" placeholder="Busca una canción o artista…" class="music-search-input">
+<input type="text" id="music-search-input" placeholder="Busca una canción o artista…" class="music-search-input" autocomplete="off">
+
+<div id="music-history" class="music-history"></div>
 
 <div id="music-search-results" class="music-results"></div>
 
@@ -5054,6 +5056,9 @@
   <div class="music-player__info">
     <strong id="player-title">Sin reproducción</strong>
     <span id="player-artist">Busca una canción para empezar</span>
+  </div>
+  <div class="music-player__equalizer" id="player-equalizer">
+    <span></span><span></span><span></span><span></span><span></span>
   </div>
   <div class="music-player__controls">
     <button id="player-prev" class="music-player__btn" aria-label="Anterior">⏮</button>
@@ -5070,6 +5075,7 @@
 
 </div>
 
+<hr>
 <h2 id="que-musica-elegir-segun-la-tarea">🎯 ¿Qué música elegir según la tarea?<a class="headerlink" href="#que-musica-elegir-segun-la-tarea" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -5138,8 +5144,7 @@
 <p>El <strong>lo-fi hip hop</strong>. Ritmo constante, sin voces, y hay infinitas horas de contenido.</p>
 </details>
 <hr>
-<p>➡️ Volver a la <a href="../">portada</a>
----FIN---</p></div>
+<p>➡️ Volver a la <a href="../">portada</a></p></div>
 
 
 
