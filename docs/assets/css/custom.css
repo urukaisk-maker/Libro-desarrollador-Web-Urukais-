@@ -2388,3 +2388,41 @@ label.md-header__button[for="__drawer"] {
   font-weight: 600;
   line-height: 1.7;
 }
+
+/* Fase D: tamaño del logo y espaciado del título en el header */
+.md-header__inner .md-header__button.md-logo {
+  padding: 0.15rem;
+  margin-right: 0.15rem;
+}
+.md-header__inner .md-header__button.md-logo img,
+.md-header__inner .md-header__button.md-logo svg {
+  height: 1.85rem;
+  width: auto;
+  max-width: 8.5rem;
+  max-height: 1.85rem;
+  object-fit: contain;
+  display: block;
+}
+.md-header__inner .md-header__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0.25rem;
+  margin-right: 0.5rem;
+}
+.md-header__inner .md-header__ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media screen and (max-width: 59.9375em) {
+  .md-header__inner .md-header__button.md-logo img,
+  .md-header__inner .md-header__button.md-logo svg {
+    height: 1.6rem;
+    max-width: 6.5rem;
+    max-height: 1.6rem;
+  }
+  .md-header__inner .md-header__title {
+    margin-left: 0.15rem;
+    margin-right: 0.25rem;
+  }
+}
