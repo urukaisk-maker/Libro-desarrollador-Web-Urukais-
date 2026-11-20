@@ -72,9 +72,9 @@
 
 | Recurso | Formato | Descarga |
 | :--- | :--- | :--- |
-| **Logo principal** (SVG) | Vectorial | [Descargar](/assets/favicon.svg){ .md-button .md-button--primary } |
-| **Logo principal** (PNG, 512×512) | Bitmap | [Descargar](/assets/portada.png){ .md-button } |
-| **Favicon** (32×32) | Bitmap | [Descargar](/assets/favicon.svg){ .md-button } |
+| **Logo principal** (SVG) | Vectorial | [Descargar](assets/favicon.svg){ .md-button .md-button--primary } |
+| **Logo principal** (PNG, 512×512) | Bitmap | [Descargar](assets/portada.png){ .md-button } |
+| **Favicon** (32×32) | Bitmap | [Descargar](assets/favicon.svg){ .md-button } |
 
 !!! note "Uso permitido"
     Puedes usar estos logos en artículos, reseñas o menciones del proyecto, siempre que no se modifiquen ni se usen de forma que sugieran afiliación o respaldo oficial.
@@ -83,7 +83,7 @@
 
 | Vista | Descripción | Descarga |
 | :--- | :--- | :--- |
-| **Portada** | Página de inicio con el hero y los niveles | [Ver captura](/assets/portada.png){ .md-button } |
+| **Portada** | Página de inicio con el hero y los niveles | [Ver captura](assets/portada.png){ .md-button } |
 | **Mega-menú Explorar** | Panel de navegación en escritorio | *Próximamente* |
 | **Modo oscuro** | Interfaz con el tema oscuro activado | *Próximamente* |
 | **Móvil** | Vista responsive en smartphone | *Próximamente* |
