@@ -20996,59 +20996,60 @@ git<span class="w"> </span>merge<span class="w"> </span>feature
 </ul>
 <hr>
 <p><a class="md-button" href="#en-ejercicios-07-git">← Ejercicio 07</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-09-despliegue">Ir al ejercicio 09 →</a></p></div></section><section class="print-page" id="en-ejercicios-09-despliegue" heading-number="3.5.3"><div><h1 id="09-despliegue">09 — Despliegue<a class="headerlink" href="#en-ejercicios-09-despliegue-09-despliegue" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios-09-despliegue">Ir al ejercicio 09 →</a></p></div></section><section class="print-page" id="en-ejercicios-09-despliegue" heading-number="3.5.3"><div><h1 id="09-deployment">09 — Deployment<a class="headerlink" href="#en-ejercicios-09-despliegue-09-deployment" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica el despliegue de una web estática en GitHub Pages.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice deploying a static website on GitHub Pages.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-09-despliegue-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-09-despliegue-objetivo" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-09-despliegue-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-09-despliegue-goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Crea un repositorio en GitHub.</li>
-<li>Sube un `index.html` con un "Hola, mundo".</li>
-<li>Activa GitHub Pages.</li>
-<li>Verifica que la web es accesible.</li>
+<li>Create a repository on GitHub.</li>
+<li>Push an <code>index.html</code> file with a "Hello, world".</li>
+<li>Enable GitHub Pages.</li>
+<li>Verify that the site is accessible.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-09-despliegue-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-09-despliegue-solucion" title="Permanent link">¶</a></h2>
-<p>```bash</p>
-<h1 id="en-ejercicios-09-despliegue-1-crear-repo-local">1. Crear repo local<a class="headerlink" href="#en-ejercicios-09-despliegue-1-crear-repo-local" title="Permanent link">¶</a></h1>
-<p>mkdir mi-web &amp;&amp; cd mi-web
-echo "</p><h1>Hola, mundo</h1>" &gt; index.html
-<h1 id="en-ejercicios-09-despliegue-2-inicializar-git">2. Inicializar git<a class="headerlink" href="#en-ejercicios-09-despliegue-2-inicializar-git" title="Permanent link">¶</a></h1>
-<p>git init
-git add index.html
-git commit -m "feat: primera versión"</p>
-<h1 id="en-ejercicios-09-despliegue-3-crear-repo-remoto-en-github-y-conectar">3. Crear repo remoto en GitHub y conectar<a class="headerlink" href="#en-ejercicios-09-despliegue-3-crear-repo-remoto-en-github-y-conectar" title="Permanent link">¶</a></h1>
-<p>git remote add origin https://github.com/tu-usuario/mi-web.git
-git branch -M main
-git push -u origin main
-```</p>
-<p><strong>En GitHub</strong>:</p>
+<h2 id="en-ejercicios-09-despliegue-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-09-despliegue-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Create local repo</span>
+mkdir<span class="w"> </span>mi-web<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mi-web
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"&lt;h1&gt;Hello, world&lt;/h1&gt;"</span><span class="w"> </span>&gt;<span class="w"> </span>index.html
+
+<span class="c1"># 2. Initialize git</span>
+git<span class="w"> </span>init
+git<span class="w"> </span>add<span class="w"> </span>index.html
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: initial version"</span>
+
+<span class="c1"># 3. Create remote repo on GitHub and connect</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span><span class="o">[</span>https://github.com/your-username/mi-web.git<span class="o">](</span>https://github.com/your-username/mi-web.git<span class="o">)</span>
+git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<p><strong>On GitHub</strong>:</p>
 <ol>
 <li>Settings → Pages.</li>
 <li>Source: Deploy from a branch.</li>
-<li>Branch: main, carpeta / (root).</li>
+<li>Branch: main, folder / (root).</li>
 <li>Save.</li>
 </ol>
-<p>Tu web estará en `https://tu-usuario.github.io/mi-web/`.</p>
+<p>Your site will be available at <code>https://your-username.github.io/mi-web/</code>.</p>
 <hr>
-<h2 id="en-ejercicios-09-despliegue-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-09-despliegue-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-09-despliegue-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-09-despliegue-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>GitHub Pages aloja sitios estáticos gratis.</li>
-<li>Necesitas un repositorio público (o Pro para privados).</li>
-<li>La rama y carpeta se configuran en Settings → Pages.</li>
+<li>GitHub Pages hosts static sites for free.</li>
+<li>You need a public repository (or Pro for private ones).</li>
+<li>Branch and folder are configured under Settings → Pages.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-09-despliegue-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-09-despliegue-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-09-despliegue-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-09-despliegue-extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un dominio personalizado.</li>
-<li>[ ] Añade un archivo `CNAME`.</li>
-<li>[ ] Configura un workflow de GitHub Actions para desplegar automáticamente.</li>
+<li>[ ] Add a custom domain.</li>
+<li>[ ] Add a <code>CNAME</code> file.</li>
+<li>[ ] Set up a GitHub Actions workflow to deploy automatically.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-08-apis">← Ejercicio 08</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-10-proyecto-final">Ir al ejercicio 10 →</a></p></div></section><section class="print-page" id="en-ejercicios-10-proyecto-final" heading-number="3.5.4"><div><h1 id="10-portfolio">10 — Portfolio<a class="headerlink" href="#en-ejercicios-10-proyecto-final-10-portfolio" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-08-apis">← Exercise 08</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-10-proyecto-final">Go to exercise 10 →</a></p></div></section><section class="print-page" id="en-ejercicios-10-proyecto-final" heading-number="3.5.4"><div><h1 id="10-portfolio">10 — Portfolio<a class="headerlink" href="#en-ejercicios-10-proyecto-final-10-portfolio" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Crea un portfolio sencillo con HTML semántico y CSS.</p>
