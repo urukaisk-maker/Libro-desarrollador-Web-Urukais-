@@ -251,6 +251,8 @@ extra_javascript:
   - javascripts/music-search.js
   - javascripts/landing.js
   - javascripts/command-palette.js
+  - javascripts/reading-progress.js
+  - javascripts/theme-toggle.js
 
 extra:
   generator: false
