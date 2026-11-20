@@ -21418,60 +21418,61 @@ console.log(numero.toFixed(2));   // "42.00"
                         </h1>
                     <section class="print-page" id="en-ejercicios-16-testing" heading-number="3.7.1"><div><h1 id="16-testing">16 — Testing<a class="headerlink" href="#en-ejercicios-16-testing-16-testing" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica testing unitario con Vitest.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice unit testing with Vitest.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-16-testing-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-16-testing-objetivo" title="Permanent link">¶</a></h2>
-<p>Escribe tests para una función `esPar(n)` que devuelve `true` si `n` es par.</p>
+<h2 id="en-ejercicios-16-testing-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-16-testing-goal" title="Permanent link">¶</a></h2>
+<p>Write tests for a function <code>esPar(n)</code> that returns <code>true</code> if <code>n</code> is even.</p>
 <hr>
-<h2 id="en-ejercicios-16-testing-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-16-testing-solucion" title="Permanent link">¶</a></h2>
-<p>```javascript
-// esPar.js
-export function esPar(n) {
-  return n % 2 === 0;
-}
-```</p>
-<p>```javascript
-// esPar.test.js
-import { describe, it, expect } from 'vitest';
-import { esPar } from './esPar.js';</p>
-<p>describe('esPar', () =&gt; {
-  it('devuelve true para 2', () =&gt; {
-    expect(esPar(2)).toBe(true);
-  });</p>
-<p>it('devuelve false para 3', () =&gt; {
-    expect(esPar(3)).toBe(false);
-  });</p>
-<p>it('devuelve true para 0', () =&gt; {
-    expect(esPar(0)).toBe(true);
-  });</p>
-<p>it('devuelve true para números negativos pares', () =&gt; {
-    expect(esPar(-4)).toBe(true);
-  });
-});
-```</p>
-<p>```bash
-npx vitest run
-```</p>
+<h2 id="en-ejercicios-16-testing-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-16-testing-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// esPar.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">esPar</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// esPar.test.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vitest'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">esPar</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./esPar.js'</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">'esPar'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'returns true for 2'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">esPar</span><span class="p">(</span><span class="mf">2</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'returns false for 3'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">esPar</span><span class="p">(</span><span class="mf">3</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'returns true for 0'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">esPar</span><span class="p">(</span><span class="mf">0</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'returns true for negative even numbers'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">esPar</span><span class="p">(</span><span class="o">-</span><span class="mf">4</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>vitest<span class="w"> </span>run
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-16-testing-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-16-testing-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-16-testing-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-16-testing-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`describe`: agrupa tests.</li>
-<li>`it`: define un test.</li>
-<li>`expect(...).toBe(...)`: aserción.</li>
-<li>Casos límite: 0, negativos.</li>
+<li><code>describe</code>: groups tests together.</li>
+<li><code>it</code>: defines a test case.</li>
+<li><code>expect(...).toBe(...)</code>: assertion.</li>
+<li>Edge cases: <code>0</code>, negative numbers.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-16-testing-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-16-testing-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-16-testing-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-16-testing-extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un test para `null` y `undefined`.</li>
-<li>[ ] Usa `toThrow` para una función que lance error.</li>
-<li>[ ] Mide la cobertura con `npx vitest run --coverage`.</li>
+<li>[ ] Add a test for <code>null</code> and <code>undefined</code>.</li>
+<li>[ ] Use <code>toThrow</code> for a function that throws an error.</li>
+<li>[ ] Measure coverage with <code>npx vitest run --coverage</code>.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-15-typescript">← Ejercicio 15</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-17-rendimiento">Ir al ejercicio 17 →</a></p></div></section><section class="print-page" id="en-ejercicios-17-rendimiento" heading-number="3.7.2"><div><h1 id="17-rendimiento">17 — Rendimiento<a class="headerlink" href="#en-ejercicios-17-rendimiento-17-rendimiento" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-15-typescript">← Exercise 15</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-17-rendimiento">Go to exercise 17 →</a></p></div></section><section class="print-page" id="en-ejercicios-17-rendimiento" heading-number="3.7.2"><div><h1 id="17-rendimiento">17 — Rendimiento<a class="headerlink" href="#en-ejercicios-17-rendimiento-17-rendimiento" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Practica lazy loading y optimización de imágenes.</p>
