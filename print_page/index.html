@@ -21322,56 +21322,55 @@ console.log(PI);          // 3.1416
 </ul>
 <hr />
 <p><a class="md-button" href="#en-ejercicios-12-javascript-asincrono">← Ejercicio 12</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-14-accesibilidad">Ir al ejercicio 14 →</a></p></script></li></ul></li></ol></div></section><section class="print-page" id="en-ejercicios-14-accesibilidad" heading-number="3.6.4"><div><h1 id="14-accesibilidad">14 — Accesibilidad<a class="headerlink" href="#en-ejercicios-14-accesibilidad-14-accesibilidad" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios-14-accesibilidad">Ir al ejercicio 14 →</a></p></script></li></ul></li></ol></div></section><section class="print-page" id="en-ejercicios-14-accesibilidad" heading-number="3.6.4"><div><h1 id="14-accessibility">14 — Accessibility<a class="headerlink" href="#en-ejercicios-14-accesibilidad-14-accessibility" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica HTML semántico, ARIA y navegación por teclado.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice semantic HTML, ARIA, and keyboard navigation.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-14-accesibilidad-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-14-accesibilidad-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un botón de "Cerrar" que:</p>
+<h2 id="en-ejercicios-14-accesibilidad-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-14-accesibilidad-goal" title="Permanent link">¶</a></h2>
+<p>Create a "Close" button that:</p>
 <ol>
-<li>Sea accesible (teclado + lector de pantalla).</li>
-<li>Tenga `aria-label` descriptivo.</li>
-<li>Muestre feedback visual al enfocarse.</li>
+<li>Is accessible (keyboard + screen reader).</li>
+<li>Has a descriptive <code>aria-label</code>.</li>
+<li>Shows visual feedback when focused.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-14-accesibilidad-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-14-accesibilidad-solucion" title="Permanent link">¶</a></h2>
-<p>```html
-<button class="cerrar" aria-label="Cerrar modal">✕</button>
-```</p>
-<p>```css
-.cerrar {
-  background: transparent;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: .5rem .75rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-}</p>
-<p>.cerrar:focus-visible {
-  outline: 2px solid #6a5acd;
-  outline-offset: 2px;
-}
-```</p>
-<hr>
-<h2 id="en-ejercicios-14-accesibilidad-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-14-accesibilidad-conceptos-clave" title="Permanent link">¶</a></h2>
-<ul>
-<li>`<button>` nativo es accesible por defecto (teclado + lector de pantalla).</button></li>
-<li>`aria-label`: describe el botón a lectores de pantalla.</li>
-<li>`:focus-visible`: estilo de foco solo cuando se navega con teclado.</li>
-<li><strong>Nunca</strong> uses `<div onclick>` para botones.
+<h2 id="en-ejercicios-14-accesibilidad-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-14-accesibilidad-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"cerrar"</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">"Close modal"</span><span class="p">&gt;</span>✕<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">cerrar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">transparent</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ddd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">.5</span><span class="kt">rem</span><span class="w"> </span><span class="mf">.75</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="p">.</span><span class="nc">cerrar</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-14-accesibilidad-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-14-accesibilidad-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-14-accesibilidad-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-14-accesibilidad-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un modal con `<dialog>` nativo.</dialog></li>
-<li>[ ] Añade `aria-hidden` a los elementos decorativos.</li>
-<li>[ ] Prueba con un lector de pantalla (Orca, NVDA o VoiceOver).</li>
+<li>Native <code>&lt;button&gt;</code> is accessible by default (keyboard + screen reader).</li>
+<li><code>aria-label</code>: describes the button to screen readers.</li>
+<li><code>:focus-visible</code>: focus styling only when navigating with a keyboard.</li>
+<li><strong>Never</strong> use <code>&lt;div onclick&gt;</code> for buttons.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-13-modulos-bundlers">← Ejercicio 13</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-15-typescript">Ir al ejercicio 15 →</a></p></div></li></ul></div></section><section class="print-page" id="en-ejercicios-15-typescript" heading-number="3.6.5"><div><h1 id="15-typescript">15 — TypeScript<a class="headerlink" href="#en-ejercicios-15-typescript-15-typescript" title="Permanent link">¶</a></h1>
+<h2 id="en-ejercicios-14-accesibilidad-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-14-accesibilidad-extra-challenges" title="Permanent link">¶</a></h2>
+<ul>
+<li>[ ] Add a modal using native <code>&lt;dialog&gt;</code>.</li>
+<li>[ ] Add <code>aria-hidden</code> to decorative elements.</li>
+<li>[ ] Test with a screen reader (Orca, NVDA, or VoiceOver).</li>
+</ul>
+<hr>
+<p><a class="md-button" href="#en-ejercicios-13-modulos-bundlers">← Exercise 13</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-15-typescript">Go to exercise 15 →</a></p></div></section><section class="print-page" id="en-ejercicios-15-typescript" heading-number="3.6.5"><div><h1 id="15-typescript">15 — TypeScript<a class="headerlink" href="#en-ejercicios-15-typescript-15-typescript" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Practica tipos, interfaces y genéricos.</p>
