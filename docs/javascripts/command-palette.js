@@ -103,14 +103,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && overlay.classList.contains('active')) close();
   });
 
-  // Botón visible en el header
-  const searchInner = document.querySelector('.md-search');
-  if (searchInner && searchInner.parentNode) {
-    const btn = document.createElement('button');
-    btn.className = 'cmd-k-trigger';
-    btn.type = 'button';
-    btn.innerHTML = '🔍 Buscar <kbd>Ctrl K</kbd>';
-    btn.addEventListener('click', open);
-    searchInner.parentNode.insertBefore(btn, searchInner);
-  }
 });
