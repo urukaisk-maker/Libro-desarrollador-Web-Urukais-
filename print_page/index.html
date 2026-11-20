@@ -10445,26 +10445,26 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
                     <section class='print-page md-section' id='section-2-4' heading-number='2.4'>
                         <h1>🟠 Nivel 3 — Avanzado<a class='headerlink' href='#section-2-4' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="en-capitulos-11-css-moderno" heading-number="2.4.1"><div><h1 id="11-css-moderno">11 — CSS moderno<a class="headerlink" href="#en-capitulos-11-css-moderno-11-css-moderno" title="Permanent link">¶</a></h1>
+                    <section class="print-page" id="en-capitulos-11-css-moderno" heading-number="2.4.1"><div><h1 id="11-modern-css">11 — Modern CSS<a class="headerlink" href="#en-capitulos-11-css-moderno-11-modern-css" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Variables CSS y funciones modernas.</li>
-<li>Selectores avanzados: :has(), :is(), :where().</li>
+<li>CSS variables and modern functions.</li>
+<li>Advanced selectors: :has(), :is(), :where().</li>
 <li>Container queries.</li>
-<li>Grid avanzado y subgrid.</li>
-<li>Animaciones y transiciones.</li>
+<li>Advanced Grid and subgrid.</li>
+<li>Animations and transitions.</li>
 </ul>
 </div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-css-ya-no-es-lo-que-era">🎨 CSS ya no es lo que era<a class="headerlink" href="#en-capitulos-11-css-moderno-css-ya-no-es-lo-que-era" title="Permanent link">¶</a></h2>
-<p>CSS ha evolucionado muchísimo en los últimos años. Lo que antes requería JavaScript o preprocesadores ahora es nativo: variables, anidamiento, funciones matemáticas, container queries…</p>
+<h2 id="en-capitulos-11-css-moderno-css-is-not-what-it-used-to-be">🎨 CSS Is Not What It Used to Be<a class="headerlink" href="#en-capitulos-11-css-moderno-css-is-not-what-it-used-to-be" title="Permanent link">¶</a></h2>
+<p>CSS has evolved enormously in recent years. What used to require JavaScript or preprocessors is now native: variables, nesting, math functions, container queries…</p>
 <div class="admonition quote">
-<p class="admonition-title">CSS es un lenguaje de programación (casi)</p>
-<p>Aunque no tiene bucles ni funciones como JavaScript, CSS moderno tiene variables, condicionales (con @supports y media queries) y funciones. Es mucho más potente de lo que parece.</p>
+<p class="admonition-title">CSS is a programming language (almost)</p>
+<p>Even without loops or functions like JavaScript, modern CSS has variables, conditionals (with @supports and media queries), and functions. It is much more powerful than it looks.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-variables-css">🔤 Variables CSS<a class="headerlink" href="#en-capitulos-11-css-moderno-variables-css" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-css-variables">🔤 CSS Variables<a class="headerlink" href="#en-capitulos-11-css-moderno-css-variables" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
 <span class="w">  </span><span class="nv">--acento</span><span class="p">:</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">;</span>
@@ -10478,11 +10478,11 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radio</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="en-capitulos-11-css-moderno-ventajas">Ventajas<a class="headerlink" href="#en-capitulos-11-css-moderno-ventajas" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-11-css-moderno-benefits">Benefits<a class="headerlink" href="#en-capitulos-11-css-moderno-benefits" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Tematización</strong>: cambia una variable y se actualiza todo.</li>
-<li><strong>Modo oscuro</strong>: redefine las variables en `[data-theme="dark"]`.</li>
-<li><strong>Legibilidad</strong>: nombres descriptivos en lugar de valores mágicos.</li>
+<li><strong>Theming</strong>: change one variable and everything updates.</li>
+<li><strong>Dark mode</strong>: redefine variables inside <code>[data-theme="dark"]</code>.</li>
+<li><strong>Readability</strong>: descriptive names instead of magic values.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">"dark"</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nv">--primario</span><span class="p">:</span><span class="w"> </span><span class="mh">#a78bfa</span><span class="p">;</span>
@@ -10490,7 +10490,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-funciones-modernas">🧮 Funciones modernas<a class="headerlink" href="#en-capitulos-11-css-moderno-funciones-modernas" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-modern-functions">🧮 Modern Functions<a class="headerlink" href="#en-capitulos-11-css-moderno-modern-functions" title="Permanent link">¶</a></h2>
 <h3 id="en-capitulos-11-css-moderno-calc">calc()<a class="headerlink" href="#en-capitulos-11-css-moderno-calc" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">elemento</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nb">calc</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">);</span>
@@ -10502,8 +10502,8 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>`clamp(min, ideal, max)` es perfecto para tipografía fluida.</p>
-<h3 id="en-capitulos-11-css-moderno-min-y-max">min() y max()<a class="headerlink" href="#en-capitulos-11-css-moderno-min-y-max" title="Permanent link">¶</a></h3>
+<p><code>clamp(min, ideal, max)</code> is ideal for fluid typography.</p>
+<h3 id="en-capitulos-11-css-moderno-min-and-max">min() and max()<a class="headerlink" href="#en-capitulos-11-css-moderno-min-and-max" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">contenedor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">90</span><span class="kt">%</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="kt">px</span><span class="p">);</span>
 <span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="mi">1</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="kt">vw</span><span class="p">);</span>
@@ -10515,20 +10515,20 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-selectores-avanzados">🎯 Selectores avanzados<a class="headerlink" href="#en-capitulos-11-css-moderno-selectores-avanzados" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-advanced-selectors">🎯 Advanced Selectors<a class="headerlink" href="#en-capitulos-11-css-moderno-advanced-selectors" title="Permanent link">¶</a></h2>
 <h3 id="en-capitulos-11-css-moderno-is">:is()<a class="headerlink" href="#en-capitulos-11-css-moderno-is" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="en-capitulos-11-css-moderno-where">:where()<a class="headerlink" href="#en-capitulos-11-css-moderno-where" title="Permanent link">¶</a></h3>
-<p>Igual que `:is()`, pero con <strong>especificidad 0</strong>:</p>
+<p>Just like <code>:is()</code>, but with <strong>0 specificity</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="en-capitulos-11-css-moderno-has">:has()<a class="headerlink" href="#en-capitulos-11-css-moderno-has" title="Permanent link">¶</a></h3>
-<p>Selecciona un elemento que <strong>contiene</strong> otro:</p>
+<p>Selects an element that <strong>contains</strong> another:</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="p">:</span><span class="nd">has</span><span class="o">(</span><span class="nt">img</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
 <span class="p">}</span>
@@ -10538,8 +10538,8 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">:has() es un cambio de juego</p>
-<p>Antes necesitabas JavaScript para aplicar estilos a un padre según sus hijos. Con `:has()` es CSS puro. Ya está soportado en todos los navegadores modernos.</p>
+<p class="admonition-title">:has() is a game changer</p>
+<p>Previously you needed JavaScript to style a parent based on its children. With <code>:has()</code> it's pure CSS. It is now supported across all modern browsers.</p>
 </div>
 <h3 id="en-capitulos-11-css-moderno-not">:not()<a class="headerlink" href="#en-capitulos-11-css-moderno-not" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="p">:</span><span class="nd">not</span><span class="o">(</span><span class="p">.</span><span class="nc">boton--disabled</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
@@ -10547,8 +10547,8 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-container-queries">📐 Container queries<a class="headerlink" href="#en-capitulos-11-css-moderno-container-queries" title="Permanent link">¶</a></h2>
-<p>Las <strong>container queries</strong> permiten aplicar estilos según el tamaño del <strong>contenedor</strong>, no del viewport.</p>
+<h2 id="en-capitulos-11-css-moderno-container-queries">📐 Container Queries<a class="headerlink" href="#en-capitulos-11-css-moderno-container-queries" title="Permanent link">¶</a></h2>
+<p><strong>Container queries</strong> let you apply styles based on the size of the <strong>container</strong>, not the viewport.</p>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card-container</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">container-type</span><span class="p">:</span><span class="w"> </span><span class="kc">inline</span><span class="o">-</span><span class="n">size</span><span class="p">;</span>
 <span class="w">  </span><span class="k">container-name</span><span class="p">:</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
@@ -10562,11 +10562,11 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">El fin de los media queries para componentes</p>
-<p>Los media queries siguen siendo útiles para layouts de página. Pero para componentes reutilizables, las container queries son mucho más potentes: un mismo componente puede verse distinto según el espacio que tenga.</p>
+<p class="admonition-title">The end of media queries for components</p>
+<p>Media queries are still useful for page layouts. But for reusable components, container queries are far more powerful: the same component can look different depending on the space available.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-grid-avanzado">🔲 Grid avanzado<a class="headerlink" href="#en-capitulos-11-css-moderno-grid-avanzado" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-advanced-grid">🔲 Advanced Grid<a class="headerlink" href="#en-capitulos-11-css-moderno-advanced-grid" title="Permanent link">¶</a></h2>
 <h3 id="en-capitulos-11-css-moderno-grid-template-areas">Grid template areas<a class="headerlink" href="#en-capitulos-11-css-moderno-grid-template-areas" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">layout</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
@@ -10596,15 +10596,15 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="en-capitulos-11-css-moderno-auto-fit-vs-auto-fill">auto-fit vs auto-fill<a class="headerlink" href="#en-capitulos-11-css-moderno-auto-fit-vs-auto-fill" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c">/* auto-fit: las columnas vacías colapsan */</span>
+<div class="highlight"><pre><span></span><code><span class="c">/* auto-fit: empty tracks collapse */</span>
 <span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fit</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
 
-<span class="c">/* auto-fill: las columnas vacías se mantienen */</span>
+<span class="c">/* auto-fill: empty tracks stay */</span>
 <span class="p">.</span><span class="nc">grid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="kc">auto</span><span class="nv">-fill</span><span class="p">,</span><span class="w"> </span><span class="nf">minmax</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-animaciones-y-transiciones">✨ Animaciones y transiciones<a class="headerlink" href="#en-capitulos-11-css-moderno-animaciones-y-transiciones" title="Permanent link">¶</a></h2>
-<h3 id="en-capitulos-11-css-moderno-transiciones">Transiciones<a class="headerlink" href="#en-capitulos-11-css-moderno-transiciones" title="Permanent link">¶</a></h3>
+<h2 id="en-capitulos-11-css-moderno-animations-and-transitions">✨ Animations and Transitions<a class="headerlink" href="#en-capitulos-11-css-moderno-animations-and-transitions" title="Permanent link">¶</a></h2>
+<h3 id="en-capitulos-11-css-moderno-transitions">Transitions<a class="headerlink" href="#en-capitulos-11-css-moderno-transitions" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">boton</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background-color</span><span class="w"> </span><span class="mf">.2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">,</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="mf">.15</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="p">;</span>
 <span class="p">}</span>
@@ -10614,7 +10614,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">-2</span><span class="kt">px</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="en-capitulos-11-css-moderno-animaciones-con-keyframes">Animaciones con keyframes<a class="headerlink" href="#en-capitulos-11-css-moderno-animaciones-con-keyframes" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-11-css-moderno-keyframe-animations">Keyframe animations<a class="headerlink" href="#en-capitulos-11-css-moderno-keyframe-animations" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">fadeIn</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="nt">to</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateY</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
@@ -10624,7 +10624,7 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">fadeIn</span><span class="w"> </span><span class="mf">.4</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="en-capitulos-11-css-moderno-respetar-prefers-reduced-motion">Respetar prefers-reduced-motion<a class="headerlink" href="#en-capitulos-11-css-moderno-respetar-prefers-reduced-motion" title="Permanent link">¶</a></h3>
+<h3 id="en-capitulos-11-css-moderno-respect-prefers-reduced-motion">Respect prefers-reduced-motion<a class="headerlink" href="#en-capitulos-11-css-moderno-respect-prefers-reduced-motion" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="o">*,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="o">*</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">animation-duration</span><span class="p">:</span><span class="w"> </span><span class="mf">.01</span><span class="kt">ms</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
@@ -10633,26 +10633,26 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Accesibilidad en animaciones</p>
-<p>Algunas personas sufren mareos con animaciones. Respeta `prefers-reduced-motion` siempre que puedas.</p>
+<p class="admonition-title">Accessibility in animations</p>
+<p>Some people experience motion sickness from animations. Respect <code>prefers-reduced-motion</code> whenever possible.</p>
 </div>
 <hr>
-<h2 id="en-capitulos-11-css-moderno-pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#en-capitulos-11-css-moderno-pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#en-capitulos-11-css-moderno-test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-11">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Cómo se declara una variable CSS?</p>
-<button class="quiz-option" data-opt="a">A) : valor;</button>
-<button class="quiz-option" data-opt="b">B) --variable: valor;</button>
-<button class="quiz-option" data-opt="c">C) var variable = valor;</button>
+<p><strong>1.</strong> How do you declare a CSS variable?</p>
+<button class="quiz-option" data-opt="a">A) : value;</button>
+<button class="quiz-option" data-opt="b">B) --variable: value;</button>
+<button class="quiz-option" data-opt="c">C) var variable = value;</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>2.</strong> ¿Qué selector aplica estilos a un padre que contiene un hijo concreto?</p>
+<p><strong>2.</strong> Which selector styles a parent that contains a specific child?</p>
 <button class="quiz-option" data-opt="a">A) :is()</button>
 <button class="quiz-option" data-opt="b">B) :where()</button>
 <button class="quiz-option" data-opt="c">C) :has()</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>3.</strong> ¿Qué función limita un valor entre un mínimo y un máximo?</p>
+<p><strong>3.</strong> Which function clamps a value between a minimum and a maximum?</p>
 <button class="quiz-option" data-opt="a">A) clamp()</button>
 <button class="quiz-option" data-opt="b">B) calc()</button>
 <button class="quiz-option" data-opt="c">C) minmax()</button>
@@ -10660,18 +10660,18 @@ sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w">
 </div>
 
 <hr>
-<h2 id="en-capitulos-11-css-moderno-comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#en-capitulos-11-css-moderno-comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="en-capitulos-11-css-moderno-share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#en-capitulos-11-css-moderno-share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">Twitter</a>
-<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2011%3A%20CSS%20moderno%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/11-css-moderno/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2011%3A%20Modern%20CSS&amp;url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">LinkedIn</a>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2011%3A%20Modern%20CSS%20https%3A%2F%2Flibro.urukais.com%2Fen%2Fcapitulos%2F11-css-moderno%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/11-css-moderno/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="en-capitulos-11-css-moderno-siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#en-capitulos-11-css-moderno-siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-capitulos-12-javascript-asincrono">Ir al Capítulo 12 — JavaScript asíncrono</a>
-<a class="md-button" href="#en">Volver al índice</a></p></div></section><section class="print-page" id="en-capitulos-12-javascript-asincrono" heading-number="2.4.2"><div><h1 id="12-asynchronous-javascript">12 — Asynchronous JavaScript<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-12-asynchronous-javascript" title="Permanent link">¶</a></h1>
+<h2 id="en-capitulos-11-css-moderno-next-step">➡ Next Step<a class="headerlink" href="#en-capitulos-11-css-moderno-next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-capitulos-12-javascript-asincrono">Go to Chapter 12 — JavaScript asíncrono</a>
+<a class="md-button" href="#en">Back to index</a></p></div></section><section class="print-page" id="en-capitulos-12-javascript-asincrono" heading-number="2.4.2"><div><h1 id="12-asynchronous-javascript">12 — Asynchronous JavaScript<a class="headerlink" href="#en-capitulos-12-javascript-asincrono-12-asynchronous-javascript" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">What you will learn</p>
 <ul>
