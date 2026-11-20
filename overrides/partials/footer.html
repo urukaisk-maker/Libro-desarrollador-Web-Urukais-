@@ -2,6 +2,7 @@
    Footer premium — Libro del Desarrollador Web
    ============================================================ #}
 {% import "partials/languages/" ~ config.theme.language ~ ".html" as lang %}
+{% set is_en = config.theme.language == 'en' %}
 
 <footer class="md-footer uru-footer">
 
@@ -49,17 +50,17 @@
         <div class="uru-footer__brand-row">
           <a class="uru-footer__logo" href="{{ nav.homepage.url | url }}">
             <img src="{{ 'assets/favicon.svg' | url }}" alt="" width="32" height="32">
-            <span class="uru-footer__logo-text">Libro del Desarrollador Web</span>
+            <span class="uru-footer__logo-text">{{ 'Web Developer Book' if is_en else 'Libro del Desarrollador Web' }}</span>
           </a>
           <span class="uru-footer__version">v1.0.0</span>
         </div>
         <p class="uru-footer__tagline">
-          De Reus Tarragona Urukais KLick<br>
-          38 capítulos · 7 niveles · 100% open source.
+          {{ 'From Reus, Tarragona · Urukais KLick' if is_en else 'De Reus Tarragona Urukais KLick' }}<br>
+          {{ '38 chapters · 7 levels · 100% open source.' if is_en else '38 capítulos · 7 niveles · 100% open source.' }}
         </p>
 
         <a class="uru-footer__cta" href="{{ 'apoya/' | url }}">
-          ❤️ Apoya el proyecto
+          {{ '❤️ Support the project' if is_en else '❤️ Apoya el proyecto' }}
         </a>
 
         <div class="uru-footer__social">
@@ -70,50 +71,50 @@
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24l10.54-6.226L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
           </a>
           <a href="https://silly-boba-dc057e.netlify.app/" target="_blank" rel="noopener" aria-label="Portfolio" title="Portfolio">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm6.9 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56A8.03 8.03 0 0 1 18.9 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm6.9 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56A8.03 8.03 0 0 1 18.9 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.987 7.987 0 0 1 5.08 16zm2.95-8H5.08a7.987 7.987 0 0 1 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zm2.34-5.96H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
           </a>
         </div>
       </div>
 
       {# Col 2: Aprender #}
       <div class="uru-footer__col">
-        <h3 class="uru-footer__heading">📚 Aprender</h3>
+        <h3 class="uru-footer__heading">{{ '📚 Learn' if is_en else '📚 Aprender' }}</h3>
         <ul class="uru-footer__list">
-          <li><a href="{{ 'introduccion/' | url }}">Introducción</a></li>
-          <li><a href="{{ 'capitulos/01-introduccion/' | url }}">Nivel principiante</a></li>
-          <li><a href="{{ 'capitulos/07-git/' | url }}">Nivel intermedio</a></li>
-          <li><a href="{{ 'capitulos/11-css-moderno/' | url }}">Nivel avanzado</a></li>
-          <li><a href="{{ 'capitulos/26-seguridad/' | url }}">Nivel élite</a></li>
-          <li><a href="{{ 'capitulos/31-testing-e2e/' | url }}">Nivel vanguardia</a></li>
-          <li><a href="{{ 'ejercicios/' | url }}">Ejercicios resueltos</a></li>
-          <li><a href="{{ 'diagramas/' | url }}">Diagramas</a></li>
+          <li><a href="{{ 'introduccion/' | url }}">{{ 'Introduction' if is_en else 'Introducción' }}</a></li>
+          <li><a href="{{ 'capitulos/01-introduccion/' | url }}">{{ 'Beginner level' if is_en else 'Nivel principiante' }}</a></li>
+          <li><a href="{{ 'capitulos/07-git/' | url }}">{{ 'Intermediate level' if is_en else 'Nivel intermedio' }}</a></li>
+          <li><a href="{{ 'capitulos/11-css-moderno/' | url }}">{{ 'Advanced level' if is_en else 'Nivel avanzado' }}</a></li>
+          <li><a href="{{ 'capitulos/26-seguridad/' | url }}">{{ 'Elite level' if is_en else 'Nivel élite' }}</a></li>
+          <li><a href="{{ 'capitulos/31-testing-e2e/' | url }}">{{ 'Vanguard level' if is_en else 'Nivel vanguardia' }}</a></li>
+          <li><a href="{{ 'ejercicios/' | url }}">{{ 'Solved exercises' if is_en else 'Ejercicios resueltos' }}</a></li>
+          <li><a href="{{ 'diagramas/' | url }}">{{ 'Diagrams' if is_en else 'Diagramas' }}</a></li>
         </ul>
       </div>
 
       {# Col 3: Comunidad #}
       <div class="uru-footer__col">
-        <h3 class="uru-footer__heading">👥 Comunidad</h3>
+        <h3 class="uru-footer__heading">{{ '👥 Community' if is_en else '👥 Comunidad' }}</h3>
         <ul class="uru-footer__list">
-          <li><a href="{{ 'logros/' | url }}">Mis Logros</a></li>
-          <li><a href="{{ 'agenda/' | url }}">Agenda</a></li>
-          <li><a href="{{ 'diario/' | url }}">Diario</a></li>
-          <li><a href="{{ 'retos/' | url }}">Retos semanales</a></li>
+          <li><a href="{{ 'logros/' | url }}">{{ 'My Achievements' if is_en else 'Mis Logros' }}</a></li>
+          <li><a href="{{ 'agenda/' | url }}">{{ 'Schedule' if is_en else 'Agenda' }}</a></li>
+          <li><a href="{{ 'diario/' | url }}">{{ 'Journal' if is_en else 'Diario' }}</a></li>
+          <li><a href="{{ 'retos/' | url }}">{{ 'Weekly challenges' if is_en else 'Retos semanales' }}</a></li>
           <li><a href="{{ 'hall-of-fame/' | url }}">Hall of Fame</a></li>
           <li><a href="{{ 'playground/' | url }}">Playground</a></li>
-          <li><a href="{{ 'entrevistas/' | url }}">Preguntas de entrevista</a></li>
-          <li><a href="{{ 'retos-comunidad/' | url }}">Retos de la comunidad</a></li>
+          <li><a href="{{ 'entrevistas/' | url }}">{{ 'Interview questions' if is_en else 'Preguntas de entrevista' }}</a></li>
+          <li><a href="{{ 'retos-comunidad/' | url }}">{{ 'Community challenges' if is_en else 'Retos de la comunidad' }}</a></li>
         </ul>
       </div>
 
       {# Col 4: Recursos #}
       <div class="uru-footer__col">
-        <h3 class="uru-footer__heading">🛠️ Recursos</h3>
+        <h3 class="uru-footer__heading">{{ '🛠️ Resources' if is_en else '🛠️ Recursos' }}</h3>
         <ul class="uru-footer__list">
-          <li><a href="{{ 'recursos/' | url }}">Recursos</a></li>
-          <li><a href="{{ 'apendices/' | url }}">Apéndices</a></li>
-          <li><a href="{{ 'apendices/chuletas/' | url }}">Chuletas rápidas</a></li>
-          <li><a href="{{ 'apendices/glosario/' | url }}">Glosario</a></li>
-          <li><a href="{{ 'certificado/' | url }}">Certificado</a></li>
+          <li><a href="{{ 'recursos/' | url }}">{{ 'Resources' if is_en else 'Recursos' }}</a></li>
+          <li><a href="{{ 'apendices/' | url }}">{{ 'Appendices' if is_en else 'Apéndices' }}</a></li>
+          <li><a href="{{ 'apendices/chuletas/' | url }}">{{ 'Cheat sheets' if is_en else 'Chuletas rápidas' }}</a></li>
+          <li><a href="{{ 'apendices/glosario/' | url }}">{{ 'Glossary' if is_en else 'Glosario' }}</a></li>
+          <li><a href="{{ 'certificado/' | url }}">{{ 'Certificate' if is_en else 'Certificado' }}</a></li>
           <li><a href="{{ 'roadmap/' | url }}">Roadmap</a></li>
           <li><a href="{{ 'changelog/' | url }}">Changelog</a></li>
         </ul>
@@ -121,15 +122,15 @@
 
       {# Col 5: Proyecto #}
       <div class="uru-footer__col">
-        <h3 class="uru-footer__heading">💡 Proyecto</h3>
+        <h3 class="uru-footer__heading">{{ '💡 Project' if is_en else '💡 Proyecto' }}</h3>
         <ul class="uru-footer__list">
-          <li><a href="{{ 'filosofia/' | url }}">Filosofía</a></li>
-          <li><a href="{{ 'autor/' | url }}">Sobre el autor</a></li>
-          <li><a href="{{ 'contacto/' | url }}">Contacto</a></li>
+          <li><a href="{{ 'filosofia/' | url }}">{{ 'Philosophy' if is_en else 'Filosofía' }}</a></li>
+          <li><a href="{{ 'autor/' | url }}">{{ 'About the author' if is_en else 'Sobre el autor' }}</a></li>
+          <li><a href="{{ 'contacto/' | url }}">{{ 'Contact' if is_en else 'Contacto' }}</a></li>
           <li><a href="{{ 'faq/' | url }}">FAQ</a></li>
-          <li><a href="{{ 'contribuir/' | url }}">Contribuir</a></li>
-          <li><a href="{{ 'prensa/' | url }}">Prensa</a></li>
-          <li><a href="{{ 'agradecimientos/' | url }}">Agradecimientos</a></li>
+          <li><a href="{{ 'contribuir/' | url }}">{{ 'Contribute' if is_en else 'Contribuir' }}</a></li>
+          <li><a href="{{ 'prensa/' | url }}">{{ 'Press' if is_en else 'Prensa' }}</a></li>
+          <li><a href="{{ 'agradecimientos/' | url }}">{{ 'Acknowledgements' if is_en else 'Agradecimientos' }}</a></li>
           <li><a href="https://plataforma-el-ni-o.vercel.app/" target="_blank" rel="noopener">🎮 El Niño</a></li>
         </ul>
       </div>
@@ -142,13 +143,17 @@
     <div class="uru-footer__bottom-inner">
       <div class="uru-footer__bottom-meta">
         <p class="uru-footer__copyright">
-          © 2026–2027 ---<strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
+          {% if is_en %}
+            © 2026–2027 <strong>Manuel Casimiro Carrasco — Urukais</strong>. Made with ❤️ and plenty of ☕.
+          {% else %}
+            © 2026–2027 <strong>Manuel Casimiro Carrasco — Urukais</strong>. Hecho con ❤️ y mucho ☕.
+          {% endif %}
         </p>
       </div>
       <ul class="uru-footer__legal">
-        <li><a href="{{ nav.homepage.url | url }}#licencia">Licencia</a></li>
-        <li><a href="{{ 'contacto/' | url }}">Contacto</a></li>
-        <li><a href="{{ 'prensa/' | url }}">Prensa</a></li>
+        <li><a href="{{ nav.homepage.url | url }}#licencia">{{ 'License' if is_en else 'Licencia' }}</a></li>
+        <li><a href="{{ 'contacto/' | url }}">{{ 'Contact' if is_en else 'Contacto' }}</a></li>
+        <li><a href="{{ 'prensa/' | url }}">{{ 'Press' if is_en else 'Prensa' }}</a></li>
         <li><a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>
