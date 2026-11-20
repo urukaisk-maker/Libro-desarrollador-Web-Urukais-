@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Capítulo 27 del Libro del Desarrollador Web: 27 — WebAssembly. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+        <meta name="description" content="Chapter 27 of the Web Developer's Book: 27 — WebAssembly. Learn step by step with examples, exercises, and quizzes.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Capítulo 27 del Libro del Desarrollador Web: 27 — WebAssembly. Aprende paso a paso con ejemplos, ejercicios y quizzes.">
+  <meta name="description" content="Chapter 27 of the Web Developer's Book: 27 — WebAssembly. Learn step by step with examples, exercises, and quizzes.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/capitulos/27-webassembly/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="27 — WebAssembly - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Capítulo 27 del Libro del Desarrollador Web: 27 — WebAssembly. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="og:description" content="Chapter 27 of the Web Developer's Book: 27 — WebAssembly. Learn step by step with examples, exercises, and quizzes." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/27-webassembly.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/capitulos/27-webassembly/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="27 — WebAssembly - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Capítulo 27 del Libro del Desarrollador Web: 27 — WebAssembly. Aprende paso a paso con ejemplos, ejercicios y quizzes." />
+<meta property="twitter:description" content="Chapter 27 of the Web Developer's Book: 27 — WebAssembly. Learn step by step with examples, exercises, and quizzes." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/capitulos/27-webassembly.png" />
 </head>
   
@@ -1886,10 +1886,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#que-es-webassembly" class="md-nav__link">
+  <a href="#what-is-webassembly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧩 ¿Qué es WebAssembly?
+        🧩 What is WebAssembly?
       
     </span>
   </a>
@@ -1897,10 +1897,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cuando-usar-webassembly" class="md-nav__link">
+  <a href="#when-to-use-webassembly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 ¿Cuándo usar WebAssembly?
+        🎯 When to Use WebAssembly?
       
     </span>
   </a>
@@ -1908,10 +1908,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compilar-rust-a-webassembly" class="md-nav__link">
+  <a href="#compiling-rust-to-webassembly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🦀 Compilar Rust a WebAssembly
+        🦀 Compiling Rust to WebAssembly
       
     </span>
   </a>
@@ -1919,10 +1919,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integrar-con-javascript" class="md-nav__link">
+  <a href="#integrating-with-javascript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 Integrar con JavaScript
+        🔗 Integrating with JavaScript
       
     </span>
   </a>
@@ -1930,10 +1930,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#webassembly-en-el-navegador-api-nativa" class="md-nav__link">
+  <a href="#webassembly-in-the-browser-native-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ WebAssembly en el navegador (API nativa)
+        ⚡ WebAssembly in the Browser (Native API)
       
     </span>
   </a>
@@ -1941,10 +1941,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#casos-de-uso-reales" class="md-nav__link">
+  <a href="#real-world-use-cases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏆 Casos de uso reales
+        🏆 Real-World Use Cases
       
     </span>
   </a>
@@ -1952,10 +1952,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rendimiento-wasm-vs-js" class="md-nav__link">
+  <a href="#performance-wasm-vs-js" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Rendimiento: Wasm vs JS
+        ⚡ Performance: Wasm vs. JS
       
     </span>
   </a>
@@ -1963,10 +1963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#herramientas" class="md-nav__link">
+  <a href="#tools" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ Herramientas
+        🛠 Tools
       
     </span>
   </a>
@@ -1974,10 +1974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buenas-practicas" class="md-nav__link">
+  <a href="#best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ Buenas prácticas
+        ✅ Best Practices
       
     </span>
   </a>
@@ -1985,10 +1985,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pon-a-prueba-tus-conocimientos" class="md-nav__link">
+  <a href="#test-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Pon a prueba tus conocimientos
+        🧠 Test Your Knowledge
       
     </span>
   </a>
@@ -1996,10 +1996,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparte-este-capitulo" class="md-nav__link">
+  <a href="#share-this-chapter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📢 Comparte este capítulo
+        📢 Share This Chapter
       
     </span>
   </a>
@@ -2007,10 +2007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#siguiente-paso" class="md-nav__link">
+  <a href="#next-step" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ➡️ Siguiente paso
+        ➡ Next Step
       
     </span>
   </a>
@@ -2018,22 +2018,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rust-webassembly-con-wasm-pack" class="md-nav__link">
+  <a href="#rust-webassembly-with-wasm-pack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🦀 Rust → WebAssembly con wasm-pack
+        🦀 Rust → WebAssembly with wasm-pack
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🦀 Rust → WebAssembly con wasm-pack">
+    <nav class="md-nav" aria-label="🦀 Rust → WebAssembly with wasm-pack">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#instalacion" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Instalación
+        Installation
       
     </span>
   </a>
@@ -2041,10 +2041,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurar-cargotoml" class="md-nav__link">
+  <a href="#configure-cargotoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configurar Cargo.toml
+        Configure Cargo.toml
       
     </span>
   </a>
@@ -2052,10 +2052,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#escribir-la-funcion-en-rust" class="md-nav__link">
+  <a href="#write-the-function-in-rust" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Escribir la función en Rust
+        Write the Function in Rust
       
     </span>
   </a>
@@ -2063,10 +2063,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#compilar" class="md-nav__link">
+  <a href="#compile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compilar
+        Compile
       
     </span>
   </a>
@@ -2074,10 +2074,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#usar-desde-javascript" class="md-nav__link">
+  <a href="#use-from-javascript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usar desde JavaScript
+        Use from JavaScript
       
     </span>
   </a>
@@ -2090,22 +2090,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wasi-webassembly-fuera-del-navegador" class="md-nav__link">
+  <a href="#wasi-webassembly-outside-the-browser" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🖥️ WASI: WebAssembly fuera del navegador
+        🖥 WASI: WebAssembly Outside the Browser
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🖥️ WASI: WebAssembly fuera del navegador">
+    <nav class="md-nav" aria-label="🖥 WASI: WebAssembly Outside the Browser">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejemplo-con-wasmtime-runtime-de-wasi" class="md-nav__link">
+  <a href="#example-with-wasmtime-wasi-runtime" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo con Wasmtime (runtime de WASI)
+        Example with Wasmtime (WASI runtime)
       
     </span>
   </a>
@@ -2113,10 +2113,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#compilar-rust-a-wasi" class="md-nav__link">
+  <a href="#compile-rust-to-wasi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compilar Rust a WASI
+        Compile Rust to WASI
       
     </span>
   </a>
@@ -2124,10 +2124,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#por-que-wasi-es-importante" class="md-nav__link">
+  <a href="#why-wasi-matters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ¿Por qué WASI es importante?
+        Why WASI Matters
       
     </span>
   </a>
@@ -2140,10 +2140,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#casos-de-uso-reales_1" class="md-nav__link">
+  <a href="#real-world-use-cases_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Casos de uso reales
+        🎯 Real-World Use Cases
       
     </span>
   </a>
@@ -2151,22 +2151,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integracion-con-javascript" class="md-nav__link">
+  <a href="#integrating-with-javascript_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 Integración con JavaScript
+        🔗 Integrating with JavaScript
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔗 Integración con JavaScript">
+    <nav class="md-nav" aria-label="🔗 Integrating with JavaScript">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#paso-de-strings-memoria-compartida" class="md-nav__link">
+  <a href="#passing-strings-shared-memory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Paso de strings (memoria compartida)
+        Passing Strings (Shared Memory)
       
     </span>
   </a>
@@ -2174,10 +2174,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#paso-de-arrays" class="md-nav__link">
+  <a href="#passing-arrays" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Paso de arrays
+        Passing Arrays
       
     </span>
   </a>
@@ -2185,10 +2185,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#llamar-a-javascript-desde-rust" class="md-nav__link">
+  <a href="#calling-javascript-from-rust" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Llamar a JavaScript desde Rust
+        Calling JavaScript from Rust
       
     </span>
   </a>
@@ -2201,22 +2201,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rendimiento-cuando-wasm-gana-y-cuando-no" class="md-nav__link">
+  <a href="#performance-when-wasm-wins-and-when-it-doesnt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Rendimiento: cuándo Wasm gana (y cuándo no)
+        ⚡ Performance: When Wasm Wins (and When It Doesn't)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="⚡ Rendimiento: cuándo Wasm gana (y cuándo no)">
+    <nav class="md-nav" aria-label="⚡ Performance: When Wasm Wins (and When It Doesn&#39;t)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#el-coste-del-puente-js-wasm" class="md-nav__link">
+  <a href="#the-cost-of-the-js-wasm-bridge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        El coste del puente JS ↔ Wasm
+        The Cost of the JS ↔ Wasm Bridge
       
     </span>
   </a>
@@ -2229,10 +2229,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-practico" class="md-nav__link">
+  <a href="#hands-on-exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 Ejercicio práctico
+        🧪 Hands-On Exercise
       
     </span>
   </a>
@@ -2240,10 +2240,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quiz-de-repaso" class="md-nav__link">
+  <a href="#review-quiz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Quiz de repaso
+        🧠 Review Quiz
       
     </span>
   </a>
@@ -2251,10 +2251,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#recursos" class="md-nav__link">
+  <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 Recursos
+        📚 Resources
       
     </span>
   </a>
@@ -5391,75 +5391,75 @@
 
 <div><h1 id="27-webassembly">27 — WebAssembly<a class="headerlink" href="#27-webassembly" title="Permanent link">¶</a></h1>
 <div class="admonition abstract">
-<p class="admonition-title">Qué vas a aprender</p>
+<p class="admonition-title">What you will learn</p>
 <ul>
-<li>Qué es WebAssembly y por qué existe.</li>
-<li>Cuándo usarlo y cuándo no.</li>
-<li>Compilar Rust a Wasm.</li>
-<li>Integrarlo con JavaScript.</li>
-<li>Casos de uso reales.</li>
+<li>What WebAssembly is and why it exists.</li>
+<li>When to use it and when not to.</li>
+<li>Compiling Rust to Wasm.</li>
+<li>Integrating it with JavaScript.</li>
+<li>Real-world use cases.</li>
 </ul>
 </div>
 <hr>
-<h2 id="que-es-webassembly">🧩 ¿Qué es WebAssembly?<a class="headerlink" href="#que-es-webassembly" title="Permanent link">¶</a></h2>
-<p><strong>WebAssembly</strong> (Wasm) es un formato binario que permite ejecutar código de <strong>otros lenguajes</strong> (Rust, C, C++, Go…) en el navegador a <strong>velocidad casi nativa</strong>. No sustituye a JavaScript: lo complementa.</p>
-<div class="highlight"><pre><span></span><code>JavaScript  → rápido, pero no tanto para cálculo intensivo
-WebAssembly → velocidad casi nativa para cálculo intensivo
+<h2 id="what-is-webassembly">🧩 What is WebAssembly?<a class="headerlink" href="#what-is-webassembly" title="Permanent link">¶</a></h2>
+<p><strong>WebAssembly</strong> (Wasm) is a binary format that lets you run code from <strong>other languages</strong> (Rust, C, C++, Go…) in the browser at <strong>near-native speed</strong>. It does not replace JavaScript—it complements it.</p>
+<div class="highlight"><pre><span></span><code>JavaScript  → fast, but less so for heavy computation
+WebAssembly → near-native speed for heavy computation
 </code></pre></div>
 <div class="admonition quote">
-<p class="admonition-title">Wasm no reemplaza a JS</p>
-<p>WebAssembly no va a sustituir a JavaScript. Va a convivir con él: JS para la lógica de la app, Wasm para las partes que necesitan máximo rendimiento.</p>
+<p class="admonition-title">Wasm doesn't replace JS</p>
+<p>WebAssembly isn't going to replace JavaScript. It coexists with it: JS for app logic, Wasm for the parts that need maximum performance.</p>
 </div>
 <hr>
-<h2 id="cuando-usar-webassembly">🎯 ¿Cuándo usar WebAssembly?<a class="headerlink" href="#cuando-usar-webassembly" title="Permanent link">¶</a></h2>
+<h2 id="when-to-use-webassembly">🎯 When to Use WebAssembly?<a class="headerlink" href="#when-to-use-webassembly" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Caso</th>
-<th style="text-align: left;">¿Wasm?</th>
+<th style="text-align: left;">Use Case</th>
+<th style="text-align: left;">Wasm?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Vídeo y audio en tiempo real</td>
+<td style="text-align: left;">Real-time video and audio</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Juegos 3D y simulaciones</td>
+<td style="text-align: left;">3D games and simulations</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Criptografía y compresión</td>
+<td style="text-align: left;">Cryptography and compression</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">Edición de imágenes en el navegador</td>
+<td style="text-align: left;">Browser image editing</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">IA y machine learning</td>
+<td style="text-align: left;">AI and machine learning</td>
 <td style="text-align: left;">✅</td>
 </tr>
 <tr>
-<td style="text-align: left;">CRUD de una app web</td>
+<td style="text-align: left;">Web app CRUD</td>
 <td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td style="text-align: left;">Formularios y validaciones</td>
+<td style="text-align: left;">Forms and validations</td>
 <td style="text-align: left;">❌</td>
 </tr>
 <tr>
-<td style="text-align: left;">Animaciones básicas</td>
+<td style="text-align: left;">Basic animations</td>
 <td style="text-align: left;">❌</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="compilar-rust-a-webassembly">🦀 Compilar Rust a WebAssembly<a class="headerlink" href="#compilar-rust-a-webassembly" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Instalar wasm-pack</span>
-curl<span class="w"> </span>https://rustwasm.github.io/wasm-pack/installer/init.sh<span class="w"> </span>-sSf<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<h2 id="compiling-rust-to-webassembly">🦀 Compiling Rust to WebAssembly<a class="headerlink" href="#compiling-rust-to-webassembly" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install wasm-pack</span>
+curl<span class="w"> </span><span class="o">[</span>https://rustwasm.github.io/wasm-pack/installer/init.sh<span class="o">](</span>https://rustwasm.github.io/wasm-pack/installer/init.sh<span class="o">)</span><span class="w"> </span>-sSf<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 
-<span class="c1"># Crear proyecto</span>
+<span class="c1"># Create project</span>
 cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </span>mi-wasm
 <span class="nb">cd</span><span class="w"> </span>mi-wasm
 </code></pre></div>
@@ -5493,79 +5493,79 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>web
 </code></pre></div>
-<p>Esto genera una carpeta <code>pkg/</code> con el <code>.wasm</code> y los bindings de JavaScript.</p>
+<p>This generates a <code>pkg/</code> folder with the <code>.wasm</code> binary and JavaScript bindings.</p>
 <hr>
-<h2 id="integrar-con-javascript">🔗 Integrar con JavaScript<a class="headerlink" href="#integrar-con-javascript" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>script type="module"<span class="ni">&amp;gt;</span>
-  import init, { sumar, fibonacci } from "./pkg/mi_wasm.js";
+<h2 id="integrating-with-javascript">🔗 Integrating with JavaScript<a class="headerlink" href="#integrating-with-javascript" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">fibonacci</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./pkg/mi_wasm.js"</span><span class="p">;</span>
 
-  await init();
-  console.log(sumar(2, 3));      // 5
-  console.log(fibonacci(40));    // 102334155 (rápido)
-<span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w">      </span><span class="c1">// 5</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">(</span><span class="mf">40</span><span class="p">));</span><span class="w">    </span><span class="c1">// 102334155 (fast)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">async init</p>
-<p>La función <code>init()</code> carga y compila el binario <code>.wasm</code>. Devuelve una promesa, así que hay que esperar.</p>
+<p>The <code>init()</code> function loads and compiles the <code>.wasm</code> binary. It returns a promise, so you must <code>await</code> it.</p>
 </div>
 <hr>
-<h2 id="webassembly-en-el-navegador-api-nativa">⚡ WebAssembly en el navegador (API nativa)<a class="headerlink" href="#webassembly-en-el-navegador-api-nativa" title="Permanent link">¶</a></h2>
+<h2 id="webassembly-in-the-browser-native-api">⚡ WebAssembly in the Browser (Native API)<a class="headerlink" href="#webassembly-in-the-browser-native-api" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">respuesta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"modulo.wasm"</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">respuesta</span><span class="p">.</span><span class="nx">arrayBuffer</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">instance</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
 </code></pre></div>
-<p>La API nativa es más verbose. <code>wasm-bindgen</code> (Rust) o <code>Emscripten</code> (C/C++) generan los bindings automáticamente.</p>
+<p>The native API is more verbose. <code>wasm-bindgen</code> (Rust) or <code>Emscripten</code> (C/C++) generate the bindings automatically.</p>
 <hr>
-<h2 id="casos-de-uso-reales">🏆 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales" title="Permanent link">¶</a></h2>
+<h2 id="real-world-use-cases">🏆 Real-World Use Cases<a class="headerlink" href="#real-world-use-cases" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Empresa</th>
-<th style="text-align: left;">Uso de Wasm</th>
+<th style="text-align: left;">Company</th>
+<th style="text-align: left;">Wasm Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Figma</strong></td>
-<td style="text-align: left;">Renderizado y edición de gráficos vectoriales</td>
+<td style="text-align: left;">Vector graphics rendering and editing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Google Earth</strong></td>
-<td style="text-align: left;">Visualización 3D del planeta</td>
+<td style="text-align: left;">3D planet visualization</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AutoCAD Web</strong></td>
-<td style="text-align: left;">Diseño CAD en el navegador</td>
+<td style="text-align: left;">Browser-based CAD design</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Photoshop Web</strong></td>
-<td style="text-align: left;">Edición de imágenes</td>
+<td style="text-align: left;">Image editing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Zoom</strong></td>
-<td style="text-align: left;">Procesamiento de vídeo y audio</td>
+<td style="text-align: left;">Video and audio processing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Unity</strong></td>
-<td style="text-align: left;">Juegos 3D en el navegador</td>
+<td style="text-align: left;">3D browser games</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pyodide</strong></td>
-<td style="text-align: left;">Python completo en el navegador</td>
+<td style="text-align: left;">Full Python in the browser</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="rendimiento-wasm-vs-js">⚡ Rendimiento: Wasm vs JS<a class="headerlink" href="#rendimiento-wasm-vs-js" title="Permanent link">¶</a></h2>
+<h2 id="performance-wasm-vs-js">⚡ Performance: Wasm vs. JS<a class="headerlink" href="#performance-wasm-vs-js" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tarea</th>
+<th style="text-align: left;">Task</th>
 <th style="text-align: left;">JavaScript</th>
 <th style="text-align: left;">WebAssembly</th>
-<th style="text-align: left;">Mejora</th>
+<th style="text-align: left;">Speedup</th>
 </tr>
 </thead>
 <tbody>
@@ -5576,19 +5576,19 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 <td style="text-align: left;"><strong>5x</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Compresión gzip</td>
+<td style="text-align: left;">gzip compression</td>
 <td style="text-align: left;">~1.5 s</td>
 <td style="text-align: left;">~0.3 s</td>
 <td style="text-align: left;"><strong>5x</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Renderizado 3D</td>
+<td style="text-align: left;">3D rendering</td>
 <td style="text-align: left;">~16 ms/frame</td>
 <td style="text-align: left;">~4 ms/frame</td>
 <td style="text-align: left;"><strong>4x</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Cálculo matricial</td>
+<td style="text-align: left;">Matrix math</td>
 <td style="text-align: left;">~800 ms</td>
 <td style="text-align: left;">~100 ms</td>
 <td style="text-align: left;"><strong>8x</strong></td>
@@ -5596,119 +5596,119 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Los números varían</p>
-<p>Estas cifras son orientativas. Dependen del navegador, del hardware y del tipo de tarea. Para operaciones pequeñas, el coste de cargar el <code>.wasm</code> puede hacer que no compense.</p>
+<p class="admonition-title">Numbers vary</p>
+<p>These figures are approximate. They depend on browser, hardware, and task type. For small operations, <code>.wasm</code> loading overhead may outweigh any benefit.</p>
 </div>
 <hr>
-<h2 id="herramientas">🛠️ Herramientas<a class="headerlink" href="#herramientas" title="Permanent link">¶</a></h2>
+<h2 id="tools">🛠 Tools<a class="headerlink" href="#tools" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Herramienta</th>
-<th style="text-align: left;">Lenguaje</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>wasm-pack</strong></td>
 <td style="text-align: left;">Rust</td>
-<td style="text-align: left;">Empaquetar Rust a Wasm</td>
+<td style="text-align: left;">Package Rust into Wasm</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>wasm-bindgen</strong></td>
 <td style="text-align: left;">Rust</td>
-<td style="text-align: left;">Bindings JS ↔ Rust</td>
+<td style="text-align: left;">JS ↔ Rust bindings</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Emscripten</strong></td>
 <td style="text-align: left;">C/C++</td>
-<td style="text-align: left;">Compilar C/C++ a Wasm</td>
+<td style="text-align: left;">Compile C/C++ to Wasm</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AssemblyScript</strong></td>
 <td style="text-align: left;">TypeScript-like</td>
-<td style="text-align: left;">Escribir Wasm con sintaxis JS</td>
+<td style="text-align: left;">Write Wasm with JS-like syntax</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>TinyGo</strong></td>
 <td style="text-align: left;">Go</td>
-<td style="text-align: left;">Compilar Go a Wasm</td>
+<td style="text-align: left;">Compile Go to Wasm</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Blazor</strong></td>
 <td style="text-align: left;">C#</td>
-<td style="text-align: left;">.NET en el navegador</td>
+<td style="text-align: left;">.NET in the browser</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pyodide</strong></td>
 <td style="text-align: left;">Python</td>
-<td style="text-align: left;">Python en el navegador</td>
+<td style="text-align: left;">Python in the browser</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="c1"># AssemblyScript (el más fácil si vienes de JS)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># AssemblyScript (easiest if coming from JS)</span>
 npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>assemblyscript
 npx<span class="w"> </span>asc<span class="w"> </span>modulo.ts<span class="w"> </span>-o<span class="w"> </span>modulo.wasm
 </code></pre></div>
 <hr>
-<h2 id="buenas-practicas">✅ Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">¶</a></h2>
+<h2 id="best-practices">✅ Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">¶</a></h2>
 <ul>
-<li>✅ <strong>Usa Wasm solo si el rendimiento importa</strong>: para CRUD, JS es suficiente.</li>
-<li>✅ <strong>Carga el <code>.wasm</code> bajo demanda</strong>: no lo cargues en la primera visita si no es necesario.</li>
-<li>✅ <strong>Mide antes y después</strong>: no asumas que Wasm será más rápido.</li>
-<li>✅ <strong>Usa <code>wasm-bindgen</code></strong> (Rust) para no escribir bindings a mano.</li>
-<li>✅ <strong>Cachea el <code>.wasm</code></strong> con Service Worker si es grande.</li>
-<li>❌ <strong>No reescribas toda tu app en Rust</strong>: integra solo las partes críticas.</li>
+<li>✅ <strong>Use Wasm only when performance matters</strong>: for CRUD, JS is enough.</li>
+<li>✅ <strong>Load <code>.wasm</code> on demand</strong>: don't load it on first visit if unneeded.</li>
+<li>✅ <strong>Measure before and after</strong>: don't assume Wasm will be faster.</li>
+<li>✅ <strong>Use <code>wasm-bindgen</code></strong> (Rust) instead of writing bindings by hand.</li>
+<li>✅ <strong>Cache <code>.wasm</code></strong> with a Service Worker if it's large.</li>
+<li>❌ <strong>Don't rewrite your whole app in Rust</strong>: integrate only critical parts.</li>
 </ul>
 <hr>
-<h2 id="pon-a-prueba-tus-conocimientos">🧠 Pon a prueba tus conocimientos<a class="headerlink" href="#pon-a-prueba-tus-conocimientos" title="Permanent link">¶</a></h2>
+<h2 id="test-your-knowledge">🧠 Test Your Knowledge<a class="headerlink" href="#test-your-knowledge" title="Permanent link">¶</a></h2>
 <div class="quiz" data-quiz="capitulo-27">
 <div class="quiz-question" data-answer="b">
-<p><strong>1.</strong> ¿Qué es WebAssembly?</p>
-<button class="quiz-option" data-opt="a">A) Un framework de JavaScript</button>
-<button class="quiz-option" data-opt="b">B"&gt;Un formato binario para ejecutar otros lenguajes en el navegador</button>
-<button class="quiz-option" data-opt="c">C) Una base de datos</button>
+<p><strong>1.</strong> What is WebAssembly?</p>
+<button class="quiz-option" data-opt="a">A) A JavaScript framework</button>
+<button class="quiz-option" data-opt="b">B) A binary format to run other languages in the browser</button>
+<button class="quiz-option" data-opt="c">C) A database</button>
 </div>
 <div class="quiz-question" data-answer="a">
-<p><strong>2.</strong> ¿Qué lenguaje se usa más con Wasm?</p>
+<p><strong>2.</strong> Which language is most commonly used with Wasm?</p>
 <button class="quiz-option" data-opt="a">A) Rust</button>
 <button class="quiz-option" data-opt="b">B) PHP</button>
 <button class="quiz-option" data-opt="c">C) Ruby</button>
 </div>
 <div class="quiz-question" data-answer="c">
-<p><strong>3.</strong> ¿Cuándo NO usar WebAssembly?</p>
-<button class="quiz-option" data-opt="a">A) En juegos 3D</button>
-<button class="quiz-option" data-opt="b">B) En edición de imágenes</button>
-<button class="quiz-option" data-opt="c">C) En un formulario de contacto</button>
+<p><strong>3.</strong> When should you NOT use WebAssembly?</p>
+<button class="quiz-option" data-opt="a">A) In 3D games</button>
+<button class="quiz-option" data-opt="b">B) In image editing</button>
+<button class="quiz-option" data-opt="c">C) In a contact form</button>
 </div>
 </div>
 
 <hr>
-<h2 id="comparte-este-capitulo">📢 Comparte este capítulo<a class="headerlink" href="#comparte-este-capitulo" title="Permanent link">¶</a></h2>
+<h2 id="share-this-chapter">📢 Share This Chapter<a class="headerlink" href="#share-this-chapter" title="Permanent link">¶</a></h2>
 <div class="share-buttons">
-<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Cap%C3%ADtulo%2027%3A%20WebAssembly&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">Twitter</a>
+<a class="share-btn share-btn--twitter" href="https://twitter.com/intent/tweet?text=Chapter%2027%3A%20WebAssembly&amp;url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">Twitter</a>
 <a class="share-btn share-btn--linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">LinkedIn</a>
-<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Cap%C3%ADtulo%2027%3A%20WebAssembly%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">WhatsApp</a>
-<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/capitulos/27-webassembly/" aria-label="Copiar enlace">Copiar enlace</button>
+<a class="share-btn share-btn--whatsapp" href="https://wa.me/?text=Chapter%2027%3A%20WebAssembly%20https%3A%2F%2Flibro.urukais.com%2Fcapitulos%2F27-webassembly%2F" target="_blank" rel="noopener">WhatsApp</a>
+<button class="share-btn share-btn--copy" data-copy-url="https://libro.urukais.com/en/capitulos/27-webassembly/" aria-label="Copy link">Copy link</button>
 </div>
 
 <hr>
-<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="../28-ia-frontend/">Ir al Capítulo 28 — IA en el frontend</a>
-<a class="md-button" href="../../">Volver al índice</a></p>
+<h2 id="next-step">➡ Next Step<a class="headerlink" href="#next-step" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="../28-ia-frontend/">Go to Chapter 28 — IA en el frontend</a>
+<a class="md-button" href="../../">Back to index</a></p>
 <hr>
-<h2 id="rust-webassembly-con-wasm-pack">🦀 Rust → WebAssembly con <code>wasm-pack</code><a class="headerlink" href="#rust-webassembly-con-wasm-pack" title="Permanent link">¶</a></h2>
-<p>Rust es el lenguaje más popular para escribir WebAssembly. Su sistema de tipos y su gestión de memoria sin GC lo hacen ideal para código de alto rendimiento.</p>
-<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Instalar wasm-pack</span>
+<h2 id="rust-webassembly-with-wasm-pack">🦀 Rust → WebAssembly with <code>wasm-pack</code><a class="headerlink" href="#rust-webassembly-with-wasm-pack" title="Permanent link">¶</a></h2>
+<p>Rust is the most popular language for writing WebAssembly. Its type system and memory management without GC make it ideal for high-performance code.</p>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install wasm-pack</span>
 curl<span class="w"> </span>https://rustwasm.github.io/wasm-pack/installer/init.sh<span class="w"> </span>-sSf<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 
-<span class="c1"># Crear proyecto</span>
+<span class="c1"># Create project</span>
 cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </span>mi-wasm
 <span class="nb">cd</span><span class="w"> </span>mi-wasm
 </code></pre></div>
-<h3 id="configurar-cargotoml">Configurar <code>Cargo.toml</code><a class="headerlink" href="#configurar-cargotoml" title="Permanent link">¶</a></h3>
+<h3 id="configure-cargotoml">Configure <code>Cargo.toml</code><a class="headerlink" href="#configure-cargotoml" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[package]</span>
 <span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mi-wasm"</span>
 <span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.1.0"</span>
@@ -5720,7 +5720,7 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 <span class="k">[dependencies]</span>
 <span class="n">wasm-bindgen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.2"</span>
 </code></pre></div>
-<h3 id="escribir-la-funcion-en-rust">Escribir la función en Rust<a class="headerlink" href="#escribir-la-funcion-en-rust" title="Permanent link">¶</a></h3>
+<h3 id="write-the-function-in-rust">Write the Function in Rust<a class="headerlink" href="#write-the-function-in-rust" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
 
 <span class="cp">#[wasm_bindgen]</span>
@@ -5733,14 +5733,14 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="compilar">Compilar<a class="headerlink" href="#compilar" title="Permanent link">¶</a></h3>
+<h3 id="compile">Compile<a class="headerlink" href="#compile" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>wasm-pack<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>web
 </code></pre></div>
-<p>Genera <code>pkg/</code> con:
-- <code>mi_wasm_bg.wasm</code> — el binario
-- <code>mi_wasm.js</code> — el "pegamento" para llamarlo desde JS
-- <code>mi_wasm.d.ts</code> — tipos TypeScript</p>
-<h3 id="usar-desde-javascript">Usar desde JavaScript<a class="headerlink" href="#usar-desde-javascript" title="Permanent link">¶</a></h3>
+<p>Generates <code>pkg/</code> with:
+- <code>mi_wasm_bg.wasm</code> — the binary
+- <code>mi_wasm.js</code> — the "glue" to call it from JS
+- <code>mi_wasm.d.ts</code> — TypeScript types</p>
+<h3 id="use-from-javascript">Use from JavaScript<a class="headerlink" href="#use-from-javascript" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">fib</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./pkg/mi_wasm.js"</span><span class="p">;</span>
 
 <span class="k">await</span><span class="w"> </span><span class="nx">init</span><span class="p">();</span>
@@ -5749,108 +5749,108 @@ cargo<span class="w"> </span>new<span class="w"> </span>--lib<span class="w"> </
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fib</span><span class="p">(</span><span class="mf">30</span><span class="p">));</span><span class="w">       </span><span class="c1">// 832040</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">El <code>init()</code> es obligatorio</p>
-<p>La primera vez hay que llamar a <code>init()</code> para cargar el <code>.wasm</code>. Es asíncrono porque descarga y compila el binario. Después, las funciones son síncronas.</p>
+<p class="admonition-title"><code>init()</code> is required</p>
+<p>The first time you must call <code>init()</code> to load the <code>.wasm</code>. It is asynchronous because it downloads and compiles the binary. Afterward, the functions are synchronous.</p>
 </div>
 <hr>
-<h2 id="wasi-webassembly-fuera-del-navegador">🖥️ WASI: WebAssembly fuera del navegador<a class="headerlink" href="#wasi-webassembly-fuera-del-navegador" title="Permanent link">¶</a></h2>
-<p><strong>WASI</strong> (WebAssembly System Interface) permite ejecutar Wasm <strong>fuera del navegador</strong>, con acceso controlado a archivos, red, reloj, etc. Es la base de los "contenedores Wasm".</p>
-<h3 id="ejemplo-con-wasmtime-runtime-de-wasi">Ejemplo con Wasmtime (runtime de WASI)<a class="headerlink" href="#ejemplo-con-wasmtime-runtime-de-wasi" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Instalar wasmtime</span>
+<h2 id="wasi-webassembly-outside-the-browser">🖥 WASI: WebAssembly Outside the Browser<a class="headerlink" href="#wasi-webassembly-outside-the-browser" title="Permanent link">¶</a></h2>
+<p><strong>WASI</strong> (WebAssembly System Interface) lets you run Wasm <strong>outside the browser</strong>, with controlled access to files, network, clock, etc. It is the foundation of "Wasm containers".</p>
+<h3 id="example-with-wasmtime-wasi-runtime">Example with Wasmtime (WASI runtime)<a class="headerlink" href="#example-with-wasmtime-wasi-runtime" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install wasmtime</span>
 curl<span class="w"> </span>https://wasmtime.dev/install.sh<span class="w"> </span>-sSf<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 
-<span class="c1"># Ejecutar un .wasm con WASI</span>
+<span class="c1"># Run a .wasm with WASI</span>
 wasmtime<span class="w"> </span>mi-programa.wasm
 </code></pre></div>
-<h3 id="compilar-rust-a-wasi">Compilar Rust a WASI<a class="headerlink" href="#compilar-rust-a-wasi" title="Permanent link">¶</a></h3>
+<h3 id="compile-rust-to-wasi">Compile Rust to WASI<a class="headerlink" href="#compile-rust-to-wasi" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>wasm32-wasi
 cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>wasm32-wasi<span class="w"> </span>--release
 </code></pre></div>
-<h3 id="por-que-wasi-es-importante">¿Por qué WASI es importante?<a class="headerlink" href="#por-que-wasi-es-importante" title="Permanent link">¶</a></h3>
+<h3 id="why-wasi-matters">Why WASI Matters<a class="headerlink" href="#why-wasi-matters" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Ventaja</th>
-<th style="text-align: left;">Detalle</th>
+<th style="text-align: left;">Benefit</th>
+<th style="text-align: left;">Detail</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Portabilidad</strong></td>
-<td style="text-align: left;">El mismo <code>.wasm</code> corre en cualquier SO con un runtime WASI</td>
+<td style="text-align: left;"><strong>Portability</strong></td>
+<td style="text-align: left;">The same <code>.wasm</code> runs on any OS with a WASI runtime</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Seguridad</strong></td>
-<td style="text-align: left;">El código está aislado por defecto (sin acceso al sistema salvo que lo pidas)</td>
+<td style="text-align: left;"><strong>Security</strong></td>
+<td style="text-align: left;">Code is sandboxed by default (no system access unless requested)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Arranque rápido</strong></td>
-<td style="text-align: left;">Milisegundos, frente a segundos de un contenedor Docker</td>
+<td style="text-align: left;"><strong>Fast startup</strong></td>
+<td style="text-align: left;">Milliseconds, compared to seconds for a Docker container</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Tamaño</strong></td>
-<td style="text-align: left;">Un <code>.wasm</code> puede ser de pocos KB frente a MB de una imagen Docker</td>
+<td style="text-align: left;"><strong>Size</strong></td>
+<td style="text-align: left;">A <code>.wasm</code> can be a few KB vs. MB for a Docker image</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">WASI vs Docker</p>
-<p>WASI <strong>no</strong> sustituye a Docker en todos los casos. Es ideal para funciones pequeñas, plugins y edge computing. Para apps complejas con dependencias del sistema, Docker sigue siendo mejor.</p>
+<p class="admonition-title">WASI vs. Docker</p>
+<p>WASI <strong>does not</strong> replace Docker in every case. It's ideal for small functions, plugins, and edge computing. For complex apps with system dependencies, Docker is still better.</p>
 </div>
 <hr>
-<h2 id="casos-de-uso-reales_1">🎯 Casos de uso reales<a class="headerlink" href="#casos-de-uso-reales_1" title="Permanent link">¶</a></h2>
-<p>WebAssembly no es una promesa de futuro: ya se usa en producción.</p>
+<h2 id="real-world-use-cases_1">🎯 Real-World Use Cases<a class="headerlink" href="#real-world-use-cases_1" title="Permanent link">¶</a></h2>
+<p>WebAssembly isn't just a future promise—it's already used in production.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Empresa</th>
-<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Company</th>
+<th style="text-align: left;">Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Figma</strong></td>
-<td style="text-align: left;">Renderizado vectorial y edición colaborativa en tiempo real</td>
+<td style="text-align: left;">Vector rendering and real-time collaborative editing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Photoshop (web)</strong></td>
-<td style="text-align: left;">Procesamiento de imágenes en el navegador</td>
+<td style="text-align: left;">Browser-based image processing</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Google Earth</strong></td>
-<td style="text-align: left;">Visualización 3D del planeta</td>
+<td style="text-align: left;">3D planet visualization</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>AutoCAD (web)</strong></td>
-<td style="text-align: left;">Renderizado CAD en el navegador</td>
+<td style="text-align: left;">CAD rendering in the browser</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Unity / Unreal</strong></td>
-<td style="text-align: left;">Juegos 3D exportados a WebAssembly</td>
+<td style="text-align: left;">3D games exported to WebAssembly</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Cloudflare Workers</strong></td>
-<td style="text-align: left;">Ejecuta Wasm en el edge</td>
+<td style="text-align: left;">Runs Wasm at the edge</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>1Password</strong></td>
-<td style="text-align: left;">Criptografía y generación de contraseñas</td>
+<td style="text-align: left;">Cryptography and password generation</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Zoom (web)</strong></td>
-<td style="text-align: left;">Procesamiento de audio y vídeo</td>
+<td style="text-align: left;">Audio and video processing</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">¿Cuándo merece la pena Wasm?</p>
-<p>Cuando necesitas <strong>rendimiento cercano al nativo</strong> o <strong>reutilizar código</strong> de C/C++/Rust en la web. Para todo lo demás, JavaScript sigue siendo la mejor opción.</p>
+<p class="admonition-title">When is Wasm worth it?</p>
+<p>When you need <strong>near-native performance</strong> or to <strong>reuse C/C++/Rust code</strong> on the web. For everything else, JavaScript remains the best choice.</p>
 </div>
 <hr>
-<h2 id="integracion-con-javascript">🔗 Integración con JavaScript<a class="headerlink" href="#integracion-con-javascript" title="Permanent link">¶</a></h2>
-<p>WebAssembly <strong>no es un reemplazo</strong> de JavaScript: se complementan. La integración es bidireccional.</p>
-<h3 id="paso-de-strings-memoria-compartida">Paso de strings (memoria compartida)<a class="headerlink" href="#paso-de-strings-memoria-compartida" title="Permanent link">¶</a></h3>
-<p>Los strings son lo más complicado: Wasm no entiende de UTF-8, solo de bytes.</p>
+<h2 id="integrating-with-javascript_1">🔗 Integrating with JavaScript<a class="headerlink" href="#integrating-with-javascript_1" title="Permanent link">¶</a></h2>
+<p>WebAssembly <strong>is not a replacement</strong> for JavaScript: they complement each other. Integration is bidirectional.</p>
+<h3 id="passing-strings-shared-memory">Passing Strings (Shared Memory)<a class="headerlink" href="#passing-strings-shared-memory" title="Permanent link">¶</a></h3>
+<p>Strings are the trickiest part: Wasm doesn't understand UTF-8, only bytes.</p>
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
 
 <span class="cp">#[wasm_bindgen]</span>
@@ -5863,8 +5863,8 @@ cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">saludar</span><span class="p">(</span><span class="s2">"Urukais"</span><span class="p">));</span><span class="w">  </span><span class="c1">// "Hola, Urukais!"</span>
 </code></pre></div>
-<p><code>wasm-bindgen</code> se encarga de la conversión automáticamente. Sin él, tendrías que gestionar la memoria a mano.</p>
-<h3 id="paso-de-arrays">Paso de arrays<a class="headerlink" href="#paso-de-arrays" title="Permanent link">¶</a></h3>
+<p><code>wasm-bindgen</code> handles the conversion automatically. Without it, you'd have to manage memory manually.</p>
+<h3 id="passing-arrays">Passing Arrays<a class="headerlink" href="#passing-arrays" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#[wasm_bindgen]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">sumar_array</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">i32</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">numeros</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">sum</span><span class="p">()</span>
@@ -5873,7 +5873,7 @@ cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Int32Array</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">]);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar_array</span><span class="p">(</span><span class="nx">numeros</span><span class="p">));</span><span class="w">  </span><span class="c1">// 15</span>
 </code></pre></div>
-<h3 id="llamar-a-javascript-desde-rust">Llamar a JavaScript desde Rust<a class="headerlink" href="#llamar-a-javascript-desde-rust" title="Permanent link">¶</a></h3>
+<h3 id="calling-javascript-from-rust">Calling JavaScript from Rust<a class="headerlink" href="#calling-javascript-from-rust" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
 
 <span class="cp">#[wasm_bindgen]</span>
@@ -5889,76 +5889,76 @@ cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w
 <span class="p">}</span>
 </code></pre></div>
 <hr>
-<h2 id="rendimiento-cuando-wasm-gana-y-cuando-no">⚡ Rendimiento: cuándo Wasm gana (y cuándo no)<a class="headerlink" href="#rendimiento-cuando-wasm-gana-y-cuando-no" title="Permanent link">¶</a></h2>
-<p>Wasm no siempre es más rápido que JavaScript. Depende del tipo de tarea.</p>
+<h2 id="performance-when-wasm-wins-and-when-it-doesnt">⚡ Performance: When Wasm Wins (and When It Doesn't)<a class="headerlink" href="#performance-when-wasm-wins-and-when-it-doesnt" title="Permanent link">¶</a></h2>
+<p>Wasm isn't always faster than JavaScript. It depends on the task type.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Tarea</th>
-<th style="text-align: left;">Ganador</th>
-<th style="text-align: left;">Por qué</th>
+<th style="text-align: left;">Task</th>
+<th style="text-align: left;">Winner</th>
+<th style="text-align: left;">Why</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Bucles numéricos pesados</strong></td>
+<td style="text-align: left;"><strong>Heavy numeric loops</strong></td>
 <td style="text-align: left;">⚡ Wasm</td>
-<td style="text-align: left;">Sin GC, sin tipos dinámicos</td>
+<td style="text-align: left;">No GC, no dynamic types</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Criptografía</strong></td>
+<td style="text-align: left;"><strong>Cryptography</strong></td>
 <td style="text-align: left;">⚡ Wasm</td>
-<td style="text-align: left;">Operaciones con enteros grandes</td>
+<td style="text-align: left;">Large integer operations</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Procesamiento de imágenes</strong></td>
+<td style="text-align: left;"><strong>Image processing</strong></td>
 <td style="text-align: left;">⚡ Wasm</td>
-<td style="text-align: left;">SIMD, operaciones por píxel</td>
+<td style="text-align: left;">SIMD, per-pixel operations</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Manipulación del DOM</strong></td>
+<td style="text-align: left;"><strong>DOM manipulation</strong></td>
 <td style="text-align: left;">🟡 JavaScript</td>
-<td style="text-align: left;">Acceso directo a las APIs del navegador</td>
+<td style="text-align: left;">Direct access to browser APIs</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Lógica de negocio simple</strong></td>
+<td style="text-align: left;"><strong>Simple business logic</strong></td>
 <td style="text-align: left;">🟡 JavaScript</td>
-<td style="text-align: left;">Evitas la sobrecarga de puente JS↔Wasm</td>
+<td style="text-align: left;">Avoids JS↔Wasm bridge overhead</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Operaciones con strings</strong></td>
+<td style="text-align: left;"><strong>String operations</strong></td>
 <td style="text-align: left;">🟡 JavaScript</td>
-<td style="text-align: left;">Sin conversión de memoria</td>
+<td style="text-align: left;">No memory conversion</td>
 </tr>
 </tbody>
 </table>
-<h3 id="el-coste-del-puente-js-wasm">El coste del puente JS ↔ Wasm<a class="headerlink" href="#el-coste-del-puente-js-wasm" title="Permanent link">¶</a></h3>
-<p>Cada llamada de JS a Wasm (y viceversa) tiene un coste. Si haces miles de llamadas pequeñas, el coste supera la ganancia.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Mal: 10.000 llamadas al puente</span>
+<h3 id="the-cost-of-the-js-wasm-bridge">The Cost of the JS ↔ Wasm Bridge<a class="headerlink" href="#the-cost-of-the-js-wasm-bridge" title="Permanent link">¶</a></h3>
+<p>Every call from JS to Wasm (and back) has a cost. If you make thousands of tiny calls, the overhead exceeds the gain.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ Bad: 10,000 bridge calls</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">sumar</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// cada llamada cruza el puente</span>
+<span class="w">    </span><span class="nx">sumar</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// each call crosses the bridge</span>
 <span class="p">}</span>
 
-<span class="c1">// ✅ Bien: una sola llamada, el bucle dentro de Wasm</span>
+<span class="c1">// ✅ Good: single call, loop inside Wasm</span>
 <span class="nx">sumar_muchas_veces</span><span class="p">(</span><span class="mf">10000</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Mide antes de optimizar</p>
-<p>No asumas que Wasm es más rápido. <strong>Benchmarkea</strong> tu caso concreto. A veces JavaScript bien escrito es igual de rápido y mucho más sencillo.</p>
+<p class="admonition-title">Measure before optimizing</p>
+<p>Don't assume Wasm is faster. <strong>Benchmark</strong> your specific case. Sometimes well-written JavaScript is just as fast and much simpler.</p>
 </div>
 <hr>
-<h2 id="ejercicio-practico">🧪 Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">¶</a></h2>
+<h2 id="hands-on-exercise">🧪 Hands-On Exercise<a class="headerlink" href="#hands-on-exercise" title="Permanent link">¶</a></h2>
 <div class="admonition example">
-<p class="admonition-title">Fibonacci en Rust + WebAssembly</p>
-<p>Crea una función en Rust que calcule el n-ésimo número de Fibonacci, compílala a Wasm y llámala desde JavaScript.</p>
+<p class="admonition-title">Fibonacci in Rust + WebAssembly</p>
+<p>Create a function in Rust that computes the nth Fibonacci number, compile it to Wasm, and call it from JavaScript.</p>
 <ul>
-<li>Rust: función <code>fib(n: u32) -&gt; u64</code> recursiva.</li>
-<li>JavaScript: llamar a <code>fib(30)</code> y medir el tiempo.</li>
-<li>Comparar con la misma función en JavaScript puro.</li>
+<li>Rust: recursive <code>fib(n: u32) -&gt; u64</code> function.</li>
+<li>JavaScript: call <code>fib(30)</code> and measure elapsed time.</li>
+<li>Compare with the same function in plain JavaScript.</li>
 </ul>
 </div>
 <details class="success">
-<summary>Solución</summary>
+<summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="c1">// Rust</span>
 <span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
 
@@ -5982,35 +5982,35 @@ cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibJS</span><span class="p">(</span><span class="mf">30</span><span class="p">));</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s2">"js"</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>Resultado típico:</strong> Wasm es 2-5x más rápido en este tipo de bucles numéricos.</p>
+<p><strong>Typical result:</strong> Wasm is 2-5x faster in this type of numeric loop.</p>
 </details>
 <hr>
-<h2 id="quiz-de-repaso">🧠 Quiz de repaso<a class="headerlink" href="#quiz-de-repaso" title="Permanent link">¶</a></h2>
+<h2 id="review-quiz">🧠 Review Quiz<a class="headerlink" href="#review-quiz" title="Permanent link">¶</a></h2>
 <div class="admonition question">
-<p class="admonition-title">Comprueba lo aprendido</p>
+<p class="admonition-title">Check what you learned</p>
 </div>
 <details class="success">
-<summary>1. ¿Qué diferencia hay entre WebAssembly y JavaScript?</summary>
-<p>WebAssembly es un <strong>formato binario</strong> de bajo nivel que se ejecuta en la VM del navegador. JavaScript es un lenguaje de alto nivel. Wasm está pensado para rendimiento y reutilización de código (C/C++/Rust); JS para la lógica y el DOM.</p>
+<summary>1. What is the difference between WebAssembly and JavaScript?</summary>
+<p>WebAssembly is a low-level <strong>binary format</strong> that runs in the browser VM. JavaScript is a high-level language. Wasm is designed for performance and code reuse (C/C++/Rust); JS for logic and the DOM.</p>
 </details>
 <details class="success">
-<summary>2. ¿Para qué sirve <code>wasm-bindgen</code>?</summary>
-<p>Para generar el "pegamento" entre Rust y JavaScript: convierte strings, arrays y estructuras complejas automáticamente. Sin él, tendrías que gestionar la memoria lineal a mano.</p>
+<summary>2. What is <code>wasm-bindgen</code> for?</summary>
+<p>To generate the "glue" between Rust and JavaScript: it converts strings, arrays, and complex structures automatically. Without it, you'd have to manage linear memory by hand.</p>
 </details>
 <details class="success">
-<summary>3. ¿Qué es WASI?</summary>
-<p>La <strong>WebAssembly System Interface</strong>. Permite ejecutar Wasm fuera del navegador (servidores, CLIs, edge) con acceso controlado a archivos, red, etc. Es la base de los "contenedores Wasm".</p>
+<summary>3. What is WASI?</summary>
+<p>The <strong>WebAssembly System Interface</strong>. It lets you run Wasm outside the browser (servers, CLIs, edge) with controlled access to files, network, etc. It is the foundation of "Wasm containers".</p>
 </details>
 <details class="success">
-<summary>4. ¿Cuándo NO merece la pena usar Wasm?</summary>
-<p>Cuando la tarea es manipulación del DOM, lógica simple, o strings. El coste del puente JS↔Wasm supera la ganancia. También cuando el equipo no tiene experiencia en C/C++/Rust.</p>
+<summary>4. When is Wasm NOT worth using?</summary>
+<p>When the task is DOM manipulation, simple logic, or strings. The JS↔Wasm bridge overhead outweighs the gain. Also when the team lacks C/C++/Rust experience.</p>
 </details>
 <details class="success">
-<summary>5. ¿Qué caso de uso real usa WebAssembly en producción?</summary>
-<p>Figma (renderizado vectorial), Photoshop web, Google Earth, AutoCAD web, Unity/Unreal, Cloudflare Workers, 1Password, Zoom web. Todos usan Wasm para rendimiento o reutilización de código.</p>
+<summary>5. Which real-world use case uses WebAssembly in production?</summary>
+<p>Figma (vector rendering), Photoshop web, Google Earth, AutoCAD web, Unity/Unreal, Cloudflare Workers, 1Password, Zoom web. All use Wasm for performance or code reuse.</p>
 </details>
 <hr>
-<h2 id="recursos">📚 Recursos<a class="headerlink" href="#recursos" title="Permanent link">¶</a></h2>
+<h2 id="resources">📚 Resources<a class="headerlink" href="#resources" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/es/docs/WebAssembly">MDN — WebAssembly</a></li>
 <li><a href="https://rustwasm.github.io/wasm-pack/">Rust — wasm-pack</a></li>
@@ -6021,7 +6021,7 @@ cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w
 <li><a href="https://github.com/mbasso/awesome-wasm">Awesome Wasm — Lista de recursos</a></li>
 </ul>
 <hr>
-<p>➡️ Siguiente capítulo: <a href="../28-ia-frontend/">28 — IA en el frontend</a></p></div>
+<p>➡ Next chapter: <a href="../28-ia-frontend/">28 — IA en el frontend</a></p></div>
 
 
 
