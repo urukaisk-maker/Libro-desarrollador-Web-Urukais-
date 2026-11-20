@@ -20534,60 +20534,59 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
                     <section class='print-page md-section' id='section-3-4' heading-number='3.4'>
                         <h1>🟢 Bloque 1 (01–06)<a class='headerlink' href='#section-3-4' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="en-ejercicios-01-introduccion" heading-number="3.4.1"><div><h1 id="01-introduccion">01 — Introducción<a class="headerlink" href="#en-ejercicios-01-introduccion-01-introduccion" title="Permanent link">¶</a></h1>
+                    <section class="print-page" id="en-ejercicios-01-introduccion" heading-number="3.4.1"><div><h1 id="01-introduction">01 — Introduction<a class="headerlink" href="#en-ejercicios-01-introduccion-01-introduction" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Primer contacto con HTML, CSS y JavaScript. Vas a crear tu primera página interactiva.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>First contact with HTML, CSS, and JavaScript. You're going to build your first interactive page.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-01-introduccion-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-01-introduccion-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una página HTML que muestre:</p>
+<h2 id="en-ejercicios-01-introduccion-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-01-introduccion-goal" title="Permanent link">¶</a></h2>
+<p>Create an HTML page that displays:</p>
 <ol>
-<li>Un título con tu nombre.</li>
-<li>Un párrafo con una breve presentación.</li>
-<li>Un botón que, al pulsarlo, muestre un `alert` con un saludo.</li>
+<li>A heading with your name.</li>
+<li>A paragraph with a brief introduction.</li>
+<li>A button that shows an <code>alert</code> with a greeting when clicked.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-01-introduccion-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-01-introduccion-solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
+<h2 id="en-ejercicios-01-introduccion-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-01-introduccion-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My first page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hi, I'm Ana<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm learning web development with the Web Developer's Book.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"saludo"</span><span class="p">&gt;</span>Greet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
-
-
-  <meta charset="UTF-8">
-  <title>Mi primera página</title>
-
-
-  <h1>Hola, soy Ana</h1>
-  <p>Estoy aprendiendo desarrollo web con el Libro del Desarrollador Web.</p>
-  <button id="saludo">Saludar</button>
-
-  <script>
-    document.getElementById('saludo').addEventListener('click', () => {
-      alert('¡Hola desde mi primera página! 👋');
-    });
-  </script>
-
-
-<p>```</p>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'saludo'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello from my first page! 👋'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-01-introduccion-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-01-introduccion-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-01-introduccion-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-01-introduccion-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`&lt;!DOCTYPE html&gt;`: indica al navegador que es HTML5.</li>
-<li>`<h1>`: título principal (solo uno por página).</h1></li>
-<li>`<button id="saludo">`: el `id` permite seleccionarlo desde JS.</button></li>
-<li>`document.getElementById()`: selecciona un elemento por su id.</li>
-<li>`addEventListener('click', ...)`: escucha el evento de clic.</li>
+<li><code>&lt;!DOCTYPE html&gt;</code>: tells the browser this is HTML5.</li>
+<li><code>&lt;h1&gt;</code>: main heading (only one per page).</li>
+<li><code>&lt;button id="saludo"&gt;</code>: the <code>id</code> lets you select it from JS.</li>
+<li><code>document.getElementById()</code>: selects an element by its id.</li>
+<li><code>addEventListener('click', ...)</code>: listens for the click event.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-01-introduccion-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-01-introduccion-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-01-introduccion-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-01-introduccion-extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un segundo botón que cambie el color del título.</li>
-<li>[ ] Pide el nombre al usuario con `prompt()` y salúdalo.</li>
-<li>[ ] Añade una imagen con `<img>`.</li>
+<li>[ ] Add a second button that changes the heading color.</li>
+<li>[ ] Ask the user for their name with <code>prompt()</code> and greet them.</li>
+<li>[ ] Add an image with <code>&lt;img&gt;</code>.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios">← Volver al índice</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-02-html-basico">Ir al ejercicio 02 →</a></p></div></section><section class="print-page" id="en-ejercicios-02-html-basico" heading-number="3.4.2"><div><h1 id="02-basic-html">02 — Basic HTML<a class="headerlink" href="#en-ejercicios-02-html-basico-02-basic-html" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios">← Back to index</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-02-html-basico">Go to exercise 02 →</a></p></div></section><section class="print-page" id="en-ejercicios-02-html-basico" heading-number="3.4.2"><div><h1 id="02-basic-html">02 — Basic HTML<a class="headerlink" href="#en-ejercicios-02-html-basico-02-basic-html" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Solved exercise</p>
 <p>Practice the semantic structure of an HTML page.</p>
@@ -20713,51 +20712,51 @@ print('OK:', len(contenido.splitlines()), 'líneas escritas')
 <p><a class="md-button" href="#en-ejercicios-02-html-basico">← Exercise 02</a>
 <a class="md-button md-button--primary" href="#en-ejercicios-04-javascript">Go to exercise 04 →</a></p></div></section><section class="print-page" id="en-ejercicios-04-javascript" heading-number="3.4.4"><div><h1 id="04-javascript">04 — JavaScript<a class="headerlink" href="#en-ejercicios-04-javascript-04-javascript" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica variables, funciones y manipulación del DOM.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice variables, functions, and DOM manipulation.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-04-javascript-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-04-javascript-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un contador que:</p>
+<h2 id="en-ejercicios-04-javascript-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-04-javascript-goal" title="Permanent link">¶</a></h2>
+<p>Create a counter that:</p>
 <ol>
-<li>Empiece en 0.</li>
-<li>Se incremente al pulsar un botón.</li>
-<li>Muestre el número en pantalla.</li>
+<li>Starts at 0.</li>
+<li>Increments when clicking a button.</li>
+<li>Displays the number on screen.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-04-javascript-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-04-javascript-solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<h1 id="en-ejercicios-04-javascript-numero">0</h1>
-<p><button id="incrementar">+1</button></p>
-<script>
-  let contador = 0;
-  const numero = document.getElementById('numero');
-  const boton = document.getElementById('incrementar');
+<h2 id="en-ejercicios-04-javascript-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-04-javascript-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">"numero"</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"incrementar"</span><span class="p">&gt;</span>+1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
-  boton.addEventListener('click', () => {
-    contador++;
-    numero.textContent = contador;
-  });
-</script>
-<p>```</p>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'numero'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'incrementar'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">contador</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">numero</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contador</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-04-javascript-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-04-javascript-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-04-javascript-key-concepts">🧠 Key Concepts<a class="headerlink" href="#en-ejercicios-04-javascript-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`let`: variable reasignable.</li>
-<li>`document.getElementById()`: selecciona elemento por id.</li>
-<li>`addEventListener('click', ...)`: escucha el clic.</li>
-<li>`textContent`: cambia el texto del elemento.</li>
+<li><code>let</code>: reassignable variable.</li>
+<li><code>document.getElementById()</code>: selects an element by id.</li>
+<li><code>addEventListener('click', ...)</code>: listens for the click event.</li>
+<li><code>textContent</code>: updates the element's text content.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-04-javascript-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-04-javascript-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-04-javascript-extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#en-ejercicios-04-javascript-extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un botón de reset.</li>
-<li>[ ] Añade un botón de -1.</li>
-<li>[ ] Guarda el contador en `localStorage` para que persista.</li>
+<li>[ ] Add a reset button.</li>
+<li>[ ] Add a -1 button.</li>
+<li>[ ] Save the counter to <code>localStorage</code> so it persists.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-03-css-basico">← Ejercicio 03</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-05-responsive">Ir al ejercicio 05 →</a></p></div></section><section class="print-page" id="en-ejercicios-05-responsive" heading-number="3.4.5"><div><h1 id="05-responsive">05 — Responsive<a class="headerlink" href="#en-ejercicios-05-responsive-05-responsive" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-03-css-basico">← Exercise 03</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-05-responsive">Go to exercise 05 →</a></p></div></section><section class="print-page" id="en-ejercicios-05-responsive" heading-number="3.4.5"><div><h1 id="05-responsive">05 — Responsive<a class="headerlink" href="#en-ejercicios-05-responsive-05-responsive" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Practica el diseño responsive con media queries.</p>
@@ -27738,80 +27737,84 @@ Copy link
 </details>
 <hr>
 <p>➡️ Volver a la <a href="#en">portada</a>
----FIN---</p></div></section><section class="print-page" id="en-contribuir" heading-number="6.7"><div><h1 id="como-contribuir">🤝 Cómo contribuir<a class="headerlink" href="#en-contribuir-como-contribuir" title="Permanent link">¶</a></h1>
+---FIN---</p></div></section><section class="print-page" id="en-contribuir" heading-number="6.7"><div><h1 id="how-to-contribute">🤝 How to Contribute<a class="headerlink" href="#en-contribuir-how-to-contribute" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Este libro es de todos</p>
-<p>El <strong>Libro del Desarrollador Web</strong> es un proyecto open source. Eso significa que <strong>tú también puedes formar parte de él</strong>, aunque no sepas programar. Hay muchas formas de ayudar, y todas cuentan.</p>
+<p class="admonition-title">This book belongs to everyone</p>
+<p>The <strong>Web Developer's Book</strong> is an open-source project. That means <strong>you can be part of it too</strong>, even if you don't know how to code yet. There are many ways to help, and every single one counts.</p>
 </div>
 <hr>
-<h2 id="en-contribuir-por-que-contribuir">🌟 ¿Por qué contribuir?<a class="headerlink" href="#en-contribuir-por-que-contribuir" title="Permanent link">¶</a></h2>
-<p>Contribuir a un proyecto open source tiene muchos beneficios:</p>
+<h2 id="en-contribuir-why-contribute">🌟 Why Contribute?<a class="headerlink" href="#en-contribuir-why-contribute" title="Permanent link">¶</a></h2>
+<p>Contributing to an open-source project comes with plenty of benefits:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Beneficio</th>
-<th style="text-align: left;">Por qué importa</th>
+<th style="text-align: left;">Benefit</th>
+<th style="text-align: left;">Why It Matters</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Aprendes haciendo</strong></td>
-<td style="text-align: left;">Leer código ajeno y proponer mejoras es una de las mejores formas de crecer como desarrollador.</td>
+<td style="text-align: left;"><strong>Learn by doing</strong></td>
+<td style="text-align: left;">Reading other people's code and proposing improvements is one of the best ways to grow as a developer.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Añades experiencia a tu CV</strong></td>
-<td style="text-align: left;">Las contribuciones a proyectos open source son visibles públicamente y muy valoradas en entrevistas.</td>
+<td style="text-align: left;"><strong>Add experience to your résumé</strong></td>
+<td style="text-align: left;">Open-source contributions are publicly visible and highly valued in interviews.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Conoces gente</strong></td>
-<td style="text-align: left;">La comunidad de este proyecto está formada por personas que comparten tus intereses.</td>
+<td style="text-align: left;"><strong>Meet people</strong></td>
+<td style="text-align: left;">This project's community is made up of people who share your interests.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Mejoras el libro</strong></td>
-<td style="text-align: left;">Cada corrección, sugerencia o traducción beneficia a miles de lectores.</td>
+<td style="text-align: left;"><strong>Improve the book</strong></td>
+<td style="text-align: left;">Every fix, suggestion, or translation helps thousands of readers.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Apareces en los agradecimientos</strong></td>
-<td style="text-align: left;">Todas las personas que contribuyen aparecen en la página de <a href="#en-agradecimientos">Agradecimientos</a>.</td>
+<td style="text-align: left;"><strong>Get credited in acknowledgments</strong></td>
+<td style="text-align: left;">Everyone who contributes is listed on the <a href="#en-agradecimientos">Acknowledgments</a> page.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition tip">
-<p class="admonition-title">No hace falta ser experto</p>
-<p>Muchas de las contribuciones más valiosas son de personas que <strong>están aprendiendo</strong>. Un principiante detecta fallos de claridad que un experto pasa por alto.</p>
+<p class="admonition-title">You don't need to be an expert</p>
+<p>Many of the most valuable contributions come from people who <strong>are actively learning</strong>. A beginner spots clarity gaps that an expert easily overlooks.</p>
 </div>
 <hr>
-<h2 id="en-contribuir-formas-de-contribuir">🎯 Formas de contribuir<a class="headerlink" href="#en-contribuir-formas-de-contribuir" title="Permanent link">¶</a></h2>
-<h3 id="en-contribuir-1-reportar-un-error">1. Reportar un error 🐛<a class="headerlink" href="#en-contribuir-1-reportar-un-error" title="Permanent link">¶</a></h3>
-<p>Si encuentras un enlace roto, una errata, un código que no funciona o una explicación confusa:</p>
+<h2 id="en-contribuir-ways-to-contribute">🎯 Ways to Contribute<a class="headerlink" href="#en-contribuir-ways-to-contribute" title="Permanent link">¶</a></h2>
+<h3 id="en-contribuir-1-report-a-bug">1. Report a Bug 🐛<a class="headerlink" href="#en-contribuir-1-report-a-bug" title="Permanent link">¶</a></h3>
+<p>If you spot a broken link, a typo, code that doesn't work, or a confusing explanation:</p>
 <ol>
-<li><strong>Busca primero</strong> si ya existe un issue abierto:
-   <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues">Issues del proyecto</a></li>
-<li>Si no existe, <strong>abre uno nuevo</strong>:
-   <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">Nuevo issue</a></li>
-<li>Rellena la plantilla con:</li>
-<li><strong>Qué esperabas</strong> que pasara</li>
-<li><strong>Qué pasó realmente</strong></li>
-<li><strong>Cómo reproducirlo</strong> (captura, URL, código…)</li>
-<li><strong>Tu entorno</strong> (navegador, sistema operativo…)</li>
+<li><strong>Search first</strong> to see if an issue is already open:
+   <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues">Project Issues</a></li>
+<li>If not, <strong>open a new one</strong>:
+   <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new">New Issue</a></li>
+<li>Fill out the template with:</li>
+<li><strong>Expected behavior</strong></li>
+<li><strong>Actual behavior</strong></li>
+<li><strong>Steps to reproduce</strong> (screenshot, URL, code…)</li>
+<li><strong>Your environment</strong> (browser, operating system…)</li>
 </ol>
 <div class="admonition example">
-<p class="admonition-title">Plantilla de issue para errores</p>
-<p>```markdown
-<strong>Descripción</strong>
-Al copiar el código del capítulo 03, la página no muestra el color azul esperado.</p>
-<p><strong>Cómo reproducir</strong>
-1. Ir a <code>https://libro.urukais.com/capitulos/03-css-basico/</code>
-2. Copiar el ejemplo del bloque "Colors"
-3. Pegar en un archivo HTML
-4. Abrir en el navegador</p>
-<p><strong>Esperado</strong>
-El texto debería ser azul (<code>#00bcd4</code>).</p>
-<p><strong>Real</strong>
-El texto aparece negro.</p>
-<p><strong>Entorno</strong>
-- Navegador: Firefox 121
-- Sistema: Garuda Linux</p>
+<p class="admonition-title">Bug issue template</p>
+<div class="highlight"><pre><span></span><code><span class="gs">**Description**</span>
+When copying the code from Chapter 03, the page doesn't show the expected blue color.
+
+<span class="gs">**How to reproduce**</span>
+<span class="k">1.</span> Go to <span class="sb">`[https://libro.urukais.com/capitulos/03-css-basico/](https://libro.urukais.com/capitulos/03-css-basico/)`</span>
+<span class="k">2.</span> Copy the example from the "Colors" block
+<span class="k">3.</span> Paste it into an HTML file
+<span class="k">4.</span> Open it in the browser
+
+<span class="gs">**Expected**</span>
+The text should be blue (<span class="sb">`#00bcd4`</span>).
+
+<span class="gs">**Actual**</span>
+The text renders in black.
+
+<span class="gs">**Environment**</span>
+<span class="k">-</span><span class="w"> </span>Browser: Firefox 121
+<span class="k">-</span><span class="w"> </span>OS: Garuda Linux
+</code></pre></div>
 </div></div></section><section class="print-page" id="en-apoya" heading-number="6.8"><div><h1 id="apoya-el-proyecto">❤️ Apoya el Proyecto<a class="headerlink" href="#en-apoya-apoya-el-proyecto" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">El libro es gratis. Siempre lo será.</p>

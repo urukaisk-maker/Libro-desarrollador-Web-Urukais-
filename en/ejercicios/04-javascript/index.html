@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 04: 04 — JavaScript. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 04: 04 — JavaScript. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 04: 04 — JavaScript. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 04: 04 — JavaScript. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/04-javascript/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 04 — JavaScript - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 04: 04 — JavaScript. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 04: 04 — JavaScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/04-javascript.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/04-javascript/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 04 — JavaScript - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 04: 04 — JavaScript. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 04: 04 — JavaScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/04-javascript.png" />
 </head>
   
@@ -2617,10 +2617,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2628,10 +2628,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -2639,10 +2639,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -2650,10 +2650,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5056,51 +5056,51 @@
 
 <div><h1 id="04-javascript">04 — JavaScript<a class="headerlink" href="#04-javascript" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica variables, funciones y manipulación del DOM.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice variables, functions, and DOM manipulation.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un contador que:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a counter that:</p>
 <ol>
-<li>Empiece en 0.</li>
-<li>Se incremente al pulsar un botón.</li>
-<li>Muestre el número en pantalla.</li>
+<li>Starts at 0.</li>
+<li>Increments when clicking a button.</li>
+<li>Displays the number on screen.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<h1 id="numero">0</h1>
-<p><button id="incrementar">+1</button></p>
-<script>
-  let contador = 0;
-  const numero = document.getElementById('numero');
-  const boton = document.getElementById('incrementar');
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">"numero"</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"incrementar"</span><span class="p">&gt;</span>+1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
-  boton.addEventListener('click', () => {
-    contador++;
-    numero.textContent = contador;
-  });
-</script>
-<p>```</p>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'numero'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'incrementar'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">contador</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">numero</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contador</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`let`: variable reasignable.</li>
-<li>`document.getElementById()`: selecciona elemento por id.</li>
-<li>`addEventListener('click', ...)`: escucha el clic.</li>
-<li>`textContent`: cambia el texto del elemento.</li>
+<li><code>let</code>: reassignable variable.</li>
+<li><code>document.getElementById()</code>: selects an element by id.</li>
+<li><code>addEventListener('click', ...)</code>: listens for the click event.</li>
+<li><code>textContent</code>: updates the element's text content.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un botón de reset.</li>
-<li>[ ] Añade un botón de -1.</li>
-<li>[ ] Guarda el contador en `localStorage` para que persista.</li>
+<li>[ ] Add a reset button.</li>
+<li>[ ] Add a -1 button.</li>
+<li>[ ] Save the counter to <code>localStorage</code> so it persists.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../03-css-basico/">← Ejercicio 03</a>
-<a class="md-button md-button--primary" href="../05-responsive/">Ir al ejercicio 05 →</a></p></div>
+<p><a class="md-button" href="../03-css-basico/">← Exercise 03</a>
+<a class="md-button md-button--primary" href="../05-responsive/">Go to exercise 05 →</a></p></div>
 
 
 

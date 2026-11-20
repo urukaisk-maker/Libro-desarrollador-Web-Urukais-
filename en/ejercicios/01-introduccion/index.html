@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 01: 01 — Introducción. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 01: 01 — Introduction. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 01: 01 — Introducción. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 01: 01 — Introduction. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/01-introduccion/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 01 — Introducción - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 01: 01 — Introducción. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 01: 01 — Introduction. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/01-introduccion.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/01-introduccion/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 01 — Introducción - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 01: 01 — Introducción. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 01: 01 — Introduction. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/01-introduccion.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-introduccion" class="md-skip">
+        <a href="#01-introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -2533,10 +2533,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2544,10 +2544,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -2555,10 +2555,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -2566,10 +2566,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5054,60 +5054,59 @@
   
 
 
-<div><h1 id="01-introduccion">01 — Introducción<a class="headerlink" href="#01-introduccion" title="Permanent link">¶</a></h1>
+<div><h1 id="01-introduction">01 — Introduction<a class="headerlink" href="#01-introduction" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Primer contacto con HTML, CSS y JavaScript. Vas a crear tu primera página interactiva.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>First contact with HTML, CSS, and JavaScript. You're going to build your first interactive page.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una página HTML que muestre:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create an HTML page that displays:</p>
 <ol>
-<li>Un título con tu nombre.</li>
-<li>Un párrafo con una breve presentación.</li>
-<li>Un botón que, al pulsarlo, muestre un `alert` con un saludo.</li>
+<li>A heading with your name.</li>
+<li>A paragraph with a brief introduction.</li>
+<li>A button that shows an <code>alert</code> with a greeting when clicked.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My first page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hi, I'm Ana<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm learning web development with the Web Developer's Book.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"saludo"</span><span class="p">&gt;</span>Greet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
-
-
-  <meta charset="UTF-8">
-  <title>Mi primera página</title>
-
-
-  <h1>Hola, soy Ana</h1>
-  <p>Estoy aprendiendo desarrollo web con el Libro del Desarrollador Web.</p>
-  <button id="saludo">Saludar</button>
-
-  <script>
-    document.getElementById('saludo').addEventListener('click', () => {
-      alert('¡Hola desde mi primera página! 👋');
-    });
-  </script>
-
-
-<p>```</p>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'saludo'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello from my first page! 👋'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`&lt;!DOCTYPE html&gt;`: indica al navegador que es HTML5.</li>
-<li>`<h1>`: título principal (solo uno por página).</h1></li>
-<li>`<button id="saludo">`: el `id` permite seleccionarlo desde JS.</button></li>
-<li>`document.getElementById()`: selecciona un elemento por su id.</li>
-<li>`addEventListener('click', ...)`: escucha el evento de clic.</li>
+<li><code>&lt;!DOCTYPE html&gt;</code>: tells the browser this is HTML5.</li>
+<li><code>&lt;h1&gt;</code>: main heading (only one per page).</li>
+<li><code>&lt;button id="saludo"&gt;</code>: the <code>id</code> lets you select it from JS.</li>
+<li><code>document.getElementById()</code>: selects an element by its id.</li>
+<li><code>addEventListener('click', ...)</code>: listens for the click event.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un segundo botón que cambie el color del título.</li>
-<li>[ ] Pide el nombre al usuario con `prompt()` y salúdalo.</li>
-<li>[ ] Añade una imagen con `<img>`.</li>
+<li>[ ] Add a second button that changes the heading color.</li>
+<li>[ ] Ask the user for their name with <code>prompt()</code> and greet them.</li>
+<li>[ ] Add an image with <code>&lt;img&gt;</code>.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../">← Volver al índice</a>
-<a class="md-button md-button--primary" href="../02-html-basico/">Ir al ejercicio 02 →</a></p></div>
+<p><a class="md-button" href="../">← Back to index</a>
+<a class="md-button md-button--primary" href="../02-html-basico/">Go to exercise 02 →</a></p></div>
 
 
 
