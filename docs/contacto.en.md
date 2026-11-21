@@ -145,8 +145,8 @@ Many common questions are already answered on the [FAQ](faq.md) page. Before sen
 
 - [Is it free? How is it funded?](faq.md#about-the-project)
 - [Who is the book for?](faq.md#about-the-content)
-- [How can I contribute?](faq.md#contributing)
-- [How do I get the certificate?](faq.md#achievements-and-certificate)
+- [How can I contribute?](faq.md#about-contributing)
+- [How do I get the certificate?](faq.md#about-achievements-and-the-certificate)
 
 If your question is not in the FAQ, go ahead and write.
 
