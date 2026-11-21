@@ -21831,57 +21831,56 @@ const ASSETS = ['/', '/index.html', '/styles.css'];</p>
 <p><a class="md-button" href="#en-ejercicios-21-web-components">← Ejercicio 21</a>
 <a class="md-button md-button--primary" href="#en-ejercicios-23-websockets">Ir al ejercicio 23 →</a></p></div></section><section class="print-page" id="en-ejercicios-23-websockets" heading-number="3.8.3"><div><h1 id="23-websockets">23 — WebSockets<a class="headerlink" href="#en-ejercicios-23-websockets-23-websockets" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Crea un chat básico con WebSockets.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Create a basic chat with WebSockets.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-23-websockets-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-23-websockets-objetivo" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-23-websockets-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-23-websockets-goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Cliente que se conecta a `wss://echo.websocket.org`.</li>
-<li>Envía un mensaje al pulsar un botón.</li>
-<li>Muestra los mensajes recibidos.</li>
+<li>Client that connects to <code>wss://echo.websocket.org</code>.</li>
+<li>Sends a message when clicking a button.</li>
+<li>Displays received messages.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-23-websockets-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-23-websockets-solucion" title="Permanent link">¶</a></h2>
-<p>```html
-<input id="en-ejercicios-23-websockets-mensaje" placeholder="Escribe un mensaje">
-<button id="enviar">Enviar</button></p>
-<ul id="mensajes"></ul>
+<h2 id="en-ejercicios-23-websockets-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-23-websockets-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Type a message"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"enviar"</span><span class="p">&gt;</span>Send<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensajes"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-<script>
-  const ws = new WebSocket('wss://echo.websocket.org');
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://echo.websocket.org'</span><span class="p">);</span>
 
-  ws.addEventListener('open', () => console.log('Conectado'));
-  ws.addEventListener('message', (e) => {
-    const li = document.createElement('li');
-    li.textContent = e.data;
-    document.getElementById('mensajes').appendChild(li);
-  });
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">));</span>
+<span class="w">  </span><span class="nx">ws</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'li'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">li</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mensajes'</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 
-  document.getElementById('enviar').addEventListener('click', () => {
-    const texto = document.getElementById('mensaje').value;
-    if (texto) ws.send(texto);
-  });
-</script>
-<p>```</p>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'enviar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mensaje'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">texto</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-23-websockets-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-23-websockets-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-23-websockets-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-23-websockets-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`new WebSocket(url)`: abre conexión.</li>
-<li>`ws.send()`: envía mensaje.</li>
-<li>`message`: evento al recibir.</li>
-<li>`wss://` es la versión segura.</li>
+<li><code>new WebSocket(url)</code>: opens the connection.</li>
+<li><code>ws.send()</code>: sends a message.</li>
+<li><code>message</code>: event fired on incoming message.</li>
+<li><code>wss://</code> is the secure version.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-23-websockets-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-23-websockets-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-23-websockets-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-23-websockets-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade reconexión automática con backoff.</li>
-<li>[ ] Implementa un servidor WebSocket con `ws` en Node.js.</li>
-<li>[ ] Añade salas (rooms).</li>
+<li>[ ] Add automatic reconnection with backoff.</li>
+<li>[ ] Implement a WebSocket server with <code>ws</code> in Node.js.</li>
+<li>[ ] Add rooms.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-22-pwa">← Ejercicio 22</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-24-animaciones">Ir al ejercicio 24 →</a></p></div></section><section class="print-page" id="en-ejercicios-24-animaciones" heading-number="3.8.4"><div><h1 id="24-animaciones">24 — Animaciones<a class="headerlink" href="#en-ejercicios-24-animaciones-24-animaciones" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-22-pwa">← Exercise 22</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-24-animaciones">Go to exercise 24 →</a></p></div></section><section class="print-page" id="en-ejercicios-24-animaciones" heading-number="3.8.4"><div><h1 id="24-animaciones">24 — Animaciones<a class="headerlink" href="#en-ejercicios-24-animaciones-24-animaciones" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Anima un elemento con transform y opacity.</p>
