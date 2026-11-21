@@ -51,6 +51,12 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+??? tip "Pista 1: estado y persistencia"
+    Lee el valor inicial al cargar la página y guárdalo cada vez que cambie el estado.
+
+??? tip "Pista 2: límites y eventos"
+    Comprueba la condición antes de modificar el valor y actualiza el DOM en el mismo flujo.
+
 ??? success "Solución"
     \`\`\`javascript
     let count = Number(localStorage.getItem('reto3') || 0);

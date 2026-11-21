@@ -51,6 +51,12 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+??? tip "Hint 1: state and persistence"
+    Read the initial value on load and save it whenever the state changes.
+
+??? tip "Hint 2: bounds and events"
+    Check the condition before updating the value and keep the DOM in sync.
+
 ??? success "Solution"
     ```javascript
     let count = Number(localStorage.getItem('reto3') || 0);

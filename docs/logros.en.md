@@ -1,7 +1,7 @@
 # 🏆 My Achievements
 
-!!! quote "Learning is also a game"
-    Every chapter you complete, every exercise you solve, and every challenge you beat unlocks an achievement. It is a way to **visualize your progress** and stay motivated. Everything is stored locally in your browser—no accounts or servers required.
+!!! quote "Learning can be a game too"
+    Every chapter you complete, every exercise you solve, and every challenge you beat unlocks an achievement. It is a great way to **visualize your progress** and stay motivated. Everything is stored locally in your browser—no accounts or servers required.
 
 ---
 
@@ -75,7 +75,7 @@
 
 </div>
 
-<!-- Hidden legacy bar (used by logros.js to calculate %) -->
+<!-- Hidden legacy bar (used by logros.js to compute %) -->
 <div class="logros-progreso" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
 <div class="logros-progreso__bar">
 <div class="logros-progreso__fill" id="logros-progreso-fill" style="width: 0%"></div>
@@ -91,12 +91,12 @@
 ## 🎯 How it works
 
 1. **Complete** a chapter, exercise, or challenge.
-2. **Check** the completion box at the bottom of the page (or visit the corresponding section).
+2. **Check** the box at the end of the page (or visit the relevant section).
 3. **Unlock** the matching achievement.
 4. **Share** your achievements with the community.
 
 !!! tip "No accounts, no servers"
-    Everything is stored in your browser via `localStorage`. Nothing is sent to any server. If you clear your browser data, you will lose your progress.
+    Everything is saved in your browser via `localStorage`. Nothing is sent to any server. If you clear your browser data, your progress will be lost.
 
 ---
 
@@ -130,7 +130,7 @@
 <div class="logro-card__icon">🟢</div>
 <div class="logro-card__info">
 <h3>Beginner Level</h3>
-<p>Complete all 6 chapters of the beginner level</p>
+<p>Complete all 6 chapters in the beginner level</p>
 <div class="logro-card__recompensa">+50 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="principiante-completo">🔒</div>
@@ -166,7 +166,7 @@
 <div class="logro-card__icon">🟡</div>
 <div class="logro-card__info">
 <h3>Intermediate Level</h3>
-<p>Complete all 4 chapters of the intermediate level</p>
+<p>Complete all 4 chapters in the intermediate level</p>
 <div class="logro-card__recompensa">+40 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="intermedio-completo">🔒</div>
@@ -202,7 +202,7 @@
 <div class="logro-card__icon">🟠</div>
 <div class="logro-card__info">
 <h3>Advanced Level</h3>
-<p>Complete all 8 chapters of the advanced level</p>
+<p>Complete all 8 chapters in the advanced level</p>
 <div class="logro-card__recompensa">+80 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="avanzado-completo">🔒</div>
@@ -228,7 +228,7 @@
 <div class="logro-card__icon">⚙</div>
 <div class="logro-card__info">
 <h3>DevOps</h3>
-<p>Complete chapter 20 — DevOps for frontend</p>
+<p>Complete chapter 20 — Frontend DevOps</p>
 <div class="logro-card__recompensa">+25 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="devops">🔒</div>
@@ -274,7 +274,7 @@
 <div class="logro-card__icon">🏅</div>
 <div class="logro-card__info">
 <h3>Expert Level</h3>
-<p>Complete all 5 chapters of the expert level</p>
+<p>Complete all 5 chapters in the expert level</p>
 <div class="logro-card__recompensa">+100 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="experto-completo">🔒</div>
@@ -320,7 +320,7 @@
 <div class="logro-card__icon">🔵</div>
 <div class="logro-card__info">
 <h3>Elite Level</h3>
-<p>Complete all 5 chapters of the elite level</p>
+<p>Complete all 5 chapters in the elite level</p>
 <div class="logro-card__recompensa">+100 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="elite-completo">🔒</div>
@@ -328,7 +328,7 @@
 
 </div>
 
-### 🚀 Cutting Edge
+### 🚀 Vanguard
 
 <div class="logros-grid">
 
@@ -365,8 +365,8 @@
 <div class="logro-card logro-card--locked" data-logro="vanguardia-completo">
 <div class="logro-card__icon">🚀</div>
 <div class="logro-card__info">
-<h3>Cutting Edge Level</h3>
-<p>Complete all 8 chapters of the cutting-edge level</p>
+<h3>Vanguard Level</h3>
+<p>Complete all 8 chapters in the vanguard level</p>
 <div class="logro-card__recompensa">+150 XP</div>
 </div>
 <div class="logro-card__estado" data-estado="vanguardia-completo">🔒</div>
@@ -380,9 +380,9 @@
 
 <div class="hall-of-fame">
 
-### Have you completed the book?
+### Finished the book?
 
-If you have made it to the end, join the **Hall of Fame** and share your achievement with the community.
+If you made it to the end, join the **Hall of Fame** and share your achievement with the community.
 
 [🏅 View Hall of Fame](hall-of-fame.md){ .md-button .md-button--primary }
 
@@ -399,21 +399,21 @@ If you have made it to the end, join the **Hall of Fame** and share your achieve
 
 </div>
 
-!!! warning "Be careful when resetting"
+!!! warning "Careful when resetting"
     The "Reset all progress" button deletes **all** of your achievements and `localStorage` data. This cannot be undone.
 
 ---
 
 ## ❓ Frequently asked questions
 
-??? question "Where is my progress saved?"
-    In your browser, in `localStorage`, under the `uru-*` keys. Nothing is sent to any server. If you clear your browser data, you will lose your progress.
+??? question "Where is my progress stored?"
+    In your browser, in `localStorage`, under the `uru-*` keys. Nothing is sent to any server. If you clear your browser data, your progress will be lost.
 
 ??? question "Can I sync across devices?"
-    Not for now—it is stored locally. If you want, you can back it up manually by exporting `localStorage` (F12 → Application → Local Storage).
+    Not yet—it is local for now. If you want a backup, you can export `localStorage` manually (F12 → Application → Local Storage).
 
 ??? question "Do achievements expire?"
     No. They stay saved indefinitely until you delete them.
 
 ??? question "How is the percentage calculated?"
-    Based on the number of unlocked achievements out of the total (23 achievements). The circular ring updates automatically.
+    Based on unlocked achievements out of the total (23 achievements). The circular ring updates automatically.

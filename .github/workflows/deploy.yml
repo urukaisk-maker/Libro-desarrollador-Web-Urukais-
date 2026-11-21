@@ -34,5 +34,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Check ES/EN parity
+        run: |
+          python3 - <<'PYEOF'
+          from pathlib import Path
+
+          docs = Path("docs")
+          es = {
+              p.relative_to(docs).with_suffix("")
+              for p in docs.rglob("*.md")
+              if not p.name.endswith(".en.md")
+          }
+          en = {
+              Path(p.as_posix()[:-6]).relative_to(docs)
+              for p in docs.rglob("*.en.md")
+          }
+
+          missing = sorted(es - en)
+          orphans = sorted(en - es)
+          assert not missing, f"Missing .en.md for: {missing}"
+          assert not orphans, f"Orphan .en.md without base .md: {orphans}"
+          print(f"Parity OK: {len(es)} ES/EN pairs.")
+          PYEOF
+
+      - name: Build site strictly
+        run: mkdocs build --strict
+
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --strict --force
