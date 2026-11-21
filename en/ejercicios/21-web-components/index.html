@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 21: 21 — Web Components. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 21: 21 — Web Components. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 21: 21 — Web Components. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 21: 21 — Web Components. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/21-web-components/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 21 — Web Components - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 21: 21 — Web Components. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 21: 21 — Web Components. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/21-web-components.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/21-web-components/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 21 — Web Components - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 21: 21 — Web Components. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 21: 21 — Web Components. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/21-web-components.png" />
 </head>
   
@@ -3350,10 +3350,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3361,10 +3361,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3372,10 +3372,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key concepts
       
     </span>
   </a>
@@ -3383,10 +3383,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/21-web-components.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/21-web-components.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,63 +5066,62 @@
 
 <div><h1 id="21-web-components">21 — Web Components<a class="headerlink" href="#21-web-components" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Crea un componente nativo con Custom Elements y Shadow DOM.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Create a native component with Custom Elements and Shadow DOM.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un componente `<mi-tarjeta>` que:</mi-tarjeta></p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a <code>&lt;mi-tarjeta&gt;</code> component that:</p>
 <ol>
-<li>Use Shadow DOM para encapsular estilos.</li>
-<li>Reciba un atributo `titulo`.</li>
-<li>Use un `<slot>` para el contenido.</slot></li>
+<li>Uses Shadow DOM to encapsulate styles.</li>
+<li>Receives a <code>titulo</code> attribute.</li>
+<li>Uses a <code>&lt;slot&gt;</code> for content.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```javascript
-class MiTarjeta extends HTMLElement {
-  constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: 'open' });
-    shadow.innerHTML = `
-      <style>
-        .card {
-          background: #6a5acd;
-          color: white;
-          padding: 1rem;
-          border-radius: 8px;
-        }
-      </style>
-      </p><div class="card">
-        <h3>${this.getAttribute('titulo') || 'Tarjeta'}</h3>
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-<p>customElements.define('mi-tarjeta', MiTarjeta);
-```</p>
-<p>```html
-<mi-tarjeta titulo="Hola">Contenido del slot</mi-tarjeta>
-```</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HTMLElement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">shadow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">'open'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">shadow</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">      &lt;style&gt;</span>
+<span class="sb">        .card {</span>
+<span class="sb">          background: #6a5acd;</span>
+<span class="sb">          color: white;</span>
+<span class="sb">          padding: 1rem;</span>
+<span class="sb">          border-radius: 8px;</span>
+<span class="sb">        }</span>
+<span class="sb">      &lt;/style&gt;</span>
+<span class="sb">      &lt;div class="card"&gt;</span>
+<span class="sb">        &lt;h3&gt;</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'titulo'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'Card'</span><span class="si">}</span><span class="sb">&lt;/h3&gt;</span>
+<span class="sb">        &lt;slot&gt;&lt;/slot&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+<span class="sb">    `</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'mi-tarjeta'</span><span class="p">,</span><span class="w"> </span><span class="nx">MiTarjeta</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">mi-tarjeta</span> <span class="na">titulo</span><span class="o">=</span><span class="s">"Hello"</span><span class="p">&gt;</span>Slot content<span class="p">&lt;/</span><span class="nt">mi-tarjeta</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`attachShadow({ mode: 'open' })`: crea el Shadow DOM.</li>
-<li>`<slot>`: inyecta contenido externo.</slot></li>
-<li>`customElements.define()`: registra el componente.</li>
-<li>Los estilos del Shadow DOM no se filtran fuera.</li>
+<li><code>attachShadow({ mode: 'open' })</code>: creates the Shadow DOM.</li>
+<li><code>&lt;slot&gt;</code>: injects external content.</li>
+<li><code>customElements.define()</code>: registers the component.</li>
+<li>Shadow DOM styles do not leak outside.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un atributo observado con `observedAttributes`.</li>
-<li>[ ] Añade un evento personalizado al hacer clic.</li>
-<li>[ ] Usa un `<template>` para el markup.</template></li>
+<li>[ ] Add an observed attribute with <code>observedAttributes</code>.</li>
+<li>[ ] Add a custom event on click.</li>
+<li>[ ] Use a <code>&lt;template&gt;</code> for the markup.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../20-devops/">← Ejercicio 20</a>
-<a class="md-button md-button--primary" href="../22-pwa/">Ir al ejercicio 22 →</a></p></div>
+<p><a class="md-button" href="../20-devops/">← Exercise 20</a>
+<a class="md-button md-button--primary" href="../22-pwa/">Go to exercise 22 →</a></p></div>
 
 
 

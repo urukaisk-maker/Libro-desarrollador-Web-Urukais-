@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 15: 15 — TypeScript. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 15: 15 — TypeScript. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 15: 15 — TypeScript. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 15: 15 — TypeScript. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/15-typescript/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 15 — TypeScript - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 15: 15 — TypeScript. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 15: 15 — TypeScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/15-typescript.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/15-typescript/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 15 — TypeScript - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 15: 15 — TypeScript. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 15: 15 — TypeScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/15-typescript.png" />
 </head>
   
@@ -3056,10 +3056,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3067,10 +3067,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3078,10 +3078,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -3089,10 +3089,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/15-typescript.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/15-typescript.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,47 +5066,48 @@
 
 <div><h1 id="15-typescript">15 — TypeScript<a class="headerlink" href="#15-typescript" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica tipos, interfaces y genéricos.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice types, interfaces, and generics.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una función `identidad<t>` que:</t></p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a function <code>identidad&lt;T&gt;</code> that:</p>
 <ol>
-<li>Reciba cualquier tipo.</li>
-<li>Devuelva el mismo tipo.</li>
-<li>Use genéricos.</li>
+<li>Accepts any type.</li>
+<li>Returns the same type.</li>
+<li>Uses generics.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```typescript
-function identidad<t>(valor: T): T {
-  return valor;
-}</t></p>
-<p>// Uso
-const texto = identidad<string>("hola");
-const numero = identidad<number>(42);
-const objeto = identidad({ nombre: "Ana", edad: 30 });</number></string></p>
-<p>console.log(texto.toUpperCase()); // "HOLA"
-console.log(numero.toFixed(2));   // "42.00"
-```</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">identidad</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">valor</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">identidad</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">"hola"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">identidad</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">objeto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">identidad</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span><span class="w"> </span><span class="c1">// "HOLA"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numero</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">));</span><span class="w">   </span><span class="c1">// "42.00"</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`<t>`: parámetro de tipo genérico.</t></li>
-<li>TypeScript infiere el tipo automáticamente en muchos casos.</li>
-<li>Los genéricos permiten reutilizar funciones sin perder tipado.</li>
+<li><code>&lt;T&gt;</code>: generic type parameter.</li>
+<li>TypeScript infers the type automatically in many cases.</li>
+<li>Generics let you reuse functions without losing type safety.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Crea un tipo `Respuesta<t>` con `data` y `error`.</t></li>
-<li>[ ] Crea una función `primero<t>(arr: T[]): T | undefined`.</t></li>
-<li>[ ] Usa `Partial<usuario>` para hacer un tipo con todas las propiedades opcionales.</usuario></li>
+<li>[ ] Create a <code>Respuesta&lt;T&gt;</code> type with <code>data</code> and <code>error</code>.</li>
+<li>[ ] Create a function <code>primero&lt;T&gt;(arr: T[]): T | undefined</code>.</li>
+<li>[ ] Use <code>Partial&lt;Usuario&gt;</code> to create a type with all properties optional.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../14-accesibilidad/">← Ejercicio 14</a>
-<a class="md-button md-button--primary" href="../">Volver al índice</a></p></div>
+<p><a class="md-button" href="../14-accesibilidad/">← Exercise 14</a>
+<a class="md-button md-button--primary" href="../">Back to index</a></p></div>
 
 
 

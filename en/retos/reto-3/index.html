@@ -5073,6 +5073,14 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+<details class="tip">
+<summary>Hint 1: state and persistence</summary>
+<p>Read the initial value on load and save it whenever the state changes.</p>
+</details>
+<details class="tip">
+<summary>Hint 2: bounds and events</summary>
+<p>Check the condition before updating the value and keep the DOM in sync.</p>
+</details>
 <details class="success">
 <summary>Solution</summary>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>

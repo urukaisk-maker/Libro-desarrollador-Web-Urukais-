@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 12: 12 — JavaScript asíncrono. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 12: 12 — Asynchronous JavaScript. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 12: 12 — JavaScript asíncrono. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 12: 12 — Asynchronous JavaScript. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/12-javascript-asincrono/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 12 — JS asíncrono - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 12: 12 — JavaScript asíncrono. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 12: 12 — Asynchronous JavaScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/12-javascript-asincrono.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/12-javascript-asincrono/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 12 — JS asíncrono - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 12: 12 — JavaScript asíncrono. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 12: 12 — Asynchronous JavaScript. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/12-javascript-asincrono.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12-javascript-asincrono" class="md-skip">
+        <a href="#12-asynchronous-javascript" class="md-skip">
           Skip to content
         </a>
       
@@ -2972,10 +2972,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2983,10 +2983,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -2994,10 +2994,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -3005,10 +3005,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/12-javascript-asincrono.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/12-javascript-asincrono.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5064,59 +5064,59 @@
   
 
 
-<div><h1 id="12-javascript-asincrono">12 — JavaScript asíncrono<a class="headerlink" href="#12-javascript-asincrono" title="Permanent link">¶</a></h1>
+<div><h1 id="12-asynchronous-javascript">12 — Asynchronous JavaScript<a class="headerlink" href="#12-asynchronous-javascript" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica promesas, async/await y manejo de errores.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice promises, async/await, and error handling.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una función que:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a function that:</p>
 <ol>
-<li>Haga 2 peticiones en paralelo.</li>
-<li>Combine los resultados.</li>
-<li>Maneje errores de red.</li>
+<li>Makes 2 requests in parallel.</li>
+<li>Combines the results.</li>
+<li>Handles network errors.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```javascript
-async function cargarDatos() {
-  try {
-    const [usuarios, posts] = await Promise.all([
-      fetch('https://jsonplaceholder.typicode.com/users').then(r =&gt; r.json()),
-      fetch('https://jsonplaceholder.typicode.com/posts').then(r =&gt; r.json())
-    ]);</p>
-<div class="highlight"><pre><span></span><code>return {
-  usuarios: usuarios.length,
-  posts: posts.length,
-  ultimoPost: posts[posts.length - 1].title
-};
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">usuarios</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'[https://jsonplaceholder.typicode.com/users'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//jsonplaceholder.typicode.com/users').then(r) =&gt; r.json()),</span>
+<span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'[https://jsonplaceholder.typicode.com/posts'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="p">](</span><span class="nx">https</span><span class="o">:</span><span class="c1">//jsonplaceholder.typicode.com/posts').then(r) =&gt; r.json())</span>
+<span class="w">    </span><span class="p">]);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">usuarios</span><span class="o">:</span><span class="w"> </span><span class="nx">usuarios</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="nx">posts</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">ultimoPost</span><span class="o">:</span><span class="w"> </span><span class="nx">posts</span><span class="p">[</span><span class="nx">posts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">].</span><span class="nx">title</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">cargarDatos</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
 </code></pre></div>
-<p>} catch (err) {
-    console.error('Error:', err.message);
-    return null;
-  }
-}</p>
-<p>cargarDatos().then(data =&gt; console.log(data));
-```</p>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`Promise.all()`: espera a que todas las promesas se resuelvan.</li>
-<li>`async/await`: sintaxis más legible.</li>
-<li>`try/catch`: manejo de errores.</li>
-<li>Desestructuración de arrays.</li>
+<li><code>Promise.all()</code>: waits for all promises to resolve.</li>
+<li><code>async/await</code>: cleaner, more readable syntax.</li>
+<li><code>try/catch</code>: error handling.</li>
+<li>Array destructuring.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Usa `Promise.allSettled` para que un error no cancele todo.</li>
-<li>[ ] Añade un timeout con `Promise.race`.</li>
-<li>[ ] Muestra un estado de carga mientras se cargan los datos.</li>
+<li>[ ] Use <code>Promise.allSettled</code> so a single failure does not cancel everything.</li>
+<li>[ ] Add a timeout with <code>Promise.race</code>.</li>
+<li>[ ] Show a loading state while data is being fetched.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../11-css-moderno/">← Ejercicio 11</a>
-<a class="md-button md-button--primary" href="../13-modulos-bundlers/">Ir al ejercicio 13 →</a></p></div>
+<p><a class="md-button" href="../11-css-moderno/">← Exercise 11</a>
+<a class="md-button md-button--primary" href="../13-modulos-bundlers/">Go to exercise 13 →</a></p></div>
 
 
 

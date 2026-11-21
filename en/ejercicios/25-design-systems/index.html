@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 25: 25 — Design systems. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 25: 25 — Design systems. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 25: 25 — Design systems. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 25: 25 — Design systems. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/25-design-systems/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 25 — Design Systems - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 25: 25 — Design systems. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 25: 25 — Design systems. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/25-design-systems.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/25-design-systems/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 25 — Design Systems - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 25: 25 — Design systems. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 25: 25 — Design systems. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/25-design-systems.png" />
 </head>
   
@@ -3462,10 +3462,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3473,10 +3473,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3484,10 +3484,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key concepts
       
     </span>
   </a>
@@ -3495,10 +3495,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/25-design-systems.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/25-design-systems.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,68 +5066,70 @@
 
 <div><h1 id="25-design-systems">25 — Design systems<a class="headerlink" href="#25-design-systems" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Crea design tokens y un componente Button.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Create design tokens and a Button component.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Define tokens CSS para colores, espaciado y radios.</li>
-<li>Crea un componente `.btn` con variantes.</li>
-<li>Usa los tokens en el componente.</li>
+<li>Define CSS tokens for colors, spacing, and radii.</li>
+<li>Create a <code>.btn</code> component with variants.</li>
+<li>Use the tokens in the component.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```css
-:root {
-  --color-primary: #6a5acd;
-  --color-primary-hover: #7d6ce0;
-  --color-danger: #dc3545;
-  --space-2: .5rem;
-  --space-3: 1rem;
-  --radius-md: 8px;
-}</p>
-<p>.btn {
-  padding: var(--space-2) var(--space-3);
-  border: none;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background .2s;
-}</p>
-<p>.btn--primary {
-  background: var(--color-primary);
-  color: white;
-}</p>
-<p>.btn--primary:hover {
-  background: var(--color-primary-hover);
-}</p>
-<p>.btn--danger {
-  background: var(--color-danger);
-  color: white;
-}
-```</p>
-<p>```html
-<button class="btn btn--primary">Guardar</button>
-<button class="btn btn--danger">Eliminar</button>
-```</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">--color-primary</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--color-primary-hover</span><span class="p">:</span><span class="w"> </span><span class="mh">#7d6ce0</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--color-danger</span><span class="p">:</span><span class="w"> </span><span class="mh">#dc3545</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--space-2</span><span class="p">:</span><span class="w"> </span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--space-3</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">--radius-md</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">btn</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--space-</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--space-</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--radius-md</span><span class="p">);</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+<span class="w">  </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">background</span><span class="w"> </span><span class="mf">.2</span><span class="kt">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">btn--primary</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary</span><span class="p">);</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">btn--primary</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-primary-hover</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">btn--danger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--color-danger</span><span class="p">);</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn btn--primary"</span><span class="p">&gt;</span>Save<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn btn--danger"</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>Design tokens: variables CSS semánticas.</li>
-<li>Componente con variantes (BEM: `.btn--primary`).</li>
-<li>Consistencia visual en todo el producto.</li>
+<li>Design tokens: semantic CSS custom properties.</li>
+<li>Component with variants (BEM: <code>.btn--primary</code>).</li>
+<li>Visual consistency across the entire product.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade variantes de tamaño (`--sm`, `--lg`).</li>
-<li>[ ] Añade estado `:disabled`.</li>
-<li>[ ] Documenta el componente con Storybook.</li>
+<li>[ ] Add size variants (<code>--sm</code>, <code>--lg</code>).</li>
+<li>[ ] Add a <code>:disabled</code> state.</li>
+<li>[ ] Document the component with Storybook.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../24-animaciones/">← Ejercicio 24</a>
-<a class="md-button md-button--primary" href="../">Volver al índice</a></p></div>
+<p><a class="md-button" href="../24-animaciones/">← Exercise 24</a>
+<a class="md-button md-button--primary" href="../">Back to index</a></p></div>
 
 
 

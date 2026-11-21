@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 08: 08 — APIs. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 08: 08 — APIs. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 08: 08 — APIs. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 08: 08 — APIs. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/08-apis/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 08 — APIs - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 08: 08 — APIs. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 08: 08 — APIs. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/08-apis.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/08-apis/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 08 — APIs - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 08: 08 — APIs. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 08: 08 — APIs. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/08-apis.png" />
 </head>
   
@@ -2797,10 +2797,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -2808,10 +2808,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -2819,10 +2819,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -2830,10 +2830,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/08-apis.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/08-apis.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,58 +5066,57 @@
 
 <div><h1 id="08-apis">08 — APIs<a class="headerlink" href="#08-apis" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica el consumo de APIs con `fetch`.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice consuming APIs with <code>fetch</code>.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Consume la API pública de JSONPlaceholder (`https://jsonplaceholder.typicode.com/posts`) y muestra los títulos de los primeros 5 posts.</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Consume the public JSONPlaceholder API (<code>https://jsonplaceholder.typicode.com/posts</code>) and display the titles of the first 5 posts.</p>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<h1>Posts</h1>
-<ul id="posts"></ul>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Posts<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">"posts"</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-<script>
-  async function cargarPosts() {
-    try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-      if (!res.ok) throw new Error('Error HTTP ' + res.status);
-      const posts = await res.json();
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarPosts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'[https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'HTTP Error '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-      const lista = document.getElementById('posts');
-      posts.slice(0, 5).forEach(post => {
-        const li = document.createElement('li');
-        li.textContent = post.title;
-        lista.appendChild(li);
-      });
-    } catch (err) {
-      console.error('Algo salió mal:', err);
-    }
-  }
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">posts</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">post</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'li'</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">li</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">lista</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Something went wrong:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 
-  cargarPosts();
-</script>
-<p>```</p>
+<span class="w">  </span><span class="nx">cargarPosts</span><span class="p">();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`fetch()`: hace peticiones HTTP.</li>
-<li>`await`: espera la respuesta.</li>
-<li>`res.ok`: comprueba si la respuesta es exitosa.</li>
-<li>`res.json()`: convierte la respuesta a objeto JS.</li>
-<li>`try/catch`: maneja errores de red.</li>
+<li><code>fetch()</code>: makes HTTP requests.</li>
+<li><code>await</code>: awaits the response.</li>
+<li><code>res.ok</code>: checks whether the response is successful.</li>
+<li><code>res.json()</code>: parses the response into a JS object.</li>
+<li><code>try/catch</code>: handles network errors.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Muestra también el cuerpo del post.</li>
-<li>[ ] Añade un botón para recargar.</li>
-<li>[ ] Maneja el estado de carga con un `<p>Cargando...</p>`.</li>
+<li>[ ] Display the post body as well.</li>
+<li>[ ] Add a button to reload.</li>
+<li>[ ] Handle the loading state with a <code>&lt;p&gt;Loading...&lt;/p&gt;</code>.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../07-git/">← Ejercicio 07</a>
-<a class="md-button md-button--primary" href="../09-despliegue/">Ir al ejercicio 09 →</a></p></div>
+<p><a class="md-button" href="../07-git/">← Exercise 07</a>
+<a class="md-button md-button--primary" href="../09-despliegue/">Go to exercise 09 →</a></p></div>
 
 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 22: 22 — PWA. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 22: 22 — PWA. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 22: 22 — PWA. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 22: 22 — PWA. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/22-pwa/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 22 — PWA - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 22: 22 — PWA. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 22: 22 — PWA. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/22-pwa.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/22-pwa/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 22 — PWA - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 22: 22 — PWA. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 22: 22 — PWA. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/22-pwa.png" />
 </head>
   
@@ -3378,10 +3378,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3389,10 +3389,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3400,10 +3400,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key concepts
       
     </span>
   </a>
@@ -3411,10 +3411,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/22-pwa.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/22-pwa.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,71 +5066,70 @@
 
 <div><h1 id="22-pwa">22 — PWA<a class="headerlink" href="#22-pwa" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Crea un manifest y un service worker básico.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Create a manifest and a basic service worker.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Crea un `manifest.json` con nombre, iconos y color.</li>
-<li>Crea un `sw.js` que cachee el HTML y CSS.</li>
-<li>Registra el SW en `index.html`.</li>
+<li>Create a <code>manifest.json</code> with name, icons, and color.</li>
+<li>Create a <code>sw.js</code> that caches HTML and CSS.</li>
+<li>Register the SW in <code>index.html</code>.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```json
-// manifest.json
-{
-  "name": "Mi PWA",
-  "short_name": "MiPWA",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#6a5acd",
-  "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
-  ]
-}
-```</p>
-<p>```javascript
-// sw.js
-const CACHE = 'mi-pwa-v1';
-const ASSETS = ['/', '/index.html', '/styles.css'];</p>
-<p>self.addEventListener('install', (e) =&gt; {
-  e.waitUntil(caches.open(CACHE).then(c =&gt; c.addAll(ASSETS)));
-});</p>
-<p>self.addEventListener('fetch', (e) =&gt; {
-  e.respondWith(
-    caches.match(e.request).then(r =&gt; r || fetch(e.request))
-  );
-});
-```</p>
-<p>```html
-<link rel="manifest" href="/manifest.json"></p>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-</script>
-<p>```</p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// manifest.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My PWA"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyPWA"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standalone"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6a5acd"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"icon-192.png"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"icon-512.png"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512x512"</span><span class="p">,</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// sw.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">CACHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'mi-pwa-v1'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ASSETS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'/'</span><span class="p">,</span><span class="w"> </span><span class="s1">'/index.html'</span><span class="p">,</span><span class="w"> </span><span class="s1">'/styles.css'</span><span class="p">];</span>
+
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'install'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">ASSETS</span><span class="p">)));</span>
+<span class="p">});</span>
+
+<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'fetch'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">e</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">))</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"manifest"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/manifest.json"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s1">'serviceWorker'</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">navigator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'/sw.js'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`manifest.json`: define cómo se instala la PWA.</li>
-<li>`service worker`: intercepta peticiones y cachea.</li>
-<li>HTTPS obligatorio (o localhost).</li>
+<li><code>manifest.json</code>: defines how the PWA is installed.</li>
+<li><code>service worker</code>: intercepts requests and caches assets.</li>
+<li>HTTPS required (or localhost).</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade estrategia network-first.</li>
-<li>[ ] Añade un botón de "Añadir a pantalla de inicio".</li>
-<li>[ ] Comprueba con Lighthouse que es instalable.</li>
+<li>[ ] Add a network-first strategy.</li>
+<li>[ ] Add an "Add to home screen" button.</li>
+<li>[ ] Verify installability with Lighthouse.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../21-web-components/">← Ejercicio 21</a>
-<a class="md-button md-button--primary" href="../23-websockets/">Ir al ejercicio 23 →</a></p></div>
+<p><a class="md-button" href="../21-web-components/">← Exercise 21</a>
+<a class="md-button md-button--primary" href="../23-websockets/">Go to exercise 23 →</a></p></div>
 
 
 

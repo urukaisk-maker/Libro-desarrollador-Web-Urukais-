@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 13: 13 — Módulos y bundlers. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 13: 13 — Modules and bundlers. Step-by-step annotated solution from the Web Developer's Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 13: 13 — Módulos y bundlers. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 13: 13 — Modules and bundlers. Step-by-step annotated solution from the Web Developer's Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/13-modulos-bundlers/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 13 — Módulos y bundlers - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 13: 13 — Módulos y bundlers. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 13: 13 — Modules and bundlers. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/13-modulos-bundlers.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/13-modulos-bundlers/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 13 — Módulos y bundlers - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 13: 13 — Módulos y bundlers. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 13: 13 — Modules and bundlers. Step-by-step annotated solution from the Web Developer's Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/13-modulos-bundlers.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#13-modulos-y-bundlers" class="md-skip">
+        <a href="#13-modules-and-bundlers" class="md-skip">
           Skip to content
         </a>
       
@@ -3000,10 +3000,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3011,10 +3011,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3022,10 +3022,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key Concepts
       
     </span>
   </a>
@@ -3033,10 +3033,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#extra-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Extra Challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/13-modulos-bundlers.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/13-modulos-bundlers.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5064,55 +5064,52 @@
   
 
 
-<div><h1 id="13-modulos-y-bundlers">13 — Módulos y bundlers<a class="headerlink" href="#13-modulos-y-bundlers" title="Permanent link">¶</a></h1>
+<div><h1 id="13-modules-and-bundlers">13 — Modules and bundlers<a class="headerlink" href="#13-modules-and-bundlers" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica módulos ES6 y compilación con Vite.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice ES6 modules and bundling with Vite.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Crea 2 módulos: `math.js` (exporta `sumar` y `PI`) y `app.js` (los importa).</li>
-<li>Usa `<script type="module">` para cargarlos.</li>
-<li>Comprueba que funciona en el navegador.</li>
+<li>Create 2 modules: <code>math.js</code> (exports <code>sumar</code> and <code>PI</code>) and <code>app.js</code> (imports them).</li>
+<li>Use <code>&lt;script type="module"&gt;</code> to load them.</li>
+<li>Verify that it works in the browser.</li>
 </ol>
-<hr />
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">&para;</a></h2>
-<p>```javascript
-// math.js
-export const PI = 3.1416;
-export function sumar(a, b) {
-  return a + b;
-}
-```</p>
-<p>```javascript
-// app.js
-import { sumar, PI } from './math.js';
-console.log(sumar(2, 3)); // 5
-console.log(PI);          // 3.1416
-```</p>
-<p>```html</p>
-<!-- index.html -->
-<script type="module" src="app.js"></script>
-<p>```</p>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// math.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// app.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">sumar</span><span class="p">,</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./math.js'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">// 5</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">PI</span><span class="p">);</span><span class="w">          </span><span class="c1">// 3.1416</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- index.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr>
+<h2 id="key-concepts">🧠 Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`export`: expone funciones o constantes del módulo.</li>
-<li>`import`: las importa en otro archivo.</li>
-<li>`<script type="module">`: carga el módulo en el navegador.</li>
-<li>Los módulos tienen scope propio.</li>
+<li><code>export</code>: exposes functions or constants from a module.</li>
+<li><code>import</code>: imports them into another file.</li>
+<li><code>&lt;script type="module"&gt;</code>: loads the module in the browser.</li>
+<li>Modules have their own scope.</li>
 </ul>
-<hr />
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="extra-challenges">🚀 Extra Challenges<a class="headerlink" href="#extra-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Crea un módulo `utils.js` con `esPar` y `esImpar`.</li>
-<li>[ ] Usa `export default` para una función principal.</li>
-<li>[ ] Migra el proyecto a Vite (`npm create vite@latest`).</li>
+<li>[ ] Create a <code>utils.js</code> module with <code>esPar</code> and <code>esImpar</code>.</li>
+<li>[ ] Use <code>export default</code> for a main function.</li>
+<li>[ ] Migrate the project to Vite (<code>npm create vite@latest</code>).</li>
 </ul>
-<hr />
-<p><a class="md-button" href="../12-javascript-asincrono/">← Ejercicio 12</a>
-<a class="md-button md-button--primary" href="../14-accesibilidad/">Ir al ejercicio 14 →</a></p></script></li></ul></li></ol></div>
+<hr>
+<p><a class="md-button" href="../12-javascript-asincrono/">← Exercise 12</a>
+<a class="md-button md-button--primary" href="../14-accesibilidad/">Go to exercise 14 →</a></p></div>
 
 
 
