@@ -41,7 +41,7 @@ Fill out the fields below and your email app or client will open with a message 
 
   <div class="contact-field contact-checkbox">
     <input type="checkbox" id="privacidad" name="privacidad" required>
-    <label for="privacidad">I have read and accept the <a href="index.md#licencia">privacy policy</a>.</label>
+    <label for="privacidad">I have read and accept the <a href="index.md#license">privacy policy</a>.</label>
   </div>
 
   <button type="submit" class="md-button md-button--primary">✉ Open in my mail client</button>
@@ -143,10 +143,10 @@ I am one person, not a company. Here are approximate response times:
 
 Many common questions are already answered on the [FAQ](faq.md) page. Before sending a message, take a quick look:
 
-- [Is it free? How is it funded?](faq.md#sobre-el-proyecto)
-- [Who is the book for?](faq.md#sobre-el-contenido)
-- [How can I contribute?](faq.md#sobre-contribuir)
-- [How do I get the certificate?](faq.md#sobre-los-logros-y-el-certificado)
+- [Is it free? How is it funded?](faq.md#about-the-project)
+- [Who is the book for?](faq.md#about-the-content)
+- [How can I contribute?](faq.md#contributing)
+- [How do I get the certificate?](faq.md#achievements-and-certificate)
 
 If your question is not in the FAQ, go ahead and write.
 
@@ -176,7 +176,7 @@ I am based in Spain 🇪🇸 and collaborate with people around the world. Keep 
 
 Your details **are only used to reply to you**. They are never sold, shared with third parties, or used for spam. If you want me to delete your message after replying, just ask.
 
-For more details, see the [privacy policy](index.md#licencia).
+For more details, see the [privacy policy](index.md#license).
 
 ---
 

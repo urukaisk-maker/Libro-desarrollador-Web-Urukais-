@@ -199,7 +199,7 @@ Puedes usar el contenido de esta página y del libro siempre que:
 - ✅ **No modifiques** los logos ni los uses de forma que sugieran respaldo oficial.
 - ✅ **No lo uses** para fines comerciales sin permiso previo.
 
-Para cualquier duda sobre licencias, consulta la [licencia completa](index.md#licencia) o escríbeme.
+Para cualquier duda sobre licencias, consulta la [licencia completa](index.md#license) o escríbeme.
 
 ---
 
