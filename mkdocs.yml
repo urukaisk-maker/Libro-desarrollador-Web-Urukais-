@@ -265,6 +265,7 @@ extra_javascript:
   - javascripts/reading-progress.js
   - javascripts/theme-toggle.js
   - javascripts/logros-page.js
+  - javascripts/project-menu.js      # ← NUEVA LÍNEA
 
 extra:
   generator: false

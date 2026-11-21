@@ -2984,10 +2984,209 @@ label.md-header__button[for="__drawer"] {
 }
 
 /* ============================================================
-   MÓVIL — Header sin título (logo sí, texto no)
+   MÓVIL — Header sin logo ni título (más espacio)
    ============================================================ */
 @media screen and (max-width: 59.9375em) {
+  /* Ocultar el texto "Libro del Desarrollador Web — Urukais" */
   .md-header__title {
     display: none !important;
+  }
+
+  /* Ocultar la imagen del logo (favicon.svg) */
+  .md-header__button.md-logo {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   COMODÍN DEL PROYECTO — Panel desplegable
+   ============================================================ */
+.uru-pm {
+  position: fixed;
+  top: 3.75rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: min(380px, calc(100vw - 2rem));
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.28);
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.uru-pm.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-md-color-scheme="slate"] .uru-pm {
+  border-color: rgba(167, 139, 250, 0.28);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.uru-pm__inner {
+  padding: 1.1rem;
+}
+
+/* Header con logo + nombre */
+.uru-pm__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin-bottom: 0.9rem;
+}
+
+.uru-pm__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.uru-pm__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.uru-pm__subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+/* Stats */
+.uru-pm__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.uru-pm__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  background: color-mix(in srgb, var(--md-default-fg-color--lightest) 30%, transparent);
+  border-radius: 8px;
+}
+
+.uru-pm__stat-value {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.uru-pm__stat-label {
+  margin-top: 0.2rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+  font-weight: 700;
+}
+
+/* Links rápidos */
+.uru-pm__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.9rem;
+}
+
+.uru-pm__link {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.uru-pm__link:hover {
+  background: color-mix(in srgb, var(--uru-primary) 10%, transparent);
+  color: var(--uru-primary);
+}
+
+/* Footer con acciones */
+.uru-pm__footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.uru-pm__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--md-default-fg-color--lightest) 50%, transparent);
+  color: var(--md-default-fg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.uru-pm__action:hover {
+  transform: translateY(-1px);
+  background: var(--md-default-fg-color--lightest);
+}
+
+.uru-pm__action--primary {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  color: #0f172a;
+  border-color: transparent;
+}
+
+.uru-pm__action--primary:hover {
+  background: linear-gradient(135deg, #8b7cf6, #06b6d4);
+}
+
+/* Botón trigger */
+.uru-menu-trigger {
+  position: relative;
+}
+
+.uru-menu-trigger.is-active {
+  background: color-mix(in srgb, var(--uru-accent) 18%, transparent);
+  color: var(--uru-accent);
+}
+
+/* Responsive */
+@media screen and (max-width: 59.9375em) {
+  .uru-pm {
+    top: 3.4rem;
+    width: calc(100vw - 1rem);
+    max-width: 420px;
+  }
+  .uru-pm__stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -76,5 +76,54 @@
     <div class="cookie-banner__actions">
       <button id="acceptCookies" class="cookie-banner__btn">{{ 'Accept' if is_en else 'Aceptar' }}</button>
     </div>
+    <aside class="uru-pm" id="uruProjectMenu" aria-hidden="true" aria-label="Menú del proyecto">
+  <div class="uru-pm__inner">
+
+    <header class="uru-pm__header">
+      <img src="{{ 'assets/logo.svg' | url }}" alt="" class="uru-pm__logo" width="40" height="40">
+      <div class="uru-pm__identity">
+        <h2 class="uru-pm__title">Libro del Desarrollador Web</h2>
+        <p class="uru-pm__subtitle">por Urukais · v1.0.0</p>
+      </div>
+    </header>
+
+    <div class="uru-pm__stats">
+      <div class="uru-pm__stat">
+        <span class="uru-pm__stat-value">38</span>
+        <span class="uru-pm__stat-label">Capítulos</span>
+      </div>
+      <div class="uru-pm__stat">
+        <span class="uru-pm__stat-value">7</span>
+        <span class="uru-pm__stat-label">Niveles</span>
+      </div>
+      <div class="uru-pm__stat">
+        <span class="uru-pm__stat-value">30</span>
+        <span class="uru-pm__stat-label">Ejercicios</span>
+      </div>
+      <div class="uru-pm__stat">
+        <span class="uru-pm__stat-value">14</span>
+        <span class="uru-pm__stat-label">Diagramas</span>
+      </div>
+    </div>
+
+    <nav class="uru-pm__links" aria-label="Accesos rápidos">
+      <a href="{{ '' | url }}" class="uru-pm__link">🏡 Inicio</a>
+      <a href="{{ 'introduccion/' | url }}" class="uru-pm__link">📘 Temario</a>
+      <a href="{{ 'logros/' | url }}" class="uru-pm__link">🏆 Mis logros</a>
+      <a href="{{ 'playground/' | url }}" class="uru-pm__link">💻 Playground</a>
+    </nav>
+
+    <div class="uru-pm__footer">
+      <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-" target="_blank" rel="noopener" class="uru-pm__action">
+        ⭐ GitHub
+      </a>
+      <a href="{{ 'apoya/' | url }}" class="uru-pm__action uru-pm__action--primary">
+        ❤ Apoyar
+      </a>
+    </div>
+
   </div>
+</aside>
+  </div>
+
 {% endblock %}
