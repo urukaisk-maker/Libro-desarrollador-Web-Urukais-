@@ -21575,73 +21575,76 @@ console.log(numero.toFixed(2));   // "42.00"
 </ul>
 <hr>
 <p><a class="md-button" href="#en-ejercicios-17-rendimiento">← Exercise 17</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-19-fullstack-node">Go to exercise 19 →</a></p></div></section><section class="print-page" id="en-ejercicios-19-fullstack-node" heading-number="3.7.4"><div><h1 id="19-full-stack-con-nodejs">19 — Full-stack con Node.js<a class="headerlink" href="#en-ejercicios-19-fullstack-node-19-full-stack-con-nodejs" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios-19-fullstack-node">Go to exercise 19 →</a></p></div></section><section class="print-page" id="en-ejercicios-19-fullstack-node" heading-number="3.7.4"><div><h1 id="19-full-stack-with-nodejs">19 — Full-stack with Node.js<a class="headerlink" href="#en-ejercicios-19-fullstack-node-19-full-stack-with-nodejs" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica la creación de una API REST con Express.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice building a REST API with Express.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-19-fullstack-node-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-19-fullstack-node-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una API REST con:</p>
+<h2 id="en-ejercicios-19-fullstack-node-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-19-fullstack-node-goal" title="Permanent link">¶</a></h2>
+<p>Create a REST API with:</p>
 <ol>
-<li>`GET /api/tareas`: devuelve todas las tareas.</li>
-<li>`POST /api/tareas`: crea una tarea.</li>
-<li>`DELETE /api/tareas/:id`: elimina una tarea.</li>
+<li><code>GET /api/tareas</code>: returns all tasks.</li>
+<li><code>POST /api/tareas</code>: creates a task.</li>
+<li><code>DELETE /api/tareas/:id</code>: deletes a task.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-19-fullstack-node-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-19-fullstack-node-solucion" title="Permanent link">¶</a></h2>
-<p>```bash
-npm init -y
-npm install express
-```</p>
-<p>```javascript
-// server.js
-import express from 'express';</p>
-<p>const app = express();
-app.use(express.json());</p>
-<p>let tareas = [
-  { id: 1, texto: 'Aprender Node.js', completada: false }
-];</p>
-<p>app.get('/api/tareas', (req, res) =&gt; {
-  res.json(tareas);
-});</p>
-<p>app.post('/api/tareas', (req, res) =&gt; {
-  const nueva = {
-    id: Date.now(),
-    texto: req.body.texto,
-    completada: false
-  };
-  tareas.push(nueva);
-  res.status(201).json(nueva);
-});</p>
-<p>app.delete('/api/tareas/:id', (req, res) =&gt; {
-  const id = Number(req.params.id);
-  tareas = tareas.filter(t =&gt; t.id !== id);
-  res.status(204).end();
-});</p>
-<p>app.listen(3000, () =&gt; console.log('http://localhost:3000'));
-```</p>
-<p>```bash
-node server.js
-```</p>
+<h2 id="en-ejercicios-19-fullstack-node-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-19-fullstack-node-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+npm<span class="w"> </span>install<span class="w"> </span>express
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// server.js</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">tareas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="s1">'Aprender Node.js'</span><span class="p">,</span><span class="w"> </span><span class="nx">completada</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/api/tareas'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">tareas</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/tareas'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">nueva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">texto</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">texto</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">completada</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="nx">tareas</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">nueva</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">nueva</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">'/api/tareas/:id'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">tareas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tareas</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">204</span><span class="p">).</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'http://localhost:3000'</span><span class="p">));</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>server.js
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-19-fullstack-node-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-19-fullstack-node-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-19-fullstack-node-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-19-fullstack-node-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`express.json()`: middleware para parsear JSON.</li>
-<li>`req.body`: datos enviados en el body.</li>
-<li>`req.params`: parámetros de la URL.</li>
-<li>Códigos HTTP: 200, 201, 204.</li>
+<li><code>express.json()</code>: middleware to parse JSON.</li>
+<li><code>req.body</code>: data sent in the request body.</li>
+<li><code>req.params</code>: URL route parameters.</li>
+<li>HTTP status codes: 200, 201, 204.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-19-fullstack-node-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-19-fullstack-node-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-19-fullstack-node-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-19-fullstack-node-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un `PUT /api/tareas/:id` para actualizar.</li>
-<li>[ ] Persiste las tareas en un archivo JSON.</li>
-<li>[ ] Conecta con PostgreSQL y Prisma.</li>
+<li>[ ] Add a <code>PUT /api/tareas/:id</code> endpoint to update tasks.</li>
+<li>[ ] Persist tasks to a JSON file.</li>
+<li>[ ] Connect to PostgreSQL and Prisma.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-18-arquitectura">← Ejercicio 18</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-20-devops">Ir al ejercicio 20 →</a></p></div></section><section class="print-page" id="en-ejercicios-20-devops" heading-number="3.7.5"><div><h1 id="20-devops">20 — DevOps<a class="headerlink" href="#en-ejercicios-20-devops-20-devops" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-18-arquitectura">← Exercise 18</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-20-devops">Go to exercise 20 →</a></p></div></section><section class="print-page" id="en-ejercicios-20-devops" heading-number="3.7.5"><div><h1 id="20-devops">20 — DevOps<a class="headerlink" href="#en-ejercicios-20-devops-20-devops" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Practica la automatización con GitHub Actions.</p>
