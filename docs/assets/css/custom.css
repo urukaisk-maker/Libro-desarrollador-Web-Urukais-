@@ -3190,3 +3190,231 @@ label.md-header__button[for="__drawer"] {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* ============================================================
+   BUSCADOR PREMIUM + PULIDO FINAL
+   ============================================================ */
+
+/* ---------- Buscador: input pill ---------- */
+@media screen and (min-width: 60em) {
+  .md-header__search {
+    flex: 0 0 22rem;
+    max-width: 26rem;
+  }
+}
+
+.md-search__form {
+  height: 2.4rem;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+              background-color 0.2s ease, transform 0.2s ease;
+}
+
+.md-search__form:hover {
+  transform: translateY(-1px);
+}
+
+.md-search__form:focus-within {
+  border-color: var(--uru-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--uru-accent) 25%, transparent);
+}
+
+.md-search__icon[for="__search"] {
+  color: var(--md-default-fg-color--light);
+  transition: color 0.2s ease;
+}
+
+.md-search__form:hover .md-search__icon[for="__search"],
+.md-search__form:focus-within .md-search__icon[for="__search"] {
+  color: var(--uru-accent);
+}
+
+.md-search__input::placeholder {
+  color: var(--md-default-fg-color--lighter);
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---------- Buscador: panel de resultados ---------- */
+.md-search__output {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 14px;
+  margin-top: 0.35rem;
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.18);
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .md-search__output {
+  border-color: rgba(167, 139, 250, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.md-search-result__link {
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.md-search-result__link:hover,
+.md-search-result__link[data-md-state="active"] {
+  background: color-mix(in srgb, var(--uru-primary) 8%, transparent);
+  border-left-color: var(--uru-accent);
+}
+
+.md-search-result mark {
+  color: var(--uru-accent);
+  background: color-mix(in srgb, var(--uru-accent) 15%, transparent);
+  border-radius: 3px;
+  padding: 0 0.15rem;
+  font-weight: 700;
+}
+
+/* ---------- KBD — Atajos de teclado ---------- */
+.md-typeset kbd {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  font-family: var(--md-code-font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--md-default-fg-color--lightest) 55%, transparent);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom-width: 2px;
+  box-shadow: inset 0 -1px 0 var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+}
+
+/* ---------- Badges reutilizables ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.badge--new    { background: rgba(34, 211, 238, 0.15); color: #0891b2; }
+.badge--beta   { background: rgba(245, 158, 11, 0.15); color: #b45309; }
+.badge--pro    { background: linear-gradient(135deg, #a78bfa, #22d3ee); color: #0f172a; }
+.badge--danger { background: rgba(239, 68, 68, 0.15); color: #b91c1c; }
+
+[data-md-color-scheme="slate"] .badge--new    { color: #67e8f9; }
+[data-md-color-scheme="slate"] .badge--beta   { color: #fbbf24; }
+[data-md-color-scheme="slate"] .badge--danger { color: #f87171; }
+
+/* ---------- Card grid: iconos grandes ---------- */
+.md-typeset .grid.cards > ul > li > p:first-child .twemoji,
+.md-typeset .grid.cards > ul > li > p:first-child svg {
+  width: 2.75rem;
+  height: 2.75rem;
+  vertical-align: middle;
+}
+
+.md-typeset .grid.cards > ul > li > p:first-child {
+  font-size: 2.75rem;
+  color: var(--md-primary-fg-color);
+  padding: 1.15rem 1rem 0.35rem !important;
+}
+
+/* ---------- Glightbox: tema Urukais ---------- */
+.glightbox-clean .gslide-description {
+  background: #0f172a;
+}
+
+.glightbox-clean .gslide-title {
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.glightbox-clean .gslide-desc {
+  color: #cbd5e1;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.glightbox-clean .gclose,
+.glightbox-clean .gnext,
+.glightbox-clean .gprev {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.glightbox-clean .gclose:hover,
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gprev:hover {
+  background-color: #6a5acd !important;
+  transform: scale(1.08);
+}
+
+.md-typeset img.glightbox {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+.md-typeset img.glightbox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.25);
+}
+
+/* ---------- Print: para el plugin print-site ---------- */
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-top,
+  .reading-progress,
+  .newsletter-modal-overlay,
+  .cookie-banner,
+  .badge-toast,
+  .uru-logro-toast,
+  .uru-pm,
+  .md-search,
+  .md-feedback {
+    display: none !important;
+  }
+
+  .md-main__inner,
+  .md-content {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .md-typeset a {
+    color: inherit !important;
+    text-decoration: underline;
+  }
+
+  .md-typeset a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75rem;
+    opacity: 0.7;
+    word-break: break-all;
+  }
+
+  .md-typeset .highlight,
+  .md-typeset pre {
+    border: 1px solid #d1d5db;
+    box-shadow: none;
+    background: #f9fafb !important;
+  }
+
+  .md-typeset h1,
+  .md-typeset h2 {
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+}
