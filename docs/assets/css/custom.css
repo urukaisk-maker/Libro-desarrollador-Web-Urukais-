@@ -2982,3 +2982,12 @@ label.md-header__button[for="__drawer"] {
   --uru-footer-hover: rgba(106, 90, 205, 0.1);
   --uru-footer-social-bg: rgba(15, 23, 42, 0.05);
 }
+
+/* ============================================================
+   MÓVIL — Header sin título (logo sí, texto no)
+   ============================================================ */
+@media screen and (max-width: 59.9375em) {
+  .md-header__title {
+    display: none !important;
+  }
+}
