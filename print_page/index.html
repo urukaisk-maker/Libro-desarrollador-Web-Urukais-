@@ -20328,21 +20328,23 @@ button { background: #6a5acd; color: #fff; border: none; border-radius: 6px; cur
 open('docs/ejercicios-playground.md', 'w', encoding='utf-8').write(contenido)
 print('OK:', len(contenido.splitlines()), 'líneas escritas')
 "</p></div></section><section class="print-page" id="en-playground" heading-number="3.3"><div><h1 id="editor-playground">💻 Editor Playground<a class="headerlink" href="#en-playground-editor-playground" title="Permanent link">¶</a></h1>
-<p>!!! quote \"Programa, prueba, aprende\"
-    Un entorno interactivo para escribir HTML, CSS y JavaScript directamente en el navegador. Sin instalar nada, sin configurar nada. Escribe código, pulsa Ejecutar y ve el resultado al instante.</p>
-<hr>
-<h2 id="en-playground-editor-en-vivo">🧪 Editor en vivo<a class="headerlink" href="#en-playground-editor-en-vivo" title="Permanent link">¶</a></h2>
-<div class='\"playground\"'>
-<div class='\"playground__editor\"'>
-<div class='\"playground__tabs\"'>
-<button class='\"playground__tab' is-active\" data-lang='\"html\"'>HTML</button>
-<button class='\"playground__tab\"' data-lang='\"css\"'>CSS</button>
-<button class='\"playground__tab\"' data-lang='\"js\"'>JS</button>
+<div class="admonition quote">
+<p class="admonition-title">Write, test, learn</p>
+<p>An interactive environment to write HTML, CSS, and JavaScript directly in your browser. Nothing to install, nothing to configure. Write code, click Run, and see the result right away.</p>
 </div>
-<textarea class='\"playground__textarea\"' id='\"pg-html\"' spellcheck='\"false\"'>&lt;h1&gt;Hola, mundo 🌍&lt;/h1&gt;
-&lt;p&gt;Este es mi primer playground.&lt;/p&gt;
-&lt;button id=\"btn\"&gt;Haz clic&lt;/button&gt;</textarea>
-<textarea class='\"playground__textarea' is-hidden\" id='\"pg-css\"' spellcheck='\"false\"'>body {
+<hr>
+<h2 id="en-playground-live-editor">🧪 Live editor<a class="headerlink" href="#en-playground-live-editor" title="Permanent link">¶</a></h2>
+<div class="playground">
+<div class="playground__editor">
+<div class="playground__tabs">
+<button class="playground__tab is-active" data-lang="html">HTML</button>
+<button class="playground__tab" data-lang="css">CSS</button>
+<button class="playground__tab" data-lang="js">JS</button>
+</div>
+<textarea class="playground__textarea" id="pg-html" spellcheck="false">&lt;h1&gt;Hello, world 🌍&lt;/h1&gt;
+&lt;p&gt;This is my first playground.&lt;/p&gt;
+&lt;button id="btn"&gt;Click me&lt;/button&gt;</textarea>
+<textarea class="playground__textarea is-hidden" id="pg-css" spellcheck="false">body {
   font-family: system-ui, sans-serif;
   padding: 1.5rem;
   background: #f8f7fb;
@@ -20357,190 +20359,187 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }</textarea>
-<textarea class='\"playground__textarea' is-hidden\" id='\"pg-js\"' spellcheck='\"false\"'>document.getElementById('btn').addEventListener('click', () =&gt; {
-  alert('¡Hola desde el Playground! 👋');
+<textarea class="playground__textarea is-hidden" id="pg-js" spellcheck="false">document.getElementById('btn').addEventListener('click', () =&gt; {
+  alert('Hello from the Playground! 👋');
 });</textarea>
-<div class='\"playground__actions\"'>
-<button class='\"md-button' md-button--primary\" id='\"pg-run\"'>▶ Ejecutar</button>
-<button class='\"md-button\"' id='\"pg-reset\"'>↺ Reiniciar</button>
+<div class="playground__actions">
+<button class="md-button md-button--primary" id="pg-run">▶ Run</button>
+<button class="md-button" id="pg-reset">↺ Reset</button>
 </div>
 </div>
-<div class='\"playground__output\"'>
-<iframe id='\"pg-output\"' sandbox='\"allow-scripts' allow-modals\"></iframe>
+<div class="playground__output">
+<iframe id="pg-output" sandbox="allow-scripts allow-modals"></iframe>
 </div>
 </div>
 
-<p>!!! tip \"Cómo usarlo\"
-    1. <strong>Escribe</strong> tu HTML, CSS y JavaScript en las pestañas.
-    2. <strong>Pulsa Ejecutar</strong> (o Ctrl+Enter) para ver el resultado.
-    3. <strong>Pulsa Reiniciar</strong> para volver al ejemplo original.
-    4. <strong>Copia el código</strong> y llévalo a tu editor para trabajar en local.</p>
-<hr>
-<h2 id="en-playground-retos-del-playground">🎯 Retos del Playground<a class="headerlink" href="#en-playground-retos-del-playground" title="Permanent link">¶</a></h2>
-<p>Prueba a resolver estos retos usando el editor de arriba. Cada uno tiene un objetivo y una pista.</p>
-<h3 id="en-playground-reto-1-saludo-personalizado">🟢 Reto 1: Saludo personalizado<a class="headerlink" href="#en-playground-reto-1-saludo-personalizado" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Crear un input donde el usuario escriba su nombre y, al pulsar un botón, se muestre un saludo personalizado.</p>
-<p>??? success \"Solución\"
-    ```html
-    &lt;input type=\"text\" id=\"nombre\" placeholder=\"Tu nombre\"&gt;
-    &lt;button id=\"saludar\"&gt;Saludar
-    &lt;p id=\"resultado\"&gt;</p>
-    ```
-<div class="highlight"><pre><span></span><code>\`\`\`javascript
-document.getElementById('saludar').addEventListener('click', () =&gt; {
-  const nombre = document.getElementById('nombre').value || 'mundo';
-  document.getElementById('resultado').textContent = '¡Hola, ' + nombre + '! 👋';
-});
-\`\`\`
-</code></pre></div>
-<h3 id="en-playground-reto-2-contador-de-clics">🟡 Reto 2: Contador de clics<a class="headerlink" href="#en-playground-reto-2-contador-de-clics" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Un botón que incrementa un contador cada vez que se pulsa.</p>
-<p>??? success \"Solución\"
-    ```html
-    &lt;button id=\"btn\"&gt;Clics: 0
-    ```</p>
-<div class="highlight"><pre><span></span><code>\`\`\`javascript
-let clicks = 0;
-const btn = document.getElementById('btn');
-btn.addEventListener('click', () =&gt; {
-  clicks++;
-  btn.textContent = 'Clics: ' + clicks;
-});
-\`\`\`
-</code></pre></div>
-<h3 id="en-playground-reto-3-cambiar-color-de-fondo">🟡 Reto 3: Cambiar color de fondo<a class="headerlink" href="#en-playground-reto-3-cambiar-color-de-fondo" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Un botón que cambia el color de fondo de la página a un color aleatorio.</p>
-<p>??? success \"Solución\"
-    ```javascript
-    document.getElementById('btn').addEventListener('click', () =&gt; {
-      const color = 'hsl(' + (Math.random() * 360) + ', 70%, 80%)';
-      document.body.style.background = color;
-    });
-    ```</p>
-<h3 id="en-playground-reto-4-lista-de-tareas-simple">🟠 Reto 4: Lista de tareas simple<a class="headerlink" href="#en-playground-reto-4-lista-de-tareas-simple" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Un input y un botón que añadan tareas a una lista. Cada tarea debe poder eliminarse.</p>
-<p>??? success \"Solución\"
-    ```javascript
-    document.getElementById('add').addEventListener('click', () =&gt; {
-      const texto = document.getElementById('tarea').value.trim();
-      if (!texto) return;
-      const li = document.createElement('li');
-      li.innerHTML = texto + ' &lt;button class=\"del\"&gt;❌';
-      document.getElementById('lista').appendChild(li);
-      document.getElementById('tarea').value = '';
-    });</p>
-<div class="highlight"><pre><span></span><code>document.getElementById('lista').addEventListener('click', (e) =&gt; {
-  if (e.target.classList.contains('del')) {
-    e.target.parentElement.remove();
-  }
-});
-\`\`\`
-</code></pre></div>
-<h3 id="en-playground-reto-5-reloj-en-tiempo-real">🟠 Reto 5: Reloj en tiempo real<a class="headerlink" href="#en-playground-reto-5-reloj-en-tiempo-real" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Mostrar la hora actual en pantalla, actualizándose cada segundo.</p>
-<p>??? success \"Solución\"
-    ```javascript
-    function actualizar() {
-      document.getElementById('reloj').textContent =
-        new Date().toLocaleTimeString('es-ES');
-    }
-    setInterval(actualizar, 1000);
-    actualizar();
-    ```</p>
-<h3 id="en-playground-reto-6-calculadora-basica">🔴 Reto 6: Calculadora básica<a class="headerlink" href="#en-playground-reto-6-calculadora-basica" title="Permanent link">¶</a></h3>
-<p><strong>Objetivo</strong>: Una calculadora que sume, reste, multiplique y divida dos números.</p>
-<p>??? success \"Solución\"
-    ```javascript
-    document.getElementById('calcular').addEventListener('click', () =&gt; {
-      const a = parseFloat(document.getElementById('a').value);
-      const b = parseFloat(document.getElementById('b').value);
-      const op = document.getElementById('op').value;
-      let r;
-      switch (op) {
-        case '+': r = a + b; break;
-        case '-': r = a - b; break;
-        case '*': r = a * b; break;
-        case '/': r = b !== 0 ? a / b : 'Error: /0'; break;
-      }
-      document.getElementById('resultado').textContent = r;
-    });
-    ```</p>
-<hr>
-<h2 id="en-playground-ejemplos-para-inspirarte">🎨 Ejemplos para inspirarte<a class="headerlink" href="#en-playground-ejemplos-para-inspirarte" title="Permanent link">¶</a></h2>
-<h3 id="en-playground-ejemplo-1-tarjeta-de-presentacion">Ejemplo 1: Tarjeta de presentación<a class="headerlink" href="#en-playground-ejemplo-1-tarjeta-de-presentacion" title="Permanent link">¶</a></h3>
-<p>```html</p>
-<div class='\"card\"'>
-  <h2>Ana García</h2>
-  <p>Desarrolladora frontend</p>
-  <a href='\"#\"'>Contactar</a>
+<div class="admonition tip">
+<p class="admonition-title">How to use it</p>
+<ol>
+<li><strong>Write</strong> your HTML, CSS, and JavaScript across the tabs.</li>
+<li><strong>Click Run</strong> (or Ctrl+Enter) to see the output.</li>
+<li><strong>Click Reset</strong> to restore the original example.</li>
+<li><strong>Copy the code</strong> into your local editor whenever you want to keep working offline.</li>
+</ol>
 </div>
-<p>```</p>
-<p>```css
-.card {
-  max-width: 320px;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #6a5acd, #00bcd4);
-  color: #fff;
-  border-radius: 12px;
-  text-align: center;
-}
-.card a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: .5rem 1rem;
-  background: #fff;
-  color: #6a5acd;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-}
-```</p>
-<h3 id="en-playground-ejemplo-2-spinner-de-carga">Ejemplo 2: Spinner de carga<a class="headerlink" href="#en-playground-ejemplo-2-spinner-de-carga" title="Permanent link">¶</a></h3>
-<p>```css
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid #e0dde8;
-  border-top-color: #6a5acd;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 2rem auto;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-```</p>
-<h3 id="en-playground-ejemplo-3-modo-oscuro-con-un-boton">Ejemplo 3: Modo oscuro con un botón<a class="headerlink" href="#en-playground-ejemplo-3-modo-oscuro-con-un-boton" title="Permanent link">¶</a></h3>
-<p>```javascript
-document.getElementById('tema').addEventListener('click', () =&gt; {
-  document.body.classList.toggle('dark');
-});
-```</p>
-<p>```css
-body.dark {
-  background: #1a1726;
-  color: #e8e5f5;
-}
-```</p>
 <hr>
-<h2 id="en-playground-seguridad-del-playground">🔒 Seguridad del Playground<a class="headerlink" href="#en-playground-seguridad-del-playground" title="Permanent link">¶</a></h2>
-<p>El editor ejecuta el código en un <strong>iframe aislado</strong> con sandbox. Esto significa que:</p>
+<h2 id="en-playground-playground-challenges">🎯 Playground challenges<a class="headerlink" href="#en-playground-playground-challenges" title="Permanent link">¶</a></h2>
+<p>Try solving these challenges using the editor above. Each one has a goal and a solution you can check when needed.</p>
+<h3 id="en-playground-challenge-1-custom-greeting">🟢 Challenge 1: Custom greeting<a class="headerlink" href="#en-playground-challenge-1-custom-greeting" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: Create an input where the user types their name and, upon clicking a button, displays a personalized greeting.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Your name"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"saludar"</span><span class="p">&gt;</span>Greet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"resultado"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'saludar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'nombre'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'world'</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'resultado'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Hello, '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'! 👋'</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<h3 id="en-playground-challenge-2-click-counter">🟡 Challenge 2: Click counter<a class="headerlink" href="#en-playground-challenge-2-click-counter" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: A button that increments a counter every time it is clicked.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>Clicks: 0<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">);</span>
+<span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">clicks</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Clicks: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">clicks</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<h3 id="en-playground-challenge-3-change-background-color">🟡 Challenge 3: Change background color<a class="headerlink" href="#en-playground-challenge-3-change-background-color" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: A button that changes the page background color to a random color.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'hsl('</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">360</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">', 70%, 80%)'</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">color</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<h3 id="en-playground-challenge-4-simple-to-do-list">🟠 Challenge 4: Simple to-do list<a class="headerlink" href="#en-playground-challenge-4-simple-to-do-list" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: An input and a button that add tasks to a list. Each task should be removable.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'add'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'tarea'</span><span class="p">).</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">li</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'li'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">li</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' &lt;button class="del"&gt;❌&lt;/button&gt;'</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lista'</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'tarea'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'lista'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">'del'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<h3 id="en-playground-challenge-5-live-clock">🟠 Challenge 5: Live clock<a class="headerlink" href="#en-playground-challenge-5-live-clock" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: Display the current time on screen, updating every second.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">actualizar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reloj'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">'en-US'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">actualizar</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="nx">actualizar</span><span class="p">();</span>
+</code></pre></div>
+</details>
+<h3 id="en-playground-challenge-6-basic-calculator">🔴 Challenge 6: Basic calculator<a class="headerlink" href="#en-playground-challenge-6-basic-calculator" title="Permanent link">¶</a></h3>
+<p><strong>Goal</strong>: A calculator that adds, subtracts, multiplies, and divides two numbers.</p>
+<details class="success">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'calcular'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'a'</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'b'</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'op'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">r</span><span class="p">;</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s1">'+'</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s1">'-'</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s1">'*'</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s1">'/'</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'Error: /0'</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'resultado'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">r</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+</details>
+<hr>
+<h2 id="en-playground-examples-for-inspiration">🎨 Examples for inspiration<a class="headerlink" href="#en-playground-examples-for-inspiration" title="Permanent link">¶</a></h2>
+<h3 id="en-playground-example-1-profile-card">Example 1: Profile card<a class="headerlink" href="#en-playground-example-1-profile-card" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Ana García<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Frontend developer<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#"</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">135</span><span class="kt">deg</span><span class="p">,</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">,</span><span class="w"> </span><span class="mh">#00bcd4</span><span class="p">);</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="en-playground-example-2-loading-spinner">Example 2: Loading spinner<a class="headerlink" href="#en-playground-example-2-loading-spinner" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">spinner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#e0dde8</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-top-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">spin</span><span class="w"> </span><span class="mi">1</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">infinite</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">spin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="en-playground-example-3-dark-mode-toggle-button">Example 3: Dark mode toggle button<a class="headerlink" href="#en-playground-example-3-dark-mode-toggle-button" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'tema'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s1">'dark'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span><span class="p">.</span><span class="nc">dark</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#1a1726</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e8e5f5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+<h2 id="en-playground-playground-security">🔒 Playground security<a class="headerlink" href="#en-playground-playground-security" title="Permanent link">¶</a></h2>
+<p>The editor runs code inside an <strong>isolated sandboxed iframe</strong>. This means:</p>
 <ul>
-<li>✅ Puedes usar HTML, CSS y JavaScript con normalidad.</li>
-<li>✅ Puedes usar alert, console.log y manipular el DOM.</li>
-<li>❌ <strong>No</strong> puedes acceder a las cookies de la página principal.</li>
-<li>❌ <strong>No</strong> puedes hacer peticiones a otros dominios sin CORS.</li>
-<li>❌ <strong>No</strong> puedes acceder a localStorage de la página principal.</li>
+<li>✅ You can use HTML, CSS, and JavaScript normally.</li>
+<li>✅ You can use <code>alert</code>, <code>console.log</code>, and manipulate the DOM.</li>
+<li>❌ You <strong>cannot</strong> access cookies from the main page.</li>
+<li>❌ You <strong>cannot</strong> make cross-origin requests without CORS.</li>
+<li>❌ You <strong>cannot</strong> access <code>localStorage</code> from the main page.</li>
 </ul>
 <hr>
-<h2 id="en-playground-siguientes-pasos">🚀 Siguientes pasos<a class="headerlink" href="#en-playground-siguientes-pasos" title="Permanent link">¶</a></h2>
-<p><a class="md-button md-button--primary" href="#en-ejercicios-playground">🧪 Ir a los ejercicios del Playground</a>
-<a class="md-button" href="#en-retos">🎯 Ver los retos semanales</a>
-<a class="md-button" href="#en-entrevistas">💼 Practicar preguntas de entrevista</a>
-'''
-open('docs/playground.md', 'w', encoding='utf-8').write(contenido)
-print('OK:', len(contenido.splitlines()), 'líneas escritas')
-"</p></div></section>
+<h2 id="en-playground-next-steps">🚀 Next steps<a class="headerlink" href="#en-playground-next-steps" title="Permanent link">¶</a></h2>
+<p><a class="md-button md-button--primary" href="#en-ejercicios-playground">🧪 Go to Playground exercises</a>
+<a class="md-button" href="#en-retos">🎯 View weekly challenges</a>
+<a class="md-button" href="#en-entrevistas">💼 Practice interview questions</a></p></div></section>
                     <section class='print-page md-section' id='section-3-4' heading-number='3.4'>
                         <h1>🟢 Bloque 1 (01–06)<a class='headerlink' href='#section-3-4' title='Permanent link'></a>
                         </h1>
