@@ -23364,6 +23364,31 @@ button {
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="en-retos-reto-1-progressive-hints">💡 Progressive Hints<a class="headerlink" href="#en-retos-reto-1-progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Listen for clicks and track the count</summary>
+<p>Store the click count in a variable (such as <code>clicks</code>), attach a <code>click</code> listener to <code>#camaleon</code>, and increment it on every click.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — Compute a cycling color with <code>hsl</code></summary>
+<p>Use modulo <code>% 360</code> (for example <code>(clicks * 60) % 360</code>) to produce a fresh <code>hsl(...)</code> hue on each click and set <code>boton.style.background</code>.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Update the counter text and keep the CSS transition</summary>
+<p>Update <code>contador.textContent</code> with the current click count while letting the CSS <code>transition: background .3s</code> animate the color change.</p>
+</details>
+<h2 id="en-retos-reto-1-verification-checklist">✅ Verification Checklist<a class="headerlink" href="#en-retos-reto-1-verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Every click changes the button color smoothly using the CSS transition.</p>
+</li>
+<li>
+<p>[ ] The counter (<code>#contador</code>) displays the exact click count with no console errors.</p>
+</li>
+<li>
+<p>[ ] The code is clean and behaves reliably across repeated clicks.</p>
+</li>
+</ul>
 <h2 id="en-retos-reto-1-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-1-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] Make the color <strong>random</strong> instead of sequential.</li>
@@ -23446,6 +23471,31 @@ body.dark .card { background: #2a2342; color: #e8e5f5; }</textarea>
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="en-retos-reto-2-progressive-hints">💡 Progressive Hints<a class="headerlink" href="#en-retos-reto-2-progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Toggle the theme via a class on <code>body</code></summary>
+<p>Select the <code>#tema</code> button and call <code>document.body.classList.toggle('dark')</code> inside its <code>click</code> listener to switch between light and dark modes.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — Check contrast and dark-mode styles</summary>
+<p>Make sure the page background, <code>.card</code> surface, headings, and social links stay legible and high-contrast when <code>body.dark</code> is active.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Verify responsive layout and accessibility</summary>
+<p>Test across viewport widths so the card and social links adapt cleanly and the toggle button works via keyboard and pointer.</p>
+</details>
+<h2 id="en-retos-reto-2-verification-checklist">✅ Verification Checklist<a class="headerlink" href="#en-retos-reto-2-verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Clicking <code>#tema</code> toggles light and dark mode cleanly using <code>classList.toggle('dark')</code>.</p>
+</li>
+<li>
+<p>[ ] The card includes profile visual, name, role, and social links with responsive layout and clear contrast.</p>
+</li>
+<li>
+<p>[ ] No console errors occur and interactive controls work smoothly.</p>
+</li>
+</ul>
 <h2 id="en-retos-reto-2-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-2-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] Make the photo a <strong>real image</strong> with <code>border-radius: 50%</code>.</li>
@@ -23501,48 +23551,19 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+<h2 id="en-retos-reto-3-progressive-hints">💡 Progressive Hints<a class="headerlink" href="#en-retos-reto-3-progressive-hints" title="Permanent link">¶</a></h2>
 <details class="tip">
-<summary>Hint 1: state and persistence</summary>
-<p>Read the initial value on load and save it whenever the state changes.</p>
+<summary>Hint 1 — Hydrate initial state from <code>localStorage</code></summary>
+<p>On load, read the stored value from <code>localStorage</code> (casting with <code>Number(...)</code> and falling back to <code>0</code>) and render it into <code>#numero</code>.</p>
 </details>
 <details class="tip">
-<summary>Hint 2: bounds and events</summary>
-<p>Check the condition before updating the value and keep the DOM in sync.</p>
+<summary>Hint 2 — Guard the lower bound on decrement</summary>
+<p>Before decrementing in <code>#menos</code>, check <code>if (count &gt; 0)</code> so the counter never goes below <code>0</code>, and set it back to <code>0</code> on <code>Reset</code>.</p>
 </details>
-<details class="success">
-<summary>Solution</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'numero'</span><span class="p">);</span>
-<span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mas'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'menos'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="nx">count</span><span class="o">--</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reset'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-</details>
-<h2 id="en-retos-reto-3-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-3-bonus-challenges" title="Permanent link">¶</a></h2>
-<ul>
-<li>[ ] Make the number change <strong>color</strong> depending on whether it is positive, negative, or zero.</li>
-<li>[ ] Allow <strong>typing</strong> a number directly into an input.</li>
-<li>[ ] Keep a <strong>history</strong> of changes.</li>
-</ul>
-<hr>
-<p><a class="md-button" href="#en-retos">← Back to challenges</a>
-<a class="md-button md-button--primary" href="#en-retos-reto-4">🎯 Go to Challenge #4</a></p></div></section><section class="print-page" id="en-retos-reto-4" heading-number="4.14"><div><h1 id="challenge-4-responsive-gallery">🎯 Challenge #4: Responsive Gallery<a class="headerlink" href="#en-retos-reto-4-challenge-4-responsive-gallery" title="Permanent link">¶</a></h1>
+<details class="tip">
+<summary>Hint 3 — Persist every state update to <code>localStorage</code></summary>
+<p>Whenever <code>count</code> changes (<code>+1</code>, <code>-1</code>, or <code>Reset</code>), update <code>#numero.textContent</code> and write the new value with <code>localStorage.setItem(...)</code>.</p>
+</details></div></section><section class="print-page" id="en-retos-reto-4" heading-number="4.14"><div><h1 id="challenge-4-responsive-gallery">🎯 Challenge #4: Responsive Gallery<a class="headerlink" href="#en-retos-reto-4-challenge-4-responsive-gallery" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Intermediate-level challenge</p>
 <p>Create a responsive image gallery with CSS Grid, lightbox, and lazy loading. Ideal for practicing Grid and events.</p>
@@ -23616,6 +23637,25 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="en-retos-reto-4-progressive-hints">💡 Progressive Hints<a class="headerlink" href="#en-retos-reto-4-progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Base structure and core flow (Challenge #4: Responsive Gallery)</summary>
+<p>Start with a minimal working implementation and verify the core flow before adding extra polish or optional enhancements.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — State updates, inputs, and edge cases</summary>
+<p>Test empty or unexpected values, UI state transitions, and repeated interactions so state stays consistent and clean.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Cleanup, accessibility, and final check</summary>
+<p>Verify there are no console errors or warnings, interactive controls remain accessible, and the code is readable and modular.</p>
+</details>
+<h2 id="en-retos-reto-4-verification-checklist">✅ Verification Checklist<a class="headerlink" href="#en-retos-reto-4-verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>[ ] The core goal of Challenge #4: Responsive Gallery works with no console errors.</li>
+<li>[ ] Main interactions, state updates, and edge cases from the prompt are covered.</li>
+<li>[ ] The solution is clean, maintainable, and verified in the editor/browser.</li>
+</ul>
 <h2 id="en-retos-reto-4-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-4-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] <strong>Category filters</strong>.</li>
@@ -23733,6 +23773,31 @@ button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none;
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="en-retos-reto-5-progressive-hints">💡 Progressive Hints<a class="headerlink" href="#en-retos-reto-5-progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Inspect <code>input.validity</code> with <code>novalidate</code></summary>
+<p>The form already sets <code>novalidate</code>; read <code>input.validity</code> (<code>valueMissing</code>, <code>typeMismatch</code>, <code>tooShort</code>) to write clear messages into <code>#&lt;id&gt;-error</code> and prevent invalid submissions with <code>e.preventDefault()</code>.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — Check password match and ARIA attributes</summary>
+<p>Verify <code>confirmar.value === password.value</code>, connect each input to its error message via <code>aria-describedby</code>, and toggle <code>aria-invalid="true"</code> or <code>"false"</code> alongside the <code>invalido</code> class.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Re-validate on <code>input</code>, <code>blur</code>, and password edits</summary>
+<p>Listen to <code>input</code> and <code>blur</code> across all three inputs, and re-validate <code>confirmar</code> when <code>password</code> changes if <code>confirmar</code> already has text.</p>
+</details>
+<h2 id="en-retos-reto-5-verification-checklist">✅ Verification Checklist<a class="headerlink" href="#en-retos-reto-5-verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Validates <code>email</code>, <code>password</code> (at least 8 chars), and <code>confirmar</code> (matches <code>password</code>) in real time (<code>input</code> and <code>blur</code>).</p>
+</li>
+<li>
+<p>[ ] Renders descriptive errors in <code>#&lt;id&gt;-error</code>, updates <code>aria-invalid</code>, and links <code>aria-describedby</code>.</p>
+</li>
+<li>
+<p>[ ] Blocks form submission (<code>submit</code>) on errors and succeeds only when all fields are valid.</p>
+</li>
+</ul>
 <h2 id="en-retos-reto-5-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-5-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] <strong>Password strength indicator</strong>.</li>

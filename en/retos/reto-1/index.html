@@ -4053,6 +4053,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#progressive-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Progressive Hints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5092,6 +5114,31 @@ button {
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="progressive-hints">💡 Progressive Hints<a class="headerlink" href="#progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Listen for clicks and track the count</summary>
+<p>Store the click count in a variable (such as <code>clicks</code>), attach a <code>click</code> listener to <code>#camaleon</code>, and increment it on every click.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — Compute a cycling color with <code>hsl</code></summary>
+<p>Use modulo <code>% 360</code> (for example <code>(clicks * 60) % 360</code>) to produce a fresh <code>hsl(...)</code> hue on each click and set <code>boton.style.background</code>.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Update the counter text and keep the CSS transition</summary>
+<p>Update <code>contador.textContent</code> with the current click count while letting the CSS <code>transition: background .3s</code> animate the color change.</p>
+</details>
+<h2 id="verification-checklist">✅ Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Every click changes the button color smoothly using the CSS transition.</p>
+</li>
+<li>
+<p>[ ] The counter (<code>#contador</code>) displays the exact click count with no console errors.</p>
+</li>
+<li>
+<p>[ ] The code is clean and behaves reliably across repeated clicks.</p>
+</li>
+</ul>
 <h2 id="bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] Make the color <strong>random</strong> instead of sequential.</li>

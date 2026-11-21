@@ -4049,6 +4049,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pistas-progresivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Pistas progresivas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checklist de comprobación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5088,6 +5110,31 @@ const contador = document.getElementById('contador');</p>
 });
 ```</p>
 </details>
+<h2 id="pistas-progresivas">💡 Pistas progresivas<a class="headerlink" href="#pistas-progresivas" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Pista 1 — Escucha el clic y lleva la cuenta</summary>
+<p>Guarda el número de pulsaciones en una variable (por ejemplo <code>clicks</code>), escuche el evento <code>click</code> en <code>#camaleon</code> e incrementa el contador en cada pulsación.</p>
+</details>
+<details class="tip">
+<summary>Pista 2 — Calcula un color cíclico con <code>hsl</code></summary>
+<p>Usa el operador módulo <code>% 360</code> (por ejemplo <code>(clicks * 60) % 360</code>) para generar un tono <code>hsl(...)</code> distinto en cada clic y asígnalo a <code>boton.style.background</code>.</p>
+</details>
+<details class="tip">
+<summary>Pista 3 — Sincroniza el texto y respeta la transición CSS</summary>
+<p>Actualiza <code>contador.textContent</code> con el total de clics y deja que <code>transition: background .3s</code> en CSS suavice el cambio de color sin romper el flujo.</p>
+</details>
+<h2 id="checklist-de-comprobacion">✅ Checklist de comprobación<a class="headerlink" href="#checklist-de-comprobacion" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Cada clic cambia el color del botón y mantiene la transición suave definida en CSS.</p>
+</li>
+<li>
+<p>[ ] El contador (<code>#contador</code>) muestra el número exacto de pulsaciones sin errores en consola.</p>
+</li>
+<li>
+<p>[ ] El código está limpio y funciona al pulsar repetidamente.</p>
+</li>
+</ul>
 <h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] Que el color sea <strong>aleatorio</strong> en lugar de secuencial.</li>

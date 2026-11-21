@@ -4161,6 +4161,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pistas-progresivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Pistas progresivas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checklist de comprobación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#retos-extra" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5128,6 +5150,31 @@ const confirmar = document.getElementById('confirmar');</p>
 });
 ```</p>
 </details>
+<h2 id="pistas-progresivas">💡 Pistas progresivas<a class="headerlink" href="#pistas-progresivas" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Pista 1 — Usa <code>input.validity</code> y <code>novalidate</code></summary>
+<p>El formulario ya incluye <code>novalidate</code>; inspecciona <code>input.validity</code> (<code>valueMissing</code>, <code>typeMismatch</code>, <code>tooShort</code>) para generar mensajes claros en <code>#&lt;id&gt;-error</code> y bloquear envíos inválidos con <code>e.preventDefault()</code>.</p>
+</details>
+<details class="tip">
+<summary>Pista 2 — Valida coincidencia y sincroniza atributos ARIA</summary>
+<p>Comprueba que <code>confirmar.value === password.value</code>, asocia cada campo con su error mediante <code>aria-describedby</code> y alterna <code>aria-invalid="true"</code> o <code>"false"</code> junto con la clase <code>invalido</code>.</p>
+</details>
+<details class="tip">
+<summary>Pista 3 — Revalida en <code>input</code>, <code>blur</code> y al editar <code>password</code></summary>
+<p>Escucha <code>input</code> y <code>blur</code> en los tres campos, y si el usuario cambia <code>password</code> cuando <code>confirmar</code> ya tiene valor, revalida también <code>confirmar</code>.</p>
+</details>
+<h2 id="checklist-de-comprobacion">✅ Checklist de comprobación<a class="headerlink" href="#checklist-de-comprobacion" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Valida <code>email</code>, <code>password</code> (mínimo 8 caracteres) y <code>confirmar</code> (coincide con <code>password</code>) en tiempo real (<code>input</code> y <code>blur</code>).</p>
+</li>
+<li>
+<p>[ ] Muestra mensajes descriptivos en <code>#&lt;id&gt;-error</code>, actualiza <code>aria-invalid</code> y vincula <code>aria-describedby</code>.</p>
+</li>
+<li>
+<p>[ ] Impide enviar el formulario (<code>submit</code>) si hay errores y confirma el envío solo cuando es válido.</p>
+</li>
+</ul>
 <h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] <strong>Indicador de fortaleza</strong> de contraseña.</li>

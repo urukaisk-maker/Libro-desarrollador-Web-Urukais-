@@ -4105,10 +4105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#pistas-progresivas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        💡 Pistas progresivas
       
     </span>
   </a>
@@ -5069,46 +5069,19 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+<h2 id="pistas-progresivas">💡 Pistas progresivas<a class="headerlink" href="#pistas-progresivas" title="Permanent link">¶</a></h2>
 <details class="tip">
-<summary>Pista 1: estado y persistencia</summary>
-<p>Lee el valor inicial al cargar la página y guárdalo cada vez que cambie el estado.</p>
+<summary>Pista 1 — Hidrata el estado desde <code>localStorage</code></summary>
+<p>Al cargar el script, lee la clave guardada en <code>localStorage</code> (convirtiéndola con <code>Number(...)</code> y con valor por defecto <code>0</code>) y muestra ese número en <code>#numero</code>.</p>
 </details>
 <details class="tip">
-<summary>Pista 2: límites y eventos</summary>
-<p>Comprueba la condición antes de modificar el valor y actualiza el DOM en el mismo flujo.</p>
+<summary>Pista 2 — Protege el límite inferior en <code>-1</code></summary>
+<p>Antes de restar en <code>#menos</code>, comprueba <code>if (count &gt; 0)</code> para que el contador nunca baje de <code>0</code>, y en <code>#reset</code> devuelve el contador a <code>0</code>.</p>
 </details>
-<details class="success">
-<summary>Solución</summary>
-<p>```javascript
-let count = Number(localStorage.getItem('reto3') || 0);
-const num = document.getElementById('numero');
-num.textContent = count;</p>
-<p>document.getElementById('mas').addEventListener('click', () =&gt; {
-  count++;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});</p>
-<p>document.getElementById('menos').addEventListener('click', () =&gt; {
-  if (count &gt; 0) count--;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});</p>
-<p>document.getElementById('reset').addEventListener('click', () =&gt; {
-  count = 0;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});
-```</p>
-</details>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
-<ul>
-<li>[ ] Que el número cambie de <strong>color</strong> según sea positivo, negativo o cero.</li>
-<li>[ ] Que se pueda <strong>escribir</strong> un número directamente en un input.</li>
-<li>[ ] Que haya un <strong>historial</strong> de cambios.</li>
-</ul>
-<hr>
-<p><a class="md-button" href="../">← Volver a retos</a>
-<a class="md-button md-button--primary" href="../reto-4/">🎯 Ir al Reto #4</a></p></div>
+<details class="tip">
+<summary>Pista 3 — Guarda cada cambio en <code>localStorage</code></summary>
+<p>Cada vez que cambie <code>count</code> (<code>+1</code>, <code>-1</code> o <code>reset</code>), actualiza <code>#numero.textContent</code> y guarda el nuevo valor en <code>localStorage.setItem(...)</code>.</p>
+</details></div>
 
 
 

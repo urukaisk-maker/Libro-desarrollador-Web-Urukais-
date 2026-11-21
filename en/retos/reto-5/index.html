@@ -4165,6 +4165,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#progressive-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Progressive Hints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5135,6 +5157,31 @@ button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none;
 <span class="p">});</span>
 </code></pre></div>
 </details>
+<h2 id="progressive-hints">💡 Progressive Hints<a class="headerlink" href="#progressive-hints" title="Permanent link">¶</a></h2>
+<details class="tip">
+<summary>Hint 1 — Inspect <code>input.validity</code> with <code>novalidate</code></summary>
+<p>The form already sets <code>novalidate</code>; read <code>input.validity</code> (<code>valueMissing</code>, <code>typeMismatch</code>, <code>tooShort</code>) to write clear messages into <code>#&lt;id&gt;-error</code> and prevent invalid submissions with <code>e.preventDefault()</code>.</p>
+</details>
+<details class="tip">
+<summary>Hint 2 — Check password match and ARIA attributes</summary>
+<p>Verify <code>confirmar.value === password.value</code>, connect each input to its error message via <code>aria-describedby</code>, and toggle <code>aria-invalid="true"</code> or <code>"false"</code> alongside the <code>invalido</code> class.</p>
+</details>
+<details class="tip">
+<summary>Hint 3 — Re-validate on <code>input</code>, <code>blur</code>, and password edits</summary>
+<p>Listen to <code>input</code> and <code>blur</code> across all three inputs, and re-validate <code>confirmar</code> when <code>password</code> changes if <code>confirmar</code> already has text.</p>
+</details>
+<h2 id="verification-checklist">✅ Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>[ ] Validates <code>email</code>, <code>password</code> (at least 8 chars), and <code>confirmar</code> (matches <code>password</code>) in real time (<code>input</code> and <code>blur</code>).</p>
+</li>
+<li>
+<p>[ ] Renders descriptive errors in <code>#&lt;id&gt;-error</code>, updates <code>aria-invalid</code>, and links <code>aria-describedby</code>.</p>
+</li>
+<li>
+<p>[ ] Blocks form submission (<code>submit</code>) on errors and succeeds only when all fields are valid.</p>
+</li>
+</ul>
 <h2 id="bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
 <li>[ ] <strong>Password strength indicator</strong>.</li>

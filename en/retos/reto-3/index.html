@@ -4109,10 +4109,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bonus-challenges" class="md-nav__link">
+  <a href="#progressive-hints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Bonus Challenges
+        💡 Progressive Hints
       
     </span>
   </a>
@@ -5073,48 +5073,19 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
+<h2 id="progressive-hints">💡 Progressive Hints<a class="headerlink" href="#progressive-hints" title="Permanent link">¶</a></h2>
 <details class="tip">
-<summary>Hint 1: state and persistence</summary>
-<p>Read the initial value on load and save it whenever the state changes.</p>
+<summary>Hint 1 — Hydrate initial state from <code>localStorage</code></summary>
+<p>On load, read the stored value from <code>localStorage</code> (casting with <code>Number(...)</code> and falling back to <code>0</code>) and render it into <code>#numero</code>.</p>
 </details>
 <details class="tip">
-<summary>Hint 2: bounds and events</summary>
-<p>Check the condition before updating the value and keep the DOM in sync.</p>
+<summary>Hint 2 — Guard the lower bound on decrement</summary>
+<p>Before decrementing in <code>#menos</code>, check <code>if (count &gt; 0)</code> so the counter never goes below <code>0</code>, and set it back to <code>0</code> on <code>Reset</code>.</p>
 </details>
-<details class="success">
-<summary>Solution</summary>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'numero'</span><span class="p">);</span>
-<span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mas'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'menos'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="nx">count</span><span class="o">--</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reset'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-</details>
-<h2 id="bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
-<ul>
-<li>[ ] Make the number change <strong>color</strong> depending on whether it is positive, negative, or zero.</li>
-<li>[ ] Allow <strong>typing</strong> a number directly into an input.</li>
-<li>[ ] Keep a <strong>history</strong> of changes.</li>
-</ul>
-<hr>
-<p><a class="md-button" href="../">← Back to challenges</a>
-<a class="md-button md-button--primary" href="../reto-4/">🎯 Go to Challenge #4</a></p></div>
+<details class="tip">
+<summary>Hint 3 — Persist every state update to <code>localStorage</code></summary>
+<p>Whenever <code>count</code> changes (<code>+1</code>, <code>-1</code>, or <code>Reset</code>), update <code>#numero.textContent</code> and write the new value with <code>localStorage.setItem(...)</code>.</p>
+</details></div>
 
 
 
