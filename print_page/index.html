@@ -21880,63 +21880,63 @@ const ASSETS = ['/', '/index.html', '/styles.css'];</p>
 </ul>
 <hr>
 <p><a class="md-button" href="#en-ejercicios-22-pwa">← Exercise 22</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-24-animaciones">Go to exercise 24 →</a></p></div></section><section class="print-page" id="en-ejercicios-24-animaciones" heading-number="3.8.4"><div><h1 id="24-animaciones">24 — Animaciones<a class="headerlink" href="#en-ejercicios-24-animaciones-24-animaciones" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios-24-animaciones">Go to exercise 24 →</a></p></div></section><section class="print-page" id="en-ejercicios-24-animaciones" heading-number="3.8.4"><div><h1 id="24-animations">24 — Animations<a class="headerlink" href="#en-ejercicios-24-animaciones-24-animations" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Anima un elemento con transform y opacity.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Animate an element with transform and opacity.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-24-animaciones-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-24-animaciones-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea una animación que:</p>
+<h2 id="en-ejercicios-24-animaciones-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-24-animaciones-goal" title="Permanent link">¶</a></h2>
+<p>Create an animation that:</p>
 <ol>
-<li>Mueva un cuadrado de izquierda a derecha.</li>
-<li>Cambie su opacidad.</li>
-<li>Use `transform` y `opacity` (no `left`).</li>
-<li>Respete `prefers-reduced-motion`.</li>
+<li>Moves a square from left to right.</li>
+<li>Changes its opacity.</li>
+<li>Uses <code>transform</code> and <code>opacity</code> (not <code>left</code>).</li>
+<li>Respects <code>prefers-reduced-motion</code>.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-24-animaciones-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-24-animaciones-solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<div class="cuadrado"></div>
-<p>```</p>
-<p>```css
-.cuadrado {
-  width: 100px;
-  height: 100px;
-  background: #6a5acd;
-  animation: mover 2s ease-in-out infinite alternate;
-}</p>
-<p>@keyframes mover {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(200px);
-    opacity: 0.5;
-  }
-}</p>
-<p>@media (prefers-reduced-motion: reduce) {
-  .cuadrado { animation: none; }
-}
-```</p>
+<h2 id="en-ejercicios-24-animaciones-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-24-animaciones-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cuadrado"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">cuadrado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#6a5acd</span><span class="p">;</span>
+<span class="w">  </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">mover</span><span class="w"> </span><span class="mi">2</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="w"> </span><span class="kc">infinite</span><span class="w"> </span><span class="kc">alternate</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">mover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">from</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateX</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">to</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">translateX</span><span class="p">(</span><span class="mi">200</span><span class="kt">px</span><span class="p">);</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span><span class="w"> </span><span class="nt">reduce</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">cuadrado</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-24-animaciones-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-24-animaciones-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-24-animaciones-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-24-animaciones-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`transform` y `opacity` son GPU-friendly.</li>
-<li>`@keyframes`: define la animación.</li>
-<li>`prefers-reduced-motion`: respeta la accesibilidad.</li>
+<li><code>transform</code> and <code>opacity</code> are GPU-friendly.</li>
+<li><code>@keyframes</code>: defines the animation.</li>
+<li><code>prefers-reduced-motion</code>: respects accessibility preferences.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-24-animaciones-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-24-animaciones-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-24-animaciones-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-24-animaciones-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Usa la Web Animations API en lugar de CSS.</li>
-<li>[ ] Añade stagger a una lista de elementos.</li>
-<li>[ ] Anima al hacer scroll con Intersection Observer.</li>
+<li>[ ] Use the Web Animations API instead of CSS.</li>
+<li>[ ] Add stagger to a list of elements.</li>
+<li>[ ] Animate on scroll with Intersection Observer.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-23-websockets">← Ejercicio 23</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-25-design-systems">Ir al ejercicio 25 →</a></p></div></section><section class="print-page" id="en-ejercicios-25-design-systems" heading-number="3.8.5"><div><h1 id="25-design-systems">25 — Design systems<a class="headerlink" href="#en-ejercicios-25-design-systems-25-design-systems" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-23-websockets">← Exercise 23</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-25-design-systems">Go to exercise 25 →</a></p></div></section><section class="print-page" id="en-ejercicios-25-design-systems" heading-number="3.8.5"><div><h1 id="25-design-systems">25 — Design systems<a class="headerlink" href="#en-ejercicios-25-design-systems-25-design-systems" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Crea design tokens y un componente Button.</p>
