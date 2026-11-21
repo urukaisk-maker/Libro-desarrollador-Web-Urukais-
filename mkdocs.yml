@@ -11,12 +11,6 @@ theme:
   custom_dir: overrides
   logo: assets/logo.svg
   favicon: assets/favicon.svg
-  theme:
-  name: material
-  language: es
-  custom_dir: overrides
-  logo: assets/logo.svg
-  favicon: assets/favicon.svg
   features:
     - header.autohide
     - navigation.tabs
@@ -25,13 +19,16 @@ theme:
     - navigation.footer
     - navigation.path
     - navigation.tracking
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - search.share
     - content.code.copy
+    - content.code.annotate
     - content.action.edit
+    - content.action.view
     - content.tooltips
-    - toc.integrate
+    - toc.follow
   palette:
     - scheme: default
       primary: indigo
@@ -185,6 +182,7 @@ nav:
       - 💬 Contacto: contacto.md
       - 🎤 Entrevistas / Agradecimientos: agradecimientos.md
       - 📄 Licencia: licencia.md
+      - 🖨 Versión imprimible: print_page.md
 
 plugins:
   - search
@@ -198,9 +196,23 @@ plugins:
           name: English
 
   - mkdocs-video
+  - meta
 
-  - optimize:
-      enabled: !ENV [CI, false]
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: false
+      htmlmin_opts:
+        remove_comments: true
 
   - social:
       enabled: !ENV [CI, false]
@@ -209,14 +221,13 @@ plugins:
         background_color: "#1a1a2e"
         color: "#ffffff"
 
-  - meta
-
-  # ⚠️ print-site debe ser SIEMPRE el último plugin
+  # ⚠️ print-site SIEMPRE el último plugin
   - print-site:
-      add_to_navigation: true
+      add_to_navigation: false
       print_page_title: 'Versión imprimible'
 
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
   - md_in_html

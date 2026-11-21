@@ -1,5 +1,6 @@
 ---
-title: Libro del Desarrollador Web — Urukais
+---
+title: Inicio
 hide:
   - navigation
   - toc
@@ -10,7 +11,7 @@ hide:
 
 <img src="assets/portada.png" alt="Portada del Libro del Desarrollador Web" class="book-cover-img animate-in">
 
-# Libro del Desarrollador Web
+# Aprende desarrollo web desde cero
 
 **El manual definitivo para aprender desarrollo web en español.** Desde los cimientos hasta la vanguardia tecnológica.
 
