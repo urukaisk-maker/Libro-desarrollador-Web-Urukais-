@@ -23579,26 +23579,26 @@ More content.
 <h2 id="en-retos-next-steps">➡ Next steps<a class="headerlink" href="#en-retos-next-steps" title="Permanent link">¶</a></h2>
 <p><a class="md-button md-button--primary" href="#en-retos-comunidad">🤝 View community challenges</a>
 <a class="md-button" href="#en-playground">🎮 Go to Playground</a>
-<a class="md-button" href="#en-logros">🏆 View my achievements</a></p></div></section><section class="print-page" id="en-retos-reto-1" heading-number="4.11"><div><h1 id="reto-1-el-boton-camaleon">🎯 Reto #1: El botón camaleón<a class="headerlink" href="#en-retos-reto-1-reto-1-el-boton-camaleon" title="Permanent link">¶</a></h1>
+<a class="md-button" href="#en-logros">🏆 View my achievements</a></p></div></section><section class="print-page" id="en-retos-reto-1" heading-number="4.11"><div><h1 id="challenge-1-the-chameleon-button">🎯 Challenge #1: The Chameleon Button<a class="headerlink" href="#en-retos-reto-1-challenge-1-the-chameleon-button" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Reto de nivel principiante</p>
-<p>Un botón que cambia de color cada vez que se pulsa, con una animación suave. Ideal para practicar eventos y manipulación de estilos.</p>
+<p class="admonition-title">Beginner-level challenge</p>
+<p>A button that changes color every time it is clicked, with a smooth animation. Ideal for practicing events and style manipulation.</p>
 </div>
 <hr>
-<h2 id="en-retos-reto-1-objetivo">🎯 Objetivo<a class="headerlink" href="#en-retos-reto-1-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un botón que:</p>
+<h2 id="en-retos-reto-1-goal">🎯 Goal<a class="headerlink" href="#en-retos-reto-1-goal" title="Permanent link">¶</a></h2>
+<p>Create a button that:</p>
 <ol>
-<li>Cambie de color <strong>cada vez que se pulse</strong>.</li>
-<li>Use una <strong>transición suave</strong> entre colores.</li>
-<li>Muestre el número de veces que se ha pulsado.</li>
+<li>Changes color <strong>every time it is clicked</strong>.</li>
+<li>Uses a <strong>smooth transition</strong> between colors.</li>
+<li>Displays the number of times it has been clicked.</li>
 </ol>
-<h2 id="en-retos-reto-1-conceptos">🧠 Conceptos<a class="headerlink" href="#en-retos-reto-1-conceptos" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-1-concepts">🧠 Concepts<a class="headerlink" href="#en-retos-reto-1-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>Eventos en JavaScript (`addEventListener`)</li>
-<li>Manipulación de estilos (`element.style`)</li>
-<li>Transiciones CSS</li>
+<li>JavaScript events (<code>addEventListener</code>)</li>
+<li>Style manipulation (<code>element.style</code>)</li>
+<li>CSS transitions</li>
 </ul>
-<h2 id="en-retos-reto-1-editor">🖥️ Editor<a class="headerlink" href="#en-retos-reto-1-editor" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-1-editor">🖥 Editor<a class="headerlink" href="#en-retos-reto-1-editor" title="Permanent link">¶</a></h2>
 <div class="playground-ejercicio" data-ejercicio="reto-1">
 <div class="playground__editor">
 <div class="playground__tabs">
@@ -23606,8 +23606,8 @@ More content.
 <button class="playground__tab" data-lang="css">CSS</button>
 <button class="playground__tab" data-lang="js">JS</button>
 </div>
-<textarea class="playground__textarea" data-lang="html" spellcheck="false">&lt;button id="camaleon"&gt;¡Púlsame!&lt;/button&gt;
-&lt;p id="contador"&gt;Pulsado 0 veces&lt;/p&gt;</textarea>
+<textarea class="playground__textarea" data-lang="html" spellcheck="false">&lt;button id="camaleon"&gt;Click me!&lt;/button&gt;
+&lt;p id="contador"&gt;Clicked 0 times&lt;/p&gt;</textarea>
 <textarea class="playground__textarea is-hidden" data-lang="css" spellcheck="false">body { font-family: system-ui; padding: 1.5rem; text-align: center; }
 button {
   padding: 1rem 2rem;
@@ -23620,10 +23620,10 @@ button {
   transition: background .3s;
 }
 #contador { margin-top: 1rem; color: #666; }</textarea>
-<textarea class="playground__textarea is-hidden" data-lang="js" spellcheck="false">// Tu código aquí
+<textarea class="playground__textarea is-hidden" data-lang="js" spellcheck="false">// Your code here
 </textarea>
 <div class="playground__actions">
-<button class="md-button md-button--primary" data-run>▶ Ejecutar</button>
+<button class="md-button md-button--primary" data-run>▶ Run</button>
 </div>
 </div>
 <div class="playground__output">
@@ -23632,28 +23632,28 @@ button {
 </div>
 
 <details class="success">
-<summary>Solución</summary>
-<p>```javascript
-let clicks = 0;
-const boton = document.getElementById('camaleon');
-const contador = document.getElementById('contador');</p>
-<p>boton.addEventListener('click', () =&gt; {
-  clicks++;
-  const hue = (clicks * 60) % 360;
-  boton.style.background = 'hsl(' + hue + ', 70%, 55%)';
-  contador.textContent = 'Pulsado ' + clicks + ' veces';
-});
-```</p>
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">boton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'camaleon'</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'contador'</span><span class="p">);</span>
+
+<span class="nx">boton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">clicks</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">clicks</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">360</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">boton</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'hsl('</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">hue</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">', 70%, 55%)'</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">contador</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Clicked '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' times'</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
 </details>
-<h2 id="en-retos-reto-1-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-retos-reto-1-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-1-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-1-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Que el color sea <strong>aleatorio</strong> en lugar de secuencial.</li>
-<li>[ ] Que el botón <strong>crezca</strong> ligeramente al pulsarlo.</li>
-<li>[ ] Que el contador se <strong>guarde</strong> en localStorage.</li>
+<li>[ ] Make the color <strong>random</strong> instead of sequential.</li>
+<li>[ ] Make the button <strong>grow</strong> slightly when clicked.</li>
+<li>[ ] <strong>Save</strong> the counter in localStorage.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-retos">← Volver a retos</a>
-<a class="md-button md-button--primary" href="#en-retos-reto-2">🎯 Ir al Reto #2</a></p></div></section><section class="print-page" id="en-retos-reto-2" heading-number="4.12"><div><h1 id="reto-2-tarjeta-de-presentacion">🎯 Reto #2: Tarjeta de presentación<a class="headerlink" href="#en-retos-reto-2-reto-2-tarjeta-de-presentacion" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-retos">← Back to challenges</a>
+<a class="md-button md-button--primary" href="#en-retos-reto-2">🎯 Go to Challenge #2</a></p></div></section><section class="print-page" id="en-retos-reto-2" heading-number="4.12"><div><h1 id="reto-2-tarjeta-de-presentacion">🎯 Reto #2: Tarjeta de presentación<a class="headerlink" href="#en-retos-reto-2-reto-2-tarjeta-de-presentacion" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Reto de nivel principiante</p>
 <p>Diseña una tarjeta de presentación personal con HTML y CSS, con modo oscuro y responsive. Ideal para practicar maquetación y variables CSS.</p>
