@@ -51,44 +51,20 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
-??? tip "Hint 1: state and persistence"
-    Read the initial value on load and save it whenever the state changes.
+## 💡 Progressive Hints
 
-??? tip "Hint 2: bounds and events"
-    Check the condition before updating the value and keep the DOM in sync.
 
-??? success "Solution"
-    ```javascript
-    let count = Number(localStorage.getItem('reto3') || 0);
-    const num = document.getElementById('numero');
-    num.textContent = count;
+??? tip "Hint 1 — Hydrate initial state from `localStorage`"
 
-    document.getElementById('mas').addEventListener('click', () => {
-      count++;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
+    On load, read the stored value from `localStorage` (casting with `Number(...)` and falling back to `0`) and render it into `#numero`.
 
-    document.getElementById('menos').addEventListener('click', () => {
-      if (count > 0) count--;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
 
-    document.getElementById('reset').addEventListener('click', () => {
-      count = 0;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
-    ```
+??? tip "Hint 2 — Guard the lower bound on decrement"
 
-## 🚀 Bonus Challenges
+    Before decrementing in `#menos`, check `if (count > 0)` so the counter never goes below `0`, and set it back to `0` on `Reset`.
 
-- [ ] Make the number change **color** depending on whether it is positive, negative, or zero.
-- [ ] Allow **typing** a number directly into an input.
-- [ ] Keep a **history** of changes.
 
----
+??? tip "Hint 3 — Persist every state update to `localStorage`"
 
-[← Back to challenges](../retos.md){ .md-button }
-[🎯 Go to Challenge #4](reto-4.md){ .md-button .md-button--primary }
+    Whenever `count` changes (`+1`, `-1`, or `Reset`), update `#numero.textContent` and write the new value with `localStorage.setItem(...)`.
+

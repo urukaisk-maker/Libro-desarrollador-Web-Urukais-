@@ -78,6 +78,23 @@ Create a gallery that:
     });
     ```
 
+## 💡 Progressive Hints
+
+??? tip "Hint 1 — Base structure and core flow (Challenge #4: Responsive Gallery)"
+    Start with a minimal working implementation and verify the core flow before adding extra polish or optional enhancements.
+
+??? tip "Hint 2 — State updates, inputs, and edge cases"
+    Test empty or unexpected values, UI state transitions, and repeated interactions so state stays consistent and clean.
+
+??? tip "Hint 3 — Cleanup, accessibility, and final check"
+    Verify there are no console errors or warnings, interactive controls remain accessible, and the code is readable and modular.
+
+## ✅ Verification Checklist
+
+- [ ] The core goal of Challenge #4: Responsive Gallery works with no console errors.
+- [ ] Main interactions, state updates, and edge cases from the prompt are covered.
+- [ ] The solution is clean, maintainable, and verified in the editor/browser.
+
 ## 🚀 Bonus Challenges
 
 - [ ] **Category filters**.

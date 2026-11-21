@@ -78,6 +78,32 @@ body.dark .card { background: #2a2342; color: #e8e5f5; }</textarea>
     });
     ```
 
+## 💡 Progressive Hints
+
+
+??? tip "Hint 1 — Toggle the theme via a class on `body`"
+
+    Select the `#tema` button and call `document.body.classList.toggle('dark')` inside its `click` listener to switch between light and dark modes.
+
+
+??? tip "Hint 2 — Check contrast and dark-mode styles"
+
+    Make sure the page background, `.card` surface, headings, and social links stay legible and high-contrast when `body.dark` is active.
+
+
+??? tip "Hint 3 — Verify responsive layout and accessibility"
+
+    Test across viewport widths so the card and social links adapt cleanly and the toggle button works via keyboard and pointer.
+
+## ✅ Verification Checklist
+
+
+- [ ] Clicking `#tema` toggles light and dark mode cleanly using `classList.toggle('dark')`.
+
+- [ ] The card includes profile visual, name, role, and social links with responsive layout and clear contrast.
+
+- [ ] No console errors occur and interactive controls work smoothly.
+
 ## 🚀 Bonus Challenges
 
 - [ ] Make the photo a **real image** with `border-radius: 50%`.

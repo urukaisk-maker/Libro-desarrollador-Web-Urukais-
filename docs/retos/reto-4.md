@@ -78,6 +78,23 @@ Crea una galería que:
     });
     \`\`\`
 
+## 💡 Pistas progresivas
+
+??? tip "Pista 1 — Estructura base y flujo principal (Reto #4: Galería responsive)"
+    Empieza construyendo la estructura mínima funcional y comprueba que el flujo principal responde como esperas antes de añadir detalles visuales o casos extra.
+
+??? tip "Pista 2 — Estados, entradas y casos límite"
+    Revisa qué sucede con datos vacíos o inesperados, cambios de estado en la interfaz o eventos repetidos, y asegúrate de limpiar o actualizar el estado correctamente.
+
+??? tip "Pista 3 — Limpieza, accesibilidad y validación final"
+    Comprueba que no haya errores ni avisos en consola, que los elementos interactivos sean accesibles y que el código esté claro y modular.
+
+## ✅ Checklist de comprobación
+
+- [ ] Se cumple el objetivo principal de Reto #4: Galería responsive sin errores en consola.
+- [ ] Funcionan los eventos, estados y casos límite descritos en el enunciado.
+- [ ] La solución es clara, mantenible y está verificada en el editor/navegador.
+
 ## 🚀 Retos extra
 
 - [ ] **Filtros** por categoría.

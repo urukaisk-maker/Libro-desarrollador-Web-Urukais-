@@ -113,6 +113,32 @@ button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none;
     });
     \`\`\`
 
+## 💡 Pistas progresivas
+
+
+??? tip "Pista 1 — Usa `input.validity` y `novalidate`"
+
+    El formulario ya incluye `novalidate`; inspecciona `input.validity` (`valueMissing`, `typeMismatch`, `tooShort`) para generar mensajes claros en `#<id>-error` y bloquear envíos inválidos con `e.preventDefault()`.
+
+
+??? tip "Pista 2 — Valida coincidencia y sincroniza atributos ARIA"
+
+    Comprueba que `confirmar.value === password.value`, asocia cada campo con su error mediante `aria-describedby` y alterna `aria-invalid="true"` o `"false"` junto con la clase `invalido`.
+
+
+??? tip "Pista 3 — Revalida en `input`, `blur` y al editar `password`"
+
+    Escucha `input` y `blur` en los tres campos, y si el usuario cambia `password` cuando `confirmar` ya tiene valor, revalida también `confirmar`.
+
+## ✅ Checklist de comprobación
+
+
+- [ ] Valida `email`, `password` (mínimo 8 caracteres) y `confirmar` (coincide con `password`) en tiempo real (`input` y `blur`).
+
+- [ ] Muestra mensajes descriptivos en `#<id>-error`, actualiza `aria-invalid` y vincula `aria-describedby`.
+
+- [ ] Impide enviar el formulario (`submit`) si hay errores y confirma el envío solo cuando es válido.
+
 ## 🚀 Retos extra
 
 - [ ] **Indicador de fortaleza** de contraseña.

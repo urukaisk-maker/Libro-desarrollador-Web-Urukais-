@@ -78,6 +78,32 @@ body.dark .card { background: #2a2342; color: #e8e5f5; }</textarea>
     });
     \`\`\`
 
+## 💡 Pistas progresivas
+
+
+??? tip "Pista 1 — Alterna el tema con una clase en `body`"
+
+    Selecciona el botón `#tema` y usa `document.body.classList.toggle('dark')` dentro de su manejador `click` para alternar entre modo claro y oscuro.
+
+
+??? tip "Pista 2 — Revisa contraste y estilos en modo oscuro"
+
+    Comprueba que tanto el fondo y la tarjeta (`.card`) como los textos, enlaces y bordes mantengan buen contraste al activar `body.dark`.
+
+
+??? tip "Pista 3 — Comprueba diseño responsive y accesibilidad"
+
+    Verifica en distintos anchos de pantalla que la tarjeta y los enlaces sociales se adapten bien y que el botón sea accesible por teclado.
+
+## ✅ Checklist de comprobación
+
+
+- [ ] El botón `#tema` alterna correctamente entre modo claro y oscuro usando `classList.toggle('dark')`.
+
+- [ ] La tarjeta muestra foto/avatar, nombre, puesto, enlaces sociales y mantiene buen contraste y diseño responsive.
+
+- [ ] No hay errores en consola y los controles interactivos funcionan con ratón y teclado.
+
 ## 🚀 Retos extra
 
 - [ ] Que la foto sea una **imagen real** con \`border-radius: 50%\`.

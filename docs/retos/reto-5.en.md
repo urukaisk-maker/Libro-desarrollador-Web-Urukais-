@@ -113,6 +113,32 @@ button { padding: .75rem 1.5rem; background: #6a5acd; color: #fff; border: none;
     });
     ```
 
+## 💡 Progressive Hints
+
+
+??? tip "Hint 1 — Inspect `input.validity` with `novalidate`"
+
+    The form already sets `novalidate`; read `input.validity` (`valueMissing`, `typeMismatch`, `tooShort`) to write clear messages into `#<id>-error` and prevent invalid submissions with `e.preventDefault()`.
+
+
+??? tip "Hint 2 — Check password match and ARIA attributes"
+
+    Verify `confirmar.value === password.value`, connect each input to its error message via `aria-describedby`, and toggle `aria-invalid="true"` or `"false"` alongside the `invalido` class.
+
+
+??? tip "Hint 3 — Re-validate on `input`, `blur`, and password edits"
+
+    Listen to `input` and `blur` across all three inputs, and re-validate `confirmar` when `password` changes if `confirmar` already has text.
+
+## ✅ Verification Checklist
+
+
+- [ ] Validates `email`, `password` (at least 8 chars), and `confirmar` (matches `password`) in real time (`input` and `blur`).
+
+- [ ] Renders descriptive errors in `#<id>-error`, updates `aria-invalid`, and links `aria-describedby`.
+
+- [ ] Blocks form submission (`submit`) on errors and succeeds only when all fields are valid.
+
 ## 🚀 Bonus Challenges
 
 - [ ] **Password strength indicator**.

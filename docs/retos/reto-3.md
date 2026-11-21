@@ -51,44 +51,20 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 </div>
 
-??? tip "Pista 1: estado y persistencia"
-    Lee el valor inicial al cargar la página y guárdalo cada vez que cambie el estado.
+## 💡 Pistas progresivas
 
-??? tip "Pista 2: límites y eventos"
-    Comprueba la condición antes de modificar el valor y actualiza el DOM en el mismo flujo.
 
-??? success "Solución"
-    \`\`\`javascript
-    let count = Number(localStorage.getItem('reto3') || 0);
-    const num = document.getElementById('numero');
-    num.textContent = count;
+??? tip "Pista 1 — Hidrata el estado desde `localStorage`"
 
-    document.getElementById('mas').addEventListener('click', () => {
-      count++;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
+    Al cargar el script, lee la clave guardada en `localStorage` (convirtiéndola con `Number(...)` y con valor por defecto `0`) y muestra ese número en `#numero`.
 
-    document.getElementById('menos').addEventListener('click', () => {
-      if (count > 0) count--;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
 
-    document.getElementById('reset').addEventListener('click', () => {
-      count = 0;
-      num.textContent = count;
-      localStorage.setItem('reto3', count);
-    });
-    \`\`\`
+??? tip "Pista 2 — Protege el límite inferior en `-1`"
 
-## 🚀 Retos extra
+    Antes de restar en `#menos`, comprueba `if (count > 0)` para que el contador nunca baje de `0`, y en `#reset` devuelve el contador a `0`.
 
-- [ ] Que el número cambie de **color** según sea positivo, negativo o cero.
-- [ ] Que se pueda **escribir** un número directamente en un input.
-- [ ] Que haya un **historial** de cambios.
 
----
+??? tip "Pista 3 — Guarda cada cambio en `localStorage`"
 
-[← Volver a retos](../retos.md){ .md-button }
-[🎯 Ir al Reto #4](reto-4.md){ .md-button .md-button--primary }
+    Cada vez que cambie `count` (`+1`, `-1` o `reset`), actualiza `#numero.textContent` y guarda el nuevo valor en `localStorage.setItem(...)`.
+

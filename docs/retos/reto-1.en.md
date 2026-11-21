@@ -70,6 +70,32 @@ button {
     });
     ```
 
+## 💡 Progressive Hints
+
+
+??? tip "Hint 1 — Listen for clicks and track the count"
+
+    Store the click count in a variable (such as `clicks`), attach a `click` listener to `#camaleon`, and increment it on every click.
+
+
+??? tip "Hint 2 — Compute a cycling color with `hsl`"
+
+    Use modulo `% 360` (for example `(clicks * 60) % 360`) to produce a fresh `hsl(...)` hue on each click and set `boton.style.background`.
+
+
+??? tip "Hint 3 — Update the counter text and keep the CSS transition"
+
+    Update `contador.textContent` with the current click count while letting the CSS `transition: background .3s` animate the color change.
+
+## ✅ Verification Checklist
+
+
+- [ ] Every click changes the button color smoothly using the CSS transition.
+
+- [ ] The counter (`#contador`) displays the exact click count with no console errors.
+
+- [ ] The code is clean and behaves reliably across repeated clicks.
+
 ## 🚀 Bonus Challenges
 
 - [ ] Make the color **random** instead of sequential.

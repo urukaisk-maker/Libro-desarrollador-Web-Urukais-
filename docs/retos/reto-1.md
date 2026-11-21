@@ -70,6 +70,32 @@ button {
     });
     \`\`\`
 
+## 💡 Pistas progresivas
+
+
+??? tip "Pista 1 — Escucha el clic y lleva la cuenta"
+
+    Guarda el número de pulsaciones en una variable (por ejemplo `clicks`), escuche el evento `click` en `#camaleon` e incrementa el contador en cada pulsación.
+
+
+??? tip "Pista 2 — Calcula un color cíclico con `hsl`"
+
+    Usa el operador módulo `% 360` (por ejemplo `(clicks * 60) % 360`) para generar un tono `hsl(...)` distinto en cada clic y asígnalo a `boton.style.background`.
+
+
+??? tip "Pista 3 — Sincroniza el texto y respeta la transición CSS"
+
+    Actualiza `contador.textContent` con el total de clics y deja que `transition: background .3s` en CSS suavice el cambio de color sin romper el flujo.
+
+## ✅ Checklist de comprobación
+
+
+- [ ] Cada clic cambia el color del botón y mantiene la transición suave definida en CSS.
+
+- [ ] El contador (`#contador`) muestra el número exacto de pulsaciones sin errores en consola.
+
+- [ ] El código está limpio y funciona al pulsar repetidamente.
+
 ## 🚀 Retos extra
 
 - [ ] Que el color sea **aleatorio** en lugar de secuencial.
