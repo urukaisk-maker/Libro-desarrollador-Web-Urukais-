@@ -51,6 +51,7 @@
   border-color: #16a34a !important;
 }
 
+
 /* Mejoras visuales para header y pestañas de navegación en Material for MkDocs */
 .md-header {
   border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
@@ -66,28 +67,6 @@
   border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
 }
 
-.md-tabs__list {
-  gap: 0.25rem;
-}
-
-.md-tabs__link {
-  opacity: 0.78;
-  font-weight: 500;
-  transition: opacity 0.18s ease, color 0.18s ease, transform 0.18s ease;
-}
-
-.md-tabs__link:hover,
-.md-tabs__link--active {
-  opacity: 1;
-  font-weight: 600;
-}
-
-.md-tabs__link--active::after {
-  height: 2.5px;
-  border-radius: 999px 999px 0 0;
-}
-
-/* Estilo tipo pill y mejor espaciado en pestañas de navegación (.md-tabs) */
 .md-tabs__list {
   gap: 0.4rem;
   padding-block: 0.35rem;
@@ -107,7 +86,7 @@
   white-space: nowrap;
   opacity: 0.82;
   font-weight: 500;
-  transition: background-color 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+  transition: background-color 0.18s ease, color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
 }
 
 .md-tabs__link:hover {
