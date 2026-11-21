@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 17: 17 — Rendimiento. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 17: 17 — Performance. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 17: 17 — Rendimiento. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 17: 17 — Performance. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/17-rendimiento/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 17 — Rendimiento - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 17: 17 — Rendimiento. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 17: 17 — Performance. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/17-rendimiento.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/17-rendimiento/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 17 — Rendimiento - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 17: 17 — Rendimiento. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 17: 17 — Performance. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/17-rendimiento.png" />
 </head>
   
@@ -145,7 +145,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#17-rendimiento" class="md-skip">
+        <a href="#17-performance" class="md-skip">
           Skip to content
         </a>
       
@@ -3175,10 +3175,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3186,10 +3186,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3197,10 +3197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key concepts
       
     </span>
   </a>
@@ -3208,10 +3208,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/17-rendimiento.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/17-rendimiento.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5064,59 +5064,56 @@
   
 
 
-<div><h1 id="17-rendimiento">17 — Rendimiento<a class="headerlink" href="#17-rendimiento" title="Permanent link">¶</a></h1>
+<div><h1 id="17-performance">17 — Performance<a class="headerlink" href="#17-performance" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica lazy loading y optimización de imágenes.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice lazy loading and image optimization.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Optimiza una página con 10 imágenes para que:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Optimize a page with 10 images so that:</p>
 <ol>
-<li>Solo carguen cuando se acerquen al viewport.</li>
-<li>Usen formatos modernos.</li>
-<li>Tengan `width` y `height` para evitar CLS.</li>
+<li>They only load when approaching the viewport.</li>
+<li>They use modern formats.</li>
+<li>They have <code>width</code> and <code>height</code> to avoid CLS.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<div class="galeria">
-  <img src="img1.webp" alt="Imagen 1" loading="lazy" width="400" height="300">
-  <img src="img2.webp" alt="Imagen 2" loading="lazy" width="400" height="300">
-  <!-- ... -->
-</div>
-<p>```</p>
-<p>```html</p>
-<!-- Con srcset para responsive -->
-<p>&lt;img
-  src="foto-800.webp"
-  srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
-  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-  alt="Foto"
-  loading="lazy"
-  width="800"
-  height="600"</p>
-<blockquote>
-<p>```</p>
-</blockquote>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"galeria"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img1.webp"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Image 1"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span> <span class="na">height</span><span class="o">=</span><span class="s">"300"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img2.webp"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Image 2"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span> <span class="na">height</span><span class="o">=</span><span class="s">"300"</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- With srcset for responsive --&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.webp"</span>
+  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"</span>
+  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"</span>
+  <span class="na">alt</span><span class="o">=</span><span class="s">"Photo"</span>
+  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
+  <span class="na">width</span><span class="o">=</span><span class="s">"800"</span>
+  <span class="na">height</span><span class="o">=</span><span class="s">"600"</span>
+<span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`loading="lazy"`: carga diferida.</li>
-<li>`width` y `height`: reservan espacio, evitan CLS.</li>
-<li>`srcset` y `sizes`: imágenes responsive.</li>
-<li>WebP/AVIF: formatos modernos más ligeros.</li>
+<li><code>loading="lazy"</code>: lazy loading.</li>
+<li><code>width</code> and <code>height</code>: reserve space, avoid CLS.</li>
+<li><code>srcset</code> and <code>sizes</code>: responsive images.</li>
+<li>WebP/AVIF: lighter modern formats.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Convierte las imágenes a WebP con <a href="https://squoosh.app/">Squoosh</a>.</li>
-<li>[ ] Añade `<picture>` con fallback JPG.</picture></li>
-<li>[ ] Mide el LCP antes y después con Lighthouse.</li>
+<li>[ ] Convert the images to WebP with <a href="https://squoosh.app/">Squoosh</a>.</li>
+<li>[ ] Add <picture> with JPG fallback.</picture></li>
+<li>[ ] Measure LCP before and after with Lighthouse.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../16-testing/">← Ejercicio 16</a>
-<a class="md-button md-button--primary" href="../18-arquitectura/">Ir al ejercicio 18 →</a></p></div>
+<p><a class="md-button" href="../16-testing/">← Exercise 16</a>
+<a class="md-button md-button--primary" href="../18-arquitectura/">Go to exercise 18 →</a></p></div>
 
 
 

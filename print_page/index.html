@@ -21472,59 +21472,56 @@ console.log(numero.toFixed(2));   // "42.00"
 </ul>
 <hr>
 <p><a class="md-button" href="#en-ejercicios-15-typescript">← Exercise 15</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-17-rendimiento">Go to exercise 17 →</a></p></div></section><section class="print-page" id="en-ejercicios-17-rendimiento" heading-number="3.7.2"><div><h1 id="17-rendimiento">17 — Rendimiento<a class="headerlink" href="#en-ejercicios-17-rendimiento-17-rendimiento" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-ejercicios-17-rendimiento">Go to exercise 17 →</a></p></div></section><section class="print-page" id="en-ejercicios-17-rendimiento" heading-number="3.7.2"><div><h1 id="17-performance">17 — Performance<a class="headerlink" href="#en-ejercicios-17-rendimiento-17-performance" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica lazy loading y optimización de imágenes.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice lazy loading and image optimization.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-17-rendimiento-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-17-rendimiento-objetivo" title="Permanent link">¶</a></h2>
-<p>Optimiza una página con 10 imágenes para que:</p>
+<h2 id="en-ejercicios-17-rendimiento-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-17-rendimiento-goal" title="Permanent link">¶</a></h2>
+<p>Optimize a page with 10 images so that:</p>
 <ol>
-<li>Solo carguen cuando se acerquen al viewport.</li>
-<li>Usen formatos modernos.</li>
-<li>Tengan `width` y `height` para evitar CLS.</li>
+<li>They only load when approaching the viewport.</li>
+<li>They use modern formats.</li>
+<li>They have <code>width</code> and <code>height</code> to avoid CLS.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-17-rendimiento-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-17-rendimiento-solucion" title="Permanent link">¶</a></h2>
-<p>```html</p>
-<div class="galeria">
-  <img src="../en/ejercicios/17-rendimiento/img1.webp" alt="Imagen 1"  width="400" height="300">
-  <img src="../en/ejercicios/17-rendimiento/img2.webp" alt="Imagen 2"  width="400" height="300">
-  <!-- ... -->
-</div>
-<p>```</p>
-<p>```html</p>
-<!-- Con srcset para responsive -->
-<p>&lt;img
-  src="foto-800.webp"
-  srcset="foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"
-  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-  alt="Foto"
-  loading="lazy"
-  width="800"
-  height="600"</p>
-<blockquote>
-<p>```</p>
-</blockquote>
+<h2 id="en-ejercicios-17-rendimiento-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-17-rendimiento-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"galeria"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img1.webp"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Image 1"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span> <span class="na">height</span><span class="o">=</span><span class="s">"300"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img2.webp"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Image 2"</span> <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span> <span class="na">width</span><span class="o">=</span><span class="s">"400"</span> <span class="na">height</span><span class="o">=</span><span class="s">"300"</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- With srcset for responsive --&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">"foto-800.webp"</span>
+  <span class="na">srcset</span><span class="o">=</span><span class="s">"foto-400.webp 400w, foto-800.webp 800w, foto-1600.webp 1600w"</span>
+  <span class="na">sizes</span><span class="o">=</span><span class="s">"(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"</span>
+  <span class="na">alt</span><span class="o">=</span><span class="s">"Photo"</span>
+  <span class="na">loading</span><span class="o">=</span><span class="s">"lazy"</span>
+  <span class="na">width</span><span class="o">=</span><span class="s">"800"</span>
+  <span class="na">height</span><span class="o">=</span><span class="s">"600"</span>
+<span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-17-rendimiento-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-17-rendimiento-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-17-rendimiento-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-17-rendimiento-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`loading="lazy"`: carga diferida.</li>
-<li>`width` y `height`: reservan espacio, evitan CLS.</li>
-<li>`srcset` y `sizes`: imágenes responsive.</li>
-<li>WebP/AVIF: formatos modernos más ligeros.</li>
+<li><code>loading="lazy"</code>: lazy loading.</li>
+<li><code>width</code> and <code>height</code>: reserve space, avoid CLS.</li>
+<li><code>srcset</code> and <code>sizes</code>: responsive images.</li>
+<li>WebP/AVIF: lighter modern formats.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-17-rendimiento-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-17-rendimiento-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-17-rendimiento-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-17-rendimiento-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Convierte las imágenes a WebP con <a href="https://squoosh.app/">Squoosh</a>.</li>
-<li>[ ] Añade `<picture>` con fallback JPG.</picture></li>
-<li>[ ] Mide el LCP antes y después con Lighthouse.</li>
+<li>[ ] Convert the images to WebP with <a href="https://squoosh.app/">Squoosh</a>.</li>
+<li>[ ] Add <picture> with JPG fallback.</picture></li>
+<li>[ ] Measure LCP before and after with Lighthouse.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-16-testing">← Ejercicio 16</a>
-<a class="md-button md-button--primary" href="#en-ejercicios-18-arquitectura">Ir al ejercicio 18 →</a></p></div></section><section class="print-page" id="en-ejercicios-18-arquitectura" heading-number="3.7.3"><div><h1 id="18-arquitectura">18 — Arquitectura<a class="headerlink" href="#en-ejercicios-18-arquitectura-18-arquitectura" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-ejercicios-16-testing">← Exercise 16</a>
+<a class="md-button md-button--primary" href="#en-ejercicios-18-arquitectura">Go to exercise 18 →</a></p></div></section><section class="print-page" id="en-ejercicios-18-arquitectura" heading-number="3.7.3"><div><h1 id="18-arquitectura">18 — Arquitectura<a class="headerlink" href="#en-ejercicios-18-arquitectura-18-arquitectura" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Ejercicio resuelto</p>
 <p>Practica la estructura feature-first.</p>
