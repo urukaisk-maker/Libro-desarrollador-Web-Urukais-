@@ -50,3 +50,77 @@
   color: white !important;
   border-color: #16a34a !important;
 }
+
+/* Mejoras visuales para header y pestañas de navegación en Material for MkDocs */
+.md-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--md-default-fg-color) 6%, transparent);
+}
+
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-tabs {
+  border-bottom: 1px solid color-mix(in srgb, var(--md-default-fg-color) 10%, transparent);
+}
+
+.md-tabs__list {
+  gap: 0.25rem;
+}
+
+.md-tabs__link {
+  opacity: 0.78;
+  font-weight: 500;
+  transition: opacity 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.md-tabs__link--active::after {
+  height: 2.5px;
+  border-radius: 999px 999px 0 0;
+}
+
+/* Estilo tipo pill y mejor espaciado en pestañas de navegación (.md-tabs) */
+.md-tabs__list {
+  gap: 0.4rem;
+  padding-block: 0.35rem;
+}
+
+.md-tabs__item {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.md-tabs__link {
+  margin-top: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  line-height: 1.35;
+  white-space: nowrap;
+  opacity: 0.82;
+  font-weight: 500;
+  transition: background-color 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.md-tabs__link:hover {
+  opacity: 1;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.md-tabs__link--active {
+  opacity: 1;
+  font-weight: 600;
+  background-color: color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.md-tabs__link--active::after {
+  display: none;
+}
