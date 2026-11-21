@@ -22183,58 +22183,57 @@ async function comprobarXR() {
 <p><a class="md-button" href="#en-ejercicios-28-ia-frontend">← Ejercicio 28</a>
 <a class="md-button md-button--primary" href="#en-ejercicios-30-web3">Ir al ejercicio 30 →</a></p></div></section><section class="print-page" id="en-ejercicios-30-web3" heading-number="3.9.2"><div><h1 id="30-web3">30 — Web3<a class="headerlink" href="#en-ejercicios-30-web3-30-web3" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Conecta con MetaMask y lee la cuenta del usuario.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Connect to MetaMask and read the user account.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-30-web3-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-30-web3-objetivo" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-30-web3-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-30-web3-goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Detecta si MetaMask está instalado.</li>
-<li>Pide permiso para conectar.</li>
-<li>Muestra la dirección de la wallet.</li>
+<li>Detect whether MetaMask is installed.</li>
+<li>Request permission to connect.</li>
+<li>Display the wallet address.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-30-web3-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-30-web3-solucion" title="Permanent link">¶</a></h2>
-<p>```html
-<button id="conectar">Conectar wallet</button></p>
-<p id="cuenta"></p>
+<h2 id="en-ejercicios-30-web3-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-30-web3-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"conectar"</span><span class="p">&gt;</span>Connect wallet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-<script>
-  document.getElementById('conectar').addEventListener('click', async () => {
-    if (!window.ethereum) {
-      alert('Instala MetaMask');
-      return;
-    }
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'conectar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Install MetaMask'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    try {
-      const cuentas = await window.ethereum.request({
-        method: 'eth_requestAccounts'
-      });
-      document.getElementById('cuenta').textContent =
-        'Conectado: ' + cuentas[0];
-    } catch (err) {
-      console.error('Error:', err);
-    }
-  });
-</script>
-<p>```</p>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'eth_requestAccounts'</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'cuenta'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="s1">'Connected: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="en-ejercicios-30-web3-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-30-web3-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-30-web3-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-30-web3-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`window.ethereum`: inyectado por MetaMask.</li>
-<li>`eth_requestAccounts`: pide permiso.</li>
-<li>Direcciones Ethereum: 0x + 40 caracteres hexadecimales.</li>
+<li><code>window.ethereum</code>: injected by MetaMask.</li>
+<li><code>eth_requestAccounts</code>: requests permission.</li>
+<li>Ethereum addresses: 0x + 40 hexadecimal characters.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-30-web3-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-30-web3-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-30-web3-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-30-web3-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Muestra el balance con `eth_getBalance`.</li>
-<li>[ ] Firma un mensaje con `personal_sign`.</li>
-<li>[ ] Conecta con WalletConnect en móvil.</li>
+<li>[ ] Display the balance with <code>eth_getBalance</code>.</li>
+<li>[ ] Sign a message with <code>personal_sign</code>.</li>
+<li>[ ] Connect with WalletConnect on mobile.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-29-webxr">← Ejercicio 29</a>
-<a class="md-button md-button--primary" href="#en-ejercicios">Volver al índice</a></p></div></section></section></section>
+<p><a class="md-button" href="#en-ejercicios-29-webxr">← Exercise 29</a>
+<a class="md-button md-button--primary" href="#en-ejercicios">Back to index</a></p></div></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>🛠 Proyectos y Retos<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>

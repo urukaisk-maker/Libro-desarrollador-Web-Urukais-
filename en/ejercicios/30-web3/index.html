@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 30: 30 — Web3. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 30: 30 — Web3. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 30: 30 — Web3. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 30: 30 — Web3. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/30-web3/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 30 — Web3 - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 30: 30 — Web3. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 30: 30 — Web3. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/30-web3.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/30-web3/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 30 — Web3 - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 30: 30 — Web3. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 30: 30 — Web3. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/30-web3.png" />
 </head>
   
@@ -3665,10 +3665,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3676,10 +3676,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
       
     </span>
   </a>
@@ -3687,10 +3687,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptos-clave" class="md-nav__link">
+  <a href="#key-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧠 Conceptos clave
+        🧠 Key concepts
       
     </span>
   </a>
@@ -3698,10 +3698,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#retos-extra" class="md-nav__link">
+  <a href="#bonus-challenges" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 Retos extra
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5056,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/30-web3.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/30-web3.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5066,58 +5066,57 @@
 
 <div><h1 id="30-web3">30 — Web3<a class="headerlink" href="#30-web3" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Conecta con MetaMask y lee la cuenta del usuario.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Connect to MetaMask and read the user account.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
 <ol>
-<li>Detecta si MetaMask está instalado.</li>
-<li>Pide permiso para conectar.</li>
-<li>Muestra la dirección de la wallet.</li>
+<li>Detect whether MetaMask is installed.</li>
+<li>Request permission to connect.</li>
+<li>Display the wallet address.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```html
-<button id="conectar">Conectar wallet</button></p>
-<p id="cuenta"></p>
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"conectar"</span><span class="p">&gt;</span>Connect wallet<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"cuenta"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-<script>
-  document.getElementById('conectar').addEventListener('click', async () => {
-    if (!window.ethereum) {
-      alert('Instala MetaMask');
-      return;
-    }
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'conectar'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Install MetaMask'</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    try {
-      const cuentas = await window.ethereum.request({
-        method: 'eth_requestAccounts'
-      });
-      document.getElementById('cuenta').textContent =
-        'Conectado: ' + cuentas[0];
-    } catch (err) {
-      console.error('Error:', err);
-    }
-  });
-</script>
-<p>```</p>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">cuentas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">ethereum</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'eth_requestAccounts'</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">      </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'cuenta'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="s1">'Connected: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">cuentas</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`window.ethereum`: inyectado por MetaMask.</li>
-<li>`eth_requestAccounts`: pide permiso.</li>
-<li>Direcciones Ethereum: 0x + 40 caracteres hexadecimales.</li>
+<li><code>window.ethereum</code>: injected by MetaMask.</li>
+<li><code>eth_requestAccounts</code>: requests permission.</li>
+<li>Ethereum addresses: 0x + 40 hexadecimal characters.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Muestra el balance con `eth_getBalance`.</li>
-<li>[ ] Firma un mensaje con `personal_sign`.</li>
-<li>[ ] Conecta con WalletConnect en móvil.</li>
+<li>[ ] Display the balance with <code>eth_getBalance</code>.</li>
+<li>[ ] Sign a message with <code>personal_sign</code>.</li>
+<li>[ ] Connect with WalletConnect on mobile.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../29-webxr/">← Ejercicio 29</a>
-<a class="md-button md-button--primary" href="../">Volver al índice</a></p></div>
+<p><a class="md-button" href="../29-webxr/">← Exercise 29</a>
+<a class="md-button md-button--primary" href="../">Back to index</a></p></div>
 
 
 
