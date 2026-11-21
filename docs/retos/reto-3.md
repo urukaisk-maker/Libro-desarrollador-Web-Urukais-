@@ -68,3 +68,11 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 
     Cada vez que cambie `count` (`+1`, `-1` o `reset`), actualiza `#numero.textContent` y guarda el nuevo valor en `localStorage.setItem(...)`.
 
+## ✅ Checklist de comprobación
+
+
+- [ ] Los botones `+1`, `-1` y `Reset` actualizan `#numero` y persisten el valor en `localStorage` al recargar.
+
+- [ ] El contador nunca baja de `0` al pulsar `-1`.
+
+- [ ] No hay errores en consola y el estado inicial se carga de forma fiable.

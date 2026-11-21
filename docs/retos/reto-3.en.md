@@ -68,3 +68,11 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 
     Whenever `count` changes (`+1`, `-1`, or `Reset`), update `#numero.textContent` and write the new value with `localStorage.setItem(...)`.
 
+## ✅ Verification Checklist
+
+
+- [ ] `+1`, `-1`, and `Reset` update `#numero` and persist across page reloads via `localStorage`.
+
+- [ ] The counter never goes below `0` when clicking `-1`.
+
+- [ ] No console errors occur and initial state loads cleanly.
