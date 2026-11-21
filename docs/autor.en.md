@@ -1,11 +1,11 @@
 # 👤 About the Author
 
 !!! quote "Hi, I'm Urukais"
-    My name is **Manuel Casimiro Carrasco**, though online you'll know me as **Urukais**. I'm a web developer, technical writer, and the creator of *Libro del Desarrollador Web* (*Web Developer's Book*).
+    My name is **Manuel Casimiro Carrasco**, though online you'll know me as **Urukais**. I'm a web developer, technical educator, and creator of the *Web Developer Book*.
 
 ---
 
-## 🖼 A Little About Me
+## 🖼 A bit about me
 
 <div class="autor-hero" markdown>
 
@@ -15,11 +15,11 @@
 
 <div class="autor-hero__bio" markdown>
 
-I got into programming out of **curiosity**, just like most people. One day I wanted to build a website for a personal project, started looking for tutorials, and realized most were in English, behind a paywall, or making unrealistic promises ("learn to code in 24 hours").
+I got into programming out of **curiosity**, like almost everyone else. One day I wanted to build a website for a personal project, started searching for tutorials, and realized most of them were in English, paid, or made unrealistic promises ("learn to code in 24 hours").
 
-Over the years, the notes I kept taking turned into a giant text file. And that text file became **this book**.
+Over the years, the notes I was jotting down turned into a giant text file. And that text file became **this book**.
 
-Today I balance my work as a developer with writing and maintaining the project. I try to explain things the way I wish they had been explained to me: **no fluff, no empty promises, and with examples that actually work**.
+Today I balance my work as a developer with writing and maintaining the project. I try to explain things the way I wish they had been explained to me: **no fluff, no empty promises, and with code examples that actually work**.
 
 </div>
 
@@ -27,33 +27,33 @@ Today I balance my work as a developer with writing and maintaining the project.
 
 ---
 
-## 🛤 My Journey
+## 🛤 My journey
 
-### Early Days (2015–2017)
+### Early days (2015–2017)
 
-My first contact with programming was through **HTML and CSS**, building a site for a class project. I still remember the feeling of writing a tag and seeing the result in the browser. It was addictive.
+My first brush with programming was through **HTML and CSS**, building a site for a class project. I still remember the feeling of writing a tag and seeing the result in the browser. It was addictive.
 
-Then came **JavaScript**, which at first felt strange and full of traps. It took me months to grasp concepts like `this`, the event loop, or closures. Once I finally did, everything else started to make sense.
+Then came **JavaScript**, which at first felt strange and full of traps. It took me months to grasp concepts like `this`, the event loop, and closures. Once they clicked, everything else started making sense.
 
-### The Frameworks Phase (2018–2020)
+### The framework phase (2018–2020)
 
-Like almost everyone, I went through the phase of "learning every framework." I tried React, Vue, Angular, Svelte, Ember… And I learned an important lesson:
+Like most people, I went through the "learn every framework" phase. I tried React, Vue, Angular, Svelte, Ember… And I learned an important lesson:
 
 > **Frameworks come and go. Fundamentals stay.**
 
-Since then, my focus has been mastering **JavaScript** well before picking a specific tool. That philosophy runs through this book.
+Ever since, my approach has been to master **JavaScript** properly before picking a specific tool. That philosophy runs through this book.
 
-### Technical Writing & Sharing (2021–Present)
+### Sharing & teaching (2021–present)
 
-I started writing articles on a personal blog, then on Substack, and eventually took the leap with this book. The idea was simple: **build the resource I wish I had found when I started**, free and accessible.
+I started writing posts on a personal blog, then on Substack, and eventually took the plunge into this book. The idea was simple: **create the resource I wish I had found when starting out**, open and free.
 
-The project grew beyond what I expected. Today it's read by developers across the Spanish-speaking world—and now also in English—which is by far the most rewarding part of the journey.
+The project grew beyond what I expected. Today readers from all over follow along, and that is by far the most rewarding part of the whole journey.
 
 ---
 
-## 🛠 My Favorite Stack
+## 🛠 My favorite stack
 
-These are the tools I work with every day. They aren't the only ones, nor the best for every single case, but they fit the way I build best.
+These are the tools I work with day to day. They aren't the only ones or the best fit for every scenario, but they match how I like to build.
 
 === "Frontend"
 
@@ -66,16 +66,16 @@ These are the tools I work with every day. They aren't the only ones, nor the be
 
 === "Backend"
 
-    - **Node.js** — my main runtime
-    - **Express** — for simple APIs
+    - **Node.js** — my primary runtime
+    - **Express** — for straightforward APIs
     - **Fastify** — when performance matters
     - **SQLite** — for small projects
-    - **PostgreSQL** — for serious projects
+    - **PostgreSQL** — for serious applications
 
 === "Tools"
 
-    - **VS Code** — my primary editor
-    - **Zed** — when I want something snappier
+    - **VS Code** — my main editor
+    - **Zed** — when I want something faster
     - **Vite** — default bundler
     - **Git + GitHub** — version control
     - **Docker** — when I need reproducibility
@@ -83,15 +83,15 @@ These are the tools I work with every day. They aren't the only ones, nor the be
 
 === "Design"
 
-    - **Figma** — for wireframes and UI design
+    - **Figma** — for wireframes and designs
     - **Excalidraw** — for quick diagrams
     - **Mermaid** — for diagrams in Markdown
-    - **Inter** — my go-to typeface
+    - **Inter** — my favorite typeface
     - **JetBrains Mono** — for code
 
 ---
 
-## 📚 What I'm Reading
+## 📚 What I'm reading
 
 *(Updated periodically)*
 
@@ -99,24 +99,24 @@ These are the tools I work with every day. They aren't the only ones, nor the be
 | :--- | :--- | :--- |
 | *Designing Data-Intensive Applications* | Martin Kleppmann | 📖 Reading |
 | *Refactoring UI* | Adam Wathan & Steve Schoger | ✅ Finished |
-| *The Pragmatic Programmer* | Hunt & Thomas | 📖 Re-reading |
+| *The Pragmatic Programmer* | Hunt & Thomas | 📖 Rereading |
 | *You Don't Know JS Yet* | Kyle Simpson | ✅ Finished |
 | *Eloquent JavaScript* | Marijn Haverbeke | ✅ Finished |
 
 !!! tip "Recommendation"
-    If I could recommend just one programming book, it would be ***The Pragmatic Programmer***. It doesn't teach a single language; it teaches you how to **think like an engineer**. It's the book I've gifted the most times.
+    If I could recommend only one programming book, it would be ***The Pragmatic Programmer***. It doesn't teach a specific language—it teaches how to **think like a programmer**. It is the book I've gifted the most times.
 
 ---
 
-## 🎯 Projects I've Worked On
+## 🎯 Projects I've worked on
 
-### 🌟 Web Developer's Book *(2026–Present)*
+### 🌟 Web Developer Book *(2026–present)*
 
-The project right in front of you. An open-source, free web development book teaching from scratch to advanced topics.
+The project right in front of you. A free, open-source book teaching web development from scratch.
 
 - **Stack**: MkDocs, Material for MkDocs, Python, GitHub Pages
 - **Role**: author, developer, designer
-- **Status**: active, continuously evolving
+- **Status**: active, constantly evolving
 
 ### 🎮 El Niño *(2024–2025)*
 
@@ -124,9 +124,9 @@ A small experimental web game built with Canvas and the Web Audio API.
 
 - **Stack**: HTML5 Canvas, vanilla JavaScript, Web Audio
 - **Role**: developer
-- **Status**: completed (available on [my portfolio](https://silly-boba-dc057e.netlify.app/))
+- **Status**: finished (available on [my portfolio](https://silly-boba-dc057e.netlify.app/))
 
-### 📝 Personal Blog *(2021–Present)*
+### 📝 Personal blog *(2021–present)*
 
 Articles on web development, accessibility, and best practices.
 
@@ -134,42 +134,46 @@ Articles on web development, accessibility, and best practices.
 - **Role**: author and editor
 - **Status**: active
 
-- **Profile**: [soloist.ai/urukaisklick](https://soloist.ai/urukaisklick)
+- **Status**: finished (available on [my portfolio](https://soloist.ai/urukaisklick))
 
 ---
 
-## 🎤 Talks and Workshops
+## 🎤 Talks and workshops
 
-I've given talks and workshops on web development for:
+I have given talks and workshops on web development for:
 
 - **Local developer communities**
 - **JavaScript and frontend meetups**
 - **Online workshops** for beginners
 - **One-on-one mentoring**
 
-If you'd like me to give a talk or workshop, email me at [contacto@urukais.com](mailto:contacto@urukais.com) with the details.
+If you'd like me to give a talk or workshop, email me at [urukaisk@gmail.com](mailto:contacto@urukais.com) with the details.
 
 ---
 
-## 🧠 My Teaching Philosophy
+## 🧠 My teaching philosophy
 
 After years of teaching, I've arrived at these takeaways:
 
-1. **Learning by doing > passive reading.** Nobody learns to code just by reading. You have to type, break things, and try again.
-2. **Fundamentals are the only thing that doesn't expire.** Frameworks change every year, while HTML, CSS, and JavaScript have stayed steady for decades.
-3. **Accessibility is not an extra.** It's part of the craft from the very first `<div>`.
-4. **English isn't optional.** You don't need to speak it fluently on day one, but you do need to read it. The best documentation is in English.
+1. **Learning by doing > passive reading.** Nobody learns to code just by reading. You have to type it out, make mistakes, and try again.
+
+2. **Fundamentals are the only thing that doesn't expire.** Frameworks change every year, while HTML, CSS, and JavaScript have remained core for decades.
+
+3. **Accessibility isn't an extra.** It's part of the job from the very first `<div>`.
+
+4. **English isn't optional.** You don't need to speak it fluently, but you do need to read it. The best documentation is in English.
+
 5. **Consistency beats intensity.** 30 minutes a day for a year beats 12 hours on a single weekend.
 
 ---
 
-## 📊 Fun Facts
+## 📊 Fun facts
 
 - 💻 I've been coding since **2015**, and started teaching in **2025**.
-- ☕ I drink **0–2 coffees** a day (though I try to keep it low).
+- ☕ I drink **0–2 coffees** a day (trying to cut back).
 - 🎧 I code with **Heavy Metal** or **Classical** music in the background. There's a music section in this book with my favorite playlists.
-- 🌙 I do my best work **at night**, when notifications stop.
-- 📚 I prefer reading **print** when possible—and technical books in **digital**.
+- 🌙 I do my best work **at night**, when there are no notifications.
+- 📚 I prefer reading **on paper** when possible—technical books, digitally.
 - 🎮 I love **creative coding**: visualizations, generative art, experimental games.
 
 ---
@@ -178,9 +182,9 @@ After years of teaching, I've arrived at these takeaways:
 
 | Channel | Link |
 | :--- | :--- |
-| **Email** | [contacto@urukais.com](mailto:contacto@urukais.com) |
+| **Email** | [urukaisk@gmail.com](mailto:urukaisk@gmail.com) |
 | **GitHub** | [@urukaisk-maker](https://github.com/urukaisk-maker) |
-| **Twitter / X** | [@urukais](https://twitter.com/urukais) |
+| **Twitter / X** | [@urukaisk](https://twitter.com/urukaisk) |
 | **LinkedIn** | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |
 | **Substack** | [urukaisklick.substack.com](https://urukaisklick.substack.com) |
 | **Portfolio** | [silly-boba-dc057e.netlify.app](https://silly-boba-dc057e.netlify.app/) |
@@ -189,11 +193,11 @@ More details on the [Contact](contacto.md) page.
 
 ---
 
-## 💬 One Last Thing
+## 💬 One last thing
 
-If you've made it this far, you probably share something important with me: **the drive to learn**. It doesn't matter where you're starting from or how much you know right now. All that matters is that you keep moving forward.
+If you made it this far, we likely share something important: **the drive to learn**. No matter where you're starting from or how much you know right now, all that matters is that you keep going.
 
-If this book helps you, it was already worth it. And if one day you write your own, let me know—I'd love to read it.
+If this book helps you, it has already been worth it. And if one day you write your own, let me know—I'd love to read it.
 
 > *"The best way to learn is to teach."*
 
