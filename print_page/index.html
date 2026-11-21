@@ -23735,27 +23735,27 @@ body.dark .card { background: #2a2342; color: #e8e5f5; }</textarea>
 </ul>
 <hr>
 <p><a class="md-button" href="#en-retos">← Back to challenges</a>
-<a class="md-button md-button--primary" href="#en-retos-reto-3">🎯 Go to Challenge #3</a></p></div></section><section class="print-page" id="en-retos-reto-3" heading-number="4.13"><div><h1 id="reto-3-contador-de-clics">🎯 Reto #3: Contador de clics<a class="headerlink" href="#en-retos-reto-3-reto-3-contador-de-clics" title="Permanent link">¶</a></h1>
+<a class="md-button md-button--primary" href="#en-retos-reto-3">🎯 Go to Challenge #3</a></p></div></section><section class="print-page" id="en-retos-reto-3" heading-number="4.13"><div><h1 id="challenge-3-click-counter">🎯 Challenge #3: Click Counter<a class="headerlink" href="#en-retos-reto-3-challenge-3-click-counter" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Reto de nivel principiante</p>
-<p>Un contador que persiste en localStorage, con botones para incrementar, decrementar y resetear. Ideal para practicar estado y persistencia.</p>
+<p class="admonition-title">Beginner-level challenge</p>
+<p>A counter that persists in localStorage, with buttons to increment, decrement, and reset. Ideal for practicing state and persistence.</p>
 </div>
 <hr>
-<h2 id="en-retos-reto-3-objetivo">🎯 Objetivo<a class="headerlink" href="#en-retos-reto-3-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un contador con:</p>
+<h2 id="en-retos-reto-3-goal">🎯 Goal<a class="headerlink" href="#en-retos-reto-3-goal" title="Permanent link">¶</a></h2>
+<p>Create a counter with:</p>
 <ol>
-<li>Botón <strong>+1</strong> y botón <strong>-1</strong>.</li>
-<li>Botón de <strong>reset</strong>.</li>
-<li>Persistencia con <strong>localStorage</strong>.</li>
-<li>Que no baje de 0.</li>
+<li>A <strong>+1</strong> button and a <strong>-1</strong> button.</li>
+<li>A <strong>reset</strong> button.</li>
+<li>Persistence with <strong>localStorage</strong>.</li>
+<li>Do not go below 0.</li>
 </ol>
-<h2 id="en-retos-reto-3-conceptos">🧠 Conceptos<a class="headerlink" href="#en-retos-reto-3-conceptos" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-3-concepts">🧠 Concepts<a class="headerlink" href="#en-retos-reto-3-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>Variables y estado</li>
+<li>Variables and state</li>
 <li>localStorage</li>
-<li>Eventos</li>
+<li>Events</li>
 </ul>
-<h2 id="en-retos-reto-3-editor">🖥️ Editor<a class="headerlink" href="#en-retos-reto-3-editor" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-3-editor">🖥 Editor<a class="headerlink" href="#en-retos-reto-3-editor" title="Permanent link">¶</a></h2>
 <div class="playground-ejercicio" data-ejercicio="reto-3">
 <div class="playground__editor">
 <div class="playground__tabs">
@@ -23771,10 +23771,10 @@ body.dark .card { background: #2a2342; color: #e8e5f5; }</textarea>
 h2 { font-size: 4rem; color: #6a5acd; margin: 0 0 1rem; }
 button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; border-radius: 6px; cursor: pointer; background: #6a5acd; color: #fff; }
 #reset { background: #dc3545; }</textarea>
-<textarea class="playground__textarea is-hidden" data-lang="js" spellcheck="false">// Tu código aquí
+<textarea class="playground__textarea is-hidden" data-lang="js" spellcheck="false">// Your code here
 </textarea>
 <div class="playground__actions">
-<button class="md-button md-button--primary" data-run>▶ Ejecutar</button>
+<button class="md-button md-button--primary" data-run>▶ Run</button>
 </div>
 </div>
 <div class="playground__output">
@@ -23783,37 +23783,39 @@ button { padding: .75rem 1.5rem; font-size: 1rem; margin: .25rem; border: none; 
 </div>
 
 <details class="success">
-<summary>Solución</summary>
-<p>```javascript
-let count = Number(localStorage.getItem('reto3') || 0);
-const num = document.getElementById('numero');
-num.textContent = count;</p>
-<p>document.getElementById('mas').addEventListener('click', () =&gt; {
-  count++;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});</p>
-<p>document.getElementById('menos').addEventListener('click', () =&gt; {
-  if (count &gt; 0) count--;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});</p>
-<p>document.getElementById('reset').addEventListener('click', () =&gt; {
-  count = 0;
-  num.textContent = count;
-  localStorage.setItem('reto3', count);
-});
-```</p>
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'numero'</span><span class="p">);</span>
+<span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mas'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'menos'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="nx">count</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'reset'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">num</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'reto3'</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 </details>
-<h2 id="en-retos-reto-3-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-retos-reto-3-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-retos-reto-3-bonus-challenges">🚀 Bonus Challenges<a class="headerlink" href="#en-retos-reto-3-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Que el número cambie de <strong>color</strong> según sea positivo, negativo o cero.</li>
-<li>[ ] Que se pueda <strong>escribir</strong> un número directamente en un input.</li>
-<li>[ ] Que haya un <strong>historial</strong> de cambios.</li>
+<li>[ ] Make the number change <strong>color</strong> depending on whether it is positive, negative, or zero.</li>
+<li>[ ] Allow <strong>typing</strong> a number directly into an input.</li>
+<li>[ ] Keep a <strong>history</strong> of changes.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-retos">← Volver a retos</a>
-<a class="md-button md-button--primary" href="#en-retos-reto-4">🎯 Ir al Reto #4</a></p></div></section><section class="print-page" id="en-retos-reto-4" heading-number="4.14"><div><h1 id="reto-4-galeria-responsive">🎯 Reto #4: Galería responsive<a class="headerlink" href="#en-retos-reto-4-reto-4-galeria-responsive" title="Permanent link">¶</a></h1>
+<p><a class="md-button" href="#en-retos">← Back to challenges</a>
+<a class="md-button md-button--primary" href="#en-retos-reto-4">🎯 Go to Challenge #4</a></p></div></section><section class="print-page" id="en-retos-reto-4" heading-number="4.14"><div><h1 id="reto-4-galeria-responsive">🎯 Reto #4: Galería responsive<a class="headerlink" href="#en-retos-reto-4-reto-4-galeria-responsive" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Reto de nivel intermedio</p>
 <p>Crea una galería de imágenes responsive con CSS Grid, lightbox y lazy loading. Ideal para practicar Grid y eventos.</p>
