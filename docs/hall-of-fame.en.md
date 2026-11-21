@@ -10,17 +10,17 @@
 It is a list of readers who have:
 
 1. **Completed all 38 chapters** of the book.
-2. **Generated their completion certificate**.
+2. **Generated their certificate** of completion.
 3. **Shared their milestone** with the community.
 
-There are no physical prizes or money. Just the recognition of finishing something very few complete: a full technical book from start to finish.
+There are no cash prizes or physical swag—just the recognition of finishing something very few complete: a full technical book from start to finish.
 
 !!! tip "Want to appear here?"
-    Finish the book, generate your [certificate](certificado.md), and [submit your profile](#enviar-perfil). It gets reviewed and added in the next update.
+    Finish the book, generate your [certificate](certificado.md), and [submit your profile](#enviar-perfil). Submissions are reviewed and added in the next update.
 
 ---
 
-## 🌟 Featured
+## 🌟 Featured graduates
 
 <div class="hall-grid">
 
@@ -51,7 +51,7 @@ There are no physical prizes or money. Just the recognition of finishing somethi
 </div>
 
 !!! note "No graduates yet"
-    This page is ready to welcome the first readers who complete the book. If you are the first, you will get a special highlight.
+    This page is ready for the first readers who complete the book. If you are the first, you will be featured with a special mention.
 
 ---
 
@@ -72,36 +72,36 @@ There are no physical prizes or money. Just the recognition of finishing somethi
 
 ## 🏆 Recognition tiers
 
-Not all milestones look the same. These are the recognition tiers:
+Not all milestones look the same. Here are the recognition tiers:
 
 | Tier | Requirement | Badge |
 | :--- | :--- | :--- |
-| 🌱 **Reader** | You started the book | 🌱 |
-| 🟢 **Beginner** | You completed the Beginner level | 🟢 |
-| 🟡 **Intermediate** | You completed the Intermediate level | 🟡 |
-| 🟠 **Advanced** | You completed the Advanced level | 🟠 |
-| 🔴 **Professional** | You completed the Professional level | 🔴 |
-| 🟣 **Expert** | You completed the Expert level | 🟣 |
-| 🔵 **Elite** | You completed the Elite level | 🔵 |
-| 🚀 **Cutting Edge** | You completed the Cutting Edge level | 🚀 |
-| 🎓 **Graduate** | You completed all 38 chapters | 🎓 |
+| 🌱 **Reader** | Started the book | 🌱 |
+| 🟢 **Beginner** | Completed the Beginner level | 🟢 |
+| 🟡 **Intermediate** | Completed the Intermediate level | 🟡 |
+| 🟠 **Advanced** | Completed the Advanced level | 🟠 |
+| 🔴 **Professional** | Completed the Professional level | 🔴 |
+| 🟣 **Expert** | Completed the Expert level | 🟣 |
+| 🔵 **Elite** | Completed the Elite level | 🔵 |
+| 🚀 **Vanguard** | Completed the Vanguard level | 🚀 |
+| 🎓 **Graduate** | Completed all 38 chapters | 🎓 |
 | 🏅 **Legend** | Graduate + 10 contributions to the project | 🏅 |
 
 ---
 
-## 📬 Submit profile { #enviar-perfil }
+## 📬 Submit your profile { #enviar-perfil }
 
 If you have completed the book and want to appear in the Hall of Fame, fill out this form:
 
 <form class="hall-form" action="https://formspree.io/f/TU_FORM_ID" method="POST">
   <div class="hall-field">
     <label for="hall-nombre">Name or handle <span class="required">*</span></label>
-    <input type="text" id="hall-nombre" name="nombre" required placeholder="e.g. Ana García or @anagarcia">
+    <input type="text" id="hall-nombre" name="nombre" required placeholder="E.g.: Jane Doe or @janedoe">
   </div>
 
   <div class="hall-field">
     <label for="hall-pais">Country (optional)</label>
-    <input type="text" id="hall-pais" name="pais" placeholder="e.g. Spain">
+    <input type="text" id="hall-pais" name="pais" placeholder="E.g.: Spain">
   </div>
 
   <div class="hall-field">
@@ -128,7 +128,7 @@ If you have completed the book and want to appear in the Hall of Fame, fill out 
 </form>
 
 !!! note "Form not working?"
-    If the form does not respond, write to me at [contacto@urukais.com](mailto:contacto@urukais.com) with your details and I will add it manually.
+    If the form does not respond, email me at [contacto@urukais.com](mailto:contacto@urukais.com) with your details and I will add you manually.
 
 ---
 
@@ -137,28 +137,28 @@ If you have completed the book and want to appear in the Hall of Fame, fill out 
 *(No testimonials yet. Be the first to share your experience.)*
 
 !!! example "Testimonial template"
-    > *"I started the book knowing nothing about programming and today I have built my first real project. The level-by-level structure and hands-on exercises made all the difference."*
+    > *"I started the book knowing nothing about programming and today I have built my first real project. The level structure and hands-on exercises were key."*
     >
     > — **Your name**, your country
 
 ---
 
-## 📜 How a profile is verified
+## 📜 How profiles are verified
 
-To appear in the Hall of Fame, a profile must meet these criteria:
+To appear in the Hall of Fame, a profile must:
 
-- ✅ Completed all 38 chapters of the book.
-- ✅ Generated the [certificate](certificado.md).
-- ✅ Be a real person (fake profiles are not accepted).
+- ✅ Have completed all 38 chapters of the book.
+- ✅ Have generated the [certificate](certificado.md).
+- ✅ Belong to a real person (fake profiles are not accepted).
 - ✅ Be respectful (offensive profiles are not accepted).
 
-There is no automated technical check (there is no backend server), so it relies on community good faith. The recognition is symbolic.
+There is no technical verification (no central server), so it relies on community goodwill. Even if someone exaggerates, it is harmless—the recognition is purely symbolic.
 
 ---
 
 ## 🏅 Featured contributors
 
-In addition to graduates, this section recognizes those who have contributed to the project:
+Alongside graduates, this section recognizes those who have contributed to the project:
 
 *(No external contributors yet. Want to be the first? Check out the [Contribute](contribuir.md) page.)*
 
