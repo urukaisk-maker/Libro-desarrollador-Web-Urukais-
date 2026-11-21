@@ -21646,61 +21646,62 @@ npm<span class="w"> </span>install<span class="w"> </span>express
 <p><a class="md-button" href="#en-ejercicios-18-arquitectura">← Exercise 18</a>
 <a class="md-button md-button--primary" href="#en-ejercicios-20-devops">Go to exercise 20 →</a></p></div></section><section class="print-page" id="en-ejercicios-20-devops" heading-number="3.7.5"><div><h1 id="20-devops">20 — DevOps<a class="headerlink" href="#en-ejercicios-20-devops-20-devops" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica la automatización con GitHub Actions.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice automation with GitHub Actions.</p>
 </div>
 <hr>
-<h2 id="en-ejercicios-20-devops-objetivo">🎯 Objetivo<a class="headerlink" href="#en-ejercicios-20-devops-objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un workflow que se ejecute en cada push a `main` y:</p>
+<h2 id="en-ejercicios-20-devops-goal">🎯 Goal<a class="headerlink" href="#en-ejercicios-20-devops-goal" title="Permanent link">¶</a></h2>
+<p>Create a workflow that runs on every push to <code>main</code> and:</p>
 <ol>
-<li>Instale dependencias.</li>
-<li>Ejecute tests.</li>
-<li>Construya el proyecto.</li>
+<li>Installs dependencies.</li>
+<li>Runs tests.</li>
+<li>Builds the project.</li>
 </ol>
 <hr>
-<h2 id="en-ejercicios-20-devops-solucion">💡 Solución<a class="headerlink" href="#en-ejercicios-20-devops-solucion" title="Permanent link">¶</a></h2>
-<p>```yaml</p>
-<h1 id="en-ejercicios-20-devops-githubworkflowsciyml">.github/workflows/ci.yml<a class="headerlink" href="#en-ejercicios-20-devops-githubworkflowsciyml" title="Permanent link">¶</a></h1>
-<p>name: CI</p>
-<p>on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]</p>
-<p>jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4</p>
-<div class="highlight"><pre><span></span><code>  - uses: actions/setup-node@v4
-    with:
-      node-version: 20
-      cache: 'npm'
+<h2 id="en-ejercicios-20-devops-solution">💡 Solution<a class="headerlink" href="#en-ejercicios-20-devops-solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/ci.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
 
-  - run: npm ci
-  - run: npm test
-  - run: npm run build
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">'npm'</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm test</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
 </code></pre></div>
-<p>```</p>
 <hr>
-<h2 id="en-ejercicios-20-devops-conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#en-ejercicios-20-devops-conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-20-devops-key-concepts">🧠 Key concepts<a class="headerlink" href="#en-ejercicios-20-devops-key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`on`: eventos que disparan el workflow.</li>
-<li>`jobs`: tareas que se ejecutan.</li>
-<li>`steps`: pasos dentro de un job.</li>
-<li>`actions/checkout`: clona el repo.</li>
-<li>`actions/setup-node`: instala Node.js.</li>
+<li><code>on</code>: events that trigger the workflow.</li>
+<li><code>jobs</code>: tasks that run.</li>
+<li><code>steps</code>: steps inside a job.</li>
+<li><code>actions/checkout</code>: clones the repo.</li>
+<li><code>actions/setup-node</code>: installs Node.js.</li>
 </ul>
 <hr>
-<h2 id="en-ejercicios-20-devops-retos-extra">🚀 Retos extra<a class="headerlink" href="#en-ejercicios-20-devops-retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="en-ejercicios-20-devops-bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#en-ejercicios-20-devops-bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un paso de deploy a GitHub Pages.</li>
-<li>[ ] Usa una matriz para testear en Node 18 y 20.</li>
-<li>[ ] Añade un paso de linting con ESLint.</li>
+<li>[ ] Add a deploy step to GitHub Pages.</li>
+<li>[ ] Use a matrix to test on Node 18 and 20.</li>
+<li>[ ] Add a linting step with ESLint.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="#en-ejercicios-19-fullstack-node">← Ejercicio 19</a>
-<a class="md-button md-button--primary" href="#en-ejercicios">Volver al índice</a></p></div></section></section>
+<p><a class="md-button" href="#en-ejercicios-19-fullstack-node">← Exercise 19</a>
+<a class="md-button md-button--primary" href="#en-ejercicios">Back to index</a></p></div></section></section>
                     <section class='print-page md-section' id='section-3-8' heading-number='3.8'>
                         <h1>🟣 Bloque 5 (21–28)<a class='headerlink' href='#section-3-8' title='Permanent link'></a>
                         </h1>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Ejercicio resuelto 20: 20 — DevOps. Solución comentada paso a paso del Libro del Desarrollador Web.">
+        <meta name="description" content="Solved exercise 20: 20 — DevOps. Step-by-step annotated solution from the Web Developer Book.">
       
       
         <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
@@ -108,7 +108,7 @@
   <meta name="twitter:description" content="Material completo para aprender desarrollo web desde cero: HTML, CSS, JavaScript y más.">
   <meta name="twitter:image" content="https://libro.urukais.com/assets/portada.png">
 
-  <meta name="description" content="Ejercicio resuelto 20: 20 — DevOps. Solución comentada paso a paso del Libro del Desarrollador Web.">
+  <meta name="description" content="Solved exercise 20: 20 — DevOps. Step-by-step annotated solution from the Web Developer Book.">
   <meta name="author" content="Manuel Casimiro Carrasco (Urukais)">
   <link rel="canonical" href="https://libro.urukais.com/en/ejercicios/20-devops/">
   <meta name="google-site-verification" content="iyoQTiCncmOuxAaleg0Ch9Y1zVNbizkgHqX86SWojOM" />
@@ -116,7 +116,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ejercicio 20 — DevOps - Libro del Desarrollador Web — Urukais" />
-<meta property="og:description" content="Ejercicio resuelto 20: 20 — DevOps. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="og:description" content="Solved exercise 20: 20 — DevOps. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="og:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/20-devops.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -124,7 +124,7 @@
 <meta property="og:url" content="https://libro.urukais.com/en/ejercicios/20-devops/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Ejercicio 20 — DevOps - Libro del Desarrollador Web — Urukais" />
-<meta property="twitter:description" content="Ejercicio resuelto 20: 20 — DevOps. Solución comentada paso a paso del Libro del Desarrollador Web." />
+<meta property="twitter:description" content="Solved exercise 20: 20 — DevOps. Step-by-step annotated solution from the Web Developer Book." />
 <meta property="twitter:image" content="https://libro.urukais.com/assets/images/social/en/ejercicios/20-devops.png" />
 </head>
   
@@ -3259,10 +3259,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 Objetivo
+        🎯 Goal
       
     </span>
   </a>
@@ -3270,10 +3270,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucion" class="md-nav__link">
+  <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Solución
+        💡 Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Key concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Bonus challenges
       
     </span>
   </a>
@@ -5034,7 +5056,7 @@
 
 
   
-    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/20-devops.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/edit/master/docs/ejercicios/20-devops.en.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -5044,61 +5066,62 @@
 
 <div><h1 id="20-devops">20 — DevOps<a class="headerlink" href="#20-devops" title="Permanent link">¶</a></h1>
 <div class="admonition quote">
-<p class="admonition-title">Ejercicio resuelto</p>
-<p>Practica la automatización con GitHub Actions.</p>
+<p class="admonition-title">Solved exercise</p>
+<p>Practice automation with GitHub Actions.</p>
 </div>
 <hr>
-<h2 id="objetivo">🎯 Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">¶</a></h2>
-<p>Crea un workflow que se ejecute en cada push a `main` y:</p>
+<h2 id="goal">🎯 Goal<a class="headerlink" href="#goal" title="Permanent link">¶</a></h2>
+<p>Create a workflow that runs on every push to <code>main</code> and:</p>
 <ol>
-<li>Instale dependencias.</li>
-<li>Ejecute tests.</li>
-<li>Construya el proyecto.</li>
+<li>Installs dependencies.</li>
+<li>Runs tests.</li>
+<li>Builds the project.</li>
 </ol>
 <hr>
-<h2 id="solucion">💡 Solución<a class="headerlink" href="#solucion" title="Permanent link">¶</a></h2>
-<p>```yaml</p>
-<h1 id="githubworkflowsciyml">.github/workflows/ci.yml<a class="headerlink" href="#githubworkflowsciyml" title="Permanent link">¶</a></h1>
-<p>name: CI</p>
-<p>on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]</p>
-<p>jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4</p>
-<div class="highlight"><pre><span></span><code>  - uses: actions/setup-node@v4
-    with:
-      node-version: 20
-      cache: 'npm'
+<h2 id="solution">💡 Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/ci.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
 
-  - run: npm ci
-  - run: npm test
-  - run: npm run build
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">'npm'</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm test</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
 </code></pre></div>
-<p>```</p>
 <hr>
-<h2 id="conceptos-clave">🧠 Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">¶</a></h2>
+<h2 id="key-concepts">🧠 Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">¶</a></h2>
 <ul>
-<li>`on`: eventos que disparan el workflow.</li>
-<li>`jobs`: tareas que se ejecutan.</li>
-<li>`steps`: pasos dentro de un job.</li>
-<li>`actions/checkout`: clona el repo.</li>
-<li>`actions/setup-node`: instala Node.js.</li>
+<li><code>on</code>: events that trigger the workflow.</li>
+<li><code>jobs</code>: tasks that run.</li>
+<li><code>steps</code>: steps inside a job.</li>
+<li><code>actions/checkout</code>: clones the repo.</li>
+<li><code>actions/setup-node</code>: installs Node.js.</li>
 </ul>
 <hr>
-<h2 id="retos-extra">🚀 Retos extra<a class="headerlink" href="#retos-extra" title="Permanent link">¶</a></h2>
+<h2 id="bonus-challenges">🚀 Bonus challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] Añade un paso de deploy a GitHub Pages.</li>
-<li>[ ] Usa una matriz para testear en Node 18 y 20.</li>
-<li>[ ] Añade un paso de linting con ESLint.</li>
+<li>[ ] Add a deploy step to GitHub Pages.</li>
+<li>[ ] Use a matrix to test on Node 18 and 20.</li>
+<li>[ ] Add a linting step with ESLint.</li>
 </ul>
 <hr>
-<p><a class="md-button" href="../19-fullstack-node/">← Ejercicio 19</a>
-<a class="md-button md-button--primary" href="../">Volver al índice</a></p></div>
+<p><a class="md-button" href="../19-fullstack-node/">← Exercise 19</a>
+<a class="md-button md-button--primary" href="../">Back to index</a></p></div>
 
 
 
