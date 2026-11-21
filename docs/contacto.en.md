@@ -1,13 +1,13 @@
 # ✉ Contact
 
-!!! quote "Let's Talk"
-    Have a question, a suggestion, a collaboration idea, or just want to say hi? Here are all the ways to get in touch. Pick whichever works best for what you need.
+!!! quote "Let's talk"
+    Have a question, a suggestion, a collaboration idea, or just want to say hello? Here are all the ways to reach me. Pick whichever fits best.
 
 ---
 
-## 📬 Contact Form
+## 📬 Contact form
 
-Fill out the fields below and your email app or client will open with the message pre-filled for `urukaisk@gmail.com`.
+Fill out the fields below and your email app or client will open with a message ready to send to `urukaisk@gmail.com`.
 
 <form id="mailto-contact-form" class="contact-form">
   <div class="contact-field">
@@ -44,7 +44,7 @@ Fill out the fields below and your email app or client will open with the messag
     <label for="privacidad">I have read and accept the <a href="index.md#licencia">privacy policy</a>.</label>
   </div>
 
-  <button type="submit" class="md-button md-button--primary">✉ Open in my email client</button>
+  <button type="submit" class="md-button md-button--primary">✉ Open in my mail client</button>
 </form>
 
 <script>
@@ -60,46 +60,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const asunto = document.getElementById("asunto").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
 
-    const subject = encodeURIComponent(`[Web Dev Book] ${asunto} — ${nombre}`);
+    const subject = encodeURIComponent(`[Web Book] ${{asunto}} — ${{nombre}}`);
     const body = encodeURIComponent(
-      `Name: ${nombre}
+      `Name: ${{nombre}}
 ` +
-      `Email: ${email}
+      `Email: ${{email}}
 ` +
-      `Subject: ${asunto}
+      `Subject: ${{asunto}}
 
 ` +
       `Message:
-${mensaje}`
+${{mensaje}}`
     );
 
-    window.location.href = `mailto:urukaisk@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:urukaisk@gmail.com?subject=${{subject}}&body=${{body}}`;
   });
 });
 </script>
 
-!!! note "Email client didn't open?"
-    If you don't have a desktop email client set up or prefer writing directly from webmail, send your message to [urukaisk@gmail.com](mailto:urukaisk@gmail.com).
+!!! note "Mail client not opening?"
+    If you do not have a mail client configured or prefer to write directly from webmail, send your message to [urukaisk@gmail.com](mailto:urukaisk@gmail.com).
 
 ---
 
-## 📮 Direct Channels
+## 📮 Direct channels
 
-If you prefer to reach out another way, here are all available channels:
+If you prefer reaching out through another channel, here are all available options:
 
-| Channel | Recommended Use | Link |
+| Channel | Best for | Link |
 | :--- | :--- | :--- |
 | **📧 Email** | General inquiries, press, and collaborations | [urukaisk@gmail.com](mailto:urukaisk@gmail.com) |
 | **🐛 GitHub Issues** | Bugs, typos, and technical suggestions | [Open an issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new) |
 | **💬 GitHub Discussions** | Questions, discussions, and ideas | [Go to Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions) |
-| **🐦 Twitter / X** | Public mentions and sharing content | [@urukaisk](https://x.com/urukais) |
-| **💼 LinkedIn** | Professional contact | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |
+| **🐦 Twitter / X** | Public mentions and sharing links | [@urukaisk](https://x.com/urukaisk) |
+| **💼 LinkedIn** | Professional outreach | [Manuel Casimiro Carrasco](https://www.linkedin.com/in/urukais/) |
 | **📰 Substack** | Newsletter and updates | [urukaisklick.substack.com](https://urukaisklick.substack.com) |
 | **🐙 GitHub** | Code and contributions | [@urukaisk-maker](https://github.com/urukaisk-maker) |
 
 ---
 
-## 🎯 What Can You Write About?
+## 🎯 What can you write to me about?
 
 ### ✅ Yes, write to me if…
 
@@ -107,48 +107,48 @@ If you prefer to reach out another way, here are all available channels:
 - You found a **bug, typo, or broken link**.
 - You want to **suggest an improvement** or a new topic.
 - You want to **propose a collaboration** (translation, guest chapter, etc.).
-- You're **press or media** and want to cover the project.
-- You'd like me to host a **talk or workshop**.
+- You are **press or media** and want to cover the project.
+- You want me to give a **talk or workshop**.
 - You built something using the book and want to **share it**.
-- You simply want to **say hello** or thank the project.
+- You simply want to **say hi** or thank someone.
 
-### ❌ No, please don't write if…
+### ❌ No, please do not write to me if…
 
-- It's for **personal tech support** (my time is limited and Stack Overflow is built for that).
-- It's to **pitch or sell** something (services, products, SEO, marketing…).
-- It's **spam** or automated messages.
-- You're asking me to **do your homework** (I don't do assignments, though I can point you in the right direction).
+- It is a **personal tech support issue** (my time is limited; Stack Overflow is the place for that).
+- It is a **sales pitch** (services, products, SEO, marketing…).
+- It is **spam** or automated messages.
+- You are asking me to **do your homework** (I do not do homework, though I can point you in the right direction).
 
 ---
 
-## ⏱ Response Times
+## ⏱ Response times
 
-I'm one person, not a company. Here are rough response times:
+I am one person, not a company. Here are approximate response times:
 
-| Channel | Response Time |
+| Channel | Typical response time |
 | :--- | :--- |
 | **GitHub Issues** | 24–72 h (business days) |
 | **GitHub Discussions** | 24–72 h (business days) |
 | **Email** | 2–5 business days |
 | **Form** | 2–5 business days |
-| **Twitter / X** | Variable (not checked daily) |
+| **Twitter / X** | Variable (I do not check it daily) |
 | **LinkedIn** | 3–7 business days |
 
-!!! warning "No immediate reply guaranteed"
-    This book is a personal project I maintain in my free time. If it takes longer than listed to reply, it doesn't mean I don't care—it just means I'm busy with work, life, or the book itself.
+!!! warning "Fast replies are not guaranteed"
+    This book is a personal project I maintain in my free time. If I take longer than expected to reply, it does not mean I do not care—it just means I am busy with work, life, or the book itself.
 
 ---
 
-## ❓ Before Writing: Is Your Question in the FAQ?
+## ❓ Before writing: is your question in the FAQ?
 
-Many common questions are already answered on the [Frequently Asked Questions](faq.md) page. Before messaging me, take a look:
+Many common questions are already answered on the [FAQ](faq.md) page. Before sending a message, take a quick look:
 
-- [Is it free? How is it funded?](faq.md#about-the-project)
-- [Who is the book for?](faq.md#about-the-content)
-- [How do I contribute?](faq.md#about-contributing)
-- [How do I get the certificate?](faq.md#about-achievements-certificate)
+- [Is it free? How is it funded?](faq.md#sobre-el-proyecto)
+- [Who is the book for?](faq.md#sobre-el-contenido)
+- [How can I contribute?](faq.md#sobre-contribuir)
+- [How do I get the certificate?](faq.md#sobre-los-logros-y-el-certificado)
 
-If your question isn't in the FAQ, then by all means reach out.
+If your question is not in the FAQ, go ahead and write.
 
 ---
 
@@ -157,41 +157,41 @@ If your question isn't in the FAQ, then by all means reach out.
 If you want to collaborate on the project (translation, guest chapter, sponsorship, talk…), mention it in the form subject or by email. Tell me:
 
 - **Who you are** and what you do.
-- **What you're proposing** specifically.
+- **What you are proposing** specifically.
 - **Why** you think it fits the project.
-- **What you'd need** from me.
+- **What you would need** from me.
 
-!!! tip "Collaboration Replies"
-    If your proposal aligns with the project's values (open source, free, and ad-free), I'll gladly get back to you. If it doesn't fit, I'll tell you honestly too.
+!!! tip "Collaboration replies"
+    If your proposal aligns with the project's values (open source, free, and ad-free), I will gladly reply. If it does not fit, I will tell you honestly too.
 
 ---
 
-## 🗺 Where I'm Based
+## 🗺 Where I'm based
 
-I'm from Spain 🇪🇸, though I collaborate with people around the world. Keep that in mind if you're writing from another time zone.
+I am based in Spain 🇪🇸 and collaborate with people around the world. Keep that in mind if you write from a different time zone.
 
 ---
 
 ## 🔐 Privacy
 
-Your details are **only used to reply to you**. They aren't sold, shared with third parties, or used for spam. If you want me to delete your message after replying, just ask.
+Your details **are only used to reply to you**. They are never sold, shared with third parties, or used for spam. If you want me to delete your message after replying, just ask.
 
 For more details, see the [privacy policy](index.md#licencia).
 
 ---
 
-## 💬 One Final Thought
+## 💬 Final thought
 
 > *"A well-written email saves 10 messages."*
 
-If you write to me, help me help you: be specific, explain what you need, and if it's a technical issue, attach screenshots, logs, or failing code. That makes it much easier to give you a fast, useful answer.
+If you write to me, help me help you: be specific, tell me what you need, and if it is a technical issue, include screenshots, logs, or the failing code. With that context I can answer much faster and better.
 
 ---
 
-## ➡ Next Steps
+## ➡ Next steps
 
-[🐛 Report an issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new){.md-button .md-button--primary }
+[🐛 Report an issue](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/issues/new){ .md-button .md-button--primary }
 
-[💬 Go to Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions){.md-button }
+[💬 Go to Discussions](https://github.com/urukaisk-maker/Libro-desarrollador-Web-Urukais-/discussions){ .md-button }
 
 [📖 Read the FAQ](faq.md){ .md-button }
